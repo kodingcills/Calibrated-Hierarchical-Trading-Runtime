@@ -20,7 +20,7 @@
     "SRC-0001",
     "SRC-0020"
   ],
-  "last_updated": "2026-09-20T18:31:11Z",
+  "last_updated": "2026-09-20T18:48:51Z",
   "priority_reason": "MIGRATED to M2_MEASUREMENT; tracked because SUNK premises must not leak into M2 designs.",
   "priority_score": null,
   "required_answer": "External reproduction or a sealed same-information experiment",

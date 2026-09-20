@@ -14,7 +14,7 @@
   "kill_potential": "MEDIUM",
   "known_evidence_ids": [],
   "known_source_ids": [],
-  "last_updated": "2026-09-20T18:31:11Z",
+  "last_updated": "2026-09-20T18:48:51Z",
   "priority_reason": "M1-BLOCKING retained: it determines which cost schedule applies, which is Tier 1.",
   "priority_score": null,
   "required_answer": "Minimum capital, margin terms and fee tier available to the project per venue",

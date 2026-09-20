@@ -18,7 +18,7 @@
   "known_source_ids": [
     "SRC-0110"
   ],
-  "last_updated": "2026-09-20T18:31:11Z",
+  "last_updated": "2026-09-20T18:48:51Z",
   "priority_reason": "M1-BLOCKING retained: access and cost are Tier-1/Tier-3 facts.",
   "priority_score": null,
   "required_answer": "Participant route, fee schedule, allocation rule, historical EOBI availability",

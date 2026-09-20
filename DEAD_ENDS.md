@@ -33,7 +33,7 @@ is recorded per row so the decision can be made against a stated bar rather than
 - class: TUPLE
 - report kill gate (verbatim): Data feasibility / compute-fit boundary
 - cause: Documented public book feed cadence is at least 0.5 s between pushes, which is slower than the 10-100 ms hypothesis horizon.
-- evidence: EVD-0009
+- evidence: EVD-0009|EVD-0043|EVD-0044|EVD-0045|EVD-0047|EVD-0059
 - death date: 2026-09-20 (date of the M1-A artifact (SRC-0011) for the original kills; computed-gate kills are dated by gate_recompute_date)
 - resurrection condition: A materially different authenticated/direct feed with verified sub-100 ms state information would constitute a new tuple.
 
@@ -69,7 +69,7 @@ is recorded per row so the decision can be made against a stated bar rather than
 - class: UNIVERSE_DEFINITION
 - report kill gate (verbatim): Market-structure definition
 - cause: CME matching processes are product-specific, so a generic queue model is unjustified.
-- evidence: EVD-0001|EVD-0002|EVD-0003|EVD-0018
+- evidence: EVD-0001|EVD-0002|EVD-0003|EVD-0018|EVD-0060
 - death date: 2026-09-20 (date of the M1-A artifact (SRC-0011) for the original kills; computed-gate kills are dated by gate_recompute_date)
 - resurrection condition: Specify product/order type and implement the actual matching rule.
 

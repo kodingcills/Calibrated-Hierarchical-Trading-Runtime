@@ -7,14 +7,14 @@ Open external requests: 10
 
 | priority | blocker | what it decides | affected | packet |
 |---|---|---|---|---|
-| 30.0 | `UNK-0018` (OPEN) | Causal replay and therefore every queue, priority or fill claim; applies to any candidate that reaches replay. | 1 rows | `M1/work/external_requests/UNK-0018.md` |
+| 30.0 | `UNK-0018` (IN_PROGRESS) | Causal replay and therefore every queue, priority or fill claim; applies to any candidate that reaches replay. | 1 rows | `M1/work/external_requests/UNK-0018.md` |
 | 18.0 | `UNK-0033` (OPEN) | All-in per-share cost for every equity tuple, and therefore the cost floor used in KG3. | 4 rows | `M1/work/external_requests/UNK-0033.md` |
-| 12.0 | `UNK-0010` (OPEN) | Net-edge feasibility for the Hyperliquid H3/H4 candidates. | 3 rows | `M1/work/external_requests/UNK-0010.md` |
+| 12.0 | `UNK-0010` (IN_PROGRESS) | Net-edge feasibility for the Hyperliquid H3/H4 candidates. | 3 rows | `M1/work/external_requests/UNK-0010.md` |
 | 10.0 | `UNK-0028` (OPEN) | Deployment-shape decisions (not M1 selection); also drives which fee tier applies in M2 cost configuration. | 1 rows | `M1/work/external_requests/UNK-0028.md` |
 | 9.0 | `UNK-0004` (EXTERNAL_REQUEST_READY) | Queue-aware backtesting of every Nasdaq equity tuple (KG2). | 4 rows | `M1/work/external_requests/UNK-0004.md` |
 | 9.0 | `UNK-0005` (IN_PROGRESS) | Net-economics arithmetic for equity tuples (KG3). | 5 rows | `M1/work/external_requests/UNK-0005.md` |
-| 6.0 | `UNK-0001` (OPEN) | Aggressive CME execution viability (KG3) for every CME tuple. | 5 rows | `M1/work/external_requests/UNK-0001.md` |
-| 6.0 | `UNK-0003` (OPEN) | Causal queue replay for CME candidates (KG2), and therefore M2 for them. | 5 rows | `M1/work/external_requests/UNK-0003.md` |
+| 6.0 | `UNK-0001` (EXTERNAL_REQUEST_READY) | Aggressive CME execution viability (KG3) for every CME tuple. | 5 rows | `M1/work/external_requests/UNK-0001.md` |
+| 6.0 | `UNK-0003` (IN_PROGRESS) | Causal queue replay for CME candidates (KG2), and therefore M2 for them. | 5 rows | `M1/work/external_requests/UNK-0003.md` |
 | 4.0 | `UNK-0022` (EXTERNAL_REQUEST_READY) | BZX passive tuple feasibility (KG2/KG3). | 1 rows | `M1/work/external_requests/UNK-0022.md` |
 | 3.0 | `UNK-0011` (OPEN) | Any Eurex candidate progressing beyond universe status. | 1 rows | `M1/work/external_requests/UNK-0011.md` |
 
@@ -99,3 +99,16 @@ Open external requests: 10
 - answer that clears the branch: A viable participant route with dated fees exists
 - answer that kills the branch: No economic participant route exists for the project at any usable size
 - return the answer by writing a patch JSON into `M1/work/patches/UNK-0011_response.json`, or copy the raw document into `M1/work/external_requests/UNK-0011_received/`
+
+
+## Human input required (not research, not vendor)
+
+These M1 blockers are facts about the operator, so no search or quote can resolve them.
+Each is stated so it can be answered in one line.
+
+### UNK-0034 - The operator's own jurisdiction and client classification, which determine whether each ve
+
+- question: A statement of the operator's legal domicile, entity type and client classification, plus the per-venue eligibility determination that follows from it.
+- why it blocks M1: Access legality for four venue families, and therefore KG3 and KG5 for their candidates: no fill or cost model matters for a venue the operator may not use.
+- affected rows: 8
+- answer by writing the fact into `DECISIONS.md` and adding a patch row in `M1/work/patches/` so the state change is recorded

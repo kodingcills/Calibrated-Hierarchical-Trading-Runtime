@@ -28,14 +28,14 @@
     "SRC-0112",
     "SRC-0113"
   ],
-  "last_updated": "2026-09-20T18:31:11Z",
+  "last_updated": "2026-09-20T18:48:51Z",
   "priority_reason": "M1-BLOCKING retained: matching mechanics are a Tier-1 fact and a queue model cannot be built without it.",
   "priority_score": null,
   "required_answer": "The allocation algorithm that applies to the named product and order type, with its version",
   "resolution_method": "PUBLIC_RESEARCH",
   "resolution_stage": "M1_BLOCKING",
   "resurrection_condition": null,
-  "status": "OPEN",
+  "status": "IN_PROGRESS",
   "success_condition": "Algorithm identified and the queue/fill model is consistent with it",
   "tier": 1,
   "title": "Exact CME matching/allocation rule per candidate contract"

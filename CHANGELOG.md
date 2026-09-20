@@ -1,5 +1,56 @@
 # CHANGELOG
 
+## 1.2.0 - 2026-09-20 (iterations 2-3: crypto, event-market and CME primary research; kill-basis correction)
+
+### Correction - kills are recorded decisions, not emergent arithmetic
+
+- KG3 no longer fails a candidate merely because a verified cost floor exists with no supporting
+  evidence; that state is BLOCKED pending a materiality bound or a venue-specific after-cost
+  replication (DECISIONS D-0022). Discovered by applying the engine to a newly verified 9 bps
+  Hyperliquid floor that the old rule would have killed.
+- `dead_candidates.csv` gains `kill_basis`: COMPUTED_GATE_FAIL or RECORDED_DECISION. The two
+  crypto kills are now correctly attributed to the M1-A decision, the other seven to computed
+  gate failures. Validator V3 fails any row whose basis disagrees with its gate vector.
+
+### Added - iteration 2 (crypto and event markets, patch P-0002)
+
+- 22 primary sources (SRC-0213..SRC-0234) and 15 evidence records (EVD-0043..EVD-0059);
+  4 venue rows enriched with verified fees, data surfaces, jurisdiction and timestamp semantics.
+- Hyperliquid perp base tier 0.045%/0.015% with tier/staking/referral modifiers; official
+  requester-pays S3 archive (hourly L2, per-block fills, monthly cadence, no completeness
+  guarantee); liquidation surfaces user-scoped only.
+- Deribit options/perps fee table in bps with premium caps; documented trade/funding backfill;
+  no bulk option-book archive; US prohibited.
+- Kalshi taker fee formula round_up(M x 0.07 x C x P x (1-P)) with zero default maker multiplier;
+  historical trade endpoints with moving cutoffs; WA and NV orders active, Third Circuit
+  preemption holding contrary.
+- Polymarket taker-only category fees with rebates; international blocks US, separate US product
+  with participant-scoped reporting and a 2026-05-01 ledger floor; 2022 CFTC settlement recorded.
+- New blockers: UNK-0034 (operator jurisdiction, DEFERRED, gates 8 rows) and UNK-0035 (fee-page
+  version control).
+
+### Added - iteration 3 (CME cluster, patch P-0003, partial)
+
+- 3 primary client-wiki sources (SRC-0235..SRC-0237) and 4 evidence records
+  (EVD-0060..EVD-0063).
+- CME matching is engine-assigned: nine algorithm codes per product, split FIFO/pro-rata
+  parameters, minute-cycle level recalculation; ES/NQ assignment not located. MDP 3.0 documents
+  MDEntryTime/TransactTime but not the clock domain. DataMine MBO FIX history exists from
+  2017-01-07 (coverage as captured COMEX/NYMEX, no published price). iLink, colocation and
+  latency figures are not published.
+- The resolver reported its own fee extraction as failed; the single figure it surfaced was
+  recorded as a REJECTED claim in `modified_claims` and in the closure log. No fee value entered
+  canonical state. UNK-0001 becomes EXTERNAL_REQUEST_READY with the public search recorded as
+  exhausted.
+
+### State
+
+- Sources 63 -> 88; evidence records 41 -> 62; frontier 16 -> 17 actionable M1 blockers;
+  3 code-authored patches applied, 0 rejected after the first schema violation was caught and
+  fixed; 77 tests OK; validator PASS across 18 rule groups.
+- Candidate counts unchanged: 28 rows, ALIVE 0 / WEAK 5 / UNKNOWN 14 / DEAD 9, gate-eligible 0.
+  M1-B and M1-D1 remain NOT_AUTHORIZED.
+
 ## 1.1.0 - 2026-09-20 (M1 closure orchestrator; stage-semantics correction; first research iteration)
 
 ### Changed - M1 gate semantics (breaking, deliberate)

@@ -179,14 +179,24 @@ class PatchIntegrity(unittest.TestCase):
         result = transitions.verify_patch(builder, self._card(), self._context())
         self.assertEqual(result["status"], "REJECTED")
 
-    def test_shipped_patch_is_applied_and_its_sources_reached_canonical_state(self):
+    def test_shipped_patches_are_applied_and_their_sources_reached_canonical_state(self):
+        """Every code-authored patch is applied, and its sources are in canonical state."""
+        from corpus import patches as code_patches
         summary = load("M1/output/M1_STATE_SUMMARY.json")
         self.assertEqual(summary["patches"]["rejected"], 0)
-        self.assertEqual(summary["patches"]["applied"], 1)
-        source_ids = {r["source_id"] for r in
-                      _csv_rows("M1/data/source_registry.csv")}
-        for sid in ("SRC-0201", "SRC-0203", "SRC-0206", "SRC-0208"):
+        self.assertEqual(summary["patches"]["applied"], len(code_patches.CODE_PATCHES))
+        source_ids = {r["source_id"] for r in _csv_rows("M1/data/source_registry.csv")}
+        for sid in ("SRC-0201", "SRC-0203", "SRC-0206", "SRC-0208",
+                    "SRC-0213", "SRC-0219", "SRC-0222", "SRC-0228"):
             self.assertIn(sid, source_ids)
+
+    def test_every_applied_patch_is_audited(self):
+        summary = load("M1/output/M1_STATE_SUMMARY.json")
+        entries = [a for a in summary["patches"]["audit"] if a.get("kind") == "PATCH"]
+        self.assertEqual(len([e for e in entries if e["applied"]]),
+                         summary["patches"]["applied"])
+        for patch in load("M1/work/patches/P-0001.json"), load("M1/work/patches/P-0002.json"):
+            self.assertTrue(any(e["patch_id"] == patch["patch_id"] for e in entries))
 
     def test_rejected_patch_reasons_are_preserved(self):
         """A rejection is evidence too: it must not be silently dropped."""

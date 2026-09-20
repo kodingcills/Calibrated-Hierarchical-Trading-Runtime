@@ -25,7 +25,7 @@
   "kill_potential": "LOW",
   "known_evidence_ids": [],
   "known_source_ids": [],
-  "last_updated": "2026-09-20T18:31:11Z",
+  "last_updated": "2026-09-20T18:48:51Z",
   "priority_reason": "MIGRATED from M1_BLOCKING: markout is an M2 output; the M1 question is whether the data to measure it exists (KG2).",
   "priority_score": null,
   "required_answer": "E(markout | fill, state) distribution per candidate",

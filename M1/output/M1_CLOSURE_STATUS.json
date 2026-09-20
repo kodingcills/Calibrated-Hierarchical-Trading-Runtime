@@ -10,6 +10,7 @@
   "frontier": {
     "active_items": [
       "UNK-0023",
+      "UNK-0034",
       "UNK-0018",
       "UNK-0002",
       "UNK-0009",
@@ -20,9 +21,9 @@
       "UNK-0013",
       "UNK-0014",
       "UNK-0015",
+      "UNK-0035",
       "UNK-0028",
       "UNK-0005",
-      "UNK-0001",
       "UNK-0003",
       "UNK-0011"
     ],
@@ -231,9 +232,9 @@
         "value": "BLOCKED"
       },
       "KG3_EXECUTION": {
-        "reason": "Verified round-trip fee floor of 120.0 bps stands against a gross effect no source in the package evidences. Reversible by one venue-specific after-cost measurement.",
+        "reason": "Verified round-trip fee floor of 120.0 bps and no venue-specific gross-effect evidence. Whether that floor is material cannot be decided from the evidence package: it needs either a documented materiality bound for this mechanism class or a venue-specific after-cost replication (UNK-0009). A cost level alone is not a kill: the kills recorded in the dead ledger were decisions with stated reasoning, not emergent arithmetic.",
         "rule": "KG3-R3",
-        "value": "FAIL"
+        "value": "BLOCKED"
       },
       "KG4_HALF_LIFE": {
         "reason": "No known physical timing contradiction, and the delay experiment is preregistered. The empirical half-life is an M2 output by design (UNK-0008), not an M1 requirement.",
@@ -447,8 +448,8 @@
         "value": "BLOCKED"
       },
       "KG3_EXECUTION": {
-        "reason": "No verified fee component exists for this venue, so the platform cannot assert that known costs do not already invalidate the thesis. Known mandatory cost is an M1 fact (UNK-0001/0005/0011/0012/0013/0022/0028).",
-        "rule": "KG3-R4",
+        "reason": "Verified round-trip fee floor of 9.0 bps and no venue-specific gross-effect evidence. Whether that floor is material cannot be decided from the evidence package: it needs either a documented materiality bound for this mechanism class or a venue-specific after-cost replication (UNK-0009). A cost level alone is not a kill: the kills recorded in the dead ledger were decisions with stated reasoning, not emergent arithmetic.",
+        "rule": "KG3-R3",
         "value": "BLOCKED"
       },
       "KG4_HALF_LIFE": {
@@ -555,9 +556,9 @@
         "value": "BLOCKED"
       },
       "KG3_EXECUTION": {
-        "reason": "Verified round-trip fee floor of 160.0 bps stands against a gross effect no source in the package evidences. Reversible by one venue-specific after-cost measurement.",
+        "reason": "Verified round-trip fee floor of 160.0 bps and no venue-specific gross-effect evidence. Whether that floor is material cannot be decided from the evidence package: it needs either a documented materiality bound for this mechanism class or a venue-specific after-cost replication (UNK-0009). A cost level alone is not a kill: the kills recorded in the dead ledger were decisions with stated reasoning, not emergent arithmetic.",
         "rule": "KG3-R3",
-        "value": "FAIL"
+        "value": "BLOCKED"
       },
       "KG4_HALF_LIFE": {
         "reason": "No known physical timing contradiction, and the delay experiment is preregistered. The empirical half-life is an M2 output by design (UNK-0008), not an M1 requirement.",
@@ -787,8 +788,8 @@
       }
     }
   },
-  "generated_at": "2026-09-20T18:31:11Z",
-  "iterations_recorded": 1,
+  "generated_at": "2026-09-20T18:48:51Z",
+  "iterations_recorded": 3,
   "m2_specs_generated": [
     "CAPACITY",
     "COST_SENSITIVITY",
@@ -800,13 +801,13 @@
   ],
   "migration": {
     "by_method": {
-      "DEFERRED": 3,
+      "DEFERRED": 4,
       "EMPIRICAL_MEASUREMENT": 10,
       "EXTERNAL_ACTION": 11,
-      "PUBLIC_RESEARCH": 9
+      "PUBLIC_RESEARCH": 10
     },
     "by_stage": {
-      "M1_BLOCKING": 19,
+      "M1_BLOCKING": 21,
       "M2_MEASUREMENT": 9,
       "NON_BLOCKING": 4,
       "POST_M2": 1
@@ -829,7 +830,9 @@
       "UNK-0032"
     ],
     "unmapped_issues": [
-      "UNK-0033"
+      "UNK-0033",
+      "UNK-0034",
+      "UNK-0035"
     ]
   },
   "milestones": {

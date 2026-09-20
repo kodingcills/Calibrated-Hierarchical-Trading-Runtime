@@ -17,9 +17,9 @@ fact can change the candidate set, not because they are interesting.
 - **UNK-0015** (A): A named venue plus participant status and its published or contractual execution policy. -> prevents: Defining the tuple at all (KG1/KG3/KG5).
 - **UNK-0028** (B): Broker/venue quotes for the intended account type plus margin and minimum-size terms. -> prevents: Deployment-shape decisions (not M1 selection); also drives which fee tier applies in M2 cost configuration.
 - **UNK-0005** (B): Broker/venue fee schedule for the project's exact routing and account type, per fee code. -> prevents: Net-economics arithmetic for equity tuples (KG3).
-- **UNK-0001** (B): Current CME/FCM schedule for the exact account path, registered as an immutable M2 cost configuration. -> prevents: Aggressive CME execution viability (KG3) for every CME tuple.
 - **UNK-0003** (B): Vendor quote plus a sample file whose schema and timestamp fields are validated against a live feed. -> prevents: Causal queue replay for CME candidates (KG2), and therefore M2 for them.
 - **UNK-0011** (B): Instrument-specific fee schedule, matching rule, historical data quote and access route. -> prevents: Any Eurex candidate progressing beyond universe status.
+- **UNK-0001** (B): Current CME/FCM schedule for the exact account path, registered as an immutable M2 cost configuration. -> prevents: Aggressive CME execution viability (KG3) for every CME tuple.
 - **UNK-0004** (B): Order-level historical product, license terms, sample and cost. -> prevents: Queue-aware backtesting of every Nasdaq equity tuple (KG2).
 - **UNK-0020** (B): Historical auction-imbalance dataset with exact dissemination timestamps. -> prevents: Auction tuple feasibility (KG2): without it the auction candidate has no historical basis for testing.
 - **UNK-0022** (B): Feed/data entitlement list and a sample of realized fee codes. -> prevents: BZX passive tuple feasibility (KG2/KG3).

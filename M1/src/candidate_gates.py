@@ -43,8 +43,14 @@ def status_ceiling(candidate: dict) -> str:
     return "ELIGIBLE_FOR_M1B"
 
 
-def ceiling_violations(candidates) -> list:
-    """Return (candidate_id, status, ceiling, message) for every status/ceiling conflict."""
+def ceiling_violations(candidates, recorded_kills=()) -> list:
+    """Return (candidate_id, status, ceiling, message) for every status/ceiling conflict.
+
+    ``recorded_kills`` names candidates whose death is a recorded decision (with cause and
+    resurrection condition) rather than a computed gate failure. Those rows may be DEAD without
+    a FAIL gate; every other DEAD row still needs one.
+    """
+    recorded_kills = set(recorded_kills)
     problems = []
     for cand in candidates:
         ceiling = status_ceiling(cand)
@@ -53,9 +59,9 @@ def ceiling_violations(candidates) -> list:
             problems.append((cand["candidate_id"], status, ceiling,
                              "unknown overall_status value"))
             continue
-        if _CEILING_FOR_STATUS[status] == DEAD and ceiling != DEAD and status == DEAD:
+        if status == DEAD and ceiling != DEAD and cand["candidate_id"] not in recorded_kills:
             problems.append((cand["candidate_id"], status, ceiling,
-                             "DEAD without any FAIL gate"))
+                             "DEAD without any FAIL gate and without a recorded kill decision"))
         if status == ALIVE and ceiling != "ELIGIBLE_FOR_M1B":
             problems.append((cand["candidate_id"], status, ceiling,
                              "ALIVE with a blocking or failing gate"))

@@ -1,5 +1,5 @@
 {
-  "active_item_count": 16,
+  "active_item_count": 17,
   "clusters": {
     "CBOE_EQUITY": [
       "UNK-0005",
@@ -10,14 +10,17 @@
       "UNK-0027"
     ],
     "CME": [
-      "UNK-0001",
       "UNK-0002",
       "UNK-0003",
       "UNK-0027"
     ],
+    "CRYPTO_SPOT": [
+      "UNK-0034"
+    ],
     "DERIBIT": [
       "UNK-0013",
-      "UNK-0027"
+      "UNK-0027",
+      "UNK-0034"
     ],
     "EUREX": [
       "UNK-0011",
@@ -25,7 +28,9 @@
     ],
     "EVENT_MARKETS": [
       "UNK-0014",
-      "UNK-0027"
+      "UNK-0027",
+      "UNK-0034",
+      "UNK-0035"
     ],
     "FX": [
       "UNK-0015"
@@ -37,7 +42,9 @@
       "UNK-0028"
     ],
     "HYPERLIQUID": [
-      "UNK-0010"
+      "UNK-0010",
+      "UNK-0034",
+      "UNK-0035"
     ],
     "NASDAQ_EQUITY": [
       "UNK-0005",
@@ -50,7 +57,7 @@
     ]
   },
   "gate_eligible_candidates": [],
-  "generated_at": "2026-09-20T18:31:11Z",
+  "generated_at": "2026-09-20T18:48:51Z",
   "items": [
     {
       "affected_candidates": [
@@ -71,6 +78,30 @@
     },
     {
       "affected_candidates": [
+        "TUP-HYPERLIQUID-BTCPERP-H1-QDEP-AGGPAS",
+        "TUP-HYPERLIQUID-BTCPERP-H3-OFILIQ-AGG",
+        "TUP-HYPERLIQUID-BTCPERP-H4-FUNDBASIS-MIX",
+        "TUP-KALSHI-EVENT-H5-EVENTINF-AGG",
+        "TUP-POLYMARKET-EVENT-H5-EVENTINF-AGG",
+        "TUP-DERIBIT-BTCOPT-H5-SURFRV-MIX",
+        "TUP-COINBASE-BTCUSD-H3-MICROOFI-AGG",
+        "TUP-KRAKEN-BTCUSD-H3-MICROOFI-AGG"
+      ],
+      "affected_gates": "NONE",
+      "blocker_id": "UNK-0034",
+      "decision_prevented": "Access legality for four venue families, and therefore KG3 and KG5 for their candidates: no fill or cost model matters for a venue the operator may not use.",
+      "kill_condition": "Access legality for four venue families, and therefore KG3 and KG5 for their candidates: no fill or cost model matters for a venue the operator may not use.",
+      "priority_reason": "Not resolvable by research: it is a fact about the operator, not about the market. Registered so no session can quietly assume a jurisdiction that makes a branch look accessible.",
+      "priority_score": 60.0,
+      "resolution_method": "DEFERRED",
+      "resolution_stage": "M1_BLOCKING",
+      "status": "OPEN",
+      "success_condition": "A statement of the operator's legal domicile, entity type and client classification, plus the per-venue eligibility determination that follows from it.",
+      "tier": 1,
+      "title": "The operator's own jurisdiction and client classification, which determine whether each ve"
+    },
+    {
+      "affected_candidates": [
         "ALL_CANDIDATES"
       ],
       "affected_gates": "KG2_DATA",
@@ -81,7 +112,7 @@
       "priority_score": 30.0,
       "resolution_method": "EXTERNAL_ACTION",
       "resolution_stage": "M1_BLOCKING",
-      "status": "OPEN",
+      "status": "IN_PROGRESS",
       "success_condition": "Samples validate: monotonic ordering, sequence integrity, documented clock domain",
       "tier": 3,
       "title": "Historical and live feed timestamp semantics"
@@ -103,7 +134,7 @@
       "priority_score": 24.0,
       "resolution_method": "PUBLIC_RESEARCH",
       "resolution_stage": "M1_BLOCKING",
-      "status": "OPEN",
+      "status": "IN_PROGRESS",
       "success_condition": "Algorithm identified and the queue/fill model is consistent with it",
       "tier": 1,
       "title": "Exact CME matching/allocation rule per candidate contract"
@@ -185,7 +216,7 @@
       "priority_score": 12.0,
       "resolution_method": "EXTERNAL_ACTION",
       "resolution_stage": "M1_BLOCKING",
-      "status": "OPEN",
+      "status": "IN_PROGRESS",
       "success_condition": "Fee schedule and an event-level historical source are both identified and affordable",
       "tier": 3,
       "title": "Hyperliquid economics and replay surface"
@@ -219,7 +250,7 @@
       "priority_score": 12.0,
       "resolution_method": "PUBLIC_RESEARCH",
       "resolution_stage": "M1_BLOCKING",
-      "status": "OPEN",
+      "status": "IN_PROGRESS",
       "success_condition": "Access, fees and a historical data path are all documented as currently available",
       "tier": 1,
       "title": "Deribit current access, fee and data facts"
@@ -237,7 +268,7 @@
       "priority_score": 12.0,
       "resolution_method": "PUBLIC_RESEARCH",
       "resolution_stage": "M1_BLOCKING",
-      "status": "OPEN",
+      "status": "IN_PROGRESS",
       "success_condition": "A per-jurisdiction access determination exists for the project's operator base",
       "tier": 1,
       "title": "Event-market legality and access matrix"
@@ -259,6 +290,26 @@
       "success_condition": "A single venue and participant class is specified with documented execution semantics",
       "tier": 1,
       "title": "FX universe definition and venue facts"
+    },
+    {
+      "affected_candidates": [
+        "TUP-HYPERLIQUID-BTCPERP-H1-QDEP-AGGPAS",
+        "TUP-HYPERLIQUID-BTCPERP-H3-OFILIQ-AGG",
+        "TUP-HYPERLIQUID-BTCPERP-H4-FUNDBASIS-MIX",
+        "TUP-POLYMARKET-EVENT-H5-EVENTINF-AGG"
+      ],
+      "affected_gates": "NONE",
+      "blocker_id": "UNK-0035",
+      "decision_prevented": "After-cost replication validity: a cost model built on an undated dynamic page cannot be shown to describe the period it is tested on.",
+      "kill_condition": "After-cost replication validity: a cost model built on an undated dynamic page cannot be shown to describe the period it is tested on.",
+      "priority_reason": "Surfaced by primary research: several venues publish fees without dates, so the project must create the version record the venue does not.",
+      "priority_score": 12.0,
+      "resolution_method": "PUBLIC_RESEARCH",
+      "resolution_stage": "M1_BLOCKING",
+      "status": "OPEN",
+      "success_condition": "A dated, hashed snapshot of each fee page taken by the project, re-taken on a fixed schedule, with the figure used by any cost model tied to the snapshot it came from.",
+      "tier": 1,
+      "title": "Version control for venue fee schedules that publish no effective date or version archive."
     },
     {
       "affected_candidates": [
@@ -306,27 +357,6 @@
         "TUP-CME-TSY-H2-QREPL-MIX",
         "TUP-CME-WTI-H4-FLOWVOL-AGG"
       ],
-      "affected_gates": "KG3_EXECUTION",
-      "blocker_id": "UNK-0001",
-      "decision_prevented": "Aggressive CME execution viability (KG3) for every CME tuple.",
-      "kill_condition": "Verified all-in cost implies the hypothesised gross effect cannot cover round-trip cost",
-      "priority_reason": "M1-BLOCKING retained: a known mandatory cost is a cheap killer and cannot be deferred.",
-      "priority_score": 6.0,
-      "resolution_method": "EXTERNAL_ACTION",
-      "resolution_stage": "M1_BLOCKING",
-      "status": "OPEN",
-      "success_condition": "A dated all-in cost per contract for the intended account type",
-      "tier": 3,
-      "title": "Exact project-level CME all-in execution cost"
-    },
-    {
-      "affected_candidates": [
-        "TUP-CME-ES-H1-QDEP-PAS",
-        "TUP-CME-ES-H3-OFI-AGG",
-        "TUP-CME-NQ-H3-OFI-AGG",
-        "TUP-CME-TSY-H2-QREPL-MIX",
-        "TUP-CME-WTI-H4-FLOWVOL-AGG"
-      ],
       "affected_gates": "KG2_DATA",
       "blocker_id": "UNK-0003",
       "decision_prevented": "Causal queue replay for CME candidates (KG2), and therefore M2 for them.",
@@ -335,7 +365,7 @@
       "priority_score": 6.0,
       "resolution_method": "EXTERNAL_ACTION",
       "resolution_stage": "M1_BLOCKING",
-      "status": "OPEN",
+      "status": "IN_PROGRESS",
       "success_condition": "Sample validates against the project timestamp contract and the licence is affordable",
       "tier": 3,
       "title": "CME historical order-level data procurement"

@@ -168,10 +168,14 @@ def kg3_execution(candidate, envelope, feas, venue, specs, kg1_value=UNKNOWN) ->
     if kg1_value == "FAIL":
         return Verdict("FAIL", "KG3-R2", "Mechanism gate already fails for this row.")
     if floor is not UNKNOWN and not support:
-        return Verdict("FAIL", "KG3-R3",
-                       f"Verified round-trip fee floor of {floor:.1f} bps stands against a gross "
-                       f"effect no source in the package evidences. Reversible by one "
-                       f"venue-specific after-cost measurement.")
+        return Verdict("BLOCKED", "KG3-R3",
+                       f"Verified round-trip fee floor of {floor:.1f} bps and no venue-specific "
+                       f"gross-effect evidence. Whether that floor is material cannot be decided "
+                       f"from the evidence package: it needs either a documented materiality "
+                       f"bound for this mechanism class or a venue-specific after-cost "
+                       f"replication (UNK-0009). A cost level alone is not a kill: the kills "
+                       f"recorded in the dead ledger were decisions with stated reasoning, not "
+                       f"emergent arithmetic.")
     if floor is UNKNOWN:
         return Verdict("BLOCKED", "KG3-R4",
                        "No verified fee component exists for this venue, so the platform cannot "

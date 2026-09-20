@@ -5,6 +5,7 @@ produce the same evidence. Patches from humans or vendors arrive as JSON in `M1/
 instead. Both pass the identical adversarial verification before touching canonical state.
 """
 
-from . import p0001_us_equity_sources  # noqa: F401
+from . import (p0001_us_equity_sources, p0002_crypto_event_sources,  # noqa: F401
+               p0003_cme_partial)
 
-CODE_PATCHES = (p0001_us_equity_sources,)
+CODE_PATCHES = (p0001_us_equity_sources, p0002_crypto_event_sources, p0003_cme_partial)

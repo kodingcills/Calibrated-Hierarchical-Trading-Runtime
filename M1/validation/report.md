@@ -1,29 +1,49 @@
 # M1 validation report
 
-Generated (UTC): 2026-09-20T18:31:11Z by `M1/src/validate.py`.
+Generated (UTC): 2026-09-20T18:48:51Z by `M1/src/validate.py`.
 
-**Overall: PASS** - 0 failure(s) across 18 rule groups.
+**Overall: PASS** - 0 failure(s) across 38 rule groups.
 
 | rule | check | rows checked | result |
 |---|---|---|---|
-| V1 | provenance references resolve | 1246 | PASS |
+| V1 | provenance references resolve | 1359 | PASS |
 | V2 | numeric facts carry sources or are declared UNKNOWN | 536 | PASS |
-| V3 | gate ceiling and dead/ALIVE integrity | 28 | PASS |
-| V4 | referential integrity | 681 | PASS |
-| V5 | no scoring or ranking artifacts | 525 | PASS |
-| V6 | stable ids unique | 363 | PASS |
-| V7 | time-sensitive sources dated | 70 | PASS |
+| V3 | gate ceiling and dead/ALIVE integrity | 37 | PASS |
+| V4 | referential integrity | 805 | PASS |
+| V5 | no scoring or ranking artifacts | 526 | PASS |
+| V6 | stable ids unique | 411 | PASS |
+| V7 | time-sensitive sources dated | 100 | PASS |
 | V9 | no unperformed experiment claims a result | 9 | PASS |
 | V10 | decision-critical values remain UNKNOWN | 280 | PASS |
 | V11 | cross-file consistency | 14 | PASS |
 | V12 | raw provenance chain intact | 42 | PASS |
 | V13 | paper cost arithmetic reproduces | 2 | PASS |
-| V14 | two-dimension issue model complete | 33 | PASS |
-| V15 | frontier restricted to open M1 blockers | 36 | PASS |
-| V15 | frontier restricted to open M1 blockers | 36 | PASS |
+| V14 | two-dimension issue model complete | 35 | PASS |
+| V15 | frontier restricted to open M1 blockers | 39 | PASS |
+| V15 | frontier restricted to open M1 blockers | 39 | PASS |
 | V16 | eligibility independent of non-M1 issues; every verdict rule-traced | 140 | PASS |
-| V17 | patch integrity | 1 | PASS |
-| V18 | work artefacts valid and complete | 71 | PASS |
+| V17 | patch integrity | 3 | PASS |
+| V18 | work artefacts valid and complete | 72 | PASS |
+| V2 | numeric facts carry sources or are declared UNKNOWN | 2 | PASS |
+| V2 | numeric facts carry sources or are declared UNKNOWN | 2 | PASS |
+| V1 | provenance references resolve | 1359 | PASS |
+| V2 | numeric facts carry sources or are declared UNKNOWN | 536 | PASS |
+| V3 | gate ceiling and dead/ALIVE integrity | 37 | PASS |
+| V4 | referential integrity | 805 | PASS |
+| V5 | no scoring or ranking artifacts | 526 | PASS |
+| V6 | stable ids unique | 411 | PASS |
+| V7 | time-sensitive sources dated | 100 | PASS |
+| V9 | no unperformed experiment claims a result | 9 | PASS |
+| V10 | decision-critical values remain UNKNOWN | 280 | PASS |
+| V11 | cross-file consistency | 14 | PASS |
+| V12 | raw provenance chain intact | 42 | PASS |
+| V13 | paper cost arithmetic reproduces | 2 | PASS |
+| V14 | two-dimension issue model complete | 35 | PASS |
+| V15 | frontier restricted to open M1 blockers | 39 | PASS |
+| V15 | frontier restricted to open M1 blockers | 39 | PASS |
+| V16 | eligibility independent of non-M1 issues; every verdict rule-traced | 140 | PASS |
+| V17 | patch integrity | 3 | PASS |
+| V18 | work artefacts valid and complete | 72 | PASS |
 
 ## Failures
 

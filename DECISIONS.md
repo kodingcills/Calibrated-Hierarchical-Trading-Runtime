@@ -182,3 +182,45 @@ recorded in its own column and, for a passive candidate, enters the native cost 
 negative with its own source; a bps floor is emitted only when the floor's own unit is
 bps-convertible (ASM-0011 unchanged). This is why the Nasdaq and BZX rows now show native per-share
 floors while their bps columns remain empty.
+
+
+## D-0022 - A kill is a recorded decision or a computed gate failure, never emergent arithmetic
+
+Applying the engine to newly verified fees exposed a design fault: KG3 previously failed a
+candidate purely because a verified cost floor existed with no supporting evidence, which would
+have killed a Hyperliquid tuple on a 9 bps round trip. A cost level is not by itself a kill. The
+rule is now: a verified floor with no venue-specific gross-effect evidence is **BLOCKED** pending
+either a documented materiality bound for the mechanism class or a venue-specific after-cost
+replication. DEAD status therefore has exactly two lawful bases, recorded per row in
+`dead_candidates.kill_basis`: `COMPUTED_GATE_FAIL` (a gate the engine can decide) or
+`RECORDED_DECISION` (a judgment with a stated cause and resurrection condition, as the M1-A
+artifact recorded for the two crypto tuples). Silent arithmetic kills are no longer possible.
+Enforced by `candidate_gates.ceiling_violations(candidates, recorded_kills)` and validator V3,
+which additionally fails a row whose kill basis disagrees with its gate vector.
+
+## D-0023 - A failed resolution is recorded as a result, and rejected claims are preserved
+
+The CME resolver reported its own fee extraction as failed and surfaced one figure with no
+recoverable URL from a non-primary source. That figure was placed in the patch's
+`modified_claims` as REJECTED and appears in the closure log; no venue fact was created from it.
+The issue's `search_attempts` field records the exhaustion. Rationale: a resolver that returns
+"public search exhausted, quote required" has produced a decision-relevant fact about the
+research frontier, and hiding the attempt would invite a later session to repeat it.
+
+## D-0024 - Operator jurisdiction is a first-class M1 blocker, not a footnote
+
+Four venue families turn on a fact that no research can resolve: whether the operator is legally
+able to use them. Hyperliquid excludes US and Ontario persons by interface terms, Deribit
+prohibits the US, Kalshi restricts many countries and faces active state orders, and the
+international Polymarket blocks US persons while the US product is a separate venue. UNK-0034 is
+registered with `resolution_method=DEFERRED` because it needs a human statement, and it is
+surfaced in its own section of `M1_EXTERNAL_ACTION_QUEUE.md`. No session may assume a
+jurisdiction that makes a branch look accessible, and no candidate was killed on this basis
+because the operator's jurisdiction is unknown rather than adverse.
+
+## D-0025 - Fee schedules without effective dates must be snapshotted by the project
+
+Hyperliquid's and Polymarket's fee documentation carry no effective date and no version archive,
+and Deribit's page gives one update date. UNK-0035 requires a dated, hashed snapshot per fee page,
+re-taken on a fixed schedule, with any cost model tied to the snapshot it used. This is recorded
+because an undated fee is a silently drifting input to every after-cost calculation.

@@ -101,13 +101,13 @@ def apply_verified(patches, source_rows, evidence_rows, issue_rows, cards_by_id,
 
     for patch in patches:
         if patch["status"] != "VERIFIED":
-            audit.append({"patch_id": patch["patch_id"], "applied": False,
+            audit.append({"kind": "PATCH", "patch_id": patch["patch_id"], "applied": False,
                           "reason": f"status {patch['status']}"})
             continue
         added_sources = []
         for src in patch["new_sources"]:
             if any(s["source_id"] == src["source_id"] for s in sources):
-                audit.append({"patch_id": patch["patch_id"], "applied": False,
+                audit.append({"kind": "EFFECT", "patch_id": patch["patch_id"], "applied": False,
                               "reason": f"duplicate source id {src['source_id']}"})
                 continue
             src = dict(src)
@@ -126,7 +126,7 @@ def apply_verified(patches, source_rows, evidence_rows, issue_rows, cards_by_id,
         added_evidence = []
         for ev in patch["new_evidence"]:
             if any(e["evidence_id"] == ev["evidence_id"] for e in evidence):
-                audit.append({"patch_id": patch["patch_id"], "applied": False,
+                audit.append({"kind": "EFFECT", "patch_id": patch["patch_id"], "applied": False,
                               "reason": f"duplicate evidence id {ev['evidence_id']}"})
                 continue
             ev = dict(ev)
@@ -149,29 +149,29 @@ def apply_verified(patches, source_rows, evidence_rows, issue_rows, cards_by_id,
         for update in patch.get("proposed_venue_updates", []):
             venue = venue_index.get(update["venue_id"])
             if venue is None:
-                audit.append({"patch_id": patch["patch_id"], "applied": False,
+                audit.append({"kind": "EFFECT", "patch_id": patch["patch_id"], "applied": False,
                               "reason": f"unknown venue {update['venue_id']}"})
                 continue
             for field, value in update["fields"].items():
                 venue[field] = value
             venue_changes.append(update["venue_id"])
-            audit.append({"patch_id": patch["patch_id"], "applied": True,
+            audit.append({"kind": "EFFECT", "patch_id": patch["patch_id"], "applied": True,
                           "venue_update": update["venue_id"],
                           "fields": sorted(update["fields"]),
                           "sources": update["source_ids"]})
 
         for entry in patch["new_unknowns"]:
             if any(r["issue_id"] == entry["issue_id"] for r in issues):
-                audit.append({"patch_id": patch["patch_id"], "applied": False,
+                audit.append({"kind": "EFFECT", "patch_id": patch["patch_id"], "applied": False,
                               "reason": f"duplicate issue id {entry['issue_id']}"})
                 continue
             issues.append(new_issue_row(entry, patch,
                                         patch_source_ids=[s["source_id"]
                                                           for s in patch["new_sources"]]))
-            audit.append({"patch_id": patch["patch_id"], "applied": True,
+            audit.append({"kind": "EFFECT", "patch_id": patch["patch_id"], "applied": True,
                           "new_unknown": entry["issue_id"]})
 
-        audit.append({"patch_id": patch["patch_id"], "applied": True,
+        audit.append({"kind": "PATCH", "patch_id": patch["patch_id"], "applied": True,
                       "sources_added": added_sources, "evidence_added": added_evidence,
                       "issue_updates": [u["issue_id"] for u in patch["proposed_issue_updates"]],
                       "decision": patch["decision"]})

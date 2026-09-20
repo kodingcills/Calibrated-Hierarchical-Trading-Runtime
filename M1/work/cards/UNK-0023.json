@@ -16,7 +16,7 @@
   "known_source_ids": [
     "SRC-0011"
   ],
-  "last_updated": "2026-09-20T18:31:11Z",
+  "last_updated": "2026-09-20T18:48:51Z",
   "priority_reason": "M1-BLOCKING retained: decisions already rest on these facts, and re-derivation is the cheapest available integrity upgrade.",
   "priority_score": null,
   "required_answer": "A resolvable URL plus snapshot for each of the 25 report-mediated external sources",

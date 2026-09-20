@@ -31,6 +31,8 @@ SOURCE_QUALITY = {
     "academic_paper": "PRIMARY",
     "government_notice": "PRIMARY",
     "regulation": "PRIMARY",
+    "vendor_price_list": "PRIMARY",
+    "vendor_data_product": "PRIMARY",
     "technical_secondary": "SECONDARY",
     "social_lead": "LEAD_ONLY",
 }

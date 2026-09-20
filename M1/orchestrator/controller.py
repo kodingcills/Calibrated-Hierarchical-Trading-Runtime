@@ -133,7 +133,47 @@ def external_requests(closure) -> list:
     return out
 
 
-def external_action_queue_md(requests) -> str:
+def deferred_cards(closure) -> list:
+    """M1 blockers that no resolver can answer because they are facts about the operator.
+
+    These are surfaced separately: they require a human statement, not a search or a quote, and
+    leaving them in the same list as vendor requests would hide that.
+    """
+    out = []
+    for card in closure["cards"].values():
+        if card["resolution_stage"] != "M1_BLOCKING":
+            continue
+        if card["resolution_method"] != "DEFERRED":
+            continue
+        if card["status"] not in ("OPEN", "IN_PROGRESS"):
+            continue
+        out.append(card)
+    out.sort(key=lambda c: (-(c.get("priority_score") or 0), c["blocker_id"]))
+    return out
+
+
+def deferred_md(cards) -> str:
+    lines = [
+        "",
+        "## Human input required (not research, not vendor)",
+        "",
+        "These M1 blockers are facts about the operator, so no search or quote can resolve them.",
+        "Each is stated so it can be answered in one line.",
+        "",
+    ]
+    for card in cards:
+        lines += [f"### {card['blocker_id']} - {card['title']}", "",
+                  f"- question: {card['required_answer']}",
+                  f"- why it blocks M1: {card['decision_prevented']}",
+                  f"- affected rows: {len(card['affected_candidates'])}",
+                  "- answer by writing the fact into `DECISIONS.md` and adding a patch row in "
+                  "`M1/work/patches/` so the state change is recorded", ""]
+    if not cards:
+        lines.append("(none)")
+    return "\n".join(lines)
+
+
+def external_action_queue_md(requests, deferred=()) -> str:
     lines = [
         "# M1 external action queue",
         "",
@@ -165,10 +205,11 @@ def external_action_queue_md(requests) -> str:
             f"`M1/work/external_requests/{req['blocker_id']}_received/`",
             "",
         ]
+    lines.append(deferred_md(deferred))
     return "\n".join(lines)
 
 
-def write_work(closure, requests, extra=None):
+def write_work(closure, requests, extra=None, deferred=()):
     CARDS.mkdir(parents=True, exist_ok=True)
     REQUESTS.mkdir(parents=True, exist_ok=True)
     SPECS.mkdir(parents=True, exist_ok=True)
@@ -181,7 +222,7 @@ def write_work(closure, requests, extra=None):
     for req in requests:
         (REQUESTS / f"{req['blocker_id']}.md").write_text(req["markdown"], encoding="utf-8")
     (OUT / "M1_EXTERNAL_ACTION_QUEUE.md").write_text(
-        external_action_queue_md(requests), encoding="utf-8")
+        external_action_queue_md(requests, deferred), encoding="utf-8")
     if not LOG.exists():
         LOG.write_text(ITERATION_HEADER, encoding="utf-8")
     return {"cards": len(closure["cards"]), "requests": len(requests),

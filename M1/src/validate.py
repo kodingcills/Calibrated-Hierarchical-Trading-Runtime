@@ -213,7 +213,10 @@ def v2_numeric_sources(tables):
 
 
 def v3_status_integrity(tables):
+    """Gate ceiling, DEAD/ALIVE integrity, and the basis of every recorded kill."""
+    checked = 0
     rows = tables["candidate_tuples"]["rows"]
+    dead_rows = tables["dead_candidates"]["rows"]
     candidates = []
     for row in rows:
         cand = {g: row[g] for g in constants.GATE_IDS}
@@ -221,10 +224,14 @@ def v3_status_integrity(tables):
         cand["candidate_id"] = row["candidate_id"]
         cand["candidate_class"] = row["candidate_class"]
         candidates.append(cand)
-    violations = candidate_gates.ceiling_violations(candidates)
-    for v in violations:
-        fail("V3", "candidate_tuples", f"status/ceiling conflict: {v}")
+
+    recorded = {r["candidate_id"] for r in dead_rows
+                if r["kill_basis"] == "RECORDED_DECISION"}
+    for violation in candidate_gates.ceiling_violations(candidates, recorded):
+        fail("V3", "candidate_tuples", f"status/ceiling conflict: {violation}")
+
     for row in rows:
+        checked += 1
         if row["overall_status"] == "DEAD":
             for field in ("kill_gate", "kill_reason", "resurrection_condition"):
                 if str(row[field]).strip() in SENTINELS:
@@ -232,13 +239,39 @@ def v3_status_integrity(tables):
                          f"dead candidate {row['candidate_id']} lacks {field}")
         if row["overall_status"] == "ALIVE":
             fail("V3", "candidate_tuples",
-                 f"{row['candidate_id']} is ALIVE while the M1-A evidence lock does not permit it")
-    dead_ledger = {r["candidate_id"] for r in tables["dead_candidates"]["rows"]}
-    contradiction = [r["candidate_id"] for r in rows
-                     if r["candidate_id"] in dead_ledger and r["overall_status"] != "DEAD"]
-    for cid in contradiction:
-        fail("V3", "dead_candidates", f"{cid} is in the dead ledger but not DEAD")
-    ok("V3", "gate ceiling and dead/ALIVE integrity", len(rows))
+                 f"{row['candidate_id']} is ALIVE while no canonical artifact establishes it")
+
+    ledger = {r["candidate_id"] for r in dead_rows}
+    for row in rows:
+        if row["overall_status"] == "DEAD" and row["candidate_id"] not in ledger:
+            fail("V3", "dead_candidates",
+                 f"{row['candidate_id']} is DEAD but absent from the dead ledger")
+        if row["overall_status"] != "DEAD" and row["candidate_id"] in ledger:
+            fail("V3", "dead_candidates",
+                 f"{row['candidate_id']} is in the dead ledger but not DEAD")
+
+    for row in dead_rows:
+        checked += 1
+        cand = next((r for r in rows if r["candidate_id"] == row["candidate_id"]), None)
+        if cand is None:
+            continue
+        fails = [g for g in constants.GATE_IDS if cand[g] == "FAIL"]
+        if row["kill_basis"] == "COMPUTED_GATE_FAIL" and not fails:
+            fail("V3", f"dead_candidates.{row['candidate_id']}",
+                 "kill basis claims a computed gate failure but no gate FAILs")
+        if row["kill_basis"] == "RECORDED_DECISION":
+            if str(row["cause"]).strip() in SENTINELS:
+                fail("V3", f"dead_candidates.{row['candidate_id']}",
+                     "recorded kill without a stated cause")
+            if str(row["resurrection_condition"]).strip() in SENTINELS:
+                fail("V3", f"dead_candidates.{row['candidate_id']}",
+                     "recorded kill without a resurrection condition")
+            if fails:
+                fail("V3", f"dead_candidates.{row['candidate_id']}",
+                     f"kill basis says RECORDED_DECISION but gates FAIL on {fails}; a computed "
+                     f"failure must be recorded as such")
+    ok("V3", "gate ceiling and dead/ALIVE integrity", checked,
+       note=f"{len(recorded)} kill(s) rest on a recorded decision; the remainder on computed FAILs")
 
 
 def v4_referential(tables):

@@ -1,0 +1,270 @@
+{
+  "blocker_ids": [
+    "UNK-0001",
+    "UNK-0002",
+    "UNK-0003",
+    "UNK-0018"
+  ],
+  "candidate_ids": [
+    "TUP-CME-ES-H1-QDEP-PAS",
+    "TUP-CME-ES-H3-OFI-AGG",
+    "TUP-CME-NQ-H3-OFI-AGG",
+    "TUP-CME-TSY-H2-QREPL-MIX",
+    "TUP-CME-WTI-H4-FLOWVOL-AGG",
+    "TUP-GENERIC-CME-QUEUE"
+  ],
+  "created_at": "2026-09-20T18:48:51Z",
+  "decision": "WEAKENS",
+  "modified_claims": [
+    {
+      "claim": "ES/NQ non-member per-side exchange fee is $1.28 per contract",
+      "reason": "Sourced from a non-primary third-party article (dated 2026-06-11) during a failed tool-assisted fee-table reconstruction; no primary fee schedule or filed blackline was retrieved and no URL for the figure could be recovered. Rejected rather than absorbed: a fee value that decides a branch cannot come from an unverifiable secondary extraction.",
+      "status": "REJECTED"
+    },
+    {
+      "claim": "COMEX/NYMEX MBOFIX coverage extends to CME/CBOT equity-index products",
+      "reason": "The resolver's capture states COMEX/NYMEX; extending it to ES/NQ would be an inference about scope, so it is recorded as unverified instead.",
+      "status": "NOT_ASSERTED"
+    }
+  ],
+  "new_evidence": [
+    {
+      "candidate_ids": "TUP-CME-ES-H1-QDEP-PAS|TUP-CME-ES-H3-OFI-AGG|TUP-CME-NQ-H3-OFI-AGG|TUP-CME-TSY-H2-QREPL-MIX|TUP-CME-WTI-H4-FLOWVOL-AGG|TUP-GENERIC-CME-QUEUE",
+      "claim": "CME Globex assigns one of nine documented matching algorithm codes (A, C, F, T, S, K, O, Q, V) per product; split algorithms carry a FIFO share and a pro-rata share set by product, levels are recalculated on a minute cycle, and an aggressor exceeding available quantity executes the rest under FIFO even in a pro-rata market. Product-level assignments were located for several products (for example an F-FIFO 100% assignment for a Treasury-roll product and an F-FIFO assignment for EWF), but not for ES or NQ.",
+      "contradicts_mechanism": "NO",
+      "decision_implication": "Upgrades the CME matching question from 'not researched' to 'engine-level mechanism documented, product assignment missing'. A CME queue model remains unimplementable for ES/NQ until the assignment is confirmed.",
+      "epistemic_class": "CONSENSUS_FACT",
+      "evidence_id": "EVD-0060",
+      "evidence_origin": "EXTERNAL_VERIFIED",
+      "gross_or_net": "N/A",
+      "limitations": "Product-level assignment for ES and NQ was not located; aggressor and priority semantics are not stated on the retrieved pages; a cited Treasury-spread assignment dates from 2014 and later changes were not located.",
+      "mechanism_id": null,
+      "methodology": "Primary venue documentation retrieved by the CMEFacts resolver",
+      "sample": "n/a (documentation)",
+      "source_id": "SRC-0235",
+      "supports_or_weakens": "NEUTRAL",
+      "temporal_scope": "accessed 2026-09-20",
+      "venue_id": "VEN-CME-ES",
+      "verification_status": "PRIMARY_DOCUMENT"
+    },
+    {
+      "candidate_ids": "TUP-CME-ES-H1-QDEP-PAS|TUP-CME-ES-H3-OFI-AGG|TUP-CME-NQ-H3-OFI-AGG|TUP-CME-TSY-H2-QREPL-MIX|TUP-CME-WTI-H4-FLOWVOL-AGG",
+      "claim": "CME MDP 3.0 provides two market-data formats - 10-deep market-by-price and full-depth market-by-order - and its documentation defines MDEntryTime and TransactTime (nanosecond unit) tags, but does not state the clock domain (exchange event time versus receive time) for either.",
+      "contradicts_mechanism": "NO",
+      "decision_implication": "Narrows the timestamp blocker (UNK-0018) to a specific question for the exchange: which field is exchange event time, and what ordering does it guarantee?",
+      "epistemic_class": "CONSENSUS_FACT",
+      "evidence_id": "EVD-0061",
+      "evidence_origin": "EXTERNAL_VERIFIED",
+      "gross_or_net": "N/A",
+      "limitations": "The resolver's capture did not locate clock-domain documentation; tag semantics alone do not establish ordering guarantees.",
+      "mechanism_id": null,
+      "methodology": "Primary venue documentation retrieved by the CMEFacts resolver",
+      "sample": "n/a (documentation)",
+      "source_id": "SRC-0235",
+      "supports_or_weakens": "NEUTRAL",
+      "temporal_scope": "accessed 2026-09-20",
+      "venue_id": "VEN-CME-ES",
+      "verification_status": "PRIMARY_DOCUMENT"
+    },
+    {
+      "candidate_ids": "TUP-CME-ES-H1-QDEP-PAS|TUP-CME-ES-H3-OFI-AGG|TUP-CME-NQ-H3-OFI-AGG|TUP-CME-TSY-H2-QREPL-MIX|TUP-CME-WTI-H4-FLOWVOL-AGG",
+      "claim": "CME DataMine publishes market-by-order FIX history from 2017-01-07 (coverage as captured: COMEX/NYMEX); no price is published on the documentation page.",
+      "contradicts_mechanism": "NO",
+      "decision_implication": "Historical order-level data exists for at least part of the complex, so the CME replay blocker narrows from 'does such data exist' to 'does it cover the exact contracts and at what cost' (UNK-0003).",
+      "epistemic_class": "CONSENSUS_FACT",
+      "evidence_id": "EVD-0062",
+      "evidence_origin": "EXTERNAL_VERIFIED",
+      "gross_or_net": "N/A",
+      "limitations": "Equity-index coverage (CME/CBOT) was not verified; pricing, licence terms and delivery format are not published; the resolver's capture is on an official client wiki rather than a commercial price page.",
+      "mechanism_id": null,
+      "methodology": "Primary venue documentation retrieved by the CMEFacts resolver",
+      "sample": "n/a (documentation)",
+      "source_id": "SRC-0237",
+      "supports_or_weakens": "NEUTRAL",
+      "temporal_scope": "accessed 2026-09-20",
+      "venue_id": "VEN-CME-ES",
+      "verification_status": "PRIMARY_DOCUMENT"
+    },
+    {
+      "candidate_ids": "TUP-CME-ES-H1-QDEP-PAS|TUP-CME-ES-H3-OFI-AGG|TUP-CME-NQ-H3-OFI-AGG|TUP-CME-TSY-H2-QREPL-MIX|TUP-CME-WTI-H4-FLOWVOL-AGG",
+      "claim": "CME order-entry (iLink) fees, colocation requirements beyond a same-data-centre-row statement, latency figures, and current fee-schedule values were not retrievable from public pages during this resolution attempt; the clearing-fee and fee-schedule pages were blocked and the one fee figure surfaced came from a non-primary source.",
+      "contradicts_mechanism": "NO",
+      "decision_implication": "The CME cost and access questions cannot be closed from public sources in this pass, so UNK-0001 becomes a vendor/broker request rather than a continuing search item.",
+      "epistemic_class": "CONSENSUS_FACT",
+      "evidence_id": "EVD-0063",
+      "evidence_origin": "EXTERNAL_VERIFIED",
+      "gross_or_net": "N/A",
+      "limitations": "This is a negative result about publication and retrieval, not about CME: the resolver reports its own fee-table reconstruction attempts failed on tooling and describes the assignment as incomplete.",
+      "mechanism_id": null,
+      "methodology": "Primary venue documentation retrieved by the CMEFacts resolver",
+      "sample": "n/a (documentation)",
+      "source_id": "SRC-0235",
+      "supports_or_weakens": "NEUTRAL",
+      "temporal_scope": "accessed 2026-09-20",
+      "venue_id": "VEN-CME-ES",
+      "verification_status": "PRIMARY_DOCUMENT"
+    }
+  ],
+  "new_sources": [
+    {
+      "access_date": "2026-09-20",
+      "authors_or_org": "CME Group",
+      "claim_scope": "Establishes that CME matching is engine-assigned and product-specific, at algorithm level.",
+      "date_basis": "Client wiki page history shows an update dated 2025-02-11",
+      "doi": null,
+      "gross_or_net": "N/A",
+      "independent_replication": null,
+      "limitations": "An official client wiki, not the rulebook; it names the algorithm codes and the tags that carry them but does not state the per-product assignment for every product, and does not state aggressor or priority semantics.",
+      "market": "Futures",
+      "methodology": "Official client documentation (CME client wiki)",
+      "primary_or_secondary": "primary_official",
+      "publication_date": "2025-02-11",
+      "sample_period": null,
+      "sample_size": null,
+      "source_id": "SRC-0235",
+      "source_type": "exchange_rule_doc",
+      "status": "VERIFIED",
+      "title": "CME supported matching algorithms (nine algorithm codes)",
+      "url": "https://cmegroupclientsite.atlassian.net/wiki/spaces/EPICSANDBOX/pages/457218479/Supported%2BMatching%2BAlgorithms",
+      "venue": "CME Group"
+    },
+    {
+      "access_date": "2026-09-20",
+      "authors_or_org": "CME Group",
+      "claim_scope": "Documents the split-parameter mechanism (FIFO share versus pro-rata share) and the minute-cycle level recalculation.",
+      "date_basis": "Page history reports an update on 02-Jun with the year unverified by the resolver",
+      "doi": null,
+      "gross_or_net": "N/A",
+      "independent_replication": null,
+      "limitations": "Same client-wiki caveat; the resolver flagged that the year of the update is unverified, and that priority/aggressor semantics are not stated on the page.",
+      "market": "Futures",
+      "methodology": "Official client documentation (CME client wiki)",
+      "primary_or_secondary": "primary_official",
+      "publication_date": null,
+      "sample_period": null,
+      "sample_size": null,
+      "source_id": "SRC-0236",
+      "source_type": "exchange_rule_doc",
+      "status": "VERIFIED",
+      "title": "CME matching algorithm step matrix and split parameters",
+      "url": "https://cmegroupclientsite.atlassian.net/wiki/spaces/EPICSANDBOX/pages/457218521",
+      "venue": "CME Group"
+    },
+    {
+      "access_date": "2026-09-20",
+      "authors_or_org": "CME Group",
+      "claim_scope": "Confirms historical order-level data exists for at least part of the CME complex, with scope and price unresolved.",
+      "date_basis": "Page states the archive start date 2017-01-07; no update date captured",
+      "doi": null,
+      "gross_or_net": "N/A",
+      "independent_replication": null,
+      "limitations": "The resolver's capture states the coverage as COMEX/NYMEX; coverage of CME/CBOT equity-index products was not verified, and no price is published on the page.",
+      "market": "Futures",
+      "methodology": "Official client documentation (CME client wiki)",
+      "primary_or_secondary": "primary_official",
+      "publication_date": null,
+      "sample_period": null,
+      "sample_size": null,
+      "source_id": "SRC-0237",
+      "source_type": "exchange_data_product",
+      "status": "VERIFIED",
+      "title": "CME DataMine MBO FIX files (historical market-by-order)",
+      "url": "https://cmegroupclientsite.atlassian.net/wiki/spaces/EPICSANDBOX/pages/457223111/MBO+FIX",
+      "venue": "CME Group"
+    }
+  ],
+  "new_unknowns": [],
+  "patch_id": "P-0003",
+  "proposed_assumption_updates": [],
+  "proposed_candidate_updates": [],
+  "proposed_dead_end_updates": [],
+  "proposed_gate_changes": [],
+  "proposed_issue_updates": [
+    {
+      "from_status": "OPEN",
+      "issue_id": "UNK-0001",
+      "resolution_note": "Public search exhausted for this pass: CME fee and clearing-fee pages were blocked, no filed fee blackline was extracted, and the single figure found was rejected as non-primary. Requires a broker/FCM schedule for the project's account path (packet in M1/work/external_requests/UNK-0001.md).",
+      "to_status": "EXTERNAL_REQUEST_READY"
+    },
+    {
+      "from_status": "OPEN",
+      "issue_id": "UNK-0002",
+      "resolution_note": "Engine-level mechanism now documented: nine algorithm codes assigned per product with split FIFO/pro-rata parameters and minute-cycle level recalculation. Outstanding: the per-product assignment for ES and NQ, and the aggressor/priority semantics not stated on the retrieved pages.",
+      "to_status": "IN_PROGRESS"
+    },
+    {
+      "from_status": "OPEN",
+      "issue_id": "UNK-0003",
+      "resolution_note": "Historical order-level data confirmed to exist (DataMine MBO FIX from 2017-01-07, coverage as captured COMEX/NYMEX). Outstanding: equity-index coverage, licence terms, delivery format, timestamp fields and price.",
+      "to_status": "IN_PROGRESS"
+    },
+    {
+      "from_status": "OPEN",
+      "issue_id": "UNK-0018",
+      "resolution_note": "Narrowed for CME: MDEntryTime and TransactTime tags are documented with nanosecond units, but the clock domain and ordering guarantees are not published. This is now a specific question for CME market-data support rather than an open search.",
+      "to_status": "IN_PROGRESS"
+    }
+  ],
+  "proposed_venue_updates": [
+    {
+      "fields": {
+        "fee_notes": "Public fee search exhausted in this pass: fee and clearing-fee pages blocked, no filed blackline extracted, one non-primary figure rejected. All cost fields remain UNKNOWN pending a broker/FCM quote for the project's account path.",
+        "historical_feed": "DataMine market-by-order FIX history from 2017-01-07 (coverage as documented: COMEX/NYMEX; equity-index coverage unverified); CME also advertises historical/real-time products up to full order book. No price published.",
+        "historical_feed_source_id": "SRC-0237",
+        "matching_algorithm_source_id": "SRC-0235",
+        "matching_algorithm_status": "ENGINE_ASSIGNED_PER_PRODUCT_ES_NQ_UNRESOLVED",
+        "status": "PARTIAL"
+      },
+      "reason": "Engine-level matching documented, MBO history located, fee search recorded as exhausted.",
+      "source_ids": [
+        "SRC-0235",
+        "SRC-0237"
+      ],
+      "venue_id": "VEN-CME-ES"
+    },
+    {
+      "fields": {
+        "historical_feed": "DataMine market-by-order FIX history from 2017-01-07 (coverage as documented: COMEX/NYMEX; equity-index coverage unverified). No price published.",
+        "historical_feed_source_id": "SRC-0237",
+        "matching_algorithm_source_id": "SRC-0235",
+        "matching_algorithm_status": "ENGINE_ASSIGNED_PER_PRODUCT_ES_NQ_UNRESOLVED",
+        "status": "PARTIAL"
+      },
+      "reason": "Same state as ES: no NQ-specific assignment was located.",
+      "source_ids": [
+        "SRC-0235",
+        "SRC-0237"
+      ],
+      "venue_id": "VEN-CME-NQ"
+    },
+    {
+      "fields": {
+        "matching_algorithm_source_id": "SRC-0235",
+        "matching_algorithm_status": "ENGINE_ASSIGNED_PER_PRODUCT_UNRESOLVED",
+        "status": "PARTIAL"
+      },
+      "reason": "Split-parameter mechanism documented; the current Treasury-spread assignment was not located (the cited notice dates from 2014).",
+      "source_ids": [
+        "SRC-0235",
+        "SRC-0236"
+      ],
+      "venue_id": "VEN-CME-TSY"
+    },
+    {
+      "fields": {
+        "matching_algorithm_source_id": "SRC-0235",
+        "matching_algorithm_status": "ENGINE_ASSIGNED_PER_PRODUCT_UNRESOLVED",
+        "status": "PARTIAL"
+      },
+      "reason": "Engine-level mechanism documented for the complex; product assignment unresolved.",
+      "source_ids": [
+        "SRC-0235"
+      ],
+      "venue_id": "VEN-CME-WTI"
+    }
+  ],
+  "provenance": "code:p0003_cme_partial",
+  "reason": "Partial resolution: the CME matching mechanism, MDP formats and MBO history existence are now documented from primary client documentation, while the product-level assignment for ES/NQ, the clock domain, and every fee value remain unresolved. The resolver reported its own fee extraction as failed, so the patch weakens the 'this is cheaply researchable' assumption for CME costs rather than pretending the search succeeded.",
+  "status": "PROPOSED",
+  "verification_notes": "Contrary evidence and failure were searched for and recorded: the resolver reports tooling failure on fee-table reconstruction and describes its own assignment as incomplete, so the single fee figure it surfaced was placed in modified_claims as REJECTED and no fee value entered the venue rows. The MBOFIX coverage was not extended from COMEX/NYMEX to CME/CBOT without evidence. No gate change is proposed: with the per-product matching assignment unresolved for ES/NQ, KG3 stays BLOCKED for the passive CME tuple and KG2 stays BLOCKED for all CME rows."
+}

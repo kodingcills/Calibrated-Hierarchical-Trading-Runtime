@@ -161,7 +161,14 @@ def apply_patches(issue_rows, evidence_rows, source_rows, venue_rows):
     return (*merged, verified)
 
 
-def apply_computed_gates(candidates, computed, generated_at):
+def recorded_kill_ids(base_candidates):
+    """Rows the M1-A artifact killed by decision, with a stated cause and resurrection bar."""
+    return sorted(c["candidate_id"] for c in base_candidates
+                  if c["overall_status"] == "DEAD"
+                  and str(c["kill_reason"]).strip() not in ("UNKNOWN", "None", ""))
+
+
+def apply_computed_gates(candidates, computed, generated_at, recorded_kills=()):
     """Overwrite gate columns with computed verdicts, preserving the M1-A baseline."""
     out = []
     for cand in candidates:
@@ -179,9 +186,15 @@ def apply_computed_gates(candidates, computed, generated_at):
         blocks = [g for g in constants.GATE_IDS if row[g] == "BLOCKED"]
         if fails:
             row["status_basis"] = (
-                f"Computed gates: FAIL on {', '.join(fails)}. "
-                f"Rule trace: " + "; ".join(computed[cand["candidate_id"]][g].reason
-                                            for g in fails))
+                "Kill basis: COMPUTED_GATE_FAIL. Gates FAIL on " + ", ".join(fails) + ". "
+                "Rule trace: " + "; ".join(computed[cand["candidate_id"]][g].reason
+                                           for g in fails))
+            row["overall_status"] = "DEAD"
+        elif cand["candidate_id"] in set(recorded_kills):
+            row["status_basis"] = (
+                "Kill basis: RECORDED_DECISION (no computed FAIL at this evidence state). "
+                "Recorded cause: " + str(cand["kill_reason"]) + " Resurrection condition: "
+                + str(cand["resurrection_condition"]))
             row["overall_status"] = "DEAD"
         elif not blocks:
             row["overall_status"] = cand["overall_status"]
@@ -231,6 +244,7 @@ def build_dead_rows(candidates, ev_rows):
         if cand["overall_status"] != "DEAD":
             continue
         cid = cand["candidate_id"]
+        computed_fail = [g for g in constants.GATE_IDS if cand[g] == "FAIL"]
         linked = [r["evidence_id"] for r in ev_rows
                   if cid in str(r["candidate_ids"] or "").split("|")]
         fails = [g for g in constants.GATE_IDS if cand[g] == "FAIL"]
@@ -241,6 +255,7 @@ def build_dead_rows(candidates, ev_rows):
             "death_date_basis": "date of the M1-A artifact (SRC-0011) for the original kills; "
                                 "computed-gate kills are dated by gate_recompute_date",
             "kill_gate": "|".join(fails) if fails else cand["kill_gate"],
+            "kill_basis": "COMPUTED_GATE_FAIL" if computed_fail else "RECORDED_DECISION",
             "report_kill_gate": tuples.REPORT_KILL_GATE.get(cid),
             "cause": cand["kill_reason"] if cand["kill_reason"] not in (None, "UNKNOWN")
             else cand["status_basis"],
@@ -435,9 +450,10 @@ def main():
     spec_ids_by_candidate = closure["spec_ids_by_candidate"]
     requests = closure_controller.external_requests(closure)
 
+    recorded_kills = recorded_kill_ids(base_candidates)
     computed = gate_engine.compute(base_candidates, evidence_rows, feas_out_by_id, env_by_id,
                                    venue_by_id, spec_ids_by_candidate)
-    candidates = apply_computed_gates(base_candidates, computed, generated_at)
+    candidates = apply_computed_gates(base_candidates, computed, generated_at, recorded_kills)
     cand_by_id = {c["candidate_id"]: c for c in candidates}
 
     gate_rows = candidate_gates.gate_status_rows(candidates)
@@ -504,7 +520,8 @@ def main():
     closure_status = controller_status(closure, computed, candidates, status_counts, migration,
                                        gate_eligible, generated_at, requests, spec_docs, patches)
     closure["closure_status"] = closure_status
-    work_summary = closure_controller.write_work(closure, requests, closure_status)
+    deferred = closure_controller.deferred_cards(closure)
+    work_summary = closure_controller.write_work(closure, requests, closure_status, deferred)
 
     # ---- canonical tables
     report.table(DATA / "source_registry.csv", sources.COLUMNS, source_rows,
@@ -592,6 +609,7 @@ def main():
     summary = {
         "generated_at": generated_at,
         "generated_by": "M1/src/materialize.py",
+        "recorded_kills": recorded_kills,
         "counts": {**total_counter,
                    "assumptions": len(assumptions.ROWS),
                    "mechanisms": len(mechanisms.ROWS),
@@ -606,7 +624,12 @@ def main():
                    "hard_constraint_eliminations": len({r["candidate_id"]
                                                          for r in elimination_rows}),
                    "hard_constraint_survivors": len(survivor_rows),
-                   "ceiling_violations": len(candidate_gates.ceiling_violations(candidates)),
+                   "ceiling_violations": len(candidate_gates.ceiling_violations(
+                       candidates, recorded_kills)),
+                   "recorded_kill_decisions": len([r for r in dead_rows
+                                                   if r["kill_basis"] == "RECORDED_DECISION"]),
+                   "computed_gate_kills": len([r for r in dead_rows
+                                               if r["kill_basis"] == "COMPUTED_GATE_FAIL"]),
                    "status": {k: status_counts["ALL"][k]
                               for k in ("total", "ALIVE", "WEAK", "UNKNOWN", "DEAD")},
                    "status_by_class": status_counts,
@@ -706,7 +729,8 @@ CANDIDATE_COLUMNS = tuples.COLUMNS + [
 
 DEAD_COLUMNS = [
     "candidate_id", "candidate_class", "death_date", "death_date_basis", "kill_gate",
-    "report_kill_gate", "cause", "evidence_ids", "resurrection_condition", "re_entry_policy",
+    "kill_basis", "report_kill_gate", "cause", "evidence_ids", "resurrection_condition",
+    "re_entry_policy",
     "requires_new_evidence", "requires_explicit_resurrection_decision", "status",
 ]
 

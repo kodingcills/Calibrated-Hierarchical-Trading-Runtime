@@ -23,7 +23,14 @@
     "EVD-0033",
     "EVD-0034",
     "EVD-0041",
-    "EVD-0042"
+    "EVD-0042",
+    "EVD-0048",
+    "EVD-0050",
+    "EVD-0051",
+    "EVD-0053",
+    "EVD-0054",
+    "EVD-0056",
+    "EVD-0057"
   ],
   "decision_prevented": "M2 registration and any falsifier (KG5) for the affected rows.",
   "disallowed_evidence": "Choosing the instrument with the best historical performance (selection leakage)",
@@ -34,7 +41,7 @@
   "known_source_ids": [
     "SRC-0011"
   ],
-  "last_updated": "2026-09-20T18:31:11Z",
+  "last_updated": "2026-09-20T18:48:51Z",
   "priority_reason": "M1-BLOCKING retained: handoff \u00a711 makes exact-instrument definition an M1 requirement.",
   "priority_score": null,
   "required_answer": "One exact contract/symbol per branch, or a causal selection rule with its variables",

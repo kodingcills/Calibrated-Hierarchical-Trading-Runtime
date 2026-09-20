@@ -4,7 +4,7 @@
       "name": "provenance references resolve",
       "note": "",
       "result": "PASS",
-      "rows_checked": 1246,
+      "rows_checked": 1359,
       "rule": "V1"
     },
     {
@@ -16,37 +16,37 @@
     },
     {
       "name": "gate ceiling and dead/ALIVE integrity",
-      "note": "",
+      "note": "2 kill(s) rest on a recorded decision; the remainder on computed FAILs",
       "result": "PASS",
-      "rows_checked": 28,
+      "rows_checked": 37,
       "rule": "V3"
     },
     {
       "name": "referential integrity",
       "note": "",
       "result": "PASS",
-      "rows_checked": 681,
+      "rows_checked": 805,
       "rule": "V4"
     },
     {
       "name": "no scoring or ranking artifacts",
       "note": "",
       "result": "PASS",
-      "rows_checked": 525,
+      "rows_checked": 526,
       "rule": "V5"
     },
     {
       "name": "stable ids unique",
       "note": "",
       "result": "PASS",
-      "rows_checked": 363,
+      "rows_checked": 411,
       "rule": "V6"
     },
     {
       "name": "time-sensitive sources dated",
       "note": "",
       "result": "PASS",
-      "rows_checked": 70,
+      "rows_checked": 100,
       "rule": "V7"
     },
     {
@@ -88,21 +88,21 @@
       "name": "two-dimension issue model complete",
       "note": "",
       "result": "PASS",
-      "rows_checked": 33,
+      "rows_checked": 35,
       "rule": "V14"
     },
     {
       "name": "frontier restricted to open M1 blockers",
-      "note": "2 M1 item(s) awaiting an external answer or spec: ['UNK-0004', 'UNK-0022']",
+      "note": "3 M1 item(s) awaiting an external answer or spec: ['UNK-0001', 'UNK-0004', 'UNK-0022']",
       "result": "PASS",
-      "rows_checked": 36,
+      "rows_checked": 39,
       "rule": "V15"
     },
     {
       "name": "frontier restricted to open M1 blockers",
       "note": "",
       "result": "PASS",
-      "rows_checked": 36,
+      "rows_checked": 39,
       "rule": "V15"
     },
     {
@@ -116,19 +116,159 @@
       "name": "patch integrity",
       "note": "",
       "result": "PASS",
-      "rows_checked": 1,
+      "rows_checked": 3,
       "rule": "V17"
     },
     {
       "name": "work artefacts valid and complete",
       "note": "",
       "result": "PASS",
-      "rows_checked": 71,
+      "rows_checked": 72,
+      "rule": "V18"
+    },
+    {
+      "name": "numeric facts carry sources or are declared UNKNOWN",
+      "note": "",
+      "result": "PASS",
+      "rows_checked": 2,
+      "rule": "V2"
+    },
+    {
+      "name": "numeric facts carry sources or are declared UNKNOWN",
+      "note": "",
+      "result": "PASS",
+      "rows_checked": 2,
+      "rule": "V2"
+    },
+    {
+      "name": "provenance references resolve",
+      "note": "",
+      "result": "PASS",
+      "rows_checked": 1359,
+      "rule": "V1"
+    },
+    {
+      "name": "numeric facts carry sources or are declared UNKNOWN",
+      "note": "",
+      "result": "PASS",
+      "rows_checked": 536,
+      "rule": "V2"
+    },
+    {
+      "name": "gate ceiling and dead/ALIVE integrity",
+      "note": "2 kill(s) rest on a recorded decision; the remainder on computed FAILs",
+      "result": "PASS",
+      "rows_checked": 37,
+      "rule": "V3"
+    },
+    {
+      "name": "referential integrity",
+      "note": "",
+      "result": "PASS",
+      "rows_checked": 805,
+      "rule": "V4"
+    },
+    {
+      "name": "no scoring or ranking artifacts",
+      "note": "",
+      "result": "PASS",
+      "rows_checked": 526,
+      "rule": "V5"
+    },
+    {
+      "name": "stable ids unique",
+      "note": "",
+      "result": "PASS",
+      "rows_checked": 411,
+      "rule": "V6"
+    },
+    {
+      "name": "time-sensitive sources dated",
+      "note": "",
+      "result": "PASS",
+      "rows_checked": 100,
+      "rule": "V7"
+    },
+    {
+      "name": "no unperformed experiment claims a result",
+      "note": "",
+      "result": "PASS",
+      "rows_checked": 9,
+      "rule": "V9"
+    },
+    {
+      "name": "decision-critical values remain UNKNOWN",
+      "note": "",
+      "result": "PASS",
+      "rows_checked": 280,
+      "rule": "V10"
+    },
+    {
+      "name": "cross-file consistency",
+      "note": "",
+      "result": "PASS",
+      "rows_checked": 14,
+      "rule": "V11"
+    },
+    {
+      "name": "raw provenance chain intact",
+      "note": "",
+      "result": "PASS",
+      "rows_checked": 42,
+      "rule": "V12"
+    },
+    {
+      "name": "paper cost arithmetic reproduces",
+      "note": "",
+      "result": "PASS",
+      "rows_checked": 2,
+      "rule": "V13"
+    },
+    {
+      "name": "two-dimension issue model complete",
+      "note": "",
+      "result": "PASS",
+      "rows_checked": 35,
+      "rule": "V14"
+    },
+    {
+      "name": "frontier restricted to open M1 blockers",
+      "note": "3 M1 item(s) awaiting an external answer or spec: ['UNK-0001', 'UNK-0004', 'UNK-0022']",
+      "result": "PASS",
+      "rows_checked": 39,
+      "rule": "V15"
+    },
+    {
+      "name": "frontier restricted to open M1 blockers",
+      "note": "",
+      "result": "PASS",
+      "rows_checked": 39,
+      "rule": "V15"
+    },
+    {
+      "name": "eligibility independent of non-M1 issues; every verdict rule-traced",
+      "note": "",
+      "result": "PASS",
+      "rows_checked": 140,
+      "rule": "V16"
+    },
+    {
+      "name": "patch integrity",
+      "note": "",
+      "result": "PASS",
+      "rows_checked": 3,
+      "rule": "V17"
+    },
+    {
+      "name": "work artefacts valid and complete",
+      "note": "",
+      "result": "PASS",
+      "rows_checked": 72,
       "rule": "V18"
     }
   ],
   "context": {
-    "blocking_issues": 19,
+    "blocking_issues": 21,
     "candidate_rows": 28,
     "m1b_eligible": [],
     "status": {
@@ -141,7 +281,7 @@
   },
   "details": [],
   "failures": 0,
-  "generated_at": "2026-09-20T18:31:11Z",
+  "generated_at": "2026-09-20T18:48:51Z",
   "overall": "PASS",
   "validator": "M1/src/validate.py"
 }

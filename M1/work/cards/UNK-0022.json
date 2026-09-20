@@ -22,7 +22,7 @@
     "SRC-0114",
     "SRC-0125"
   ],
-  "last_updated": "2026-09-20T18:31:11Z",
+  "last_updated": "2026-09-20T18:48:51Z",
   "priority_reason": "M1-BLOCKING retained: cost and data existence are Tier-1/Tier-3.",
   "priority_score": null,
   "required_answer": "Feed entitlements, realized fee codes, order-level history availability",

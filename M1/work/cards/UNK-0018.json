@@ -20,14 +20,14 @@
     "SRC-0111",
     "SRC-0118"
   ],
-  "last_updated": "2026-09-20T18:31:11Z",
+  "last_updated": "2026-09-20T18:48:51Z",
   "priority_reason": "M1-BLOCKING retained: this is a data-adequacy fact, not a measurement.",
   "priority_score": null,
   "required_answer": "Field-level timestamp semantics (event vs receive time, clock domain, sequence integrity)",
   "resolution_method": "EXTERNAL_ACTION",
   "resolution_stage": "M1_BLOCKING",
   "resurrection_condition": null,
-  "status": "OPEN",
+  "status": "IN_PROGRESS",
   "success_condition": "Samples validate: monotonic ordering, sequence integrity, documented clock domain",
   "tier": 3,
   "title": "Historical and live feed timestamp semantics"

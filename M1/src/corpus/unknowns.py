@@ -67,8 +67,12 @@ d("UNK-0001",
                            "immutable M2 cost configuration.",
   decision_prevented="Aggressive CME execution viability (KG3) for every CME tuple.",
   severity="BLOCKING", resolution_class="B", source_A="SRC-0107", affected=_CME,
-  search_attempts="M1-A pass searched CME product/MDP documentation and market-data "
-                  "infrastructure only; the report records the search as exhausted within that run.",
+  search_attempts="Two passes. M1-A searched CME product/MDP documentation and market-data "
+                  "infrastructure. The M1-C CMEFacts resolver then targeted fee and clearing-fee "
+                  "pages directly: both were blocked, no filed fee blackline was extracted, and "
+                  "the one figure surfaced came from a non-primary article with no recoverable "
+                  "URL, so it was rejected (see patch P-0003 modified_claims). Public search is "
+                  "exhausted for this milestone.",
   web_research_resolvable="PARTIAL (public schedules exist; the project's own commission path does not)",
   requires_vendor_quote="YES", requires_m2_measurement="NO", can_M2_measure="NO",
   evidence_ids="EVD-0001|EVD-0002|EVD-0018")

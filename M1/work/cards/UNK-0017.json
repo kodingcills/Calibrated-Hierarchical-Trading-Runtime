@@ -27,7 +27,7 @@
     "SRC-0001",
     "SRC-0015"
   ],
-  "last_updated": "2026-09-20T18:31:11Z",
+  "last_updated": "2026-09-20T18:48:51Z",
   "priority_reason": "MIGRATED from M1_BLOCKING to M2_MEASUREMENT: this is an empirical estimand, and requiring it inside M1 would have made the technology branch unfalsifiable rather than merely unfunded.",
   "priority_score": null,
   "required_answer": "Delta_U = U_net(System-One | same information) - U_net(best classical comparator)",

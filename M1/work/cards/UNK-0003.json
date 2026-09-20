@@ -25,14 +25,14 @@
   "known_source_ids": [
     "SRC-0123"
   ],
-  "last_updated": "2026-09-20T18:31:11Z",
+  "last_updated": "2026-09-20T18:48:51Z",
   "priority_reason": "M1-BLOCKING retained: data procurement feasibility is an M1 question (handoff \u00a715 KG2).",
   "priority_score": null,
   "required_answer": "Product, history depth, schema, timestamp fields, licence and price",
   "resolution_method": "EXTERNAL_ACTION",
   "resolution_stage": "M1_BLOCKING",
   "resurrection_condition": "No historical order-level product exists at any usable cost",
-  "status": "OPEN",
+  "status": "IN_PROGRESS",
   "success_condition": "Sample validates against the project timestamp contract and the licence is affordable",
   "tier": 3,
   "title": "CME historical order-level data procurement"

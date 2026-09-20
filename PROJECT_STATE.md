@@ -2,7 +2,7 @@
 
 Status: CURRENT
 Version: 1.0.0
-Last Updated: 2026-09-20T18:31:11Z
+Last Updated: 2026-09-20T18:48:51Z
 
 This is the canonical fast-orientation artifact. Read it before any other file. Its counts are
 generated from `M1/output/M1_STATE_SUMMARY.json` and enforced against the machine-readable
@@ -101,6 +101,36 @@ Durable, evidence-backed, and still less than tradable alpha:
    unjustified and any queue study must record the rule version it assumes.
 6. System-One remains unadmitted: no external evidence establishes incremental execution-aware
    utility, and hosted latency is vendor-reported only (70-500 ms).
+6b. **Crypto and event-market venue facts are now verified, and the legal picture is two-sided.**
+   Hyperliquid's perp base tier is 0.045% taker / 0.015% maker with documented tier, staking and
+   referral modifiers, and an official historical archive exists (requester-pays S3: hourly L2
+   books and per-block fills, updated approximately monthly with no completeness guarantee).
+   Market-wide liquidation flow is *not* officially observable - liquidation surfaces are
+   user-scoped - which removes the observability premise from the liquidation variant of the
+   Hyperliquid H3 tuple. Deribit publishes a bps fee table with premium caps and documents
+   trade/funding backfill but no bulk option-book archive; the US is a prohibited jurisdiction.
+   Kalshi's taker fee is a price-dependent formula (round_up(M x 0.07 x C x P x (1-P))) with a
+   zero default maker multiplier, and its state status is actively contested: Washington
+   (2026-08-13) and Nevada (2026-07-24) orders restrict categories, while the Third Circuit
+   upheld preemption against New Jersey (2026-04-06). International Polymarket blocks US persons;
+   the accessible US product is a separate venue with participant-scoped reporting and a
+   documented position/ledger floor of 2026-05-01.
+6c. **Several venue fee pages are dynamic with no published effective date** (Hyperliquid,
+   Polymarket; Deribit gives one update date). A cost model built on an undated page cannot be
+   shown to describe the period it is tested on, so the project must snapshot and hash fee
+   schedules itself (UNK-0035).
+6d. **CME matching is engine-assigned and product-specific, and the public cost search is
+   exhausted.** Nine documented algorithm codes are assigned per product with split
+   FIFO/pro-rata parameters and minute-cycle level recalculation, but the ES/NQ assignment was
+   not located, and the CME fee and clearing-fee pages could not be retrieved: no fee value
+   entered canonical state, and one surfaced figure was rejected as non-primary (patch P-0003).
+   Historical order-level data does exist for at least part of the complex (DataMine MBO FIX from
+   2017-01-07, coverage as documented COMEX/NYMEX; no published price).
+6e. **The only two mechanism-gate passes rest on report-mediated sources.** KG1 passes for the
+   Nasdaq queue-imbalance and Nasdaq microprice tuples, and the supporting studies are named but
+   their URLs are not recoverable from the repository (`EVD-0012`, `EVD-0014`). Re-deriving those
+   two citations is the cheapest way to make the only positive gate results in the project
+   independently checkable - which is why UNK-0023 still ranks first on the frontier.
 7. The candidate architecture paper has no text layer (image-only PDF); its claim set was
    transcribed from rasterised pages. It reports no backtest, P&L, fill or latency measurement, and
    its own three cost statements do not reconcile with each other: at its stated 300 ms cadence and
@@ -123,6 +153,7 @@ leaving 19 M1-blocking issues.
 | leverage | tier | issue | method | affected | decision prevented |
 |---|---|---|---|---|---|
 | 60.0 | 1 | `UNK-0023` | PUBLIC_RESEARCH | all 28 (ALL_EXTERNAL_EVIDENCE) | Independent verification of any external claim, including fee schedules that already killed candidates; the ar |
+| 60.0 | 1 | `UNK-0034` | DEFERRED | 8 | Access legality for four venue families, and therefore KG3 and KG5 for their candidates: no fill or cost model |
 | 30.0 | 3 | `UNK-0018` | EXTERNAL_ACTION | all 28 (ALL_CANDIDATES) | Causal replay and therefore every queue, priority or fill claim; applies to any candidate that reaches replay. |
 | 24.0 | 1 | `UNK-0002` | PUBLIC_RESEARCH | 6 | Any queue-position or fill model for passive CME candidates (KG2/KG3). |
 | 22.5 | 2 | `UNK-0009` | PUBLIC_RESEARCH | all 28 (ALL_CANDIDATES) | Mechanism credibility (KG1) for every candidate whose mechanism has no current, on-venue, after-cost replicati |
@@ -133,9 +164,8 @@ leaving 19 M1-blocking issues.
 | 12.0 | 1 | `UNK-0013` | PUBLIC_RESEARCH | 1 | Gate 2 for the Deribit tuple. |
 | 12.0 | 1 | `UNK-0014` | PUBLIC_RESEARCH | 2 | Legality/access gate for both event-market tuples. |
 | 12.0 | 1 | `UNK-0015` | PUBLIC_RESEARCH | 2 | Defining the tuple at all (KG1/KG3/KG5). |
-| 10.0 | 3 | `UNK-0028` | EXTERNAL_ACTION | all 28 (ALL_CANDIDATES) | Deployment-shape decisions (not M1 selection); also drives which fee tier applies in M2 cost configuration. |
 
-Actionable frontier items: 16. Items awaiting an external answer or a frozen spec: 2. Measurement specifications: 7. External request packets: 10.
+Actionable frontier items: 17. Items awaiting an external answer or a frozen spec: 3. Measurement specifications: 7. External request packets: 10.
 <!-- /GENERATED:frontier -->
 
 ## Issue Stages
@@ -143,17 +173,17 @@ Actionable frontier items: 16. Items awaiting an external answer or a frozen spe
 <!-- GENERATED:stages -->
 | resolution stage | count | meaning |
 |---|---|---|
-| M1_BLOCKING | 19 | must be answered before M1 can close |
+| M1_BLOCKING | 21 | must be answered before M1 can close |
 | M2_MEASUREMENT | 9 | preregistered M2 experiment; does not block M1 |
 | POST_M2 | 1 | matters only after M2 shows positive net EV |
 | NON_BLOCKING | 4 | tracked; no gate depends on it |
 
 | resolution method | count |
 |---|---|
-| PUBLIC_RESEARCH | 9 |
+| PUBLIC_RESEARCH | 10 |
 | EXTERNAL_ACTION | 11 |
 | EMPIRICAL_MEASUREMENT | 10 |
-| DEFERRED | 3 |
+| DEFERRED | 4 |
 <!-- /GENERATED:stages -->
 
 ## Immediate Next Actions
@@ -163,17 +193,17 @@ every pass from `M1/work/frontier.json`:
 
 <!-- GENERATED:next_actions -->
 1. **UNK-0023** (PUBLIC_RESEARCH, tier 1, leverage 60.0): A resolvable URL plus snapshot for each of the 25 report-mediated external sources
-2. **UNK-0018** (EXTERNAL_ACTION, tier 3, leverage 30.0): Field-level timestamp semantics (event vs receive time, clock domain, sequence integrity)
-3. **UNK-0002** (PUBLIC_RESEARCH, tier 1, leverage 24.0): The allocation algorithm that applies to the named product and order type, with its version
-4. **UNK-0009** (PUBLIC_RESEARCH, tier 2, leverage 22.5): Current, venue-specific, after-cost evidence for the mechanism each candidate relies on
-5. **UNK-0027** (PUBLIC_RESEARCH, tier 1, leverage 18.0): One exact contract/symbol per branch, or a causal selection rule with its variables
-6. **UNK-0033** (EXTERNAL_ACTION, tier 3, leverage 18.0): A chosen sponsor's published commission schedule or a written quote for the intended order flow.
+2. **UNK-0034** (DEFERRED, tier 1, leverage 60.0): A statement of the operator's legal domicile, entity type and client classification, plus the per-venue eligibility determination that follows from it.
+3. **UNK-0018** (EXTERNAL_ACTION, tier 3, leverage 30.0): Field-level timestamp semantics (event vs receive time, clock domain, sequence integrity)
+4. **UNK-0002** (PUBLIC_RESEARCH, tier 1, leverage 24.0): The allocation algorithm that applies to the named product and order type, with its version
+5. **UNK-0009** (PUBLIC_RESEARCH, tier 2, leverage 22.5): Current, venue-specific, after-cost evidence for the mechanism each candidate relies on
+6. **UNK-0027** (PUBLIC_RESEARCH, tier 1, leverage 18.0): One exact contract/symbol per branch, or a causal selection rule with its variables
 <!-- /GENERATED:next_actions -->
 
 ## Readiness
 
 <!-- GENERATED:readiness -->
-Ready for M1-B? **NO** - zero candidates pass all five gates; the frontier still holds 16 M1-blocking items.
+Ready for M1-B? **NO** - zero candidates pass all five gates; the frontier still holds 17 M1-blocking items.
 Ready for M1-D1? **NO** - M1-B is not authorized and no synthesis artifact exists, so no finalists can be compared.
 Ready for M2? **NO** - M2 requires a selected candidate plus a locked cost configuration and an order-level dataset; the frontier holds both.
 Ready for shadow trading? **NO** - a shadow run requires a chosen candidate, instrument and measured cost envelope.
@@ -219,7 +249,7 @@ Machine-readable M1 state (canonical; regenerate with `python3 M1/src/materializ
 | UNKNOWN | 14 |
 | DEAD | 9 |
 
-Registered candidate rows: 28 (23 tradable tuples + 5 non-tuple registrations). Verified sources: 63 (25 report-mediated, 0 with a recoverable URL). Evidence records: 41. M1 frontier items: 16 (7 measurement specs and 10 external requests now outside the frontier). Gate-eligible candidates: 0.
+Registered candidate rows: 28 (23 tradable tuples + 5 non-tuple registrations). Verified sources: 88 (25 report-mediated, 0 with a recoverable URL). Evidence records: 62. M1 frontier items: 17 (7 measurement specs and 10 external requests now outside the frontier). Gate-eligible candidates: 0.
 <!-- /GENERATED:counts -->
 
 

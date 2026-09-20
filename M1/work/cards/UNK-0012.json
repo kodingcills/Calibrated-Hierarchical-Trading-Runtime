@@ -16,7 +16,7 @@
   "known_source_ids": [
     "SRC-0116"
   ],
-  "last_updated": "2026-09-20T18:31:11Z",
+  "last_updated": "2026-09-20T18:48:51Z",
   "priority_reason": "M1-BLOCKING retained: the schedule is public, so this is cheap public research.",
   "priority_score": null,
   "required_answer": "Class/order-type fee codes, effective dates, and the historical surface data source",

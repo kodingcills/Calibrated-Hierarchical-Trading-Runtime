@@ -9,7 +9,11 @@
   "blocker_id": "UNK-0010",
   "branch_impact": "SMALL",
   "contradictory_evidence_ids": [
-    "EVD-0009"
+    "EVD-0009",
+    "EVD-0043",
+    "EVD-0045",
+    "EVD-0046",
+    "EVD-0047"
   ],
   "decision_prevented": "Net-edge feasibility for the Hyperliquid H3/H4 candidates.",
   "disallowed_evidence": "Assuming public API pagination equals event-level historical replay",
@@ -23,14 +27,14 @@
   "known_source_ids": [
     "SRC-0111"
   ],
-  "last_updated": "2026-09-20T18:31:11Z",
+  "last_updated": "2026-09-20T18:48:51Z",
   "priority_reason": "M1-BLOCKING retained; fee and liquidation facts are public research, replay procurement needs a vendor/data request, so the binding method is EXTERNAL_ACTION.",
   "priority_score": null,
   "required_answer": "Current fee schedule, historical event-level book/trade source, liquidation data surface",
   "resolution_method": "EXTERNAL_ACTION",
   "resolution_stage": "M1_BLOCKING",
   "resurrection_condition": "Fees or the absence of event-level history make the seconds-scale tuples uneconomic",
-  "status": "OPEN",
+  "status": "IN_PROGRESS",
   "success_condition": "Fee schedule and an event-level historical source are both identified and affordable",
   "tier": 3,
   "title": "Hyperliquid economics and replay surface"

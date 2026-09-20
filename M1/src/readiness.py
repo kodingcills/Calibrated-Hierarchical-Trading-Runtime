@@ -160,6 +160,11 @@ def readiness_md(state) -> str:
         "is measured.",
         "- Any ranking, weighting or Pareto frontier: the decision-critical dimensions are "
         "unknown for every candidate, so ordering them would order missing values.",
+        "- Independent provenance for the only two mechanism-gate passes: KG1 currently passes for "
+        "two Nasdaq tuples on evidence whose sources are still report-mediated (no recoverable "
+        "URL), so those two verdicts rest on a citation the project has not re-derived "
+        "(UNK-0023). They are the highest-leverage integrity item on the frontier for that "
+        "reason.",
         "",
         f"## 3. Candidate state ({counts['total']} registered rows, "
         f"{state['status_counts']['TUPLE']['total']} tradable tuples)",

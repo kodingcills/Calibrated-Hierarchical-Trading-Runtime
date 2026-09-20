@@ -3,16 +3,16 @@
 Canonical machine-readable source: `M1/data/discrepancies.csv` (generated from `M1/src/corpus/unknowns.py`).
 This file is a rendering of that registry; edit the corpus module, not this file.
 
-Materialised (UTC): 2026-09-20T18:31:11Z
+Materialised (UTC): 2026-09-20T18:48:51Z
 
-Registered issues: 33 | open: 19 | blocking: 19
+Registered issues: 35 | open: 21 | blocking: 20
 
 Conflicts are never resolved by averaging. Where two sources genuinely disagree the row
 carries `conflict_type=CONTRADICTION` and both statements are preserved; where the
 divergence is a difference of judgment it carries `conflict_type=DIVERGENCE_IN_JUDGMENT`
 and the judgment used is stated together with its basis.
 
-## UNK-0001 - BLOCKING - OPEN
+## UNK-0001 - BLOCKING - EXTERNAL_REQUEST_READY
 
 - claim needed: Exact project-level all-in per-contract cost for the CME candidates (exchange fee + clearing fee + NFA/FCM commission + market-data and connectivity).
 - known evidence: CME market-data architecture and product structure are verified; no fee schedule value was captured in the M1-A pass.
@@ -20,13 +20,13 @@ and the judgment used is stated together with its basis.
 - decision prevented: Aggressive CME execution viability (KG3) for every CME tuple.
 - conflict type: NO_CONFLICT_INCOMPLETENESS
 - sources: A=SRC-0107, B=None
-- searches attempted: M1-A pass searched CME product/MDP documentation and market-data infrastructure only; the report records the search as exhausted within that run.
+- searches attempted: Two passes. M1-A searched CME product/MDP documentation and market-data infrastructure. The M1-C CMEFacts resolver then targeted fee and clearing-fee pages directly: both were blocked, no filed fee blackline was extracted, and the one figure surfaced came from a non-primary article with no recoverable URL, so it was rejected (see patch P-0003 modified_claims). Public search is exhausted for this milestone.
 - resolvable by web research: PARTIAL (public schedules exist; the project's own commission path does not); vendor quote: YES; M2 measurement: NO
 - resolution class: B
 - affected: TUP-CME-ES-H1-QDEP-PAS|TUP-CME-ES-H3-OFI-AGG|TUP-CME-NQ-H3-OFI-AGG|TUP-CME-TSY-H2-QREPL-MIX|TUP-CME-WTI-H4-FLOWVOL-AGG
 - evidence: EVD-0001|EVD-0002|EVD-0018
 
-## UNK-0002 - BLOCKING - OPEN
+## UNK-0002 - BLOCKING - IN_PROGRESS
 
 - claim needed: The product-specific CME matching/allocation rule for each named candidate contract.
 - known evidence: CME documents product-specific matching processes and has changed Treasury calendar-spread matching by notice.
@@ -40,7 +40,7 @@ and the judgment used is stated together with its basis.
 - affected: TUP-CME-ES-H1-QDEP-PAS|TUP-CME-ES-H3-OFI-AGG|TUP-CME-NQ-H3-OFI-AGG|TUP-CME-TSY-H2-QREPL-MIX|TUP-CME-WTI-H4-FLOWVOL-AGG|TUP-GENERIC-CME-QUEUE
 - evidence: EVD-0003|EVD-0019
 
-## UNK-0003 - BLOCKING - OPEN
+## UNK-0003 - BLOCKING - IN_PROGRESS
 
 - claim needed: Whether a historical CME MBO/MBP package can be licensed at acceptable cost with usable timestamp semantics.
 - known evidence: CME advertises historical/real-time products including up to full order book.
@@ -138,7 +138,7 @@ and the judgment used is stated together with its basis.
 - affected: ALL_CANDIDATES
 - evidence: EVD-0012|EVD-0013|EVD-0014
 
-## UNK-0010 - BLOCKING - OPEN
+## UNK-0010 - BLOCKING - IN_PROGRESS
 
 - claim needed: Hyperliquid trading-fee schedule, event-level historical L2 source and market-wide liquidation observability.
 - known evidence: Live public l2Book/BBO/trades schema verified, including the >= 0.5 s snapshot cadence; fee schedule and historical replay product not verified.
@@ -180,7 +180,7 @@ and the judgment used is stated together with its basis.
 - affected: TUP-CBOE-USOPT-H5-SURFRV-MIX
 - evidence: None
 
-## UNK-0013 - BLOCKING - OPEN
+## UNK-0013 - BLOCKING - IN_PROGRESS
 
 - claim needed: Deribit current access, fee, API semantics and historical book/surface data.
 - known evidence: Venue relevance only; current primary specifications were not locked.
@@ -194,7 +194,7 @@ and the judgment used is stated together with its basis.
 - affected: TUP-DERIBIT-BTCOPT-H5-SURFRV-MIX
 - evidence: None
 
-## UNK-0014 - BLOCKING - OPEN
+## UNK-0014 - BLOCKING - IN_PROGRESS
 
 - claim needed: Jurisdiction-by-jurisdiction access, fee schedule, matching/API semantics and historical data for Kalshi and Polymarket.
 - known evidence: Washington obtained a 2026 court order affecting Kalshi in that state: state-level restrictions demonstrably exist.
@@ -250,7 +250,7 @@ and the judgment used is stated together with its basis.
 - affected: TUP-SYSTEMONE-HARDCORE-ENGINE|TUP-JEV-HOSTED-LATENCY-UNMEASURED
 - evidence: EVD-0023|EVD-0024|EVD-0026
 
-## UNK-0018 - BLOCKING - OPEN
+## UNK-0018 - BLOCKING - IN_PROGRESS
 
 - claim needed: Validated timestamp semantics for historical and live feeds (exchange/event time versus receive time, clock domain, sequence integrity) sufficient for causal replay.
 - known evidence: The project's timestamp contract is defined in its methods (SRC-0016) and the reality-gap decomposition depends on it, but no venue's feed or historical file has been validated against that contract.
@@ -472,4 +472,32 @@ and the judgment used is stated together with its basis.
 - resolvable by web research: None; vendor quote: YES; M2 measurement: None
 - resolution class: None
 - affected: TUP-NASDAQ-LARGETICK-H2-QIMB-AGG|TUP-NASDAQ-LARGETICK-H2H3-MICRO-AGG|TUP-CBOEBZX-LARGETICK-H2H3-SPREADCAP-PAS|TUP-USSTOCK-XVENUE-H1-STALEQUOTE-AGG
+- evidence: None
+
+## UNK-0034 - BLOCKING - OPEN
+
+- claim needed: The operator's own jurisdiction and client classification, which determine whether each venue is accessible at all.
+- known evidence: Venue terms and regulations now specify explicit exclusions: Hyperliquid excludes US and Ontario persons; Deribit prohibits the US; Kalshi restricts many countries and faces active Washington and Nevada orders; international Polymarket blocks US persons while Polymarket US is a separate product.
+- specific evidence required: A statement of the operator's legal domicile, entity type and client classification, plus the per-venue eligibility determination that follows from it.
+- decision prevented: Access legality for four venue families, and therefore KG3 and KG5 for their candidates: no fill or cost model matters for a venue the operator may not use.
+- conflict type: NO_CONFLICT_INCOMPLETENESS
+- sources: A=SRC-0213, B=SRC-0214
+- searches attempted: None
+- resolvable by web research: None; vendor quote: NO; M2 measurement: None
+- resolution class: None
+- affected: TUP-HYPERLIQUID-BTCPERP-H1-QDEP-AGGPAS|TUP-HYPERLIQUID-BTCPERP-H3-OFILIQ-AGG|TUP-HYPERLIQUID-BTCPERP-H4-FUNDBASIS-MIX|TUP-KALSHI-EVENT-H5-EVENTINF-AGG|TUP-POLYMARKET-EVENT-H5-EVENTINF-AGG|TUP-DERIBIT-BTCOPT-H5-SURFRV-MIX|TUP-COINBASE-BTCUSD-H3-MICROOFI-AGG|TUP-KRAKEN-BTCUSD-H3-MICROOFI-AGG
+- evidence: None
+
+## UNK-0035 - IMPORTANT - OPEN
+
+- claim needed: Version control for venue fee schedules that publish no effective date or version archive.
+- known evidence: Hyperliquid's fee page and Polymarket's fee documentation carry no effective date; Deribit's page gives one update date rather than per-row versions; Kalshi's schedule states an effective date but its production URL was rate-limited at access time.
+- specific evidence required: A dated, hashed snapshot of each fee page taken by the project, re-taken on a fixed schedule, with the figure used by any cost model tied to the snapshot it came from.
+- decision prevented: After-cost replication validity: a cost model built on an undated dynamic page cannot be shown to describe the period it is tested on.
+- conflict type: NO_CONFLICT_INCOMPLETENESS
+- sources: A=SRC-0213, B=SRC-0214
+- searches attempted: None
+- resolvable by web research: None; vendor quote: NO; M2 measurement: None
+- resolution class: None
+- affected: TUP-HYPERLIQUID-BTCPERP-H1-QDEP-AGGPAS|TUP-HYPERLIQUID-BTCPERP-H3-OFILIQ-AGG|TUP-HYPERLIQUID-BTCPERP-H4-FUNDBASIS-MIX|TUP-POLYMARKET-EVENT-H5-EVENTINF-AGG
 - evidence: None
