@@ -1,0 +1,1 @@
+candidate_id,name,class,hosted_or_local,allowed_runtime_zone,input_contract,output_contract,p50_ms,p95_ms,p99_ms,jitter_ms,cost,calibration_method,calibration_status,ood_status,perturbation_status,baseline_delta,status

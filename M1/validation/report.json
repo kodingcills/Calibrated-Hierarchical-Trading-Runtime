@@ -1,0 +1,105 @@
+{
+  "checks": [
+    {
+      "name": "provenance references resolve",
+      "note": "",
+      "result": "PASS",
+      "rows_checked": 1303,
+      "rule": "V1"
+    },
+    {
+      "name": "numeric facts carry sources or are declared UNKNOWN",
+      "note": "",
+      "result": "PASS",
+      "rows_checked": 508,
+      "rule": "V2"
+    },
+    {
+      "name": "gate ceiling and dead/ALIVE integrity",
+      "note": "",
+      "result": "PASS",
+      "rows_checked": 28,
+      "rule": "V3"
+    },
+    {
+      "name": "referential integrity",
+      "note": "",
+      "result": "PASS",
+      "rows_checked": 778,
+      "rule": "V4"
+    },
+    {
+      "name": "no scoring or ranking artifacts",
+      "note": "",
+      "result": "PASS",
+      "rows_checked": 456,
+      "rule": "V5"
+    },
+    {
+      "name": "stable ids unique",
+      "note": "",
+      "result": "PASS",
+      "rows_checked": 338,
+      "rule": "V6"
+    },
+    {
+      "name": "time-sensitive sources dated",
+      "note": "",
+      "result": "PASS",
+      "rows_checked": 57,
+      "rule": "V7"
+    },
+    {
+      "name": "no unperformed experiment claims a result",
+      "note": "",
+      "result": "PASS",
+      "rows_checked": 9,
+      "rule": "V9"
+    },
+    {
+      "name": "decision-critical values remain UNKNOWN",
+      "note": "",
+      "result": "PASS",
+      "rows_checked": 280,
+      "rule": "V10"
+    },
+    {
+      "name": "cross-file consistency",
+      "note": "",
+      "result": "PASS",
+      "rows_checked": 14,
+      "rule": "V11"
+    },
+    {
+      "name": "raw provenance chain intact",
+      "note": "",
+      "result": "PASS",
+      "rows_checked": 42,
+      "rule": "V12"
+    },
+    {
+      "name": "paper cost arithmetic reproduces",
+      "note": "",
+      "result": "PASS",
+      "rows_checked": 2,
+      "rule": "V13"
+    }
+  ],
+  "context": {
+    "blocking_issues": 22,
+    "candidate_rows": 28,
+    "m1b_eligible": [],
+    "status": {
+      "ALIVE": 0,
+      "DEAD": 9,
+      "UNKNOWN": 14,
+      "WEAK": 5,
+      "total": 28
+    }
+  },
+  "details": [],
+  "failures": 0,
+  "generated_at": "2026-09-20T17:38:19Z",
+  "overall": "PASS",
+  "validator": "M1/src/validate.py"
+}

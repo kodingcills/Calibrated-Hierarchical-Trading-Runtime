@@ -1,0 +1,222 @@
+{
+  "derived_artifacts": [
+    {
+      "generated_by": "ghostscript -sDEVICE=png16m -r140",
+      "path": "M1/derived/jev_paper_pages/page-01.png .. page-08.png",
+      "role": "140 dpi rasterisation of the image-only paper, used to read its claim set because the PDF has no text layer (UNK-0031)"
+    }
+  ],
+  "files": [
+    {
+      "ingested_at_utc": "2026-09-20T17:22:05Z",
+      "original_path": "deep-research-report.md",
+      "raw_path": "M1/raw/deep-research-report.md",
+      "role": "M1-A external-evidence artifact (current evidence lock until superseded)",
+      "sha256": "7cec19499c0971e4f48f46096a7ccc0a794212df8fa308befb9d0c372aee7dd1",
+      "size_bytes": 63426
+    },
+    {
+      "ingested_at_utc": "2026-09-20T17:22:05Z",
+      "original_path": "Jev Trading Research Paper.pdf",
+      "raw_path": "M1/raw/jev-trading-paper.pdf",
+      "role": "candidate-architecture specimen (project source, not external evidence)",
+      "sha256": "2bb7f463f7a1a8860ba1d9694fadc12efc5cecbe5e65f895d30aba1ab1bddf3f",
+      "size_bytes": 1732234
+    },
+    {
+      "ingested_at_utc": "2026-09-20T17:22:05Z",
+      "original_path": "M1-C_M1-D_Handoff.md",
+      "raw_path": "M1/raw/M1-C_M1-D_Handoff.md",
+      "role": "execution contract for M1-C / M1-D0 / M1-D1 preconditions (instruction document)",
+      "sha256": "35c33310b9f9f0ff64d4a5a15f4e9e5bfb9dae45838a5e492807f94dd6f88205",
+      "size_bytes": 21388
+    },
+    {
+      "ingested_at_utc": "2026-09-20T17:22:05Z",
+      "original_path": "trading_research_os_v0.2/README.md",
+      "raw_path": "M1/raw/trading_research_os_v0.2/README.md",
+      "role": "research-OS overview and architectural defaults",
+      "sha256": "867caa444c488918c57354680a0c89f791fcaee9dbbdee8ab14cc0753b10ebfd",
+      "size_bytes": 3804
+    },
+    {
+      "ingested_at_utc": "2026-09-20T17:22:05Z",
+      "original_path": "trading_research_os_v0.2/STATUS.md",
+      "raw_path": "M1/raw/trading_research_os_v0.2/STATUS.md",
+      "role": "prior current-status artifact (superseded in role by PROJECT_STATE.md)",
+      "sha256": "eb416e6c913d3f663ac54f0e7c514247a38609b687ffe56223b8026c9a1f9491",
+      "size_bytes": 2887
+    },
+    {
+      "ingested_at_utc": "2026-09-20T17:22:05Z",
+      "original_path": "trading_research_os_v0.2/config/evidence_gates.yaml",
+      "raw_path": "M1/raw/trading_research_os_v0.2/config/evidence_gates.yaml",
+      "role": "machine-readable G0..G8 promotion gates",
+      "sha256": "29f1f37111fbf9398aded2c61f35846e8616b38235ef2dddb018aa6c5f8dc02d",
+      "size_bytes": 1446
+    },
+    {
+      "ingested_at_utc": "2026-09-20T17:22:05Z",
+      "original_path": "trading_research_os_v0.2/src/researchos.py",
+      "raw_path": "M1/raw/trading_research_os_v0.2/src/researchos.py",
+      "role": "registry header validator (no evidence or arithmetic checking)",
+      "sha256": "d50cd474420d406e1bfc21c9b68d7200aca72b254ed8b0e305bed14a95137fcc",
+      "size_bytes": 2823
+    },
+    {
+      "ingested_at_utc": "2026-09-20T17:22:05Z",
+      "original_path": "trading_research_os_v0.2/templates/literature.csv",
+      "raw_path": "M1/raw/trading_research_os_v0.2/templates/literature.csv",
+      "role": "canonical literature registry with URLs (SRC-0001..SRC-0010)",
+      "sha256": "765d5866fbf32730cd489d6fdacd20efd2ee84dfac8a7fafa7d7d6aa88d1edff",
+      "size_bytes": 5289
+    },
+    {
+      "ingested_at_utc": "2026-09-20T17:22:05Z",
+      "original_path": "trading_research_os_v0.2/templates/open_questions.csv",
+      "raw_path": "M1/raw/trading_research_os_v0.2/templates/open_questions.csv",
+      "role": "prior open-question registry (Q-010 preserved as OQ-0011.legacy_question_id)",
+      "sha256": "ec04908a15855283a98caf9a31775530ff8c3c99474a5800103db9e2ad3de40f",
+      "size_bytes": 533
+    },
+    {
+      "ingested_at_utc": "2026-09-20T17:22:05Z",
+      "original_path": "trading_research_os_v0.2/docs/00_research_charter.md",
+      "raw_path": "M1/raw/trading_research_os_v0.2/docs/00_research_charter.md",
+      "role": "research-OS methodology/policy",
+      "sha256": "558c8ea54e9ad0296dfc1dbaf9adbbdf5af130caef784f4066485cdfb5387c83",
+      "size_bytes": 3389
+    },
+    {
+      "ingested_at_utc": "2026-09-20T17:22:05Z",
+      "original_path": "trading_research_os_v0.2/docs/01_assumption_graph.md",
+      "raw_path": "M1/raw/trading_research_os_v0.2/docs/01_assumption_graph.md",
+      "role": "research-OS methodology/policy",
+      "sha256": "86e49d7d0e312317974901191472c379d2ef0188820bca6bfdd51535b7d0a0ce",
+      "size_bytes": 2917
+    },
+    {
+      "ingested_at_utc": "2026-09-20T17:22:05Z",
+      "original_path": "trading_research_os_v0.2/docs/02_evidence_gates.md",
+      "raw_path": "M1/raw/trading_research_os_v0.2/docs/02_evidence_gates.md",
+      "role": "research-OS methodology/policy",
+      "sha256": "fd58ffd462baeebb359e25175c5aa759bb9d1959cd43b664af04678fc66cdd6a",
+      "size_bytes": 2903
+    },
+    {
+      "ingested_at_utc": "2026-09-20T17:22:05Z",
+      "original_path": "trading_research_os_v0.2/docs/03_system_one_admission_policy.md",
+      "raw_path": "M1/raw/trading_research_os_v0.2/docs/03_system_one_admission_policy.md",
+      "role": "research-OS methodology/policy",
+      "sha256": "31fae748d242eee4752b096f704755fdf6ed5a2aff8280c2ac18c3e2d2ea4a72",
+      "size_bytes": 4091
+    },
+    {
+      "ingested_at_utc": "2026-09-20T17:22:05Z",
+      "original_path": "trading_research_os_v0.2/docs/04_simulation_reality_gap.md",
+      "raw_path": "M1/raw/trading_research_os_v0.2/docs/04_simulation_reality_gap.md",
+      "role": "research-OS methodology/policy",
+      "sha256": "94f6267fce873508b3fbc6c8fef7013dc865bface9842f630db8783e55398b79",
+      "size_bytes": 2632
+    },
+    {
+      "ingested_at_utc": "2026-09-20T17:22:05Z",
+      "original_path": "trading_research_os_v0.2/docs/05_literature_review_map.md",
+      "raw_path": "M1/raw/trading_research_os_v0.2/docs/05_literature_review_map.md",
+      "role": "research-OS methodology/policy",
+      "sha256": "3c5ce3edb430fb25771a1dd7f87fb189b5a34a2b760b4995a27d5cc52be80be4",
+      "size_bytes": 4477
+    },
+    {
+      "ingested_at_utc": "2026-09-20T17:22:05Z",
+      "original_path": "trading_research_os_v0.2/docs/06_metrics_and_kill_criteria.md",
+      "raw_path": "M1/raw/trading_research_os_v0.2/docs/06_metrics_and_kill_criteria.md",
+      "role": "research-OS methodology/policy",
+      "sha256": "045ef3597bf3b6a5fb6ca0bffcee84608903cfbb3c00baacb89e381762e289c8",
+      "size_bytes": 3449
+    },
+    {
+      "ingested_at_utc": "2026-09-20T17:22:05Z",
+      "original_path": "trading_research_os_v0.2/docs/07_monitoring_and_source_policy.md",
+      "raw_path": "M1/raw/trading_research_os_v0.2/docs/07_monitoring_and_source_policy.md",
+      "role": "research-OS methodology/policy",
+      "sha256": "af55f59366ee1f4a61f1bb1fdd7953206b4af54134d7535ea2079a9e1954f605",
+      "size_bytes": 1728
+    },
+    {
+      "ingested_at_utc": "2026-09-20T17:22:05Z",
+      "original_path": "trading_research_os_v0.2/docs/08_jev_trading_paper_audit.md",
+      "raw_path": "M1/raw/trading_research_os_v0.2/docs/08_jev_trading_paper_audit.md",
+      "role": "research-OS methodology/policy",
+      "sha256": "3384a8f49eb851ef954b1619891588faa97b42b215f71a92f5bbe056c8646e77",
+      "size_bytes": 7632
+    },
+    {
+      "ingested_at_utc": "2026-09-20T17:22:05Z",
+      "original_path": "trading_research_os_v0.2/templates/assumptions.csv",
+      "raw_path": "M1/raw/trading_research_os_v0.2/templates/assumptions.csv",
+      "role": "research-OS registry template (empty contract)",
+      "sha256": "eb59548b6948934677f146ef43c3af0f8441dc8a2428cce3dcaec60cda58849a",
+      "size_bytes": 154
+    },
+    {
+      "ingested_at_utc": "2026-09-20T17:22:05Z",
+      "original_path": "trading_research_os_v0.2/templates/hypotheses.csv",
+      "raw_path": "M1/raw/trading_research_os_v0.2/templates/hypotheses.csv",
+      "role": "research-OS registry template (empty contract)",
+      "sha256": "8fdba5a2c7cf136d097329e9ddce35cbcb086532faa9157a79089bb1b968b755",
+      "size_bytes": 182
+    },
+    {
+      "ingested_at_utc": "2026-09-20T17:22:05Z",
+      "original_path": "trading_research_os_v0.2/templates/experiments.csv",
+      "raw_path": "M1/raw/trading_research_os_v0.2/templates/experiments.csv",
+      "role": "research-OS registry template (empty contract)",
+      "sha256": "6f04677404006ce7dd587f2eea32b8617d20ff3876a2f1cedfacbeda78c5eea5",
+      "size_bytes": 303
+    },
+    {
+      "ingested_at_utc": "2026-09-20T17:22:05Z",
+      "original_path": "trading_research_os_v0.2/templates/evidence.csv",
+      "raw_path": "M1/raw/trading_research_os_v0.2/templates/evidence.csv",
+      "role": "research-OS registry template (empty contract)",
+      "sha256": "ef14a92b9f839a156bfb4a52b59f2c9d14bea46fcde46bdc9e1d20738a187630",
+      "size_bytes": 143
+    },
+    {
+      "ingested_at_utc": "2026-09-20T17:22:05Z",
+      "original_path": "trading_research_os_v0.2/templates/model_candidates.csv",
+      "raw_path": "M1/raw/trading_research_os_v0.2/templates/model_candidates.csv",
+      "role": "research-OS registry template (empty contract)",
+      "sha256": "a70c1c1e04a7713592b56f1b416d4d45165dd7be73b6d4947dbae5fd616bf8b5",
+      "size_bytes": 220
+    },
+    {
+      "ingested_at_utc": "2026-09-20T17:22:05Z",
+      "original_path": "trading_research_os_v0.2/templates/reality_gap.csv",
+      "raw_path": "M1/raw/trading_research_os_v0.2/templates/reality_gap.csv",
+      "role": "research-OS registry template (empty contract)",
+      "sha256": "6c69063d89d443aa68fb9c1780c6d954b63435ee58a678b92b782d0c250b270c",
+      "size_bytes": 320
+    },
+    {
+      "ingested_at_utc": "2026-09-20T17:22:05Z",
+      "original_path": "trading_research_os_v0.2/templates/surprises.csv",
+      "raw_path": "M1/raw/trading_research_os_v0.2/templates/surprises.csv",
+      "role": "research-OS registry template (empty contract)",
+      "sha256": "bbbc5d24cfae5e2c613859fe750155a87da929f0b58a43e5113765516a523c6e",
+      "size_bytes": 166
+    }
+  ],
+  "generated_by": "M1/src/build_manifest.py",
+  "ingested_at_utc": "2026-09-20T17:22:05Z",
+  "manifest_version": "1.0",
+  "note": "Copies preserve the originals; the repository originals were never modified. Hashes are of the copies and are re-checked by M1/src/validate.py.",
+  "paper_text_layer": {
+    "available": false,
+    "consequence": "claim set read by rasterising and transcribing pages; recorded as UNK-0031 (transcription fidelity residual risk)",
+    "evidence": "0 /Font objects, 0 /ToUnicode tables, 8 /Image objects, 8 pages",
+    "sha256": "2bb7f463f7a1a8860ba1d9694fadc12efc5cecbe5e65f895d30aba1ab1bddf3f"
+  },
+  "raw_inputs_modified": false
+}

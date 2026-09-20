@@ -1,0 +1,62 @@
+version: 0.1
+gates:
+  G0_IDEA:
+    next: G1_REGISTERED
+    requires:
+      - economic_mechanism
+      - target_market_or_candidate_set
+      - horizon_or_candidate_set
+      - falsifier
+  G1_REGISTERED:
+    next: G2_BASELINED
+    requires:
+      - primary_outcome
+      - baseline_set
+      - null_set
+      - dataset_version
+      - planned_split
+      - kill_criteria
+  G2_BASELINED:
+    next: G3_RETROSPECTIVE
+    requires:
+      - no_trade_or_passive_baseline
+      - linear_or_logistic_baseline
+      - tree_baseline
+      - same_information_comparison
+  G3_RETROSPECTIVE:
+    next: G4_ROBUSTNESS
+    requires:
+      - point_in_time_audit
+      - label_overlap_audit
+      - leakage_aware_validation
+      - transaction_cost_model
+      - trial_count
+  G4_ROBUSTNESS:
+    next: G5_SHADOW
+    requires:
+      - stress_surfaces
+      - mechanism_nulls
+      - regime_breakdown
+      - multiple_testing_control
+      - parameter_stability
+  G5_SHADOW:
+    next: G6_MICRO_LIVE
+    requires:
+      - live_data_parity
+      - decision_age_distribution
+      - live_calibration
+      - shadow_reality_gap
+  G6_MICRO_LIVE:
+    next: G7_SCALE_LADDER
+    requires:
+      - real_fill_reconciliation
+      - adverse_selection_measurement
+      - operational_failure_log
+      - hard_risk_limits
+  G7_SCALE_LADDER:
+    next: G8_PRODUCTION
+    requires:
+      - capacity_curve
+      - impact_curve
+      - portfolio_interaction_test
+      - rollback_plan

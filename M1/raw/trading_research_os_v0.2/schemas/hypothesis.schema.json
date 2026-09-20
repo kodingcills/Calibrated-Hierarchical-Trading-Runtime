@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Trading Research Hypothesis",
+  "type": "object",
+  "required": [
+    "hypothesis_id",
+    "title",
+    "economic_mechanism",
+    "primary_outcome",
+    "baseline_set",
+    "null_set",
+    "kill_criteria",
+    "status"
+  ],
+  "properties": {
+    "hypothesis_id": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "economic_mechanism": {
+      "type": "string"
+    },
+    "market": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "horizon": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "primary_outcome": {
+      "type": "string"
+    },
+    "baseline_set": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "null_set": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "kill_criteria": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "status": {
+      "enum": [
+        "IDEA",
+        "REGISTERED",
+        "BASELINED",
+        "RETROSPECTIVE",
+        "ROBUSTNESS",
+        "SHADOW",
+        "MICRO_LIVE",
+        "SCALE_LADDER",
+        "PRODUCTION",
+        "KILLED",
+        "PAUSED"
+      ]
+    }
+  }
+}

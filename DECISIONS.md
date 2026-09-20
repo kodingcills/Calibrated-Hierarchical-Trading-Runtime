@@ -1,0 +1,125 @@
+# DECISIONS
+
+Every decision that changed an artifact, with the reasoning that made it decidable and the
+artifact that enforces it. Decisions are append-only; superseding a decision means adding a new
+entry that names the one it replaces.
+
+## D-0001 - PROJECT_STATE.md is the single canonical current-state file
+
+STATUS.md under `trading_research_os_v0.2/` overlaps but is not deleted: its knowns/unknowns
+remain substantively valid. It is marked legacy/reference in PROJECT_STATE and stops being
+updated. Enforced by: PROJECT_STATE "Superseded / Legacy Artifacts"; validator rule V11
+(PROJECT_STATE counts must equal the generated summary).
+
+## D-0002 - Citation tokens are preserved and their URLs stay UNKNOWN
+
+The M1-A artifact cites 25 external sources through opaque tokens (`turn17view6` etc.). No URL is
+reconstructible from repository artifacts, and even a correct-looking URL could not be proven to be
+the same page the token referred to. Attaching one would be fabricated attribution, so every token
+is preserved verbatim, `url` is UNKNOWN, and resolution is registered as UNK-0023 / OQ-0001.
+Consequence: every external fee, feed and literature fact in this repository is
+report-mediated rather than independently re-derived. Enforced by: `M1/data/source_registry.csv`
+(status PARTIAL) and a unit test asserting all 25 tokens have `url = UNKNOWN`.
+
+## D-0003 - Missing values are NULL, never placeholders
+
+No zero, midpoint, industry-typical value or default estimate is used for an unevidenced number.
+Numeric cells are empty and named in the row's `unknown_fields`; text cells carry the literal
+UNKNOWN. Enforced by: validator rule V2 (a populated numeric cell needs a resolvable source; an
+empty one must be declared) and rule V10 (decision-critical values must still be UNKNOWN).
+
+## D-0004 - The gate ceiling is a one-way constraint, not a scoring device
+
+Any FAIL forces DEAD; any BLOCKED forbids ALIVE; only all-PASS permits M1-B eligibility. The M1-A
+artifact's own label (WEAK/UNKNOWN/DEAD) is preserved rather than recomputed, because WEAK encodes
+the existence of constraining evidence that gates alone do not express. Enforced by:
+`M1/src/candidate_gates.py` plus validator V3.
+
+## D-0005 - Non-tuple cemetery entries are registered as candidate rows with an explicit class
+
+The M1-A cemetery kills three tradable tuples plus a Level-1-only variant, and five rows that are
+not tuples at all (a method rule, two universe definitions, a governance boundary, a technology
+admission). All eight are registered, each with `candidate_class`, so a "candidate count" cannot
+silently mix a strategy with a governance rule. Enforced by: ASM-0016 and the class-split counts in
+PROJECT_STATE and the readiness report.
+
+## D-0006 - Governance and technology kills are mapped onto the nearest gate, with the original
+wording preserved
+
+The five gates are fixed by the handoff, but the cemetery's kill reasons include "project admission
+policy" and "technology admission". These map to KG1_MECHANISM and KG3_EXECUTION respectively, and
+the verbatim reason is preserved in `dead_candidates.report_kill_gate` and
+`candidate_tuples.kill_gate` mapping notes. Alternative rejected: inventing a sixth gate, which
+would have broken the mandated gate vocabulary.
+
+## D-0007 - The candidate-architecture paper was read by rasterising it
+
+The PDF has no text layer (0 font objects, 0 ToUnicode tables, 8 images, 8 pages). Its claim set
+was read from 140 dpi page images, retained under `M1/derived/jev_paper_pages/`, and registered as
+first-party evidence (EVD-0027) with the transcription method and its residual risk disclosed
+(UNK-0031). Cross-checks: the extracted numbers were compared against the project audit (SRC-0020)
+and against closed-form arithmetic where quantities interact (EVD-0028). Alternative rejected:
+citing the audit alone, which would have left the paper's own claims unverifiable in this
+repository.
+
+## D-0008 - M1-D1 is refused
+
+No M1-B artifact exists, no candidate has all five gates PASS, and every decision-critical
+comparison dimension is UNKNOWN. Ranking now would require replacing unknown dimensions with
+defaults. `M1/output/M1_D1_BLOCKED.md` records the preconditions and the observed values. A
+weighted ranking is not a weaker analysis than a measured one; it is a fabricated one.
+
+## D-0009 - The WEAK label on the cross-venue stale-quote tuple is kept, with its basis recorded
+
+The M1-A artifact labels that tuple WEAK on structural reasoning (latency and routing demands)
+rather than on measured evidence, and records that no evidence package establishes non-colocated
+feasibility. The label is preserved (it cannot promote anything) and the divergence from the
+gate-derived reading is registered as UNK-0024 rather than silently resolved. Alternative
+rejected: relabelling it UNKNOWN, which would have discarded the report's judgment on the
+authority of a rule the report never claimed to use.
+
+## D-0010 - Every artifact is generated by code
+
+The declarative corpus lives in `M1/src/corpus/*` and every table, report and derived number is
+written by `M1/src/materialize.py`. Root registries are byte-identical mirrors enforced by
+validator V11. Rationale: no number may exist only in Markdown, and no prose registry may drift
+from the data it summarises.
+
+## D-0011 - Dead candidates require new evidence plus an explicit resurrection decision
+
+Recorded per row in `dead_candidates.csv` and `DEAD_ENDS.md`. The resurrection condition is stated
+in advance so the decision is made against a bar rather than a memory.
+
+## D-0012 - Data feasibility is authored as tri-state inputs and recomputed with contradiction checks
+
+`M1/data/data_feasibility.csv` holds the assessed inputs; `M1/output/data_feasibility_verdicts.csv`
+holds the recomputed verdicts (including feed-cadence-versus-horizon) and flags internal
+contradictions such as "queue replay PASS with no order-level history". Enforced by
+`M1/src/coverage.py` and a unit test asserting no contradiction in the shipped set.
+
+## D-0013 - No decay form is assumed for signal half-life
+
+`M1/src/latency.py` refuses to produce a half-life without an empirical EV-versus-delay curve, and
+when a curve is supplied it reports descriptive metrics under a stated fit family
+("nonparametric piecewise") rather than an exponential. Exponential fitting exists only as an
+explicit diagnostic that is never the reported result.
+
+## D-0014 - The M1-A incompleteness verdict is retained, but re-derived from its remaining blockers
+
+One of the two reasons the M1-A artifact gave for its own incompleteness is now false in this
+repository (the paper and research OS are present and hashed). Rather than inheriting the verdict on
+a stale premise, PROJECT_STATE states the verdict and the blockers that independently sustain it
+(UNK-0030, ASM-0018). The verdict itself is unchanged: the empirical blockers are sufficient.
+
+## D-0015 - The experiment registry contains only PROPOSED rows
+
+Nine measurement plans are registered, none run, with dataset/feature/model/execution versions
+marked UNKNOWN and results marked NOT_RUN. Validator V9 fails any row that claims a result,
+decision, sealed-holdout access or artifact hash without a run.
+
+## D-0016 - Fees are never converted across units without their inputs
+
+Per-share fees (Cboe BZX) have no bps equivalent without a price, so the bps cells stay empty and
+the native value plus unit are recorded instead. Corollary: the BZX maker-side fee stays UNKNOWN
+because the standard displayed-add rate is a rebate, which is recorded in its own column rather than
+being folded into a maker fee. Enforced by ASM-0011 and unit tests.

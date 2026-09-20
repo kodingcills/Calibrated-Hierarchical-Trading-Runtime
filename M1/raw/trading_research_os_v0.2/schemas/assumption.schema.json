@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Trading Research Assumption",
+  "type": "object",
+  "required": [
+    "assumption_id",
+    "hypothesis_id",
+    "statement",
+    "class",
+    "falsifier",
+    "test",
+    "status"
+  ],
+  "properties": {
+    "assumption_id": {
+      "type": "string"
+    },
+    "hypothesis_id": {
+      "type": "string"
+    },
+    "statement": {
+      "type": "string"
+    },
+    "class": {
+      "type": "string"
+    },
+    "falsifier": {
+      "type": "string"
+    },
+    "test": {
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "UNKNOWN",
+        "TESTING",
+        "SUPPORTED",
+        "WEAKENED",
+        "FALSIFIED",
+        "RETIRED"
+      ]
+    }
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Trading Research Experiment",
+  "type": "object",
+  "required": [
+    "experiment_id",
+    "hypothesis_id",
+    "dataset_version",
+    "change_from_parent",
+    "reason_before_result",
+    "primary_metric",
+    "decision"
+  ],
+  "properties": {
+    "experiment_id": {
+      "type": "string"
+    },
+    "parent_experiment_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "hypothesis_id": {
+      "type": "string"
+    },
+    "dataset_version": {
+      "type": "string"
+    },
+    "change_from_parent": {
+      "type": "string"
+    },
+    "reason_before_result": {
+      "type": "string"
+    },
+    "primary_metric": {
+      "type": "string"
+    },
+    "sealed_holdout_accessed": {
+      "type": "boolean"
+    },
+    "decision": {
+      "enum": [
+        "PENDING",
+        "PROMOTE",
+        "REPEAT",
+        "KILL",
+        "PAUSE"
+      ]
+    }
+  }
+}

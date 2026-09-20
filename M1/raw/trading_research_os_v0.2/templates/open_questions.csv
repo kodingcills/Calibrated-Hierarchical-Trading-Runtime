@@ -1,0 +1,2 @@
+question_id,question,why_it_matters,workstream,priority,answer_required_before_gate,search_status,current_best_answer,unresolved_gap,next_search
+Q-010,Does the six-question Jev battery add execution-aware net utility over a same-information local LightGBM gate?,This is the central falsification test for the paper's claimed architectural advantage.,System-One / Trading Architecture,critical,G4_ROBUSTNESS,not_started,,No same-information controlled benchmark yet.,Run only after market/horizon/data/execution baseline are fixed.

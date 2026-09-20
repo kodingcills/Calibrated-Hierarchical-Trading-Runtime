@@ -1,0 +1,157 @@
+{
+  "artifact_hashes": {
+    "M1/data/assumptions.csv": "a45b7c5a95f94bfa7213a43910bae5206bd9bdfc6878e4ab2adff089fbf2b25d",
+    "M1/data/candidate_tuples.csv": "5ddf1cca3475af2619a45fc85f591d30a50e64a626843be6fe097c8dace33c80",
+    "M1/data/data_feasibility.csv": "d292c27e17576a28a518f85051cfa511e74e9f1da7242a9237d0c732caff209e",
+    "M1/data/dead_candidates.csv": "cf95996ee6a545408e90ca6306b2a24d49b01a638401407e8408d808413e36a3",
+    "M1/data/discrepancies.csv": "7b2b93a834e4b89bae8eba808c4b54b17382de0e4cad794288a29831d412caac",
+    "M1/data/evidence_ledger.csv": "1eb615a2a1768b59745055fc45973747eb686717dc333d4f8f54f77bb2382941",
+    "M1/data/execution_envelopes.csv": "04f065a0345ac2c7de6eb989604be6d2530528f27ad11bb53678dfb8080c51be",
+    "M1/data/experiments.csv": "2bba0967fa761dcbe840fc0252c7fc72a5a19f381893e6768250dd438767754a",
+    "M1/data/hypotheses.csv": "25ae83712418dc4f18bd18747c04163196ebccabb45ae841607e1aa30ec71c33",
+    "M1/data/kill_gates.csv": "9f00692be68eda40b7536ba54ac84f5e65ceddd2a0f693ab69ab52036b7c3937",
+    "M1/data/mechanisms.csv": "49227ed34e3eb929c46896fd38072df03070b6da748d0d8cd01359813125c364",
+    "M1/data/open_questions.csv": "08f39eb554e0de71f5ad32fbe088463d72ff4a1bcc8dce4c70d0f1987e9f733d",
+    "M1/data/source_registry.csv": "6e56a49b8442b7ade233e96713700bdd00a8d9526283338786215e4f4d1b0ef9",
+    "M1/data/technology_fit.csv": "902584c18d84d9f9cf31917b2a636d9fbafe03301805332dba73b0af1eb95810",
+    "M1/data/venue_facts.csv": "0f592fa61d05fc69a76e3d38e97a49680005c9812e4c214ea867b9d8fe5f913c",
+    "M1/output/blocker_priority.csv": "f7e463b4f6d6789b8cc96bbeb040cea9ba1c29954470410910897d44723dff89",
+    "M1/output/candidate_gate_status.csv": "4508ca2a52d4914c852061c5109d6ddf8fc951c948931c73b96a732fc956aa13",
+    "M1/output/cost_envelopes.csv": "04f065a0345ac2c7de6eb989604be6d2530528f27ad11bb53678dfb8080c51be",
+    "M1/output/data_feasibility_verdicts.csv": "f97ba5ff8fd8b7f3a6656062e530ac67f561ef69041addd6729fdba88b550a37",
+    "M1/output/dominated_candidates.csv": "b45939d9b5a5f1827c225ffd82889cf1a21cb2f2f7e38a2480f07cdf8ba2a938",
+    "M1/output/evidence_coverage.csv": "9d1d477018680382ff71f1cb7d23532225b1795b8afbf5372069b4540ebe6387",
+    "M1/output/hard_constraint_eliminations.csv": "59e74fb2964f39b5f05462bc23c32a1061dc46acbe683b86f0b451a7824332de",
+    "M1/output/hard_constraint_survivors.csv": "e9c3ac2d0c3222a378908b7861e008a8b2e744e085094717946a4e815830118f",
+    "M1/output/latency_feasibility.csv": "1a2434bb2b38ffeba8a34c9cbbd87e7cab56608c44395238ecb0333b9969997d",
+    "M1/output/status_derivation_review.csv": "ad9684efd483bb6c450472be06ca597cde135e1d6ae76b90a830ec78f463ef70",
+    "M1/output/venue_cost_reference.csv": "e1cfb84f16fff5e21ef1e35b296ee6be9d04408afcb43e2f84b41831dc5adb96"
+  },
+  "counts": {
+    "assumptions": 29,
+    "blocking_issues": 22,
+    "candidate_rows": 28,
+    "ceiling_violations": 0,
+    "discrepancies": 32,
+    "evidence_records": 29,
+    "experiments_proposed_not_run": 9,
+    "external_token_sources": 25,
+    "hard_constraint_eliminations": 9,
+    "hard_constraint_survivors": 19,
+    "hypotheses_registered": 0,
+    "m1b_eligible": [],
+    "mechanisms": 25,
+    "non_tuple_rows": 5,
+    "open_issues": 30,
+    "open_questions": 16,
+    "source_registry": 51,
+    "status": {
+      "ALIVE": 0,
+      "DEAD": 9,
+      "UNKNOWN": 14,
+      "WEAK": 5,
+      "total": 28
+    },
+    "status_by_class": {
+      "ALL": {
+        "ALIVE": 0,
+        "DEAD": 9,
+        "UNKNOWN": 14,
+        "WEAK": 5,
+        "total": 28
+      },
+      "GOVERNANCE": {
+        "ALIVE": 0,
+        "DEAD": 1,
+        "UNKNOWN": 0,
+        "WEAK": 0,
+        "total": 1
+      },
+      "METHOD_RULE": {
+        "ALIVE": 0,
+        "DEAD": 1,
+        "UNKNOWN": 0,
+        "WEAK": 0,
+        "total": 1
+      },
+      "TECHNOLOGY_ADMISSION": {
+        "ALIVE": 0,
+        "DEAD": 1,
+        "UNKNOWN": 0,
+        "WEAK": 0,
+        "total": 1
+      },
+      "TUPLE": {
+        "ALIVE": 0,
+        "DEAD": 4,
+        "UNKNOWN": 14,
+        "WEAK": 5,
+        "total": 23
+      },
+      "UNIVERSE_DEFINITION": {
+        "ALIVE": 0,
+        "DEAD": 2,
+        "UNKNOWN": 0,
+        "WEAK": 0,
+        "total": 2
+      }
+    },
+    "tradable_tuples": 23,
+    "venue_rows": 19
+  },
+  "gate_counts": {
+    "KG1_MECHANISM": {
+      "BLOCKED": 27,
+      "FAIL": 1,
+      "PASS": 0
+    },
+    "KG2_DATA": {
+      "BLOCKED": 26,
+      "FAIL": 2,
+      "PASS": 0
+    },
+    "KG3_EXECUTION": {
+      "BLOCKED": 24,
+      "FAIL": 4,
+      "PASS": 0
+    },
+    "KG4_HALF_LIFE": {
+      "BLOCKED": 28,
+      "FAIL": 0,
+      "PASS": 0
+    },
+    "KG5_FALSIFIABILITY": {
+      "BLOCKED": 3,
+      "FAIL": 3,
+      "PASS": 22
+    }
+  },
+  "generated_at": "2026-09-20T17:37:42Z",
+  "generated_by": "M1/src/materialize.py",
+  "milestones": {
+    "M1-A": "INCOMPLETE",
+    "M1-B": "NOT_AUTHORIZED",
+    "M1-C": "COMPLETE",
+    "M1-D0": "COMPLETE",
+    "M1-D1": "NOT_AUTHORIZED"
+  },
+  "paper_arithmetic_check": {
+    "blocks_per_month": 8640000.0,
+    "consistent": false,
+    "implied_tokens_per_call_for_stated_marginal": 2380.9523809523807,
+    "monthly_cost_from_stated_marginal_cost_usd": 864.0,
+    "monthly_cost_from_token_price_and_240_token_state_usd": 87.0912,
+    "ratio_block_path_to_stated_point": 57.6,
+    "ratio_token_path_to_stated_point": 5.80608,
+    "stated_monthly_point_usd": 15.0,
+    "stated_monthly_usd_range": [
+      10.0,
+      25.0
+    ],
+    "stated_state_tokens": 240
+  },
+  "pareto": {
+    "executed": false,
+    "reason": "Dominated/dominated-set analysis was NOT performed. At this evidence state every decision-critical dimension (net-edge headroom, signal longevity, fill quality, capacity, capital efficiency) is UNKNOWN for every candidate, so any frontier would order missing values. The only eliminations applied are hard constraints backed by verified facts (HC1..HC8). Re-run this analysis in M1-D1 once M1-B has emitted a CURRENT synthesis artifact and the blocking issues are resolved."
+  }
+}
