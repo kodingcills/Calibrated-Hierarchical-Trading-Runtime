@@ -18,6 +18,7 @@ from __future__ import annotations
 import hashlib
 import json
 import sys
+import re
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -43,7 +44,7 @@ import patch as patch_mod  # noqa: E402
 import resolvers  # noqa: E402
 from corpus import (assumptions, constants, evidence, experiments, feasibility, gates,  # noqa: E402
                     mechanisms, sources, staging, techfit, tuples, unknowns, venues)
-from corpus import patches as code_patches  # noqa: E402
+from corpus import child_issues, patches as code_patches  # noqa: E402
 
 DATA = M1 / "data"
 OUT = M1 / "output"
@@ -92,11 +93,31 @@ def attach_source_hashes():
 
 
 def attach_staging(issue_rows):
-    """Attach resolution_method / resolution_stage / tier etc. to every issue row."""
+    """Classify every issue with the two-dimension model, in order of authority.
+
+    1. the authored staging table (baseline issues);
+    2. the row's own fields (a scoped child issue carries its classification with its scope);
+    3. a fail-closed default that keeps an unclassified row off the frontier.
+    """
     table = {row["issue_id"]: row for row in staging.rows()}
     for row in issue_rows:
         stage = table.get(row["issue_id"])
-        if stage is None:
+        if stage is not None:
+            for key, value in stage.items():
+                row[key] = value
+        elif row.get("resolution_method") and row.get("resolution_stage"):
+            row.setdefault("severity", "BLOCKING")
+            row.setdefault("status", "OPEN")
+            row.setdefault("conflict_type", "NO_CONFLICT_INCOMPLETENESS")
+            row["migration_decision"] = f"CHILD_OF_{row.get('parent_issue_id')}"
+            row["migration_from"] = None
+            row.setdefault("migration_reason",
+                           "Scoped child issue carrying its own classification and scope.")
+            row.setdefault("tier", 4)
+            row.setdefault("branch_impact", "ONE")
+            row.setdefault("kill_potential", "LOW")
+            row.setdefault("estimated_effort", "SMALL")
+        else:
             row["resolution_method"] = "DEFERRED"
             row["resolution_stage"] = "NON_BLOCKING"
             row["tier"] = 4
@@ -107,13 +128,8 @@ def attach_staging(issue_rows):
             row["migration_reason"] = ("No migration row exists for this issue; it is excluded "
                                        "from the frontier until one is authored.")
             row["migration_from"] = None
-            continue
-        for key, value in stage.items():
-            row[key] = value
-        # One meaning per word: "BLOCKING" now means "blocks M1 closure" and nothing else.
-        # An item that is required only for M2 is IMPORTANT, not blocking - that is the whole
-        # point of the migration, and leaving the old severity in place would keep the
-        # circularity visible in the vocabulary even after the logic was fixed.
+        # One meaning per word: "BLOCKING" now means "blocks M1 closure" and nothing else. An item
+        # required only for M2 is IMPORTANT, so the vocabulary cannot re-import the circularity.
         row["severity_migrated_from"] = row["severity"]
         row["severity"] = severity_for_stage(row["resolution_stage"])
     return issue_rows
@@ -208,6 +224,47 @@ def apply_computed_gates(candidates, computed, generated_at, recorded_kills=()):
         row["gate_recompute_date"] = generated_at
         out.append(row)
     return out
+
+
+def m1_blocking_ids(issue_rows):
+    return {r["issue_id"] for r in issue_rows
+            if r.get("resolution_stage") == "M1_BLOCKING"}
+
+
+def expand_parent_refs(declared, candidate_id, child_rows):
+    """Replace an aggregate-parent reference with the scoped children naming this candidate.
+
+    If no child names the candidate, the parent reference is dropped. That is the point of the
+    split: a cross-venue blocker must not block a venue it does not concern.
+    """
+    out = set()
+    for ref in declared:
+        children = [c["issue_id"] for c in child_rows if c["parent_issue_id"] == ref]
+        if not children:
+            out.add(ref)
+            continue
+        out |= {c["issue_id"] for c in child_rows
+                if c["parent_issue_id"] == ref
+                and candidate_id in str(c["affected_candidate_ids"] or "").split("|")}
+    return out
+
+
+def apply_blocking_derivation(candidates, issue_rows, child_rows):
+    """Make blocking_issue_ids the union of the scoped declared list and the registry.
+
+    A candidate's blocking list contains M1 blockers only: an item that moved to M2 measurement or
+    became non-blocking is dropped here, so the list cannot overstate what stands in the way.
+    """
+    blocking = coverage.blocking_map(issue_rows, [c["candidate_id"] for c in candidates])
+    m1_ids = m1_blocking_ids(issue_rows)
+    for cand in candidates:
+        declared_raw = {x for x in str(cand["blocking_issue_ids"] or "").split("|")
+                        if x.strip() not in ("", "NONE", "UNKNOWN")}
+        declared = expand_parent_refs(declared_raw, cand["candidate_id"], child_rows)
+        declared &= m1_ids or declared
+        cand["blocking_issue_ids_declared"] = "|".join(sorted(declared)) or "NONE"
+        union = set(declared) | blocking.get(cand["candidate_id"], set())
+        cand["blocking_issue_ids"] = "|".join(sorted(union)) or "NONE"
 
 
 def status_review_rows(candidates):
@@ -380,6 +437,38 @@ def readiness_block(milestones, gate_eligible, frontier_items):
     ]
 
 
+STALE_PATTERNS = (
+    r"(\d[\d,]*)\s+(?:verified\s+)?sources\b",
+    r"(\d[\d,]*)\s+evidence records\b",
+    r"(\d[\d,]*)\s+registered candidate rows\b",
+    r"(\d[\d,]*)\s+(?:actionable )?frontier items\b",
+    r"(\d[\d,]*)\s+blocking unknowns\b",
+)
+
+
+def project_state_stale_values(text, expected):
+    """Find state-dependent numbers stated outside generated blocks.
+
+    Runs are matched against the current value; a mismatch is a stale claim (for example the
+    '51 sources / 29 evidence records' prose that survived a regeneration).
+    """
+    stripped = re.sub(r"<!-- GENERATED:.*?<!-- /GENERATED:[\w-]+ -->", "", text, flags=re.DOTALL)
+    found = []
+    for pattern in STALE_PATTERNS:
+        for match in re.finditer(pattern, stripped, flags=re.IGNORECASE):
+            value = int(match.group(1).replace(",", ""))
+            noun = match.group(0).lower()
+            key = ("sources" if "source" in noun else
+                   "evidence" if "evidence" in noun else
+                   "candidates" if "candidate" in noun else
+                   "frontier" if "frontier" in noun else "blockers")
+            expected_value = expected.get(key)
+            if expected_value is None or value != expected_value:
+                found.append({"noun": key, "stated": value, "expected": expected_value,
+                              "context": match.group(0)})
+    return found
+
+
 def sync_project_state(milestones, counts, totals, migration, gate_eligible, generated_at,
                        frontier_cards):
     if not PROJECT_STATE.exists():
@@ -422,7 +511,16 @@ def main():
     base_candidates = candidate_rows()
     feas_by_id = {f["candidate_id"]: f for f in feasibility.ROWS}
 
-    issue_rows = attach_staging([dict(r) for r in unknowns.DISCREPANCIES])
+    parent_rows = [dict(r) for r in unknowns.DISCREPANCIES]
+    child_rows = []
+    for authored in child_issues.CHILD_ISSUES:
+        row = {col: authored.get(col) for col in unknowns.DISCREPANCY_COLUMNS}
+        row["candidate_id"] = authored.get("candidate_id")
+        row["last_updated"] = generated_at
+        row["is_aggregate_parent"] = "NO"
+        row["severity_migrated_from"] = None
+        child_rows.append(row)
+    issue_rows = attach_staging(parent_rows + child_rows)
     source_rows = [dict(r) for r in sources.SOURCES]
     evidence_rows = [dict(r) for r in evidence.EVIDENCE]
     venue_rows = [dict(r) for r in venues.ROWS]
@@ -455,6 +553,8 @@ def main():
                                    venue_by_id, spec_ids_by_candidate)
     candidates = apply_computed_gates(base_candidates, computed, generated_at, recorded_kills)
     cand_by_id = {c["candidate_id"]: c for c in candidates}
+
+    apply_blocking_derivation(candidates, issue_rows, child_rows)
 
     gate_rows = candidate_gates.gate_status_rows(candidates)
     coverage_rows = coverage.coverage_rows(evidence_rows, candidates, issue_rows)
@@ -574,6 +674,8 @@ def main():
                  sorted(issue_rows, key=lambda r: r["issue_id"]))
     report.table(OUT / "non_frontier_issues.csv", NON_FRONTIER_COLUMNS, non_frontier)
     report.table(OUT / "status_derivation_review.csv", STATUS_REVIEW_COLUMNS, review_rows)
+    report.table(OUT / "kill_supersessions.csv", KILL_SUPERSESSION_COLUMNS,
+                 tuples.KILL_SUPERSESSIONS)
 
     state = {
         "generated_at": generated_at,
@@ -818,6 +920,12 @@ MIGRATION_COLUMNS = [
 NON_FRONTIER_COLUMNS = [
     "issue_id", "resolution_method", "resolution_stage", "tier", "title", "migration_reason",
     "destination",
+]
+
+KILL_SUPERSESSION_COLUMNS = [
+    "candidate_id", "mechanism_id", "horizon_band", "fee_floor", "materiality_bound",
+    "original_rationale", "verdict", "superseding_decision", "reason", "resulting_state",
+    "re_kill_condition",
 ]
 
 STATUS_REVIEW_COLUMNS = [

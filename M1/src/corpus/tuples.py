@@ -26,8 +26,50 @@ COLUMNS = [
     "persistence_status", "technology_status",
     "KG1_MECHANISM", "KG2_DATA", "KG3_EXECUTION", "KG4_HALF_LIFE", "KG5_FALSIFIABILITY",
     "overall_status", "status_source_id", "status_basis",
-    "blocking_issue_ids", "blocking_issue_ids_declared", "kill_gate", "kill_reason", "resurrection_condition",
+    "blocking_issue_ids", "blocking_issue_ids_declared", "kill_gate", "kill_reason",
+    "resurrection_condition", "kill_status", "kill_superseded_by",
     "report_row_ref", "notes", "unknown_fields",
+]
+
+# Kills withdrawn under the current methodology (handoff §8). A recorded kill must satisfy the
+# rules in force now, not the rules in force when it was made. Each row states the hypothesised
+# mechanism and horizon, the verified fee floor, whether any sourced bound on the plausible gross
+# effect exists, the original rationale, and the resulting state.
+KILL_SUPERSESSIONS = [
+    {
+        "candidate_id": "TUP-COINBASE-BTCUSD-H3-MICROOFI-AGG",
+        "mechanism_id": "MECH-MICRO|MECH-OFI", "horizon_band": "H3",
+        "fee_floor": "120 bps round trip (2 x 60 bps taker at the 0-10k tier), verified (SRC-0105)",
+        "materiality_bound": "NONE FOUND",
+        "original_rationale": "60 bps taker per fill gives 120 bps round-trip exchange trading fees "
+                              "before spread/slippage/adverse selection; no venue-specific evidence "
+                              "establishes the required seconds-scale gross edge.",
+        "verdict": "SUPERSEDED",
+        "superseding_decision": "DECISIONS D-0022 and D-0026",
+        "reason": "The rationale is an evidence-absence argument at a cost level. Under D-0022 a "
+                  "concentration of cost is not a kill absent a sourced bound on the plausible "
+                  "gross effect, and no such bound exists for seconds-scale crypto spot signals. "
+                  "The death is withdrawn rather than preserved on a pre-D-0022 rule.",
+        "resulting_state": "Gate-derived: KG3 BLOCKED (verified floor, no venue-specific "
+                           "gross-effect evidence); candidate returns to the not-dead set.",
+        "re_kill_condition": "A documented upper bound on plausible seconds-scale gross movement "
+                             "on this venue that sits below the verified floor resolves it as a "
+                             "kill; that evidence need is registered as UNK-0009-ECON-CRYPTO-SPOT.",
+    },
+    {
+        "candidate_id": "TUP-KRAKEN-BTCUSD-H3-MICROOFI-AGG",
+        "mechanism_id": "MECH-MICRO|MECH-OFI", "horizon_band": "H3",
+        "fee_floor": "160 bps round trip (2 x 80 bps taker at Tier 1), verified (SRC-0106)",
+        "materiality_bound": "NONE FOUND",
+        "original_rationale": "0.80% taker per fill implies 1.60% round-trip before all other "
+                              "costs at Tier 1.",
+        "verdict": "SUPERSEDED",
+        "superseding_decision": "DECISIONS D-0022 and D-0026",
+        "reason": "Same defect as the Coinbase row: a cost level with no sourced materiality bound.",
+        "resulting_state": "Gate-derived: KG3 BLOCKED (verified floor, no venue-specific "
+                           "gross-effect evidence); candidate returns to the not-dead set.",
+        "re_kill_condition": "As above: a documented materiality bound (UNK-0009-ECON-CRYPTO-SPOT).",
+    },
 ]
 
 # Verbatim kill-gate wording from the M1-A dead-candidate cemetery (SRC-0011), kept next to
@@ -78,6 +120,11 @@ def add(candidate_id, candidate_class, instrument, venue_id, horizon_band, mecha
         kill_gate=kill_gate,
         kill_reason=kill_reason,
         resurrection_condition=resurrection_condition,
+        kill_status=("SUPERSEDED"
+                     if candidate_id in {r["candidate_id"] for r in KILL_SUPERSESSIONS}
+                     else (UNKNOWN if overall_status != "DEAD" else "ACTIVE")),
+        kill_superseded_by=next((r["superseding_decision"] for r in KILL_SUPERSESSIONS
+                                 if r["candidate_id"] == candidate_id), UNKNOWN),
         report_row_ref=report_row_ref,
         notes=notes,
     ))
@@ -215,7 +262,7 @@ add("TUP-COINBASE-BTCUSD-H3-MICROOFI-AGG", "TUPLE", "BTC-USD spot", "VEN-COINBAS
     "MECH-MICRO|MECH-OFI", "AGGRESSIVE",
     "BBO/L2/trades with exchange timestamps and the exact account fee tier",
     "Minimal queue competition when marketable; the binding constraint is the venue fee tier",
-    "PASS", "MOOT_DEAD", "LATENCY_UNMEASURED", (_B, _B, _F, _B, _P), "DEAD",
+    "PASS", "UNKNOWN", "LATENCY_UNMEASURED", (_B, _B, _B, _B, _P), "UNKNOWN",
     "Killed by the verified exchange fee floor at the named tier (EVD-0007).",
     "UNK-0006", "SRC-0011 tuple ledger row 10 / cemetery row 1",
     kill_gate="KG3_EXECUTION", kill_reason=_CB_KILL, resurrection_condition=_CB_RESURRECT,
@@ -227,7 +274,7 @@ add("TUP-KRAKEN-BTCUSD-H3-MICROOFI-AGG", "TUPLE", "BTC/USD spot", "VEN-KRAKEN-BT
     "MECH-MICRO|MECH-OFI", "AGGRESSIVE",
     "BBO/L2/trades with exchange timestamps and the exact account fee tier",
     "Same as the Coinbase tuple: marketable execution removes queue concerns and exposes the fee tier",
-    "PASS", "MOOT_DEAD", "LATENCY_UNMEASURED", (_B, _B, _F, _B, _P), "DEAD",
+    "PASS", "UNKNOWN", "LATENCY_UNMEASURED", (_B, _B, _B, _B, _P), "UNKNOWN",
     "Killed by the verified platform fee floor at Tier 1 (EVD-0008).",
     "UNK-0006", "SRC-0011 tuple ledger row 11 / cemetery row 2",
     kill_gate="KG3_EXECUTION", kill_reason=_KR_KILL,

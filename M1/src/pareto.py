@@ -107,17 +107,17 @@ def hard_constraint_checks(cand, feas, evidence_rows, required_round_trip_fee_bp
                                    "history.",
                             source_id="SRC-0109|SRC-0111"))
 
-    # HC1: verified fee floor with no venue-specific supporting evidence.
-    if required_round_trip_fee_bps is not UNKNOWN:
-        support = venue_specific_support(cand, evidence_rows)
-        if not support and expected_gross_edge_bps is UNKNOWN:
+    # HC1: a verified fee floor eliminates only when a *sourced* bound on the plausible gross
+    # effect shows the floor cannot be cleared. A cost level by itself is not a kill (D-0022), so
+    # this rule now requires the bound as an input and cannot fire without one.
+    if required_round_trip_fee_bps is not UNKNOWN and expected_gross_edge_bps is not UNKNOWN:
+        if expected_gross_edge_bps < required_round_trip_fee_bps:
             out.append(dict(
-                rule="HC1_FEE_FLOOR_WITHOUT_GROSS_EVIDENCE", verdict="ELIMINATED",
-                basis=f"verified round-trip fee floor {required_round_trip_fee_bps:.1f} bps; no "
-                      "venue-specific supporting evidence and no evidenced gross edge",
-                detail="Evidence-absence elimination: a verified cost floor stands against an "
-                       "unevidenced gross effect. Reversible by one venue-specific after-cost "
-                       "measurement.",
+                rule="HC1_FEE_FLOOR_EXCEEDS_SOURCED_GROSS_BOUND", verdict="ELIMINATED",
+                basis=f"verified round-trip fee floor {required_round_trip_fee_bps:.1f} bps "
+                      f"exceeds the sourced gross-effect bound {expected_gross_edge_bps:.1f} bps",
+                detail="Materiality mismatch: the cost floor is above a documented upper bound on "
+                       "the achievable gross effect, so the branch cannot clear its own costs.",
                 source_id="SRC-0105|SRC-0106|SRC-0026"))
 
     return out

@@ -16,10 +16,13 @@ _SUPPORT_CLASSES = ("CONSENSUS_FACT", "SUPPORTED_FINDING")
 _DIRECTIONS = ("SUPPORTS", "WEAKENS", "NEUTRAL")
 
 
+SENTINEL_TOKENS = {"", "NONE", "UNKNOWN", "N/A", "None"}
+
+
 def _split(ids) -> list:
     if ids is UNKNOWN or ids == "":
         return []
-    return [x for x in str(ids).split("|") if x]
+    return [x for x in str(ids).split("|") if x.strip() not in SENTINEL_TOKENS]
 
 
 ALL_TOKENS = ("ALL_CANDIDATES", "ALL_EXTERNAL_EVIDENCE")
@@ -35,6 +38,10 @@ def blocking_map(discrepancies, all_candidate_ids):
     out = {}
     for issue in discrepancies:
         if issue["severity"] != "BLOCKING":
+            continue
+        if str(issue.get("is_aggregate_parent", "NO")).upper() == "YES":
+            # An aggregate parent is a reporting object. Letting it gate candidates is exactly the
+            # false-global-block failure this model exists to remove.
             continue
         tokens = set(_split(issue["affected_candidate_ids"])) | set(_split(issue["candidate_id"]))
         targets = set()

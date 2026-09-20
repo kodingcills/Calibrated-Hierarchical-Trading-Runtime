@@ -1,0 +1,32 @@
+{
+  "acceptable_evidence": "Any primary source that answers the claim needed",
+  "affected_candidates": [
+    "TUP-USSTOCK-XVENUE-H1-STALEQUOTE-AGG"
+  ],
+  "affected_gates": "NONE",
+  "blocker_id": "UNK-0018-USSTOCK-CROSS",
+  "branch_impact": "ONE",
+  "contradictory_evidence_ids": [
+    "EVD-0042"
+  ],
+  "decision_prevented": "Causal cross-venue comparison, and therefore the stale-quote tuple (KG2/KG3).",
+  "disallowed_evidence": "Assumed values, secondary summaries, social posts",
+  "estimated_effort": "MEDIUM",
+  "is_aggregate_parent": "NO",
+  "kill_condition": "Causal cross-venue comparison, and therefore the stale-quote tuple (KG2/KG3).",
+  "kill_potential": "MEDIUM",
+  "known_evidence_ids": [],
+  "known_source_ids": [],
+  "last_updated": "2026-09-20T19:09:29Z",
+  "parent_issue_id": "UNK-0018",
+  "priority_reason": "Scoped child: this is a procurement and synchronisation question, not a per-venue one.",
+  "priority_score": null,
+  "required_answer": "Per-feed timestamp semantics plus a documented synchronisation method and its error bound.",
+  "resolution_method": "EXTERNAL_ACTION",
+  "resolution_stage": "M1_BLOCKING",
+  "resurrection_condition": null,
+  "status": "OPEN",
+  "success_condition": "Per-feed timestamp semantics plus a documented synchronisation method and its error bound.",
+  "tier": 3,
+  "title": "Cross-venue synchronisation for the national-market tuple: can several venue feeds be plac"
+}

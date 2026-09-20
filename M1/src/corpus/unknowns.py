@@ -22,6 +22,9 @@ DISCREPANCY_COLUMNS = [
     # Two-dimension issue model (handoff §3). Filled from M1/src/corpus/staging.py.
     "resolution_method", "resolution_stage", "tier", "branch_impact", "kill_potential",
     "estimated_effort", "migration_decision", "migration_reason", "migration_from",
+    # Aggregate/child structure: a coarse blocker must not mechanically block unrelated
+    # candidates, so scoping lives on children and the parent is a reporting object.
+    "parent_issue_id", "is_aggregate_parent", "scope_venue", "scope_feed",
 ]
 
 OPEN_QUESTION_COLUMNS = [
@@ -35,8 +38,16 @@ _UPDATED = "2026-09-20"
 DISCREPANCIES = []
 
 
+def _agg(issue_id, *args, **kwargs):
+    """Register an aggregate parent issue: a reporting object, never a candidate gate."""
+    kwargs["is_aggregate_parent"] = "YES"
+    return d(issue_id, *args, **kwargs)
+
+
 def d(issue_id, claim_needed, known_evidence, specific_evidence_needed, decision_prevented,
       severity, resolution_class, candidate_id=UNKNOWN, affected=UNKNOWN,
+      is_aggregate_parent="NO", parent_issue_id=UNKNOWN, scope_venue=UNKNOWN,
+      scope_feed=UNKNOWN,
       source_A=UNKNOWN, source_B=UNKNOWN, conflict_type="NO_CONFLICT_INCOMPLETENESS",
       exact_conflict=UNKNOWN, suspected_reason=UNKNOWN,
       search_attempts=UNKNOWN, web_research_resolvable="UNKNOWN",
@@ -52,7 +63,9 @@ def d(issue_id, claim_needed, known_evidence, specific_evidence_needed, decision
         requires_vendor_quote=requires_vendor_quote,
         requires_m2_measurement=requires_m2_measurement, resolution_class=resolution_class,
         decision_prevented=decision_prevented, can_M2_measure=can_M2_measure,
-        severity=severity, status=status, evidence_ids=evidence_ids, last_updated=_UPDATED))
+        severity=severity, status=status, evidence_ids=evidence_ids, last_updated=_UPDATED,
+        parent_issue_id=parent_issue_id, is_aggregate_parent=is_aggregate_parent,
+        scope_venue=scope_venue, scope_feed=scope_feed))
 
 
 _CME = "TUP-CME-ES-H1-QDEP-PAS|TUP-CME-ES-H3-OFI-AGG|TUP-CME-NQ-H3-OFI-AGG|" \
@@ -171,7 +184,7 @@ d("UNK-0008",
   evidence_ids="EVD-0012|EVD-0013",
   affected="ALL_CANDIDATES")
 
-d("UNK-0009",
+_agg("UNK-0009",
   claim_needed="Modern, venue-specific, after-cost replication (or explicit disconfirmation) for "
                "the mechanism each candidate relies on. The only external mechanism evidence in "
                "this package is the U.S.-equity OFI/queue-imbalance/microprice literature; every "
@@ -278,7 +291,7 @@ d("UNK-0017",
   affected="TUP-SYSTEMONE-HARDCORE-ENGINE|TUP-JEV-HOSTED-LATENCY-UNMEASURED",
   evidence_ids="EVD-0023|EVD-0024|EVD-0026")
 
-d("UNK-0018",
+_agg("UNK-0018",
   claim_needed="Validated timestamp semantics for historical and live feeds (exchange/event time "
                "versus receive time, clock domain, sequence integrity) sufficient for causal "
                "replay.",
@@ -353,7 +366,7 @@ d("UNK-0022",
   affected="TUP-CBOEBZX-LARGETICK-H2H3-SPREADCAP-PAS", requires_vendor_quote="YES",
   evidence_ids="EVD-0006|EVD-0021")
 
-d("UNK-0023",
+_agg("UNK-0023",
   claim_needed="Resolvable identities (URL/DOI) for the 25 external sources the M1-A report cites "
                "only through opaque internal citation tokens.",
   known_evidence="Tokens are preserved verbatim and the report names most sources descriptively "

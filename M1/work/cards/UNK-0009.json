@@ -10,6 +10,7 @@
   "decision_prevented": "Mechanism credibility (KG1) for every candidate whose mechanism has no current, on-venue, after-cost replication.",
   "disallowed_evidence": "Transfer of another venue's coefficients, decay or sample; marketing material",
   "estimated_effort": "MEDIUM",
+  "is_aggregate_parent": "YES",
   "kill_condition": "Venue-specific evidence contradicts the mechanism, or a negative replication is found",
   "kill_potential": "HIGH",
   "known_evidence_ids": [
@@ -21,7 +22,8 @@
     "SRC-0101",
     "SRC-0102"
   ],
-  "last_updated": "2026-09-20T18:48:51Z",
+  "last_updated": "2026-09-20T19:09:29Z",
+  "parent_issue_id": null,
   "priority_reason": "M1-BLOCKING retained: mechanism credibility is the core M1 question (handoff \u00a715 KG1).",
   "priority_score": null,
   "required_answer": "Current, venue-specific, after-cost evidence for the mechanism each candidate relies on",

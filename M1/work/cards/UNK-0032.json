@@ -10,13 +10,15 @@
   "decision_prevented": "Robustness judgment (required by the project's own G4 gate).",
   "disallowed_evidence": "A single point-estimate cost assumption",
   "estimated_effort": "MEDIUM",
+  "is_aggregate_parent": "NO",
   "kill_condition": "Net edge flips sign inside the plausible cost range",
   "kill_potential": "LOW",
   "known_evidence_ids": [],
   "known_source_ids": [
     "SRC-0014"
   ],
-  "last_updated": "2026-09-20T18:48:51Z",
+  "last_updated": "2026-09-20T19:09:29Z",
+  "parent_issue_id": null,
   "priority_reason": "MIGRATED to M2_MEASUREMENT: it is a robustness output over measured inputs, and the project's own G4 gate places it after baseline evidence exists.",
   "priority_score": null,
   "required_answer": "Sign stability of net edge across conservative fee/slippage/spread assumptions",

@@ -22,6 +22,7 @@
   "decision_prevented": "Net-economics arithmetic for equity tuples (KG3).",
   "disallowed_evidence": "Published headline rates assumed to be the realized rates",
   "estimated_effort": "MEDIUM",
+  "is_aggregate_parent": "NO",
   "kill_condition": "Verified realized fees leave no headroom for the hypothesised effect",
   "kill_potential": "HIGH",
   "known_evidence_ids": [
@@ -31,7 +32,8 @@
   "known_source_ids": [
     "SRC-0114"
   ],
-  "last_updated": "2026-09-20T18:48:51Z",
+  "last_updated": "2026-09-20T19:09:29Z",
+  "parent_issue_id": null,
   "priority_reason": "M1-BLOCKING retained: known costs are Tier-1 killers.",
   "priority_score": null,
   "required_answer": "Realized add/remove rates and fee codes for the intended routing and account type",

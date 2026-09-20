@@ -1,0 +1,36 @@
+{
+  "acceptable_evidence": "Any primary source that answers the claim needed",
+  "affected_candidates": [
+    "TUP-NASDAQ-LARGETICK-H2H3-MICRO-AGG"
+  ],
+  "affected_gates": "NONE",
+  "blocker_id": "UNK-0009-MECH-NASDAQ-MICRO",
+  "branch_impact": "ONE",
+  "contradictory_evidence_ids": [
+    "EVD-0005",
+    "EVD-0033",
+    "EVD-0034",
+    "EVD-0041",
+    "EVD-0042"
+  ],
+  "decision_prevented": "KG1 for the Nasdaq micro-price tuple.",
+  "disallowed_evidence": "Assumed values, secondary summaries, social posts",
+  "estimated_effort": "SMALL",
+  "is_aggregate_parent": "NO",
+  "kill_condition": "KG1 for the Nasdaq micro-price tuple.",
+  "kill_potential": "HIGH",
+  "known_evidence_ids": [],
+  "known_source_ids": [],
+  "last_updated": "2026-09-20T19:09:29Z",
+  "parent_issue_id": "UNK-0009",
+  "priority_reason": "New child created by the iteration-4 citation replacement: the claim is verified but its venue scope is not, so venue-specific KG1 credit is withheld.",
+  "priority_score": null,
+  "required_answer": "An author or publisher version of the paper that states its dataset, venue, instrument universe and horizon, or a separate venue-specific micro-price study.",
+  "resolution_method": "PUBLIC_RESEARCH",
+  "resolution_stage": "M1_BLOCKING",
+  "resurrection_condition": null,
+  "status": "OPEN",
+  "success_condition": "An author or publisher version of the paper that states its dataset, venue, instrument universe and horizon, or a separate venue-specific micro-price study.",
+  "tier": 2,
+  "title": "Is there venue-specific evidence for the micro-price mechanism on a named US equity venue,"
+}

@@ -1,122 +1,74 @@
 {
-  "active_item_count": 17,
+  "active_item_count": 25,
   "clusters": {
     "CBOE_EQUITY": [
       "UNK-0005",
+      "UNK-0018-BZX",
       "UNK-0033"
     ],
     "CBOE_OPTIONS": [
       "UNK-0012",
+      "UNK-0023-EXCH-OTHER",
       "UNK-0027"
     ],
     "CME": [
       "UNK-0002",
       "UNK-0003",
+      "UNK-0009-MECH-CME",
+      "UNK-0018-CME",
+      "UNK-0023-CME-DOCS",
+      "UNK-0023-LIT",
       "UNK-0027"
     ],
     "CRYPTO_SPOT": [
-      "UNK-0034"
+      "UNK-0009-ECON-CRYPTO-SPOT"
     ],
     "DERIBIT": [
       "UNK-0013",
-      "UNK-0027",
-      "UNK-0034"
+      "UNK-0027"
     ],
     "EUREX": [
       "UNK-0011",
+      "UNK-0018-EUREX",
+      "UNK-0023-EXCH-OTHER",
+      "UNK-0023-LIT",
       "UNK-0027"
     ],
     "EVENT_MARKETS": [
       "UNK-0014",
       "UNK-0027",
-      "UNK-0034",
       "UNK-0035"
     ],
     "FX": [
       "UNK-0015"
     ],
     "GLOBAL": [
-      "UNK-0009",
-      "UNK-0018",
-      "UNK-0023",
       "UNK-0028"
     ],
     "HYPERLIQUID": [
+      "UNK-0009-ECON-CRYPTO-SPOT",
       "UNK-0010",
-      "UNK-0034",
+      "UNK-0018-HYPERLIQUID",
       "UNK-0035"
     ],
     "NASDAQ_EQUITY": [
       "UNK-0005",
+      "UNK-0009-MECH-NASDAQ-MICRO",
+      "UNK-0018-NASDAQ",
+      "UNK-0023-EXCH-OTHER",
+      "UNK-0023-LIT",
       "UNK-0027",
       "UNK-0033"
     ],
     "US_EQUITY_CROSS": [
       "UNK-0005",
+      "UNK-0018-USSTOCK-CROSS",
       "UNK-0033"
     ]
   },
   "gate_eligible_candidates": [],
-  "generated_at": "2026-09-20T18:48:51Z",
+  "generated_at": "2026-09-20T19:09:29Z",
   "items": [
-    {
-      "affected_candidates": [
-        "ALL_EXTERNAL_EVIDENCE"
-      ],
-      "affected_gates": "KG1_MECHANISM|KG3_EXECUTION",
-      "blocker_id": "UNK-0023",
-      "decision_prevented": "Independent verification of any external claim, including fee schedules that already killed candidates; the arithmetic is unaffected, the auditability is.",
-      "kill_condition": "A re-derived fact contradicts the report-mediated value (that is a finding, not a failure)",
-      "priority_reason": "M1-BLOCKING retained: decisions already rest on these facts, and re-derivation is the cheapest available integrity upgrade.",
-      "priority_score": 60.0,
-      "resolution_method": "PUBLIC_RESEARCH",
-      "resolution_stage": "M1_BLOCKING",
-      "status": "IN_PROGRESS",
-      "success_condition": "Every decision-relevant external fact is re-derived from a primary page",
-      "tier": 1,
-      "title": "Citation-token to primary-URL resolution"
-    },
-    {
-      "affected_candidates": [
-        "TUP-HYPERLIQUID-BTCPERP-H1-QDEP-AGGPAS",
-        "TUP-HYPERLIQUID-BTCPERP-H3-OFILIQ-AGG",
-        "TUP-HYPERLIQUID-BTCPERP-H4-FUNDBASIS-MIX",
-        "TUP-KALSHI-EVENT-H5-EVENTINF-AGG",
-        "TUP-POLYMARKET-EVENT-H5-EVENTINF-AGG",
-        "TUP-DERIBIT-BTCOPT-H5-SURFRV-MIX",
-        "TUP-COINBASE-BTCUSD-H3-MICROOFI-AGG",
-        "TUP-KRAKEN-BTCUSD-H3-MICROOFI-AGG"
-      ],
-      "affected_gates": "NONE",
-      "blocker_id": "UNK-0034",
-      "decision_prevented": "Access legality for four venue families, and therefore KG3 and KG5 for their candidates: no fill or cost model matters for a venue the operator may not use.",
-      "kill_condition": "Access legality for four venue families, and therefore KG3 and KG5 for their candidates: no fill or cost model matters for a venue the operator may not use.",
-      "priority_reason": "Not resolvable by research: it is a fact about the operator, not about the market. Registered so no session can quietly assume a jurisdiction that makes a branch look accessible.",
-      "priority_score": 60.0,
-      "resolution_method": "DEFERRED",
-      "resolution_stage": "M1_BLOCKING",
-      "status": "OPEN",
-      "success_condition": "A statement of the operator's legal domicile, entity type and client classification, plus the per-venue eligibility determination that follows from it.",
-      "tier": 1,
-      "title": "The operator's own jurisdiction and client classification, which determine whether each ve"
-    },
-    {
-      "affected_candidates": [
-        "ALL_CANDIDATES"
-      ],
-      "affected_gates": "KG2_DATA",
-      "blocker_id": "UNK-0018",
-      "decision_prevented": "Causal replay and therefore every queue, priority or fill claim; applies to any candidate that reaches replay.",
-      "kill_condition": "Timestamps cannot support causal ordering, invalidating replay for that feed",
-      "priority_reason": "M1-BLOCKING retained: this is a data-adequacy fact, not a measurement.",
-      "priority_score": 30.0,
-      "resolution_method": "EXTERNAL_ACTION",
-      "resolution_stage": "M1_BLOCKING",
-      "status": "IN_PROGRESS",
-      "success_condition": "Samples validate: monotonic ordering, sequence integrity, documented clock domain",
-      "tier": 3,
-      "title": "Historical and live feed timestamp semantics"
-    },
     {
       "affected_candidates": [
         "TUP-CME-ES-H1-QDEP-PAS",
@@ -141,20 +93,86 @@
     },
     {
       "affected_candidates": [
-        "ALL_CANDIDATES"
+        "TUP-HYPERLIQUID-BTCPERP-H3-OFILIQ-AGG",
+        "TUP-HYPERLIQUID-BTCPERP-H4-FUNDBASIS-MIX"
       ],
-      "affected_gates": "KG1_MECHANISM",
-      "blocker_id": "UNK-0009",
-      "decision_prevented": "Mechanism credibility (KG1) for every candidate whose mechanism has no current, on-venue, after-cost replication.",
-      "kill_condition": "Venue-specific evidence contradicts the mechanism, or a negative replication is found",
-      "priority_reason": "M1-BLOCKING retained: mechanism credibility is the core M1 question (handoff \u00a715 KG1).",
-      "priority_score": 22.5,
+      "affected_gates": "NONE",
+      "blocker_id": "UNK-0018-HYPERLIQUID",
+      "decision_prevented": "Replay validity for the Hyperliquid seconds-scale tuples (KG2).",
+      "kill_condition": "Replay validity for the Hyperliquid seconds-scale tuples (KG2).",
+      "priority_reason": "Scoped child: the archive is the venue's own and the remaining question is its field semantics, which public documentation or one sample answers.",
+      "priority_score": 24.0,
       "resolution_method": "PUBLIC_RESEARCH",
       "resolution_stage": "M1_BLOCKING",
       "status": "OPEN",
-      "success_condition": "Venue-specific after-cost evidence exists, or a credible structural argument for transfer",
-      "tier": 2,
-      "title": "Modern venue-specific replication (or disconfirmation) of the borrowed mechanisms"
+      "success_condition": "The archive's file schema and a sample hour, plus a stated rule for missing hours.",
+      "tier": 1,
+      "title": "Timestamp semantics and completeness rules for the official Hyperliquid archive: block tim"
+    },
+    {
+      "affected_candidates": [
+        "TUP-CME-ES-H1-QDEP-PAS",
+        "TUP-CME-ES-H3-OFI-AGG",
+        "TUP-CME-NQ-H3-OFI-AGG",
+        "TUP-CME-TSY-H2-QREPL-MIX",
+        "TUP-CME-WTI-H4-FLOWVOL-AGG"
+      ],
+      "affected_gates": "NONE",
+      "blocker_id": "UNK-0023-CME-DOCS",
+      "decision_prevented": "KG1/KG2 evidence quality for the CME rows, and auditability of the MDP feasibility claim.",
+      "kill_condition": "KG1/KG2 evidence quality for the CME rows, and auditability of the MDP feasibility claim.",
+      "priority_reason": "Child scoped to CME technical documentation; the fee question is an external action and is not part of this child.",
+      "priority_score": 24.0,
+      "resolution_method": "PUBLIC_RESEARCH",
+      "resolution_stage": "M1_BLOCKING",
+      "status": "OPEN",
+      "success_condition": "Primary CME pages (MDP product documentation, rulebook chapter, data-services product page) captured with dates.",
+      "tier": 1,
+      "title": "Independent verifiability of the CME technical claims used by CME gates (MDP capability, m"
+    },
+    {
+      "affected_candidates": [
+        "TUP-CME-ES-H1-QDEP-PAS",
+        "TUP-CME-ES-H3-OFI-AGG",
+        "TUP-CME-NQ-H3-OFI-AGG",
+        "TUP-CME-TSY-H2-QREPL-MIX",
+        "TUP-CME-WTI-H4-FLOWVOL-AGG",
+        "TUP-NASDAQ-LARGETICK-H2-QIMB-AGG",
+        "TUP-NASDAQ-LARGETICK-H2H3-MICRO-AGG",
+        "TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG",
+        "TUP-EUREX-FESX-H2H3-OFIQ-MIX"
+      ],
+      "affected_gates": "NONE",
+      "blocker_id": "UNK-0023-LIT",
+      "decision_prevented": "KG1 for candidates that would borrow the order-flow mechanism, and auditability of the mechanism-evidence row already in the ledger.",
+      "kill_condition": "KG1 for candidates that would borrow the order-flow mechanism, and auditability of the mechanism-evidence row already in the ledger.",
+      "priority_reason": "Child scoped to the literature claims only: fee schedules, feed specifications and regulatory facts are handled by their own children after independent re-derivation.",
+      "priority_score": 24.0,
+      "resolution_method": "PUBLIC_RESEARCH",
+      "resolution_stage": "M1_BLOCKING",
+      "status": "IN_PROGRESS",
+      "success_condition": "An authoritative record for the order-flow-imbalance claim (publisher metadata plus an author or repository version) establishing its sample and venue.",
+      "tier": 1,
+      "title": "Independent verifiability of the microstructure literature claims that gates depend on (qu"
+    },
+    {
+      "affected_candidates": [
+        "TUP-NASDAQ-LARGETICK-H2-QIMB-AGG",
+        "TUP-NASDAQ-LARGETICK-H2H3-MICRO-AGG",
+        "TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG"
+      ],
+      "affected_gates": "NONE",
+      "blocker_id": "UNK-0018-NASDAQ",
+      "decision_prevented": "Causal replay and therefore queue/fill claims for the Nasdaq equity rows (KG2).",
+      "kill_condition": "Causal replay and therefore queue/fill claims for the Nasdaq equity rows (KG2).",
+      "priority_reason": "Scoped child: Nasdaq's timestamp question is settled by one product specification and a sample, independently of CME or Eurex.",
+      "priority_score": 18.0,
+      "resolution_method": "EXTERNAL_ACTION",
+      "resolution_stage": "M1_BLOCKING",
+      "status": "OPEN",
+      "success_condition": "The ITCH message specification's timestamp section plus a sample day whose ordering and sequence fields validate against the project's contract.",
+      "tier": 3,
+      "title": "Timestamp semantics for Nasdaq order-level history and the live TotalView feed: event vers"
     },
     {
       "affected_candidates": [
@@ -201,6 +219,66 @@
       "success_condition": "A chosen sponsor's published commission schedule or a written quote for the intended order flow.",
       "tier": 3,
       "title": "Sponsored-access cost: broker commission/markup for routed order flow, which no exchange o"
+    },
+    {
+      "affected_candidates": [
+        "TUP-EUREX-FESX-H2H3-OFIQ-MIX",
+        "TUP-CBOE-USOPT-H5-SURFRV-MIX",
+        "TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG"
+      ],
+      "affected_gates": "NONE",
+      "blocker_id": "UNK-0023-EXCH-OTHER",
+      "decision_prevented": "Evidence quality for the Eurex tuple and for the options candidate's Gate-2 status.",
+      "kill_condition": "Evidence quality for the Eurex tuple and for the options candidate's Gate-2 status.",
+      "priority_reason": "Child scoped to the three remaining venue claims; nothing else is attached to it.",
+      "priority_score": 16.0,
+      "resolution_method": "PUBLIC_RESEARCH",
+      "resolution_stage": "M1_BLOCKING",
+      "status": "OPEN",
+      "success_condition": "Primary pages for each remaining claim, captured with dates.",
+      "tier": 1,
+      "title": "Independent verifiability of the remaining exchange claims: Eurex T7 interfaces, the Cboe "
+    },
+    {
+      "affected_candidates": [
+        "TUP-CME-ES-H1-QDEP-PAS",
+        "TUP-CME-ES-H3-OFI-AGG",
+        "TUP-CME-NQ-H3-OFI-AGG",
+        "TUP-CME-TSY-H2-QREPL-MIX",
+        "TUP-CME-WTI-H4-FLOWVOL-AGG"
+      ],
+      "affected_gates": "NONE",
+      "blocker_id": "UNK-0009-MECH-CME",
+      "decision_prevented": "KG1 for every CME candidate (mechanism plausibility, not profitability).",
+      "kill_condition": "KG1 for every CME candidate (mechanism plausibility, not profitability).",
+      "priority_reason": "Split from the conflated UNK-0009: this asks only whether the mechanism exists on CME, not whether it is profitable there.",
+      "priority_score": 13.5,
+      "resolution_method": "PUBLIC_RESEARCH",
+      "resolution_stage": "M1_BLOCKING",
+      "status": "OPEN",
+      "success_condition": "A study on CME index futures (or an exchange-documented equivalent) establishing short-horizon flow/price predictability, with its sample and horizon stated.",
+      "tier": 2,
+      "title": "Does the order-flow-imbalance / queue mechanism have direct or closely comparable evidence"
+    },
+    {
+      "affected_candidates": [
+        "TUP-COINBASE-BTCUSD-H3-MICROOFI-AGG",
+        "TUP-KRAKEN-BTCUSD-H3-MICROOFI-AGG",
+        "TUP-HYPERLIQUID-BTCPERP-H3-OFILIQ-AGG",
+        "TUP-HYPERLIQUID-BTCPERP-H4-FUNDBASIS-MIX"
+      ],
+      "affected_gates": "NONE",
+      "blocker_id": "UNK-0009-ECON-CRYPTO-SPOT",
+      "decision_prevented": "Whether the crypto spot branch can be killed on materiality rather than left blocked: a cost level alone is not a kill (D-0022).",
+      "kill_condition": "Whether the crypto spot branch can be killed on materiality rather than left blocked: a cost level alone is not a kill (D-0022).",
+      "priority_reason": "Split from UNK-0009 and promoted to M1 because it decides an open branch cheaply: it is the missing input that a kill would need.",
+      "priority_score": 12.0,
+      "resolution_method": "PUBLIC_RESEARCH",
+      "resolution_stage": "M1_BLOCKING",
+      "status": "OPEN",
+      "success_condition": "A venue-specific study (or an exchange-published statistic) bounding achievable short-horizon gross movement on Coinbase or Kraken, sufficient to decide whether a 120-160 bps round trip is arithmetically out of reach.",
+      "tier": 1,
+      "title": "Is there a documented upper bound on the plausible gross seconds-scale effect on large cry"
     },
     {
       "affected_candidates": [
@@ -293,6 +371,27 @@
     },
     {
       "affected_candidates": [
+        "TUP-CME-ES-H1-QDEP-PAS",
+        "TUP-CME-ES-H3-OFI-AGG",
+        "TUP-CME-NQ-H3-OFI-AGG",
+        "TUP-CME-TSY-H2-QREPL-MIX",
+        "TUP-CME-WTI-H4-FLOWVOL-AGG"
+      ],
+      "affected_gates": "NONE",
+      "blocker_id": "UNK-0018-CME",
+      "decision_prevented": "Causal replay for every CME candidate (KG2).",
+      "kill_condition": "Causal replay for every CME candidate (KG2).",
+      "priority_reason": "Scoped child of the cross-venue timestamp blocker: the CME question is answerable by the exchange and does not depend on any other venue's feed.",
+      "priority_score": 12.0,
+      "resolution_method": "EXTERNAL_ACTION",
+      "resolution_stage": "M1_BLOCKING",
+      "status": "OPEN",
+      "success_condition": "A written answer from CME market-data support, or a sample file whose sequence and timestamp fields are validated against the project's timestamp contract.",
+      "tier": 3,
+      "title": "Timestamp semantics for CME market data: which field is exchange event time, which is rece"
+    },
+    {
+      "affected_candidates": [
         "TUP-HYPERLIQUID-BTCPERP-H1-QDEP-AGGPAS",
         "TUP-HYPERLIQUID-BTCPERP-H3-OFILIQ-AGG",
         "TUP-HYPERLIQUID-BTCPERP-H4-FUNDBASIS-MIX",
@@ -351,6 +450,23 @@
     },
     {
       "affected_candidates": [
+        "TUP-NASDAQ-LARGETICK-H2H3-MICRO-AGG"
+      ],
+      "affected_gates": "NONE",
+      "blocker_id": "UNK-0009-MECH-NASDAQ-MICRO",
+      "decision_prevented": "KG1 for the Nasdaq micro-price tuple.",
+      "kill_condition": "KG1 for the Nasdaq micro-price tuple.",
+      "priority_reason": "New child created by the iteration-4 citation replacement: the claim is verified but its venue scope is not, so venue-specific KG1 credit is withheld.",
+      "priority_score": 9.0,
+      "resolution_method": "PUBLIC_RESEARCH",
+      "resolution_stage": "M1_BLOCKING",
+      "status": "OPEN",
+      "success_condition": "An author or publisher version of the paper that states its dataset, venue, instrument universe and horizon, or a separate venue-specific micro-price study.",
+      "tier": 2,
+      "title": "Is there venue-specific evidence for the micro-price mechanism on a named US equity venue,"
+    },
+    {
+      "affected_candidates": [
         "TUP-CME-ES-H1-QDEP-PAS",
         "TUP-CME-ES-H3-OFI-AGG",
         "TUP-CME-NQ-H3-OFI-AGG",
@@ -372,6 +488,40 @@
     },
     {
       "affected_candidates": [
+        "TUP-CBOEBZX-LARGETICK-H2H3-SPREADCAP-PAS"
+      ],
+      "affected_gates": "NONE",
+      "blocker_id": "UNK-0018-BZX",
+      "decision_prevented": "Causal replay for the BZX passive tuple (KG2).",
+      "kill_condition": "Causal replay for the BZX passive tuple (KG2).",
+      "priority_reason": "Scoped child: one venue, one product, one sample.",
+      "priority_score": 4.0,
+      "resolution_method": "EXTERNAL_ACTION",
+      "resolution_stage": "M1_BLOCKING",
+      "status": "OPEN",
+      "success_condition": "Cboe depth-feed specification and a sample with field-level timestamp semantics.",
+      "tier": 3,
+      "title": "Timestamp semantics for the Cboe BZX depth feed and any historical depth archive."
+    },
+    {
+      "affected_candidates": [
+        "TUP-EUREX-FESX-H2H3-OFIQ-MIX"
+      ],
+      "affected_gates": "NONE",
+      "blocker_id": "UNK-0018-EUREX",
+      "decision_prevented": "Causal replay for the Eurex tuple (KG2).",
+      "kill_condition": "Causal replay for the Eurex tuple (KG2).",
+      "priority_reason": "Scoped child: a public specification question for one venue.",
+      "priority_score": 4.0,
+      "resolution_method": "PUBLIC_RESEARCH",
+      "resolution_stage": "M1_BLOCKING",
+      "status": "OPEN",
+      "success_condition": "T7 EOBI message specification timestamp section, plus an access path to a sample.",
+      "tier": 1,
+      "title": "Timestamp semantics for Eurex EOBI order-book messages."
+    },
+    {
+      "affected_candidates": [
         "TUP-EUREX-FESX-H2H3-OFIQ-MIX"
       ],
       "affected_gates": "KG3_EXECUTION",
@@ -386,7 +536,24 @@
       "success_condition": "A viable participant route with dated fees exists",
       "tier": 3,
       "title": "Eurex execution economics, matching rule and access path"
+    },
+    {
+      "affected_candidates": [
+        "TUP-USSTOCK-XVENUE-H1-STALEQUOTE-AGG"
+      ],
+      "affected_gates": "NONE",
+      "blocker_id": "UNK-0018-USSTOCK-CROSS",
+      "decision_prevented": "Causal cross-venue comparison, and therefore the stale-quote tuple (KG2/KG3).",
+      "kill_condition": "Causal cross-venue comparison, and therefore the stale-quote tuple (KG2/KG3).",
+      "priority_reason": "Scoped child: this is a procurement and synchronisation question, not a per-venue one.",
+      "priority_score": 2.0,
+      "resolution_method": "EXTERNAL_ACTION",
+      "resolution_stage": "M1_BLOCKING",
+      "status": "OPEN",
+      "success_condition": "Per-feed timestamp semantics plus a documented synchronisation method and its error bound.",
+      "tier": 3,
+      "title": "Cross-venue synchronisation for the national-market tuple: can several venue feeds be plac"
     }
   ],
-  "next_item": "UNK-0023"
+  "next_item": "UNK-0002"
 }

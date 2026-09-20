@@ -20,6 +20,7 @@ UNKNOWN = None
 PATCH_DEFAULTS = {
     "modified_claims": [],
     "proposed_venue_updates": [],
+    "proposed_source_updates": [],
     "proposed_issue_updates": [],
     "proposed_candidate_updates": [],
     "proposed_gate_changes": [],
@@ -132,6 +133,12 @@ def apply_verified(patches, source_rows, evidence_rows, issue_rows, cards_by_id,
             ev = dict(ev)
             ev.setdefault("mechanism_id", UNKNOWN)
             ev.setdefault("venue_id", UNKNOWN)
+            for field in ("observed_market", "observed_venue",
+                          "observed_instrument_or_universe", "observed_period",
+                          "observed_horizon"):
+                ev.setdefault(field, UNKNOWN)
+            ev.setdefault("transfer_status", "UNKNOWN")
+            ev.setdefault("candidate_link_reason", patch["reason"])
             ev.setdefault("evidence_state", "PATCH_SUPPLIED")
             evidence.append(ev)
             added_evidence.append(ev["evidence_id"])
@@ -144,6 +151,19 @@ def apply_verified(patches, source_rows, evidence_rows, issue_rows, cards_by_id,
             if update.get("resolution_note"):
                 row["notes"] = update["resolution_note"]
             row["last_updated"] = patch["created_at"]
+
+        for update in patch.get("proposed_source_updates", []):
+            target = next((s for s in sources if s["source_id"] == update["source_id"]), None)
+            if target is None:
+                audit.append({"kind": "EFFECT", "patch_id": patch["patch_id"], "applied": False,
+                              "reason": f"unknown source {update['source_id']}"})
+                continue
+            for field, value in update["fields"].items():
+                target[field] = value
+            audit.append({"kind": "EFFECT", "patch_id": patch["patch_id"], "applied": True,
+                          "source_update": update["source_id"],
+                          "fields": sorted(update["fields"]),
+                          "reason": update["reason"]})
 
         venue_changes = []
         for update in patch.get("proposed_venue_updates", []):

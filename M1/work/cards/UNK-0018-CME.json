@@ -1,0 +1,40 @@
+{
+  "acceptable_evidence": "Any primary source that answers the claim needed",
+  "affected_candidates": [
+    "TUP-CME-ES-H1-QDEP-PAS",
+    "TUP-CME-ES-H3-OFI-AGG",
+    "TUP-CME-NQ-H3-OFI-AGG",
+    "TUP-CME-TSY-H2-QREPL-MIX",
+    "TUP-CME-WTI-H4-FLOWVOL-AGG"
+  ],
+  "affected_gates": "NONE",
+  "blocker_id": "UNK-0018-CME",
+  "branch_impact": "SMALL",
+  "contradictory_evidence_ids": [
+    "EVD-0003",
+    "EVD-0042"
+  ],
+  "decision_prevented": "Causal replay for every CME candidate (KG2).",
+  "disallowed_evidence": "Assumed values, secondary summaries, social posts",
+  "estimated_effort": "SMALL",
+  "is_aggregate_parent": "NO",
+  "kill_condition": "Causal replay for every CME candidate (KG2).",
+  "kill_potential": "HIGH",
+  "known_evidence_ids": [],
+  "known_source_ids": [
+    "SRC-0235",
+    "SRC-0115"
+  ],
+  "last_updated": "2026-09-20T19:09:29Z",
+  "parent_issue_id": "UNK-0018",
+  "priority_reason": "Scoped child of the cross-venue timestamp blocker: the CME question is answerable by the exchange and does not depend on any other venue's feed.",
+  "priority_score": null,
+  "required_answer": "A written answer from CME market-data support, or a sample file whose sequence and timestamp fields are validated against the project's timestamp contract.",
+  "resolution_method": "EXTERNAL_ACTION",
+  "resolution_stage": "M1_BLOCKING",
+  "resurrection_condition": null,
+  "status": "OPEN",
+  "success_condition": "A written answer from CME market-data support, or a sample file whose sequence and timestamp fields are validated against the project's timestamp contract.",
+  "tier": 3,
+  "title": "Timestamp semantics for CME market data: which field is exchange event time, which is rece"
+}

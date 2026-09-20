@@ -20,6 +20,7 @@
   "decision_prevented": "Queue-aware backtesting of every Nasdaq equity tuple (KG2).",
   "disallowed_evidence": "Treating consolidated Level-1 history as order-level data",
   "estimated_effort": "MEDIUM",
+  "is_aggregate_parent": "NO",
   "kill_condition": "Only Level-1 history is realistically obtainable for a queue-dependent mechanism",
   "kill_potential": "HIGH",
   "known_evidence_ids": [
@@ -30,7 +31,8 @@
     "SRC-0109",
     "SRC-0108"
   ],
-  "last_updated": "2026-09-20T18:48:51Z",
+  "last_updated": "2026-09-20T19:09:29Z",
+  "parent_issue_id": null,
   "priority_reason": "M1-BLOCKING retained: granularity sufficiency is an M1 gate (measured against the mechanism's requirement), while fill rates themselves move to M2.",
   "priority_score": null,
   "required_answer": "ITCH/TotalView-depth history: product, depth, fields, licence, price",

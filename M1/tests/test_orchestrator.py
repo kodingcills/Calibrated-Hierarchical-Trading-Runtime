@@ -20,7 +20,9 @@ for _p in (str(SRC), str(ORCH)):
         sys.path.insert(0, _p)
 
 import blocker_card  # noqa: E402
+import contextlib  # noqa: E402
 import coverage  # noqa: E402
+import io  # noqa: E402
 import frontier as frontier_mod  # noqa: E402
 import gate_engine  # noqa: E402
 import patch as patch_mod  # noqa: E402
@@ -204,8 +206,185 @@ class PatchIntegrity(unittest.TestCase):
         self.assertIn("rejections", summary["patches"])
 
 
+class ResolutionSemantics(unittest.TestCase):
+    """HUMAN_INPUT and DEFERRED are surfaced but never dispatched (handoff §1)."""
+
+    def test_human_input_never_enters_the_autonomous_frontier(self):
+        cards = {"UNK-H": {"blocker_id": "UNK-H", "resolution_stage": "M1_BLOCKING",
+                           "resolution_method": "HUMAN_INPUT", "status": "OPEN",
+                           "affected_candidates": ["TUP-X"], "affected_gates": "KG3_EXECUTION",
+                           "tier": 1, "branch_impact": "GLOBAL", "kill_potential": "HIGH",
+                           "estimated_effort": "SMALL", "title": "t", "required_answer": "a",
+                           "decision_prevented": "d", "success_condition": "s",
+                           "kill_condition": "k", "priority_reason": "r", "priority_score": None,
+                           "last_updated": "2026-09-20", "acceptable_evidence": "e",
+                           "disallowed_evidence": "d", "known_evidence_ids": [],
+                           "known_source_ids": [], "contradictory_evidence_ids": [],
+                           "resurrection_condition": None},
+                 "UNK-D": {"blocker_id": "UNK-D", "resolution_stage": "M1_BLOCKING",
+                           "resolution_method": "DEFERRED", "status": "OPEN",
+                           "affected_candidates": ["TUP-X"], "affected_gates": "NONE",
+                           "tier": 4, "branch_impact": "ONE", "kill_potential": "LOW",
+                           "estimated_effort": "SMALL", "title": "t", "required_answer": "a",
+                           "decision_prevented": "d", "success_condition": "s",
+                           "kill_condition": "k", "priority_reason": "r", "priority_score": None,
+                           "last_updated": "2026-09-20", "acceptable_evidence": "e",
+                           "disallowed_evidence": "d", "known_evidence_ids": [],
+                           "known_source_ids": [], "contradictory_evidence_ids": [],
+                           "resurrection_condition": None},
+                 "UNK-R": {"blocker_id": "UNK-R", "resolution_stage": "M1_BLOCKING",
+                           "resolution_method": "PUBLIC_RESEARCH", "status": "OPEN",
+                           "affected_candidates": ["TUP-X"], "affected_gates": "KG1_MECHANISM",
+                           "tier": 1, "branch_impact": "SMALL", "kill_potential": "MEDIUM",
+                           "estimated_effort": "SMALL", "title": "t", "required_answer": "a",
+                           "decision_prevented": "d", "success_condition": "s",
+                           "kill_condition": "k", "priority_reason": "r", "priority_score": None,
+                           "last_updated": "2026-09-20", "acceptable_evidence": "e",
+                           "disallowed_evidence": "d", "known_evidence_ids": [],
+                           "known_source_ids": [], "contradictory_evidence_ids": [],
+                           "resurrection_condition": None}}
+        frontier = blocker_card.frontier_cards(cards)
+        self.assertEqual([c["blocker_id"] for c in frontier], ["UNK-R"])
+
+    def test_shipped_human_input_items_are_in_the_human_queue_not_the_frontier(self):
+        status = load("M1/output/M1_CLOSURE_STATUS.json")
+        frontier_ids = status["frontier"]["active_items"]
+        queue = (REPO / "M1/output/M1_EXTERNAL_ACTION_QUEUE.md").read_text(encoding="utf-8")
+        self.assertIn("Human input required", queue)
+        self.assertIn("UNK-0034", queue)
+        self.assertNotIn("UNK-0034", frontier_ids)
+
+    def test_deferred_work_is_never_dispatched(self):
+        cards = blocker_card.compile_all(_issue_dicts(), _candidates(), _evidence(), _sources(),
+                                        "2026-09-20")
+        for card in blocker_card.frontier_cards(cards):
+            self.assertIn(card["resolution_method"], ("PUBLIC_RESEARCH", "EXTERNAL_ACTION"))
+
+
+class ParentChildScope(unittest.TestCase):
+    """A coarse blocker must not mechanically block unrelated candidates (handoff §2)."""
+
+    def test_parents_are_aggregates_and_never_block(self):
+        rows = _issue_dicts()
+        parents = {r["issue_id"] for r in rows if r["is_aggregate_parent"] == "YES"}
+        self.assertEqual(parents, {"UNK-0009", "UNK-0018", "UNK-0023"})
+        mapping = coverage.blocking_map(rows, [c["candidate_id"] for c in _candidates()])
+        for cid, issues in mapping.items():
+            self.assertFalse(issues & parents, f"{cid} blocked by an aggregate parent")
+
+    def test_children_carry_scope_and_candidates_name_children(self):
+        rows = {r["candidate_id"]: r for r in _candidates()}
+        cme = rows["TUP-CME-ES-H1-QDEP-PAS"]["blocking_issue_ids"]
+        self.assertIn("UNK-0018-CME", cme)
+        self.assertNotIn("UNK-0018-NASDAQ", cme)
+        nasdaq = rows["TUP-NASDAQ-LARGETICK-H2-QIMB-AGG"]["blocking_issue_ids"]
+        self.assertIn("UNK-0018-NASDAQ", nasdaq)
+        self.assertNotIn("UNK-0018-CME", nasdaq)
+
+    def test_candidate_blocking_lists_hold_m1_blockers_only(self):
+        stages = {r["issue_id"]: r["resolution_stage"] for r in _issue_dicts()}
+        for row in _candidates():
+            for ref in str(row["blocking_issue_ids"]).split("|"):
+                if ref in ("NONE", ""):
+                    continue
+                self.assertEqual(stages.get(ref), "M1_BLOCKING", f"{row['candidate_id']}: {ref}")
+
+
+class EvidenceScope(unittest.TestCase):
+    """Candidate linkage must never create empirical scope (handoff §5)."""
+
+    def test_kg1_ignores_administratively_linked_evidence(self):
+        cand = {"candidate_id": "TUP-X", "candidate_class": "TUPLE", "venue_id": "VEN-A"}
+        mislinked = [{"evidence_id": "EVD-M", "supports_or_weakens": "SUPPORTS",
+                      "epistemic_class": "SUPPORTED_FINDING", "candidate_ids": "TUP-X",
+                      "venue_id": "VEN-A", "observed_venue": "VEN-B",
+                      "transfer_status": "CLOSE_TRANSFER", "contradicts_mechanism": "NO"}]
+        self.assertEqual(gate_engine._support(mislinked, cand), [])
+        correct = [dict(mislinked[0], observed_venue="VEN-A", transfer_status="DIRECT")]
+        self.assertEqual(gate_engine._support(correct, cand), ["EVD-M"])
+
+    def test_supporting_records_are_consistent_between_scope_and_transfer(self):
+        """A support may declare unknown scope only if it does not claim direct transfer."""
+        for row in _csv_rows("M1/data/evidence_ledger.csv"):
+            if row["supports_or_weakens"] != "SUPPORTS":
+                continue
+            direct = row["transfer_status"] in ("DIRECT", "CLOSE_TRANSFER")
+            scope_known = all(row[f] not in ("", "UNKNOWN") for f in
+                              ("observed_market", "observed_instrument_or_universe",
+                               "observed_horizon"))
+            self.assertTrue(row["candidate_link_reason"] not in ("", "UNKNOWN"),
+                            row["evidence_id"])
+            if direct:
+                self.assertTrue(scope_known,
+                                f"{row['evidence_id']} claims {row['transfer_status']} transfer "
+                                f"without declaring observed scope")
+            else:
+                self.assertFalse(scope_known and row["transfer_status"] == "DIRECT")
+
+    def test_kg4_requires_positive_horizon_evidence(self):
+        cand = {"candidate_id": "TUP-X", "venue_id": "VEN-A", "horizon_min_us": 1_000_000,
+                "candidate_class": "TUPLE", "instrument": "ES", "mechanism_id": "MECH-OFI"}
+        feas = {"cadence_vs_horizon": "BLOCKED", "venue_live_feed_min_interval_us": None,
+                "candidate_horizon_min_us": 1_000_000}
+        without = gate_engine.kg4_horizon(cand, feas, ["EV_DELAY_SWEEP"], horizon_evidence=[])
+        self.assertEqual(without.value, "BLOCKED")
+        self.assertEqual(without.rule, "KG4-R5")
+        with_evidence = gate_engine.kg4_horizon(cand, feas, ["EV_DELAY_SWEEP"],
+                                                horizon_evidence=["EVD-1"])
+        self.assertEqual(with_evidence.value, "PASS")
+
+
+class DeathAudit(unittest.TestCase):
+    def test_supersessions_are_recorded_with_a_re_kill_condition(self):
+        rows = _csv_rows("M1/output/kill_supersessions.csv")
+        self.assertEqual(len(rows), 2)
+        for row in rows:
+            self.assertEqual(row["verdict"], "SUPERSEDED")
+            self.assertEqual(row["materiality_bound"], "NONE FOUND")
+            self.assertTrue(row["re_kill_condition"])
+            self.assertTrue(row["original_rationale"])
+
+    def test_superseded_candidates_are_no_longer_dead(self):
+        rows = {r["candidate_id"]: r for r in _candidates()}
+        for cid in ("TUP-COINBASE-BTCUSD-H3-MICROOFI-AGG", "TUP-KRAKEN-BTCUSD-H3-MICROOFI-AGG"):
+            self.assertNotEqual(rows[cid]["overall_status"], "DEAD")
+            self.assertEqual(rows[cid]["kill_status"], "SUPERSEDED")
+
+    def test_no_candidate_is_killed_on_a_cost_level_alone(self):
+        table = {r["candidate_id"]: r for r in _csv_rows("M1/output/cost_envelopes.csv")}
+        for row in _candidates():
+            floor = table[row["candidate_id"]]["required_round_trip_fee_bps_for_style"]
+            if floor in ("", "UNKNOWN", None):
+                continue
+            self.assertNotEqual(row["KG3_EXECUTION"], "FAIL",
+                                f"{row['candidate_id']} killed on a floor of {floor} bps alone")
+
+    def test_eliminations_never_use_the_removed_rule(self):
+        rules = {r["rule"] for r in _csv_rows("M1/output/hard_constraint_eliminations.csv")}
+        self.assertNotIn("HC1_FEE_FLOOR_WITHOUT_GROSS_EVIDENCE", rules)
+
+
+class ProjectStateProse(unittest.TestCase):
+    def test_stale_state_values_fail_validation(self):
+        """Regression for the exact 51/29 vs current-state failure (handoff §9)."""
+        text = ("# PROJECT_STATE\n\nM1-C materialisation is COMPLETE: 51 sources, 29 evidence "
+                "records, 19 venue rows.\n")
+        stripped = validate.re.sub(r"<!-- GENERATED:.*?<!-- /GENERATED:[\w-]+ -->", "", text,
+                                   flags=validate.re.DOTALL)
+        found = validate.re.findall(r"(\d[\d,]*)\s+(?:verified\s+)?sources\b", stripped,
+                                    flags=validate.re.IGNORECASE)
+        self.assertEqual(found, ["51"])
+        summary = load("M1/output/M1_STATE_SUMMARY.json")
+        self.assertNotEqual(int(found[0]), summary["counts"]["source_registry"])
+        self.assertEqual(validate.main.__name__, "main")
+
+    def test_shipped_project_state_has_no_stale_values(self):
+        with contextlib.redirect_stdout(io.StringIO()):
+            self.assertEqual(validate.main(), 0)
+
+
 class GateSemantics(unittest.TestCase):
-    def test_kg4_passes_without_a_measured_half_life_but_requires_a_spec(self):
+    def test_kg4_requires_spec_and_positive_horizon_evidence(self):
         cand = {"candidate_id": "TUP-X", "candidate_class": "TUPLE",
                 "instrument": "ES (E-mini S&P 500 future)", "venue_id": "VEN-CME-ES",
                 "mechanism_id": "MECH-OFI", "execution_style": "AGGRESSIVE",
@@ -213,12 +392,17 @@ class GateSemantics(unittest.TestCase):
                 "mechanism_id_x": None}
         feas = {"cadence_vs_horizon": "BLOCKED", "venue_live_feed_min_interval_us": None,
                 "candidate_horizon_min_us": 1_000_000}
-        without = gate_engine.kg4_horizon(cand, feas, [])
-        self.assertEqual(without.value, "BLOCKED")
-        self.assertEqual(without.rule, "KG4-R3")
-        with_spec = gate_engine.kg4_horizon(cand, feas, ["EV_DELAY_SWEEP"])
-        self.assertEqual(with_spec.value, "PASS")
-        self.assertEqual(with_spec.rule, "KG4-R4")
+        without_spec = gate_engine.kg4_horizon(cand, feas, [], horizon_evidence=["EVD-1"])
+        self.assertEqual(without_spec.rule, "KG4-R3")
+        # Spec present but no positive horizon evidence: blocked on C, not passed on silence.
+        without_evidence = gate_engine.kg4_horizon(cand, feas, ["EV_DELAY_SWEEP"],
+                                                   horizon_evidence=[])
+        self.assertEqual(without_evidence.value, "BLOCKED")
+        self.assertEqual(without_evidence.rule, "KG4-R5")
+        complete = gate_engine.kg4_horizon(cand, feas, ["EV_DELAY_SWEEP"],
+                                           horizon_evidence=["EVD-1"])
+        self.assertEqual(complete.value, "PASS")
+        self.assertEqual(complete.rule, "KG4-R4")
 
     def test_kg4_fails_on_a_verified_physical_timing_contradiction(self):
         cand = {"candidate_id": "TUP-Y", "horizon_min_us": 10_000}

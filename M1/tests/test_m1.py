@@ -177,18 +177,25 @@ class CoverageAndBlockers(unittest.TestCase):
         self.assertEqual(coverage.venue_specific_support_count(borrowed, cand), 0)
 
     def test_shipped_declared_blockers_are_all_registry_blockers(self):
-        rows = coverage.coverage_rows(evidence.EVIDENCE, _candidates(), unknowns.DISCREPANCIES)
+        """Every declared blocker must exist in the registry, as a M1 blocker, for that row.
+
+        Reads the shipped issue registry rather than the corpus parents, because the scoped child
+        issues live there and the parent aggregates are deliberately not candidate blockers.
+        """
+        import csv
+        with (REPO / "M1" / "data" / "discrepancies.csv").open(newline="", encoding="utf-8") as fh:
+            issues = list(csv.DictReader(fh))
+        rows = coverage.coverage_rows(evidence.EVIDENCE, _candidates(), issues)
         for row in rows:
             self.assertEqual(row["declared_is_subset_of_derived"], "YES", row["candidate_id"])
 
 
 def _candidates():
-    out = []
-    for row in tuples.ROWS:
-        cand = dict(row)
-        cand["blocking_issue_ids_declared"] = row["blocking_issue_ids"]
-        out.append(cand)
-    return out
+    """Shipped candidate rows, whose blocking lists are already scoped and M1-filtered."""
+    import csv
+    path = REPO / "M1" / "data" / "candidate_tuples.csv"
+    with path.open(newline="", encoding="utf-8") as fh:
+        return list(csv.DictReader(fh))
 
 
 class Feasibility(unittest.TestCase):
@@ -281,20 +288,26 @@ class HardConstraints(unittest.TestCase):
                "epistemic_class": "CONSENSUS_FACT", "venue_id": "VEN-CB"}]
         return cand, ev
 
-    def test_fee_floor_elimination_requires_a_verified_floor(self):
+    def test_fee_floor_elimination_requires_a_sourced_gross_bound(self):
+        """A cost level alone is not a kill (D-0022/D-0026)."""
         cand, ev = self._floor_case()
         checks = pareto.hard_constraint_checks(cand, None, ev, required_round_trip_fee_bps=None)
         self.assertEqual([c["rule"] for c in checks], ["HC7_EXECUTION_GATE_FAIL"])
-        checks = pareto.hard_constraint_checks(cand, None, ev, required_round_trip_fee_bps=120.0)
-        self.assertIn("HC1_FEE_FLOOR_WITHOUT_GROSS_EVIDENCE",
-                      [c["rule"] for c in checks])
+        without_bound = pareto.hard_constraint_checks(cand, None, ev,
+                                                     required_round_trip_fee_bps=120.0)
+        self.assertEqual([c["rule"] for c in without_bound], ["HC7_EXECUTION_GATE_FAIL"])
+        with_bound = pareto.hard_constraint_checks(cand, None, ev,
+                                                   required_round_trip_fee_bps=120.0,
+                                                   expected_gross_edge_bps=20.0)
+        self.assertIn("HC1_FEE_FLOOR_EXCEEDS_SOURCED_GROSS_BOUND",
+                      [c["rule"] for c in with_bound])
 
-    def test_venue_specific_support_blocks_the_fee_floor_elimination(self):
-        cand, _ = self._floor_case()
-        ev = [{"evidence_id": "EVD-2", "candidate_ids": "TUP-CB", "supports_or_weakens": "SUPPORTS",
-               "epistemic_class": "SUPPORTED_FINDING", "venue_id": "VEN-CB"}]
-        checks = pareto.hard_constraint_checks(cand, None, ev, required_round_trip_fee_bps=120.0)
-        self.assertNotIn("HC1_FEE_FLOOR_WITHOUT_GROSS_EVIDENCE",
+    def test_a_sourced_bound_below_the_floor_still_eliminates(self):
+        cand, ev = self._floor_case()
+        checks = pareto.hard_constraint_checks(cand, None, ev,
+                                               required_round_trip_fee_bps=120.0,
+                                               expected_gross_edge_bps=120.0)
+        self.assertNotIn("HC1_FEE_FLOOR_EXCEEDS_SOURCED_GROSS_BOUND",
                          [c["rule"] for c in checks])
 
     def test_queue_mechanism_needs_queue_capable_data(self):

@@ -224,3 +224,71 @@ Hyperliquid's and Polymarket's fee documentation carry no effective date and no 
 and Deribit's page gives one update date. UNK-0035 requires a dated, hashed snapshot per fee page,
 re-taken on a fixed schedule, with any cost model tied to the snapshot it used. This is recorded
 because an undated fee is a silently drifting input to every after-cost calculation.
+
+
+## D-0026 - Two recorded deaths are withdrawn, not preserved on a superseded rule (supersedes part of D-0022's application)
+
+The Coinbase and Kraken kills were recorded before D-0022 established that a cost level is not by
+itself a kill. Audited against the current methodology, each death had: a stated mechanism and
+horizon (seconds-scale micro-price/OFI), a verified fee floor (120 bps and 160 bps round trip), and
+**no sourced bound** on the plausible gross effect. Their rationale is therefore an
+evidence-absence argument at a cost level, which the current rule does not accept. Both deaths are
+**withdrawn**: the rows return to their gate-derived state (KG3 BLOCKED with the floor recorded) and
+`M1/output/kill_supersessions.csv` records the mechanism, floor, absent bound, original rationale,
+superseding decision and re-kill condition. The hard-constraint rule was tightened in the same
+change: it now requires a sourced gross-effect bound that sits below the floor, and cannot fire
+without one. The evidence that would allow a proper kill is registered as UNK-0009-ECON-CRYPTO-SPOT.
+
+## D-0027 - HUMAN_INPUT is a resolution method; operator facts are never dispatched
+
+UNK-0034 (operator jurisdiction and client classification) was classified DEFERRED, which conflated
+"postponed work" with "a fact only the operator holds". `HUMAN_INPUT` is now a distinct resolution
+method: it stays M1-blocking, it is ordered in its own section of `M1_EXTERNAL_ACTION_QUEUE.md`, its
+priority is computed for the human queue only, and it is excluded from the autonomous frontier by
+the same rule that excludes DEFERRED and measurement work. Enforced by
+`blocker_card.frontier_cards`, validator V15 (dispatchability = open AND autonomous method) and
+tests asserting neither HUMAN_INPUT nor DEFERRED can be dispatched.
+
+## D-0028 - Coarse blockers are aggregates; scope lives on children
+
+UNK-0018, UNK-0009 and UNK-0023 blocked every candidate in the project while describing per-venue
+questions: a Nasdaq feed's timestamp semantics says nothing about CME's. They are now aggregate
+parents (`is_aggregate_parent = YES`), excluded from candidate blocking sets, from the frontier and
+from the priority table, with 15 scoped children carrying venue/feed, affected candidates, method,
+stage, tier and the specific evidence required. Candidate blocking lists are additionally filtered
+to M1-stage issues and expanded parent-to-child, so a cross-venue blocker cannot block a venue it
+does not concern. Children are created only for surviving branches; nothing was created for the
+dead rows.
+
+## D-0029 - Source integrity means independent verifiability, not token-to-URL reconstruction
+
+UNK-0023 previously demanded that every opaque report token be mapped to its original URL, which is
+both unverifiable and unnecessary. The invariant is now: every decision-critical external claim must
+trace to an authoritative primary or publisher source *or* be re-derived from one. A report-mediated
+token whose claim has been re-derived is marked `LEGACY_REPORT_MEDIATED`; the replacement is marked
+`VERIFIED_REPLACEMENT`; the claim no longer blocks M1; the opaque token is retained for provenance.
+The replacement URL is never asserted to be the URL the token referred to. Children scope the work
+by claim group (literature, CME documentation, other venues, paired tokens), and the paired-token
+child is deliberately non-blocking because inventory completeness is not a decision input.
+
+## D-0030 - Empirical scope belongs to the evidence record, not to the candidate link
+
+Linking a study to a candidate, or filing it under a venue, does not create empirical scope. Evidence
+records now carry observed_market, observed_venue, observed_instrument_or_universe, observed_period,
+observed_horizon, candidate_link_reason and transfer_status
+(DIRECT | CLOSE_TRANSFER | CROSS_VENUE_EXTRAPOLATION | CROSS_ASSET_EXTRAPOLATION | UNKNOWN). KG1's
+direct-evidence test reads observed_venue and transfer_status and never the administrative venue_id or
+the candidate link; the patch verifier refuses a SUPPORTS record that does not declare its scope.
+Consequence: the Nasdaq micro-price tuple loses the venue-specific KG1 credit it previously held,
+because the publisher metadata does not state the study's venue.
+
+## D-0031 - KG4 requires positive horizon evidence (supersedes part of D-0017)
+
+D-0017 relaxed KG4 to "no known physical contradiction plus a preregistered EV(delay) experiment",
+which let 22 rows pass on the absence of evidence. KG4 now requires three things: (A) no verified
+physical timing contradiction, (B) a valid preregistered EV(delay) experiment, and (C) positive
+sourced horizon-plausibility evidence - an observed effect on the same venue at a comparable
+horizon, a documented mechanism cadence, or an explicit structural timing fact. A fails: FAIL.
+A+B without C: BLOCKED. A+B+C: PASS. KG4 PASS therefore falls from 22 rows to 1, and that one row
+rests on the Gould & Bonart Nasdaq sample whose horizon is recorded as tick-scale with a
+CLOSE_TRANSFER.

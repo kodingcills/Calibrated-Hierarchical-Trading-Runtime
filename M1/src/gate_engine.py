@@ -51,8 +51,16 @@ def _is_unspecified(text) -> bool:
     return "UNSPECIFIED" in str(text).upper()
 
 
+DIRECT_TRANSFERS = ("DIRECT", "CLOSE_TRANSFER")
+
+
 def _support(evidence_rows, candidate):
-    """Venue-specific supporting evidence at consensus/supported-finding strength."""
+    """Supporting evidence whose *observed* scope matches this candidate.
+
+    The test reads ``observed_venue`` and ``transfer_status``, never the administrative
+    ``venue_id`` or the candidate link. Linking a study to a candidate - or filing it under a
+    venue - does not create empirical scope (handoff §5).
+    """
     out = []
     for row in evidence_rows:
         if row["supports_or_weakens"] != "SUPPORTS":
@@ -61,8 +69,34 @@ def _support(evidence_rows, candidate):
             continue
         if candidate["candidate_id"] not in _split(row["candidate_ids"]):
             continue
-        if row["venue_id"] == candidate["venue_id"]:
-            out.append(row["evidence_id"])
+        if row.get("observed_venue") != candidate["venue_id"]:
+            continue
+        if row.get("transfer_status") not in DIRECT_TRANSFERS:
+            continue
+        out.append(row["evidence_id"])
+    return out
+
+
+def _horizon_evidence(evidence_rows, candidate):
+    """Positive horizon-plausibility evidence (handoff §6C).
+
+    Requires an observed effect on the *same* venue with a recorded market scope. A study
+    observed elsewhere cannot supply horizon plausibility for this candidate even if it is
+    administratively linked to it, so the observed venue must match.
+    """
+    out = []
+    for row in evidence_rows:
+        if candidate["candidate_id"] not in _split(row["candidate_ids"]):
+            continue
+        if row["epistemic_class"] not in ("CONSENSUS_FACT", "SUPPORTED_FINDING"):
+            continue
+        if row.get("transfer_status") not in DIRECT_TRANSFERS:
+            continue
+        if row.get("observed_venue") != candidate["venue_id"]:
+            continue
+        if row.get("observed_market") in (None, "", "UNKNOWN"):
+            continue
+        out.append(row["evidence_id"])
     return out
 
 
@@ -207,7 +241,9 @@ def _support_evidence_ids(candidate, envelope) -> list:
     return _split(candidate.get("_venue_specific_support_ids"))
 
 
-def kg4_horizon(candidate, feas, specs) -> Verdict:
+def kg4_horizon(candidate, feas, specs, horizon_evidence=()) -> Verdict:
+    """A: no physical contradiction. B: preregistered EV(delay) experiment. C: positive horizon
+    evidence. Absence of a contradiction is NOT positive evidence (handoff §6)."""
     if feas is not UNKNOWN and feas.get("cadence_vs_horizon") == "FAIL":
         return Verdict("FAIL", "KG4-R1",
                        "Verified feed cadence is slower than the hypothesis horizon: a physical "
@@ -219,10 +255,16 @@ def kg4_horizon(candidate, feas, specs) -> Verdict:
         return Verdict("BLOCKED", "KG4-R3",
                        "No preregistered EV(delay) experiment exists, so the horizon claim could "
                        "not be tested even if funded.")
+    if not horizon_evidence:
+        return Verdict("BLOCKED", "KG4-R5",
+                       "No positive horizon-plausibility evidence: the candidate has no sourced "
+                       "empirical effect, documented mechanism cadence or structural timing fact "
+                       "at a comparable horizon. Absence of a contradiction is not positive "
+                       "evidence, so the horizon claim is unsupported rather than established.")
     return Verdict("PASS", "KG4-R4",
-                   "No known physical timing contradiction, and the delay experiment is "
-                   "preregistered. The empirical half-life is an M2 output by design "
-                   "(UNK-0008), not an M1 requirement.")
+                   f"Positive horizon evidence exists ({', '.join(horizon_evidence)}) with no "
+                   f"known physical timing contradiction and a preregistered delay experiment. "
+                   f"The empirical half-life remains an M2 output by design (UNK-0008).")
 
 
 def kg5_falsifiability(candidate) -> Verdict:
@@ -258,7 +300,7 @@ def compute(candidates, evidence_rows, feas_by_id, envelope_by_id, venue_by_id, 
         v1 = kg1_mechanism(cand, evidence_rows)
         v2 = kg2_data(cand, feas, venue)
         v3 = kg3_execution(cand, envelope, feas, venue, specs, kg1_value=v1.value)
-        v4 = kg4_horizon(cand, feas, specs)
+        v4 = kg4_horizon(cand, feas, specs, _horizon_evidence(evidence_rows, cand))
         v5 = kg5_falsifiability(cand)
         cand["KG1_MECHANISM"], cand["KG2_DATA"] = v1, v2
         cand["KG3_EXECUTION"], cand["KG4_HALF_LIFE"] = v3, v4

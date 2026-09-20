@@ -1,72 +1,73 @@
 {
   "artifact_hashes": {
     "M1/data/assumptions.csv": "a45b7c5a95f94bfa7213a43910bae5206bd9bdfc6878e4ab2adff089fbf2b25d",
-    "M1/data/candidate_tuples.csv": "c0639b063464671225e0cfb3ac7d038d43a0aac00feb4006414f5e178ee90710",
+    "M1/data/candidate_tuples.csv": "1b98e11bf99b00b9e1f26864c76dabfd650b150370eb41b455803c090c1a282d",
     "M1/data/data_feasibility.csv": "d292c27e17576a28a518f85051cfa511e74e9f1da7242a9237d0c732caff209e",
-    "M1/data/dead_candidates.csv": "d88750a632fd792052be0d4a2ed617a6e75cc94e07f58e9ac7ad56a39b49f382",
-    "M1/data/discrepancies.csv": "73bd59638c78b1a3bfb9835294c5da1553cc96bb14e63a7486f6b32cd90fe43a",
-    "M1/data/evidence_ledger.csv": "b101fdb7fad2f2634e4726f8424c2356850b6eb5690eef60cc91782bdce9cfdb",
+    "M1/data/dead_candidates.csv": "5de626adc93a0c15dd4769e9e653a880cf4d262fcd50391d277afe0a830e73ce",
+    "M1/data/discrepancies.csv": "d5126adf41b57c56bcdb0bf3c47b9a6c38f3e0d05aa59bdafae925bcd499ce5b",
+    "M1/data/evidence_ledger.csv": "35f922c89a47b7863e7e0e94aa7270408d2306a42719830b1abbb630c9ff4d05",
     "M1/data/execution_envelopes.csv": "3f43b5a077615fe44233965c6cd0f2aa31e6d92a1843837d888d1b7e3ed48f55",
     "M1/data/experiments.csv": "2bba0967fa761dcbe840fc0252c7fc72a5a19f381893e6768250dd438767754a",
     "M1/data/hypotheses.csv": "25ae83712418dc4f18bd18747c04163196ebccabb45ae841607e1aa30ec71c33",
-    "M1/data/kill_gates.csv": "4c95f01d4739888e865d5f4abfb62854b509a5c0f3b46a51fe5d40c160d26f39",
+    "M1/data/kill_gates.csv": "bea4ac52859b0c41b27c2fc008dac6f080e10c2fbe74d13cd4d416c24dea6ebd",
     "M1/data/mechanisms.csv": "49227ed34e3eb929c46896fd38072df03070b6da748d0d8cd01359813125c364",
     "M1/data/open_questions.csv": "08f39eb554e0de71f5ad32fbe088463d72ff4a1bcc8dce4c70d0f1987e9f733d",
-    "M1/data/source_registry.csv": "13c35a48f5b091d3c46f4251b92df235accbf5efaa7c62e59333a015454ea3f9",
+    "M1/data/source_registry.csv": "8c3b31e18a7b7e0d28e73e74bc85cb7ce47aa5e14d661f3642ac6c5b410d2831",
     "M1/data/technology_fit.csv": "902584c18d84d9f9cf31917b2a636d9fbafe03301805332dba73b0af1eb95810",
     "M1/data/venue_facts.csv": "0cf5bc2c4c827fdbf0b34daa4906f12141a13fb42f0437089984096ae80f6a5d",
-    "M1/output/blocker_priority.csv": "2fe4c2318cf698a76ba126b86dc6c47f6d5e7a71203a2091e5654caf4a775b65",
-    "M1/output/candidate_gate_status.csv": "48d2fccdd9f37e8cc91261f6d53bbf179d9f8dd395818b6f9603fc90281735f5",
+    "M1/output/blocker_priority.csv": "6d9e6595b3c0c2f4379bdb9622adb72831781bed8b0390bab2f7253f69262bd2",
+    "M1/output/candidate_gate_status.csv": "842576b586a2b826f2e38f9c65d71ac67dee0480086a0e03ad74d30227af6784",
     "M1/output/cost_envelopes.csv": "3f43b5a077615fe44233965c6cd0f2aa31e6d92a1843837d888d1b7e3ed48f55",
     "M1/output/data_feasibility_verdicts.csv": "f97ba5ff8fd8b7f3a6656062e530ac67f561ef69041addd6729fdba88b550a37",
     "M1/output/dominated_candidates.csv": "b45939d9b5a5f1827c225ffd82889cf1a21cb2f2f7e38a2480f07cdf8ba2a938",
-    "M1/output/evidence_coverage.csv": "2dba99f1b7415f852aea4f211f90a12c779f701f8c94fe8780c0806910af975b",
-    "M1/output/gate_rule_trace.csv": "500bc51d409d340bbaf77c8543d94493fa331dd721658793a34862159bf1df10",
-    "M1/output/hard_constraint_eliminations.csv": "bdfaa866a5f6ddd070f23654399fb2afbc32a5c5e1addbcb5874db21156c95fb",
-    "M1/output/hard_constraint_survivors.csv": "584a47332a60c2de9262ebdf18d256acdee5fc3880d8b6fe22ecffe935993cd9",
-    "M1/output/issue_migration.csv": "b06dcd147a5db44163b13c4b623c5792fcb6754579bd09383bfcb9064fa351f0",
+    "M1/output/evidence_coverage.csv": "3179547ffe673e1a264f0336f5205c08d745e99a5cccf52a1e5f2e0f54774d99",
+    "M1/output/gate_rule_trace.csv": "2995b9da2103dccb3183cb833f9fb6b9af479aa428674875718240c427d4ea9c",
+    "M1/output/hard_constraint_eliminations.csv": "da1a2639d1abd0520207155068d9e75dd8eb6fb7d356ea4819ae063c79e5bbaa",
+    "M1/output/hard_constraint_survivors.csv": "0c1eefbff02552dafbdb2fc8da6de30e033225fdb1f2df099f274af6a21c670d",
+    "M1/output/issue_migration.csv": "c2b9e6c5ddbd665473399cd43b839a598b4363a6aca617021f2e5837abe52cda",
+    "M1/output/kill_supersessions.csv": "fd9cdd54a6e595433a85ef2d40136852e020c715e56676887c8b93b51a8c1859",
     "M1/output/latency_feasibility.csv": "1a2434bb2b38ffeba8a34c9cbbd87e7cab56608c44395238ecb0333b9969997d",
-    "M1/output/non_frontier_issues.csv": "42fa7d83ed5874db961e015c56d5aa19acf3389d2b1d71127de31c4bed1f1c59",
-    "M1/output/status_derivation_review.csv": "49fd2978132239bb3ece288ad120a4c609cf88e142065f8b5d9abcb25a2235a9",
+    "M1/output/non_frontier_issues.csv": "966b4e1c76fe4466c123cea4edcf96e1123d2354b4752400d54757ec9c9cc27d",
+    "M1/output/status_derivation_review.csv": "019d69da00bb900d8d595107564097482e156389847348e0666502f471755b56",
     "M1/output/venue_cost_reference.csv": "f8856e3c531be33675479bde5b7f4bbc2982994b3af48331edfb37c393243220"
   },
   "counts": {
     "assumptions": 29,
-    "blocking_issues": 21,
+    "blocking_issues": 30,
     "candidate_rows": 28,
     "ceiling_violations": 0,
     "computed_gate_kills": 7,
-    "discrepancies": 35,
-    "evidence_records": 62,
+    "discrepancies": 50,
+    "evidence_records": 64,
     "experiments_proposed_not_run": 9,
-    "external_requests": 10,
+    "external_requests": 14,
     "external_token_sources": 25,
-    "frontier_items": 17,
+    "frontier_items": 25,
     "gate_eligible": 0,
-    "hard_constraint_eliminations": 10,
-    "hard_constraint_survivors": 18,
+    "hard_constraint_eliminations": 7,
+    "hard_constraint_survivors": 21,
     "hypotheses_registered": 0,
     "m1b_eligible": [],
     "m2_specs": 7,
     "mechanisms": 25,
-    "non_frontier_issues": 12,
+    "non_frontier_issues": 15,
     "non_tuple_rows": 5,
-    "open_issues": 33,
+    "open_issues": 45,
     "open_questions": 16,
-    "recorded_kill_decisions": 2,
-    "source_registry": 88,
+    "recorded_kill_decisions": 0,
+    "source_registry": 91,
     "status": {
       "ALIVE": 0,
-      "DEAD": 9,
-      "UNKNOWN": 14,
+      "DEAD": 7,
+      "UNKNOWN": 16,
       "WEAK": 5,
       "total": 28
     },
     "status_by_class": {
       "ALL": {
         "ALIVE": 0,
-        "DEAD": 9,
-        "UNKNOWN": 14,
+        "DEAD": 7,
+        "UNKNOWN": 16,
         "WEAK": 5,
         "total": 28
       },
@@ -93,8 +94,8 @@
       },
       "TUPLE": {
         "ALIVE": 0,
-        "DEAD": 4,
-        "UNKNOWN": 14,
+        "DEAD": 2,
+        "UNKNOWN": 16,
         "WEAK": 5,
         "total": 23
       },
@@ -117,6 +118,12 @@
       "title": "Historical and live feed timestamp semantics"
     },
     {
+      "affected": 3,
+      "blocker_id": "UNK-0018-NASDAQ",
+      "priority_score": 18.0,
+      "title": "Timestamp semantics for Nasdaq order-level history and the live TotalView feed: event vers"
+    },
+    {
       "affected": 4,
       "blocker_id": "UNK-0033",
       "priority_score": 18.0,
@@ -127,6 +134,12 @@
       "blocker_id": "UNK-0010",
       "priority_score": 12.0,
       "title": "Hyperliquid economics and replay surface"
+    },
+    {
+      "affected": 5,
+      "blocker_id": "UNK-0018-CME",
+      "priority_score": 12.0,
+      "title": "Timestamp semantics for CME market data: which field is exchange event time, which is rece"
     },
     {
       "affected": 1,
@@ -160,6 +173,12 @@
     },
     {
       "affected": 1,
+      "blocker_id": "UNK-0018-BZX",
+      "priority_score": 4.0,
+      "title": "Timestamp semantics for the Cboe BZX depth feed and any historical depth archive."
+    },
+    {
+      "affected": 1,
       "blocker_id": "UNK-0022",
       "priority_score": 4.0,
       "title": "Cboe BZX proprietary depth, fee-code outcome and history access"
@@ -169,13 +188,19 @@
       "blocker_id": "UNK-0011",
       "priority_score": 3.0,
       "title": "Eurex execution economics, matching rule and access path"
+    },
+    {
+      "affected": 1,
+      "blocker_id": "UNK-0018-USSTOCK-CROSS",
+      "priority_score": 2.0,
+      "title": "Cross-venue synchronisation for the national-market tuple: can several venue feeds be plac"
     }
   ],
   "gate_counts": {
     "KG1_MECHANISM": {
-      "BLOCKED": 24,
+      "BLOCKED": 25,
       "FAIL": 2,
-      "PASS": 2
+      "PASS": 1
     },
     "KG2_DATA": {
       "BLOCKED": 26,
@@ -188,9 +213,9 @@
       "PASS": 0
     },
     "KG4_HALF_LIFE": {
-      "BLOCKED": 5,
+      "BLOCKED": 26,
       "FAIL": 1,
-      "PASS": 22
+      "PASS": 1
     },
     "KG5_FALSIFIABILITY": {
       "BLOCKED": 14,
@@ -198,7 +223,7 @@
       "PASS": 9
     }
   },
-  "generated_at": "2026-09-20T18:48:51Z",
+  "generated_at": "2026-09-20T19:09:29Z",
   "generated_by": "M1/src/materialize.py",
   "m2_specs": [
     {
@@ -253,15 +278,15 @@
   ],
   "migration": {
     "by_method": {
-      "DEFERRED": 4,
-      "EMPIRICAL_MEASUREMENT": 10,
-      "EXTERNAL_ACTION": 11,
-      "PUBLIC_RESEARCH": 10
+      "DEFERRED": 3,
+      "EMPIRICAL_MEASUREMENT": 12,
+      "EXTERNAL_ACTION": 15,
+      "PUBLIC_RESEARCH": 19
     },
     "by_stage": {
-      "M1_BLOCKING": 21,
-      "M2_MEASUREMENT": 9,
-      "NON_BLOCKING": 4,
+      "M1_BLOCKING": 33,
+      "M2_MEASUREMENT": 11,
+      "NON_BLOCKING": 5,
       "POST_M2": 1
     },
     "migrated_count": 14,
@@ -282,6 +307,21 @@
       "UNK-0032"
     ],
     "unmapped_issues": [
+      "UNK-0009-ECON-CME-MEASURED",
+      "UNK-0009-ECON-CRYPTO-SPOT",
+      "UNK-0009-ECON-EQUITY-MEASURED",
+      "UNK-0009-MECH-CME",
+      "UNK-0009-MECH-NASDAQ-MICRO",
+      "UNK-0018-BZX",
+      "UNK-0018-CME",
+      "UNK-0018-EUREX",
+      "UNK-0018-HYPERLIQUID",
+      "UNK-0018-NASDAQ",
+      "UNK-0018-USSTOCK-CROSS",
+      "UNK-0023-CME-DOCS",
+      "UNK-0023-EXCH-OTHER",
+      "UNK-0023-LIT",
+      "UNK-0023-PAIRED-TOKENS",
       "UNK-0033",
       "UNK-0034",
       "UNK-0035"
@@ -314,7 +354,7 @@
     "reason": "Dominated/dominated-set analysis was NOT performed. At this evidence state every decision-critical dimension (net-edge headroom, signal longevity, fill quality, capacity, capital efficiency) is UNKNOWN for every candidate, so any frontier would order missing values. The only eliminations applied are hard constraints backed by verified facts (HC1..HC8). Re-run this analysis in M1-D1 once M1-B has emitted a CURRENT synthesis artifact and the blocking issues are resolved."
   },
   "patches": {
-    "applied": 3,
+    "applied": 4,
     "audit": [
       {
         "applied": true,
@@ -697,26 +737,62 @@
           "SRC-0236",
           "SRC-0237"
         ]
+      },
+      {
+        "applied": true,
+        "fields": [
+          "status"
+        ],
+        "kind": "EFFECT",
+        "patch_id": "P-0004",
+        "reason": "Queue-imbalance claim re-derived from SRC-0238; the token is kept for provenance and no longer blocks M1.",
+        "source_update": "SRC-0101"
+      },
+      {
+        "applied": true,
+        "fields": [
+          "status"
+        ],
+        "kind": "EFFECT",
+        "patch_id": "P-0004",
+        "reason": "Micro-price claim re-derived at mechanism level from SRC-0239.",
+        "source_update": "SRC-0104"
+      },
+      {
+        "applied": true,
+        "decision": "SUPPORTS",
+        "evidence_added": [
+          "EVD-0064",
+          "EVD-0065"
+        ],
+        "issue_updates": [
+          "UNK-0023-LIT"
+        ],
+        "kind": "PATCH",
+        "patch_id": "P-0004",
+        "sources_added": [
+          "SRC-0238",
+          "SRC-0239",
+          "SRC-0240"
+        ]
       }
     ],
-    "proposed": 3,
+    "proposed": 4,
     "rejected": 0,
     "rejections": []
   },
   "recorded_kills": [
-    "TUP-COINBASE-BTCUSD-H3-MICROOFI-AGG",
     "TUP-GENERIC-CME-QUEUE",
     "TUP-GENERIC-CRYPTO-MICRO",
     "TUP-HYPERLIQUID-BTCPERP-H1-QDEP-AGGPAS",
     "TUP-JEV-HOSTED-LATENCY-UNMEASURED",
-    "TUP-KRAKEN-BTCUSD-H3-MICROOFI-AGG",
     "TUP-METHOD-PASSIVE-TOUCHFILL",
     "TUP-NASDAQ-LARGETICK-H1H2-QUEUEPOS-L1ONLY-AGG",
     "TUP-SYSTEMONE-HARDCORE-ENGINE"
   ],
   "work_artifacts": {
-    "cards": 35,
-    "requests": 10,
+    "cards": 50,
+    "requests": 14,
     "specs": 7
   }
 }

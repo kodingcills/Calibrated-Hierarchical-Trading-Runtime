@@ -22,6 +22,7 @@
   "decision_prevented": "After-cost replication validity: a cost model built on an undated dynamic page cannot be shown to describe the period it is tested on.",
   "disallowed_evidence": "Assumed values, secondary summaries, social posts",
   "estimated_effort": "SMALL",
+  "is_aggregate_parent": null,
   "kill_condition": "After-cost replication validity: a cost model built on an undated dynamic page cannot be shown to describe the period it is tested on.",
   "kill_potential": "LOW",
   "known_evidence_ids": [],
@@ -29,7 +30,8 @@
     "SRC-0213",
     "SRC-0214"
   ],
-  "last_updated": "2026-09-20T18:48:51Z",
+  "last_updated": "2026-09-20T19:09:29Z",
+  "parent_issue_id": null,
   "priority_reason": "Surfaced by primary research: several venues publish fees without dates, so the project must create the version record the venue does not.",
   "priority_score": null,
   "required_answer": "A dated, hashed snapshot of each fee page taken by the project, re-taken on a fixed schedule, with the figure used by any cost model tied to the snapshot it came from.",

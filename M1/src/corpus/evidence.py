@@ -42,6 +42,10 @@ COLUMNS = [
     "limitations",
     "decision_implication",
     "contradicts_mechanism",
+    # Empirical scope. Candidate linkage is an administrative act; it must never create empirical
+    # scope. These fields state what the study actually observed, and KG1 reads only these.
+    "observed_market", "observed_venue", "observed_instrument_or_universe", "observed_period",
+    "observed_horizon", "candidate_link_reason", "transfer_status",
     "verification_status",
 ]
 
@@ -53,6 +57,7 @@ def _row(**kw):
     # cost, feed cadence) that are not mechanism contradictions. Only records marked YES here
     # can affect KG1's contradiction test, so no inference is made from supports_or_weakens.
     row.setdefault("contradicts_mechanism", "NO")
+    row.setdefault("transfer_status", "UNKNOWN")
     return row
 
 
@@ -269,6 +274,12 @@ EVIDENCE = [
                     "cross-venue/NOT-transferable association.",
         decision_implication="Justifies venue-specific execution-aware testing; does not justify an "
                              "ALIVE label, production architecture or capital.",
+        observed_market="US equities", observed_venue="VEN-NASDAQ-CONT",
+        observed_instrument_or_universe="10 liquid Nasdaq-listed stocks (large-tick emphasis)",
+        observed_period=UNKNOWN, observed_horizon="one mid-price movement (tick-scale)",
+        candidate_link_reason="Report-linked to the Nasdaq large-tick queue-imbalance tuple; the "
+                              "cross-venue link to the CME tuple is an extrapolation.",
+        transfer_status="CLOSE_TRANSFER",
         verification_status="REPORT_MEDIATED_UNVERIFIED_URL"),
     _ev(13,
         claim="Short-horizon price changes are strongly related to order-flow imbalance and inversely "
@@ -298,9 +309,16 @@ EVIDENCE = [
         gross_or_net="GROSS / estimator quality, not after-cost strategy evidence",
         evidence_state="PUBLISHED",
         limitations="No justification for treating microprice accuracy as economic edge; no resolvable "
-                    "URL.",
+                    "URL; the publisher metadata states no dataset, venue, universe or horizon.",
         decision_implication="Microprice may improve signal quality; profit evidence does not exist in "
                              "this package.",
+        observed_market=UNKNOWN, observed_venue=UNKNOWN,
+        observed_instrument_or_universe=UNKNOWN, observed_period=UNKNOWN,
+        observed_horizon="short-term price prediction (unspecified)",
+        candidate_link_reason="Administratively linked to the Nasdaq micro-price tuple and the "
+                              "crypto spot tuple; no observed scope is stated in accessible "
+                              "metadata.",
+        transfer_status="UNKNOWN",
         verification_status="REPORT_MEDIATED_UNVERIFIED_URL"),
     _ev(15,
         claim="Nasdaq's IPO opening process includes a display-only period of at least ten minutes in "

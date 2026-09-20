@@ -2,7 +2,7 @@
 
 Status: CURRENT
 Version: 1.0.0
-Last Updated: 2026-09-20T18:48:51Z
+Last Updated: 2026-09-20T19:09:29Z
 
 This is the canonical fast-orientation artifact. Read it before any other file. Its counts are
 generated from `M1/output/M1_STATE_SUMMARY.json` and enforced against the machine-readable
@@ -25,9 +25,8 @@ Substage state (from repository evidence, not from plan):
 - M1-A evidence discovery is INCOMPLETE: the M1-A artifact itself concludes INCOMPLETE, and this
   materialisation found that its stated reasons need revision (one is now false - see below),
   while the empirical blockers it lists remain independently sufficient.
-- M1-C materialisation is COMPLETE: 51 sources, 29 evidence records, 19 venue rows, 25 mechanisms,
-  28 candidate rows, 23 issues-registry rows, 16 open questions, 29 assumptions, 5 kill gates,
-  9 proposed-not-run experiments.
+- M1-C materialisation is COMPLETE. Counts live in the generated Counts block below and are
+  checked against the machine-readable summary by the validator, so they are not restated here.
 - M1-D0 deterministic calculations are COMPLETE: gate vectors, status ceilings, cost floors,
   feasibility verdicts, coverage counts, hard-constraint eliminations, latency verdicts,
   blocker prioritisation. Full break-even remains UNKNOWN for every candidate, by construction.
@@ -152,20 +151,20 @@ leaving 19 M1-blocking issues.
 <!-- GENERATED:frontier -->
 | leverage | tier | issue | method | affected | decision prevented |
 |---|---|---|---|---|---|
-| 60.0 | 1 | `UNK-0023` | PUBLIC_RESEARCH | all 28 (ALL_EXTERNAL_EVIDENCE) | Independent verification of any external claim, including fee schedules that already killed candidates; the ar |
-| 60.0 | 1 | `UNK-0034` | DEFERRED | 8 | Access legality for four venue families, and therefore KG3 and KG5 for their candidates: no fill or cost model |
-| 30.0 | 3 | `UNK-0018` | EXTERNAL_ACTION | all 28 (ALL_CANDIDATES) | Causal replay and therefore every queue, priority or fill claim; applies to any candidate that reaches replay. |
 | 24.0 | 1 | `UNK-0002` | PUBLIC_RESEARCH | 6 | Any queue-position or fill model for passive CME candidates (KG2/KG3). |
-| 22.5 | 2 | `UNK-0009` | PUBLIC_RESEARCH | all 28 (ALL_CANDIDATES) | Mechanism credibility (KG1) for every candidate whose mechanism has no current, on-venue, after-cost replicati |
+| 24.0 | 1 | `UNK-0018-HYPERLIQUID` | PUBLIC_RESEARCH | 2 | Replay validity for the Hyperliquid seconds-scale tuples (KG2). |
+| 24.0 | 1 | `UNK-0023-CME-DOCS` | PUBLIC_RESEARCH | 5 | KG1/KG2 evidence quality for the CME rows, and auditability of the MDP feasibility claim. |
+| 24.0 | 1 | `UNK-0023-LIT` | PUBLIC_RESEARCH | 9 | KG1 for candidates that would borrow the order-flow mechanism, and auditability of the mechanism-evidence row  |
+| 18.0 | 3 | `UNK-0018-NASDAQ` | EXTERNAL_ACTION | 3 | Causal replay and therefore queue/fill claims for the Nasdaq equity rows (KG2). |
 | 18.0 | 1 | `UNK-0027` | PUBLIC_RESEARCH | 10 | M2 registration and any falsifier (KG5) for the affected rows. |
 | 18.0 | 3 | `UNK-0033` | EXTERNAL_ACTION | 4 | All-in per-share cost for every equity tuple, and therefore the cost floor used in KG3. |
+| 16.0 | 1 | `UNK-0023-EXCH-OTHER` | PUBLIC_RESEARCH | 3 | Evidence quality for the Eurex tuple and for the options candidate's Gate-2 status. |
+| 13.5 | 2 | `UNK-0009-MECH-CME` | PUBLIC_RESEARCH | 5 | KG1 for every CME candidate (mechanism plausibility, not profitability). |
+| 12.0 | 1 | `UNK-0009-ECON-CRYPTO-SPOT` | PUBLIC_RESEARCH | 4 | Whether the crypto spot branch can be killed on materiality rather than left blocked: a cost level alone is no |
 | 12.0 | 3 | `UNK-0010` | EXTERNAL_ACTION | 3 | Net-edge feasibility for the Hyperliquid H3/H4 candidates. |
 | 12.0 | 1 | `UNK-0012` | PUBLIC_RESEARCH | 1 | Options tuples passing Gate 2 at all. |
-| 12.0 | 1 | `UNK-0013` | PUBLIC_RESEARCH | 1 | Gate 2 for the Deribit tuple. |
-| 12.0 | 1 | `UNK-0014` | PUBLIC_RESEARCH | 2 | Legality/access gate for both event-market tuples. |
-| 12.0 | 1 | `UNK-0015` | PUBLIC_RESEARCH | 2 | Defining the tuple at all (KG1/KG3/KG5). |
 
-Actionable frontier items: 17. Items awaiting an external answer or a frozen spec: 3. Measurement specifications: 7. External request packets: 10.
+Actionable frontier items: 25. Items awaiting an external answer or a frozen spec: 3. Measurement specifications: 7. External request packets: 14.
 <!-- /GENERATED:frontier -->
 
 ## Issue Stages
@@ -173,17 +172,17 @@ Actionable frontier items: 17. Items awaiting an external answer or a frozen spe
 <!-- GENERATED:stages -->
 | resolution stage | count | meaning |
 |---|---|---|
-| M1_BLOCKING | 21 | must be answered before M1 can close |
-| M2_MEASUREMENT | 9 | preregistered M2 experiment; does not block M1 |
+| M1_BLOCKING | 33 | must be answered before M1 can close |
+| M2_MEASUREMENT | 11 | preregistered M2 experiment; does not block M1 |
 | POST_M2 | 1 | matters only after M2 shows positive net EV |
-| NON_BLOCKING | 4 | tracked; no gate depends on it |
+| NON_BLOCKING | 5 | tracked; no gate depends on it |
 
 | resolution method | count |
 |---|---|
-| PUBLIC_RESEARCH | 10 |
-| EXTERNAL_ACTION | 11 |
-| EMPIRICAL_MEASUREMENT | 10 |
-| DEFERRED | 4 |
+| PUBLIC_RESEARCH | 19 |
+| EXTERNAL_ACTION | 15 |
+| EMPIRICAL_MEASUREMENT | 12 |
+| DEFERRED | 3 |
 <!-- /GENERATED:stages -->
 
 ## Immediate Next Actions
@@ -192,18 +191,18 @@ Ranked by decision leverage (impact x kill potential x work tier / effort), reco
 every pass from `M1/work/frontier.json`:
 
 <!-- GENERATED:next_actions -->
-1. **UNK-0023** (PUBLIC_RESEARCH, tier 1, leverage 60.0): A resolvable URL plus snapshot for each of the 25 report-mediated external sources
-2. **UNK-0034** (DEFERRED, tier 1, leverage 60.0): A statement of the operator's legal domicile, entity type and client classification, plus the per-venue eligibility determination that follows from it.
-3. **UNK-0018** (EXTERNAL_ACTION, tier 3, leverage 30.0): Field-level timestamp semantics (event vs receive time, clock domain, sequence integrity)
-4. **UNK-0002** (PUBLIC_RESEARCH, tier 1, leverage 24.0): The allocation algorithm that applies to the named product and order type, with its version
-5. **UNK-0009** (PUBLIC_RESEARCH, tier 2, leverage 22.5): Current, venue-specific, after-cost evidence for the mechanism each candidate relies on
+1. **UNK-0002** (PUBLIC_RESEARCH, tier 1, leverage 24.0): The allocation algorithm that applies to the named product and order type, with its version
+2. **UNK-0018-HYPERLIQUID** (PUBLIC_RESEARCH, tier 1, leverage 24.0): The archive's file schema and a sample hour, plus a stated rule for missing hours.
+3. **UNK-0023-CME-DOCS** (PUBLIC_RESEARCH, tier 1, leverage 24.0): Primary CME pages (MDP product documentation, rulebook chapter, data-services product page) captured with dates.
+4. **UNK-0023-LIT** (PUBLIC_RESEARCH, tier 1, leverage 24.0): An authoritative record for the order-flow-imbalance claim (publisher metadata plus an author or repository version) establishing its sample and venue.
+5. **UNK-0018-NASDAQ** (EXTERNAL_ACTION, tier 3, leverage 18.0): The ITCH message specification's timestamp section plus a sample day whose ordering and sequence fields validate against the project's contract.
 6. **UNK-0027** (PUBLIC_RESEARCH, tier 1, leverage 18.0): One exact contract/symbol per branch, or a causal selection rule with its variables
 <!-- /GENERATED:next_actions -->
 
 ## Readiness
 
 <!-- GENERATED:readiness -->
-Ready for M1-B? **NO** - zero candidates pass all five gates; the frontier still holds 17 M1-blocking items.
+Ready for M1-B? **NO** - zero candidates pass all five gates; the frontier still holds 25 M1-blocking items.
 Ready for M1-D1? **NO** - M1-B is not authorized and no synthesis artifact exists, so no finalists can be compared.
 Ready for M2? **NO** - M2 requires a selected candidate plus a locked cost configuration and an order-level dataset; the frontier holds both.
 Ready for shadow trading? **NO** - a shadow run requires a chosen candidate, instrument and measured cost envelope.
@@ -246,10 +245,10 @@ Machine-readable M1 state (canonical; regenerate with `python3 M1/src/materializ
 |---|---|
 | ALIVE | 0 |
 | WEAK | 5 |
-| UNKNOWN | 14 |
-| DEAD | 9 |
+| UNKNOWN | 16 |
+| DEAD | 7 |
 
-Registered candidate rows: 28 (23 tradable tuples + 5 non-tuple registrations). Verified sources: 88 (25 report-mediated, 0 with a recoverable URL). Evidence records: 62. M1 frontier items: 17 (7 measurement specs and 10 external requests now outside the frontier). Gate-eligible candidates: 0.
+Registered candidate rows: 28 (23 tradable tuples + 5 non-tuple registrations). Verified sources: 91 (25 report-mediated, 0 with a recoverable URL). Evidence records: 64. M1 frontier items: 25 (7 measurement specs and 14 external requests now outside the frontier). Gate-eligible candidates: 0.
 <!-- /GENERATED:counts -->
 
 

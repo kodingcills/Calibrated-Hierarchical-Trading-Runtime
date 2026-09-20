@@ -605,20 +605,22 @@ def build(created_at):
         "proposed_dead_end_updates": [],
         "new_unknowns": [
             {"issue_id": "UNK-0034",
-             "claim_needed": "The operator's own jurisdiction and client classification, which "
-                             "determine whether each venue is accessible at all.",
+             "claim_needed": "The operator's jurisdiction and client classification.",
              "known_evidence": "Venue terms and regulations now specify explicit exclusions: "
                                "Hyperliquid excludes US and Ontario persons; Deribit prohibits "
                                "the US; Kalshi restricts many countries and faces active "
                                "Washington and Nevada orders; international Polymarket blocks US "
                                "persons while Polymarket US is a separate product.",
-             "specific_evidence_needed": "A statement of the operator's legal domicile, entity "
-                                         "type and client classification, plus the per-venue "
-                                         "eligibility determination that follows from it.",
+             "specific_evidence_needed": "Three facts stated by the operator: (1) legal domicile/"
+                                         "jurisdiction of the operating person or entity; (2) "
+                                         "entity/person classification, including professional "
+                                         "versus non-professional status where a venue "
+                                         "distinguishes; (3) intended account/entity type per "
+                                         "venue if materially relevant to eligibility.",
              "decision_prevented": "Access legality for four venue families, and therefore KG3 "
                                    "and KG5 for their candidates: no fill or cost model matters "
                                    "for a venue the operator may not use.",
-             "severity": "BLOCKING", "resolution_method": "DEFERRED",
+             "severity": "BLOCKING", "resolution_method": "HUMAN_INPUT",
              "resolution_stage": "M1_BLOCKING", "tier": 1, "branch_impact": "GLOBAL",
              "kill_potential": "HIGH", "estimated_effort": "SMALL", "can_M2_measure": "NO",
              "requires_vendor_quote": "NO",
@@ -627,8 +629,8 @@ def build(created_at):
                                        "TUP-COINBASE-BTCUSD-H3-MICROOFI-AGG|" +
                                        "TUP-KRAKEN-BTCUSD-H3-MICROOFI-AGG",
              "migration_reason": "Not resolvable by research: it is a fact about the operator, "
-                                 "not about the market. Registered so no session can quietly "
-                                 "assume a jurisdiction that makes a branch look accessible."},
+                                 "not about the market. Classified HUMAN_INPUT so it is surfaced "
+                                 "in the human queue and never dispatched to a resolver."},
             {"issue_id": "UNK-0035",
              "claim_needed": "Version control for venue fee schedules that publish no effective "
                              "date or version archive.",

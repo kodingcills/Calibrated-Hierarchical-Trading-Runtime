@@ -1,0 +1,39 @@
+{
+  "acceptable_evidence": "Any primary source that answers the claim needed",
+  "affected_candidates": [
+    "TUP-CME-ES-H1-QDEP-PAS",
+    "TUP-CME-ES-H3-OFI-AGG",
+    "TUP-CME-NQ-H3-OFI-AGG",
+    "TUP-CME-TSY-H2-QREPL-MIX",
+    "TUP-CME-WTI-H4-FLOWVOL-AGG"
+  ],
+  "affected_gates": "NONE",
+  "blocker_id": "UNK-0023-CME-DOCS",
+  "branch_impact": "MEDIUM",
+  "contradictory_evidence_ids": [
+    "EVD-0003",
+    "EVD-0042"
+  ],
+  "decision_prevented": "KG1/KG2 evidence quality for the CME rows, and auditability of the MDP feasibility claim.",
+  "disallowed_evidence": "Assumed values, secondary summaries, social posts",
+  "estimated_effort": "SMALL",
+  "is_aggregate_parent": "NO",
+  "kill_condition": "KG1/KG2 evidence quality for the CME rows, and auditability of the MDP feasibility claim.",
+  "kill_potential": "MEDIUM",
+  "known_evidence_ids": [],
+  "known_source_ids": [
+    "SRC-0107"
+  ],
+  "last_updated": "2026-09-20T19:09:29Z",
+  "parent_issue_id": "UNK-0023",
+  "priority_reason": "Child scoped to CME technical documentation; the fee question is an external action and is not part of this child.",
+  "priority_score": null,
+  "required_answer": "Primary CME pages (MDP product documentation, rulebook chapter, data-services product page) captured with dates.",
+  "resolution_method": "PUBLIC_RESEARCH",
+  "resolution_stage": "M1_BLOCKING",
+  "resurrection_condition": null,
+  "status": "OPEN",
+  "success_condition": "Primary CME pages (MDP product documentation, rulebook chapter, data-services product page) captured with dates.",
+  "tier": 1,
+  "title": "Independent verifiability of the CME technical claims used by CME gates (MDP capability, m"
+}

@@ -1,0 +1,41 @@
+{
+  "acceptable_evidence": "Any primary source that answers the claim needed",
+  "affected_candidates": [
+    "TUP-NASDAQ-LARGETICK-H2-QIMB-AGG",
+    "TUP-NASDAQ-LARGETICK-H2H3-MICRO-AGG",
+    "TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG",
+    "TUP-CBOEBZX-LARGETICK-H2H3-SPREADCAP-PAS"
+  ],
+  "affected_gates": "NONE",
+  "blocker_id": "UNK-0009-ECON-EQUITY-MEASURED",
+  "branch_impact": "MEDIUM",
+  "contradictory_evidence_ids": [
+    "EVD-0005",
+    "EVD-0022",
+    "EVD-0033",
+    "EVD-0034",
+    "EVD-0037",
+    "EVD-0041",
+    "EVD-0042"
+  ],
+  "decision_prevented": "Whether the equity branch is profitable, which M2 exists to measure.",
+  "disallowed_evidence": "Assumed values, secondary summaries, social posts",
+  "estimated_effort": "MEDIUM",
+  "is_aggregate_parent": "NO",
+  "kill_condition": "Whether the equity branch is profitable, which M2 exists to measure.",
+  "kill_potential": "LOW",
+  "known_evidence_ids": [],
+  "known_source_ids": [],
+  "last_updated": "2026-09-20T19:09:29Z",
+  "parent_issue_id": "UNK-0009",
+  "priority_reason": "Split from UNK-0009: after-cost profitability is an M2 measurement and is explicitly not a precondition for KG1.",
+  "priority_score": null,
+  "required_answer": "Execution-aware replication on the project's own fill model.",
+  "resolution_method": "EMPIRICAL_MEASUREMENT",
+  "resolution_stage": "M2_MEASUREMENT",
+  "resurrection_condition": null,
+  "status": "OPEN",
+  "success_condition": "Execution-aware replication on the project's own fill model.",
+  "tier": 4,
+  "title": "After-cost replication of the equity mechanisms at the project's own fee tier."
+}

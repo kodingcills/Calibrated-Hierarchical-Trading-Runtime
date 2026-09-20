@@ -18,6 +18,7 @@
   "decision_prevented": "Legality/access gate for both event-market tuples.",
   "disallowed_evidence": "A nationwide-access assumption in either direction",
   "estimated_effort": "MEDIUM",
+  "is_aggregate_parent": "NO",
   "kill_condition": "Access is unavailable in the relevant jurisdictions, killing the branch",
   "kill_potential": "HIGH",
   "known_evidence_ids": [
@@ -26,7 +27,8 @@
   "known_source_ids": [
     "SRC-0121"
   ],
-  "last_updated": "2026-09-20T18:48:51Z",
+  "last_updated": "2026-09-20T19:09:29Z",
+  "parent_issue_id": null,
   "priority_reason": "M1-BLOCKING retained: legality is explicitly an M1 gate (handoff \u00a72).",
   "priority_score": null,
   "required_answer": "Jurisdiction-by-jurisdiction access for Kalshi/Polymarket plus fees, API and history",

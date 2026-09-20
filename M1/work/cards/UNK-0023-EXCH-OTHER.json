@@ -1,0 +1,41 @@
+{
+  "acceptable_evidence": "Any primary source that answers the claim needed",
+  "affected_candidates": [
+    "TUP-EUREX-FESX-H2H3-OFIQ-MIX",
+    "TUP-CBOE-USOPT-H5-SURFRV-MIX",
+    "TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG"
+  ],
+  "affected_gates": "NONE",
+  "blocker_id": "UNK-0023-EXCH-OTHER",
+  "branch_impact": "SMALL",
+  "contradictory_evidence_ids": [
+    "EVD-0005",
+    "EVD-0022",
+    "EVD-0033",
+    "EVD-0034",
+    "EVD-0041",
+    "EVD-0042"
+  ],
+  "decision_prevented": "Evidence quality for the Eurex tuple and for the options candidate's Gate-2 status.",
+  "disallowed_evidence": "Assumed values, secondary summaries, social posts",
+  "estimated_effort": "SMALL",
+  "is_aggregate_parent": "NO",
+  "kill_condition": "Evidence quality for the Eurex tuple and for the options candidate's Gate-2 status.",
+  "kill_potential": "MEDIUM",
+  "known_evidence_ids": [],
+  "known_source_ids": [
+    "SRC-0110"
+  ],
+  "last_updated": "2026-09-20T19:09:29Z",
+  "parent_issue_id": "UNK-0023",
+  "priority_reason": "Child scoped to the three remaining venue claims; nothing else is attached to it.",
+  "priority_score": null,
+  "required_answer": "Primary pages for each remaining claim, captured with dates.",
+  "resolution_method": "PUBLIC_RESEARCH",
+  "resolution_stage": "M1_BLOCKING",
+  "resurrection_condition": null,
+  "status": "OPEN",
+  "success_condition": "Primary pages for each remaining claim, captured with dates.",
+  "tier": 1,
+  "title": "Independent verifiability of the remaining exchange claims: Eurex T7 interfaces, the Cboe "
+}

@@ -1,0 +1,41 @@
+{
+  "acceptable_evidence": "Any primary source that answers the claim needed",
+  "affected_candidates": [
+    "TUP-NASDAQ-LARGETICK-H2-QIMB-AGG",
+    "TUP-NASDAQ-LARGETICK-H2H3-MICRO-AGG",
+    "TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG"
+  ],
+  "affected_gates": "NONE",
+  "blocker_id": "UNK-0018-NASDAQ",
+  "branch_impact": "MEDIUM",
+  "contradictory_evidence_ids": [
+    "EVD-0005",
+    "EVD-0022",
+    "EVD-0033",
+    "EVD-0034",
+    "EVD-0041",
+    "EVD-0042"
+  ],
+  "decision_prevented": "Causal replay and therefore queue/fill claims for the Nasdaq equity rows (KG2).",
+  "disallowed_evidence": "Assumed values, secondary summaries, social posts",
+  "estimated_effort": "SMALL",
+  "is_aggregate_parent": "NO",
+  "kill_condition": "Causal replay and therefore queue/fill claims for the Nasdaq equity rows (KG2).",
+  "kill_potential": "HIGH",
+  "known_evidence_ids": [],
+  "known_source_ids": [
+    "SRC-0201"
+  ],
+  "last_updated": "2026-09-20T19:09:29Z",
+  "parent_issue_id": "UNK-0018",
+  "priority_reason": "Scoped child: Nasdaq's timestamp question is settled by one product specification and a sample, independently of CME or Eurex.",
+  "priority_score": null,
+  "required_answer": "The ITCH message specification's timestamp section plus a sample day whose ordering and sequence fields validate against the project's contract.",
+  "resolution_method": "EXTERNAL_ACTION",
+  "resolution_stage": "M1_BLOCKING",
+  "resurrection_condition": null,
+  "status": "OPEN",
+  "success_condition": "The ITCH message specification's timestamp section plus a sample day whose ordering and sequence fields validate against the project's contract.",
+  "tier": 3,
+  "title": "Timestamp semantics for Nasdaq order-level history and the live TotalView feed: event vers"
+}

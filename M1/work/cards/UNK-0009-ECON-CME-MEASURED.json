@@ -1,0 +1,37 @@
+{
+  "acceptable_evidence": "Any primary source that answers the claim needed",
+  "affected_candidates": [
+    "TUP-CME-ES-H1-QDEP-PAS",
+    "TUP-CME-ES-H3-OFI-AGG",
+    "TUP-CME-NQ-H3-OFI-AGG",
+    "TUP-CME-TSY-H2-QREPL-MIX",
+    "TUP-CME-WTI-H4-FLOWVOL-AGG"
+  ],
+  "affected_gates": "NONE",
+  "blocker_id": "UNK-0009-ECON-CME-MEASURED",
+  "branch_impact": "MEDIUM",
+  "contradictory_evidence_ids": [
+    "EVD-0003",
+    "EVD-0042"
+  ],
+  "decision_prevented": "Whether the CME branch is profitable (M2).",
+  "disallowed_evidence": "Assumed values, secondary summaries, social posts",
+  "estimated_effort": "LARGE",
+  "is_aggregate_parent": "NO",
+  "kill_condition": "Whether the CME branch is profitable (M2).",
+  "kill_potential": "LOW",
+  "known_evidence_ids": [],
+  "known_source_ids": [],
+  "last_updated": "2026-09-20T19:09:29Z",
+  "parent_issue_id": "UNK-0009",
+  "priority_reason": "Split from UNK-0009 and parked at M2: it cannot start before the M1 cost items close.",
+  "priority_score": null,
+  "required_answer": "Execution-aware replication after the cost configuration is locked.",
+  "resolution_method": "EMPIRICAL_MEASUREMENT",
+  "resolution_stage": "M2_MEASUREMENT",
+  "resurrection_condition": null,
+  "status": "OPEN",
+  "success_condition": "Execution-aware replication after the cost configuration is locked.",
+  "tier": 4,
+  "title": "After-cost replication on CME once the cost schedule and matching rule are known."
+}

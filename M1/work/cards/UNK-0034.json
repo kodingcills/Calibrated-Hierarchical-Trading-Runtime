@@ -33,6 +33,7 @@
   "decision_prevented": "Access legality for four venue families, and therefore KG3 and KG5 for their candidates: no fill or cost model matters for a venue the operator may not use.",
   "disallowed_evidence": "Assumed values, secondary summaries, social posts",
   "estimated_effort": "SMALL",
+  "is_aggregate_parent": null,
   "kill_condition": "Access legality for four venue families, and therefore KG3 and KG5 for their candidates: no fill or cost model matters for a venue the operator may not use.",
   "kill_potential": "HIGH",
   "known_evidence_ids": [],
@@ -40,15 +41,16 @@
     "SRC-0213",
     "SRC-0214"
   ],
-  "last_updated": "2026-09-20T18:48:51Z",
-  "priority_reason": "Not resolvable by research: it is a fact about the operator, not about the market. Registered so no session can quietly assume a jurisdiction that makes a branch look accessible.",
+  "last_updated": "2026-09-20T19:09:29Z",
+  "parent_issue_id": null,
+  "priority_reason": "Not resolvable by research: it is a fact about the operator, not about the market. Classified HUMAN_INPUT so it is surfaced in the human queue and never dispatched to a resolver.",
   "priority_score": null,
-  "required_answer": "A statement of the operator's legal domicile, entity type and client classification, plus the per-venue eligibility determination that follows from it.",
-  "resolution_method": "DEFERRED",
+  "required_answer": "Three facts stated by the operator: (1) legal domicile/jurisdiction of the operating person or entity; (2) entity/person classification, including professional versus non-professional status where a venue distinguishes; (3) intended account/entity type per venue if materially relevant to eligibility.",
+  "resolution_method": "HUMAN_INPUT",
   "resolution_stage": "M1_BLOCKING",
   "resurrection_condition": null,
   "status": "OPEN",
-  "success_condition": "A statement of the operator's legal domicile, entity type and client classification, plus the per-venue eligibility determination that follows from it.",
+  "success_condition": "Three facts stated by the operator: (1) legal domicile/jurisdiction of the operating person or entity; (2) entity/person classification, including professional versus non-professional status where a venue distinguishes; (3) intended account/entity type per venue if materially relevant to eligibility.",
   "tier": 1,
-  "title": "The operator's own jurisdiction and client classification, which determine whether each ve"
+  "title": "The operator's jurisdiction and client classification."
 }

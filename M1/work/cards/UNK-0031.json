@@ -16,6 +16,7 @@
   "decision_prevented": "Nothing blocking; it bounds confidence in EVD-0025/EVD-0027/EVD-0029, which are only used as premises about a candidate architecture, never as market evidence.",
   "disallowed_evidence": "Treating one transcription as verified",
   "estimated_effort": "SMALL",
+  "is_aggregate_parent": "NO",
   "kill_condition": "A transcription error is found that changes a recorded claim",
   "kill_potential": "LOW",
   "known_evidence_ids": [],
@@ -23,7 +24,8 @@
     "SRC-0010",
     "SRC-0020"
   ],
-  "last_updated": "2026-09-20T18:48:51Z",
+  "last_updated": "2026-09-20T19:09:29Z",
+  "parent_issue_id": null,
   "priority_reason": "NON_BLOCKING: the specimen supplies no economic premise; it bounds confidence only.",
   "priority_score": null,
   "required_answer": "A second independent transcription of every numeric claim",

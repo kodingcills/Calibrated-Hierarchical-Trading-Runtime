@@ -479,6 +479,69 @@ REQUEST_CONTENT = {
         "substitute": "A written statement that non-participant access is unavailable is an "
                       "acceptable branch-killing answer.",
     },
+    "UNK-0018-CME": {
+        "contact": "CME market-data support (Globex MDP technical desk), or the market-data "
+                   "vendor supplying the sample.",
+        "information": "Which field on MDP 3.0 messages is the exchange event time, which is "
+                       "receive time, what clock domain each uses, and what ordering guarantee "
+                       "the sequence numbers provide across the A/B feeds.",
+        "product": "CME MDP 3.0 MBO Full Depth and MBP for ES and NQ",
+        "date_range": "Sample: one continuous trading day, plus the field dictionary for that "
+                      "version",
+        "schema": "Per-message field semantics with units and precision, and whether two messages "
+                  "can share a timestamp with a defined order",
+        "timestamps": "Explicitly: monotonic ordering within a channel, cross-channel (A/B) "
+                      "ordering, duplication handling, gap fill, and any required clock "
+                      "synchronisation",
+        "licensing": "Whether the sample may be used for research and retained",
+        "sample": "One day of MBO or MBP data with the field dictionary",
+        "substitute": "A written protocol answer to the ordering questions is sufficient if no "
+                      "sample can be released.",
+    },
+    "UNK-0018-NASDAQ": {
+        "contact": "Nasdaq market-data support, or the vendor supplying the historical extract.",
+        "information": "The timestamp field semantics of the TotalView-ITCH message set: which "
+                       "field is exchange event time, whether receive time is included, and how "
+                       "sequence numbers guarantee ordering across the historical files.",
+        "product": "NASDAQ Historical TotalView-ITCH (and the live TotalView feed)",
+        "date_range": "Sample: one session of historical files plus the message specification's "
+                      "timestamp section",
+        "schema": "Message specification with the timestamp fields marked and their units",
+        "timestamps": "Within-file ordering, ordering across the multiple files of a session, "
+                      "duplicate/gap handling, and clock domain",
+        "licensing": "Whether the specification may be quoted in internal documentation",
+        "sample": "One session of ITCH files, or the specification's timestamp section",
+        "substitute": "The message specification alone answers most of this; the sample confirms "
+                      "ordering empirically.",
+    },
+    "UNK-0018-BZX": {
+        "contact": "Cboe market data services and/or the broker providing the feed.",
+        "information": "Timestamp semantics for the BZX depth feed and the DataShop historical "
+                       "depth archive: event versus receive time, units, and ordering guarantees.",
+        "product": "Cboe PITCH depth feed and the Cboe U.S. Equities PITCH historical archive",
+        "date_range": "Sample: one day of the archive, plus the feed specification",
+        "schema": "Message specification with timestamp fields marked",
+        "timestamps": "Ordering within and across Matching Engine Units, duplication, gap fill, "
+                      "and clock domain",
+        "licensing": "Entitlement requirements for the archive and its retention terms",
+        "sample": "One day of PITCH depth for one symbol set",
+        "substitute": "The specification plus a written ordering statement is sufficient.",
+    },
+    "UNK-0018-USSTOCK-CROSS": {
+        "contact": "Each candidate venue's data desk plus a consolidator or the executing broker.",
+        "information": "Whether several venue feeds can be placed on one comparable timeline: "
+                       "per-feed timestamp semantics and a documented synchronisation method with "
+                       "its error bound.",
+        "product": "Multi-venue US equity depth (Nasdaq, Cboe, NYSE, IEX)",
+        "date_range": "Current feeds; sample one day per venue",
+        "schema": "Per-feed field semantics plus the consolidator's normalisation rules",
+        "timestamps": "Clock domains, synchronisation method, measured skew, and how the "
+                      "consolidator resolves ordering",
+        "licensing": "Whether the feeds may be recorded and combined for research",
+        "sample": "One day of two or more venue feeds with their specifications",
+        "substitute": "A written synchronisation statement with an error bound is sufficient for "
+                      "the M1 decision; the measurement itself is M2.",
+    },
     "UNK-0033": {
         "contact": "The proposed executing broker(s)/sponsor for US equity routing, and the "
                    "clearing firm.",

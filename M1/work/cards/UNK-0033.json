@@ -20,6 +20,7 @@
   "decision_prevented": "All-in per-share cost for every equity tuple, and therefore the cost floor used in KG3.",
   "disallowed_evidence": "Assumed values, secondary summaries, social posts",
   "estimated_effort": "SMALL",
+  "is_aggregate_parent": null,
   "kill_condition": "All-in per-share cost for every equity tuple, and therefore the cost floor used in KG3.",
   "kill_potential": "HIGH",
   "known_evidence_ids": [],
@@ -27,7 +28,8 @@
     "SRC-0201",
     "SRC-0202"
   ],
-  "last_updated": "2026-09-20T18:48:51Z",
+  "last_updated": "2026-09-20T19:09:29Z",
+  "parent_issue_id": null,
   "priority_reason": "New blocker surfaced by primary-source research: the exchange side of equity cost is public, the sponsored-access side is not, and the project cannot trade directly on these venues.",
   "priority_score": null,
   "required_answer": "A chosen sponsor's published commission schedule or a written quote for the intended order flow.",

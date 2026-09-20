@@ -3,9 +3,9 @@
 Canonical machine-readable source: `M1/data/discrepancies.csv` (generated from `M1/src/corpus/unknowns.py`).
 This file is a rendering of that registry; edit the corpus module, not this file.
 
-Materialised (UTC): 2026-09-20T18:48:51Z
+Materialised (UTC): 2026-09-20T19:09:29Z
 
-Registered issues: 35 | open: 21 | blocking: 20
+Registered issues: 50 | open: 30 | blocking: 29
 
 Conflicts are never resolved by averaging. Where two sources genuinely disagree the row
 carries `conflict_type=CONTRADICTION` and both statements are preserved; where the
@@ -460,6 +460,216 @@ and the judgment used is stated together with its basis.
 - affected: TUP-SYSTEMONE-HARDCORE-ENGINE|TUP-JEV-HOSTED-LATENCY-UNMEASURED
 - evidence: None
 
+## UNK-0018-CME - BLOCKING - OPEN
+
+- claim needed: Timestamp semantics for CME market data: which field is exchange event time, which is receive time, the clock domain and the ordering guarantee.
+- known evidence: MDP 3.0 documents MDEntryTime and TransactTime (nanosecond unit) but not the clock domain (SRC-0235); MDP uses dual-feed UDP multicast with sequence numbers (SRC-0115).
+- specific evidence required: A written answer from CME market-data support, or a sample file whose sequence and timestamp fields are validated against the project's timestamp contract.
+- decision prevented: Causal replay for every CME candidate (KG2).
+- conflict type: NO_CONFLICT_INCOMPLETENESS
+- sources: A=SRC-0235, B=SRC-0115
+- searches attempted: None
+- resolvable by web research: None; vendor quote: None; M2 measurement: None
+- resolution class: None
+- affected: TUP-CME-ES-H1-QDEP-PAS|TUP-CME-ES-H3-OFI-AGG|TUP-CME-NQ-H3-OFI-AGG|TUP-CME-TSY-H2-QREPL-MIX|TUP-CME-WTI-H4-FLOWVOL-AGG
+- evidence: None
+
+## UNK-0018-NASDAQ - BLOCKING - OPEN
+
+- claim needed: Timestamp semantics for Nasdaq order-level history and the live TotalView feed: event versus receive time, sequence integrity and clock domain for the historical files.
+- known evidence: The historical product, its SFTP delivery and its depth are confirmed (SRC-0201); the message specification defines order-reference fields but the resolver did not extract timestamp-field semantics.
+- specific evidence required: The ITCH message specification's timestamp section plus a sample day whose ordering and sequence fields validate against the project's contract.
+- decision prevented: Causal replay and therefore queue/fill claims for the Nasdaq equity rows (KG2).
+- conflict type: NO_CONFLICT_INCOMPLETENESS
+- sources: A=SRC-0201, B=None
+- searches attempted: None
+- resolvable by web research: None; vendor quote: None; M2 measurement: None
+- resolution class: None
+- affected: TUP-NASDAQ-LARGETICK-H2-QIMB-AGG|TUP-NASDAQ-LARGETICK-H2H3-MICRO-AGG|TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG
+- evidence: None
+
+## UNK-0018-BZX - BLOCKING - OPEN
+
+- claim needed: Timestamp semantics for the Cboe BZX depth feed and any historical depth archive.
+- known evidence: A historical depth archive is confirmed to exist (SRC-0205); no timestamp-field documentation was extracted.
+- specific evidence required: Cboe depth-feed specification and a sample with field-level timestamp semantics.
+- decision prevented: Causal replay for the BZX passive tuple (KG2).
+- conflict type: NO_CONFLICT_INCOMPLETENESS
+- sources: A=SRC-0205, B=None
+- searches attempted: None
+- resolvable by web research: None; vendor quote: None; M2 measurement: None
+- resolution class: None
+- affected: TUP-CBOEBZX-LARGETICK-H2H3-SPREADCAP-PAS
+- evidence: None
+
+## UNK-0018-HYPERLIQUID - BLOCKING - OPEN
+
+- claim needed: Timestamp semantics and completeness rules for the official Hyperliquid archive: block time fields, per-hour file coverage and how to detect missing data.
+- known evidence: The archive layout is documented (SRC-0214) and the live feed is documented as block-cadenced with an at-least-0.5s snapshot rule (SRC-0216); field-level archive semantics and a completeness rule are not documented.
+- specific evidence required: The archive's file schema and a sample hour, plus a stated rule for missing hours.
+- decision prevented: Replay validity for the Hyperliquid seconds-scale tuples (KG2).
+- conflict type: NO_CONFLICT_INCOMPLETENESS
+- sources: A=SRC-0214, B=SRC-0216
+- searches attempted: None
+- resolvable by web research: None; vendor quote: None; M2 measurement: None
+- resolution class: None
+- affected: TUP-HYPERLIQUID-BTCPERP-H3-OFILIQ-AGG|TUP-HYPERLIQUID-BTCPERP-H4-FUNDBASIS-MIX
+- evidence: None
+
+## UNK-0018-EUREX - BLOCKING - OPEN
+
+- claim needed: Timestamp semantics for Eurex EOBI order-book messages.
+- known evidence: EOBI/EMDI/ETI interfaces are documented (SRC-0110); no timestamp-field semantics or sample were extracted.
+- specific evidence required: T7 EOBI message specification timestamp section, plus an access path to a sample.
+- decision prevented: Causal replay for the Eurex tuple (KG2).
+- conflict type: NO_CONFLICT_INCOMPLETENESS
+- sources: A=SRC-0110, B=None
+- searches attempted: None
+- resolvable by web research: None; vendor quote: None; M2 measurement: None
+- resolution class: None
+- affected: TUP-EUREX-FESX-H2H3-OFIQ-MIX
+- evidence: None
+
+## UNK-0018-USSTOCK-CROSS - BLOCKING - OPEN
+
+- claim needed: Cross-venue synchronisation for the national-market tuple: can several venue feeds be placed on one comparable timeline with the accuracy the hypothesis needs?
+- known evidence: No multi-venue synchronised package is locked; NYSE/IEX direct-feed history was outside the M1-A coverage.
+- specific evidence required: Per-feed timestamp semantics plus a documented synchronisation method and its error bound.
+- decision prevented: Causal cross-venue comparison, and therefore the stale-quote tuple (KG2/KG3).
+- conflict type: NO_CONFLICT_INCOMPLETENESS
+- sources: A=None, B=None
+- searches attempted: None
+- resolvable by web research: None; vendor quote: None; M2 measurement: None
+- resolution class: None
+- affected: TUP-USSTOCK-XVENUE-H1-STALEQUOTE-AGG
+- evidence: None
+
+## UNK-0009-MECH-CME - BLOCKING - OPEN
+
+- claim needed: Does the order-flow-imbalance / queue mechanism have direct or closely comparable evidence on CME equity-index futures?
+- known evidence: The mechanism is evidenced on US equities (SRC-0101, SRC-0102); CME matching is engine-assigned per product (SRC-0235). No CME-specific replication was located.
+- specific evidence required: A study on CME index futures (or an exchange-documented equivalent) establishing short-horizon flow/price predictability, with its sample and horizon stated.
+- decision prevented: KG1 for every CME candidate (mechanism plausibility, not profitability).
+- conflict type: NO_CONFLICT_INCOMPLETENESS
+- sources: A=SRC-0102, B=SRC-0235
+- searches attempted: None
+- resolvable by web research: None; vendor quote: None; M2 measurement: None
+- resolution class: None
+- affected: TUP-CME-ES-H1-QDEP-PAS|TUP-CME-ES-H3-OFI-AGG|TUP-CME-NQ-H3-OFI-AGG|TUP-CME-TSY-H2-QREPL-MIX|TUP-CME-WTI-H4-FLOWVOL-AGG
+- evidence: None
+
+## UNK-0009-MECH-NASDAQ-MICRO - BLOCKING - OPEN
+
+- claim needed: Is there venue-specific evidence for the micro-price mechanism on a named US equity venue, as opposed to a venue-unspecified estimator result?
+- known evidence: The micro-price paper's publisher metadata establishes the estimator claim but its sample venue could not be established from accessible metadata (SSRN returned HTTP 403; no arXiv preprint; CrossRef and RePEc carry no venue).
+- specific evidence required: An author or publisher version of the paper that states its dataset, venue, instrument universe and horizon, or a separate venue-specific micro-price study.
+- decision prevented: KG1 for the Nasdaq micro-price tuple.
+- conflict type: NO_CONFLICT_INCOMPLETENESS
+- sources: A=None, B=None
+- searches attempted: None
+- resolvable by web research: None; vendor quote: None; M2 measurement: None
+- resolution class: None
+- affected: TUP-NASDAQ-LARGETICK-H2H3-MICRO-AGG
+- evidence: None
+
+## UNK-0009-ECON-CRYPTO-SPOT - BLOCKING - OPEN
+
+- claim needed: Is there a documented upper bound on the plausible gross seconds-scale effect on large crypto spot venues that could be compared against a verified fee floor?
+- known evidence: Verified round-trip exchange-fee floors: 120 bps on Coinbase at the 0-10k tier (SRC-0105) and 160 bps on Kraken Tier 1 (SRC-0106). No sourced bound on the plausible gross effect for a seconds-scale microprice/OFI signal on those venues exists in the package.
+- specific evidence required: A venue-specific study (or an exchange-published statistic) bounding achievable short-horizon gross movement on Coinbase or Kraken, sufficient to decide whether a 120-160 bps round trip is arithmetically out of reach.
+- decision prevented: Whether the crypto spot branch can be killed on materiality rather than left blocked: a cost level alone is not a kill (D-0022).
+- conflict type: NO_CONFLICT_INCOMPLETENESS
+- sources: A=SRC-0105, B=SRC-0106
+- searches attempted: None
+- resolvable by web research: None; vendor quote: None; M2 measurement: None
+- resolution class: None
+- affected: TUP-COINBASE-BTCUSD-H3-MICROOFI-AGG|TUP-KRAKEN-BTCUSD-H3-MICROOFI-AGG|TUP-HYPERLIQUID-BTCPERP-H3-OFILIQ-AGG|TUP-HYPERLIQUID-BTCPERP-H4-FUNDBASIS-MIX
+- evidence: None
+
+## UNK-0009-ECON-EQUITY-MEASURED - IMPORTANT - OPEN
+
+- claim needed: After-cost replication of the equity mechanisms at the project's own fee tier.
+- known evidence: Base-tier equity fees are verified in native units (SRC-0203, SRC-0206, SRC-0209) and the mechanism is evidenced pre-cost (SRC-0101).
+- specific evidence required: Execution-aware replication on the project's own fill model.
+- decision prevented: Whether the equity branch is profitable, which M2 exists to measure.
+- conflict type: NO_CONFLICT_INCOMPLETENESS
+- sources: A=None, B=None
+- searches attempted: None
+- resolvable by web research: None; vendor quote: None; M2 measurement: None
+- resolution class: None
+- affected: TUP-NASDAQ-LARGETICK-H2-QIMB-AGG|TUP-NASDAQ-LARGETICK-H2H3-MICRO-AGG|TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG|TUP-CBOEBZX-LARGETICK-H2H3-SPREADCAP-PAS
+- evidence: None
+
+## UNK-0009-ECON-CME-MEASURED - IMPORTANT - OPEN
+
+- claim needed: After-cost replication on CME once the cost schedule and matching rule are known.
+- known evidence: No CME fee value is verified; the public fee search is exhausted (patch P-0003).
+- specific evidence required: Execution-aware replication after the cost configuration is locked.
+- decision prevented: Whether the CME branch is profitable (M2).
+- conflict type: NO_CONFLICT_INCOMPLETENESS
+- sources: A=None, B=None
+- searches attempted: None
+- resolvable by web research: None; vendor quote: None; M2 measurement: None
+- resolution class: None
+- affected: TUP-CME-ES-H1-QDEP-PAS|TUP-CME-ES-H3-OFI-AGG|TUP-CME-NQ-H3-OFI-AGG|TUP-CME-TSY-H2-QREPL-MIX|TUP-CME-WTI-H4-FLOWVOL-AGG
+- evidence: None
+
+## UNK-0023-LIT - BLOCKING - IN_PROGRESS
+
+- claim needed: Independent verifiability of the microstructure literature claims that gates depend on (queue imbalance, order-flow imbalance, micro-price).
+- known evidence: Gould & Bonart is now identified from author/arXiv/SSRN records (SRC-0238) and Stoikov from publisher metadata (SRC-0239); the Cont, Kukanov & Stoikov order-flow claim remains report-mediated with an unresolved token.
+- specific evidence required: An authoritative record for the order-flow-imbalance claim (publisher metadata plus an author or repository version) establishing its sample and venue.
+- decision prevented: KG1 for candidates that would borrow the order-flow mechanism, and auditability of the mechanism-evidence row already in the ledger.
+- conflict type: NO_CONFLICT_INCOMPLETENESS
+- sources: A=SRC-0102, B=None
+- searches attempted: None
+- resolvable by web research: None; vendor quote: None; M2 measurement: None
+- resolution class: None
+- affected: TUP-CME-ES-H1-QDEP-PAS|TUP-CME-ES-H3-OFI-AGG|TUP-CME-NQ-H3-OFI-AGG|TUP-CME-TSY-H2-QREPL-MIX|TUP-CME-WTI-H4-FLOWVOL-AGG|TUP-NASDAQ-LARGETICK-H2-QIMB-AGG|TUP-NASDAQ-LARGETICK-H2H3-MICRO-AGG|TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG|TUP-EUREX-FESX-H2H3-OFIQ-MIX
+- evidence: None
+
+## UNK-0023-CME-DOCS - BLOCKING - OPEN
+
+- claim needed: Independent verifiability of the CME technical claims used by CME gates (MDP capability, matching product-specificity, historical product advertising, fixed-income definitions).
+- known evidence: Partially re-derived: matching algorithms and DataMine MBO FIX history now come from primary client-wiki sources (SRC-0235 to SRC-0237). MDP capability, the matching change notice and the historical-product claims still rest on report tokens.
+- specific evidence required: Primary CME pages (MDP product documentation, rulebook chapter, data-services product page) captured with dates.
+- decision prevented: KG1/KG2 evidence quality for the CME rows, and auditability of the MDP feasibility claim.
+- conflict type: NO_CONFLICT_INCOMPLETENESS
+- sources: A=SRC-0107, B=None
+- searches attempted: None
+- resolvable by web research: None; vendor quote: None; M2 measurement: None
+- resolution class: None
+- affected: TUP-CME-ES-H1-QDEP-PAS|TUP-CME-ES-H3-OFI-AGG|TUP-CME-NQ-H3-OFI-AGG|TUP-CME-TSY-H2-QREPL-MIX|TUP-CME-WTI-H4-FLOWVOL-AGG
+- evidence: None
+
+## UNK-0023-EXCH-OTHER - BLOCKING - OPEN
+
+- claim needed: Independent verifiability of the remaining exchange claims: Eurex T7 interfaces, the Cboe options fee schedule, and the Nasdaq IPO-process claim.
+- known evidence: Eurex T7, the Cboe options schedule and the Nasdaq IPO display-only period still rest on report tokens; the Cboe equities schedule and Nasdaq products were re-derived in iteration 1.
+- specific evidence required: Primary pages for each remaining claim, captured with dates.
+- decision prevented: Evidence quality for the Eurex tuple and for the options candidate's Gate-2 status.
+- conflict type: NO_CONFLICT_INCOMPLETENESS
+- sources: A=SRC-0110, B=None
+- searches attempted: None
+- resolvable by web research: None; vendor quote: None; M2 measurement: None
+- resolution class: None
+- affected: TUP-EUREX-FESX-H2H3-OFIQ-MIX|TUP-CBOE-USOPT-H5-SURFRV-MIX|TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG
+- evidence: None
+
+## UNK-0023-PAIRED-TOKENS - NON_BLOCKING - OPEN
+
+- claim needed: Whether the paired citation tokens (turn10search28, turn16search20, turn20view3) refer to distinct sources or are duplicates of an already re-derived source.
+- known evidence: In two of three cases a paired token accompanies an already-identified source in the same claim; the report does not distinguish them.
+- specific evidence required: Nothing further is required for M1: the claims are covered by the identified source.
+- decision prevented: Nothing decision-critical; recorded so the token inventory is complete.
+- conflict type: NO_CONFLICT_INCOMPLETENESS
+- sources: A=None, B=None
+- searches attempted: None
+- resolvable by web research: None; vendor quote: None; M2 measurement: None
+- resolution class: None
+- affected: TUP-CME-ES-H1-QDEP-PAS|TUP-CME-ES-H3-OFI-AGG|TUP-CME-NQ-H3-OFI-AGG|TUP-CME-TSY-H2-QREPL-MIX|TUP-CME-WTI-H4-FLOWVOL-AGG|TUP-NASDAQ-LARGETICK-H2-QIMB-AGG|TUP-NASDAQ-LARGETICK-H2H3-MICRO-AGG|TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG
+- evidence: None
+
 ## UNK-0033 - BLOCKING - OPEN
 
 - claim needed: Sponsored-access cost: broker commission/markup for routed order flow, which no exchange or regulator publishes.
@@ -476,9 +686,9 @@ and the judgment used is stated together with its basis.
 
 ## UNK-0034 - BLOCKING - OPEN
 
-- claim needed: The operator's own jurisdiction and client classification, which determine whether each venue is accessible at all.
+- claim needed: The operator's jurisdiction and client classification.
 - known evidence: Venue terms and regulations now specify explicit exclusions: Hyperliquid excludes US and Ontario persons; Deribit prohibits the US; Kalshi restricts many countries and faces active Washington and Nevada orders; international Polymarket blocks US persons while Polymarket US is a separate product.
-- specific evidence required: A statement of the operator's legal domicile, entity type and client classification, plus the per-venue eligibility determination that follows from it.
+- specific evidence required: Three facts stated by the operator: (1) legal domicile/jurisdiction of the operating person or entity; (2) entity/person classification, including professional versus non-professional status where a venue distinguishes; (3) intended account/entity type per venue if materially relevant to eligibility.
 - decision prevented: Access legality for four venue families, and therefore KG3 and KG5 for their candidates: no fill or cost model matters for a venue the operator may not use.
 - conflict type: NO_CONFLICT_INCOMPLETENESS
 - sources: A=SRC-0213, B=SRC-0214

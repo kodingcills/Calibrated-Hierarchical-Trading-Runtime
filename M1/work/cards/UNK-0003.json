@@ -17,6 +17,7 @@
   "decision_prevented": "Causal queue replay for CME candidates (KG2), and therefore M2 for them.",
   "disallowed_evidence": "Marketing material claiming 'up to full order book' without schema or price",
   "estimated_effort": "MEDIUM",
+  "is_aggregate_parent": "NO",
   "kill_condition": "No historical order-level product exists at any usable cost",
   "kill_potential": "HIGH",
   "known_evidence_ids": [
@@ -25,7 +26,8 @@
   "known_source_ids": [
     "SRC-0123"
   ],
-  "last_updated": "2026-09-20T18:48:51Z",
+  "last_updated": "2026-09-20T19:09:29Z",
+  "parent_issue_id": null,
   "priority_reason": "M1-BLOCKING retained: data procurement feasibility is an M1 question (handoff \u00a715 KG2).",
   "priority_score": null,
   "required_answer": "Product, history depth, schema, timestamp fields, licence and price",

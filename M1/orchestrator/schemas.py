@@ -53,6 +53,7 @@ NEW_SOURCE_FIELDS = ("source_id", "title", "authors_or_org", "publication_date",
                      "status")
 
 VENUE_UPDATE_FIELDS = ("venue_id", "fields", "source_ids", "reason")
+SOURCE_UPDATE_FIELDS = ("source_id", "fields", "reason")
 NEW_EVIDENCE_FIELDS = ("evidence_id", "claim", "source_id", "candidate_ids", "epistemic_class",
                        "evidence_origin", "supports_or_weakens", "methodology", "sample",
                        "temporal_scope", "gross_or_net", "limitations", "decision_implication",

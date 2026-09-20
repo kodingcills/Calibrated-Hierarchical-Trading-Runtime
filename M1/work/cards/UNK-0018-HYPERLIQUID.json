@@ -1,0 +1,40 @@
+{
+  "acceptable_evidence": "Any primary source that answers the claim needed",
+  "affected_candidates": [
+    "TUP-HYPERLIQUID-BTCPERP-H3-OFILIQ-AGG",
+    "TUP-HYPERLIQUID-BTCPERP-H4-FUNDBASIS-MIX"
+  ],
+  "affected_gates": "NONE",
+  "blocker_id": "UNK-0018-HYPERLIQUID",
+  "branch_impact": "SMALL",
+  "contradictory_evidence_ids": [
+    "EVD-0009",
+    "EVD-0043",
+    "EVD-0045",
+    "EVD-0046",
+    "EVD-0047"
+  ],
+  "decision_prevented": "Replay validity for the Hyperliquid seconds-scale tuples (KG2).",
+  "disallowed_evidence": "Assumed values, secondary summaries, social posts",
+  "estimated_effort": "SMALL",
+  "is_aggregate_parent": "NO",
+  "kill_condition": "Replay validity for the Hyperliquid seconds-scale tuples (KG2).",
+  "kill_potential": "HIGH",
+  "known_evidence_ids": [],
+  "known_source_ids": [
+    "SRC-0214",
+    "SRC-0216"
+  ],
+  "last_updated": "2026-09-20T19:09:29Z",
+  "parent_issue_id": "UNK-0018",
+  "priority_reason": "Scoped child: the archive is the venue's own and the remaining question is its field semantics, which public documentation or one sample answers.",
+  "priority_score": null,
+  "required_answer": "The archive's file schema and a sample hour, plus a stated rule for missing hours.",
+  "resolution_method": "PUBLIC_RESEARCH",
+  "resolution_stage": "M1_BLOCKING",
+  "resurrection_condition": null,
+  "status": "OPEN",
+  "success_condition": "The archive's file schema and a sample hour, plus a stated rule for missing hours.",
+  "tier": 1,
+  "title": "Timestamp semantics and completeness rules for the official Hyperliquid archive: block tim"
+}

@@ -1,33 +1,41 @@
 {
   "candidate_counts": {
     "ALIVE": 0,
-    "DEAD": 9,
-    "UNKNOWN": 14,
+    "DEAD": 7,
+    "UNKNOWN": 16,
     "WEAK": 5,
     "total": 28
   },
-  "external_actions_queued": 10,
+  "external_actions_queued": 14,
   "frontier": {
     "active_items": [
-      "UNK-0023",
-      "UNK-0034",
-      "UNK-0018",
       "UNK-0002",
-      "UNK-0009",
+      "UNK-0018-HYPERLIQUID",
+      "UNK-0023-CME-DOCS",
+      "UNK-0023-LIT",
+      "UNK-0018-NASDAQ",
       "UNK-0027",
       "UNK-0033",
+      "UNK-0023-EXCH-OTHER",
+      "UNK-0009-MECH-CME",
+      "UNK-0009-ECON-CRYPTO-SPOT",
       "UNK-0010",
       "UNK-0012",
       "UNK-0013",
       "UNK-0014",
       "UNK-0015",
+      "UNK-0018-CME",
       "UNK-0035",
       "UNK-0028",
       "UNK-0005",
+      "UNK-0009-MECH-NASDAQ-MICRO",
       "UNK-0003",
-      "UNK-0011"
+      "UNK-0018-BZX",
+      "UNK-0018-EUREX",
+      "UNK-0011",
+      "UNK-0018-USSTOCK-CROSS"
     ],
-    "next_item": "UNK-0023"
+    "next_item": "UNK-0002"
   },
   "gate_eligible": [],
   "gate_vectors": {
@@ -48,9 +56,9 @@
         "value": "BLOCKED"
       },
       "KG4_HALF_LIFE": {
-        "reason": "No known physical timing contradiction, and the delay experiment is preregistered. The empirical half-life is an M2 output by design (UNK-0008), not an M1 requirement.",
-        "rule": "KG4-R4",
-        "value": "PASS"
+        "reason": "No positive horizon-plausibility evidence: the candidate has no sourced empirical effect, documented mechanism cadence or structural timing fact at a comparable horizon. Absence of a contradiction is not positive evidence, so the horizon claim is unsupported rather than established.",
+        "rule": "KG4-R5",
+        "value": "BLOCKED"
       },
       "KG5_FALSIFIABILITY": {
         "reason": "Instrument is a family rather than an exact contract/symbol, so no measurable outcome can be attributed (UNK-0027).",
@@ -75,9 +83,9 @@
         "value": "BLOCKED"
       },
       "KG4_HALF_LIFE": {
-        "reason": "No known physical timing contradiction, and the delay experiment is preregistered. The empirical half-life is an M2 output by design (UNK-0008), not an M1 requirement.",
-        "rule": "KG4-R4",
-        "value": "PASS"
+        "reason": "No positive horizon-plausibility evidence: the candidate has no sourced empirical effect, documented mechanism cadence or structural timing fact at a comparable horizon. Absence of a contradiction is not positive evidence, so the horizon claim is unsupported rather than established.",
+        "rule": "KG4-R5",
+        "value": "BLOCKED"
       },
       "KG5_FALSIFIABILITY": {
         "reason": "Instrument is a family rather than an exact contract/symbol, so no measurable outcome can be attributed (UNK-0027).",
@@ -102,9 +110,9 @@
         "value": "BLOCKED"
       },
       "KG4_HALF_LIFE": {
-        "reason": "No known physical timing contradiction, and the delay experiment is preregistered. The empirical half-life is an M2 output by design (UNK-0008), not an M1 requirement.",
-        "rule": "KG4-R4",
-        "value": "PASS"
+        "reason": "No positive horizon-plausibility evidence: the candidate has no sourced empirical effect, documented mechanism cadence or structural timing fact at a comparable horizon. Absence of a contradiction is not positive evidence, so the horizon claim is unsupported rather than established.",
+        "rule": "KG4-R5",
+        "value": "BLOCKED"
       },
       "KG5_FALSIFIABILITY": {
         "reason": "Exact nulls, dataset requirements, metric and kill criteria are specifiable before results are observed.",
@@ -129,9 +137,9 @@
         "value": "BLOCKED"
       },
       "KG4_HALF_LIFE": {
-        "reason": "No known physical timing contradiction, and the delay experiment is preregistered. The empirical half-life is an M2 output by design (UNK-0008), not an M1 requirement.",
-        "rule": "KG4-R4",
-        "value": "PASS"
+        "reason": "No positive horizon-plausibility evidence: the candidate has no sourced empirical effect, documented mechanism cadence or structural timing fact at a comparable horizon. Absence of a contradiction is not positive evidence, so the horizon claim is unsupported rather than established.",
+        "rule": "KG4-R5",
+        "value": "BLOCKED"
       },
       "KG5_FALSIFIABILITY": {
         "reason": "Exact nulls, dataset requirements, metric and kill criteria are specifiable before results are observed.",
@@ -156,9 +164,9 @@
         "value": "BLOCKED"
       },
       "KG4_HALF_LIFE": {
-        "reason": "No known physical timing contradiction, and the delay experiment is preregistered. The empirical half-life is an M2 output by design (UNK-0008), not an M1 requirement.",
-        "rule": "KG4-R4",
-        "value": "PASS"
+        "reason": "No positive horizon-plausibility evidence: the candidate has no sourced empirical effect, documented mechanism cadence or structural timing fact at a comparable horizon. Absence of a contradiction is not positive evidence, so the horizon claim is unsupported rather than established.",
+        "rule": "KG4-R5",
+        "value": "BLOCKED"
       },
       "KG5_FALSIFIABILITY": {
         "reason": "Exact nulls, dataset requirements, metric and kill criteria are specifiable before results are observed.",
@@ -183,9 +191,9 @@
         "value": "BLOCKED"
       },
       "KG4_HALF_LIFE": {
-        "reason": "No known physical timing contradiction, and the delay experiment is preregistered. The empirical half-life is an M2 output by design (UNK-0008), not an M1 requirement.",
-        "rule": "KG4-R4",
-        "value": "PASS"
+        "reason": "No positive horizon-plausibility evidence: the candidate has no sourced empirical effect, documented mechanism cadence or structural timing fact at a comparable horizon. Absence of a contradiction is not positive evidence, so the horizon claim is unsupported rather than established.",
+        "rule": "KG4-R5",
+        "value": "BLOCKED"
       },
       "KG5_FALSIFIABILITY": {
         "reason": "Instrument is a family rather than an exact contract/symbol, so no measurable outcome can be attributed (UNK-0027).",
@@ -210,9 +218,9 @@
         "value": "BLOCKED"
       },
       "KG4_HALF_LIFE": {
-        "reason": "No known physical timing contradiction, and the delay experiment is preregistered. The empirical half-life is an M2 output by design (UNK-0008), not an M1 requirement.",
-        "rule": "KG4-R4",
-        "value": "PASS"
+        "reason": "No positive horizon-plausibility evidence: the candidate has no sourced empirical effect, documented mechanism cadence or structural timing fact at a comparable horizon. Absence of a contradiction is not positive evidence, so the horizon claim is unsupported rather than established.",
+        "rule": "KG4-R5",
+        "value": "BLOCKED"
       },
       "KG5_FALSIFIABILITY": {
         "reason": "Instrument is a family rather than an exact contract/symbol, so no measurable outcome can be attributed (UNK-0027).",
@@ -237,9 +245,9 @@
         "value": "BLOCKED"
       },
       "KG4_HALF_LIFE": {
-        "reason": "No known physical timing contradiction, and the delay experiment is preregistered. The empirical half-life is an M2 output by design (UNK-0008), not an M1 requirement.",
-        "rule": "KG4-R4",
-        "value": "PASS"
+        "reason": "No positive horizon-plausibility evidence: the candidate has no sourced empirical effect, documented mechanism cadence or structural timing fact at a comparable horizon. Absence of a contradiction is not positive evidence, so the horizon claim is unsupported rather than established.",
+        "rule": "KG4-R5",
+        "value": "BLOCKED"
       },
       "KG5_FALSIFIABILITY": {
         "reason": "Exact nulls, dataset requirements, metric and kill criteria are specifiable before results are observed.",
@@ -264,9 +272,9 @@
         "value": "BLOCKED"
       },
       "KG4_HALF_LIFE": {
-        "reason": "No known physical timing contradiction, and the delay experiment is preregistered. The empirical half-life is an M2 output by design (UNK-0008), not an M1 requirement.",
-        "rule": "KG4-R4",
-        "value": "PASS"
+        "reason": "No positive horizon-plausibility evidence: the candidate has no sourced empirical effect, documented mechanism cadence or structural timing fact at a comparable horizon. Absence of a contradiction is not positive evidence, so the horizon claim is unsupported rather than established.",
+        "rule": "KG4-R5",
+        "value": "BLOCKED"
       },
       "KG5_FALSIFIABILITY": {
         "reason": "Instrument is a family rather than an exact contract/symbol, so no measurable outcome can be attributed (UNK-0027).",
@@ -291,9 +299,9 @@
         "value": "BLOCKED"
       },
       "KG4_HALF_LIFE": {
-        "reason": "No known physical timing contradiction, and the delay experiment is preregistered. The empirical half-life is an M2 output by design (UNK-0008), not an M1 requirement.",
-        "rule": "KG4-R4",
-        "value": "PASS"
+        "reason": "No positive horizon-plausibility evidence: the candidate has no sourced empirical effect, documented mechanism cadence or structural timing fact at a comparable horizon. Absence of a contradiction is not positive evidence, so the horizon claim is unsupported rather than established.",
+        "rule": "KG4-R5",
+        "value": "BLOCKED"
       },
       "KG5_FALSIFIABILITY": {
         "reason": "Instrument is a family rather than an exact contract/symbol, so no measurable outcome can be attributed (UNK-0027).",
@@ -318,9 +326,9 @@
         "value": "BLOCKED"
       },
       "KG4_HALF_LIFE": {
-        "reason": "No known physical timing contradiction, and the delay experiment is preregistered. The empirical half-life is an M2 output by design (UNK-0008), not an M1 requirement.",
-        "rule": "KG4-R4",
-        "value": "PASS"
+        "reason": "No positive horizon-plausibility evidence: the candidate has no sourced empirical effect, documented mechanism cadence or structural timing fact at a comparable horizon. Absence of a contradiction is not positive evidence, so the horizon claim is unsupported rather than established.",
+        "rule": "KG4-R5",
+        "value": "BLOCKED"
       },
       "KG5_FALSIFIABILITY": {
         "reason": "Instrument is a family rather than an exact contract/symbol, so no measurable outcome can be attributed (UNK-0027).",
@@ -345,9 +353,9 @@
         "value": "BLOCKED"
       },
       "KG4_HALF_LIFE": {
-        "reason": "No known physical timing contradiction, and the delay experiment is preregistered. The empirical half-life is an M2 output by design (UNK-0008), not an M1 requirement.",
-        "rule": "KG4-R4",
-        "value": "PASS"
+        "reason": "No positive horizon-plausibility evidence: the candidate has no sourced empirical effect, documented mechanism cadence or structural timing fact at a comparable horizon. Absence of a contradiction is not positive evidence, so the horizon claim is unsupported rather than established.",
+        "rule": "KG4-R5",
+        "value": "BLOCKED"
       },
       "KG5_FALSIFIABILITY": {
         "reason": "Instrument is a family rather than an exact contract/symbol, so no measurable outcome can be attributed (UNK-0027).",
@@ -453,9 +461,9 @@
         "value": "BLOCKED"
       },
       "KG4_HALF_LIFE": {
-        "reason": "No known physical timing contradiction, and the delay experiment is preregistered. The empirical half-life is an M2 output by design (UNK-0008), not an M1 requirement.",
-        "rule": "KG4-R4",
-        "value": "PASS"
+        "reason": "No positive horizon-plausibility evidence: the candidate has no sourced empirical effect, documented mechanism cadence or structural timing fact at a comparable horizon. Absence of a contradiction is not positive evidence, so the horizon claim is unsupported rather than established.",
+        "rule": "KG4-R5",
+        "value": "BLOCKED"
       },
       "KG5_FALSIFIABILITY": {
         "reason": "Exact nulls, dataset requirements, metric and kill criteria are specifiable before results are observed.",
@@ -480,9 +488,9 @@
         "value": "BLOCKED"
       },
       "KG4_HALF_LIFE": {
-        "reason": "No known physical timing contradiction, and the delay experiment is preregistered. The empirical half-life is an M2 output by design (UNK-0008), not an M1 requirement.",
-        "rule": "KG4-R4",
-        "value": "PASS"
+        "reason": "No positive horizon-plausibility evidence: the candidate has no sourced empirical effect, documented mechanism cadence or structural timing fact at a comparable horizon. Absence of a contradiction is not positive evidence, so the horizon claim is unsupported rather than established.",
+        "rule": "KG4-R5",
+        "value": "BLOCKED"
       },
       "KG5_FALSIFIABILITY": {
         "reason": "Exact nulls, dataset requirements, metric and kill criteria are specifiable before results are observed.",
@@ -534,9 +542,9 @@
         "value": "BLOCKED"
       },
       "KG4_HALF_LIFE": {
-        "reason": "No known physical timing contradiction, and the delay experiment is preregistered. The empirical half-life is an M2 output by design (UNK-0008), not an M1 requirement.",
-        "rule": "KG4-R4",
-        "value": "PASS"
+        "reason": "No positive horizon-plausibility evidence: the candidate has no sourced empirical effect, documented mechanism cadence or structural timing fact at a comparable horizon. Absence of a contradiction is not positive evidence, so the horizon claim is unsupported rather than established.",
+        "rule": "KG4-R5",
+        "value": "BLOCKED"
       },
       "KG5_FALSIFIABILITY": {
         "reason": "Instrument is a family rather than an exact contract/symbol, so no measurable outcome can be attributed (UNK-0027).",
@@ -561,9 +569,9 @@
         "value": "BLOCKED"
       },
       "KG4_HALF_LIFE": {
-        "reason": "No known physical timing contradiction, and the delay experiment is preregistered. The empirical half-life is an M2 output by design (UNK-0008), not an M1 requirement.",
-        "rule": "KG4-R4",
-        "value": "PASS"
+        "reason": "No positive horizon-plausibility evidence: the candidate has no sourced empirical effect, documented mechanism cadence or structural timing fact at a comparable horizon. Absence of a contradiction is not positive evidence, so the horizon claim is unsupported rather than established.",
+        "rule": "KG4-R5",
+        "value": "BLOCKED"
       },
       "KG5_FALSIFIABILITY": {
         "reason": "Exact nulls, dataset requirements, metric and kill criteria are specifiable before results are observed.",
@@ -615,9 +623,9 @@
         "value": "BLOCKED"
       },
       "KG4_HALF_LIFE": {
-        "reason": "No known physical timing contradiction, and the delay experiment is preregistered. The empirical half-life is an M2 output by design (UNK-0008), not an M1 requirement.",
-        "rule": "KG4-R4",
-        "value": "PASS"
+        "reason": "No positive horizon-plausibility evidence: the candidate has no sourced empirical effect, documented mechanism cadence or structural timing fact at a comparable horizon. Absence of a contradiction is not positive evidence, so the horizon claim is unsupported rather than established.",
+        "rule": "KG4-R5",
+        "value": "BLOCKED"
       },
       "KG5_FALSIFIABILITY": {
         "reason": "Exact nulls, dataset requirements, metric and kill criteria are specifiable before results are observed.",
@@ -642,9 +650,9 @@
         "value": "BLOCKED"
       },
       "KG4_HALF_LIFE": {
-        "reason": "No known physical timing contradiction, and the delay experiment is preregistered. The empirical half-life is an M2 output by design (UNK-0008), not an M1 requirement.",
-        "rule": "KG4-R4",
-        "value": "PASS"
+        "reason": "No positive horizon-plausibility evidence: the candidate has no sourced empirical effect, documented mechanism cadence or structural timing fact at a comparable horizon. Absence of a contradiction is not positive evidence, so the horizon claim is unsupported rather than established.",
+        "rule": "KG4-R5",
+        "value": "BLOCKED"
       },
       "KG5_FALSIFIABILITY": {
         "reason": "Instrument is a family rather than an exact contract/symbol, so no measurable outcome can be attributed (UNK-0027).",
@@ -654,7 +662,7 @@
     },
     "TUP-NASDAQ-LARGETICK-H2-QIMB-AGG": {
       "KG1_MECHANISM": {
-        "reason": "Venue-specific supporting evidence exists (EVD-0012) and no supported-finding record contradicts the mechanism. This justifies quantitative testing; it is not evidence of net edge.",
+        "reason": "Venue-specific supporting evidence exists (EVD-0012, EVD-0064) and no supported-finding record contradicts the mechanism. This justifies quantitative testing; it is not evidence of net edge.",
         "rule": "KG1-R2",
         "value": "PASS"
       },
@@ -669,7 +677,7 @@
         "value": "BLOCKED"
       },
       "KG4_HALF_LIFE": {
-        "reason": "No known physical timing contradiction, and the delay experiment is preregistered. The empirical half-life is an M2 output by design (UNK-0008), not an M1 requirement.",
+        "reason": "Positive horizon evidence exists (EVD-0012, EVD-0064) with no known physical timing contradiction and a preregistered delay experiment. The empirical half-life remains an M2 output by design (UNK-0008).",
         "rule": "KG4-R4",
         "value": "PASS"
       },
@@ -681,9 +689,9 @@
     },
     "TUP-NASDAQ-LARGETICK-H2H3-MICRO-AGG": {
       "KG1_MECHANISM": {
-        "reason": "Venue-specific supporting evidence exists (EVD-0014) and no supported-finding record contradicts the mechanism. This justifies quantitative testing; it is not evidence of net edge.",
-        "rule": "KG1-R2",
-        "value": "PASS"
+        "reason": "No venue-specific evidence that the mechanism operates on this venue/instrument. Borrowed evidence from another market is an extrapolation and cannot pass KG1.",
+        "rule": "KG1-R4",
+        "value": "BLOCKED"
       },
       "KG2_DATA": {
         "reason": "Data adequacy not established: historical_feed, PIT_reconstructable, timestamp_adequacy are not verified.",
@@ -696,9 +704,9 @@
         "value": "BLOCKED"
       },
       "KG4_HALF_LIFE": {
-        "reason": "No known physical timing contradiction, and the delay experiment is preregistered. The empirical half-life is an M2 output by design (UNK-0008), not an M1 requirement.",
-        "rule": "KG4-R4",
-        "value": "PASS"
+        "reason": "No positive horizon-plausibility evidence: the candidate has no sourced empirical effect, documented mechanism cadence or structural timing fact at a comparable horizon. Absence of a contradiction is not positive evidence, so the horizon claim is unsupported rather than established.",
+        "rule": "KG4-R5",
+        "value": "BLOCKED"
       },
       "KG5_FALSIFIABILITY": {
         "reason": "Instrument is a family rather than an exact contract/symbol, so no measurable outcome can be attributed (UNK-0027).",
@@ -723,9 +731,9 @@
         "value": "BLOCKED"
       },
       "KG4_HALF_LIFE": {
-        "reason": "No known physical timing contradiction, and the delay experiment is preregistered. The empirical half-life is an M2 output by design (UNK-0008), not an M1 requirement.",
-        "rule": "KG4-R4",
-        "value": "PASS"
+        "reason": "No positive horizon-plausibility evidence: the candidate has no sourced empirical effect, documented mechanism cadence or structural timing fact at a comparable horizon. Absence of a contradiction is not positive evidence, so the horizon claim is unsupported rather than established.",
+        "rule": "KG4-R5",
+        "value": "BLOCKED"
       },
       "KG5_FALSIFIABILITY": {
         "reason": "Instrument is a family rather than an exact contract/symbol, so no measurable outcome can be attributed (UNK-0027).",
@@ -777,9 +785,9 @@
         "value": "BLOCKED"
       },
       "KG4_HALF_LIFE": {
-        "reason": "No known physical timing contradiction, and the delay experiment is preregistered. The empirical half-life is an M2 output by design (UNK-0008), not an M1 requirement.",
-        "rule": "KG4-R4",
-        "value": "PASS"
+        "reason": "No positive horizon-plausibility evidence: the candidate has no sourced empirical effect, documented mechanism cadence or structural timing fact at a comparable horizon. Absence of a contradiction is not positive evidence, so the horizon claim is unsupported rather than established.",
+        "rule": "KG4-R5",
+        "value": "BLOCKED"
       },
       "KG5_FALSIFIABILITY": {
         "reason": "Instrument is a family rather than an exact contract/symbol, so no measurable outcome can be attributed (UNK-0027).",
@@ -788,8 +796,8 @@
       }
     }
   },
-  "generated_at": "2026-09-20T18:48:51Z",
-  "iterations_recorded": 3,
+  "generated_at": "2026-09-20T19:09:29Z",
+  "iterations_recorded": 4,
   "m2_specs_generated": [
     "CAPACITY",
     "COST_SENSITIVITY",
@@ -801,15 +809,15 @@
   ],
   "migration": {
     "by_method": {
-      "DEFERRED": 4,
-      "EMPIRICAL_MEASUREMENT": 10,
-      "EXTERNAL_ACTION": 11,
-      "PUBLIC_RESEARCH": 10
+      "DEFERRED": 3,
+      "EMPIRICAL_MEASUREMENT": 12,
+      "EXTERNAL_ACTION": 15,
+      "PUBLIC_RESEARCH": 19
     },
     "by_stage": {
-      "M1_BLOCKING": 21,
-      "M2_MEASUREMENT": 9,
-      "NON_BLOCKING": 4,
+      "M1_BLOCKING": 33,
+      "M2_MEASUREMENT": 11,
+      "NON_BLOCKING": 5,
       "POST_M2": 1
     },
     "migrated_count": 14,
@@ -830,6 +838,21 @@
       "UNK-0032"
     ],
     "unmapped_issues": [
+      "UNK-0009-ECON-CME-MEASURED",
+      "UNK-0009-ECON-CRYPTO-SPOT",
+      "UNK-0009-ECON-EQUITY-MEASURED",
+      "UNK-0009-MECH-CME",
+      "UNK-0009-MECH-NASDAQ-MICRO",
+      "UNK-0018-BZX",
+      "UNK-0018-CME",
+      "UNK-0018-EUREX",
+      "UNK-0018-HYPERLIQUID",
+      "UNK-0018-NASDAQ",
+      "UNK-0018-USSTOCK-CROSS",
+      "UNK-0023-CME-DOCS",
+      "UNK-0023-EXCH-OTHER",
+      "UNK-0023-LIT",
+      "UNK-0023-PAIRED-TOKENS",
       "UNK-0033",
       "UNK-0034",
       "UNK-0035"

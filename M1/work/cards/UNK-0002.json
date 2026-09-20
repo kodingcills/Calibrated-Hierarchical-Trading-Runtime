@@ -18,6 +18,7 @@
   "decision_prevented": "Any queue-position or fill model for passive CME candidates (KG2/KG3).",
   "disallowed_evidence": "A generic FIFO assumption or another venue's queue model",
   "estimated_effort": "SMALL",
+  "is_aggregate_parent": "NO",
   "kill_condition": "Rule shows the proposed execution style cannot obtain the assumed queue behaviour",
   "kill_potential": "HIGH",
   "known_evidence_ids": [
@@ -28,7 +29,8 @@
     "SRC-0112",
     "SRC-0113"
   ],
-  "last_updated": "2026-09-20T18:48:51Z",
+  "last_updated": "2026-09-20T19:09:29Z",
+  "parent_issue_id": null,
   "priority_reason": "M1-BLOCKING retained: matching mechanics are a Tier-1 fact and a queue model cannot be built without it.",
   "priority_score": null,
   "required_answer": "The allocation algorithm that applies to the named product and order type, with its version",

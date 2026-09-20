@@ -1,0 +1,44 @@
+{
+  "acceptable_evidence": "Any primary source that answers the claim needed",
+  "affected_candidates": [
+    "TUP-COINBASE-BTCUSD-H3-MICROOFI-AGG",
+    "TUP-KRAKEN-BTCUSD-H3-MICROOFI-AGG",
+    "TUP-HYPERLIQUID-BTCPERP-H3-OFILIQ-AGG",
+    "TUP-HYPERLIQUID-BTCPERP-H4-FUNDBASIS-MIX"
+  ],
+  "affected_gates": "NONE",
+  "blocker_id": "UNK-0009-ECON-CRYPTO-SPOT",
+  "branch_impact": "SMALL",
+  "contradictory_evidence_ids": [
+    "EVD-0007",
+    "EVD-0008",
+    "EVD-0009",
+    "EVD-0043",
+    "EVD-0045",
+    "EVD-0046",
+    "EVD-0047"
+  ],
+  "decision_prevented": "Whether the crypto spot branch can be killed on materiality rather than left blocked: a cost level alone is not a kill (D-0022).",
+  "disallowed_evidence": "Assumed values, secondary summaries, social posts",
+  "estimated_effort": "MEDIUM",
+  "is_aggregate_parent": "NO",
+  "kill_condition": "Whether the crypto spot branch can be killed on materiality rather than left blocked: a cost level alone is not a kill (D-0022).",
+  "kill_potential": "HIGH",
+  "known_evidence_ids": [],
+  "known_source_ids": [
+    "SRC-0105",
+    "SRC-0106"
+  ],
+  "last_updated": "2026-09-20T19:09:29Z",
+  "parent_issue_id": "UNK-0009",
+  "priority_reason": "Split from UNK-0009 and promoted to M1 because it decides an open branch cheaply: it is the missing input that a kill would need.",
+  "priority_score": null,
+  "required_answer": "A venue-specific study (or an exchange-published statistic) bounding achievable short-horizon gross movement on Coinbase or Kraken, sufficient to decide whether a 120-160 bps round trip is arithmetically out of reach.",
+  "resolution_method": "PUBLIC_RESEARCH",
+  "resolution_stage": "M1_BLOCKING",
+  "resurrection_condition": null,
+  "status": "OPEN",
+  "success_condition": "A venue-specific study (or an exchange-published statistic) bounding achievable short-horizon gross movement on Coinbase or Kraken, sufficient to decide whether a 120-160 bps round trip is arithmetically out of reach.",
+  "tier": 1,
+  "title": "Is there a documented upper bound on the plausible gross seconds-scale effect on large cry"
+}

@@ -10,13 +10,15 @@
   "decision_prevented": "Independent verification of any external claim, including fee schedules that already killed candidates; the arithmetic is unaffected, the auditability is.",
   "disallowed_evidence": "A URL for a different page, version or product family than the token refers to",
   "estimated_effort": "SMALL",
+  "is_aggregate_parent": "YES",
   "kill_condition": "A re-derived fact contradicts the report-mediated value (that is a finding, not a failure)",
   "kill_potential": "HIGH",
   "known_evidence_ids": [],
   "known_source_ids": [
     "SRC-0011"
   ],
-  "last_updated": "2026-09-20T18:48:51Z",
+  "last_updated": "2026-09-20T19:09:29Z",
+  "parent_issue_id": null,
   "priority_reason": "M1-BLOCKING retained: decisions already rest on these facts, and re-derivation is the cheapest available integrity upgrade.",
   "priority_score": null,
   "required_answer": "A resolvable URL plus snapshot for each of the 25 report-mediated external sources",

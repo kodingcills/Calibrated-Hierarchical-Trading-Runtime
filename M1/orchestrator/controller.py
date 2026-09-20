@@ -134,7 +134,11 @@ def external_requests(closure) -> list:
 
 
 def deferred_cards(closure) -> list:
-    """M1 blockers that no resolver can answer because they are facts about the operator.
+    """M1 blockers no resolver can answer: operator facts (HUMAN_INPUT) or postponed work.
+
+    These are surfaced for a human but never dispatched autonomously. Their priority is computed
+    for ordering the human queue only.
+    
 
     These are surfaced separately: they require a human statement, not a search or a quote, and
     leaving them in the same list as vendor requests would hide that.
@@ -143,7 +147,7 @@ def deferred_cards(closure) -> list:
     for card in closure["cards"].values():
         if card["resolution_stage"] != "M1_BLOCKING":
             continue
-        if card["resolution_method"] != "DEFERRED":
+        if card["resolution_method"] not in ("HUMAN_INPUT", "DEFERRED"):
             continue
         if card["status"] not in ("OPEN", "IN_PROGRESS"):
             continue
@@ -326,4 +330,7 @@ def main(argv) -> int:
 
 
 if __name__ == "__main__":
-    raise SystemExit(main(sys.argv))
+    try:
+        raise SystemExit(main(sys.argv))
+    except BrokenPipeError:  # paging the output must not look like a failure
+        raise SystemExit(0)

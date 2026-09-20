@@ -1,0 +1,34 @@
+{
+  "acceptable_evidence": "Any primary source that answers the claim needed",
+  "affected_candidates": [
+    "TUP-CBOEBZX-LARGETICK-H2H3-SPREADCAP-PAS"
+  ],
+  "affected_gates": "NONE",
+  "blocker_id": "UNK-0018-BZX",
+  "branch_impact": "ONE",
+  "contradictory_evidence_ids": [
+    "EVD-0037"
+  ],
+  "decision_prevented": "Causal replay for the BZX passive tuple (KG2).",
+  "disallowed_evidence": "Assumed values, secondary summaries, social posts",
+  "estimated_effort": "SMALL",
+  "is_aggregate_parent": "NO",
+  "kill_condition": "Causal replay for the BZX passive tuple (KG2).",
+  "kill_potential": "MEDIUM",
+  "known_evidence_ids": [],
+  "known_source_ids": [
+    "SRC-0205"
+  ],
+  "last_updated": "2026-09-20T19:09:29Z",
+  "parent_issue_id": "UNK-0018",
+  "priority_reason": "Scoped child: one venue, one product, one sample.",
+  "priority_score": null,
+  "required_answer": "Cboe depth-feed specification and a sample with field-level timestamp semantics.",
+  "resolution_method": "EXTERNAL_ACTION",
+  "resolution_stage": "M1_BLOCKING",
+  "resurrection_condition": null,
+  "status": "OPEN",
+  "success_condition": "Cboe depth-feed specification and a sample with field-level timestamp semantics.",
+  "tier": 3,
+  "title": "Timestamp semantics for the Cboe BZX depth feed and any historical depth archive."
+}

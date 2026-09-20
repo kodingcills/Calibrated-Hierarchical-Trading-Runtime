@@ -18,6 +18,7 @@
   "decision_prevented": "Net-edge feasibility for the Hyperliquid H3/H4 candidates.",
   "disallowed_evidence": "Assuming public API pagination equals event-level historical replay",
   "estimated_effort": "SMALL",
+  "is_aggregate_parent": "NO",
   "kill_condition": "Fees or the absence of event-level history make the seconds-scale tuples uneconomic",
   "kill_potential": "HIGH",
   "known_evidence_ids": [
@@ -27,7 +28,8 @@
   "known_source_ids": [
     "SRC-0111"
   ],
-  "last_updated": "2026-09-20T18:48:51Z",
+  "last_updated": "2026-09-20T19:09:29Z",
+  "parent_issue_id": null,
   "priority_reason": "M1-BLOCKING retained; fee and liquidation facts are public research, replay procurement needs a vendor/data request, so the binding method is EXTERNAL_ACTION.",
   "priority_score": null,
   "required_answer": "Current fee schedule, historical event-level book/trade source, liquidation data surface",

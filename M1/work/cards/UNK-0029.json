@@ -10,13 +10,15 @@
   "decision_prevented": "Any capital decision; a micro-capacity edge with no business case cannot be justified later without it.",
   "disallowed_evidence": "Extrapolating small-size fills linearly",
   "estimated_effort": "LARGE",
+  "is_aggregate_parent": "NO",
   "kill_condition": "Capacity is too small to justify the operation",
   "kill_potential": "LOW",
   "known_evidence_ids": [],
   "known_source_ids": [
     "SRC-0024"
   ],
-  "last_updated": "2026-09-20T18:48:51Z",
+  "last_updated": "2026-09-20T19:09:29Z",
+  "parent_issue_id": null,
   "priority_reason": "MIGRATED to POST_M2: capacity is only meaningful for a strategy that has already shown positive net EV; it cannot gate selection among candidates with unknown EV.",
   "priority_score": null,
   "required_answer": "Impact and capacity curves at increasing size",

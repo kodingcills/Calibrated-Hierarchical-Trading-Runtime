@@ -36,7 +36,11 @@ GATE_IDS = ("KG1_MECHANISM", "KG2_DATA", "KG3_EXECUTION", "KG4_HALF_LIFE", "KG5_
 
 EVIDENCE_CLASSES = ("CONSENSUS_FACT", "SUPPORTED_FINDING", "CONTESTED_HYPOTHESIS", "EXTRAPOLATION", "UNKNOWN")
 SUPPORT_DIRECTIONS = ("SUPPORTS", "WEAKENS", "NEUTRAL")
-SOURCE_STATUSES = ("VERIFIED", "PARTIAL", "UNRESOLVED", "SUPERSEDED")
+SOURCE_STATUSES = ("VERIFIED", "PARTIAL", "UNRESOLVED", "SUPERSEDED",
+                   # Claim-level provenance states for the source-integrity model (handoff §3):
+                   # a report-mediated token whose claim has been re-derived from an identified
+                   # source stays in the registry for provenance but no longer blocks M1.
+                   "LEGACY_REPORT_MEDIATED", "VERIFIED_REPLACEMENT")
 SEVERITIES = ("BLOCKING", "IMPORTANT", "NON_BLOCKING")
 ISSUE_STATUSES = ("OPEN", "PARTIAL", "RESOLVED", "SUPERSEDED")
 

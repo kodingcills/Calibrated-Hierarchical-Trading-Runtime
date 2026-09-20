@@ -1,0 +1,40 @@
+{
+  "acceptable_evidence": "Any primary source that answers the claim needed",
+  "affected_candidates": [
+    "TUP-CME-ES-H1-QDEP-PAS",
+    "TUP-CME-ES-H3-OFI-AGG",
+    "TUP-CME-NQ-H3-OFI-AGG",
+    "TUP-CME-TSY-H2-QREPL-MIX",
+    "TUP-CME-WTI-H4-FLOWVOL-AGG"
+  ],
+  "affected_gates": "NONE",
+  "blocker_id": "UNK-0009-MECH-CME",
+  "branch_impact": "MEDIUM",
+  "contradictory_evidence_ids": [
+    "EVD-0003",
+    "EVD-0042"
+  ],
+  "decision_prevented": "KG1 for every CME candidate (mechanism plausibility, not profitability).",
+  "disallowed_evidence": "Assumed values, secondary summaries, social posts",
+  "estimated_effort": "MEDIUM",
+  "is_aggregate_parent": "NO",
+  "kill_condition": "KG1 for every CME candidate (mechanism plausibility, not profitability).",
+  "kill_potential": "HIGH",
+  "known_evidence_ids": [],
+  "known_source_ids": [
+    "SRC-0102",
+    "SRC-0235"
+  ],
+  "last_updated": "2026-09-20T19:09:29Z",
+  "parent_issue_id": "UNK-0009",
+  "priority_reason": "Split from the conflated UNK-0009: this asks only whether the mechanism exists on CME, not whether it is profitable there.",
+  "priority_score": null,
+  "required_answer": "A study on CME index futures (or an exchange-documented equivalent) establishing short-horizon flow/price predictability, with its sample and horizon stated.",
+  "resolution_method": "PUBLIC_RESEARCH",
+  "resolution_stage": "M1_BLOCKING",
+  "resurrection_condition": null,
+  "status": "OPEN",
+  "success_condition": "A study on CME index futures (or an exchange-documented equivalent) establishing short-horizon flow/price predictability, with its sample and horizon stated.",
+  "tier": 2,
+  "title": "Does the order-flow-imbalance / queue mechanism have direct or closely comparable evidence"
+}

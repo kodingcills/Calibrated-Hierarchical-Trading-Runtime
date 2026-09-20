@@ -4,29 +4,11 @@ Canonical machine-readable source: `M1/data/dead_candidates.csv`.
 Imported from the M1-A dead-candidate cemetery (SRC-0011) plus the two governance and
 technology admissions registered by M1-C.
 
-Registered dead rows: 9
+Registered dead rows: 7
 
 Re-entry policy: a dead candidate cannot re-enter silently. It requires NEW_EVIDENCE plus
 an explicit resurrection decision recorded in `DECISIONS.md`. The resurrection condition
 is recorded per row so the decision can be made against a stated bar rather than a memory.
-
-## TUP-COINBASE-BTCUSD-H3-MICROOFI-AGG - killed by KG3_EXECUTION
-
-- class: TUPLE
-- report kill gate (verbatim): Execution envelope
-- cause: 60 bps taker per fill gives 120 bps round-trip exchange trading fees before spread/slippage/adverse selection; no venue-specific evidence establishes the required seconds-scale gross edge.
-- evidence: EVD-0007|EVD-0014
-- death date: 2026-09-20 (date of the M1-A artifact (SRC-0011) for the original kills; computed-gate kills are dated by gate_recompute_date)
-- resurrection condition: Materially lower verified fee tier AND sealed evidence that gross conditional movement clears total costs.
-
-## TUP-KRAKEN-BTCUSD-H3-MICROOFI-AGG - killed by KG3_EXECUTION
-
-- class: TUPLE
-- report kill gate (verbatim): Execution envelope
-- cause: 0.80% taker per fill implies 1.60% round-trip before all other costs at Tier 1.
-- evidence: EVD-0008
-- death date: 2026-09-20 (date of the M1-A artifact (SRC-0011) for the original kills; computed-gate kills are dated by gate_recompute_date)
-- resurrection condition: Different verified fee economics plus evidence of enough gross edge.
 
 ## TUP-HYPERLIQUID-BTCPERP-H1-QDEP-AGGPAS - killed by KG2_DATA|KG4_HALF_LIFE
 

@@ -47,6 +47,8 @@ def blocker_priority_rows(discrepancies, open_questions, candidate_ids) -> list:
             continue
         if issue.get("resolution_stage") != "M1_BLOCKING":
             continue
+        if str(issue.get("is_aggregate_parent", "NO")).upper() == "YES":
+            continue
         count = _affected_count(issue, candidate_ids)
         affected = issue["affected_candidate_ids"] or issue["candidate_id"]
         if affected in ("ALL_CANDIDATES", "ALL_EXTERNAL_EVIDENCE"):

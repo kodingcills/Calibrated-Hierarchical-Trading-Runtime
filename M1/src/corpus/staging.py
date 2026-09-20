@@ -26,7 +26,14 @@ depends on it can pass.
 
 from .constants import UNKNOWN
 
-RESOLUTION_METHODS = ("PUBLIC_RESEARCH", "EXTERNAL_ACTION", "EMPIRICAL_MEASUREMENT", "DEFERRED")
+RESOLUTION_METHODS = ("PUBLIC_RESEARCH", "EXTERNAL_ACTION", "EMPIRICAL_MEASUREMENT",
+                      "HUMAN_INPUT", "DEFERRED")
+
+# Methods the autonomous orchestrator may dispatch. HUMAN_INPUT requires a fact only the project
+# operator holds; DEFERRED means genuinely postponed work. Neither is ever dispatched, and both
+# are excluded from the frontier by construction rather than by convention.
+AUTONOMOUS_METHODS = ("PUBLIC_RESEARCH", "EXTERNAL_ACTION")
+NON_AUTONOMOUS_METHODS = ("HUMAN_INPUT", "DEFERRED", "EMPIRICAL_MEASUREMENT")
 RESOLUTION_STAGES = ("M1_BLOCKING", "M2_MEASUREMENT", "POST_M2", "NON_BLOCKING")
 EFFORTS = ("SMALL", "MEDIUM", "LARGE")
 KILL_POTENTIALS = ("LOW", "MEDIUM", "HIGH")

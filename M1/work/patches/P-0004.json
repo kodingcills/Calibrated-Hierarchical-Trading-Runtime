@@ -1,0 +1,182 @@
+{
+  "blocker_ids": [
+    "UNK-0023-LIT",
+    "UNK-0009-MECH-NASDAQ-MICRO"
+  ],
+  "candidate_ids": [
+    "TUP-NASDAQ-LARGETICK-H2-QIMB-AGG",
+    "TUP-NASDAQ-LARGETICK-H2H3-MICRO-AGG",
+    "TUP-CME-ES-H1-QDEP-PAS"
+  ],
+  "created_at": "2026-09-20T19:09:29Z",
+  "decision": "SUPPORTS",
+  "modified_claims": [
+    {
+      "claim": "EVD-0012 (queue imbalance predicts the next mid-price move on Nasdaq, report-mediated)",
+      "reason": "Re-derived from an identified author-repository record (EVD-0064). The original token is retained for provenance as LEGACY_REPORT_MEDIATED and no longer blocks M1. The replacement URL is the source of the claim; it is NOT asserted to be the page the original token referred to.",
+      "status": "SUPERSEDED_BY_REPLACEMENT"
+    },
+    {
+      "claim": "EVD-0014 (micro-price improves on midpoint, report-mediated)",
+      "reason": "Re-derived at mechanism level from publisher metadata (EVD-0065), which does NOT establish venue scope. Venue-specific KG1 credit is withdrawn rather than transferred.",
+      "status": "SUPERSEDED_BY_REPLACEMENT"
+    }
+  ],
+  "new_evidence": [
+    {
+      "candidate_ids": "TUP-NASDAQ-LARGETICK-H2-QIMB-AGG",
+      "candidate_link_reason": "Same venue (Nasdaq), same instrument class (large-tick Nasdaq names) and the same mechanism (queue imbalance) as the linked candidate. The horizon is tick-scale rather than the candidate's 100 ms-1 s band, which is why the transfer is CLOSE_TRANSFER and not DIRECT.",
+      "claim": "In a limit order book, bid/ask queue imbalance has a strongly statistically significant relationship with the direction of the next mid-price movement: logistic regressions fitted to 10 liquid Nasdaq stocks improve substantially on a null model for large-tick stocks and moderately for small-tick stocks, with local logistic regression slightly outperforming the parametric fit.",
+      "contradicts_mechanism": "NO",
+      "decision_implication": "Replaces the report-mediated citation with an identified source that carries venue, instrument and horizon scope, so KG1 for the Nasdaq queue-imbalance tuple rests on a verifiable record.",
+      "epistemic_class": "SUPPORTED_FINDING",
+      "evidence_id": "EVD-0064",
+      "evidence_origin": "EXTERNAL_VERIFIED",
+      "gross_or_net": "GROSS / predictive",
+      "limitations": "Preprint; sample period unstated; predictive and gross only - no costs, fills or P&L; horizon expressed as a move rather than as elapsed time, so it cannot be read as a measured 100 ms-1 s effect.",
+      "mechanism_id": "MECH-QIMB",
+      "methodology": "Logistic and local-logistic regression of next-mid-price-move direction on queue imbalance, per stock",
+      "observed_horizon": "one mid-price movement (tick-scale, not a time-based horizon)",
+      "observed_instrument_or_universe": "10 liquid Nasdaq-listed stocks",
+      "observed_market": "US equities",
+      "observed_period": "UNKNOWN (not stated in the abstract)",
+      "observed_venue": "VEN-NASDAQ-CONT",
+      "sample": "10 liquid Nasdaq-listed stocks (large-tick emphasis)",
+      "source_id": "SRC-0238",
+      "supports_or_weakens": "SUPPORTS",
+      "temporal_scope": "study submitted 2015-12-11; sample period not stated in the abstract",
+      "transfer_status": "CLOSE_TRANSFER",
+      "venue_id": "VEN-NASDAQ-CONT",
+      "verification_status": "VERIFIED_PRIMARY_METADATA"
+    },
+    {
+      "candidate_ids": "TUP-NASDAQ-LARGETICK-H2H3-MICRO-AGG",
+      "candidate_link_reason": "Linked administratively to the Nasdaq micro-price tuple for context only. No observed venue, universe or period is stated in any accessible metadata, so this record cannot carry venue-specific credit.",
+      "claim": "The micro-price estimated from high-frequency data is empirically a better predictor of short-term prices than the mid-price or the weighted mid-price.",
+      "contradicts_mechanism": "NO",
+      "decision_implication": "Retains the micro-price claim at mechanism level while removing the claim to venue-specific support: KG1 for the Nasdaq micro-price tuple can no longer pass on this record alone, and UNK-0009-MECH-NASDAQ-MICRO records what is needed.",
+      "epistemic_class": "SUPPORTED_FINDING",
+      "evidence_id": "EVD-0065",
+      "evidence_origin": "EXTERNAL_VERIFIED",
+      "gross_or_net": "GROSS / predictive",
+      "limitations": "Publisher metadata and the published abstract only: no dataset, venue, universe or horizon is stated, and no full text was accessible (SSRN returned HTTP 403). It is also an estimator-quality result, not after-cost evidence.",
+      "mechanism_id": "MECH-MICRO",
+      "methodology": "Estimator construction and empirical comparison against mid-price and weighted mid-price",
+      "observed_horizon": "short-term price prediction (unspecified horizon)",
+      "observed_instrument_or_universe": "UNKNOWN",
+      "observed_market": "UNKNOWN",
+      "observed_period": "UNKNOWN",
+      "observed_venue": "VEN-NASDAQ-CONT",
+      "sample": "UNKNOWN (not stated in any accessible metadata)",
+      "source_id": "SRC-0239",
+      "supports_or_weakens": "SUPPORTS",
+      "temporal_scope": "published 2018-09-03; sample period not stated",
+      "transfer_status": "CROSS_VENUE_EXTRAPOLATION",
+      "venue_id": "VEN-NASDAQ-CONT",
+      "verification_status": "VERIFIED_PRIMARY_METADATA"
+    }
+  ],
+  "new_sources": [
+    {
+      "access_date": "2026-09-20",
+      "authors_or_org": "Martin D. Gould; Julius Bonart",
+      "claim_scope": "Author-repository record establishing the queue-imbalance predictive claim, its Nasdaq sample and its tick-scale horizon.",
+      "date_basis": "arXiv submission date 2015-12-11; record accessed 2026-09-20",
+      "doi": null,
+      "gross_or_net": "GROSS / predictive",
+      "independent_replication": null,
+      "limitations": "Preprint: the record does not state the sample period, and the paper reports predictive/gross evidence only - no trading costs, fills or P&L.",
+      "market": "US equities",
+      "methodology": "Author repository record and publisher metadata",
+      "primary_or_secondary": "primary_official",
+      "publication_date": "2015-12-11",
+      "sample_period": null,
+      "sample_size": null,
+      "source_id": "SRC-0238",
+      "source_type": "academic_paper",
+      "status": "VERIFIED_REPLACEMENT",
+      "title": "Queue Imbalance as a One-Tick-Ahead Price Predictor in a Limit Order Book (arXiv record)",
+      "url": "https://arxiv.org/abs/1512.03492",
+      "venue": "Martin D. Gould; Julius Bonart"
+    },
+    {
+      "access_date": "2026-09-20",
+      "authors_or_org": "Sasha Stoikov; Quantitative Finance 18(12) 1959-1966",
+      "claim_scope": "Establishes the micro-price claim at mechanism level, not for any venue.",
+      "date_basis": "CrossRef and RePEc report publication 2018-09-03; DOIs and volume/page data verified; accessed 2026-09-20",
+      "doi": null,
+      "gross_or_net": "GROSS / predictive",
+      "independent_replication": null,
+      "limitations": "Publisher metadata and the published abstract establish the estimator claim only: no dataset, venue, instrument universe, sample period or horizon is stated in any accessible metadata, so the claim cannot be given venue-specific scope.",
+      "market": "US equities",
+      "methodology": "Author repository record and publisher metadata",
+      "primary_or_secondary": "primary_official",
+      "publication_date": "2018-09-03",
+      "sample_period": null,
+      "sample_size": null,
+      "source_id": "SRC-0239",
+      "source_type": "academic_paper",
+      "status": "VERIFIED_REPLACEMENT",
+      "title": "The micro-price: a high-frequency estimator of future prices (publisher and bibliographic metadata)",
+      "url": "https://doi.org/10.1080/14697688.2018.1489139",
+      "venue": "Sasha Stoikov; Quantitative Finance 18(12) 1959-1966"
+    },
+    {
+      "access_date": "2026-09-20",
+      "authors_or_org": "Sasha Stoikov; SSRN",
+      "claim_scope": "Documents the attempt to reach the working paper for its sample details.",
+      "date_basis": "SSRN record accessed 2026-09-20; the page returned HTTP 403 so no publication date or abstract text could be captured",
+      "doi": null,
+      "gross_or_net": "GROSS / predictive",
+      "independent_replication": null,
+      "limitations": "Retrieval failed (HTTP 403) during this iteration; recorded so a later session does not repeat the attempt without a different access path (for example an institutional login or an author copy).",
+      "market": "US equities",
+      "methodology": "Author repository record and publisher metadata",
+      "primary_or_secondary": "primary_official",
+      "publication_date": null,
+      "sample_period": null,
+      "sample_size": null,
+      "source_id": "SRC-0240",
+      "source_type": "academic_paper",
+      "status": "UNRESOLVED",
+      "title": "Micro-price working paper record (SSRN abstract page)",
+      "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2970694",
+      "venue": "Sasha Stoikov; SSRN"
+    }
+  ],
+  "new_unknowns": [],
+  "patch_id": "P-0004",
+  "proposed_assumption_updates": [],
+  "proposed_candidate_updates": [],
+  "proposed_dead_end_updates": [],
+  "proposed_gate_changes": [],
+  "proposed_issue_updates": [
+    {
+      "from_status": "OPEN",
+      "issue_id": "UNK-0023-LIT",
+      "resolution_note": "Gould & Bonart and Stoikov are now identified from author/publisher records and their claims are re-derived; the order-flow-imbalance claim (Cont, Kukanov & Stoikov) remains report-mediated with an unresolved token.",
+      "to_status": "IN_PROGRESS"
+    }
+  ],
+  "proposed_source_updates": [
+    {
+      "fields": {
+        "status": "LEGACY_REPORT_MEDIATED"
+      },
+      "reason": "Queue-imbalance claim re-derived from SRC-0238; the token is kept for provenance and no longer blocks M1.",
+      "source_id": "SRC-0101"
+    },
+    {
+      "fields": {
+        "status": "LEGACY_REPORT_MEDIATED"
+      },
+      "reason": "Micro-price claim re-derived at mechanism level from SRC-0239.",
+      "source_id": "SRC-0104"
+    }
+  ],
+  "proposed_venue_updates": [],
+  "provenance": "code:p0004_citation_replacements",
+  "reason": "Two literature claims are moved from report-mediated citation to identified sources with recorded empirical scope, and one of them (micro-price) is explicitly denied venue-specific scope because the metadata does not support it.",
+  "status": "PROPOSED",
+  "verification_notes": "Contrary evidence and scope limits were searched for: the SSRN working-paper page was attempted and returned HTTP 403, and no arXiv preprint of the micro-price paper exists, so its sample was not established and venue-specific credit was withheld rather than assumed. The Gould & Bonart record's sample period is unstated in the abstract, so observed_period is UNKNOWN and the horizon is recorded as tick-scale with a CLOSE_TRANSFER rather than DIRECT. No gate change is proposed: gates are computed from the evidence, and no after-cost, fill or fee value is affected by this patch."
+}

@@ -10,6 +10,7 @@
   "decision_prevented": "Any Eurex candidate progressing beyond universe status.",
   "disallowed_evidence": "Assumed member pricing for a non-member path",
   "estimated_effort": "MEDIUM",
+  "is_aggregate_parent": "NO",
   "kill_condition": "No economic participant route exists for the project at any usable size",
   "kill_potential": "HIGH",
   "known_evidence_ids": [
@@ -18,7 +19,8 @@
   "known_source_ids": [
     "SRC-0110"
   ],
-  "last_updated": "2026-09-20T18:48:51Z",
+  "last_updated": "2026-09-20T19:09:29Z",
+  "parent_issue_id": null,
   "priority_reason": "M1-BLOCKING retained: access and cost are Tier-1/Tier-3 facts.",
   "priority_score": null,
   "required_answer": "Participant route, fee schedule, allocation rule, historical EOBI availability",

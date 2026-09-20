@@ -1,5 +1,50 @@
 # CHANGELOG
 
+## 1.3.0 - 2026-09-20 (iteration 4: false-blocker and false-PASS corrections)
+
+### Corrected - orchestration and state model
+
+- `HUMAN_INPUT` is a distinct resolution method. UNK-0034 (operator jurisdiction) moves to it, stays
+  M1-blocking, appears in a dedicated Human Input section of the external-action queue, and is
+  excluded from autonomous dispatch along with DEFERRED and measurement work (D-0027).
+- UNK-0018, UNK-0009 and UNK-0023 became aggregate parents with 15 scoped children; parents are
+  excluded from candidate blocking sets, the frontier and the priority table; candidate blocking
+  lists are expanded parent-to-child and filtered to M1-stage issues (D-0028).
+- Source integrity redefined: independent verifiability instead of token-to-URL reconstruction, with
+  LEGACY_REPORT_MEDIATED and VERIFIED_REPLACEMENT provenance states (D-0029).
+- Empirical scope moved onto evidence records (observed_* + transfer_status); KG1 reads observed
+  scope, never the administrative link (D-0030).
+- KG4 now requires positive horizon-plausibility evidence in addition to no-contradiction and a
+  preregistered delay experiment (D-0031).
+- Two recorded deaths (Coinbase 120 bps, Kraken 160 bps) were audited: no sourced materiality bound
+  exists, so both are WITHDRAWN under D-0026 and return to gate-derived BLOCKED; the hard-constraint
+  rule now requires a sourced gross bound below the floor.
+- PROJECT_STATE state-dependent prose moved into generated blocks; validator V19 fails a stale
+  value anywhere outside them and a regression test reproduces the reported 51/29 failure.
+
+### Added - citation replacements (patch P-0004)
+
+- Gould & Bonart, "Queue Imbalance as a One-Tick-Ahead Price Predictor in a Limit Order Book": arXiv
+  1512.03492 verified (title, both authors, 2015-12-11, q-fin.TR) with its abstract establishing the
+  sample (10 liquid Nasdaq stocks), method (logistic regression) and result (large-tick improvement).
+  EVD-0012 is re-derived as EVD-0064 with observed venue/instrument/horizon scope; SRC-0101 becomes
+  LEGACY_REPORT_MEDIATED.
+- Stoikov, "The micro-price: a high-frequency estimator of future prices": DOI, journal, volume and
+  date verified via CrossRef/RePEc, but no accessible source states dataset, venue, universe or
+  horizon (SSRN returned HTTP 403; no arXiv preprint). EVD-0014 is re-derived as EVD-0065 at
+  mechanism level with transfer_status CROSS_VENUE_EXTRAPOLATION, and the Nasdaq micro-price tuple
+  loses venue-specific KG1 credit; UNK-0009-MECH-NASDAQ-MICRO records what would restore it.
+
+### State
+
+- Sources 88 -> 91; evidence records 62 -> 64; issues 35 -> 50 (15 scoped children); autonomous
+  frontier 28; M2 specs 7; external request packets 14 (four new scoped timestamp packets).
+- Gate counts: KG1 PASS 1 (was 2), KG2 PASS 0, KG3 PASS 0, KG4 PASS 1 (was 22), KG5 PASS 9.
+- Candidate counts: 28 rows, ALIVE 0 / WEAK 5 / UNKNOWN 16 / DEAD 7 (two deaths withdrawn).
+- Closest branch: Nasdaq large-tick queue imbalance at 2 of 5 gates PASS, one autonomous blocker
+  (UNK-0027) and three external ones.
+- Validator PASS across 19 rule groups; 92 tests OK.
+
 ## 1.2.0 - 2026-09-20 (iterations 2-3: crypto, event-market and CME primary research; kill-basis correction)
 
 ### Correction - kills are recorded decisions, not emergent arithmetic

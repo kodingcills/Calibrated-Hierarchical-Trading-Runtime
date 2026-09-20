@@ -16,6 +16,7 @@
   "decision_prevented": "Any System-One admission decision; determines whether the Jev branch is worth funding at all.",
   "disallowed_evidence": "Vendor-reported capability, calibration transfer assumptions, or a different-information comparison",
   "estimated_effort": "MEDIUM",
+  "is_aggregate_parent": "NO",
   "kill_condition": "Delta_U non-positive: System-One is removed from that path",
   "kill_potential": "LOW",
   "known_evidence_ids": [
@@ -27,7 +28,8 @@
     "SRC-0001",
     "SRC-0015"
   ],
-  "last_updated": "2026-09-20T18:48:51Z",
+  "last_updated": "2026-09-20T19:09:29Z",
+  "parent_issue_id": null,
   "priority_reason": "MIGRATED from M1_BLOCKING to M2_MEASUREMENT: this is an empirical estimand, and requiring it inside M1 would have made the technology branch unfalsifiable rather than merely unfunded.",
   "priority_score": null,
   "required_answer": "Delta_U = U_net(System-One | same information) - U_net(best classical comparator)",

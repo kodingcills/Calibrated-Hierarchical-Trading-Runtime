@@ -103,6 +103,8 @@ def compile_card(issue, candidates, evidence_rows, sources, updated_at) -> dict:
         "branch_impact": issue["branch_impact"] or stage_row[4],
         "kill_potential": issue["kill_potential"] or stage_row[5],
         "estimated_effort": issue["estimated_effort"] or stage_row[6],
+        "is_aggregate_parent": issue.get("is_aggregate_parent", "NO"),
+        "parent_issue_id": issue.get("parent_issue_id"),
         "priority_reason": reason,
         "priority_score": UNKNOWN,
         "last_updated": updated_at,
@@ -122,10 +124,23 @@ def compile_all(issues, candidates, evidence_rows, sources, updated_at) -> dict:
             for issue in issues}
 
 
+AUTONOMOUS_METHODS = ("PUBLIC_RESEARCH", "EXTERNAL_ACTION")
+
+
 def frontier_cards(cards) -> list:
-    """Active frontier: M1_BLOCKING and still open. Never polluted with M2/POST_M2 work."""
+    """Autonomous frontier: open M1-blocking work the orchestrator may dispatch.
+
+    Excluded by construction, not by convention:
+      * M2_MEASUREMENT and POST_M2 stages (they have their own artefacts);
+      * HUMAN_INPUT (a fact only the operator holds - surfaced in the human queue);
+      * DEFERRED (genuinely postponed work - never dispatched);
+      * aggregate parents (never gate a candidate; their children carry scope).
+    """
     return [c for c in cards.values()
-            if c["resolution_stage"] == "M1_BLOCKING" and c["status"] in ("OPEN", "IN_PROGRESS")]
+            if c["resolution_stage"] == "M1_BLOCKING"
+            and c["status"] in ("OPEN", "IN_PROGRESS")
+            and c["resolution_method"] in AUTONOMOUS_METHODS
+            and c.get("is_aggregate_parent") != "YES"]
 
 
 def non_frontier(cards) -> list:

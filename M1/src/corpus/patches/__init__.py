@@ -6,6 +6,7 @@ instead. Both pass the identical adversarial verification before touching canoni
 """
 
 from . import (p0001_us_equity_sources, p0002_crypto_event_sources,  # noqa: F401
-               p0003_cme_partial)
+               p0003_cme_partial, p0004_citation_replacements)
 
-CODE_PATCHES = (p0001_us_equity_sources, p0002_crypto_event_sources, p0003_cme_partial)
+CODE_PATCHES = (p0001_us_equity_sources, p0002_crypto_event_sources, p0003_cme_partial,
+                p0004_citation_replacements)

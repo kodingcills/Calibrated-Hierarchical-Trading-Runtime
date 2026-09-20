@@ -1,0 +1,32 @@
+{
+  "acceptable_evidence": "Any primary source that answers the claim needed",
+  "affected_candidates": [
+    "TUP-EUREX-FESX-H2H3-OFIQ-MIX"
+  ],
+  "affected_gates": "NONE",
+  "blocker_id": "UNK-0018-EUREX",
+  "branch_impact": "ONE",
+  "contradictory_evidence_ids": [],
+  "decision_prevented": "Causal replay for the Eurex tuple (KG2).",
+  "disallowed_evidence": "Assumed values, secondary summaries, social posts",
+  "estimated_effort": "MEDIUM",
+  "is_aggregate_parent": "NO",
+  "kill_condition": "Causal replay for the Eurex tuple (KG2).",
+  "kill_potential": "MEDIUM",
+  "known_evidence_ids": [],
+  "known_source_ids": [
+    "SRC-0110"
+  ],
+  "last_updated": "2026-09-20T19:09:29Z",
+  "parent_issue_id": "UNK-0018",
+  "priority_reason": "Scoped child: a public specification question for one venue.",
+  "priority_score": null,
+  "required_answer": "T7 EOBI message specification timestamp section, plus an access path to a sample.",
+  "resolution_method": "PUBLIC_RESEARCH",
+  "resolution_stage": "M1_BLOCKING",
+  "resurrection_condition": null,
+  "status": "OPEN",
+  "success_condition": "T7 EOBI message specification timestamp section, plus an access path to a sample.",
+  "tier": 1,
+  "title": "Timestamp semantics for Eurex EOBI order-book messages."
+}

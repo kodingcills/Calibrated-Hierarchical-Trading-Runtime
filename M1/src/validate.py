@@ -40,11 +40,13 @@ import coverage as coverage_mod  # noqa: E402
 import paper_arithmetic  # noqa: E402
 from corpus import constants, staging as STAGING, unknowns  # noqa: E402
 
+AUTONOMOUS_METHODS = ("PUBLIC_RESEARCH", "EXTERNAL_ACTION")
+
 GATE_RULE_IDS = {
     "KG1-R1", "KG1-R2", "KG1-R3", "KG1-R4",
     "KG2-R0", "KG2-R1", "KG2-R2", "KG2-R3", "KG2-R4", "KG2-R5", "KG2-R6",
     "KG3-R0", "KG3-R1", "KG3-R2", "KG3-R3", "KG3-R4", "KG3-R5", "KG3-R6", "KG3-R7", "KG3-R8",
-    "KG4-R1", "KG4-R2", "KG4-R3", "KG4-R4",
+    "KG4-R1", "KG4-R2", "KG4-R3", "KG4-R4", "KG4-R5",
     "KG5-R1", "KG5-R2", "KG5-R3", "KG5-R4", "KG5-R5",
 }
 
@@ -604,18 +606,28 @@ def v15_frontier(tables):
         if row["resolution_stage"] != "M1_BLOCKING":
             fail("V15", f"blocker_priority.{issue_id}",
                  f"non-M1 stage {row['resolution_stage']} present in the M1 priority table")
-        actionable = row["status"] in ("OPEN", "IN_PROGRESS")
+        # "Actionable" means the orchestrator can dispatch it: open AND resolved by autonomous
+        # methods. A HUMAN_INPUT fact about the operator is open but not dispatchable (D-0027).
+        actionable = (row["status"] in ("OPEN", "IN_PROGRESS")
+                      and row["resolution_method"] in AUTONOMOUS_METHODS)
         if actionable and issue_id not in actual:
             fail("V15", f"blocker_priority.{issue_id}",
                  "actionable M1 item absent from the frontier")
         if not actionable and issue_id in actual:
             fail("V15", f"blocker_priority.{issue_id}",
-                 f"non-actionable status {row['status']} present in the frontier")
+                 f"non-dispatchable item ({row['status']}, {row['resolution_method']}) present in "
+                 f"the frontier")
+        if actionable and issue_id not in actual:
+            fail("V15", f"blocker_priority.{issue_id}",
+                 "dispatchable M1 item absent from the frontier")
     blocked_on_other = [i for i, r in priority.items()
                         if r["status"] in ("EXTERNAL_REQUEST_READY", "EMPIRICAL_SPEC_READY")]
-    ok("V15", "frontier restricted to open M1 blockers",
-       checked, note=f"{len(blocked_on_other)} M1 item(s) awaiting an external answer or spec: "
-                     f"{sorted(blocked_on_other)}")
+    human_or_deferred = [i for i, r in priority.items()
+                         if r["resolution_method"] in ("HUMAN_INPUT", "DEFERRED")]
+    ok("V15", "frontier restricted to dispatchable M1 blockers",
+       checked, note=f"{len(blocked_on_other)} item(s) awaiting an external answer or spec "
+                     f"{sorted(blocked_on_other)}; {len(human_or_deferred)} human/deferred item(s) "
+                     f"excluded from dispatch {sorted(human_or_deferred)}")
     ok("V15", "frontier restricted to open M1 blockers", checked)
 
 
@@ -744,6 +756,35 @@ def v18_work_artifacts(tables):
     ok("V18", "work artefacts valid and complete", checked)
 
 
+def v19_project_state_prose(tables):
+    """No state-dependent number may appear outside a generated block in PROJECT_STATE."""
+    checked = 0
+    text = (REPO / "PROJECT_STATE.md").read_text(encoding="utf-8")
+    summary = json.loads((OUT / "M1_STATE_SUMMARY.json").read_text(encoding="utf-8"))
+    counts = summary["counts"]
+    expected = {"sources": counts["source_registry"], "evidence": counts["evidence_records"],
+                "candidates": counts["candidate_rows"], "frontier": counts["frontier_items"],
+                "blockers": counts["blocking_issues"]}
+    stripped = re.sub(r"<!-- GENERATED:.*?<!-- /GENERATED:[\w-]+ -->", "", text, flags=re.DOTALL)
+    patterns = {
+        "sources": r"(\d[\d,]*)\s+(?:verified\s+)?sources\b",
+        "evidence": r"(\d[\d,]*)\s+evidence records\b",
+        "candidates": r"(\d[\d,]*)\s+registered candidate rows\b",
+        "frontier": r"(\d[\d,]*)\s+(?:actionable )?frontier items\b",
+        "blockers": r"(\d[\d,]*)\s+blocking unknowns\b",
+    }
+    for noun, pattern in patterns.items():
+        for match in re.finditer(pattern, stripped, flags=re.IGNORECASE):
+            checked += 1
+            value = int(match.group(1).replace(",", ""))
+            if value != expected[noun]:
+                fail("V19", "PROJECT_STATE.md",
+                     f"stale state value outside generated blocks: '{match.group(0)}' "
+                     f"(current {noun[:-1] if noun.endswith('s') else noun}: {expected[noun]})")
+    ok("V19", "PROJECT_STATE prose carries no stale state values", checked,
+       note="state-dependent numbers must live inside generated blocks")
+
+
 def main():
     strict = "--strict" in sys.argv
     generated_at = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
@@ -765,6 +806,7 @@ def main():
     v16_eligibility_independence(tables)
     v17_patches(tables)
     v18_work_artifacts(tables)
+    v19_project_state_prose(tables)
 
     summary = json.loads((OUT / "M1_STATE_SUMMARY.json").read_text(encoding="utf-8"))
     result = {
@@ -826,6 +868,7 @@ def main():
         "- V16 gate eligibility independent of non-M1 issues; every verdict rule-traced",
         "- V17 patch integrity: rejected patches never reach canonical state",
         "- V18 work artefacts (cards, specs, request packets) valid and complete",
+        "- V19 PROJECT_STATE carries no stale state value outside generated blocks",
         "",
     ]
     (VALIDATION / "report.md").write_text("\n".join(lines), encoding="utf-8")

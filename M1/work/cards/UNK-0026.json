@@ -8,6 +8,7 @@
   "decision_prevented": "Any system-One admission; keeps the technology branch unfunded by default.",
   "disallowed_evidence": "Vendor material treated as independent verification",
   "estimated_effort": "MEDIUM",
+  "is_aggregate_parent": "NO",
   "kill_condition": "Not applicable to M1 selection; it bounds the technology branch",
   "kill_potential": "LOW",
   "known_evidence_ids": [
@@ -20,7 +21,8 @@
     "SRC-0001",
     "SRC-0020"
   ],
-  "last_updated": "2026-09-20T18:48:51Z",
+  "last_updated": "2026-09-20T19:09:29Z",
+  "parent_issue_id": null,
   "priority_reason": "MIGRATED to M2_MEASUREMENT; tracked because SUNK premises must not leak into M2 designs.",
   "priority_score": null,
   "required_answer": "External reproduction or a sealed same-information experiment",

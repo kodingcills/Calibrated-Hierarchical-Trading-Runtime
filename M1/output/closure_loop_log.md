@@ -52,3 +52,19 @@ NEW ISSUES: none
 VALIDATION: PASS 0 failures / 18 rule groups; 77 unit tests OK
 NEXT FRONTIER ITEM: UNK-0018 or UNK-0002 per M1/work/frontier.json; the CME cost question is now an external boundary item, not a search item
 REJECTED CLAIM (iteration 3): 'ES/NQ non-member per-side exchange fee is $1.28' - non-primary source, no recoverable URL, surfaced during a failed tool-assisted fee-table reconstruction. Not absorbed into any venue fact. Recorded in M1/work/patches/P-0003.json modified_claims.
+
+ITERATION: 4
+UTC: 2026-09-20T19:09:29Z
+BLOCKER CLUSTER: ARCHITECTURE CORRECTION (no new resolver batch): HUMAN_INPUT semantics, parent/child scoping, source-integrity redefinition, evidence scope model, KG4 criteria, UNK-0009 split, death audit, PROJECT_STATE prose rule; plus two citation replacements (Gould & Bonart verified, Stoikov venue not established)
+WHY SELECTED: Ordered before further breadth: several global blockers were mechanically blocking unrelated candidates, one resolution method conflated operator facts with deferred work, KG4 passed on the absence of evidence, and a recorded death rested on a rule that has since been superseded.
+RESOLUTION METHOD: STATE-MODEL CORRECTION + PUBLIC_RESEARCH (citation verification)
+SOURCES ADDED: 3 (SRC-0238 Gould & Bonart arXiv record; SRC-0239 Stoikov publisher/bibliographic record; SRC-0240 SSRN record retrieved unsuccessfully, HTTP 403)
+DECISION: SUPPORTS (patch P-0004 applied) with no gate changes proposed: gates are computed
+GATES BEFORE: KG1 PASS 2, KG2 PASS 0, KG3 PASS 0, KG4 PASS 22, KG5 PASS 9; eligible 0
+GATES AFTER: KG1 PASS 1, KG2 PASS 0, KG3 PASS 0, KG4 PASS 1, KG5 PASS 9; eligible 0
+CANDIDATES KILLED: None
+CANDIDATES PROMOTED: None
+ISSUES RECLASSIFIED: UNK-0034 -> HUMAN_INPUT (surfaced, never dispatched); UNK-0018/UNK-0009/UNK-0023 -> aggregate parents with 15 scoped children; UNK-0009 split into mechanism-evidence children (KG1) and economic-materiality children (KG3/M2); UNK-0023 success redefined as independent verifiability rather than token-to-URL reconstruction; SRC-0101/SRC-0104 -> LEGACY_REPORT_MEDIATED
+NEW ISSUES: 15 scoped children; UNK-0009-ECON-CRYPTO-SPOT promoted to M1 as the missing input a crypto kill would need
+VALIDATION: PASS 0 failures / 19 rule groups; 92 tests OK; V19 reproduces the reported stale-value failure (51 sources / 29 evidence records vs current)
+NEXT FRONTIER ITEM: candidate-focused closure of the closest branch (Nasdaq queue-imbalance, 2/5 gates PASS): UNK-0027 is its only autonomous blocker; UNK-0004, UNK-0018-NASDAQ, UNK-0005 and UNK-0033 are external
