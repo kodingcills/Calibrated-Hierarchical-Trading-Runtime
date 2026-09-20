@@ -1,0 +1,30 @@
+{
+  "acceptable_evidence": "Measured cross-feed synchronisation and decision age plus quote-survival statistics",
+  "affected_candidates": [
+    "TUP-USSTOCK-XVENUE-H1-STALEQUOTE-AGG"
+  ],
+  "affected_gates": "KG3_EXECUTION",
+  "blocker_id": "UNK-0021",
+  "branch_impact": "ONE",
+  "contradictory_evidence_ids": [
+    "EVD-0042"
+  ],
+  "decision_prevented": "Whether the cross-venue tuple is a real opportunity or an infrastructure race.",
+  "disallowed_evidence": "Assuming stale quotes persist; treating theoretical latency as achievable latency",
+  "estimated_effort": "MEDIUM",
+  "kill_condition": "Quotes vanish before arrival, making the branch an infrastructure race the project loses",
+  "kill_potential": "MEDIUM",
+  "known_evidence_ids": [],
+  "known_source_ids": [],
+  "last_updated": "2026-09-20T18:31:11Z",
+  "priority_reason": "MIGRATED from M1_BLOCKING. M1 keeps the *structural* part via a physical latency check; the survival measurement itself is M2.",
+  "priority_score": null,
+  "required_answer": "Fraction of stale quotes still present at order arrival, measured end to end",
+  "resolution_method": "EMPIRICAL_MEASUREMENT",
+  "resolution_stage": "M2_MEASUREMENT",
+  "resurrection_condition": null,
+  "status": "OPEN",
+  "success_condition": "Stale quotes survive long enough to be captured at the achievable latency",
+  "tier": 4,
+  "title": "Cross-venue stale-quote survival"
+}

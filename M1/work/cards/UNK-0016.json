@@ -1,0 +1,31 @@
+{
+  "acceptable_evidence": "Instrumented shadow run logging the full timestamp contract",
+  "affected_candidates": [
+    "ALL_CANDIDATES"
+  ],
+  "affected_gates": "KG4_HALF_LIFE",
+  "blocker_id": "UNK-0016",
+  "branch_impact": "GLOBAL",
+  "contradictory_evidence_ids": [],
+  "decision_prevented": "Placing any model at any horizon (KG3/KG4).",
+  "disallowed_evidence": "Vendor-reported latency, or a latency budget asserted without measurement",
+  "estimated_effort": "SMALL",
+  "kill_condition": "Measured p99 exceeds the viable delay region at every achievable architecture",
+  "kill_potential": "LOW",
+  "known_evidence_ids": [],
+  "known_source_ids": [
+    "SRC-0016",
+    "SRC-0018"
+  ],
+  "last_updated": "2026-09-20T18:31:11Z",
+  "priority_reason": "MIGRATED from M1_BLOCKING. The M1-relevant part is a *physical* check (feed cadence versus hypothesis horizon), which is computed in KG2/KG4 from verified venue facts. The latency of a pipeline that does not exist yet cannot be an M1 gate.",
+  "priority_score": null,
+  "required_answer": "p50/p95/p99 decision age measured on an instrumented path for the chosen candidate",
+  "resolution_method": "EMPIRICAL_MEASUREMENT",
+  "resolution_stage": "M2_MEASUREMENT",
+  "resurrection_condition": null,
+  "status": "OPEN",
+  "success_condition": "Measured p99 sits inside the candidate's measured viable delay region",
+  "tier": 4,
+  "title": "Own-stack decision-to-market latency distribution"
+}

@@ -1,0 +1,41 @@
+{
+  "acceptable_evidence": "Sealed same-information comparison on a completed baseline ladder",
+  "affected_candidates": [
+    "TUP-SYSTEMONE-HARDCORE-ENGINE",
+    "TUP-JEV-HOSTED-LATENCY-UNMEASURED"
+  ],
+  "affected_gates": "KG1_MECHANISM",
+  "blocker_id": "UNK-0017",
+  "branch_impact": "GLOBAL",
+  "contradictory_evidence_ids": [
+    "EVD-0024",
+    "EVD-0026",
+    "EVD-0028",
+    "EVD-0029"
+  ],
+  "decision_prevented": "Any System-One admission decision; determines whether the Jev branch is worth funding at all.",
+  "disallowed_evidence": "Vendor-reported capability, calibration transfer assumptions, or a different-information comparison",
+  "estimated_effort": "MEDIUM",
+  "kill_condition": "Delta_U non-positive: System-One is removed from that path",
+  "kill_potential": "LOW",
+  "known_evidence_ids": [
+    "EVD-0023",
+    "EVD-0024",
+    "EVD-0026"
+  ],
+  "known_source_ids": [
+    "SRC-0001",
+    "SRC-0015"
+  ],
+  "last_updated": "2026-09-20T18:31:11Z",
+  "priority_reason": "MIGRATED from M1_BLOCKING to M2_MEASUREMENT: this is an empirical estimand, and requiring it inside M1 would have made the technology branch unfalsifiable rather than merely unfunded.",
+  "priority_score": null,
+  "required_answer": "Delta_U = U_net(System-One | same information) - U_net(best classical comparator)",
+  "resolution_method": "EMPIRICAL_MEASUREMENT",
+  "resolution_stage": "M2_MEASUREMENT",
+  "resurrection_condition": null,
+  "status": "OPEN",
+  "success_condition": "Delta_U robustly positive after latency and cost, with operational reliability",
+  "tier": 4,
+  "title": "System-One incremental utility estimand"
+}

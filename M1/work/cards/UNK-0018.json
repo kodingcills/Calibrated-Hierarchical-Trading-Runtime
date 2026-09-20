@@ -1,0 +1,34 @@
+{
+  "acceptable_evidence": "Sample file plus field documentation, validated against the project timestamp contract",
+  "affected_candidates": [
+    "ALL_CANDIDATES"
+  ],
+  "affected_gates": "KG2_DATA",
+  "blocker_id": "UNK-0018",
+  "branch_impact": "GLOBAL",
+  "contradictory_evidence_ids": [],
+  "decision_prevented": "Causal replay and therefore every queue, priority or fill claim; applies to any candidate that reaches replay.",
+  "disallowed_evidence": "Assuming vendor timestamps are exchange event times without evidence",
+  "estimated_effort": "SMALL",
+  "kill_condition": "Timestamps cannot support causal ordering, invalidating replay for that feed",
+  "kill_potential": "HIGH",
+  "known_evidence_ids": [
+    "EVD-0010",
+    "EVD-0018"
+  ],
+  "known_source_ids": [
+    "SRC-0111",
+    "SRC-0118"
+  ],
+  "last_updated": "2026-09-20T18:31:11Z",
+  "priority_reason": "M1-BLOCKING retained: this is a data-adequacy fact, not a measurement.",
+  "priority_score": null,
+  "required_answer": "Field-level timestamp semantics (event vs receive time, clock domain, sequence integrity)",
+  "resolution_method": "EXTERNAL_ACTION",
+  "resolution_stage": "M1_BLOCKING",
+  "resurrection_condition": null,
+  "status": "OPEN",
+  "success_condition": "Samples validate: monotonic ordering, sequence integrity, documented clock domain",
+  "tier": 3,
+  "title": "Historical and live feed timestamp semantics"
+}

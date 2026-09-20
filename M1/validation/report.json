@@ -4,14 +4,14 @@
       "name": "provenance references resolve",
       "note": "",
       "result": "PASS",
-      "rows_checked": 1303,
+      "rows_checked": 1246,
       "rule": "V1"
     },
     {
       "name": "numeric facts carry sources or are declared UNKNOWN",
       "note": "",
       "result": "PASS",
-      "rows_checked": 508,
+      "rows_checked": 536,
       "rule": "V2"
     },
     {
@@ -25,28 +25,28 @@
       "name": "referential integrity",
       "note": "",
       "result": "PASS",
-      "rows_checked": 778,
+      "rows_checked": 681,
       "rule": "V4"
     },
     {
       "name": "no scoring or ranking artifacts",
       "note": "",
       "result": "PASS",
-      "rows_checked": 456,
+      "rows_checked": 525,
       "rule": "V5"
     },
     {
       "name": "stable ids unique",
       "note": "",
       "result": "PASS",
-      "rows_checked": 338,
+      "rows_checked": 363,
       "rule": "V6"
     },
     {
       "name": "time-sensitive sources dated",
       "note": "",
       "result": "PASS",
-      "rows_checked": 57,
+      "rows_checked": 70,
       "rule": "V7"
     },
     {
@@ -83,10 +83,52 @@
       "result": "PASS",
       "rows_checked": 2,
       "rule": "V13"
+    },
+    {
+      "name": "two-dimension issue model complete",
+      "note": "",
+      "result": "PASS",
+      "rows_checked": 33,
+      "rule": "V14"
+    },
+    {
+      "name": "frontier restricted to open M1 blockers",
+      "note": "2 M1 item(s) awaiting an external answer or spec: ['UNK-0004', 'UNK-0022']",
+      "result": "PASS",
+      "rows_checked": 36,
+      "rule": "V15"
+    },
+    {
+      "name": "frontier restricted to open M1 blockers",
+      "note": "",
+      "result": "PASS",
+      "rows_checked": 36,
+      "rule": "V15"
+    },
+    {
+      "name": "eligibility independent of non-M1 issues; every verdict rule-traced",
+      "note": "",
+      "result": "PASS",
+      "rows_checked": 140,
+      "rule": "V16"
+    },
+    {
+      "name": "patch integrity",
+      "note": "",
+      "result": "PASS",
+      "rows_checked": 1,
+      "rule": "V17"
+    },
+    {
+      "name": "work artefacts valid and complete",
+      "note": "",
+      "result": "PASS",
+      "rows_checked": 71,
+      "rule": "V18"
     }
   ],
   "context": {
-    "blocking_issues": 22,
+    "blocking_issues": 19,
     "candidate_rows": 28,
     "m1b_eligible": [],
     "status": {
@@ -99,7 +141,7 @@
   },
   "details": [],
   "failures": 0,
-  "generated_at": "2026-09-20T17:38:19Z",
+  "generated_at": "2026-09-20T18:31:11Z",
   "overall": "PASS",
   "validator": "M1/src/validate.py"
 }

@@ -19,6 +19,9 @@ DISCREPANCY_COLUMNS = [
     "requires_vendor_quote", "requires_m2_measurement", "resolution_class",
     "decision_prevented", "can_M2_measure", "severity", "status", "evidence_ids",
     "last_updated",
+    # Two-dimension issue model (handoff §3). Filled from M1/src/corpus/staging.py.
+    "resolution_method", "resolution_stage", "tier", "branch_impact", "kill_potential",
+    "estimated_effort", "migration_decision", "migration_reason", "migration_from",
 ]
 
 OPEN_QUESTION_COLUMNS = [

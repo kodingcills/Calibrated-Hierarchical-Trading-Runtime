@@ -1,0 +1,29 @@
+{
+  "acceptable_evidence": "Venue documentation, participant requirements, published execution policy",
+  "affected_candidates": [
+    "TUP-FX-ECN-H2H3-LEADLAG-AGG",
+    "TUP-FX-RETAILBROKER-H3H4-FEEDLAG-AGG"
+  ],
+  "affected_gates": "KG5_FALSIFIABILITY",
+  "blocker_id": "UNK-0015",
+  "branch_impact": "SMALL",
+  "contradictory_evidence_ids": [],
+  "decision_prevented": "Defining the tuple at all (KG1/KG3/KG5).",
+  "disallowed_evidence": "Treating 'FX' or a broker feed as a defined universe",
+  "estimated_effort": "MEDIUM",
+  "kill_condition": "No accessible venue/participant class exists for the project",
+  "kill_potential": "HIGH",
+  "known_evidence_ids": [],
+  "known_source_ids": [],
+  "last_updated": "2026-09-20T18:31:11Z",
+  "priority_reason": "M1-BLOCKING retained: 'no exact instrument definition' is an explicit M1 blocker.",
+  "priority_score": null,
+  "required_answer": "One exact venue/participant class with its execution policy, fees and feed",
+  "resolution_method": "PUBLIC_RESEARCH",
+  "resolution_stage": "M1_BLOCKING",
+  "resurrection_condition": null,
+  "status": "OPEN",
+  "success_condition": "A single venue and participant class is specified with documented execution semantics",
+  "tier": 1,
+  "title": "FX universe definition and venue facts"
+}

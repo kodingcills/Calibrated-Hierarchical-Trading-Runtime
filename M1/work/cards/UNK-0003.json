@@ -1,0 +1,39 @@
+{
+  "acceptable_evidence": "Vendor/exchange quote plus a sample file whose schema and timestamps are validated",
+  "affected_candidates": [
+    "TUP-CME-ES-H1-QDEP-PAS",
+    "TUP-CME-ES-H3-OFI-AGG",
+    "TUP-CME-NQ-H3-OFI-AGG",
+    "TUP-CME-TSY-H2-QREPL-MIX",
+    "TUP-CME-WTI-H4-FLOWVOL-AGG"
+  ],
+  "affected_gates": "KG2_DATA",
+  "blocker_id": "UNK-0003",
+  "branch_impact": "SMALL",
+  "contradictory_evidence_ids": [
+    "EVD-0003",
+    "EVD-0042"
+  ],
+  "decision_prevented": "Causal queue replay for CME candidates (KG2), and therefore M2 for them.",
+  "disallowed_evidence": "Marketing material claiming 'up to full order book' without schema or price",
+  "estimated_effort": "MEDIUM",
+  "kill_condition": "No historical order-level product exists at any usable cost",
+  "kill_potential": "HIGH",
+  "known_evidence_ids": [
+    "EVD-0018"
+  ],
+  "known_source_ids": [
+    "SRC-0123"
+  ],
+  "last_updated": "2026-09-20T18:31:11Z",
+  "priority_reason": "M1-BLOCKING retained: data procurement feasibility is an M1 question (handoff \u00a715 KG2).",
+  "priority_score": null,
+  "required_answer": "Product, history depth, schema, timestamp fields, licence and price",
+  "resolution_method": "EXTERNAL_ACTION",
+  "resolution_stage": "M1_BLOCKING",
+  "resurrection_condition": "No historical order-level product exists at any usable cost",
+  "status": "OPEN",
+  "success_condition": "Sample validates against the project timestamp contract and the licence is affordable",
+  "tier": 3,
+  "title": "CME historical order-level data procurement"
+}

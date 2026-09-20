@@ -3,9 +3,9 @@
 Canonical machine-readable source: `M1/data/discrepancies.csv` (generated from `M1/src/corpus/unknowns.py`).
 This file is a rendering of that registry; edit the corpus module, not this file.
 
-Materialised (UTC): 2026-09-20T17:37:42Z
+Materialised (UTC): 2026-09-20T18:31:11Z
 
-Registered issues: 32 | open: 30 | blocking: 22
+Registered issues: 33 | open: 19 | blocking: 19
 
 Conflicts are never resolved by averaging. Where two sources genuinely disagree the row
 carries `conflict_type=CONTRADICTION` and both statements are preserved; where the
@@ -54,7 +54,7 @@ and the judgment used is stated together with its basis.
 - affected: TUP-CME-ES-H1-QDEP-PAS|TUP-CME-ES-H3-OFI-AGG|TUP-CME-NQ-H3-OFI-AGG|TUP-CME-TSY-H2-QREPL-MIX|TUP-CME-WTI-H4-FLOWVOL-AGG
 - evidence: EVD-0018
 
-## UNK-0004 - BLOCKING - OPEN
+## UNK-0004 - BLOCKING - EXTERNAL_REQUEST_READY
 
 - claim needed: Whether order-level historical U.S. equity depth (ITCH/TotalView depth) can be procured at acceptable cost.
 - known evidence: Consolidated Tick History is verified Level-1 only; TotalView live depth is verified available; no paid order-level history was acquired in the M1-A pass.
@@ -68,7 +68,7 @@ and the judgment used is stated together with its basis.
 - affected: TUP-NASDAQ-LARGETICK-H2-QIMB-AGG|TUP-NASDAQ-LARGETICK-H2H3-MICRO-AGG|TUP-NASDAQ-LARGETICK-H1H2-QUEUEPOS-L1ONLY-AGG|TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG
 - evidence: EVD-0005|EVD-0004
 
-## UNK-0005 - BLOCKING - OPEN
+## UNK-0005 - BLOCKING - IN_PROGRESS
 
 - claim needed: Current U.S. equity fee tier and routing economics actually available to this project (Nasdaq main book, Cboe BZX fee codes, CAT/broker/clearing).
 - known evidence: Cboe BZX standard displayed-add rebate and removal fee are verified; Nasdaq main-book small-prop tier was not locked.
@@ -82,7 +82,7 @@ and the judgment used is stated together with its basis.
 - affected: TUP-NASDAQ-LARGETICK-H2-QIMB-AGG|TUP-NASDAQ-LARGETICK-H2H3-MICRO-AGG|TUP-CBOEBZX-LARGETICK-H2H3-SPREADCAP-PAS|TUP-USSTOCK-XVENUE-H1-STALEQUOTE-AGG|TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG
 - evidence: EVD-0006|EVD-0021
 
-## UNK-0006 - BLOCKING - OPEN
+## UNK-0006 - IMPORTANT - OPEN
 
 - claim needed: The full break-even cost envelope (spread, fees, slippage, adverse selection, impact) for each candidate.
 - known evidence: Two crypto venues have verified exchange-fee floors; no spread/slippage/impact/adverse-selection values are verified for any candidate.
@@ -96,7 +96,7 @@ and the judgment used is stated together with its basis.
 - affected: ALL_CANDIDATES
 - evidence: EVD-0006|EVD-0007|EVD-0008
 
-## UNK-0007 - BLOCKING - OPEN
+## UNK-0007 - IMPORTANT - OPEN
 
 - claim needed: Passive fill probability conditional on queue state.
 - known evidence: No defensible fill probability was found; the report explicitly declines to estimate one; touch=fills is disallowed.
@@ -110,7 +110,7 @@ and the judgment used is stated together with its basis.
 - affected: TUP-CME-ES-H1-QDEP-PAS|TUP-CBOEBZX-LARGETICK-H2H3-SPREADCAP-PAS|TUP-METHOD-PASSIVE-TOUCHFILL
 - evidence: None
 
-## UNK-0008 - BLOCKING - OPEN
+## UNK-0008 - IMPORTANT - OPEN
 
 - claim needed: Empirical signal half-life: the EV-versus-delay curve for each candidate signal.
 - known evidence: 'Next tick' and 'short horizon' results exist, but no candidate-specific EV(delay) curve; the queue-imbalance study predicts a next-price move, not decay.
@@ -222,7 +222,7 @@ and the judgment used is stated together with its basis.
 - affected: TUP-FX-ECN-H2H3-LEADLAG-AGG|TUP-FX-RETAILBROKER-H3H4-FEEDLAG-AGG
 - evidence: None
 
-## UNK-0016 - BLOCKING - OPEN
+## UNK-0016 - IMPORTANT - OPEN
 
 - claim needed: Measured decision-to-market latency distribution (p50/p95/p99 plus jitter and deadline-miss rate) for this project's own stack.
 - known evidence: No live path exists yet; the requirement is stated in the project's methods (timestamp contract, decision-age metrics).
@@ -236,7 +236,7 @@ and the judgment used is stated together with its basis.
 - affected: ALL_CANDIDATES
 - evidence: None
 
-## UNK-0017 - BLOCKING - OPEN
+## UNK-0017 - IMPORTANT - OPEN
 
 - claim needed: Reproducible hosted-Jev/local-System-One latency profile and incremental execution-aware utility versus a same-information classical baseline.
 - known evidence: Vendor-reported 70-500 ms end-to-end range only; no independent reproduction; no sealed utility comparison exists.
@@ -278,7 +278,7 @@ and the judgment used is stated together with its basis.
 - affected: ALL_CANDIDATES
 - evidence: None
 
-## UNK-0019 - BLOCKING - OPEN
+## UNK-0019 - IMPORTANT - OPEN
 
 - claim needed: Fill-conditioned markout distribution (adverse selection) for every passive or crossing candidate.
 - known evidence: Mechanically uncontroversial but unmeasured in this evidence package.
@@ -292,7 +292,7 @@ and the judgment used is stated together with its basis.
 - affected: TUP-CME-ES-H1-QDEP-PAS|TUP-CBOEBZX-LARGETICK-H2H3-SPREADCAP-PAS|TUP-NASDAQ-LARGETICK-H2-QIMB-AGG|TUP-NASDAQ-LARGETICK-H2H3-MICRO-AGG
 - evidence: None
 
-## UNK-0020 - BLOCKING - OPEN
+## UNK-0020 - BLOCKING - RESOLVED_SUPPORTS
 
 - claim needed: Historical NOII/auction execution data source and cost.
 - known evidence: NOII existence and public dissemination verified; historical depth/cost not locked.
@@ -306,7 +306,7 @@ and the judgment used is stated together with its basis.
 - affected: TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG
 - evidence: None
 
-## UNK-0021 - BLOCKING - OPEN
+## UNK-0021 - IMPORTANT - OPEN
 
 - claim needed: Cross-venue source-to-decision-to-venue latency and stale-quote survival for a multi-venue U.S. equity tuple.
 - known evidence: No evidence package establishes non-colocated feasibility; the report notes the obvious forms are contested by dedicated low-latency firms.
@@ -320,7 +320,7 @@ and the judgment used is stated together with its basis.
 - affected: TUP-USSTOCK-XVENUE-H1-STALEQUOTE-AGG
 - evidence: None
 
-## UNK-0022 - IMPORTANT - OPEN
+## UNK-0022 - BLOCKING - EXTERNAL_REQUEST_READY
 
 - claim needed: Cboe BZX proprietary depth availability, fee-code outcome and order-level history for this project's access path.
 - known evidence: Standard rebate/remove rates verified; nothing about data access or realized fee codes.
@@ -334,7 +334,7 @@ and the judgment used is stated together with its basis.
 - affected: TUP-CBOEBZX-LARGETICK-H2H3-SPREADCAP-PAS
 - evidence: EVD-0006|EVD-0021
 
-## UNK-0023 - IMPORTANT - OPEN
+## UNK-0023 - BLOCKING - IN_PROGRESS
 
 - claim needed: Resolvable identities (URL/DOI) for the 25 external sources the M1-A report cites only through opaque internal citation tokens.
 - known evidence: Tokens are preserved verbatim and the report names most sources descriptively (organisation, venue, sometimes author/year), but no URL is reconstructible from repository artifacts.
@@ -404,7 +404,7 @@ and the judgment used is stated together with its basis.
 - affected: TUP-CME-TSY-H2-QREPL-MIX|TUP-CME-WTI-H4-FLOWVOL-AGG|TUP-NASDAQ-LARGETICK-H2-QIMB-AGG|TUP-NASDAQ-LARGETICK-H2H3-MICRO-AGG|TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG|TUP-EUREX-FESX-H2H3-OFIQ-MIX|TUP-CBOE-USOPT-H5-SURFRV-MIX|TUP-DERIBIT-BTCOPT-H5-SURFRV-MIX|TUP-KALSHI-EVENT-H5-EVENTINF-AGG|TUP-POLYMARKET-EVENT-H5-EVENTINF-AGG
 - evidence: None
 
-## UNK-0028 - IMPORTANT - OPEN
+## UNK-0028 - BLOCKING - OPEN
 
 - claim needed: Capital requirement and account/tier eligibility for the venues named in the survivor set (institutional access, margin, minimum size).
 - known evidence: Coinbase/Kraken tier eligibility affects realized fees; CME and Eurex access requires a broker/member path; no capital figures exist.
@@ -432,7 +432,7 @@ and the judgment used is stated together with its basis.
 - affected: ALL_CANDIDATES
 - evidence: None
 
-## UNK-0030 - IMPORTANT - RESOLVED
+## UNK-0030 - NON_BLOCKING - RESOLVED
 
 - claim needed: Confirmation that the M1-A state claim 'the Jev paper and the research OS were not retrievable' still holds.
 - known evidence: Both artifacts are present in this repository and were ingested during M1-C; their SHA-256 hashes are recorded in M1/raw/source_manifest.json.
@@ -458,4 +458,18 @@ and the judgment used is stated together with its basis.
 - resolvable by web research: NO; vendor quote: UNKNOWN; M2 measurement: UNKNOWN
 - resolution class: A
 - affected: TUP-SYSTEMONE-HARDCORE-ENGINE|TUP-JEV-HOSTED-LATENCY-UNMEASURED
+- evidence: None
+
+## UNK-0033 - BLOCKING - OPEN
+
+- claim needed: Sponsored-access cost: broker commission/markup for routed order flow, which no exchange or regulator publishes.
+- known evidence: Exchange-side fee schedules are published per venue; the sponsor's commission is a private contract, so the all-in cost of a sponsored path cannot be assembled from public sources.
+- specific evidence required: A chosen sponsor's published commission schedule or a written quote for the intended order flow.
+- decision prevented: All-in per-share cost for every equity tuple, and therefore the cost floor used in KG3.
+- conflict type: NO_CONFLICT_INCOMPLETENESS
+- sources: A=SRC-0201, B=SRC-0202
+- searches attempted: None
+- resolvable by web research: None; vendor quote: YES; M2 measurement: None
+- resolution class: None
+- affected: TUP-NASDAQ-LARGETICK-H2-QIMB-AGG|TUP-NASDAQ-LARGETICK-H2H3-MICRO-AGG|TUP-CBOEBZX-LARGETICK-H2H3-SPREADCAP-PAS|TUP-USSTOCK-XVENUE-H1-STALEQUOTE-AGG
 - evidence: None

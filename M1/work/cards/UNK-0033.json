@@ -1,0 +1,41 @@
+{
+  "acceptable_evidence": "Any primary source that answers the claim needed",
+  "affected_candidates": [
+    "TUP-NASDAQ-LARGETICK-H2-QIMB-AGG",
+    "TUP-NASDAQ-LARGETICK-H2H3-MICRO-AGG",
+    "TUP-CBOEBZX-LARGETICK-H2H3-SPREADCAP-PAS",
+    "TUP-USSTOCK-XVENUE-H1-STALEQUOTE-AGG"
+  ],
+  "affected_gates": "NONE",
+  "blocker_id": "UNK-0033",
+  "branch_impact": "MEDIUM",
+  "contradictory_evidence_ids": [
+    "EVD-0005",
+    "EVD-0033",
+    "EVD-0034",
+    "EVD-0037",
+    "EVD-0041",
+    "EVD-0042"
+  ],
+  "decision_prevented": "All-in per-share cost for every equity tuple, and therefore the cost floor used in KG3.",
+  "disallowed_evidence": "Assumed values, secondary summaries, social posts",
+  "estimated_effort": "SMALL",
+  "kill_condition": "All-in per-share cost for every equity tuple, and therefore the cost floor used in KG3.",
+  "kill_potential": "HIGH",
+  "known_evidence_ids": [],
+  "known_source_ids": [
+    "SRC-0201",
+    "SRC-0202"
+  ],
+  "last_updated": "2026-09-20T18:31:11Z",
+  "priority_reason": "New blocker surfaced by primary-source research: the exchange side of equity cost is public, the sponsored-access side is not, and the project cannot trade directly on these venues.",
+  "priority_score": null,
+  "required_answer": "A chosen sponsor's published commission schedule or a written quote for the intended order flow.",
+  "resolution_method": "EXTERNAL_ACTION",
+  "resolution_stage": "M1_BLOCKING",
+  "resurrection_condition": null,
+  "status": "OPEN",
+  "success_condition": "A chosen sponsor's published commission schedule or a written quote for the intended order flow.",
+  "tier": 3,
+  "title": "Sponsored-access cost: broker commission/markup for routed order flow, which no exchange o"
+}

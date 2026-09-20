@@ -1,0 +1,39 @@
+{
+  "acceptable_evidence": "Markouts conditional on own simulated fills, then on shadow/live fills",
+  "affected_candidates": [
+    "TUP-CME-ES-H1-QDEP-PAS",
+    "TUP-CBOEBZX-LARGETICK-H2H3-SPREADCAP-PAS",
+    "TUP-NASDAQ-LARGETICK-H2-QIMB-AGG",
+    "TUP-NASDAQ-LARGETICK-H2H3-MICRO-AGG"
+  ],
+  "affected_gates": "KG3_EXECUTION",
+  "blocker_id": "UNK-0019",
+  "branch_impact": "MEDIUM",
+  "contradictory_evidence_ids": [
+    "EVD-0003",
+    "EVD-0005",
+    "EVD-0033",
+    "EVD-0034",
+    "EVD-0037",
+    "EVD-0041",
+    "EVD-0042"
+  ],
+  "decision_prevented": "Passive-candidate economics; also the crossing case where the signal selects into an already-moving price.",
+  "disallowed_evidence": "Unconditional markouts, or mid-price paths used as a fill proxy",
+  "estimated_effort": "MEDIUM",
+  "kill_condition": "Conditional markouts show structural adverse selection against the strategy",
+  "kill_potential": "LOW",
+  "known_evidence_ids": [],
+  "known_source_ids": [],
+  "last_updated": "2026-09-20T18:31:11Z",
+  "priority_reason": "MIGRATED from M1_BLOCKING: markout is an M2 output; the M1 question is whether the data to measure it exists (KG2).",
+  "priority_score": null,
+  "required_answer": "E(markout | fill, state) distribution per candidate",
+  "resolution_method": "EMPIRICAL_MEASUREMENT",
+  "resolution_stage": "M2_MEASUREMENT",
+  "resurrection_condition": null,
+  "status": "OPEN",
+  "success_condition": "Conditional markout leaves positive net edge after costs",
+  "tier": 4,
+  "title": "Fill-conditioned markout (adverse selection)"
+}

@@ -1,0 +1,34 @@
+{
+  "acceptable_evidence": "Independent benchmark or the project's own sealed comparison",
+  "affected_candidates": [],
+  "affected_gates": "NONE",
+  "blocker_id": "UNK-0026",
+  "branch_impact": "GLOBAL",
+  "contradictory_evidence_ids": [],
+  "decision_prevented": "Any system-One admission; keeps the technology branch unfunded by default.",
+  "disallowed_evidence": "Vendor material treated as independent verification",
+  "estimated_effort": "MEDIUM",
+  "kill_condition": "Not applicable to M1 selection; it bounds the technology branch",
+  "kill_potential": "LOW",
+  "known_evidence_ids": [
+    "EVD-0023",
+    "EVD-0024",
+    "EVD-0025",
+    "EVD-0026"
+  ],
+  "known_source_ids": [
+    "SRC-0001",
+    "SRC-0020"
+  ],
+  "last_updated": "2026-09-20T18:31:11Z",
+  "priority_reason": "MIGRATED to M2_MEASUREMENT; tracked because SUNK premises must not leak into M2 designs.",
+  "priority_score": null,
+  "required_answer": "External reproduction or a sealed same-information experiment",
+  "resolution_method": "EMPIRICAL_MEASUREMENT",
+  "resolution_stage": "M2_MEASUREMENT",
+  "resurrection_condition": null,
+  "status": "OPEN",
+  "success_condition": "A claim is either reproduced or removed from the premise set",
+  "tier": 4,
+  "title": "Independent verification of architecture claims"
+}

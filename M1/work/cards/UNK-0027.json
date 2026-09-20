@@ -1,0 +1,48 @@
+{
+  "acceptable_evidence": "Contract specification; or a universe rule with selection variables and date",
+  "affected_candidates": [
+    "TUP-CME-TSY-H2-QREPL-MIX",
+    "TUP-CME-WTI-H4-FLOWVOL-AGG",
+    "TUP-NASDAQ-LARGETICK-H2-QIMB-AGG",
+    "TUP-NASDAQ-LARGETICK-H2H3-MICRO-AGG",
+    "TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG",
+    "TUP-EUREX-FESX-H2H3-OFIQ-MIX",
+    "TUP-CBOE-USOPT-H5-SURFRV-MIX",
+    "TUP-DERIBIT-BTCOPT-H5-SURFRV-MIX",
+    "TUP-KALSHI-EVENT-H5-EVENTINF-AGG",
+    "TUP-POLYMARKET-EVENT-H5-EVENTINF-AGG"
+  ],
+  "affected_gates": "KG5_FALSIFIABILITY",
+  "blocker_id": "UNK-0027",
+  "branch_impact": "MEDIUM",
+  "contradictory_evidence_ids": [
+    "EVD-0003",
+    "EVD-0005",
+    "EVD-0016",
+    "EVD-0022",
+    "EVD-0033",
+    "EVD-0034",
+    "EVD-0041",
+    "EVD-0042"
+  ],
+  "decision_prevented": "M2 registration and any falsifier (KG5) for the affected rows.",
+  "disallowed_evidence": "Choosing the instrument with the best historical performance (selection leakage)",
+  "estimated_effort": "MEDIUM",
+  "kill_condition": "A branch cannot be specified exactly without performance-based selection, so it dies",
+  "kill_potential": "HIGH",
+  "known_evidence_ids": [],
+  "known_source_ids": [
+    "SRC-0011"
+  ],
+  "last_updated": "2026-09-20T18:31:11Z",
+  "priority_reason": "M1-BLOCKING retained: handoff \u00a711 makes exact-instrument definition an M1 requirement.",
+  "priority_score": null,
+  "required_answer": "One exact contract/symbol per branch, or a causal selection rule with its variables",
+  "resolution_method": "PUBLIC_RESEARCH",
+  "resolution_stage": "M1_BLOCKING",
+  "resurrection_condition": "A branch cannot be specified exactly without performance-based selection, so it dies",
+  "status": "OPEN",
+  "success_condition": "Every finalist names an exact instrument or a leakage-free universe rule",
+  "tier": 1,
+  "title": "Exact instrument or preregistered universe rule per surviving branch"
+}

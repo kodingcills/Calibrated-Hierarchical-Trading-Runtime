@@ -41,6 +41,7 @@ COLUMNS = [
     "evidence_state",
     "limitations",
     "decision_implication",
+    "contradicts_mechanism",
     "verification_status",
 ]
 
@@ -48,6 +49,10 @@ COLUMNS = [
 def _row(**kw):
     row = {c: UNKNOWN for c in COLUMNS}
     row.update(kw)
+    # Explicit, authored marker. A record weakens a candidate for many reasons (data scope,
+    # cost, feed cadence) that are not mechanism contradictions. Only records marked YES here
+    # can affect KG1's contradiction test, so no inference is made from supports_or_weakens.
+    row.setdefault("contradicts_mechanism", "NO")
     return row
 
 

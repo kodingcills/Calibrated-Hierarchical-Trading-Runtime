@@ -115,6 +115,7 @@ TABLE_SPECS = {
             "round_trip_taker_taker_fee_bps": "fee_source_ids",
             "known_cost_floor_bps": "fee_source_ids",
             "known_cost_floor_native_value": "fee_source_ids",
+            "required_round_trip_fee_native_value": "fee_source_ids",
             "full_break_even_bps": "break_even_source_ids",
         },
     },

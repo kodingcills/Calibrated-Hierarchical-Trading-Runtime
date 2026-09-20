@@ -18,11 +18,12 @@ COLUMNS = [
     "round_trip_taker_taker_fee_bps", "round_trip_flat_fee_bps",
     "required_round_trip_fee_bps_for_style",
     "known_cost_floor_bps", "known_cost_floor_native_value", "known_cost_floor_native_unit",
+    "required_round_trip_fee_native_value",
     "known_cost_floor_known_components", "known_cost_floor_missing_components",
     "spread_bps", "slippage_bps", "adverse_selection_bps", "impact_bps", "funding_bps",
     "clearing_broker_fees_bps",
     "full_break_even_bps", "full_break_even_status", "full_break_even_unknown_components",
-    "break_even_source_ids", "envelope_note", "unknown_fields",
+    "break_even_source_ids", "fee_unit_conversion_note", "envelope_note", "unknown_fields",
 ]
 
 _NON_FEE_COMPONENTS = (
@@ -48,6 +49,7 @@ def venue_fee_reference(venue) -> dict:
         rt["round_trip_flat_fee_bps"] = flat
     return {
         "venue_id": venue["venue_id"],
+        "maker_side_is_rebate": venue.get("maker_side_is_rebate"),
         "instrument": venue["instrument"],
         "maker_fee_value": venue.get("maker_fee_value"),
         "maker_fee_unit": venue.get("maker_fee_unit"),
@@ -94,8 +96,17 @@ def envelope_row(cand, venue, price=None) -> dict:
         native_legs = {"taker_fee": venue.get("taker_fee_value"),
                        "taker_fee_second_leg": venue.get("taker_fee_value")}
     elif style == "PASSIVE":
-        native_legs = {"maker_fee": venue.get("maker_fee_value"),
-                       "maker_fee_second_leg": venue.get("maker_fee_value")}
+        if venue.get("maker_fee_value") is UNKNOWN and \
+                str(venue.get("maker_side_is_rebate", "")).upper() == "YES" and \
+                venue.get("rebate_value") is not UNKNOWN:
+            # The schedule states the standard displayed-add rate IS a credit, so the verified
+            # mandatory maker-side component is the negative of that rebate. Recorded as a fee
+            # leg with its own source; the rebate column keeps the raw schedule value.
+            native_legs = {"displayed_add_rebate": -float(venue["rebate_value"]),
+                           "displayed_add_rebate_second_leg": -float(venue["rebate_value"])}
+        else:
+            native_legs = {"maker_fee": venue.get("maker_fee_value"),
+                           "maker_fee_second_leg": venue.get("maker_fee_value")}
     else:
         native_legs = {"maker_fee": UNKNOWN, "maker_fee_second_leg": UNKNOWN,
                        "taker_fee": venue.get("taker_fee_value"),
@@ -110,6 +121,11 @@ def envelope_row(cand, venue, price=None) -> dict:
         native_legs["perp_close_fee"] = venue.get("perp_close_fee_value")
 
     floor = costs.known_cost_floor(native_legs)
+    floor_unit = _native_floor_unit(venue, style)
+    floor_bps = (floor["floor_value"]
+                 if floor["floor_value"] is not UNKNOWN and floor_unit in ("BPS", "PERCENT")
+                 else UNKNOWN)
+    floor_native = floor["floor_value"]
 
     break_even_components = {
         "spread": UNKNOWN, "fees": required, "slippage": UNKNOWN,
@@ -119,18 +135,22 @@ def envelope_row(cand, venue, price=None) -> dict:
 
     fee_sources = "|".join(sorted({s for s in (
         venue.get("maker_fee_source_id"), venue.get("taker_fee_source_id"),
-        venue.get("perp_open_fee_source_id"), venue.get("perp_close_fee_source_id"))
-        if s is not UNKNOWN})) or "NONE"
-    if required is UNKNOWN:
-        fee_sources = "NONE"
+        venue.get("rebate_source_id"), venue.get("perp_open_fee_source_id"),
+        venue.get("perp_close_fee_source_id")) if s is not UNKNOWN})) or "NONE"
 
     note_parts = []
     if costs.unit_is_price_dependent(venue.get("taker_fee_unit") or ""):
         note_parts.append("Taker fee is quoted per share: its bps equivalent needs a price and is "
                           "therefore UNKNOWN here (ASM-0011).")
     if style == "PASSIVE" and venue.get("maker_fee_value") is UNKNOWN:
-        note_parts.append("Passive candidate: the maker-side fee component is not verified for this "
-                          "venue, so no cost floor is computed.")
+        if str(venue.get("maker_side_is_rebate", "")).upper() == "YES" and \
+                venue.get("rebate_value") is not UNKNOWN:
+            note_parts.append("Passive candidate: the standard displayed-add rate is a verified "
+                              "credit, so the native floor is the negative of that rebate "
+                              "(sourced). Realized fee codes may differ with routing and volume.")
+        else:
+            note_parts.append("Passive candidate: the maker-side fee component is not verified for "
+                              "this venue, so no cost floor is computed.")
     if style == "MIXED":
         note_parts.append("MIXED style: the maker/taker mix is a strategy choice that has not been "
                           "made, so the style-required round trip stays UNKNOWN.")
@@ -155,11 +175,11 @@ def envelope_row(cand, venue, price=None) -> dict:
         "round_trip_taker_taker_fee_bps": rt["round_trip_taker_taker_fee_bps"],
         "round_trip_flat_fee_bps": rt.get("round_trip_flat_fee_bps", UNKNOWN),
         "required_round_trip_fee_bps_for_style": required,
-        "known_cost_floor_bps": floor["floor_value"] if maker is not UNKNOWN or taker is not UNKNOWN
-        else UNKNOWN,
-        "known_cost_floor_native_value": floor["floor_value"],
+        "known_cost_floor_bps": floor_bps,
+        "known_cost_floor_native_value": floor_native,
         "known_cost_floor_native_unit": _native_floor_unit(venue, style),
         "known_cost_floor_known_components": "|".join(floor["known_components"]) or "NONE",
+        "required_round_trip_fee_native_value": floor_native if style != "MIXED" else UNKNOWN,
         "known_cost_floor_missing_components": "|".join(floor["missing_components"]) or "NONE",
         "spread_bps": UNKNOWN,
         "slippage_bps": UNKNOWN,
@@ -171,6 +191,10 @@ def envelope_row(cand, venue, price=None) -> dict:
         "full_break_even_status": be["status"],
         "full_break_even_unknown_components": "|".join(be["unknown_components"]) or "NONE",
         "break_even_source_ids": fee_sources if be["status"] == "COMPUTED" else "NONE",
+        "fee_unit_conversion_note": (
+            "Required round trip is UNKNOWN in bps because at least one verified leg is quoted "
+            "per share (no price available) or the execution style is MIXED."
+            if required is UNKNOWN else "Required round trip computed from verified fee legs."),
         "envelope_note": " ".join(note_parts) +
                          " KnownCostFloor is a lower bound on cost, not break-even (ASM-0012).",
     }
@@ -178,6 +202,9 @@ def envelope_row(cand, venue, price=None) -> dict:
 
 def _native_floor_unit(venue, style):
     if style == "PASSIVE":
+        if venue.get("maker_fee_value") is UNKNOWN and \
+                str(venue.get("maker_side_is_rebate", "")).upper() == "YES":
+            return venue.get("rebate_unit")
         return venue.get("maker_fee_unit")
     return venue.get("taker_fee_unit")
 

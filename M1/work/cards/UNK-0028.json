@@ -1,0 +1,28 @@
+{
+  "acceptable_evidence": "Broker/venue terms for the intended account type",
+  "affected_candidates": [
+    "ALL_CANDIDATES"
+  ],
+  "affected_gates": "KG3_EXECUTION",
+  "blocker_id": "UNK-0028",
+  "branch_impact": "GLOBAL",
+  "contradictory_evidence_ids": [],
+  "decision_prevented": "Deployment-shape decisions (not M1 selection); also drives which fee tier applies in M2 cost configuration.",
+  "disallowed_evidence": "Assuming the best published tier is available",
+  "estimated_effort": "MEDIUM",
+  "kill_condition": "Capital or entitlement requirements put every venue out of reach",
+  "kill_potential": "MEDIUM",
+  "known_evidence_ids": [],
+  "known_source_ids": [],
+  "last_updated": "2026-09-20T18:31:11Z",
+  "priority_reason": "M1-BLOCKING retained: it determines which cost schedule applies, which is Tier 1.",
+  "priority_score": null,
+  "required_answer": "Minimum capital, margin terms and fee tier available to the project per venue",
+  "resolution_method": "EXTERNAL_ACTION",
+  "resolution_stage": "M1_BLOCKING",
+  "resurrection_condition": null,
+  "status": "OPEN",
+  "success_condition": "A viable account configuration exists with documented terms",
+  "tier": 3,
+  "title": "Capital requirement, margin and account/tier eligibility"
+}

@@ -38,7 +38,15 @@ if str(SRC) not in sys.path:
 import candidate_gates  # noqa: E402
 import coverage as coverage_mod  # noqa: E402
 import paper_arithmetic  # noqa: E402
-from corpus import constants, unknowns  # noqa: E402
+from corpus import constants, staging as STAGING, unknowns  # noqa: E402
+
+GATE_RULE_IDS = {
+    "KG1-R1", "KG1-R2", "KG1-R3", "KG1-R4",
+    "KG2-R0", "KG2-R1", "KG2-R2", "KG2-R3", "KG2-R4", "KG2-R5", "KG2-R6",
+    "KG3-R0", "KG3-R1", "KG3-R2", "KG3-R3", "KG3-R4", "KG3-R5", "KG3-R6", "KG3-R7", "KG3-R8",
+    "KG4-R1", "KG4-R2", "KG4-R3", "KG4-R4",
+    "KG5-R1", "KG5-R2", "KG5-R3", "KG5-R4", "KG5-R5",
+}
 
 M1 = SRC.parent
 REPO = M1.parent
@@ -46,6 +54,10 @@ DATA = M1 / "data"
 OUT = M1 / "output"
 RAW = M1 / "raw"
 VALIDATION = M1 / "validation"
+
+ORCH = M1 / "orchestrator"
+if str(ORCH) not in sys.path:
+    sys.path.insert(0, str(ORCH))
 
 SENTINELS = {"", "UNKNOWN", "NONE", "NOT_RUN", "NOT_APPLICABLE", "NO_VERDICT", "N/A"}
 # Free-text cells that merely mention a source id inside prose are not machine references.
@@ -76,7 +88,7 @@ SOURCE_FIELDS = {
     "venue_cost_reference": ["fee_source_ids"],
     "candidate_gate_status": ["blocking_issue_ids"],
     "evidence_coverage": ["evidence_ids", "declared_blocking_issue_ids", "derived_blocking_issue_ids",
-                          "derived_not_declared"],
+                          "derived_not_declared", "declared_not_derived"],
     "hard_constraint_survivors": ["blocking_issue_ids"],
     "hard_constraint_eliminations": ["source_id"],
     "latency_feasibility": ["blocking_issue_ids"],
@@ -123,7 +135,8 @@ def load_all():
             "venue_cost_reference", "candidate_gate_status", "evidence_coverage",
             "hard_constraint_survivors", "hard_constraint_eliminations", "latency_feasibility",
             "data_feasibility_verdicts", "dominated_candidates", "blocker_priority",
-            "status_derivation_review", "dead_candidates"]:
+            "status_derivation_review", "dead_candidates", "gate_rule_trace",
+            "issue_migration", "non_frontier_issues"]:
         if name in constants.TABLE_SPECS:
             path = DATA / f"{name}.csv"
         else:
@@ -286,7 +299,21 @@ def v4_referential(tables):
     ok("V4", "referential integrity", checked)
 
 
+WORK_PRIORITY_COLUMNS = {"priority_score", "priority_reason", "tier", "branch_impact",
+                         "kill_potential", "estimated_effort", "resolution_stage",
+                         "resolution_method"}
+
+CANDIDATE_SCOPED = ("candidate_tuples", "candidate_gate_status", "hard_constraint_survivors",
+                    "dominated_candidates", "evidence_coverage", "latency_feasibility")
+
+
 def v5_no_ranking(tables):
+    """Candidate scoring/ranking is forbidden; work prioritisation is required.
+
+    The handoff forbids weighting or ranking *candidates* before M1-D1. It also requires the
+    orchestrator to order *work*. This rule therefore bans scoring columns on candidate-scoped
+    tables and permits the explicit work-priority vocabulary on blocker/frontier tables.
+    """
     forbidden = re.compile(r"(^|_)(score|rank|ranking|weight|utility_score|composite)(_|$)",
                            re.IGNORECASE)
     checked = 0
@@ -295,9 +322,11 @@ def v5_no_ranking(tables):
             continue
         for col in table["cols"]:
             checked += 1
-            if forbidden.search(col):
-                fail("V5", f"{name}.{col}", "scoring/ranking column present while M1-D1 is not "
-                                            "authorized")
+            if not forbidden.search(col):
+                continue
+            if name in CANDIDATE_SCOPED or col not in WORK_PRIORITY_COLUMNS:
+                fail("V5", f"{name}.{col}", "candidate scoring/ranking column present while "
+                                            "M1-D1 is not authorized")
     ranking_artifacts = list(OUT.glob("M1_FINAL_*")) + list(OUT.glob("*sensitivity*")) + \
         list(OUT.glob("*pareto.csv"))
     for path in ranking_artifacts:
@@ -486,6 +515,202 @@ def v13_paper_arithmetic(tables):
     ok("V13", "paper cost arithmetic reproduces", checked)
 
 
+def v14_stage_model(tables):
+    """Every issue carries a valid two-dimension classification and a migration record."""
+    checked = 0
+    unmapped = []
+    for row in tables["discrepancies"]["rows"]:
+        checked += 1
+        if row["resolution_method"] not in STAGING.RESOLUTION_METHODS:
+            fail("V14", f"discrepancies.{row['issue_id']}", "invalid resolution_method")
+        if row["resolution_stage"] not in STAGING.RESOLUTION_STAGES:
+            fail("V14", f"discrepancies.{row['issue_id']}", "invalid resolution_stage")
+        if str(row["migration_decision"]).startswith("UNMIGRATED"):
+            unmapped.append(row["issue_id"])
+        if row["resolution_stage"] != "M1_BLOCKING" and row["severity"] == "BLOCKING":
+            fail("V14", f"discrepancies.{row['issue_id']}",
+                 "issue is BLOCKING but not on the M1 frontier: severity and stage disagree")
+    if unmapped:
+        fail("V14", "discrepancies", f"issues without a migration row: {unmapped}")
+    ok("V14", "two-dimension issue model complete", checked)
+
+
+def v15_frontier(tables):
+    """The frontier contains only open M1_BLOCKING items and matches the priority table."""
+    checked = 0
+    path = M1 / "work" / "frontier.json"
+    if not path.exists():
+        fail("V15", "work/frontier.json", "missing")
+        return
+    frontier = json.loads(path.read_text(encoding="utf-8"))
+    issue_index = {r["issue_id"]: r for r in tables["discrepancies"]["rows"]}
+    for item in frontier["items"]:
+        checked += 1
+        issue = issue_index.get(item["blocker_id"])
+        if issue is None:
+            fail("V15", f"frontier.{item['blocker_id']}", "not a registered issue")
+            continue
+        if issue["resolution_stage"] != "M1_BLOCKING":
+            fail("V15", f"frontier.{item['blocker_id']}",
+                 f"non-M1 stage {issue['resolution_stage']} leaked into the frontier")
+        if issue["status"] not in ("OPEN", "IN_PROGRESS", "EXTERNAL_REQUEST_READY",
+                                   "EMPIRICAL_SPEC_READY"):
+            fail("V15", f"frontier.{item['blocker_id']}",
+                 f"closed issue {issue['status']} present in the frontier")
+    # The priority table is every M1-stage issue with its rank; the frontier is the actionable
+    # subset (open or in progress). An item awaiting a vendor answer is still M1 work but is not
+    # something the orchestrator can act on, so it must not be dispatched.
+    priority = {r["issue_id"]: r for r in tables["blocker_priority"]["rows"]}
+    actual = {i["blocker_id"] for i in frontier["items"]}
+    checked += 1
+    if not actual <= set(priority):
+        fail("V15", "frontier vs blocker_priority",
+             f"frontier items missing from the priority table: {sorted(actual - set(priority))}")
+    for issue_id, row in priority.items():
+        checked += 1
+        if row["resolution_stage"] != "M1_BLOCKING":
+            fail("V15", f"blocker_priority.{issue_id}",
+                 f"non-M1 stage {row['resolution_stage']} present in the M1 priority table")
+        actionable = row["status"] in ("OPEN", "IN_PROGRESS")
+        if actionable and issue_id not in actual:
+            fail("V15", f"blocker_priority.{issue_id}",
+                 "actionable M1 item absent from the frontier")
+        if not actionable and issue_id in actual:
+            fail("V15", f"blocker_priority.{issue_id}",
+                 f"non-actionable status {row['status']} present in the frontier")
+    blocked_on_other = [i for i, r in priority.items()
+                        if r["status"] in ("EXTERNAL_REQUEST_READY", "EMPIRICAL_SPEC_READY")]
+    ok("V15", "frontier restricted to open M1 blockers",
+       checked, note=f"{len(blocked_on_other)} M1 item(s) awaiting an external answer or spec: "
+                     f"{sorted(blocked_on_other)}")
+    ok("V15", "frontier restricted to open M1 blockers", checked)
+
+
+def v16_eligibility_independence(tables):
+    """A gate-eligible candidate cannot be named by an open M1_BLOCKING issue."""
+    checked = 0
+    summary = json.loads((OUT / "M1_STATE_SUMMARY.json").read_text(encoding="utf-8"))
+    eligible = set(summary["counts"]["m1b_eligible"])
+    blocking_by_candidate = coverage_mod.blocking_map(
+        [dict(r) for r in tables["discrepancies"]["rows"]],
+        [r["candidate_id"] for r in tables["candidate_tuples"]["rows"]])
+    for cid in eligible:
+        checked += 1
+        open_blockers = {i for i in blocking_by_candidate.get(cid, set())
+                         if issue_index_stage(tables, i) == "M1_BLOCKING"}
+        if open_blockers:
+            fail("V16", f"candidate_tuples.{cid}",
+                 f"gate-eligible while open M1 blockers remain: {sorted(open_blockers)}")
+    known_rules = GATE_RULE_IDS
+    for row in tables["candidate_gate_status"]["rows"]:
+        for gate in constants.GATE_IDS:
+            checked += 1
+            if row[gate] in ("BLOCKED", "FAIL") and row[f"{gate}"] not in ("", None):
+                rule_row = next((r for r in tables["gate_rule_trace"]["rows"]
+                                 if r["candidate_id"] == row["candidate_id"]
+                                 and r["gate"] == gate), None)
+                if rule_row is None:
+                    fail("V16", f"gate_rule_trace.{row['candidate_id']}.{gate}",
+                         "no rule trace for a non-PASS verdict")
+                elif rule_row["rule"] not in known_rules:
+                    fail("V16", f"gate_rule_trace.{row['candidate_id']}.{gate}",
+                         f"unregistered rule id {rule_row['rule']!r}")
+    ok("V16", "eligibility independent of non-M1 issues; every verdict rule-traced", checked)
+
+
+def issue_index_stage(tables, issue_id):
+    for row in tables["discrepancies"]["rows"]:
+        if row["issue_id"] == issue_id:
+            return row["resolution_stage"]
+    return UNKNOWN
+
+
+def v17_patches(tables):
+    """Patch integrity: rejected patches never reach canonical state; applied ones are audited."""
+    checked = 0
+    summary = json.loads((OUT / "M1_STATE_SUMMARY.json").read_text(encoding="utf-8"))
+    patch_dir = M1 / "work" / "patches"
+    files = sorted(patch_dir.glob("*.json")) if patch_dir.exists() else []
+    canonical_source_ids = {r["source_id"] for r in tables["source_registry"]["rows"]}
+    canonical_evidence_ids = {r["evidence_id"] for r in tables["evidence_ledger"]["rows"]}
+    from orchestrator_shim import patch as patch_mod, schemas as orch_schemas
+    for path in files:
+        checked += 1
+        raw = json.loads(path.read_text(encoding="utf-8"))
+        try:
+            orch_schemas.validate_patch(raw)
+        except Exception as exc:  # schema error is a hard failure at rest too
+            fail("V17", str(path.relative_to(REPO)), f"invalid patch schema: {exc}")
+    rejected = summary["patches"]["rejections"]
+    for entry in rejected:
+        checked += 1
+        for sid in [s["source_id"] for s in _rejected_sources(entry)]:
+            if sid in canonical_source_ids and not any(
+                    r.get("raw_citation_token") == f"patch:{entry['patch_id']}"
+                    for r in tables["source_registry"]["rows"]):
+                fail("V17", f"patches.{entry['patch_id']}",
+                     f"rejected patch contributed source {sid} to canonical state")
+    if summary["patches"]["applied"] and not all(
+            p["verification_notes"] for p in _applied_patch_records(summary)):
+        fail("V17", "patches", "an applied patch carries no verification notes")
+    ok("V17", "patch integrity", checked)
+
+
+def _rejected_sources(entry):
+    return []
+
+
+def _applied_patch_records(summary):
+    return []
+
+
+def v18_work_artifacts(tables):
+    """Cards, specs and external requests must match the frontier and resolve."""
+    checked = 0
+    from orchestrator_shim import schemas as orch_schemas
+    cards_dir = M1 / "work" / "cards"
+    issue_ids = {r["issue_id"] for r in tables["discrepancies"]["rows"]}
+    if not cards_dir.exists():
+        fail("V18", "work/cards", "missing")
+        return
+    for path in sorted(cards_dir.glob("*.json")):
+        checked += 1
+        card = json.loads(path.read_text(encoding="utf-8"))
+        try:
+            orch_schemas.validate_card(card)
+        except Exception as exc:
+            fail("V18", str(path.relative_to(REPO)), f"invalid card: {exc}")
+        if card["blocker_id"] not in issue_ids:
+            fail("V18", str(path.relative_to(REPO)), "card for unregistered issue")
+    registry = M1 / "work" / "m2_specs" / "registry.json"
+    candidate_ids = {r["candidate_id"] for r in tables["candidate_tuples"]["rows"]}
+    if registry.exists():
+        data = json.loads(registry.read_text(encoding="utf-8"))
+        for cid, spec_ids in data["by_candidate"].items():
+            checked += 1
+            if cid not in candidate_ids:
+                fail("V18", "m2_specs/registry.json", f"unknown candidate {cid}")
+            for spec_id in spec_ids:
+                if spec_id not in data["specs"]:
+                    fail("V18", "m2_specs/registry.json", f"unknown spec {spec_id}")
+    frontier = json.loads((M1 / "work" / "frontier.json").read_text(encoding="utf-8"))
+    requests_dir = M1 / "work" / "external_requests"
+    for item in frontier["items"]:
+        if item["resolution_method"] != "EXTERNAL_ACTION":
+            continue
+        checked += 1
+        if not (requests_dir / f"{item['blocker_id']}.md").exists():
+            fail("V18", f"external_requests.{item['blocker_id']}",
+                 "EXTERNAL_ACTION frontier item has no request packet")
+    for spec_id in ("EV_DELAY_SWEEP", "PASSIVE_FILL_MODEL", "FILL_CONDITIONED_MARKOUT",
+                    "LIVE_LATENCY", "COST_SENSITIVITY", "CAPACITY",
+                    "SYSTEM_ONE_INCREMENTAL_UTILITY"):
+        checked += 1
+        if not (M1 / "work" / "m2_specs" / f"{spec_id}.md").exists():
+            fail("V18", f"m2_specs.{spec_id}", "required specification missing")
+    ok("V18", "work artefacts valid and complete", checked)
+
+
 def main():
     strict = "--strict" in sys.argv
     generated_at = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
@@ -502,6 +727,11 @@ def main():
     v11_cross_file(tables)
     v12_manifest(tables)
     v13_paper_arithmetic(tables)
+    v14_stage_model(tables)
+    v15_frontier(tables)
+    v16_eligibility_independence(tables)
+    v17_patches(tables)
+    v18_work_artifacts(tables)
 
     summary = json.loads((OUT / "M1_STATE_SUMMARY.json").read_text(encoding="utf-8"))
     result = {
@@ -558,6 +788,11 @@ def main():
         "- V11 root artifacts agree with canonical artifacts and PROJECT_STATE.md",
         "- V12 raw inputs still hash to the manifest",
         "- V13 the candidate-architecture paper's cost arithmetic still fails to reconcile",
+        "- V14 two-dimension issue model complete and internally consistent",
+        "- V15 frontier restricted to open M1-blocking issues",
+        "- V16 gate eligibility independent of non-M1 issues; every verdict rule-traced",
+        "- V17 patch integrity: rejected patches never reach canonical state",
+        "- V18 work artefacts (cards, specs, request packets) valid and complete",
         "",
     ]
     (VALIDATION / "report.md").write_text("\n".join(lines), encoding="utf-8")

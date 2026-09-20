@@ -36,9 +36,16 @@ def _severity_rank(severity):
 
 
 def blocker_priority_rows(discrepancies, open_questions, candidate_ids) -> list:
+    """Open issues ranked by decision leverage, restricted to the M1 frontier.
+
+    Non-frontier items are excluded by construction (handoff §14 STEP 2): measurement and
+    procurement-after-M1 work must not appear as if it were blocking M1.
+    """
     rows = []
     for issue in discrepancies:
         if issue["status"] == "RESOLVED":
+            continue
+        if issue.get("resolution_stage") != "M1_BLOCKING":
             continue
         count = _affected_count(issue, candidate_ids)
         affected = issue["affected_candidate_ids"] or issue["candidate_id"]
@@ -49,6 +56,12 @@ def blocker_priority_rows(discrepancies, open_questions, candidate_ids) -> list:
             "severity": issue["severity"],
             "resolution_class": issue["resolution_class"],
             "resolution_class_meaning": RESOLUTION_CLASSES.get(issue["resolution_class"], "UNKNOWN"),
+            "resolution_method": issue.get("resolution_method"),
+            "resolution_stage": issue.get("resolution_stage"),
+            "tier": issue.get("tier"),
+            "branch_impact": issue.get("branch_impact"),
+            "kill_potential": issue.get("kill_potential"),
+            "estimated_effort": issue.get("estimated_effort"),
             "affected_candidate_count": count,
             "affected_candidate_ids": affected,
             "decision_prevented": issue["decision_prevented"],
@@ -63,6 +76,29 @@ def blocker_priority_rows(discrepancies, open_questions, candidate_ids) -> list:
     rows.sort(key=lambda r: (_severity_rank(r["severity"]), -r["affected_candidate_count"],
                              r["issue_id"]))
     return rows
+
+
+def non_frontier_rows(discrepancies) -> list:
+    """Open issues deliberately NOT on the M1 frontier, with where they now live."""
+    out = []
+    for issue in discrepancies:
+        if issue["status"] == "RESOLVED":
+            continue
+        if issue.get("resolution_stage") == "M1_BLOCKING":
+            continue
+        out.append({
+            "issue_id": issue["issue_id"],
+            "resolution_method": issue.get("resolution_method"),
+            "resolution_stage": issue.get("resolution_stage"),
+            "tier": issue.get("tier"),
+            "title": issue["claim_needed"],
+            "migration_reason": issue.get("migration_reason"),
+            "destination": ("M1/work/m2_specs/" if issue.get("resolution_stage") in
+                            ("M2_MEASUREMENT", "POST_M2")
+                            else "registry only (non-blocking)"),
+        })
+    out.sort(key=lambda r: (str(r["resolution_stage"]), r["issue_id"]))
+    return out
 
 
 def _table(headers, rows) -> str:

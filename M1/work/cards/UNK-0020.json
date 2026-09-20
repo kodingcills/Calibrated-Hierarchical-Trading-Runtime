@@ -1,0 +1,38 @@
+{
+  "acceptable_evidence": "Vendor product terms and sample",
+  "affected_candidates": [
+    "TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG"
+  ],
+  "affected_gates": "KG2_DATA",
+  "blocker_id": "UNK-0020",
+  "branch_impact": "ONE",
+  "contradictory_evidence_ids": [
+    "EVD-0005",
+    "EVD-0022",
+    "EVD-0033",
+    "EVD-0034",
+    "EVD-0041",
+    "EVD-0042"
+  ],
+  "decision_prevented": "Auction tuple feasibility (KG2): without it the auction candidate has no historical basis for testing.",
+  "disallowed_evidence": "Live NOII existence treated as historical availability",
+  "estimated_effort": "SMALL",
+  "kill_condition": "No historical auction dataset exists at usable granularity",
+  "kill_potential": "MEDIUM",
+  "known_evidence_ids": [],
+  "known_source_ids": [
+    "SRC-0108",
+    "SRC-0120"
+  ],
+  "last_updated": "2026-09-20T18:31:11Z",
+  "priority_reason": "M1-BLOCKING retained: data existence is Tier 1/3.",
+  "priority_score": null,
+  "required_answer": "Historical NOII / auction execution data with exact dissemination timestamps",
+  "resolution_method": "EXTERNAL_ACTION",
+  "resolution_stage": "M1_BLOCKING",
+  "resurrection_condition": null,
+  "status": "RESOLVED_SUPPORTS",
+  "success_condition": "A historical auction dataset with timestamps is obtainable",
+  "tier": 3,
+  "title": "Historical auction imbalance data source"
+}

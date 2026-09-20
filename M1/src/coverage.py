@@ -91,9 +91,11 @@ def coverage_row(evidence_rows, candidate_id, blocking_issue_ids) -> dict:
     counts["blocking_unknown_count"] = len(_split(blocking_issue_ids))
     counts["evidence_ids"] = "|".join(row["evidence_id"] for row in rows) or "NONE"
 
-    note = ("Descriptive counts only. NEUTRAL records are feasibility context and are not netted "
-            "against SUPPORTS/WEAKENS; no evidence score is computed (ASM-0017).")
-    counts["note"] = note
+    counts["note"] = ("Descriptive counts only. NEUTRAL records are feasibility context and are "
+                      "not netted against SUPPORTS/WEAKENS; no evidence score is computed "
+                      "(ASM-0017). blocking_unknown_count counts M1-blocking issues only: an "
+                      "issue migrated to M2_MEASUREMENT stops blocking this candidate's M1 "
+                      "status by design (handoff §3).")
     return counts
 
 
@@ -128,6 +130,7 @@ def coverage_rows(evidence_rows, candidates, discrepancies) -> list:
         row["declared_is_subset_of_derived"] = (
             "YES" if declared <= derived else "NO")
         row["derived_not_declared"] = "|".join(sorted(derived - declared)) or "NONE"
+        row["declared_not_derived"] = "|".join(sorted(declared - derived)) or "NONE"
         rows.append(row)
     return rows
 

@@ -1,0 +1,31 @@
+{
+  "acceptable_evidence": "Delay sweep on causal replay data with the project's timestamp contract",
+  "affected_candidates": [
+    "ALL_CANDIDATES"
+  ],
+  "affected_gates": "KG4_HALF_LIFE",
+  "blocker_id": "UNK-0008",
+  "branch_impact": "GLOBAL",
+  "contradictory_evidence_ids": [],
+  "decision_prevented": "Latency budget allocation, model placement and any ALIVE label (KG4).",
+  "disallowed_evidence": "An exponential decay constant inferred from 'next tick' or 'short horizon' language",
+  "estimated_effort": "MEDIUM",
+  "kill_condition": "Measured EV(delay) is non-positive at every achievable delay",
+  "kill_potential": "LOW",
+  "known_evidence_ids": [
+    "EVD-0012",
+    "EVD-0013"
+  ],
+  "known_source_ids": [],
+  "last_updated": "2026-09-20T18:31:11Z",
+  "priority_reason": "MIGRATED from M1_BLOCKING, and this is the single most important migration: requiring a measured half-life inside M1 made KG4 unpassable, which made M1-B impossible, which made M2 impossible. M1 now requires only that no *known physical* timing contradiction exists and that the delay experiment is preregistered.",
+  "priority_score": null,
+  "required_answer": "Execution-aware EV at controlled artificial delays for each candidate signal",
+  "resolution_method": "EMPIRICAL_MEASUREMENT",
+  "resolution_stage": "M2_MEASUREMENT",
+  "resurrection_condition": null,
+  "status": "OPEN",
+  "success_condition": "Measured EV(delay) remains positive at the achievable p99 decision age",
+  "tier": 4,
+  "title": "Signal half-life: EV versus delay response surface"
+}

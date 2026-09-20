@@ -1,0 +1,362 @@
+{
+  "active_item_count": 16,
+  "clusters": {
+    "CBOE_EQUITY": [
+      "UNK-0005",
+      "UNK-0033"
+    ],
+    "CBOE_OPTIONS": [
+      "UNK-0012",
+      "UNK-0027"
+    ],
+    "CME": [
+      "UNK-0001",
+      "UNK-0002",
+      "UNK-0003",
+      "UNK-0027"
+    ],
+    "DERIBIT": [
+      "UNK-0013",
+      "UNK-0027"
+    ],
+    "EUREX": [
+      "UNK-0011",
+      "UNK-0027"
+    ],
+    "EVENT_MARKETS": [
+      "UNK-0014",
+      "UNK-0027"
+    ],
+    "FX": [
+      "UNK-0015"
+    ],
+    "GLOBAL": [
+      "UNK-0009",
+      "UNK-0018",
+      "UNK-0023",
+      "UNK-0028"
+    ],
+    "HYPERLIQUID": [
+      "UNK-0010"
+    ],
+    "NASDAQ_EQUITY": [
+      "UNK-0005",
+      "UNK-0027",
+      "UNK-0033"
+    ],
+    "US_EQUITY_CROSS": [
+      "UNK-0005",
+      "UNK-0033"
+    ]
+  },
+  "gate_eligible_candidates": [],
+  "generated_at": "2026-09-20T18:31:11Z",
+  "items": [
+    {
+      "affected_candidates": [
+        "ALL_EXTERNAL_EVIDENCE"
+      ],
+      "affected_gates": "KG1_MECHANISM|KG3_EXECUTION",
+      "blocker_id": "UNK-0023",
+      "decision_prevented": "Independent verification of any external claim, including fee schedules that already killed candidates; the arithmetic is unaffected, the auditability is.",
+      "kill_condition": "A re-derived fact contradicts the report-mediated value (that is a finding, not a failure)",
+      "priority_reason": "M1-BLOCKING retained: decisions already rest on these facts, and re-derivation is the cheapest available integrity upgrade.",
+      "priority_score": 60.0,
+      "resolution_method": "PUBLIC_RESEARCH",
+      "resolution_stage": "M1_BLOCKING",
+      "status": "IN_PROGRESS",
+      "success_condition": "Every decision-relevant external fact is re-derived from a primary page",
+      "tier": 1,
+      "title": "Citation-token to primary-URL resolution"
+    },
+    {
+      "affected_candidates": [
+        "ALL_CANDIDATES"
+      ],
+      "affected_gates": "KG2_DATA",
+      "blocker_id": "UNK-0018",
+      "decision_prevented": "Causal replay and therefore every queue, priority or fill claim; applies to any candidate that reaches replay.",
+      "kill_condition": "Timestamps cannot support causal ordering, invalidating replay for that feed",
+      "priority_reason": "M1-BLOCKING retained: this is a data-adequacy fact, not a measurement.",
+      "priority_score": 30.0,
+      "resolution_method": "EXTERNAL_ACTION",
+      "resolution_stage": "M1_BLOCKING",
+      "status": "OPEN",
+      "success_condition": "Samples validate: monotonic ordering, sequence integrity, documented clock domain",
+      "tier": 3,
+      "title": "Historical and live feed timestamp semantics"
+    },
+    {
+      "affected_candidates": [
+        "TUP-CME-ES-H1-QDEP-PAS",
+        "TUP-CME-ES-H3-OFI-AGG",
+        "TUP-CME-NQ-H3-OFI-AGG",
+        "TUP-CME-TSY-H2-QREPL-MIX",
+        "TUP-CME-WTI-H4-FLOWVOL-AGG",
+        "TUP-GENERIC-CME-QUEUE"
+      ],
+      "affected_gates": "KG2_DATA|KG3_EXECUTION",
+      "blocker_id": "UNK-0002",
+      "decision_prevented": "Any queue-position or fill model for passive CME candidates (KG2/KG3).",
+      "kill_condition": "Rule shows the proposed execution style cannot obtain the assumed queue behaviour",
+      "priority_reason": "M1-BLOCKING retained: matching mechanics are a Tier-1 fact and a queue model cannot be built without it.",
+      "priority_score": 24.0,
+      "resolution_method": "PUBLIC_RESEARCH",
+      "resolution_stage": "M1_BLOCKING",
+      "status": "OPEN",
+      "success_condition": "Algorithm identified and the queue/fill model is consistent with it",
+      "tier": 1,
+      "title": "Exact CME matching/allocation rule per candidate contract"
+    },
+    {
+      "affected_candidates": [
+        "ALL_CANDIDATES"
+      ],
+      "affected_gates": "KG1_MECHANISM",
+      "blocker_id": "UNK-0009",
+      "decision_prevented": "Mechanism credibility (KG1) for every candidate whose mechanism has no current, on-venue, after-cost replication.",
+      "kill_condition": "Venue-specific evidence contradicts the mechanism, or a negative replication is found",
+      "priority_reason": "M1-BLOCKING retained: mechanism credibility is the core M1 question (handoff \u00a715 KG1).",
+      "priority_score": 22.5,
+      "resolution_method": "PUBLIC_RESEARCH",
+      "resolution_stage": "M1_BLOCKING",
+      "status": "OPEN",
+      "success_condition": "Venue-specific after-cost evidence exists, or a credible structural argument for transfer",
+      "tier": 2,
+      "title": "Modern venue-specific replication (or disconfirmation) of the borrowed mechanisms"
+    },
+    {
+      "affected_candidates": [
+        "TUP-CME-TSY-H2-QREPL-MIX",
+        "TUP-CME-WTI-H4-FLOWVOL-AGG",
+        "TUP-NASDAQ-LARGETICK-H2-QIMB-AGG",
+        "TUP-NASDAQ-LARGETICK-H2H3-MICRO-AGG",
+        "TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG",
+        "TUP-EUREX-FESX-H2H3-OFIQ-MIX",
+        "TUP-CBOE-USOPT-H5-SURFRV-MIX",
+        "TUP-DERIBIT-BTCOPT-H5-SURFRV-MIX",
+        "TUP-KALSHI-EVENT-H5-EVENTINF-AGG",
+        "TUP-POLYMARKET-EVENT-H5-EVENTINF-AGG"
+      ],
+      "affected_gates": "KG5_FALSIFIABILITY",
+      "blocker_id": "UNK-0027",
+      "decision_prevented": "M2 registration and any falsifier (KG5) for the affected rows.",
+      "kill_condition": "A branch cannot be specified exactly without performance-based selection, so it dies",
+      "priority_reason": "M1-BLOCKING retained: handoff \u00a711 makes exact-instrument definition an M1 requirement.",
+      "priority_score": 18.0,
+      "resolution_method": "PUBLIC_RESEARCH",
+      "resolution_stage": "M1_BLOCKING",
+      "status": "OPEN",
+      "success_condition": "Every finalist names an exact instrument or a leakage-free universe rule",
+      "tier": 1,
+      "title": "Exact instrument or preregistered universe rule per surviving branch"
+    },
+    {
+      "affected_candidates": [
+        "TUP-NASDAQ-LARGETICK-H2-QIMB-AGG",
+        "TUP-NASDAQ-LARGETICK-H2H3-MICRO-AGG",
+        "TUP-CBOEBZX-LARGETICK-H2H3-SPREADCAP-PAS",
+        "TUP-USSTOCK-XVENUE-H1-STALEQUOTE-AGG"
+      ],
+      "affected_gates": "NONE",
+      "blocker_id": "UNK-0033",
+      "decision_prevented": "All-in per-share cost for every equity tuple, and therefore the cost floor used in KG3.",
+      "kill_condition": "All-in per-share cost for every equity tuple, and therefore the cost floor used in KG3.",
+      "priority_reason": "New blocker surfaced by primary-source research: the exchange side of equity cost is public, the sponsored-access side is not, and the project cannot trade directly on these venues.",
+      "priority_score": 18.0,
+      "resolution_method": "EXTERNAL_ACTION",
+      "resolution_stage": "M1_BLOCKING",
+      "status": "OPEN",
+      "success_condition": "A chosen sponsor's published commission schedule or a written quote for the intended order flow.",
+      "tier": 3,
+      "title": "Sponsored-access cost: broker commission/markup for routed order flow, which no exchange o"
+    },
+    {
+      "affected_candidates": [
+        "TUP-HYPERLIQUID-BTCPERP-H3-OFILIQ-AGG",
+        "TUP-HYPERLIQUID-BTCPERP-H4-FUNDBASIS-MIX",
+        "TUP-HYPERLIQUID-BTCPERP-H1-QDEP-AGGPAS"
+      ],
+      "affected_gates": "KG2_DATA|KG3_EXECUTION",
+      "blocker_id": "UNK-0010",
+      "decision_prevented": "Net-edge feasibility for the Hyperliquid H3/H4 candidates.",
+      "kill_condition": "Fees or the absence of event-level history make the seconds-scale tuples uneconomic",
+      "priority_reason": "M1-BLOCKING retained; fee and liquidation facts are public research, replay procurement needs a vendor/data request, so the binding method is EXTERNAL_ACTION.",
+      "priority_score": 12.0,
+      "resolution_method": "EXTERNAL_ACTION",
+      "resolution_stage": "M1_BLOCKING",
+      "status": "OPEN",
+      "success_condition": "Fee schedule and an event-level historical source are both identified and affordable",
+      "tier": 3,
+      "title": "Hyperliquid economics and replay surface"
+    },
+    {
+      "affected_candidates": [
+        "TUP-CBOE-USOPT-H5-SURFRV-MIX"
+      ],
+      "affected_gates": "KG3_EXECUTION",
+      "blocker_id": "UNK-0012",
+      "decision_prevented": "Options tuples passing Gate 2 at all.",
+      "kill_condition": "Fee structure alone makes an options tuple uneconomic at the proposed size",
+      "priority_reason": "M1-BLOCKING retained: the schedule is public, so this is cheap public research.",
+      "priority_score": 12.0,
+      "resolution_method": "PUBLIC_RESEARCH",
+      "resolution_stage": "M1_BLOCKING",
+      "status": "OPEN",
+      "success_condition": "Fee codes and a surface-data source are identified for one exact option tuple",
+      "tier": 1,
+      "title": "Cboe options fee decomposition for a named tuple"
+    },
+    {
+      "affected_candidates": [
+        "TUP-DERIBIT-BTCOPT-H5-SURFRV-MIX"
+      ],
+      "affected_gates": "KG1_MECHANISM|KG3_EXECUTION",
+      "blocker_id": "UNK-0013",
+      "decision_prevented": "Gate 2 for the Deribit tuple.",
+      "kill_condition": "Access is legally unavailable to the project, or fees dominate the effect",
+      "priority_reason": "M1-BLOCKING retained: cheap public research, high kill potential.",
+      "priority_score": 12.0,
+      "resolution_method": "PUBLIC_RESEARCH",
+      "resolution_stage": "M1_BLOCKING",
+      "status": "OPEN",
+      "success_condition": "Access, fees and a historical data path are all documented as currently available",
+      "tier": 1,
+      "title": "Deribit current access, fee and data facts"
+    },
+    {
+      "affected_candidates": [
+        "TUP-KALSHI-EVENT-H5-EVENTINF-AGG",
+        "TUP-POLYMARKET-EVENT-H5-EVENTINF-AGG"
+      ],
+      "affected_gates": "KG1_MECHANISM|KG5_FALSIFIABILITY",
+      "blocker_id": "UNK-0014",
+      "decision_prevented": "Legality/access gate for both event-market tuples.",
+      "kill_condition": "Access is unavailable in the relevant jurisdictions, killing the branch",
+      "priority_reason": "M1-BLOCKING retained: legality is explicitly an M1 gate (handoff \u00a72).",
+      "priority_score": 12.0,
+      "resolution_method": "PUBLIC_RESEARCH",
+      "resolution_stage": "M1_BLOCKING",
+      "status": "OPEN",
+      "success_condition": "A per-jurisdiction access determination exists for the project's operator base",
+      "tier": 1,
+      "title": "Event-market legality and access matrix"
+    },
+    {
+      "affected_candidates": [
+        "TUP-FX-ECN-H2H3-LEADLAG-AGG",
+        "TUP-FX-RETAILBROKER-H3H4-FEEDLAG-AGG"
+      ],
+      "affected_gates": "KG5_FALSIFIABILITY",
+      "blocker_id": "UNK-0015",
+      "decision_prevented": "Defining the tuple at all (KG1/KG3/KG5).",
+      "kill_condition": "No accessible venue/participant class exists for the project",
+      "priority_reason": "M1-BLOCKING retained: 'no exact instrument definition' is an explicit M1 blocker.",
+      "priority_score": 12.0,
+      "resolution_method": "PUBLIC_RESEARCH",
+      "resolution_stage": "M1_BLOCKING",
+      "status": "OPEN",
+      "success_condition": "A single venue and participant class is specified with documented execution semantics",
+      "tier": 1,
+      "title": "FX universe definition and venue facts"
+    },
+    {
+      "affected_candidates": [
+        "ALL_CANDIDATES"
+      ],
+      "affected_gates": "KG3_EXECUTION",
+      "blocker_id": "UNK-0028",
+      "decision_prevented": "Deployment-shape decisions (not M1 selection); also drives which fee tier applies in M2 cost configuration.",
+      "kill_condition": "Capital or entitlement requirements put every venue out of reach",
+      "priority_reason": "M1-BLOCKING retained: it determines which cost schedule applies, which is Tier 1.",
+      "priority_score": 10.0,
+      "resolution_method": "EXTERNAL_ACTION",
+      "resolution_stage": "M1_BLOCKING",
+      "status": "OPEN",
+      "success_condition": "A viable account configuration exists with documented terms",
+      "tier": 3,
+      "title": "Capital requirement, margin and account/tier eligibility"
+    },
+    {
+      "affected_candidates": [
+        "TUP-NASDAQ-LARGETICK-H2-QIMB-AGG",
+        "TUP-NASDAQ-LARGETICK-H2H3-MICRO-AGG",
+        "TUP-CBOEBZX-LARGETICK-H2H3-SPREADCAP-PAS",
+        "TUP-USSTOCK-XVENUE-H1-STALEQUOTE-AGG",
+        "TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG"
+      ],
+      "affected_gates": "KG3_EXECUTION",
+      "blocker_id": "UNK-0005",
+      "decision_prevented": "Net-economics arithmetic for equity tuples (KG3).",
+      "kill_condition": "Verified realized fees leave no headroom for the hypothesised effect",
+      "priority_reason": "M1-BLOCKING retained: known costs are Tier-1 killers.",
+      "priority_score": 9.0,
+      "resolution_method": "EXTERNAL_ACTION",
+      "resolution_stage": "M1_BLOCKING",
+      "status": "IN_PROGRESS",
+      "success_condition": "Verified realized fee schedule exists for the intended path",
+      "tier": 3,
+      "title": "US equity fee tier and routing economics for this project"
+    },
+    {
+      "affected_candidates": [
+        "TUP-CME-ES-H1-QDEP-PAS",
+        "TUP-CME-ES-H3-OFI-AGG",
+        "TUP-CME-NQ-H3-OFI-AGG",
+        "TUP-CME-TSY-H2-QREPL-MIX",
+        "TUP-CME-WTI-H4-FLOWVOL-AGG"
+      ],
+      "affected_gates": "KG3_EXECUTION",
+      "blocker_id": "UNK-0001",
+      "decision_prevented": "Aggressive CME execution viability (KG3) for every CME tuple.",
+      "kill_condition": "Verified all-in cost implies the hypothesised gross effect cannot cover round-trip cost",
+      "priority_reason": "M1-BLOCKING retained: a known mandatory cost is a cheap killer and cannot be deferred.",
+      "priority_score": 6.0,
+      "resolution_method": "EXTERNAL_ACTION",
+      "resolution_stage": "M1_BLOCKING",
+      "status": "OPEN",
+      "success_condition": "A dated all-in cost per contract for the intended account type",
+      "tier": 3,
+      "title": "Exact project-level CME all-in execution cost"
+    },
+    {
+      "affected_candidates": [
+        "TUP-CME-ES-H1-QDEP-PAS",
+        "TUP-CME-ES-H3-OFI-AGG",
+        "TUP-CME-NQ-H3-OFI-AGG",
+        "TUP-CME-TSY-H2-QREPL-MIX",
+        "TUP-CME-WTI-H4-FLOWVOL-AGG"
+      ],
+      "affected_gates": "KG2_DATA",
+      "blocker_id": "UNK-0003",
+      "decision_prevented": "Causal queue replay for CME candidates (KG2), and therefore M2 for them.",
+      "kill_condition": "No historical order-level product exists at any usable cost",
+      "priority_reason": "M1-BLOCKING retained: data procurement feasibility is an M1 question (handoff \u00a715 KG2).",
+      "priority_score": 6.0,
+      "resolution_method": "EXTERNAL_ACTION",
+      "resolution_stage": "M1_BLOCKING",
+      "status": "OPEN",
+      "success_condition": "Sample validates against the project timestamp contract and the licence is affordable",
+      "tier": 3,
+      "title": "CME historical order-level data procurement"
+    },
+    {
+      "affected_candidates": [
+        "TUP-EUREX-FESX-H2H3-OFIQ-MIX"
+      ],
+      "affected_gates": "KG3_EXECUTION",
+      "blocker_id": "UNK-0011",
+      "decision_prevented": "Any Eurex candidate progressing beyond universe status.",
+      "kill_condition": "No economic participant route exists for the project at any usable size",
+      "priority_reason": "M1-BLOCKING retained: access and cost are Tier-1/Tier-3 facts.",
+      "priority_score": 3.0,
+      "resolution_method": "EXTERNAL_ACTION",
+      "resolution_stage": "M1_BLOCKING",
+      "status": "OPEN",
+      "success_condition": "A viable participant route with dated fees exists",
+      "tier": 3,
+      "title": "Eurex execution economics, matching rule and access path"
+    }
+  ],
+  "next_item": "UNK-0023"
+}

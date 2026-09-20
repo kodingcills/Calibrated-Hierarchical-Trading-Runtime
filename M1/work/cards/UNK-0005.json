@@ -1,0 +1,45 @@
+{
+  "acceptable_evidence": "Published venue schedules plus broker routing/quotes for the intended order types",
+  "affected_candidates": [
+    "TUP-NASDAQ-LARGETICK-H2-QIMB-AGG",
+    "TUP-NASDAQ-LARGETICK-H2H3-MICRO-AGG",
+    "TUP-CBOEBZX-LARGETICK-H2H3-SPREADCAP-PAS",
+    "TUP-USSTOCK-XVENUE-H1-STALEQUOTE-AGG",
+    "TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG"
+  ],
+  "affected_gates": "KG3_EXECUTION",
+  "blocker_id": "UNK-0005",
+  "branch_impact": "MEDIUM",
+  "contradictory_evidence_ids": [
+    "EVD-0005",
+    "EVD-0022",
+    "EVD-0033",
+    "EVD-0034",
+    "EVD-0037",
+    "EVD-0041",
+    "EVD-0042"
+  ],
+  "decision_prevented": "Net-economics arithmetic for equity tuples (KG3).",
+  "disallowed_evidence": "Published headline rates assumed to be the realized rates",
+  "estimated_effort": "MEDIUM",
+  "kill_condition": "Verified realized fees leave no headroom for the hypothesised effect",
+  "kill_potential": "HIGH",
+  "known_evidence_ids": [
+    "EVD-0006",
+    "EVD-0021"
+  ],
+  "known_source_ids": [
+    "SRC-0114"
+  ],
+  "last_updated": "2026-09-20T18:31:11Z",
+  "priority_reason": "M1-BLOCKING retained: known costs are Tier-1 killers.",
+  "priority_score": null,
+  "required_answer": "Realized add/remove rates and fee codes for the intended routing and account type",
+  "resolution_method": "EXTERNAL_ACTION",
+  "resolution_stage": "M1_BLOCKING",
+  "resurrection_condition": "Verified realized fees leave no headroom for the hypothesised effect",
+  "status": "IN_PROGRESS",
+  "success_condition": "Verified realized fee schedule exists for the intended path",
+  "tier": 3,
+  "title": "US equity fee tier and routing economics for this project"
+}

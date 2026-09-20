@@ -2,7 +2,7 @@
 
 Status: CURRENT
 Version: 1.0.0
-Last Updated: 2026-09-20T17:37:42Z
+Last Updated: 2026-09-20T18:31:11Z
 
 This is the canonical fast-orientation artifact. Read it before any other file. Its counts are
 generated from `M1/output/M1_STATE_SUMMARY.json` and enforced against the machine-readable
@@ -36,11 +36,13 @@ Substage state (from repository evidence, not from plan):
 
 ## Milestone Status
 
+<!-- GENERATED:milestones -->
 M1-A: INCOMPLETE
 M1-B: NOT_AUTHORIZED
 M1-C: COMPLETE
 M1-D0: COMPLETE
 M1-D1: NOT_AUTHORIZED
+<!-- /GENERATED:milestones -->
 
 ## Current Research Thesis
 
@@ -111,68 +113,72 @@ Durable, evidence-backed, and still less than tradable alpha:
 
 ## Critical Unknowns / Blockers
 
-32 issues are registered in `M1/data/discrepancies.csv`; 22 are BLOCKING (30 remain open,
-`M1/output/blocker_priority.csv`). Grouped by how they can be cleared (counts are generated):
+Issue classification is two-dimensional (see Issue Stages below): a resolution *method* and a
+resolution *stage*. Before this pass every empirical unknown was treated as M1-blocking, which
+made M1 unclosable by construction - the milestone required measurements that only M2 can
+produce. The migration moved 9 issues to M2_MEASUREMENT, 1 to POST_M2 and 4 to NON_BLOCKING,
+leaving 19 M1-blocking issues.
 
-- **A - public research can resolve (8)**: modern venue-specific after-cost replication (UNK-0009),
-  instrument-level specificity (UNK-0027), CME matching rules (UNK-0002), Hyperliquid fees/replay
-  partially (UNK-0010), event-market jurisdiction matrices (UNK-0014), FX venue definition
-  (UNK-0015), citation-token to URL resolution (UNK-0023), OCR transcription fidelity (UNK-0031).
-- **B - requires exchange/vendor/broker quote or sample (11)**: feed timestamp semantics (UNK-0018),
-  CME all-in cost (UNK-0001), CME historical MBO (UNK-0003), Nasdaq fee tier (UNK-0005), Nasdaq
-  order-level history (UNK-0004), Eurex economics and access (UNK-0011), Cboe options fee
-  decomposition (UNK-0012), Deribit access/fees/data (UNK-0013), auction history (UNK-0020),
-  capital/tier eligibility (UNK-0028), BZX feed/fee-code access (UNK-0022).
-- **C - only M2 measurement can resolve (10)**: full break-even envelope (UNK-0006), signal
-  half-life (UNK-0008), own-stack latency (UNK-0016), fill-conditioned markout (UNK-0019), passive
-  fill probability (UNK-0007), hosted-model latency and incremental utility (UNK-0017), cross-venue
-  stale-quote survival (UNK-0021), capacity (UNK-0029), cost sensitivity (UNK-0032), independent
-  verification of architecture claims (UNK-0026).
-- **D - unresolved but non-blocking (1)**: the basis of the WEAK label on the cross-venue
-  stale-quote tuple (UNK-0024). Three further non-blocking issues are already RESOLVED:
-  horizon-band convention (UNK-0025) and the paper/research-OS retrievability contradiction
-  (UNK-0030).
+<!-- GENERATED:frontier -->
+| leverage | tier | issue | method | affected | decision prevented |
+|---|---|---|---|---|---|
+| 60.0 | 1 | `UNK-0023` | PUBLIC_RESEARCH | all 28 (ALL_EXTERNAL_EVIDENCE) | Independent verification of any external claim, including fee schedules that already killed candidates; the ar |
+| 30.0 | 3 | `UNK-0018` | EXTERNAL_ACTION | all 28 (ALL_CANDIDATES) | Causal replay and therefore every queue, priority or fill claim; applies to any candidate that reaches replay. |
+| 24.0 | 1 | `UNK-0002` | PUBLIC_RESEARCH | 6 | Any queue-position or fill model for passive CME candidates (KG2/KG3). |
+| 22.5 | 2 | `UNK-0009` | PUBLIC_RESEARCH | all 28 (ALL_CANDIDATES) | Mechanism credibility (KG1) for every candidate whose mechanism has no current, on-venue, after-cost replicati |
+| 18.0 | 1 | `UNK-0027` | PUBLIC_RESEARCH | 10 | M2 registration and any falsifier (KG5) for the affected rows. |
+| 18.0 | 3 | `UNK-0033` | EXTERNAL_ACTION | 4 | All-in per-share cost for every equity tuple, and therefore the cost floor used in KG3. |
+| 12.0 | 3 | `UNK-0010` | EXTERNAL_ACTION | 3 | Net-edge feasibility for the Hyperliquid H3/H4 candidates. |
+| 12.0 | 1 | `UNK-0012` | PUBLIC_RESEARCH | 1 | Options tuples passing Gate 2 at all. |
+| 12.0 | 1 | `UNK-0013` | PUBLIC_RESEARCH | 1 | Gate 2 for the Deribit tuple. |
+| 12.0 | 1 | `UNK-0014` | PUBLIC_RESEARCH | 2 | Legality/access gate for both event-market tuples. |
+| 12.0 | 1 | `UNK-0015` | PUBLIC_RESEARCH | 2 | Defining the tuple at all (KG1/KG3/KG5). |
+| 10.0 | 3 | `UNK-0028` | EXTERNAL_ACTION | all 28 (ALL_CANDIDATES) | Deployment-shape decisions (not M1 selection); also drives which fee tier applies in M2 cost configuration. |
 
-Top decision-changing blockers, by number of candidates affected and branch-kill potential
-(`M1/output/M1_D0_READINESS.md` section 5):
+Actionable frontier items: 16. Items awaiting an external answer or a frozen spec: 2. Measurement specifications: 7. External request packets: 10.
+<!-- /GENERATED:frontier -->
 
-1. UNK-0008 signal half-life - affects all 28 rows - class C.
-2. UNK-0016 own-stack latency - affects all 28 rows - class C.
-3. UNK-0009 modern venue-specific after-cost replication - affects all 28 rows - class A.
-4. UNK-0006 full break-even envelope - affects all 23 tuples - class C.
-5. UNK-0018 feed timestamp semantics - affects all rows that reach replay - class B.
-6. UNK-0027 instrument-level specificity - affects 10 rows - class A.
+## Issue Stages
+
+<!-- GENERATED:stages -->
+| resolution stage | count | meaning |
+|---|---|---|
+| M1_BLOCKING | 19 | must be answered before M1 can close |
+| M2_MEASUREMENT | 9 | preregistered M2 experiment; does not block M1 |
+| POST_M2 | 1 | matters only after M2 shows positive net EV |
+| NON_BLOCKING | 4 | tracked; no gate depends on it |
+
+| resolution method | count |
+|---|---|
+| PUBLIC_RESEARCH | 9 |
+| EXTERNAL_ACTION | 11 |
+| EMPIRICAL_MEASUREMENT | 10 |
+| DEFERRED | 3 |
+<!-- /GENERATED:stages -->
 
 ## Immediate Next Actions
 
-Ordered by decision impact (each is a concrete task, not a roadmap sentence):
+Ranked by decision leverage (impact x kill potential x work tier / effort), recomputed
+every pass from `M1/work/frontier.json`:
 
-1. Lock exact account-level cost schedules for the intended broker/venue path
-   (UNK-0001, UNK-0005, UNK-0028) and register them as an immutable M2 cost configuration. Cheapest
-   way to kill or clear an entire branch without modelling.
-2. Request historical order-level data quotes plus sample files for CME and Nasdaq equity venues
-   (UNK-0003, UNK-0004, UNK-0020) and validate timestamp semantics against the project's contract
-   (UNK-0018, OQ-0015).
-3. Resolve citation tokens to primary URLs and snapshot each page (UNK-0023), so the fee facts that
-   already killed candidates are independently re-derived rather than report-mediated.
-4. Lock the CME matching rule for each named contract and record its version (UNK-0002).
-5. Narrow each surviving branch to one exact instrument, then lock tick/lot/fee facts (UNK-0027).
-6. Only then instrument a shadow path to measure decision-to-market latency (UNK-0016) and design
-   the EV-versus-delay sweep (UNK-0008).
-7. Do not run M1-B or M1-D1 before 1-5 change the gate vectors.
+<!-- GENERATED:next_actions -->
+1. **UNK-0023** (PUBLIC_RESEARCH, tier 1, leverage 60.0): A resolvable URL plus snapshot for each of the 25 report-mediated external sources
+2. **UNK-0018** (EXTERNAL_ACTION, tier 3, leverage 30.0): Field-level timestamp semantics (event vs receive time, clock domain, sequence integrity)
+3. **UNK-0002** (PUBLIC_RESEARCH, tier 1, leverage 24.0): The allocation algorithm that applies to the named product and order type, with its version
+4. **UNK-0009** (PUBLIC_RESEARCH, tier 2, leverage 22.5): Current, venue-specific, after-cost evidence for the mechanism each candidate relies on
+5. **UNK-0027** (PUBLIC_RESEARCH, tier 1, leverage 18.0): One exact contract/symbol per branch, or a causal selection rule with its variables
+6. **UNK-0033** (EXTERNAL_ACTION, tier 3, leverage 18.0): A chosen sponsor's published commission schedule or a written quote for the intended order flow.
+<!-- /GENERATED:next_actions -->
 
 ## Readiness
 
-Ready for M1-B? **NO** - zero candidates have all five gates PASS on cited evidence; 0 PASS on
-KG1, KG2, KG3 and KG4 across all 28 rows.
-Ready for M1-D1? **NO** - no CURRENT M1-B artifact exists and every decision-critical comparison
-dimension is UNKNOWN; ranking would order missing values.
-Ready for M2? **NO** - M2 requires the M1-B selection and, for every candidate, order-level data
-plus a cost configuration; neither is locked.
-Ready for shadow trading? **NO** - a shadow run requires a chosen candidate, instrument and a
-measured cost envelope; none exists.
-Ready for capital? **NO** - no candidate has evidenced net edge, and the project's own promotion
-ladder places capital far beyond the current gate.
+<!-- GENERATED:readiness -->
+Ready for M1-B? **NO** - zero candidates pass all five gates; the frontier still holds 16 M1-blocking items.
+Ready for M1-D1? **NO** - M1-B is not authorized and no synthesis artifact exists, so no finalists can be compared.
+Ready for M2? **NO** - M2 requires a selected candidate plus a locked cost configuration and an order-level dataset; the frontier holds both.
+Ready for shadow trading? **NO** - a shadow run requires a chosen candidate, instrument and measured cost envelope.
+Ready for capital? **NO** - no candidate has evidenced net edge.
+<!-- /GENERATED:readiness -->
 
 ## Canonical Artifacts
 
@@ -188,8 +194,13 @@ Machine-readable M1 state (canonical; regenerate with `python3 M1/src/materializ
 - `M1/validation/report.{json,md}` - validator output (rules V1-V13).
 - `M1/raw/source_manifest.json` - SHA-256 of every raw input; copies under `M1/raw/`.
 - `M1/derived/jev_paper_pages/` - rasterised paper pages used to read an image-only PDF.
-- Code: `M1/src/corpus/*` (declarative data), `M1/src/{costs,candidate_gates,coverage,latency,
-  pareto,envelopes,readiness,report,paper_arithmetic,materialize,validate,build_manifest}.py`,
+- Closure orchestrator: `M1/orchestrator/{schemas,blocker_card,priority,frontier,transitions,
+  patch,resolvers,controller}.py`; work artefacts under `M1/work/` (frontier.json, cards/,
+  patches/, external_requests/, m2_specs/); `M1/output/M1_CLOSURE_STATUS.json`,
+  `M1/output/M1_EXTERNAL_ACTION_QUEUE.md`, `M1/output/closure_loop_log.md`.
+- Code: `M1/src/corpus/*` (declarative data incl. `corpus/staging.py` and
+  `corpus/patches/*`), `M1/src/{costs,candidate_gates,coverage,latency,pareto,envelopes,
+  gate_engine,readiness,report,paper_arithmetic,materialize,validate,build_manifest}.py`,
   tests under `M1/tests/`.
 - Root registries: `EVIDENCE_LEDGER.csv`, `ASSUMPTIONS.csv`, `HYPOTHESES.csv`, `EXPERIMENTS.csv`,
   `DISCREPANCIES_AND_UNKNOWNS.md`, `DEAD_ENDS.md`, `OPEN_QUESTIONS.md`, `WATCHLIST.md`,
@@ -200,6 +211,7 @@ Machine-readable M1 state (canonical; regenerate with `python3 M1/src/materializ
 
 ## Counts
 
+<!-- GENERATED:counts -->
 | status | count |
 |---|---|
 | ALIVE | 0 |
@@ -207,21 +219,22 @@ Machine-readable M1 state (canonical; regenerate with `python3 M1/src/materializ
 | UNKNOWN | 14 |
 | DEAD | 9 |
 
-Registered candidate rows: 28 (23 tradable tuples + 5 non-tuple registrations). Verified sources:
-51 (26 repository artifacts + 25 external sources cited by token, of which 0 have a recoverable
-URL). Evidence records: 29. Blocking unknowns: 22. Open questions: 16. Assumptions: 29.
-Hard-constraint survivors: 19. Hard-constraint eliminations: 9.
+Registered candidate rows: 28 (23 tradable tuples + 5 non-tuple registrations). Verified sources: 63 (25 report-mediated, 0 with a recoverable URL). Evidence records: 41. M1 frontier items: 16 (7 measurement specs and 10 external requests now outside the frontier). Gate-eligible candidates: 0.
+<!-- /GENERATED:counts -->
 
-## Validation and reproduction
+
 
 - `python3 M1/src/build_manifest.py` - hashes raw inputs (only needed if raw inputs change).
 - `python3 M1/src/materialize.py` - regenerates every artifact listed above and this file's
   `Last Updated` line.
-- `python3 M1/src/validate.py --strict` - rules V1-V13: provenance, numeric provenance, gate
-  ceiling and dead/ALIVE integrity, referential integrity, no scoring artifacts, id uniqueness,
+- `python3 M1/src/validate.py --strict` - rules V1-V18: provenance, numeric provenance, gate
+  ceiling and dead/ALIVE integrity, referential integrity, no candidate scoring, id uniqueness,
   source dates, experiment integrity, no imputation, cross-file consistency, raw-manifest hash
-  integrity, paper-arithmetic reproducibility. Last run: **PASS**, 0 failures.
-- `python3 -m unittest discover -s M1/tests -t .` - 44 tests, OK.
+  integrity, paper-arithmetic reproducibility, two-dimension issue model, frontier integrity,
+  eligibility independence, patch integrity, work-artefact validity. Last run: **PASS**, 0
+  failures across 18 rule groups.
+- `python3 -m unittest discover -s M1/tests -t .` - 76 tests, OK.
+- `python3 M1/orchestrator/controller.py status|frontier|next` - closure orchestration.
 - Validator report: `M1/validation/report.md`.
 
 ## Superseded / Legacy Artifacts

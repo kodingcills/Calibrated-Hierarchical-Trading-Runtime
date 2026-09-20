@@ -1,0 +1,35 @@
+{
+  "acceptable_evidence": "Primary peer-reviewed or exchange-documented replication on the exact venue/instrument",
+  "affected_candidates": [
+    "ALL_CANDIDATES"
+  ],
+  "affected_gates": "KG1_MECHANISM",
+  "blocker_id": "UNK-0009",
+  "branch_impact": "GLOBAL",
+  "contradictory_evidence_ids": [],
+  "decision_prevented": "Mechanism credibility (KG1) for every candidate whose mechanism has no current, on-venue, after-cost replication.",
+  "disallowed_evidence": "Transfer of another venue's coefficients, decay or sample; marketing material",
+  "estimated_effort": "MEDIUM",
+  "kill_condition": "Venue-specific evidence contradicts the mechanism, or a negative replication is found",
+  "kill_potential": "HIGH",
+  "known_evidence_ids": [
+    "EVD-0012",
+    "EVD-0013",
+    "EVD-0014"
+  ],
+  "known_source_ids": [
+    "SRC-0101",
+    "SRC-0102"
+  ],
+  "last_updated": "2026-09-20T18:31:11Z",
+  "priority_reason": "M1-BLOCKING retained: mechanism credibility is the core M1 question (handoff \u00a715 KG1).",
+  "priority_score": null,
+  "required_answer": "Current, venue-specific, after-cost evidence for the mechanism each candidate relies on",
+  "resolution_method": "PUBLIC_RESEARCH",
+  "resolution_stage": "M1_BLOCKING",
+  "resurrection_condition": null,
+  "status": "OPEN",
+  "success_condition": "Venue-specific after-cost evidence exists, or a credible structural argument for transfer",
+  "tier": 2,
+  "title": "Modern venue-specific replication (or disconfirmation) of the borrowed mechanisms"
+}

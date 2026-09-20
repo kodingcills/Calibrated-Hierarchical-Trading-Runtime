@@ -1,50 +1,58 @@
 {
   "artifact_hashes": {
     "M1/data/assumptions.csv": "a45b7c5a95f94bfa7213a43910bae5206bd9bdfc6878e4ab2adff089fbf2b25d",
-    "M1/data/candidate_tuples.csv": "5ddf1cca3475af2619a45fc85f591d30a50e64a626843be6fe097c8dace33c80",
+    "M1/data/candidate_tuples.csv": "e5b05933d55c4e09979726b171713a01d3f71e372652b94733d41f3443fd1eb4",
     "M1/data/data_feasibility.csv": "d292c27e17576a28a518f85051cfa511e74e9f1da7242a9237d0c732caff209e",
-    "M1/data/dead_candidates.csv": "cf95996ee6a545408e90ca6306b2a24d49b01a638401407e8408d808413e36a3",
-    "M1/data/discrepancies.csv": "7b2b93a834e4b89bae8eba808c4b54b17382de0e4cad794288a29831d412caac",
-    "M1/data/evidence_ledger.csv": "1eb615a2a1768b59745055fc45973747eb686717dc333d4f8f54f77bb2382941",
-    "M1/data/execution_envelopes.csv": "04f065a0345ac2c7de6eb989604be6d2530528f27ad11bb53678dfb8080c51be",
+    "M1/data/dead_candidates.csv": "d11ac25ce819d07e942a88a4315ec3a7cbbaf050002fe0f41ad286c1a0b34d4a",
+    "M1/data/discrepancies.csv": "ecc3c2e061cb560bd5809c3c1bba8522e243cfc77f9cb08a5d9460549022bf71",
+    "M1/data/evidence_ledger.csv": "0112f051b21bc17be74ab55edc44852fed79fd3b327665f3b659157c6290607d",
+    "M1/data/execution_envelopes.csv": "0997f0ba159cfcb6708bb0b2f9bd9ab50c4ead3d0be42407ebc2dd9c87e2e50e",
     "M1/data/experiments.csv": "2bba0967fa761dcbe840fc0252c7fc72a5a19f381893e6768250dd438767754a",
     "M1/data/hypotheses.csv": "25ae83712418dc4f18bd18747c04163196ebccabb45ae841607e1aa30ec71c33",
-    "M1/data/kill_gates.csv": "9f00692be68eda40b7536ba54ac84f5e65ceddd2a0f693ab69ab52036b7c3937",
+    "M1/data/kill_gates.csv": "4c12a6a33a29521674c139a2f631cdf67c6e37303a75d40c4708cf72abe8ade1",
     "M1/data/mechanisms.csv": "49227ed34e3eb929c46896fd38072df03070b6da748d0d8cd01359813125c364",
     "M1/data/open_questions.csv": "08f39eb554e0de71f5ad32fbe088463d72ff4a1bcc8dce4c70d0f1987e9f733d",
-    "M1/data/source_registry.csv": "6e56a49b8442b7ade233e96713700bdd00a8d9526283338786215e4f4d1b0ef9",
+    "M1/data/source_registry.csv": "c798d2b2bbc4b4a3615e07df2b93298345e1dc8592f2374c6e39226cb183b187",
     "M1/data/technology_fit.csv": "902584c18d84d9f9cf31917b2a636d9fbafe03301805332dba73b0af1eb95810",
-    "M1/data/venue_facts.csv": "0f592fa61d05fc69a76e3d38e97a49680005c9812e4c214ea867b9d8fe5f913c",
-    "M1/output/blocker_priority.csv": "f7e463b4f6d6789b8cc96bbeb040cea9ba1c29954470410910897d44723dff89",
-    "M1/output/candidate_gate_status.csv": "4508ca2a52d4914c852061c5109d6ddf8fc951c948931c73b96a732fc956aa13",
-    "M1/output/cost_envelopes.csv": "04f065a0345ac2c7de6eb989604be6d2530528f27ad11bb53678dfb8080c51be",
+    "M1/data/venue_facts.csv": "7754f94a817b1b47ef2c8aa35ed4901f9eab6638029ad3b1b1db12093a3e1dcd",
+    "M1/output/blocker_priority.csv": "735ca1ed6faad8f7d80ac23137f02771a4022e4ad1891b231e847fae09379932",
+    "M1/output/candidate_gate_status.csv": "1a18d017efa6a12cfa7f00d54352e2bf2f4f187c066883a5cbd0b58cfc7221a8",
+    "M1/output/cost_envelopes.csv": "0997f0ba159cfcb6708bb0b2f9bd9ab50c4ead3d0be42407ebc2dd9c87e2e50e",
     "M1/output/data_feasibility_verdicts.csv": "f97ba5ff8fd8b7f3a6656062e530ac67f561ef69041addd6729fdba88b550a37",
     "M1/output/dominated_candidates.csv": "b45939d9b5a5f1827c225ffd82889cf1a21cb2f2f7e38a2480f07cdf8ba2a938",
-    "M1/output/evidence_coverage.csv": "9d1d477018680382ff71f1cb7d23532225b1795b8afbf5372069b4540ebe6387",
-    "M1/output/hard_constraint_eliminations.csv": "59e74fb2964f39b5f05462bc23c32a1061dc46acbe683b86f0b451a7824332de",
-    "M1/output/hard_constraint_survivors.csv": "e9c3ac2d0c3222a378908b7861e008a8b2e744e085094717946a4e815830118f",
+    "M1/output/evidence_coverage.csv": "2f2a2787667c2af51e59c005391fbc5b65ceaa5354c77f9fe8c4f3ed61f93211",
+    "M1/output/gate_rule_trace.csv": "5f070499a24ddb279cf848340a64ff442cbe684e28fab172d67d6f18dd611741",
+    "M1/output/hard_constraint_eliminations.csv": "f139bc31653934b6d999f760c1d1f0d86ef851f151e4824c87d18a4097404b01",
+    "M1/output/hard_constraint_survivors.csv": "e3ba8f7a384241e85a0fe077034642b522856e42f0c65b05066056e5a32a3a9d",
+    "M1/output/issue_migration.csv": "6e71533a274b8d7121ff1ece370d186a6cb8d5d7abe89eae94c044eb17a7e3d8",
     "M1/output/latency_feasibility.csv": "1a2434bb2b38ffeba8a34c9cbbd87e7cab56608c44395238ecb0333b9969997d",
-    "M1/output/status_derivation_review.csv": "ad9684efd483bb6c450472be06ca597cde135e1d6ae76b90a830ec78f463ef70",
-    "M1/output/venue_cost_reference.csv": "e1cfb84f16fff5e21ef1e35b296ee6be9d04408afcb43e2f84b41831dc5adb96"
+    "M1/output/non_frontier_issues.csv": "42fa7d83ed5874db961e015c56d5aa19acf3389d2b1d71127de31c4bed1f1c59",
+    "M1/output/status_derivation_review.csv": "b58f7964e4b0a93271a277dc1c1217dd27bc13ee5436cbeaeedec73636d7d6e9",
+    "M1/output/venue_cost_reference.csv": "258e9facb9cfc35e6c7dff42e9b4c3139d9c5a8a839178376410b6b8a2ad67b4"
   },
   "counts": {
     "assumptions": 29,
-    "blocking_issues": 22,
+    "blocking_issues": 19,
     "candidate_rows": 28,
     "ceiling_violations": 0,
-    "discrepancies": 32,
-    "evidence_records": 29,
+    "discrepancies": 33,
+    "evidence_records": 41,
     "experiments_proposed_not_run": 9,
+    "external_requests": 10,
     "external_token_sources": 25,
+    "frontier_items": 16,
+    "gate_eligible": 0,
     "hard_constraint_eliminations": 9,
     "hard_constraint_survivors": 19,
     "hypotheses_registered": 0,
     "m1b_eligible": [],
+    "m2_specs": 7,
     "mechanisms": 25,
+    "non_frontier_issues": 12,
     "non_tuple_rows": 5,
-    "open_issues": 30,
+    "open_issues": 31,
     "open_questions": 16,
-    "source_registry": 51,
+    "source_registry": 63,
     "status": {
       "ALIVE": 0,
       "DEAD": 9,
@@ -99,11 +107,73 @@
     "tradable_tuples": 23,
     "venue_rows": 19
   },
+  "external_requests": [
+    {
+      "affected": 1,
+      "blocker_id": "UNK-0018",
+      "priority_score": 30.0,
+      "title": "Historical and live feed timestamp semantics"
+    },
+    {
+      "affected": 4,
+      "blocker_id": "UNK-0033",
+      "priority_score": 18.0,
+      "title": "Sponsored-access cost: broker commission/markup for routed order flow, which no exchange o"
+    },
+    {
+      "affected": 3,
+      "blocker_id": "UNK-0010",
+      "priority_score": 12.0,
+      "title": "Hyperliquid economics and replay surface"
+    },
+    {
+      "affected": 1,
+      "blocker_id": "UNK-0028",
+      "priority_score": 10.0,
+      "title": "Capital requirement, margin and account/tier eligibility"
+    },
+    {
+      "affected": 4,
+      "blocker_id": "UNK-0004",
+      "priority_score": 9.0,
+      "title": "US equity historical order-level depth procurement"
+    },
+    {
+      "affected": 5,
+      "blocker_id": "UNK-0005",
+      "priority_score": 9.0,
+      "title": "US equity fee tier and routing economics for this project"
+    },
+    {
+      "affected": 5,
+      "blocker_id": "UNK-0001",
+      "priority_score": 6.0,
+      "title": "Exact project-level CME all-in execution cost"
+    },
+    {
+      "affected": 5,
+      "blocker_id": "UNK-0003",
+      "priority_score": 6.0,
+      "title": "CME historical order-level data procurement"
+    },
+    {
+      "affected": 1,
+      "blocker_id": "UNK-0022",
+      "priority_score": 4.0,
+      "title": "Cboe BZX proprietary depth, fee-code outcome and history access"
+    },
+    {
+      "affected": 1,
+      "blocker_id": "UNK-0011",
+      "priority_score": 3.0,
+      "title": "Eurex execution economics, matching rule and access path"
+    }
+  ],
   "gate_counts": {
     "KG1_MECHANISM": {
-      "BLOCKED": 27,
-      "FAIL": 1,
-      "PASS": 0
+      "BLOCKED": 24,
+      "FAIL": 2,
+      "PASS": 2
     },
     "KG2_DATA": {
       "BLOCKED": 26,
@@ -116,18 +186,103 @@
       "PASS": 0
     },
     "KG4_HALF_LIFE": {
-      "BLOCKED": 28,
-      "FAIL": 0,
-      "PASS": 0
+      "BLOCKED": 5,
+      "FAIL": 1,
+      "PASS": 22
     },
     "KG5_FALSIFIABILITY": {
-      "BLOCKED": 3,
-      "FAIL": 3,
-      "PASS": 22
+      "BLOCKED": 14,
+      "FAIL": 5,
+      "PASS": 9
     }
   },
-  "generated_at": "2026-09-20T17:37:42Z",
+  "generated_at": "2026-09-20T18:31:11Z",
   "generated_by": "M1/src/materialize.py",
+  "m2_specs": [
+    {
+      "candidates": 0,
+      "complexity": "ESCALATING_SIZE",
+      "path": "M1/work/m2_specs/CAPACITY.md",
+      "spec_id": "CAPACITY",
+      "stage": "POST_M2"
+    },
+    {
+      "candidates": 23,
+      "complexity": "SHARED_HARNESS",
+      "path": "M1/work/m2_specs/COST_SENSITIVITY.md",
+      "spec_id": "COST_SENSITIVITY",
+      "stage": "M2_MEASUREMENT"
+    },
+    {
+      "candidates": 23,
+      "complexity": "SHARED_HARNESS",
+      "path": "M1/work/m2_specs/EV_DELAY_SWEEP.md",
+      "spec_id": "EV_DELAY_SWEEP",
+      "stage": "M2_MEASUREMENT"
+    },
+    {
+      "candidates": 23,
+      "complexity": "REPLAY_PLUS_MATCHING_RULE",
+      "path": "M1/work/m2_specs/FILL_CONDITIONED_MARKOUT.md",
+      "spec_id": "FILL_CONDITIONED_MARKOUT",
+      "stage": "M2_MEASUREMENT"
+    },
+    {
+      "candidates": 23,
+      "complexity": "SHADOW_PATH",
+      "path": "M1/work/m2_specs/LIVE_LATENCY.md",
+      "spec_id": "LIVE_LATENCY",
+      "stage": "M2_MEASUREMENT"
+    },
+    {
+      "candidates": 10,
+      "complexity": "REPLAY_PLUS_MATCHING_RULE",
+      "path": "M1/work/m2_specs/PASSIVE_FILL_MODEL.md",
+      "spec_id": "PASSIVE_FILL_MODEL",
+      "stage": "M2_MEASUREMENT"
+    },
+    {
+      "candidates": 23,
+      "complexity": "SEALED_COMPARISON",
+      "path": "M1/work/m2_specs/SYSTEM_ONE_INCREMENTAL_UTILITY.md",
+      "spec_id": "SYSTEM_ONE_INCREMENTAL_UTILITY",
+      "stage": "M2_MEASUREMENT"
+    }
+  ],
+  "migration": {
+    "by_method": {
+      "DEFERRED": 3,
+      "EMPIRICAL_MEASUREMENT": 10,
+      "EXTERNAL_ACTION": 11,
+      "PUBLIC_RESEARCH": 9
+    },
+    "by_stage": {
+      "M1_BLOCKING": 19,
+      "M2_MEASUREMENT": 9,
+      "NON_BLOCKING": 4,
+      "POST_M2": 1
+    },
+    "migrated_count": 14,
+    "migrated_out_of_m1_blocking": [
+      "UNK-0006",
+      "UNK-0007",
+      "UNK-0008",
+      "UNK-0016",
+      "UNK-0017",
+      "UNK-0019",
+      "UNK-0021",
+      "UNK-0024",
+      "UNK-0025",
+      "UNK-0026",
+      "UNK-0029",
+      "UNK-0030",
+      "UNK-0031",
+      "UNK-0032"
+    ],
+    "unmapped_issues": [
+      "UNK-0033"
+    ]
+  },
   "milestones": {
     "M1-A": "INCOMPLETE",
     "M1-B": "NOT_AUTHORIZED",
@@ -153,5 +308,138 @@
   "pareto": {
     "executed": false,
     "reason": "Dominated/dominated-set analysis was NOT performed. At this evidence state every decision-critical dimension (net-edge headroom, signal longevity, fill quality, capacity, capital efficiency) is UNKNOWN for every candidate, so any frontier would order missing values. The only eliminations applied are hard constraints backed by verified facts (HC1..HC8). Re-run this analysis in M1-D1 once M1-B has emitted a CURRENT synthesis artifact and the blocking issues are resolved."
+  },
+  "patches": {
+    "applied": 1,
+    "audit": [
+      {
+        "applied": true,
+        "fields": [
+          "L2_available",
+          "L3_MBO_available",
+          "fee_notes",
+          "historical_feed",
+          "historical_feed_source_id",
+          "maker_side_is_rebate",
+          "maker_side_is_rebate_source_id",
+          "matching_algorithm_source_id",
+          "matching_algorithm_status",
+          "rebate_source_id",
+          "rebate_unit",
+          "rebate_value",
+          "status",
+          "taker_fee_source_id",
+          "taker_fee_unit",
+          "taker_fee_value"
+        ],
+        "patch_id": "P-0001",
+        "sources": [
+          "SRC-0201",
+          "SRC-0203",
+          "SRC-0212"
+        ],
+        "venue_update": "VEN-NASDAQ-CONT"
+      },
+      {
+        "applied": true,
+        "fields": [
+          "historical_feed",
+          "historical_feed_source_id",
+          "status"
+        ],
+        "patch_id": "P-0001",
+        "sources": [
+          "SRC-0204"
+        ],
+        "venue_update": "VEN-NASDAQ-AUCTION"
+      },
+      {
+        "applied": true,
+        "fields": [
+          "fee_notes",
+          "historical_feed",
+          "historical_feed_source_id",
+          "maker_side_is_rebate",
+          "maker_side_is_rebate_source_id",
+          "matching_algorithm_source_id",
+          "matching_algorithm_status",
+          "status"
+        ],
+        "patch_id": "P-0001",
+        "sources": [
+          "SRC-0205",
+          "SRC-0206",
+          "SRC-0207"
+        ],
+        "venue_update": "VEN-CBOEBZX-EQ"
+      },
+      {
+        "applied": true,
+        "fields": [
+          "access_notes",
+          "fee_notes",
+          "status"
+        ],
+        "patch_id": "P-0001",
+        "sources": [
+          "SRC-0208",
+          "SRC-0209"
+        ],
+        "venue_update": "VEN-USSTOCK-MULTI"
+      },
+      {
+        "applied": true,
+        "new_unknown": "UNK-0033",
+        "patch_id": "P-0001"
+      },
+      {
+        "applied": true,
+        "decision": "SUPPORTS",
+        "evidence_added": [
+          "EVD-0031",
+          "EVD-0032",
+          "EVD-0033",
+          "EVD-0034",
+          "EVD-0035",
+          "EVD-0036",
+          "EVD-0037",
+          "EVD-0038",
+          "EVD-0039",
+          "EVD-0040",
+          "EVD-0041",
+          "EVD-0042"
+        ],
+        "issue_updates": [
+          "UNK-0004",
+          "UNK-0005",
+          "UNK-0020",
+          "UNK-0022",
+          "UNK-0023"
+        ],
+        "patch_id": "P-0001",
+        "sources_added": [
+          "SRC-0201",
+          "SRC-0202",
+          "SRC-0203",
+          "SRC-0204",
+          "SRC-0205",
+          "SRC-0206",
+          "SRC-0207",
+          "SRC-0208",
+          "SRC-0209",
+          "SRC-0210",
+          "SRC-0211",
+          "SRC-0212"
+        ]
+      }
+    ],
+    "proposed": 1,
+    "rejected": 0,
+    "rejections": []
+  },
+  "work_artifacts": {
+    "cards": 33,
+    "requests": 10,
+    "specs": 7
   }
 }

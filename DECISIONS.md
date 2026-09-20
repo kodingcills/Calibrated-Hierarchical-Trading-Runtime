@@ -123,3 +123,62 @@ Per-share fees (Cboe BZX) have no bps equivalent without a price, so the bps cel
 the native value plus unit are recorded instead. Corollary: the BZX maker-side fee stays UNKNOWN
 because the standard displayed-add rate is a rebate, which is recorded in its own column rather than
 being folded into a maker fee. Enforced by ASM-0011 and unit tests.
+
+## D-0017 - M1 gates were redefined to remove a circular dependency (supersedes part of D-0004)
+
+The first M1-D0 gate semantics required a *measured* signal half-life for KG4 and untouched
+empirical envelopes for KG3/KG2. That made M1 unclosable by construction: M1 required
+measurements that only M2 can produce, while M2 required M1 to complete first. The gates now read:
+
+- KG1 PASS = credible, venue-specific evidence that the mechanism exists and justifies
+  quantitative testing (not profitability).
+- KG2 PASS = the required data are identified, obtainable, adequate in granularity, with
+  supportive timestamp semantics (not already purchased).
+- KG3 PASS = known mechanics and costs do not already invalidate the thesis and every remaining
+  execution unknown has a preregistered M2 plan (not measured fills).
+- KG4 PASS = no known physical timing contradiction and a preregistered EV(delay) experiment
+  (not the empirical half-life).
+- KG5 PASS = exact M2 nulls, data requirements, metric and kill criteria are specifiable in
+  advance.
+
+Consequence: `latency_fit` is still BLOCKED and no empirical value was invented - the change moves
+*when* a value is required, not what counts as evidence. Implemented as computed gates in
+`M1/src/gate_engine.py` with a rule id per verdict; the M1-A vectors are retained as `KG*_M1A`
+columns for audit. Enforced by validator V14-V16 and the `gate_rule_trace.csv` artifact.
+
+## D-0018 - Issues carry two independent classifications, and only M1-blocking work is scheduled
+
+`resolution_method` (PUBLIC_RESEARCH | EXTERNAL_ACTION | EMPIRICAL_MEASUREMENT | DEFERRED) and
+`resolution_stage` (M1_BLOCKING | M2_MEASUREMENT | POST_M2 | NON_BLOCKING). Migration moved 9
+issues to M2_MEASUREMENT, 1 to POST_M2 and 4 to NON_BLOCKING, leaving 19 M1-blocking. "BLOCKING"
+severity now means "blocks M1 closure" and nothing else: migrated items are IMPORTANT, so the
+vocabulary cannot re-import the circularity after the logic was fixed. Enforced by validator V14
+(enum validity, no unmigrated issue, severity/stage agreement) and the frontier rule that only
+M1_BLOCKING + open items are dispatched.
+
+## D-0019 - Research cannot mutate canonical state; patches are verified then merged
+
+Resolvers emit structured evidence patches. `M1/orchestrator/transitions.py` adversarially
+verifies each patch (schema, resolvable source and candidate references, primary-source only for
+M1 blockers, no extrapolation recorded as support, whitelisted gate moves per decision, an
+explicit record that contrary evidence was searched) and only VERIFIED patches are merged by
+materialization. Rejected patches are preserved with their rejection reasons. Provenance: code
+patches are marked `code:<module>` and re-emitted; human/vendor response files are never
+overwritten.
+
+## D-0020 - Gate-eligible or dead status is decided by computed gates, not by model text
+
+`overall_status` is derived: any computed FAIL forces DEAD; all five PASS marks M1-B eligibility;
+otherwise the M1-A label is preserved with a generated basis string. Free-form research output has
+no path to set ALIVE or DEAD. The M1-A vectors remain visible as `KG*_M1A` and every divergence is
+reported in `status_derivation_review.csv`.
+
+## D-0021 - Mandatory costs are M1 facts; realized costs are M2 measurements
+
+Split of the former single blocker UNK-0006: known mandatory cost components (exchange, clearing,
+commission, feed entitlement, connectivity) remain M1-blocking, while realized spread, slippage,
+impact and adverse selection move to M2_MEASUREMENT. A verified credited rate (a rebate) is
+recorded in its own column and, for a passive candidate, enters the native cost floor as its
+negative with its own source; a bps floor is emitted only when the floor's own unit is
+bps-convertible (ASM-0011 unchanged). This is why the Nasdaq and BZX rows now show native per-share
+floors while their bps columns remain empty.

@@ -1,0 +1,36 @@
+{
+  "acceptable_evidence": "Measured execution cost from replay with a validated fill model, then shadow/live",
+  "affected_candidates": [
+    "ALL_CANDIDATES"
+  ],
+  "affected_gates": "KG3_EXECUTION",
+  "blocker_id": "UNK-0006",
+  "branch_impact": "GLOBAL",
+  "contradictory_evidence_ids": [],
+  "decision_prevented": "Any statement that a candidate is net-profitable; the strongest permitted statement is a known cost floor.",
+  "disallowed_evidence": "Parameterising an unknown component with an industry-typical value",
+  "estimated_effort": "MEDIUM",
+  "kill_condition": "Measured envelope exceeds the measured gross effect on every reasonable assumption",
+  "kill_potential": "LOW",
+  "known_evidence_ids": [
+    "EVD-0006",
+    "EVD-0007",
+    "EVD-0008"
+  ],
+  "known_source_ids": [
+    "SRC-0105",
+    "SRC-0106",
+    "SRC-0114"
+  ],
+  "last_updated": "2026-09-20T18:31:11Z",
+  "priority_reason": "MIGRATED from M1_BLOCKING (it was UNK-0006 there). Split: known mandatory cost floors remain M1-blocking (UNK-0001/0005/0011/0012/0013/0022/0028); realized slippage, impact and adverse selection are, by construction, measurement outputs of M2. Keeping them in M1 made M1 unclosable.",
+  "priority_score": null,
+  "required_answer": "Realized execution cost distribution per candidate, conditional on its own fills",
+  "resolution_method": "EMPIRICAL_MEASUREMENT",
+  "resolution_stage": "M2_MEASUREMENT",
+  "resurrection_condition": null,
+  "status": "OPEN",
+  "success_condition": "Measured envelope leaves the candidate's sign intact under conservative assumptions",
+  "tier": 4,
+  "title": "Realized spread, slippage, impact and adverse-selection envelope"
+}

@@ -1,0 +1,34 @@
+{
+  "acceptable_evidence": "Queue-aware replay validated against shadow fills; partial fills and cancels handled",
+  "affected_candidates": [
+    "TUP-CME-ES-H1-QDEP-PAS",
+    "TUP-CBOEBZX-LARGETICK-H2H3-SPREADCAP-PAS",
+    "TUP-METHOD-PASSIVE-TOUCHFILL"
+  ],
+  "affected_gates": "KG3_EXECUTION",
+  "blocker_id": "UNK-0007",
+  "branch_impact": "SMALL",
+  "contradictory_evidence_ids": [
+    "EVD-0003",
+    "EVD-0037",
+    "EVD-0042"
+  ],
+  "decision_prevented": "Economic evaluation of every passive candidate (KG3).",
+  "disallowed_evidence": "Touch=fills, or a fill probability imported from another venue",
+  "estimated_effort": "MEDIUM",
+  "kill_condition": "Fill probability is low enough that the mechanism cannot amortise its own costs",
+  "kill_potential": "LOW",
+  "known_evidence_ids": [],
+  "known_source_ids": [],
+  "last_updated": "2026-09-20T18:31:11Z",
+  "priority_reason": "MIGRATED from M1_BLOCKING. Fill rates are an M2 output; the M1-relevant part (does an order-level feed exist to model them at all) is KG2 / UNK-0003 / UNK-0004.",
+  "priority_score": null,
+  "required_answer": "P(fill | queue, state) under the venue's actual matching rule",
+  "resolution_method": "EMPIRICAL_MEASUREMENT",
+  "resolution_stage": "M2_MEASUREMENT",
+  "resurrection_condition": null,
+  "status": "OPEN",
+  "success_condition": "Fill model validated within a preregistered tolerance against shadow observations",
+  "tier": 4,
+  "title": "Passive fill probability conditional on queue state"
+}

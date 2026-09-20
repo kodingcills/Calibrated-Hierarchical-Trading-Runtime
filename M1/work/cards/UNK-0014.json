@@ -1,0 +1,35 @@
+{
+  "acceptable_evidence": "Regulator/court documents, venue terms of service with dates",
+  "affected_candidates": [
+    "TUP-KALSHI-EVENT-H5-EVENTINF-AGG",
+    "TUP-POLYMARKET-EVENT-H5-EVENTINF-AGG"
+  ],
+  "affected_gates": "KG1_MECHANISM|KG5_FALSIFIABILITY",
+  "blocker_id": "UNK-0014",
+  "branch_impact": "SMALL",
+  "contradictory_evidence_ids": [
+    "EVD-0016"
+  ],
+  "decision_prevented": "Legality/access gate for both event-market tuples.",
+  "disallowed_evidence": "A nationwide-access assumption in either direction",
+  "estimated_effort": "MEDIUM",
+  "kill_condition": "Access is unavailable in the relevant jurisdictions, killing the branch",
+  "kill_potential": "HIGH",
+  "known_evidence_ids": [
+    "EVD-0016"
+  ],
+  "known_source_ids": [
+    "SRC-0121"
+  ],
+  "last_updated": "2026-09-20T18:31:11Z",
+  "priority_reason": "M1-BLOCKING retained: legality is explicitly an M1 gate (handoff \u00a72).",
+  "priority_score": null,
+  "required_answer": "Jurisdiction-by-jurisdiction access for Kalshi/Polymarket plus fees, API and history",
+  "resolution_method": "PUBLIC_RESEARCH",
+  "resolution_stage": "M1_BLOCKING",
+  "resurrection_condition": null,
+  "status": "OPEN",
+  "success_condition": "A per-jurisdiction access determination exists for the project's operator base",
+  "tier": 1,
+  "title": "Event-market legality and access matrix"
+}

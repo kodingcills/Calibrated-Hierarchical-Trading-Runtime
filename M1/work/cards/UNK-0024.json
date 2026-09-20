@@ -1,0 +1,33 @@
+{
+  "acceptable_evidence": "Latency and quote-survival measurements (UNK-0021)",
+  "affected_candidates": [
+    "TUP-USSTOCK-XVENUE-H1-STALEQUOTE-AGG"
+  ],
+  "affected_gates": "NONE",
+  "blocker_id": "UNK-0024",
+  "branch_impact": "ONE",
+  "contradictory_evidence_ids": [
+    "EVD-0042"
+  ],
+  "decision_prevented": "Nothing (the label is non-promoting); recorded so the judgment basis is not mistaken for evidence.",
+  "disallowed_evidence": "Restating structural reasoning as evidence",
+  "estimated_effort": "SMALL",
+  "kill_condition": "Not applicable to M1 progress; the label is non-promoting",
+  "kill_potential": "LOW",
+  "known_evidence_ids": [],
+  "known_source_ids": [
+    "SRC-0011",
+    "SRC-0011"
+  ],
+  "last_updated": "2026-09-20T18:31:11Z",
+  "priority_reason": "NON_BLOCKING retained: recorded so judgment is not mistaken for evidence.",
+  "priority_score": null,
+  "required_answer": "A measured basis for the label",
+  "resolution_method": "DEFERRED",
+  "resolution_stage": "NON_BLOCKING",
+  "resurrection_condition": null,
+  "status": "OPEN",
+  "success_condition": "Label is replaced by a measured basis",
+  "tier": 4,
+  "title": "Basis of the WEAK label on the cross-venue stale-quote tuple"
+}

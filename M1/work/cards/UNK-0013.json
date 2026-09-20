@@ -1,0 +1,28 @@
+{
+  "acceptable_evidence": "Venue documentation with dates; regulatory sources for access",
+  "affected_candidates": [
+    "TUP-DERIBIT-BTCOPT-H5-SURFRV-MIX"
+  ],
+  "affected_gates": "KG1_MECHANISM|KG3_EXECUTION",
+  "blocker_id": "UNK-0013",
+  "branch_impact": "ONE",
+  "contradictory_evidence_ids": [],
+  "decision_prevented": "Gate 2 for the Deribit tuple.",
+  "disallowed_evidence": "Pre-2026 memory of venue terms",
+  "estimated_effort": "SMALL",
+  "kill_condition": "Access is legally unavailable to the project, or fees dominate the effect",
+  "kill_potential": "HIGH",
+  "known_evidence_ids": [],
+  "known_source_ids": [],
+  "last_updated": "2026-09-20T18:31:11Z",
+  "priority_reason": "M1-BLOCKING retained: cheap public research, high kill potential.",
+  "priority_score": null,
+  "required_answer": "2026 access status, fee schedule, API and historical data availability",
+  "resolution_method": "PUBLIC_RESEARCH",
+  "resolution_stage": "M1_BLOCKING",
+  "resurrection_condition": null,
+  "status": "OPEN",
+  "success_condition": "Access, fees and a historical data path are all documented as currently available",
+  "tier": 1,
+  "title": "Deribit current access, fee and data facts"
+}

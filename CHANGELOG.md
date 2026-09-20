@@ -1,5 +1,74 @@
 # CHANGELOG
 
+## 1.1.0 - 2026-09-20 (M1 closure orchestrator; stage-semantics correction; first research iteration)
+
+### Changed - M1 gate semantics (breaking, deliberate)
+
+- Gates are now computed by `M1/src/gate_engine.py` with a rule id per verdict; the M1-A vectors
+  are retained as `KG*_M1A`. KG4 no longer requires a measured half-life (it requires the absence
+  of a physical contradiction plus a preregistered EV(delay) experiment); KG3 no longer requires
+  measured fills; KG2 no longer requires purchased data. 22 rows move KG4 BLOCKED -> PASS as a
+  result; no candidate becomes eligible because KG2 and KG3 remain unresolved (see DECISIONS D-0017).
+
+### Added - two-dimension issue model
+
+- `resolution_method` and `resolution_stage` on every issue, with an authored migration table in
+  `M1/src/corpus/staging.py` and a per-issue reason. Migration: 9 to M2_MEASUREMENT, 1 to POST_M2,
+  4 to NON_BLOCKING, 19 remain M1_BLOCKING. "BLOCKING" severity now means "blocks M1 closure".
+
+### Added - closure orchestrator (`M1/orchestrator/`)
+
+- `schemas.py` (closed enums, card/patch contracts), `blocker_card.py` (cards compiled from the
+  registry), `priority.py` (deterministic leverage scoring and a tier guard), `frontier.py`
+  (frontier + closure snapshot), `transitions.py` (legal state machine and adversarial patch
+  verification), `patch.py` (build/verify/apply), `resolvers.py` (external-request and M2-spec
+  generators), `controller.py` (CLI: `status`, `frontier`, `next`, `log`).
+- Work artefacts: `M1/work/frontier.json`, `M1/work/cards/*.json`, `M1/work/patches/`,
+  `M1/work/external_requests/*.md` (11 packets, ready to send), `M1/work/m2_specs/*.md` (7 specs
+  with preregistration requirements).
+- Status artefacts: `M1/output/M1_CLOSURE_STATUS.json`, `M1/output/M1_EXTERNAL_ACTION_QUEUE.md`,
+  `M1/output/closure_loop_log.md`, `M1/output/gate_rule_trace.csv`, `M1/output/issue_migration.csv`,
+  `M1/output/non_frontier_issues.csv`.
+
+### Added - iteration 1 research (US equity cluster) via patch P-0001
+
+- 12 primary sources (SRC-0201..SRC-0212) replace report-mediated or missing equity facts: the
+  Nasdaq Historical TotalView-ITCH product with depth from 2007-08-13, NOII history included at no
+  additional charge since 2010-01-04, Nasdaq base-tier add/remove rates, Cboe BZX base rates and
+  Rule 11.12 priority class order, Nasdaq Rule 4757 price/display/time priority, NYSE and IEX
+  comparators, and published small-participant data and connectivity prices.
+- 12 new evidence records (EVD-0031..EVD-0042); 4 venue rows enriched; UNK-0020 resolved;
+  UNK-0004/0022 now await quotes; UNK-0005/0023 in progress; new blocker UNK-0033 (sponsored-access
+  commission) registered.
+- No gate moved and no candidate was promoted: the facts narrow blockers and quantify mandatory
+  costs, and none supplies a fill model, a markout or a break-even.
+
+### Changed - validation and tests
+
+- Validator now has 18 rule groups (V14 stage model, V15 frontier integrity, V16 eligibility
+  independence and rule-trace validity, V17 patch integrity, V18 work-artefact validity); V5 now
+  bans candidate scoring while explicitly permitting work-priority columns.
+- Test suite 44 -> 76 tests (`M1/tests/test_orchestrator.py` added).
+- PROJECT_STATE.md milestone, counts, stage and readiness blocks are now generated from state via
+  markers, so the file cannot drift from `M1/output/M1_STATE_SUMMARY.json`.
+
+### Verified numbers added this version
+
+- Nasdaq base tier (securities >= $1): displayed-add rebate $0.0018/share (Tapes A and B),
+  $0.0013/share (Tape C); remove fee $0.0030/share for all MPIDs.
+- Cboe BZX standard rates effective 2026-09-01: displayed-add rebate $0.0016/share, remove fee
+  $0.0030/share, tier rungs $0.0020-$0.0031/share requiring 0.06%-1.00% ADAV.
+- NYSE 2026: non-tier add credit $0.0012/share, take charge $0.0030/share. IEX effective
+  2026-09-01: base-tier displayed adds free, removes $0.0030/share, DEEP feed $2,500/month,
+  10G port $7,000/month.
+- Nasdaq Depth Non-Display $396/subscriber/month (1-39 tier, 2025) plus $3,190/firm/month direct
+  access; Nasdaq 10Gb fibre hand-off $11,000/month.
+
+### Not done, deliberately
+
+- M1-B and M1-D1 remain NOT_AUTHORIZED: 0 candidates pass all five gates. The frontier holds 16
+  actionable items, 11 of which need vendor/broker answers.
+
 ## 1.0.0 - 2026-09-20 (M1-C materialisation and M1-D0 deterministic calculation)
 
 ### Added - canonical state

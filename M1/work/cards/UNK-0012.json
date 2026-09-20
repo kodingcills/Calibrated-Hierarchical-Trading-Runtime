@@ -1,0 +1,30 @@
+{
+  "acceptable_evidence": "Official Cboe options fee schedule decomposed to the exact order types",
+  "affected_candidates": [
+    "TUP-CBOE-USOPT-H5-SURFRV-MIX"
+  ],
+  "affected_gates": "KG3_EXECUTION",
+  "blocker_id": "UNK-0012",
+  "branch_impact": "ONE",
+  "contradictory_evidence_ids": [],
+  "decision_prevented": "Options tuples passing Gate 2 at all.",
+  "disallowed_evidence": "A headline rate applied to a different order type or class",
+  "estimated_effort": "SMALL",
+  "kill_condition": "Fee structure alone makes an options tuple uneconomic at the proposed size",
+  "kill_potential": "HIGH",
+  "known_evidence_ids": [],
+  "known_source_ids": [
+    "SRC-0116"
+  ],
+  "last_updated": "2026-09-20T18:31:11Z",
+  "priority_reason": "M1-BLOCKING retained: the schedule is public, so this is cheap public research.",
+  "priority_score": null,
+  "required_answer": "Class/order-type fee codes, effective dates, and the historical surface data source",
+  "resolution_method": "PUBLIC_RESEARCH",
+  "resolution_stage": "M1_BLOCKING",
+  "resurrection_condition": null,
+  "status": "OPEN",
+  "success_condition": "Fee codes and a surface-data source are identified for one exact option tuple",
+  "tier": 1,
+  "title": "Cboe options fee decomposition for a named tuple"
+}

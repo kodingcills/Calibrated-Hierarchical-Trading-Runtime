@@ -1,0 +1,37 @@
+{
+  "acceptable_evidence": "Official fee page and API documentation with dates; archival product terms",
+  "affected_candidates": [
+    "TUP-HYPERLIQUID-BTCPERP-H3-OFILIQ-AGG",
+    "TUP-HYPERLIQUID-BTCPERP-H4-FUNDBASIS-MIX",
+    "TUP-HYPERLIQUID-BTCPERP-H1-QDEP-AGGPAS"
+  ],
+  "affected_gates": "KG2_DATA|KG3_EXECUTION",
+  "blocker_id": "UNK-0010",
+  "branch_impact": "SMALL",
+  "contradictory_evidence_ids": [
+    "EVD-0009"
+  ],
+  "decision_prevented": "Net-edge feasibility for the Hyperliquid H3/H4 candidates.",
+  "disallowed_evidence": "Assuming public API pagination equals event-level historical replay",
+  "estimated_effort": "SMALL",
+  "kill_condition": "Fees or the absence of event-level history make the seconds-scale tuples uneconomic",
+  "kill_potential": "HIGH",
+  "known_evidence_ids": [
+    "EVD-0009",
+    "EVD-0010"
+  ],
+  "known_source_ids": [
+    "SRC-0111"
+  ],
+  "last_updated": "2026-09-20T18:31:11Z",
+  "priority_reason": "M1-BLOCKING retained; fee and liquidation facts are public research, replay procurement needs a vendor/data request, so the binding method is EXTERNAL_ACTION.",
+  "priority_score": null,
+  "required_answer": "Current fee schedule, historical event-level book/trade source, liquidation data surface",
+  "resolution_method": "EXTERNAL_ACTION",
+  "resolution_stage": "M1_BLOCKING",
+  "resurrection_condition": "Fees or the absence of event-level history make the seconds-scale tuples uneconomic",
+  "status": "OPEN",
+  "success_condition": "Fee schedule and an event-level historical source are both identified and affordable",
+  "tier": 3,
+  "title": "Hyperliquid economics and replay surface"
+}

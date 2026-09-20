@@ -1,0 +1,41 @@
+{
+  "acceptable_evidence": "Broker/FCM schedule plus published CME and clearing fee pages, dated",
+  "affected_candidates": [
+    "TUP-CME-ES-H1-QDEP-PAS",
+    "TUP-CME-ES-H3-OFI-AGG",
+    "TUP-CME-NQ-H3-OFI-AGG",
+    "TUP-CME-TSY-H2-QREPL-MIX",
+    "TUP-CME-WTI-H4-FLOWVOL-AGG"
+  ],
+  "affected_gates": "KG3_EXECUTION",
+  "blocker_id": "UNK-0001",
+  "branch_impact": "SMALL",
+  "contradictory_evidence_ids": [
+    "EVD-0003",
+    "EVD-0042"
+  ],
+  "decision_prevented": "Aggressive CME execution viability (KG3) for every CME tuple.",
+  "disallowed_evidence": "An assumed or industry-typical per-contract cost; a member rate applied to a non-member path",
+  "estimated_effort": "MEDIUM",
+  "kill_condition": "Verified all-in cost implies the hypothesised gross effect cannot cover round-trip cost",
+  "kill_potential": "HIGH",
+  "known_evidence_ids": [
+    "EVD-0001",
+    "EVD-0002",
+    "EVD-0018"
+  ],
+  "known_source_ids": [
+    "SRC-0107"
+  ],
+  "last_updated": "2026-09-20T18:31:11Z",
+  "priority_reason": "M1-BLOCKING retained: a known mandatory cost is a cheap killer and cannot be deferred.",
+  "priority_score": null,
+  "required_answer": "Per-contract exchange, clearing and commission cost for the exact account path",
+  "resolution_method": "EXTERNAL_ACTION",
+  "resolution_stage": "M1_BLOCKING",
+  "resurrection_condition": "Verified all-in cost implies the hypothesised gross effect cannot cover round-trip cost",
+  "status": "OPEN",
+  "success_condition": "A dated all-in cost per contract for the intended account type",
+  "tier": 3,
+  "title": "Exact project-level CME all-in execution cost"
+}

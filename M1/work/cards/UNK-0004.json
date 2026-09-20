@@ -1,0 +1,44 @@
+{
+  "acceptable_evidence": "Vendor quote and sample file; explicit distinction from the Level-1 product",
+  "affected_candidates": [
+    "TUP-NASDAQ-LARGETICK-H2-QIMB-AGG",
+    "TUP-NASDAQ-LARGETICK-H2H3-MICRO-AGG",
+    "TUP-NASDAQ-LARGETICK-H1H2-QUEUEPOS-L1ONLY-AGG",
+    "TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG"
+  ],
+  "affected_gates": "KG2_DATA",
+  "blocker_id": "UNK-0004",
+  "branch_impact": "MEDIUM",
+  "contradictory_evidence_ids": [
+    "EVD-0005",
+    "EVD-0022",
+    "EVD-0033",
+    "EVD-0034",
+    "EVD-0041",
+    "EVD-0042"
+  ],
+  "decision_prevented": "Queue-aware backtesting of every Nasdaq equity tuple (KG2).",
+  "disallowed_evidence": "Treating consolidated Level-1 history as order-level data",
+  "estimated_effort": "MEDIUM",
+  "kill_condition": "Only Level-1 history is realistically obtainable for a queue-dependent mechanism",
+  "kill_potential": "HIGH",
+  "known_evidence_ids": [
+    "EVD-0005",
+    "EVD-0004"
+  ],
+  "known_source_ids": [
+    "SRC-0109",
+    "SRC-0108"
+  ],
+  "last_updated": "2026-09-20T18:31:11Z",
+  "priority_reason": "M1-BLOCKING retained: granularity sufficiency is an M1 gate (measured against the mechanism's requirement), while fill rates themselves move to M2.",
+  "priority_score": null,
+  "required_answer": "ITCH/TotalView-depth history: product, depth, fields, licence, price",
+  "resolution_method": "EXTERNAL_ACTION",
+  "resolution_stage": "M1_BLOCKING",
+  "resurrection_condition": "Only Level-1 history is realistically obtainable for a queue-dependent mechanism",
+  "status": "EXTERNAL_REQUEST_READY",
+  "success_condition": "Order-level history obtainable at a cost consistent with the proposed capacity",
+  "tier": 3,
+  "title": "US equity historical order-level depth procurement"
+}

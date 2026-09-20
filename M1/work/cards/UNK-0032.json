@@ -1,0 +1,30 @@
+{
+  "acceptable_evidence": "Sensitivity surface computed on the M2 execution model",
+  "affected_candidates": [
+    "ALL_CANDIDATES"
+  ],
+  "affected_gates": "KG3_EXECUTION",
+  "blocker_id": "UNK-0032",
+  "branch_impact": "GLOBAL",
+  "contradictory_evidence_ids": [],
+  "decision_prevented": "Robustness judgment (required by the project's own G4 gate).",
+  "disallowed_evidence": "A single point-estimate cost assumption",
+  "estimated_effort": "MEDIUM",
+  "kill_condition": "Net edge flips sign inside the plausible cost range",
+  "kill_potential": "LOW",
+  "known_evidence_ids": [],
+  "known_source_ids": [
+    "SRC-0014"
+  ],
+  "last_updated": "2026-09-20T18:31:11Z",
+  "priority_reason": "MIGRATED to M2_MEASUREMENT: it is a robustness output over measured inputs, and the project's own G4 gate places it after baseline evidence exists.",
+  "priority_score": null,
+  "required_answer": "Sign stability of net edge across conservative fee/slippage/spread assumptions",
+  "resolution_method": "EMPIRICAL_MEASUREMENT",
+  "resolution_stage": "M2_MEASUREMENT",
+  "resurrection_condition": null,
+  "status": "OPEN",
+  "success_condition": "Net edge keeps its sign across the preregistered conservative range",
+  "tier": 4,
+  "title": "Cost-sensitivity surface"
+}

@@ -1,0 +1,36 @@
+{
+  "acceptable_evidence": "Entitlement list and fee-code sample from the venue/broker",
+  "affected_candidates": [
+    "TUP-CBOEBZX-LARGETICK-H2H3-SPREADCAP-PAS"
+  ],
+  "affected_gates": "KG2_DATA|KG3_EXECUTION",
+  "blocker_id": "UNK-0022",
+  "branch_impact": "ONE",
+  "contradictory_evidence_ids": [
+    "EVD-0037"
+  ],
+  "decision_prevented": "BZX passive tuple feasibility (KG2/KG3).",
+  "disallowed_evidence": "Standard published rebate treated as the realized rate",
+  "estimated_effort": "SMALL",
+  "kill_condition": "Access economics make the passive tuple uneconomic",
+  "kill_potential": "MEDIUM",
+  "known_evidence_ids": [
+    "EVD-0006",
+    "EVD-0021"
+  ],
+  "known_source_ids": [
+    "SRC-0114",
+    "SRC-0125"
+  ],
+  "last_updated": "2026-09-20T18:31:11Z",
+  "priority_reason": "M1-BLOCKING retained: cost and data existence are Tier-1/Tier-3.",
+  "priority_score": null,
+  "required_answer": "Feed entitlements, realized fee codes, order-level history availability",
+  "resolution_method": "EXTERNAL_ACTION",
+  "resolution_stage": "M1_BLOCKING",
+  "resurrection_condition": null,
+  "status": "EXTERNAL_REQUEST_READY",
+  "success_condition": "Entitlements and order-level history are obtainable at usable cost",
+  "tier": 3,
+  "title": "Cboe BZX proprietary depth, fee-code outcome and history access"
+}

@@ -18,6 +18,7 @@ COLUMNS = [
     "tick_size", "tick_size_unit", "tick_size_source_id",
     "lot_size", "lot_size_unit", "lot_size_source_id",
     "maker_fee_value", "maker_fee_unit", "maker_fee_source_id",
+    "maker_side_is_rebate", "maker_side_is_rebate_source_id",
     "taker_fee_value", "taker_fee_unit", "taker_fee_source_id",
     "rebate_value", "rebate_unit", "rebate_source_id",
     "clearing_fee_value", "clearing_fee_unit", "clearing_fee_source_id",
@@ -172,6 +173,7 @@ add(venue_id="VEN-CBOEBZX-EQ",
     jurisdiction="US",
     taker_fee_value=0.0030, taker_fee_unit="USD_PER_SHARE", taker_fee_source_id="SRC-0114",
     rebate_value=0.0016, rebate_unit="USD_PER_SHARE", rebate_source_id="SRC-0114",
+    maker_side_is_rebate=UNKNOWN, maker_side_is_rebate_source_id=UNKNOWN,
     fee_notes="Standard displayed-add rebate $0.0016/share and remove fee $0.0030/share for "
               "securities >= $1, effective 2026-09-01. Volume tiers, special fee codes, routing and "
               "CAT/broker/clearing are additional and unverified; maker_fee_value stays UNKNOWN "

@@ -1,0 +1,32 @@
+{
+  "acceptable_evidence": "Exchange fee schedule and rulebook; broker/participant requirements",
+  "affected_candidates": [
+    "TUP-EUREX-FESX-H2H3-OFIQ-MIX"
+  ],
+  "affected_gates": "KG3_EXECUTION",
+  "blocker_id": "UNK-0011",
+  "branch_impact": "ONE",
+  "contradictory_evidence_ids": [],
+  "decision_prevented": "Any Eurex candidate progressing beyond universe status.",
+  "disallowed_evidence": "Assumed member pricing for a non-member path",
+  "estimated_effort": "MEDIUM",
+  "kill_condition": "No economic participant route exists for the project at any usable size",
+  "kill_potential": "HIGH",
+  "known_evidence_ids": [
+    "EVD-0011"
+  ],
+  "known_source_ids": [
+    "SRC-0110"
+  ],
+  "last_updated": "2026-09-20T18:31:11Z",
+  "priority_reason": "M1-BLOCKING retained: access and cost are Tier-1/Tier-3 facts.",
+  "priority_score": null,
+  "required_answer": "Participant route, fee schedule, allocation rule, historical EOBI availability",
+  "resolution_method": "EXTERNAL_ACTION",
+  "resolution_stage": "M1_BLOCKING",
+  "resurrection_condition": null,
+  "status": "OPEN",
+  "success_condition": "A viable participant route with dated fees exists",
+  "tier": 3,
+  "title": "Eurex execution economics, matching rule and access path"
+}
