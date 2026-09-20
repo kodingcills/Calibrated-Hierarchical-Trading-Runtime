@@ -2,7 +2,7 @@
 
 Status: CURRENT
 Version: 1.0.0
-Last Updated: 2026-09-20T19:09:29Z
+Last Updated: 2026-09-20T19:20:01Z
 
 This is the canonical fast-orientation artifact. Read it before any other file. Its counts are
 generated from `M1/output/M1_STATE_SUMMARY.json` and enforced against the machine-readable
@@ -154,17 +154,17 @@ leaving 19 M1-blocking issues.
 | 24.0 | 1 | `UNK-0002` | PUBLIC_RESEARCH | 6 | Any queue-position or fill model for passive CME candidates (KG2/KG3). |
 | 24.0 | 1 | `UNK-0018-HYPERLIQUID` | PUBLIC_RESEARCH | 2 | Replay validity for the Hyperliquid seconds-scale tuples (KG2). |
 | 24.0 | 1 | `UNK-0023-CME-DOCS` | PUBLIC_RESEARCH | 5 | KG1/KG2 evidence quality for the CME rows, and auditability of the MDP feasibility claim. |
-| 24.0 | 1 | `UNK-0023-LIT` | PUBLIC_RESEARCH | 9 | KG1 for candidates that would borrow the order-flow mechanism, and auditability of the mechanism-evidence row  |
+| 24.0 | 1 | `UNK-0023-LIT` | PUBLIC_RESEARCH | 6 | KG1 for candidates that would borrow the order-flow mechanism, and auditability of the mechanism-evidence row  |
+| 24.0 | 1 | `UNK-0027-CME-INDEX` | PUBLIC_RESEARCH | 3 | KG5 for the ES H1, ES H3 and NQ H3 rows; also determines which historical data and fee line items apply. |
 | 18.0 | 3 | `UNK-0018-NASDAQ` | EXTERNAL_ACTION | 3 | Causal replay and therefore queue/fill claims for the Nasdaq equity rows (KG2). |
-| 18.0 | 1 | `UNK-0027` | PUBLIC_RESEARCH | 10 | M2 registration and any falsifier (KG5) for the affected rows. |
 | 18.0 | 3 | `UNK-0033` | EXTERNAL_ACTION | 4 | All-in per-share cost for every equity tuple, and therefore the cost floor used in KG3. |
 | 16.0 | 1 | `UNK-0023-EXCH-OTHER` | PUBLIC_RESEARCH | 3 | Evidence quality for the Eurex tuple and for the options candidate's Gate-2 status. |
+| 16.0 | 1 | `UNK-0027-CME-OTHER` | PUBLIC_RESEARCH | 2 | KG5 for those rows. |
 | 13.5 | 2 | `UNK-0009-MECH-CME` | PUBLIC_RESEARCH | 5 | KG1 for every CME candidate (mechanism plausibility, not profitability). |
 | 12.0 | 1 | `UNK-0009-ECON-CRYPTO-SPOT` | PUBLIC_RESEARCH | 4 | Whether the crypto spot branch can be killed on materiality rather than left blocked: a cost level alone is no |
 | 12.0 | 3 | `UNK-0010` | EXTERNAL_ACTION | 3 | Net-edge feasibility for the Hyperliquid H3/H4 candidates. |
-| 12.0 | 1 | `UNK-0012` | PUBLIC_RESEARCH | 1 | Options tuples passing Gate 2 at all. |
 
-Actionable frontier items: 25. Items awaiting an external answer or a frozen spec: 3. Measurement specifications: 7. External request packets: 14.
+Actionable frontier items: 27. Items awaiting an external answer or a frozen spec: 3. Measurement specifications: 7. External request packets: 14.
 <!-- /GENERATED:frontier -->
 
 ## Issue Stages
@@ -172,17 +172,17 @@ Actionable frontier items: 25. Items awaiting an external answer or a frozen spe
 <!-- GENERATED:stages -->
 | resolution stage | count | meaning |
 |---|---|---|
-| M1_BLOCKING | 33 | must be answered before M1 can close |
+| M1_BLOCKING | 39 | must be answered before M1 can close |
 | M2_MEASUREMENT | 11 | preregistered M2 experiment; does not block M1 |
 | POST_M2 | 1 | matters only after M2 shows positive net EV |
 | NON_BLOCKING | 5 | tracked; no gate depends on it |
 
 | resolution method | count |
 |---|---|
-| PUBLIC_RESEARCH | 19 |
+| PUBLIC_RESEARCH | 22 |
 | EXTERNAL_ACTION | 15 |
 | EMPIRICAL_MEASUREMENT | 12 |
-| DEFERRED | 3 |
+| DEFERRED | 5 |
 <!-- /GENERATED:stages -->
 
 ## Immediate Next Actions
@@ -195,14 +195,14 @@ every pass from `M1/work/frontier.json`:
 2. **UNK-0018-HYPERLIQUID** (PUBLIC_RESEARCH, tier 1, leverage 24.0): The archive's file schema and a sample hour, plus a stated rule for missing hours.
 3. **UNK-0023-CME-DOCS** (PUBLIC_RESEARCH, tier 1, leverage 24.0): Primary CME pages (MDP product documentation, rulebook chapter, data-services product page) captured with dates.
 4. **UNK-0023-LIT** (PUBLIC_RESEARCH, tier 1, leverage 24.0): An authoritative record for the order-flow-imbalance claim (publisher metadata plus an author or repository version) establishing its sample and venue.
-5. **UNK-0018-NASDAQ** (EXTERNAL_ACTION, tier 3, leverage 18.0): The ITCH message specification's timestamp section plus a sample day whose ordering and sequence fields validate against the project's contract.
-6. **UNK-0027** (PUBLIC_RESEARCH, tier 1, leverage 18.0): One exact contract/symbol per branch, or a causal selection rule with its variables
+5. **UNK-0027-CME-INDEX** (PUBLIC_RESEARCH, tier 1, leverage 24.0): A contract/roll specification: which expiry, the roll rule (volume or open-interest crossing, day offset) and how a continuous series is built without lookahead.
+6. **UNK-0018-NASDAQ** (EXTERNAL_ACTION, tier 3, leverage 18.0): The ITCH message specification's timestamp section plus a sample day whose ordering and sequence fields validate against the project's contract.
 <!-- /GENERATED:next_actions -->
 
 ## Readiness
 
 <!-- GENERATED:readiness -->
-Ready for M1-B? **NO** - zero candidates pass all five gates; the frontier still holds 25 M1-blocking items.
+Ready for M1-B? **NO** - zero candidates pass all five gates; the frontier still holds 27 M1-blocking items.
 Ready for M1-D1? **NO** - M1-B is not authorized and no synthesis artifact exists, so no finalists can be compared.
 Ready for M2? **NO** - M2 requires a selected candidate plus a locked cost configuration and an order-level dataset; the frontier holds both.
 Ready for shadow trading? **NO** - a shadow run requires a chosen candidate, instrument and measured cost envelope.
@@ -248,7 +248,7 @@ Machine-readable M1 state (canonical; regenerate with `python3 M1/src/materializ
 | UNKNOWN | 16 |
 | DEAD | 7 |
 
-Registered candidate rows: 28 (23 tradable tuples + 5 non-tuple registrations). Verified sources: 91 (25 report-mediated, 0 with a recoverable URL). Evidence records: 64. M1 frontier items: 25 (7 measurement specs and 14 external requests now outside the frontier). Gate-eligible candidates: 0.
+Registered candidate rows: 28 (23 tradable tuples + 5 non-tuple registrations). Verified sources: 92 (25 report-mediated, 0 with a recoverable URL). Evidence records: 65. M1 frontier items: 27 (7 measurement specs and 14 external requests now outside the frontier). Gate-eligible candidates: 0.
 <!-- /GENERATED:counts -->
 
 

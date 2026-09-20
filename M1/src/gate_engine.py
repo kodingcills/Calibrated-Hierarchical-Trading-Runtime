@@ -267,12 +267,25 @@ def kg4_horizon(candidate, feas, specs, horizon_evidence=()) -> Verdict:
                    f"The empirical half-life remains an M2 output by design (UNK-0008).")
 
 
-def kg5_falsifiability(candidate) -> Verdict:
+def kg5_falsifiability(candidate, approved_universe_rules=()) -> Verdict:
+    """An exact instrument OR a preregistered, approved, leakage-controlled universe rule."""
     if candidate["candidate_class"] in NON_TUPLE_CLASSES:
         return Verdict("FAIL", "KG5-R1",
                        "Not a valid unit of analysis: a universe definition, method rule, "
                        "governance boundary or technology admission cannot carry a measurable "
                        "outcome. A reformulation is a new candidate.")
+    rule_id = candidate.get("universe_rule_id")
+    if rule_id:
+        if rule_id in approved_universe_rules:
+            return Verdict("PASS", "KG5-R6",
+                           f"Falsifiability rests on the preregistered universe rule {rule_id}, "
+                           f"whose spec artifact declares its selection variables, thresholds, "
+                           f"causal timing and anti-leakage controls, and is approved before any "
+                           f"M2 outcome inspection. Exact-instrument specificity is replaced by a "
+                           f"deterministic causal rule, which is the standard the handoff allows.")
+        return Verdict("BLOCKED", "KG5-R7",
+                       f"Universe rule {rule_id} is referenced but no approved spec artifact "
+                       f"declares it, so the claim cannot yet be written as a test.")
     if _is_unspecified(candidate["instrument"]) and candidate["candidate_class"] == "TUPLE":
         return Verdict("BLOCKED", "KG5-R2",
                        "Instrument is a family rather than an exact contract/symbol, so no "
@@ -286,7 +299,8 @@ def kg5_falsifiability(candidate) -> Verdict:
                    "before results are observed.")
 
 
-def compute(candidates, evidence_rows, feas_by_id, envelope_by_id, venue_by_id, specs_by_id):
+def compute(candidates, evidence_rows, feas_by_id, envelope_by_id, venue_by_id, specs_by_id,
+            approved_universe_rules=()):
     """Compute every gate for every candidate, with rule traces."""
     out = {}
     for cand in candidates:
@@ -301,7 +315,7 @@ def compute(candidates, evidence_rows, feas_by_id, envelope_by_id, venue_by_id, 
         v2 = kg2_data(cand, feas, venue)
         v3 = kg3_execution(cand, envelope, feas, venue, specs, kg1_value=v1.value)
         v4 = kg4_horizon(cand, feas, specs, _horizon_evidence(evidence_rows, cand))
-        v5 = kg5_falsifiability(cand)
+        v5 = kg5_falsifiability(cand, approved_universe_rules)
         cand["KG1_MECHANISM"], cand["KG2_DATA"] = v1, v2
         cand["KG3_EXECUTION"], cand["KG4_HALF_LIFE"] = v3, v4
         cand["KG5_FALSIFIABILITY"] = v5

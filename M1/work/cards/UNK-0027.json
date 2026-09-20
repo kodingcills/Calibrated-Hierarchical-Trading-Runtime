@@ -35,14 +35,14 @@
   "decision_prevented": "M2 registration and any falsifier (KG5) for the affected rows.",
   "disallowed_evidence": "Choosing the instrument with the best historical performance (selection leakage)",
   "estimated_effort": "MEDIUM",
-  "is_aggregate_parent": "NO",
+  "is_aggregate_parent": "YES",
   "kill_condition": "A branch cannot be specified exactly without performance-based selection, so it dies",
   "kill_potential": "HIGH",
   "known_evidence_ids": [],
   "known_source_ids": [
     "SRC-0011"
   ],
-  "last_updated": "2026-09-20T19:09:29Z",
+  "last_updated": "2026-09-20T19:20:01Z",
   "parent_issue_id": null,
   "priority_reason": "M1-BLOCKING retained: handoff \u00a711 makes exact-instrument definition an M1 requirement.",
   "priority_score": null,

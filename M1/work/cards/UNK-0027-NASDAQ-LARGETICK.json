@@ -1,0 +1,38 @@
+{
+  "acceptable_evidence": "Any primary source that answers the claim needed",
+  "affected_candidates": [
+    "TUP-NASDAQ-LARGETICK-H2-QIMB-AGG"
+  ],
+  "affected_gates": "NONE",
+  "blocker_id": "UNK-0027-NASDAQ-LARGETICK",
+  "branch_impact": "ONE",
+  "contradictory_evidence_ids": [
+    "EVD-0005",
+    "EVD-0033",
+    "EVD-0034",
+    "EVD-0041",
+    "EVD-0042"
+  ],
+  "decision_prevented": "KG5 falsifiability for the Nasdaq queue-imbalance branch.",
+  "disallowed_evidence": "Assumed values, secondary summaries, social posts",
+  "estimated_effort": "SMALL",
+  "is_aggregate_parent": "NO",
+  "kill_condition": "KG5 falsifiability for the Nasdaq queue-imbalance branch.",
+  "kill_potential": "LOW",
+  "known_evidence_ids": [],
+  "known_source_ids": [
+    "SRC-0241"
+  ],
+  "last_updated": "2026-09-20T19:20:01Z",
+  "parent_issue_id": "UNK-0027",
+  "priority_reason": "Resolved by this iteration's universe specification; the rule is machine-readable and approval is recorded before any M2 outcome inspection.",
+  "priority_score": null,
+  "required_answer": "Nothing further for M1. The rule is frozen at M1/hypotheses/candidate_specs/ and its remaining data dependency (point-in-time membership) is a KG2 requirement, not a specification gap.",
+  "resolution_method": "HUMAN_INPUT",
+  "resolution_stage": "M1_BLOCKING",
+  "resurrection_condition": null,
+  "status": "RESOLVED_SUPPORTS",
+  "success_condition": "Nothing further for M1. The rule is frozen at M1/hypotheses/candidate_specs/ and its remaining data dependency (point-in-time membership) is a KG2 requirement, not a specification gap.",
+  "tier": 1,
+  "title": "Exact universe rule for the Nasdaq large-tick queue-imbalance branch."
+}

@@ -1,0 +1,252 @@
+{
+  "candidate_id": "TUP-NASDAQ-LARGETICK-H2-QIMB-AGG",
+  "universe_rule_id": "NASDAQ-LARGETICK-QIMB-UNIV-v1",
+  "spec_artifact": "M1/hypotheses/candidate_specs/NASDAQ_LARGETICK_QUEUE_IMBALANCE_UNIVERSE.json",
+  "venue": "VEN-NASDAQ-CONT",
+  "venue_scope_note": "Nasdaq is required to be the primary trading venue for the security, because the mechanism is reconstructed from one venue's book and Gould & Bonart imposed the same restriction for the same reason (LOBSTER captures Nasdaq order flow only).",
+  "security_type": {
+    "include": [
+      "US common stock, ordinary share classes"
+    ],
+    "exclude": [
+      "ETF",
+      "ETN",
+      "ADR",
+      "preferred",
+      "warrant",
+      "right",
+      "unit",
+      "closed-end fund",
+      "SPAC shell before combination",
+      "when-issued",
+      "sub-penny securities"
+    ],
+    "exclusion_reason": "market-structure and data-quality: these instruments trade under different tick, spread, corporate-action and listing regimes, so spread/tick statistics and queue depletion dynamics are not comparable."
+  },
+  "selection_rule_version": "v1 (frozen 2026-09-20, before any M2 outcome inspection)",
+  "selection_variables": [
+    {
+      "variable": "primary_listing_venue",
+      "observable_ex_ante": true,
+      "source_of_record": "exchange listing reference / security master"
+    },
+    {
+      "variable": "median_quoted_spread_in_ticks",
+      "observable_ex_ante": true,
+      "source_of_record": "order-level book reconstruction over the lookback window"
+    },
+    {
+      "variable": "fraction_of_valid_book_observations_at_one_tick",
+      "observable_ex_ante": true,
+      "source_of_record": "order-level book reconstruction over the lookback window"
+    },
+    {
+      "variable": "relative_tick_size",
+      "observable_ex_ante": true,
+      "source_of_record": "median trade price / tick size over the lookback window"
+    },
+    {
+      "variable": "trailing_median_daily_dollar_volume",
+      "observable_ex_ante": true,
+      "source_of_record": "consolidated or venue trade tape over the lookback window"
+    },
+    {
+      "variable": "trading_day_coverage_fraction",
+      "observable_ex_ante": true,
+      "source_of_record": "presence of valid book observations per trading day"
+    },
+    {
+      "variable": "listing_age_in_trading_days",
+      "observable_ex_ante": true,
+      "source_of_record": "point-in-time listing history"
+    },
+    {
+      "variable": "corporate_action_events_in_lookback",
+      "observable_ex_ante": true,
+      "source_of_record": "point-in-time corporate-action reference"
+    },
+    {
+      "variable": "halt_event_count_in_lookback",
+      "observable_ex_ante": true,
+      "source_of_record": "exchange halt feed"
+    }
+  ],
+  "prohibited_selection_variables": [
+    "future_returns",
+    "future_queue_imbalance_predictiveness",
+    "future_sharpe",
+    "future_pnl",
+    "future_hit_rate",
+    "future_signal_coefficient",
+    "future_execution_performance",
+    "post_selection_backtest_performance",
+    "any statistic computed on evaluation-period data"
+  ],
+  "large_tick_rule": {
+    "primary": "median quoted spread over the lookback window equals exactly one tick (spread == tick_size)",
+    "conjunction": "AND the fraction of valid book observations whose quoted spread equals exactly one tick is at least THETA",
+    "theta_value": 0.5,
+    "theta_status": "PREREGISTERED_DESIGN_PARAMETER",
+    "theta_basis": "The literature does not prescribe a numeric threshold for modern data. Gould & Bonart define large-tick by relative tick size (a price screen) and report mean spreads of $0.012-$0.015 against a $0.01 tick for their large-tick set, i.e. their names sit at roughly one tick on average; they do not state a fraction-of-time criterion. THETA=0.50 is therefore a majority requirement: the structural claim (queue depletion at the touch governs price moves) requires the spread to be pinned at one tick more often than not. THETA is frozen before M2 outcomes and may not be tuned on M2 results.",
+    "relative_tick_size_role": "reported for characterisation, not used as a binding selector",
+    "literature_consistency_crosscheck": "the fraction of the eligible universe whose maximum trade price is at or below $50 (the 2014 screen) is reported as a cross-check only; $50 in 2014 is not $50 in 2026, so the price screen is NOT a binding criterion",
+    "rejected_alternatives": [
+      "price-only screen (literature used it for sample selection, not as a definition of the phenomenon)",
+      "any threshold chosen by maximising universe size, event count or observed predictiveness"
+    ]
+  },
+  "selection_thresholds": {
+    "liquidity_rule": "eligible securities must rank in the top decile of trailing 60-trading-day median daily dollar volume among all securities passing the other eligibility rules",
+    "liquidity_rule_basis": "relative percentile, so no absolute dollar level is invented; Gould & Bonart used top-5 by dollar volume, a rank rule of the same family",
+    "price_floor_usd": 1.0,
+    "price_floor_basis": "sub-penny quoting regimes and different tick rules apply below $1 (market-structure boundary, not a performance choice)",
+    "price_ceiling_usd": null,
+    "coverage_rule": "valid order-level book observations on at least 90% of lookback trading days",
+    "coverage_rule_basis": "data-quality; a security cannot be classified on spread/tick statistics it does not have",
+    "minimum_history_trading_days": 120,
+    "minimum_history_basis": "two times the lookback window, so the classifier never depends on data that begins inside its own lookback",
+    "minimum_pooled_events_per_month": 100000,
+    "minimum_pooled_events_basis": "feasibility only: Gould & Bonart's per-stock design used 25,200 one-tick-ahead events per stock-year, so 100,000 pooled events per month exceeds that design by an order of magnitude without being a performance threshold",
+    "minimum_universe_size": 5,
+    "minimum_universe_size_basis": "feasibility: pooling at least five securities preserves cross-sectional robustness; below this the M2 test is underpowered, which is reported rather than repaired by widening the rule"
+  },
+  "threshold_source_or_basis": {
+    "sourced": [
+      "tick_size = $0.01 for Nasdaq-listed stocks above $1 (venue rule)",
+      "Nasdaq as primary venue requirement (Gould & Bonart, Section 4)",
+      "dollar-volume rank family (Gould & Bonart, Section 4)",
+      "tick-anchored large-tick characterisation (mean spread ~1 tick; Gould & Bonart Table 1)"
+    ],
+    "preregistered_design_parameters": [
+      "THETA = 0.50 fraction-at-one-tick",
+      "90% lookback day coverage",
+      "120 trading days minimum history",
+      "top-decile liquidity rank",
+      "100,000 pooled events per month feasibility floor",
+      "minimum universe size 5"
+    ],
+    "not_used": [
+      "any absolute dollar-volume level",
+      "any price level as a binding selector",
+      "any threshold fitted to strategy performance"
+    ]
+  },
+  "lookback_window": "60 trading days ending on the last trading day before the selection date",
+  "selection_date_rule": "first trading day of each calendar month T, using only data with timestamps strictly before the open of T's first trading day",
+  "rebalance_frequency": "monthly",
+  "evaluation_start": "the trading day after the selection date; no observation from the lookback window enters the evaluation set",
+  "point_in_time_membership_rule": "listing status, symbol and security type must be taken from a point-in-time reference as of the selection date; a dataset that only exposes today's constituents cannot be used",
+  "point_in_time_membership_status": "REQUIRED_DATA_NOT_SECURED",
+  "survivorship_rule": "delisted, acquired, renamed and halted securities remain in the universe for the period in which they were eligible; nothing is selected because it still exists today",
+  "corporate_action_rule": "splits and ticker changes are handled by adjusting prices with the point-in-time factor and by carrying the security through the change; mergers and delistings terminate eligibility at the effective date; securities with a corporate action inside the lookback are excluded for that selection cycle only",
+  "halt_rule": "halt days are excluded from event counts; a security with a halt frequency above the 95th percentile of the eligible set in the lookback is excluded for that cycle (halt_rule_status = PREREGISTERED_DESIGN_PARAMETER)",
+  "exclusions": [
+    {
+      "rule": "non-Nasdaq primary listing",
+      "reason_class": "data-quality",
+      "detail": "the signal is reconstructed from one venue's book; a security whose flow is mostly elsewhere cannot be measured with this data"
+    },
+    {
+      "rule": "non-common security types",
+      "reason_class": "market-structure",
+      "detail": "see security_type"
+    },
+    {
+      "rule": "price below $1.00",
+      "reason_class": "market-structure",
+      "detail": "sub-penny/tick regime"
+    },
+    {
+      "rule": "coverage below 90% of lookback days",
+      "reason_class": "data-quality",
+      "detail": "insufficient observations to classify"
+    },
+    {
+      "rule": "listing age below 120 trading days",
+      "reason_class": "data-quality",
+      "detail": "history floor"
+    },
+    {
+      "rule": "corporate action inside lookback",
+      "reason_class": "market-structure",
+      "detail": "comparability of spread/tick statistics across the event"
+    },
+    {
+      "rule": "halt frequency above the eligible-set 95th percentile",
+      "reason_class": "execution",
+      "detail": "halt-prone names have discontinuous book state and unusable fill semantics for the horizon"
+    },
+    {
+      "rule": "no exclusion for poor queue-imbalance performance",
+      "reason_class": "prohibited",
+      "detail": "performance-based exclusion is selection leakage and is forbidden by this rule"
+    }
+  ],
+  "anti_leakage_rules": [
+    "selection uses only data with timestamps strictly before the evaluation start",
+    "no evaluation-period statistic enters any selection variable",
+    "the rule and its thresholds are frozen before any M2 result is observed; any change creates a new rule version and a new candidate id",
+    "the universe is rebuilt monthly from point-in-time data, never from today's constituent list",
+    "no security is added or removed because of its signal performance",
+    "the 2014 price screen is reported as a cross-check only and never used as a selector",
+    "if point-in-time membership cannot be obtained, the branch is BLOCKED on KG2 rather than run on survivor-biased symbols"
+  ],
+  "expected_universe_size_if_derivable": null,
+  "expected_universe_size_status": "UNKNOWN pending order-level data; to be computed from the lookback window before any M2 outcome is inspected, and recorded as a feasibility figure, not as a selection criterion",
+  "unknowns": [
+    "UNK-0027-NASDAQ-LARGETICK closed the definition; the following remain open",
+    "point-in-time listing/security master and corporate-action reference must be procured (data requirement, not a research question)",
+    "whether an affordable order-level Nasdaq history supports a 60-day lookback across the universe",
+    "the realised universe size and pooled event count (feasibility, computed before M2 outcomes)"
+  ],
+  "source_ids": [
+    "SRC-0238",
+    "SRC-0239",
+    "SRC-0241",
+    "SRC-0201",
+    "SRC-0203"
+  ],
+  "effective_status": "APPROVED",
+  "approved_by": "M1 closure orchestrator, iteration 5",
+  "approved_at": "2026-09-20",
+  "m2_test_contract": {
+    "state": "causal Nasdaq order-book state reconstructed from order-level events with the project's timestamp contract; best bid/ask prices and best-queue sizes at time t; no post-timestamp information",
+    "signal": "queue imbalance I(t) = (n_bid(t) - n_ask(t)) / (n_bid(t) + n_ask(t)) at the best quotes, evaluated at a causally sampled observation time (Gould & Bonart Equation 7); sampled at the decision time, never from inside the forecast window",
+    "action": "aggressive directional trade (cross the spread) when the signal exceeds the preregistered threshold, otherwise abstain",
+    "horizons_preregistered": [
+      "100 ms",
+      "250 ms",
+      "500 ms",
+      "1000 ms"
+    ],
+    "horizon_note": "a grid inside the candidate's H2 band, reported in full; no single horizon may be chosen after seeing results",
+    "nulls": [
+      "constant 1/2 null (the reference model used by Gould & Bonart)",
+      "direction permutation preserving the imbalance distribution",
+      "timestamp-preserving side randomisation",
+      "same-information logistic baseline on the same features",
+      "simpler deterministic imbalance threshold (no fitted model)",
+      "no-trade baseline",
+      "exposure-matched random side at the same timestamps"
+    ],
+    "primary_predictive_metric": "out-of-sample AUC of next-mid-price-move direction (comparable to the literature) with log loss and reliability diagnostics reported alongside",
+    "secondary_predictive_metrics": [
+      "calibration slope/intercept",
+      "risk-coverage curve",
+      "AUC by month and by liquidity decile"
+    ],
+    "primary_economic_metric": "execution-aware net utility after the locked M2 cost configuration; UNKNOWN until the cost lock completes (UNK-0005, UNK-0033)",
+    "cost_treatment": "verified exchange add/remove rates and the realized broker/sponsor path, with spread, slippage, impact and adverse selection measured rather than assumed",
+    "delay_test": "the EV(delay) sweep (EV_DELAY_SWEEP spec) applied to this signal and universe",
+    "split_methodology": "sealed holdout; purged, month-blocked walk-forward with an embargo equal to the longest horizon; the universe rule is applied inside each fold using only that fold's lookback",
+    "kill_criteria": [
+      "no robust out-of-sample predictive information (AUC indistinguishable from the null family)",
+      "the effect disappears under the delay grid before any achievable decision age",
+      "measured gross edge cannot clear the locked cost envelope",
+      "a same-information logistic or deterministic-threshold baseline performs equally or better",
+      "instability or regime dependence invalidates practical use (sign or magnitude flips across consecutive months in a majority of folds)"
+    ],
+    "no_invented_numeric_thresholds": "no numeric performance threshold is set here. The literature's 50-60% improvement over its null is a reference point from a different venue era and a different cost regime, not a project threshold; numeric kill levels are set only after the cost lock and the delay sweep provide a statistical basis.",
+    "epistemic_status": "falsifiability contract complete; profitability explicitly NOT claimed"
+  }
+}

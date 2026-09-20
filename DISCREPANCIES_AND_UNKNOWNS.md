@@ -3,9 +3,9 @@
 Canonical machine-readable source: `M1/data/discrepancies.csv` (generated from `M1/src/corpus/unknowns.py`).
 This file is a rendering of that registry; edit the corpus module, not this file.
 
-Materialised (UTC): 2026-09-20T19:09:29Z
+Materialised (UTC): 2026-09-20T19:20:01Z
 
-Registered issues: 50 | open: 30 | blocking: 29
+Registered issues: 56 | open: 35 | blocking: 34
 
 Conflicts are never resolved by averaging. Where two sources genuinely disagree the row
 carries `conflict_type=CONTRADICTION` and both statements are preserved; where the
@@ -625,7 +625,7 @@ and the judgment used is stated together with its basis.
 - searches attempted: None
 - resolvable by web research: None; vendor quote: None; M2 measurement: None
 - resolution class: None
-- affected: TUP-CME-ES-H1-QDEP-PAS|TUP-CME-ES-H3-OFI-AGG|TUP-CME-NQ-H3-OFI-AGG|TUP-CME-TSY-H2-QREPL-MIX|TUP-CME-WTI-H4-FLOWVOL-AGG|TUP-NASDAQ-LARGETICK-H2-QIMB-AGG|TUP-NASDAQ-LARGETICK-H2H3-MICRO-AGG|TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG|TUP-EUREX-FESX-H2H3-OFIQ-MIX
+- affected: TUP-CME-ES-H1-QDEP-PAS|TUP-CME-ES-H3-OFI-AGG|TUP-CME-NQ-H3-OFI-AGG|TUP-CME-TSY-H2-QREPL-MIX|TUP-CME-WTI-H4-FLOWVOL-AGG|TUP-EUREX-FESX-H2H3-OFIQ-MIX
 - evidence: None
 
 ## UNK-0023-CME-DOCS - BLOCKING - OPEN
@@ -654,6 +654,90 @@ and the judgment used is stated together with its basis.
 - resolvable by web research: None; vendor quote: None; M2 measurement: None
 - resolution class: None
 - affected: TUP-EUREX-FESX-H2H3-OFIQ-MIX|TUP-CBOE-USOPT-H5-SURFRV-MIX|TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG
+- evidence: None
+
+## UNK-0027-NASDAQ-LARGETICK - BLOCKING - RESOLVED_SUPPORTS
+
+- claim needed: Exact universe rule for the Nasdaq large-tick queue-imbalance branch.
+- known evidence: Rule NASDAQ-LARGETICK-QIMB-UNIV-v1 defines large-tick structurally (median quoted spread equal to one tick and at least half of valid observations at one tick), eligibility (Nasdaq primary venue, common stock, price >= $1, top-decile liquidity rank, 120-day history, 90% lookback coverage), monthly causal selection with a 60-day lookback, point-in-time membership, and explicit anti-leakage rules.
+- specific evidence required: Nothing further for M1. The rule is frozen at M1/hypotheses/candidate_specs/ and its remaining data dependency (point-in-time membership) is a KG2 requirement, not a specification gap.
+- decision prevented: KG5 falsifiability for the Nasdaq queue-imbalance branch.
+- conflict type: NO_CONFLICT_INCOMPLETENESS
+- sources: A=SRC-0241, B=None
+- searches attempted: None
+- resolvable by web research: None; vendor quote: None; M2 measurement: None
+- resolution class: None
+- affected: TUP-NASDAQ-LARGETICK-H2-QIMB-AGG
+- evidence: None
+
+## UNK-0027-NASDAQ-MICRO - BLOCKING - OPEN
+
+- claim needed: Exact universe rule for the Nasdaq large-tick micro-price branch.
+- known evidence: The queue-imbalance rule (NASDAQ-LARGETICK-QIMB-UNIV-v1) defines the same universe shape and could be extended, but this branch's KG1 is BLOCKED because the micro-price study's venue scope is not established, so specifying a universe would not move it.
+- specific evidence required: Nothing is required until KG1 resolves; then the universe rule can be adopted or versioned for this candidate.
+- decision prevented: KG5 for the micro-price branch (currently gated behind KG1).
+- conflict type: NO_CONFLICT_INCOMPLETENESS
+- sources: A=None, B=None
+- searches attempted: None
+- resolvable by web research: None; vendor quote: None; M2 measurement: None
+- resolution class: None
+- affected: TUP-NASDAQ-LARGETICK-H2H3-MICRO-AGG
+- evidence: None
+
+## UNK-0027-CME-INDEX - BLOCKING - OPEN
+
+- claim needed: Exact contract specification for the CME equity-index branches.
+- known evidence: The rows name ES and NQ families; both are liquid and standard, but no contract month, roll rule or continuous-series construction has been fixed.
+- specific evidence required: A contract/roll specification: which expiry, the roll rule (volume or open-interest crossing, day offset) and how a continuous series is built without lookahead.
+- decision prevented: KG5 for the ES H1, ES H3 and NQ H3 rows; also determines which historical data and fee line items apply.
+- conflict type: NO_CONFLICT_INCOMPLETENESS
+- sources: A=None, B=None
+- searches attempted: None
+- resolvable by web research: None; vendor quote: None; M2 measurement: None
+- resolution class: None
+- affected: TUP-CME-ES-H1-QDEP-PAS|TUP-CME-ES-H3-OFI-AGG|TUP-CME-NQ-H3-OFI-AGG
+- evidence: None
+
+## UNK-0027-CME-OTHER - BLOCKING - OPEN
+
+- claim needed: Exact contract specification for the CME Treasury and energy branches.
+- known evidence: Both rows name a contract family (Treasury future; WTI month) without fixing an expiry.
+- specific evidence required: One exact contract per branch plus its roll rule.
+- decision prevented: KG5 for those rows.
+- conflict type: NO_CONFLICT_INCOMPLETENESS
+- sources: A=None, B=None
+- searches attempted: None
+- resolvable by web research: None; vendor quote: None; M2 measurement: None
+- resolution class: None
+- affected: TUP-CME-TSY-H2-QREPL-MIX|TUP-CME-WTI-H4-FLOWVOL-AGG
+- evidence: None
+
+## UNK-0027-AUCTION - BLOCKING - OPEN
+
+- claim needed: Exact mechanism and contract for the Nasdaq closing-auction branch.
+- known evidence: The row names closing-auction imbalance on Nasdaq-listed stocks but fixes neither the symbol set nor the auction order type it would place.
+- specific evidence required: A universe rule for the auction branch plus the exact auction order type.
+- decision prevented: KG5 for the auction row.
+- conflict type: NO_CONFLICT_INCOMPLETENESS
+- sources: A=None, B=None
+- searches attempted: None
+- resolvable by web research: None; vendor quote: None; M2 measurement: None
+- resolution class: None
+- affected: TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG
+- evidence: None
+
+## UNK-0027-OPTIONS-EVENT-FX - BLOCKING - OPEN
+
+- claim needed: Exact instrument specification for the options, crypto-option, event-market and FX branches.
+- known evidence: These rows name instrument families (US option, BTC option, event contract, FX pair) with no underlying, expiry, contract or venue pairing fixed, and several also lack venue access.
+- specific evidence required: Per branch: one exact instrument (underlying, expiry/tenor) or a preregistered universe rule, after access is established.
+- decision prevented: KG5 and KG2 for those rows.
+- conflict type: NO_CONFLICT_INCOMPLETENESS
+- sources: A=None, B=None
+- searches attempted: None
+- resolvable by web research: None; vendor quote: None; M2 measurement: None
+- resolution class: None
+- affected: TUP-CBOE-USOPT-H5-SURFRV-MIX|TUP-DERIBIT-BTCOPT-H5-SURFRV-MIX|TUP-KALSHI-EVENT-H5-EVENTINF-AGG|TUP-POLYMARKET-EVENT-H5-EVENTINF-AGG|TUP-FX-ECN-H2H3-LEADLAG-AGG|TUP-FX-RETAILBROKER-H3H4-FEEDLAG-AGG
 - evidence: None
 
 ## UNK-0023-PAIRED-TOKENS - NON_BLOCKING - OPEN

@@ -209,6 +209,21 @@ def readiness_md(state) -> str:
             "",
         ]
 
+    closure_rows = state.get("closure_rows") or []
+    next_branch = state.get("next_branch") or {}
+    if closure_rows:
+        lines += [
+            "## 6b. Candidate closure state",
+            "",
+            _table(["candidate", "PASS", "autonomous blockers", "external items", "mode"],
+                   [[r["candidate_id"], f"{r['pass_count']}/5", r["autonomous_distance_to_eligibility"],
+                     r["external_distance_to_eligibility"], r["closure_mode"]]
+                    for r in closure_rows[:8]]),
+            "",
+            f"Next autonomous branch: **{next_branch.get('candidate_id')}** - "
+            f"{next_branch.get('reason')}",
+            "",
+        ]
     lines += [
         "## 7. Which missing measurement would change the most decisions",
         "",

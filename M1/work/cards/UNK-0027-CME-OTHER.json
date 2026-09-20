@@ -1,0 +1,33 @@
+{
+  "acceptable_evidence": "Any primary source that answers the claim needed",
+  "affected_candidates": [
+    "TUP-CME-TSY-H2-QREPL-MIX",
+    "TUP-CME-WTI-H4-FLOWVOL-AGG"
+  ],
+  "affected_gates": "NONE",
+  "blocker_id": "UNK-0027-CME-OTHER",
+  "branch_impact": "SMALL",
+  "contradictory_evidence_ids": [
+    "EVD-0003"
+  ],
+  "decision_prevented": "KG5 for those rows.",
+  "disallowed_evidence": "Assumed values, secondary summaries, social posts",
+  "estimated_effort": "SMALL",
+  "is_aggregate_parent": "NO",
+  "kill_condition": "KG5 for those rows.",
+  "kill_potential": "MEDIUM",
+  "known_evidence_ids": [],
+  "known_source_ids": [],
+  "last_updated": "2026-09-20T19:20:01Z",
+  "parent_issue_id": "UNK-0027",
+  "priority_reason": "Scoped child; cheap and public.",
+  "priority_score": null,
+  "required_answer": "One exact contract per branch plus its roll rule.",
+  "resolution_method": "PUBLIC_RESEARCH",
+  "resolution_stage": "M1_BLOCKING",
+  "resurrection_condition": null,
+  "status": "OPEN",
+  "success_condition": "One exact contract per branch plus its roll rule.",
+  "tier": 1,
+  "title": "Exact contract specification for the CME Treasury and energy branches."
+}

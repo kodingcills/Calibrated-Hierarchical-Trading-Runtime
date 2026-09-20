@@ -1,5 +1,5 @@
 {
-  "active_item_count": 25,
+  "active_item_count": 27,
   "clusters": {
     "CBOE_EQUITY": [
       "UNK-0005",
@@ -8,8 +8,7 @@
     ],
     "CBOE_OPTIONS": [
       "UNK-0012",
-      "UNK-0023-EXCH-OTHER",
-      "UNK-0027"
+      "UNK-0023-EXCH-OTHER"
     ],
     "CME": [
       "UNK-0002",
@@ -18,25 +17,23 @@
       "UNK-0018-CME",
       "UNK-0023-CME-DOCS",
       "UNK-0023-LIT",
-      "UNK-0027"
+      "UNK-0027-CME-INDEX",
+      "UNK-0027-CME-OTHER"
     ],
     "CRYPTO_SPOT": [
       "UNK-0009-ECON-CRYPTO-SPOT"
     ],
     "DERIBIT": [
-      "UNK-0013",
-      "UNK-0027"
+      "UNK-0013"
     ],
     "EUREX": [
       "UNK-0011",
       "UNK-0018-EUREX",
       "UNK-0023-EXCH-OTHER",
-      "UNK-0023-LIT",
-      "UNK-0027"
+      "UNK-0023-LIT"
     ],
     "EVENT_MARKETS": [
       "UNK-0014",
-      "UNK-0027",
       "UNK-0035"
     ],
     "FX": [
@@ -56,8 +53,7 @@
       "UNK-0009-MECH-NASDAQ-MICRO",
       "UNK-0018-NASDAQ",
       "UNK-0023-EXCH-OTHER",
-      "UNK-0023-LIT",
-      "UNK-0027",
+      "UNK-0027-AUCTION",
       "UNK-0033"
     ],
     "US_EQUITY_CROSS": [
@@ -67,7 +63,7 @@
     ]
   },
   "gate_eligible_candidates": [],
-  "generated_at": "2026-09-20T19:09:29Z",
+  "generated_at": "2026-09-20T19:20:01Z",
   "items": [
     {
       "affected_candidates": [
@@ -137,16 +133,13 @@
         "TUP-CME-NQ-H3-OFI-AGG",
         "TUP-CME-TSY-H2-QREPL-MIX",
         "TUP-CME-WTI-H4-FLOWVOL-AGG",
-        "TUP-NASDAQ-LARGETICK-H2-QIMB-AGG",
-        "TUP-NASDAQ-LARGETICK-H2H3-MICRO-AGG",
-        "TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG",
         "TUP-EUREX-FESX-H2H3-OFIQ-MIX"
       ],
       "affected_gates": "NONE",
       "blocker_id": "UNK-0023-LIT",
       "decision_prevented": "KG1 for candidates that would borrow the order-flow mechanism, and auditability of the mechanism-evidence row already in the ledger.",
       "kill_condition": "KG1 for candidates that would borrow the order-flow mechanism, and auditability of the mechanism-evidence row already in the ledger.",
-      "priority_reason": "Child scoped to the literature claims only: fee schedules, feed specifications and regulatory facts are handled by their own children after independent re-derivation.",
+      "priority_reason": "Child scoped to the literature claims only, and only for branches that would borrow the order-flow-imbalance claim: the Nasdaq queue-imbalance and micro-price rows no longer depend on it (their anchors are the verified Gould & Bonart and the venue-unresolved Stoikov record respectively), so they are not named here.",
       "priority_score": 24.0,
       "resolution_method": "PUBLIC_RESEARCH",
       "resolution_stage": "M1_BLOCKING",
@@ -154,6 +147,25 @@
       "success_condition": "An authoritative record for the order-flow-imbalance claim (publisher metadata plus an author or repository version) establishing its sample and venue.",
       "tier": 1,
       "title": "Independent verifiability of the microstructure literature claims that gates depend on (qu"
+    },
+    {
+      "affected_candidates": [
+        "TUP-CME-ES-H1-QDEP-PAS",
+        "TUP-CME-ES-H3-OFI-AGG",
+        "TUP-CME-NQ-H3-OFI-AGG"
+      ],
+      "affected_gates": "NONE",
+      "blocker_id": "UNK-0027-CME-INDEX",
+      "decision_prevented": "KG5 for the ES H1, ES H3 and NQ H3 rows; also determines which historical data and fee line items apply.",
+      "kill_condition": "KG5 for the ES H1, ES H3 and NQ H3 rows; also determines which historical data and fee line items apply.",
+      "priority_reason": "Scoped child: the CME index branches need a roll rule, which is a public market-structure question, not a per-venue research project.",
+      "priority_score": 24.0,
+      "resolution_method": "PUBLIC_RESEARCH",
+      "resolution_stage": "M1_BLOCKING",
+      "status": "OPEN",
+      "success_condition": "A contract/roll specification: which expiry, the roll rule (volume or open-interest crossing, day offset) and how a continuous series is built without lookahead.",
+      "tier": 1,
+      "title": "Exact contract specification for the CME equity-index branches."
     },
     {
       "affected_candidates": [
@@ -173,32 +185,6 @@
       "success_condition": "The ITCH message specification's timestamp section plus a sample day whose ordering and sequence fields validate against the project's contract.",
       "tier": 3,
       "title": "Timestamp semantics for Nasdaq order-level history and the live TotalView feed: event vers"
-    },
-    {
-      "affected_candidates": [
-        "TUP-CME-TSY-H2-QREPL-MIX",
-        "TUP-CME-WTI-H4-FLOWVOL-AGG",
-        "TUP-NASDAQ-LARGETICK-H2-QIMB-AGG",
-        "TUP-NASDAQ-LARGETICK-H2H3-MICRO-AGG",
-        "TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG",
-        "TUP-EUREX-FESX-H2H3-OFIQ-MIX",
-        "TUP-CBOE-USOPT-H5-SURFRV-MIX",
-        "TUP-DERIBIT-BTCOPT-H5-SURFRV-MIX",
-        "TUP-KALSHI-EVENT-H5-EVENTINF-AGG",
-        "TUP-POLYMARKET-EVENT-H5-EVENTINF-AGG"
-      ],
-      "affected_gates": "KG5_FALSIFIABILITY",
-      "blocker_id": "UNK-0027",
-      "decision_prevented": "M2 registration and any falsifier (KG5) for the affected rows.",
-      "kill_condition": "A branch cannot be specified exactly without performance-based selection, so it dies",
-      "priority_reason": "M1-BLOCKING retained: handoff \u00a711 makes exact-instrument definition an M1 requirement.",
-      "priority_score": 18.0,
-      "resolution_method": "PUBLIC_RESEARCH",
-      "resolution_stage": "M1_BLOCKING",
-      "status": "OPEN",
-      "success_condition": "Every finalist names an exact instrument or a leakage-free universe rule",
-      "tier": 1,
-      "title": "Exact instrument or preregistered universe rule per surviving branch"
     },
     {
       "affected_candidates": [
@@ -238,6 +224,24 @@
       "success_condition": "Primary pages for each remaining claim, captured with dates.",
       "tier": 1,
       "title": "Independent verifiability of the remaining exchange claims: Eurex T7 interfaces, the Cboe "
+    },
+    {
+      "affected_candidates": [
+        "TUP-CME-TSY-H2-QREPL-MIX",
+        "TUP-CME-WTI-H4-FLOWVOL-AGG"
+      ],
+      "affected_gates": "NONE",
+      "blocker_id": "UNK-0027-CME-OTHER",
+      "decision_prevented": "KG5 for those rows.",
+      "kill_condition": "KG5 for those rows.",
+      "priority_reason": "Scoped child; cheap and public.",
+      "priority_score": 16.0,
+      "resolution_method": "PUBLIC_RESEARCH",
+      "resolution_stage": "M1_BLOCKING",
+      "status": "OPEN",
+      "success_condition": "One exact contract per branch plus its roll rule.",
+      "tier": 1,
+      "title": "Exact contract specification for the CME Treasury and energy branches."
     },
     {
       "affected_candidates": [
@@ -519,6 +523,23 @@
       "success_condition": "T7 EOBI message specification timestamp section, plus an access path to a sample.",
       "tier": 1,
       "title": "Timestamp semantics for Eurex EOBI order-book messages."
+    },
+    {
+      "affected_candidates": [
+        "TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG"
+      ],
+      "affected_gates": "NONE",
+      "blocker_id": "UNK-0027-AUCTION",
+      "decision_prevented": "KG5 for the auction row.",
+      "kill_condition": "KG5 for the auction row.",
+      "priority_reason": "Scoped child; the auction universe can reuse the large-tick rule's structure once the mechanism gate resolves.",
+      "priority_score": 4.0,
+      "resolution_method": "PUBLIC_RESEARCH",
+      "resolution_stage": "M1_BLOCKING",
+      "status": "OPEN",
+      "success_condition": "A universe rule for the auction branch plus the exact auction order type.",
+      "tier": 1,
+      "title": "Exact mechanism and contract for the Nasdaq closing-auction branch."
     },
     {
       "affected_candidates": [

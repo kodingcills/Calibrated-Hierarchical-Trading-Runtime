@@ -142,6 +142,20 @@ Open external requests: 14
 These M1 blockers are facts about the operator, so no search or quote can resolve them.
 Each is stated so it can be answered in one line.
 
+### UNK-0027-NASDAQ-MICRO - Exact universe rule for the Nasdaq large-tick micro-price branch.
+
+- question: Nothing is required until KG1 resolves; then the universe rule can be adopted or versioned for this candidate.
+- why it blocks M1: KG5 for the micro-price branch (currently gated behind KG1).
+- affected rows: 1
+- answer by writing the fact into `DECISIONS.md` and adding a patch row in `M1/work/patches/` so the state change is recorded
+
+### UNK-0027-OPTIONS-EVENT-FX - Exact instrument specification for the options, crypto-option, event-market and FX branche
+
+- question: Per branch: one exact instrument (underlying, expiry/tenor) or a preregistered universe rule, after access is established.
+- why it blocks M1: KG5 and KG2 for those rows.
+- affected rows: 6
+- answer by writing the fact into `DECISIONS.md` and adding a patch row in `M1/work/patches/` so the state change is recorded
+
 ### UNK-0034 - The operator's jurisdiction and client classification.
 
 - question: Three facts stated by the operator: (1) legal domicile/jurisdiction of the operating person or entity; (2) entity/person classification, including professional versus non-professional status where a venue distinguishes; (3) intended account/entity type per venue if materially relevant to eligibility.

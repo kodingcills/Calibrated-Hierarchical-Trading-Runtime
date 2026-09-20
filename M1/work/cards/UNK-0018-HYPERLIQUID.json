@@ -25,7 +25,7 @@
     "SRC-0214",
     "SRC-0216"
   ],
-  "last_updated": "2026-09-20T19:09:29Z",
+  "last_updated": "2026-09-20T19:20:01Z",
   "parent_issue_id": "UNK-0018",
   "priority_reason": "Scoped child: the archive is the venue's own and the remaining question is its field semantics, which public documentation or one sample answers.",
   "priority_score": null,

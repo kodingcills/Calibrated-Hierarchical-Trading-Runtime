@@ -1,0 +1,92 @@
+{
+  "blocker_ids": [
+    "UNK-0027-NASDAQ-LARGETICK"
+  ],
+  "candidate_ids": [
+    "TUP-NASDAQ-LARGETICK-H2-QIMB-AGG"
+  ],
+  "created_at": "2026-09-20T19:20:01Z",
+  "decision": "SUPPORTS",
+  "modified_claims": [
+    {
+      "claim": "The project's large-tick threshold is literature-prescribed.",
+      "reason": "The literature prescribes a price screen for sample selection, not a fraction-of-time-at-one-tick threshold. THETA=0.50 is recorded as a preregistered design parameter with its basis stated and a prohibition on tuning it against M2 outcomes.",
+      "status": "CORRECTED"
+    }
+  ],
+  "new_evidence": [
+    {
+      "candidate_ids": "TUP-NASDAQ-LARGETICK-H2-QIMB-AGG",
+      "candidate_link_reason": "Same venue, same instrument class and same mechanism as the linked candidate; the divergence in universe definition and horizon is recorded in the universe spec.",
+      "claim": "The verified preprint's large-tick sample was selected by relative tick size: the top five Nasdaq stocks by total 2014 dollar volume whose maximum trade price was below $50 (MSFT, INTC, MU, CSCO, ORCL) against a $0.01 tick, with mean quoted spreads of $0.012-$0.015 - roughly one tick. Its small-tick set used the top five names whose minimum trade price exceeded $100, where mean spreads were $0.195-$1.111. The prediction target is the direction of the next mid-price movement, and the authors restricted the sample to stocks for which Nasdaq is the primary trading venue.",
+      "contradicts_mechanism": "NO",
+      "decision_implication": "Anchors the project's universe rule in verified literature (tick-pinned spread plus liquidity rank, Nasdaq-primary venue) while making each divergence explicit.",
+      "epistemic_class": "SUPPORTED_FINDING",
+      "evidence_id": "EVD-0066",
+      "evidence_origin": "EXTERNAL_VERIFIED",
+      "gross_or_net": "GROSS / predictive only",
+      "limitations": "The paper states a price screen and a dollar-volume rank; it does not state a fraction-of-time-at-one-tick criterion, so the project's THETA parameter cannot be sourced from it and is recorded as a preregistered design parameter. 2014 prices are not 2026 prices, so the $50 screen is not used as a selector. The horizon is a move, not an elapsed time.",
+      "mechanism_id": "MECH-QIMB",
+      "methodology": "Direct reading of the sample-construction section and summary-statistics table of the verified preprint",
+      "observed_horizon": "one mid-price movement (tick-scale)",
+      "observed_instrument_or_universe": "top-5 Nasdaq by 2014 dollar volume with maximum trade price below $50 (large-tick set)",
+      "observed_market": "US equities",
+      "observed_period": "calendar year 2014",
+      "observed_venue": "VEN-NASDAQ-CONT",
+      "sample": "10 Nasdaq-listed stocks, calendar 2014",
+      "source_id": "SRC-0241",
+      "supports_or_weakens": "SUPPORTS",
+      "temporal_scope": "2014 sample; full text read 2026-09-20",
+      "transfer_status": "CLOSE_TRANSFER",
+      "venue_id": "VEN-NASDAQ-CONT",
+      "verification_status": "VERIFIED_PRIMARY_FULL_TEXT"
+    }
+  ],
+  "new_sources": [
+    {
+      "access_date": "2026-09-20",
+      "authors_or_org": "Martin D. Gould; Julius Bonart",
+      "claim_scope": "Sample construction, large-tick characterisation, prediction target and limitations of the verified preprint, read from the full text.",
+      "date_basis": "arXiv submission 2015-12-11; full text retrieved and parsed 2026-09-20",
+      "doi": null,
+      "gross_or_net": "GROSS / predictive only",
+      "independent_replication": null,
+      "limitations": "Single venue (Nasdaq, and the authors require Nasdaq to be the primary trading venue); 2014 sample; LOBSTER data captures only Nasdaq order flow; predictive and gross with no costs, fills or P&L; the horizon is expressed as the next mid-price move rather than elapsed time.",
+      "local_path": null,
+      "market": "US equities",
+      "methodology": "Logistic and local-logistic regression of next-mid-price-move direction on best-quote queue imbalance, with ROC/AUC and mean-square residual out-of-sample assessment against a constant-1/2 null",
+      "primary_or_secondary": "primary_official",
+      "publication_date": "2015-12-11",
+      "raw_citation_token": "code:P-0005",
+      "sample_period": "calendar year 2014, 252 trading days, 10:00-15:30 intraday window",
+      "sample_size": "10 Nasdaq-listed stocks (5 large-tick, 5 small-tick); 25,200 subsampled observations per stock; 80/20 in-sample/out-of-sample split",
+      "sha256": null,
+      "source_id": "SRC-0241",
+      "source_type": "academic_paper",
+      "status": "VERIFIED",
+      "title": "Queue Imbalance as a One-Tick-Ahead Price Predictor in a Limit Order Book (author full text, arXiv PDF)",
+      "url": "https://arxiv.org/pdf/1512.03492",
+      "venue": "Nasdaq"
+    }
+  ],
+  "new_unknowns": [],
+  "patch_id": "P-0005",
+  "proposed_assumption_updates": [],
+  "proposed_candidate_updates": [],
+  "proposed_dead_end_updates": [],
+  "proposed_gate_changes": [],
+  "proposed_issue_updates": [
+    {
+      "from_status": "OPEN",
+      "issue_id": "UNK-0027-NASDAQ-LARGETICK",
+      "resolution_note": "Universe rule NASDAQ-LARGETICK-QIMB-UNIV-v1 is specified, frozen and approved: deterministic structural large-tick definition, explicit eligibility rules with reason classes, monthly causal selection with a 60-day lookback, point-in-time membership requirement, prohibited selection variables and anti-leakage controls. Specification artifact: M1/hypotheses/candidate_specs/NASDAQ_LARGETICK_QUEUE_IMBALANCE_UNIVERSE.json",
+      "to_status": "RESOLVED_SUPPORTS"
+    }
+  ],
+  "proposed_source_updates": [],
+  "proposed_venue_updates": [],
+  "provenance": "code:p0005_nasdaq_universe",
+  "reason": "The branch's specification gap is closed by a causal, leakage-controlled universe rule anchored in the verified literature, with every divergence from that literature stated and every unsourced threshold labelled as a preregistered design parameter.",
+  "status": "PROPOSED",
+  "verification_notes": "Contrary checks performed: the paper was read in full rather than relied on through its abstract, precisely to test whether a literature-sourced threshold existed for the tick-pinned criterion; it does not, so THETA was labelled a design parameter instead of being presented as evidence-backed. The 2014 $50 price screen was rejected as a selector for comparability reasons. The point-in-time membership requirement is recorded as a KG2 data dependency rather than silently substituting today's constituent list. No gate change is proposed: the effect on KG5 is computed from the approved spec."
+}

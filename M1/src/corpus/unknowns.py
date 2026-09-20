@@ -421,7 +421,7 @@ d("UNK-0026",
   can_M2_measure="YES", requires_m2_measurement="YES",
   evidence_ids="EVD-0023|EVD-0024|EVD-0025|EVD-0026")
 
-d("UNK-0027",
+_agg("UNK-0027",
   claim_needed="Exact instrument/contract/symbol specification for tuples that currently name a "
                "family rather than a tradable instrument (Treasury contract, WTI month, stock "
                "symbol, option class/expiry, event contract, FX pair/venue).",

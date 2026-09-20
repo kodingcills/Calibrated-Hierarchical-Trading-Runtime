@@ -22,7 +22,7 @@
   "kill_potential": "LOW",
   "known_evidence_ids": [],
   "known_source_ids": [],
-  "last_updated": "2026-09-20T19:09:29Z",
+  "last_updated": "2026-09-20T19:20:01Z",
   "parent_issue_id": "UNK-0009",
   "priority_reason": "Split from UNK-0009 and parked at M2: it cannot start before the M1 cost items close.",
   "priority_score": null,

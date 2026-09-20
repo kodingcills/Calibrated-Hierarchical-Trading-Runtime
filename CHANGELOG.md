@@ -1,5 +1,46 @@
 # CHANGELOG
 
+## 1.4.0 - 2026-09-20 (iteration 5: Nasdaq large-tick universe specification; closure focus)
+
+### Added - universe rule and KG5 closure for the Nasdaq branch
+
+- `M1/hypotheses/candidate_specs/NASDAQ_LARGETICK_QUEUE_IMBALANCE_UNIVERSE.{json,md}`: frozen
+  rule NASDAQ-LARGETICK-QIMB-UNIV-v1 for `TUP-NASDAQ-LARGETICK-H2-QIMB-AGG` - structural large-tick
+  definition (median spread equal to one tick; THETA=0.50 preregistered design parameter), eligibility
+  with reason classes, 60-day lookback with monthly causal selection, point-in-time membership
+  requirement, prohibited selection variables, anti-leakage controls, and a complete KG5/M2 test
+  contract (state, signal, action, 100/250/500/1000 ms horizon grid, seven nulls, predictive and
+  economic primary metrics, kill criteria, no invented numeric performance thresholds).
+- `KG5-R6`/`KG5-R7`: an approved universe rule satisfies KG5; an unapproved rule reference does not.
+  Approval requires the spec artifact to declare anti-leakage rules, a point-in-time membership rule
+  and an M2 contract.
+- Source SRC-0241 (author full text, read directly) and evidence EVD-0066 (sample construction,
+  large-tick characterisation, target, limitations of the verified preprint).
+- `UNK-0027` became an aggregate parent with six scoped children; `UNK-0027-NASDAQ-LARGETICK`
+  resolved; `UNK-0023-LIT` rescoped to the branches that actually borrow the order-flow claim.
+
+### Added - closure focus
+
+- `M1/src/closure_mode.py`: per-candidate closure mode plus
+  `autonomous_distance_to_eligibility` and `external_distance_to_eligibility`;
+  `M1/output/candidate_closure_metrics.csv`; `next_autonomous_branch` in the state summary and
+  closure status; `AWAITING_EXTERNAL_CLOSURE` candidates excluded from autonomous dispatch.
+- Consolidated candidate bundle
+  `M1/work/external_requests/TUP-NASDAQ-LARGETICK-H2-QIMB-AGG_CLOSURE_BUNDLE.md`, separating
+  publicly verified fee components from private/account-specific ones and naming the exact ask for
+  each of the three remaining questions.
+
+### State
+
+- `TUP-NASDAQ-LARGETICK-H2-QIMB-AGG`: 2/5 -> **3/5 gates PASS** (KG1, KG4, KG5); KG2 and KG3 remain
+  BLOCKED on external items; closure mode AWAITING_EXTERNAL_CLOSURE.
+- Gate totals: KG1 1 PASS, KG2 0, KG3 0, KG4 1, KG5 10 (was 9).
+- Issues 50 -> 56 (six UNK-0027 children); autonomous frontier 25 -> 29 dispatchable items;
+  closure modes: 19 DISPATCHABLE, 1 AWAITING_EXTERNAL_CLOSURE, 3 BLOCKED_NOT_CLOSE.
+- Next autonomous branch by the closure ordering: `TUP-COINBASE-BTCUSD-H3-MICROOFI-AGG` via
+  `UNK-0009-ECON-CRYPTO-SPOT` (one autonomous blocker, tier 1).
+- Validator PASS across 19 rule groups; 99 tests OK.
+
 ## 1.3.0 - 2026-09-20 (iteration 4: false-blocker and false-PASS corrections)
 
 ### Corrected - orchestration and state model

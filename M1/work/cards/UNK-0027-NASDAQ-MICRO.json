@@ -1,0 +1,36 @@
+{
+  "acceptable_evidence": "Any primary source that answers the claim needed",
+  "affected_candidates": [
+    "TUP-NASDAQ-LARGETICK-H2H3-MICRO-AGG"
+  ],
+  "affected_gates": "NONE",
+  "blocker_id": "UNK-0027-NASDAQ-MICRO",
+  "branch_impact": "ONE",
+  "contradictory_evidence_ids": [
+    "EVD-0005",
+    "EVD-0033",
+    "EVD-0034",
+    "EVD-0041",
+    "EVD-0042"
+  ],
+  "decision_prevented": "KG5 for the micro-price branch (currently gated behind KG1).",
+  "disallowed_evidence": "Assumed values, secondary summaries, social posts",
+  "estimated_effort": "SMALL",
+  "is_aggregate_parent": "NO",
+  "kill_condition": "KG5 for the micro-price branch (currently gated behind KG1).",
+  "kill_potential": "LOW",
+  "known_evidence_ids": [],
+  "known_source_ids": [],
+  "last_updated": "2026-09-20T19:20:01Z",
+  "parent_issue_id": "UNK-0027",
+  "priority_reason": "Deliberately not specified now: a universe rule for a branch that cannot pass KG1 would be busywork, and the deferral is recorded rather than hidden.",
+  "priority_score": null,
+  "required_answer": "Nothing is required until KG1 resolves; then the universe rule can be adopted or versioned for this candidate.",
+  "resolution_method": "DEFERRED",
+  "resolution_stage": "M1_BLOCKING",
+  "resurrection_condition": null,
+  "status": "OPEN",
+  "success_condition": "Nothing is required until KG1 resolves; then the universe rule can be adopted or versioned for this candidate.",
+  "tier": 1,
+  "title": "Exact universe rule for the Nasdaq large-tick micro-price branch."
+}

@@ -80,7 +80,8 @@ def frontier_payload(cards_ranked, computed_gates, candidates, gate_eligible, ge
 
 
 def closure_status(computed, candidates, cards, counts, migration_counts, generated_at,
-                   external_queue, spec_ids, iterations) -> dict:
+                   external_queue, spec_ids, iterations, closure_modes=None,
+                   awaiting_external=()) -> dict:
     """Machine-readable closure snapshot: everything the next session must not have to re-derive."""
     gate_vectors = {}
     for cid, cand in sorted(computed.items()):
@@ -102,6 +103,8 @@ def closure_status(computed, candidates, cards, counts, migration_counts, genera
         },
         "terminal_state": terminal_state(eligible, counts),
         "candidate_counts": counts,
+        "closure_modes": closure_modes or {},
+        "awaiting_external_closure": list(awaiting_external),
         "gate_eligible": eligible,
         "migration": migration_counts,
         "frontier": {

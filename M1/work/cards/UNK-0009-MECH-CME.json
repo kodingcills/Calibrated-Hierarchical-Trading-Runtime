@@ -25,7 +25,7 @@
     "SRC-0102",
     "SRC-0235"
   ],
-  "last_updated": "2026-09-20T19:09:29Z",
+  "last_updated": "2026-09-20T19:20:01Z",
   "parent_issue_id": "UNK-0009",
   "priority_reason": "Split from the conflated UNK-0009: this asks only whether the mechanism exists on CME, not whether it is profitable there.",
   "priority_score": null,

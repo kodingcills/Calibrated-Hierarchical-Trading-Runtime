@@ -292,3 +292,31 @@ horizon, a documented mechanism cadence, or an explicit structural timing fact. 
 A+B without C: BLOCKED. A+B+C: PASS. KG4 PASS therefore falls from 22 rows to 1, and that one row
 rests on the Gould & Bonart Nasdaq sample whose horizon is recorded as tick-scale with a
 CLOSE_TRANSFER.
+
+
+## D-0032 - A preregistered universe rule is a lawful substitute for an exact instrument
+
+An exact instrument is one lawful way to satisfy KG5; a deterministic, causal universe rule is
+another. `NASDAQ-LARGETICK-QIMB-UNIV-v1` defines the Nasdaq large-tick branch's unit of analysis
+structurally (median quoted spread equal to one tick, and at least half of valid observations at
+one tick), with eligibility rules carrying reason classes, monthly causal selection on a 60-day
+lookback, a point-in-time membership requirement, prohibited selection variables and anti-leakage
+controls. KG5 accepts it only when an approved spec artifact declares those controls
+(`KG5-R6`); an unapproved rule reference blocks (`KG5-R7`). Where the literature does not prescribe
+a numeric threshold, the value is labelled `PREREGISTERED_DESIGN_PARAMETER` with its basis stated and
+a prohibition on tuning it against M2 outcomes - the 2014 price screen is reported as a cross-check
+and never used as a selector.
+
+## D-0033 - Closure focus: external-only branches stop consuming autonomous effort
+
+Only public research is work the orchestrator can still perform. An `EXTERNAL_ACTION` item has been
+converted into a request packet (V18 enforces that), so from that moment it is a human action.
+Therefore: `autonomous_distance_to_eligibility` counts open M1-blocking public-research items;
+`external_distance_to_eligibility` counts awaiting packets, human-input items and blocking
+deferrals. A candidate with at least three gates PASS, no autonomous blocker and at least one
+external item enters `AWAITING_EXTERNAL_CLOSURE`: it leaves broad autonomous dispatch, keeps its
+place in the human queue, and gets a consolidated bundle
+(`M1/work/external_requests/<candidate>_CLOSURE_BUNDLE.md`). The next autonomous branch is selected
+by candidate distance (fewest autonomous blockers, then most gates passed, then most Tier-1
+blockers, then fewest external items), not by issue breadth. The two metrics schedule work; they are
+never used to rank strategy quality.

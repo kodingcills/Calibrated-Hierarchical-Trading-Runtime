@@ -28,7 +28,7 @@
     "SRC-0001",
     "SRC-0015"
   ],
-  "last_updated": "2026-09-20T19:09:29Z",
+  "last_updated": "2026-09-20T19:20:01Z",
   "parent_issue_id": null,
   "priority_reason": "MIGRATED from M1_BLOCKING to M2_MEASUREMENT: this is an empirical estimand, and requiring it inside M1 would have made the technology branch unfalsifiable rather than merely unfunded.",
   "priority_score": null,

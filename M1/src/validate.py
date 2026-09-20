@@ -47,7 +47,7 @@ GATE_RULE_IDS = {
     "KG2-R0", "KG2-R1", "KG2-R2", "KG2-R3", "KG2-R4", "KG2-R5", "KG2-R6",
     "KG3-R0", "KG3-R1", "KG3-R2", "KG3-R3", "KG3-R4", "KG3-R5", "KG3-R6", "KG3-R7", "KG3-R8",
     "KG4-R1", "KG4-R2", "KG4-R3", "KG4-R4", "KG4-R5",
-    "KG5-R1", "KG5-R2", "KG5-R3", "KG5-R4", "KG5-R5",
+    "KG5-R1", "KG5-R2", "KG5-R3", "KG5-R4", "KG5-R5", "KG5-R6", "KG5-R7",
 }
 
 M1 = SRC.parent

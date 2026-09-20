@@ -267,7 +267,7 @@ class ParentChildScope(unittest.TestCase):
     def test_parents_are_aggregates_and_never_block(self):
         rows = _issue_dicts()
         parents = {r["issue_id"] for r in rows if r["is_aggregate_parent"] == "YES"}
-        self.assertEqual(parents, {"UNK-0009", "UNK-0018", "UNK-0023"})
+        self.assertEqual(parents, {"UNK-0009", "UNK-0018", "UNK-0023", "UNK-0027"})
         mapping = coverage.blocking_map(rows, [c["candidate_id"] for c in _candidates()])
         for cid, issues in mapping.items():
             self.assertFalse(issues & parents, f"{cid} blocked by an aggregate parent")
@@ -381,6 +381,82 @@ class ProjectStateProse(unittest.TestCase):
     def test_shipped_project_state_has_no_stale_values(self):
         with contextlib.redirect_stdout(io.StringIO()):
             self.assertEqual(validate.main(), 0)
+
+
+class UniverseRuleAndClosure(unittest.TestCase):
+    """Iteration 5: a universe rule can carry KG5, and closed-externally branches stop dispatching."""
+
+    def _cand(self, **kw):
+        base = {"candidate_id": "TUP-X", "candidate_class": "TUPLE",
+                "instrument": "Large-tick U.S. listed stock (symbol UNSPECIFIED)",
+                "mechanism_id": "MECH-QIMB", "horizon_min_us": 100_000,
+                "universe_rule_id": None}
+        base.update(kw)
+        return base
+
+    def test_kg5_blocks_on_an_unapproved_universe_rule(self):
+        verdict = gate_engine.kg5_falsifiability(
+            self._cand(universe_rule_id="RULE-v0"), approved_universe_rules=set())
+        self.assertEqual(verdict.value, "BLOCKED")
+        self.assertEqual(verdict.rule, "KG5-R7")
+
+    def test_kg5_passes_on_an_approved_universe_rule(self):
+        verdict = gate_engine.kg5_falsifiability(
+            self._cand(universe_rule_id="RULE-v1"), approved_universe_rules={"RULE-v1"})
+        self.assertEqual(verdict.value, "PASS")
+        self.assertEqual(verdict.rule, "KG5-R6")
+
+    def test_only_specs_with_anti_leakage_and_contract_are_approved(self):
+        import materialize as M
+        rules, specs = M.load_universe_specs()
+        self.assertTrue(rules, "the Nasdaq universe rule should be approved")
+        for spec in specs:
+            if spec["rule_id"] in rules:
+                self.assertEqual(spec["status"], "APPROVED")
+                self.assertTrue(spec["has_anti_leakage"])
+                self.assertTrue(spec["has_m2_contract"])
+                self.assertTrue(spec["has_pit_rule"])
+
+    def test_specification_declares_no_performance_based_selection(self):
+        import json as _json
+        spec = _json.loads((REPO / "M1/hypotheses/candidate_specs/"
+                            "NASDAQ_LARGETICK_QUEUE_IMBALANCE_UNIVERSE.json").read_text())
+        self.assertIn("future_pnl", spec["prohibited_selection_variables"])
+        self.assertTrue(spec["anti_leakage_rules"])
+        self.assertEqual(spec["large_tick_rule"]["theta_status"],
+                         "PREREGISTERED_DESIGN_PARAMETER")
+        self.assertIsNone(spec["expected_universe_size_if_derivable"])
+
+    def test_awaiting_external_candidates_are_not_dispatched(self):
+        rows = {r["candidate_id"]: r for r in
+                _csv_rows("M1/output/candidate_closure_metrics.csv")}
+        focus = rows["TUP-NASDAQ-LARGETICK-H2-QIMB-AGG"]
+        self.assertEqual(focus["closure_mode"], "AWAITING_EXTERNAL_CLOSURE")
+        self.assertEqual(focus["autonomous_distance_to_eligibility"], "0")
+        self.assertGreater(int(focus["external_distance_to_eligibility"]), 0)
+        summary = load("M1/output/M1_STATE_SUMMARY.json")
+        self.assertIn("TUP-NASDAQ-LARGETICK-H2-QIMB-AGG",
+                      summary["counts"]["awaiting_external_closure"])
+        status = load("M1/output/M1_CLOSURE_STATUS.json")
+        self.assertEqual(status["milestones"]["M1-B"], "NOT_AUTHORIZED")
+
+    def test_next_branch_excludes_externally_closed_candidates(self):
+        rows = _csv_rows("M1/output/candidate_closure_metrics.csv")
+        dispatchable = [r["candidate_id"] for r in rows
+                        if r["closure_mode"] == "DISPATCHABLE"]
+        summary = load("M1/output/M1_STATE_SUMMARY.json")
+        self.assertIn(summary["counts"]["next_autonomous_branch"], dispatchable)
+        self.assertNotIn("TUP-NASDAQ-LARGETICK-H2-QIMB-AGG", dispatchable)
+
+    def test_closure_bundle_is_generated_and_separates_verified_from_private(self):
+        path = (REPO / "M1/work/external_requests/"
+                "TUP-NASDAQ-LARGETICK-H2-QIMB-AGG_CLOSURE_BUNDLE.md")
+        self.assertTrue(path.exists())
+        text = path.read_text(encoding="utf-8")
+        for section in ("## A. Historical data", "## B. Timestamp semantics",
+                        "## C. Execution economics", "Publicly verified components",
+                        "Private or account-specific components"):
+            self.assertIn(section, text)
 
 
 class GateSemantics(unittest.TestCase):

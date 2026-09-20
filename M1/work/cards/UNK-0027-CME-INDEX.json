@@ -1,0 +1,35 @@
+{
+  "acceptable_evidence": "Any primary source that answers the claim needed",
+  "affected_candidates": [
+    "TUP-CME-ES-H1-QDEP-PAS",
+    "TUP-CME-ES-H3-OFI-AGG",
+    "TUP-CME-NQ-H3-OFI-AGG"
+  ],
+  "affected_gates": "NONE",
+  "blocker_id": "UNK-0027-CME-INDEX",
+  "branch_impact": "MEDIUM",
+  "contradictory_evidence_ids": [
+    "EVD-0003",
+    "EVD-0042"
+  ],
+  "decision_prevented": "KG5 for the ES H1, ES H3 and NQ H3 rows; also determines which historical data and fee line items apply.",
+  "disallowed_evidence": "Assumed values, secondary summaries, social posts",
+  "estimated_effort": "SMALL",
+  "is_aggregate_parent": "NO",
+  "kill_condition": "KG5 for the ES H1, ES H3 and NQ H3 rows; also determines which historical data and fee line items apply.",
+  "kill_potential": "MEDIUM",
+  "known_evidence_ids": [],
+  "known_source_ids": [],
+  "last_updated": "2026-09-20T19:20:01Z",
+  "parent_issue_id": "UNK-0027",
+  "priority_reason": "Scoped child: the CME index branches need a roll rule, which is a public market-structure question, not a per-venue research project.",
+  "priority_score": null,
+  "required_answer": "A contract/roll specification: which expiry, the roll rule (volume or open-interest crossing, day offset) and how a continuous series is built without lookahead.",
+  "resolution_method": "PUBLIC_RESEARCH",
+  "resolution_stage": "M1_BLOCKING",
+  "resurrection_condition": null,
+  "status": "OPEN",
+  "success_condition": "A contract/roll specification: which expiry, the roll rule (volume or open-interest crossing, day offset) and how a continuous series is built without lookahead.",
+  "tier": 1,
+  "title": "Exact contract specification for the CME equity-index branches."
+}

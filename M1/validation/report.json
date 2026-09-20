@@ -4,7 +4,7 @@
       "name": "provenance references resolve",
       "note": "",
       "result": "PASS",
-      "rows_checked": 1244,
+      "rows_checked": 1251,
       "rule": "V1"
     },
     {
@@ -25,7 +25,7 @@
       "name": "referential integrity",
       "note": "",
       "result": "PASS",
-      "rows_checked": 888,
+      "rows_checked": 892,
       "rule": "V4"
     },
     {
@@ -39,14 +39,14 @@
       "name": "stable ids unique",
       "note": "",
       "result": "PASS",
-      "rows_checked": 429,
+      "rows_checked": 437,
       "rule": "V6"
     },
     {
       "name": "time-sensitive sources dated",
       "note": "",
       "result": "PASS",
-      "rows_checked": 103,
+      "rows_checked": 104,
       "rule": "V7"
     },
     {
@@ -88,21 +88,21 @@
       "name": "two-dimension issue model complete",
       "note": "",
       "result": "PASS",
-      "rows_checked": 50,
+      "rows_checked": 56,
       "rule": "V14"
     },
     {
       "name": "frontier restricted to dispatchable M1 blockers",
-      "note": "3 item(s) awaiting an external answer or spec ['UNK-0001', 'UNK-0004', 'UNK-0022']; 1 human/deferred item(s) excluded from dispatch ['UNK-0034']",
+      "note": "3 item(s) awaiting an external answer or spec ['UNK-0001', 'UNK-0004', 'UNK-0022']; 4 human/deferred item(s) excluded from dispatch ['UNK-0027-NASDAQ-LARGETICK', 'UNK-0027-NASDAQ-MICRO', 'UNK-0027-OPTIONS-EVENT-FX', 'UNK-0034']",
       "result": "PASS",
-      "rows_checked": 56,
+      "rows_checked": 63,
       "rule": "V15"
     },
     {
       "name": "frontier restricted to open M1 blockers",
       "note": "",
       "result": "PASS",
-      "rows_checked": 56,
+      "rows_checked": 63,
       "rule": "V15"
     },
     {
@@ -116,14 +116,14 @@
       "name": "patch integrity",
       "note": "",
       "result": "PASS",
-      "rows_checked": 4,
+      "rows_checked": 5,
       "rule": "V17"
     },
     {
       "name": "work artefacts valid and complete",
       "note": "",
       "result": "PASS",
-      "rows_checked": 90,
+      "rows_checked": 96,
       "rule": "V18"
     },
     {
@@ -151,7 +151,7 @@
       "name": "provenance references resolve",
       "note": "",
       "result": "PASS",
-      "rows_checked": 1244,
+      "rows_checked": 1251,
       "rule": "V1"
     },
     {
@@ -172,7 +172,7 @@
       "name": "referential integrity",
       "note": "",
       "result": "PASS",
-      "rows_checked": 888,
+      "rows_checked": 892,
       "rule": "V4"
     },
     {
@@ -186,14 +186,14 @@
       "name": "stable ids unique",
       "note": "",
       "result": "PASS",
-      "rows_checked": 429,
+      "rows_checked": 437,
       "rule": "V6"
     },
     {
       "name": "time-sensitive sources dated",
       "note": "",
       "result": "PASS",
-      "rows_checked": 103,
+      "rows_checked": 104,
       "rule": "V7"
     },
     {
@@ -235,21 +235,21 @@
       "name": "two-dimension issue model complete",
       "note": "",
       "result": "PASS",
-      "rows_checked": 50,
+      "rows_checked": 56,
       "rule": "V14"
     },
     {
       "name": "frontier restricted to dispatchable M1 blockers",
-      "note": "3 item(s) awaiting an external answer or spec ['UNK-0001', 'UNK-0004', 'UNK-0022']; 1 human/deferred item(s) excluded from dispatch ['UNK-0034']",
+      "note": "3 item(s) awaiting an external answer or spec ['UNK-0001', 'UNK-0004', 'UNK-0022']; 4 human/deferred item(s) excluded from dispatch ['UNK-0027-NASDAQ-LARGETICK', 'UNK-0027-NASDAQ-MICRO', 'UNK-0027-OPTIONS-EVENT-FX', 'UNK-0034']",
       "result": "PASS",
-      "rows_checked": 56,
+      "rows_checked": 63,
       "rule": "V15"
     },
     {
       "name": "frontier restricted to open M1 blockers",
       "note": "",
       "result": "PASS",
-      "rows_checked": 56,
+      "rows_checked": 63,
       "rule": "V15"
     },
     {
@@ -263,14 +263,14 @@
       "name": "patch integrity",
       "note": "",
       "result": "PASS",
-      "rows_checked": 4,
+      "rows_checked": 5,
       "rule": "V17"
     },
     {
       "name": "work artefacts valid and complete",
       "note": "",
       "result": "PASS",
-      "rows_checked": 90,
+      "rows_checked": 96,
       "rule": "V18"
     },
     {
@@ -284,7 +284,7 @@
       "name": "provenance references resolve",
       "note": "",
       "result": "PASS",
-      "rows_checked": 1244,
+      "rows_checked": 1251,
       "rule": "V1"
     },
     {
@@ -305,7 +305,7 @@
       "name": "referential integrity",
       "note": "",
       "result": "PASS",
-      "rows_checked": 888,
+      "rows_checked": 892,
       "rule": "V4"
     },
     {
@@ -319,14 +319,14 @@
       "name": "stable ids unique",
       "note": "",
       "result": "PASS",
-      "rows_checked": 429,
+      "rows_checked": 437,
       "rule": "V6"
     },
     {
       "name": "time-sensitive sources dated",
       "note": "",
       "result": "PASS",
-      "rows_checked": 103,
+      "rows_checked": 104,
       "rule": "V7"
     },
     {
@@ -368,21 +368,21 @@
       "name": "two-dimension issue model complete",
       "note": "",
       "result": "PASS",
-      "rows_checked": 50,
+      "rows_checked": 56,
       "rule": "V14"
     },
     {
       "name": "frontier restricted to dispatchable M1 blockers",
-      "note": "3 item(s) awaiting an external answer or spec ['UNK-0001', 'UNK-0004', 'UNK-0022']; 1 human/deferred item(s) excluded from dispatch ['UNK-0034']",
+      "note": "3 item(s) awaiting an external answer or spec ['UNK-0001', 'UNK-0004', 'UNK-0022']; 4 human/deferred item(s) excluded from dispatch ['UNK-0027-NASDAQ-LARGETICK', 'UNK-0027-NASDAQ-MICRO', 'UNK-0027-OPTIONS-EVENT-FX', 'UNK-0034']",
       "result": "PASS",
-      "rows_checked": 56,
+      "rows_checked": 63,
       "rule": "V15"
     },
     {
       "name": "frontier restricted to open M1 blockers",
       "note": "",
       "result": "PASS",
-      "rows_checked": 56,
+      "rows_checked": 63,
       "rule": "V15"
     },
     {
@@ -396,14 +396,14 @@
       "name": "patch integrity",
       "note": "",
       "result": "PASS",
-      "rows_checked": 4,
+      "rows_checked": 5,
       "rule": "V17"
     },
     {
       "name": "work artefacts valid and complete",
       "note": "",
       "result": "PASS",
-      "rows_checked": 90,
+      "rows_checked": 96,
       "rule": "V18"
     },
     {
@@ -415,7 +415,7 @@
     }
   ],
   "context": {
-    "blocking_issues": 30,
+    "blocking_issues": 35,
     "candidate_rows": 28,
     "m1b_eligible": [],
     "status": {
@@ -428,7 +428,7 @@
   },
   "details": [],
   "failures": 0,
-  "generated_at": "2026-09-20T19:09:29Z",
+  "generated_at": "2026-09-20T19:20:02Z",
   "overall": "PASS",
   "validator": "M1/src/validate.py"
 }

@@ -68,3 +68,19 @@ ISSUES RECLASSIFIED: UNK-0034 -> HUMAN_INPUT (surfaced, never dispatched); UNK-0
 NEW ISSUES: 15 scoped children; UNK-0009-ECON-CRYPTO-SPOT promoted to M1 as the missing input a crypto kill would need
 VALIDATION: PASS 0 failures / 19 rule groups; 92 tests OK; V19 reproduces the reported stale-value failure (51 sources / 29 evidence records vs current)
 NEXT FRONTIER ITEM: candidate-focused closure of the closest branch (Nasdaq queue-imbalance, 2/5 gates PASS): UNK-0027 is its only autonomous blocker; UNK-0004, UNK-0018-NASDAQ, UNK-0005 and UNK-0033 are external
+
+ITERATION: 5
+UTC: 2026-09-20T19:20:01Z
+BLOCKER CLUSTER: CANDIDATE-FOCUSED CLOSURE: TUP-NASDAQ-LARGETICK-H2-QIMB-AGG universe specification (UNK-0027-NASDAQ-LARGETICK)
+WHY SELECTED: Chosen by candidate distance to closure, not by raw issue leverage: this branch had 2 of 5 gates PASS and one autonomous blocker left (exact instrument or a leakage-free universe rule).
+RESOLUTION METHOD: PUBLIC_RESEARCH (full text of the verified preprint read directly) + specification artifact
+SOURCES ADDED: SRC-0241 (Gould & Bonart author full text, arXiv PDF, retrieved and parsed)
+DECISION: SUPPORTS (patch P-0005 applied); universe rule NASDAQ-LARGETICK-QIMB-UNIV-v1 APPROVED and frozen before any M2 outcome inspection
+GATES BEFORE: QIMB KG1 PASS / KG2 BLOCKED / KG3 BLOCKED / KG4 PASS / KG5 BLOCKED
+GATES AFTER: QIMB KG1 PASS / KG2 BLOCKED / KG3 BLOCKED / KG4 PASS / KG5 PASS (KG5-R6, approved universe rule)
+CANDIDATES KILLED: None
+CANDIDATES PROMOTED: None
+ISSUES RECLASSIFIED: UNK-0027 became an aggregate parent with six scoped children; UNK-0027-NASDAQ-LARGETICK RESOLVED_SUPPORTS; UNK-0023-LIT rescoped to the branches that actually borrow the order-flow claim
+NEW ISSUES: six scoped children under UNK-0027 (Nasdaq large-tick resolved; Nasdaq micro-price, CME index roll, CME other contracts, auction, options/event/FX)
+VALIDATION: PASS 0 failures / 19 rule groups; 99 tests OK
+NEXT FRONTIER ITEM: TUP-COINBASE-BTCUSD-H3-MICROOFI-AGG via UNK-0009-ECON-CRYPTO-SPOT (one autonomous blocker, tier 1 public research) - selected by the closure-metric ordering, not by global leverage

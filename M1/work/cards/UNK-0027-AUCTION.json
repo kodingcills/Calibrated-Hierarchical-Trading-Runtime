@@ -1,0 +1,37 @@
+{
+  "acceptable_evidence": "Any primary source that answers the claim needed",
+  "affected_candidates": [
+    "TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG"
+  ],
+  "affected_gates": "NONE",
+  "blocker_id": "UNK-0027-AUCTION",
+  "branch_impact": "ONE",
+  "contradictory_evidence_ids": [
+    "EVD-0005",
+    "EVD-0022",
+    "EVD-0033",
+    "EVD-0034",
+    "EVD-0041",
+    "EVD-0042"
+  ],
+  "decision_prevented": "KG5 for the auction row.",
+  "disallowed_evidence": "Assumed values, secondary summaries, social posts",
+  "estimated_effort": "MEDIUM",
+  "is_aggregate_parent": "NO",
+  "kill_condition": "KG5 for the auction row.",
+  "kill_potential": "MEDIUM",
+  "known_evidence_ids": [],
+  "known_source_ids": [],
+  "last_updated": "2026-09-20T19:20:01Z",
+  "parent_issue_id": "UNK-0027",
+  "priority_reason": "Scoped child; the auction universe can reuse the large-tick rule's structure once the mechanism gate resolves.",
+  "priority_score": null,
+  "required_answer": "A universe rule for the auction branch plus the exact auction order type.",
+  "resolution_method": "PUBLIC_RESEARCH",
+  "resolution_stage": "M1_BLOCKING",
+  "resurrection_condition": null,
+  "status": "OPEN",
+  "success_condition": "A universe rule for the auction branch plus the exact auction order type.",
+  "tier": 1,
+  "title": "Exact mechanism and contract for the Nasdaq closing-auction branch."
+}

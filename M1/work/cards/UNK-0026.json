@@ -21,7 +21,7 @@
     "SRC-0001",
     "SRC-0020"
   ],
-  "last_updated": "2026-09-20T19:09:29Z",
+  "last_updated": "2026-09-20T19:20:01Z",
   "parent_issue_id": null,
   "priority_reason": "MIGRATED to M2_MEASUREMENT; tracked because SUNK premises must not leak into M2 designs.",
   "priority_score": null,

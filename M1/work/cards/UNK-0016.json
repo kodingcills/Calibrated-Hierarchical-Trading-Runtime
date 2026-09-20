@@ -18,7 +18,7 @@
     "SRC-0016",
     "SRC-0018"
   ],
-  "last_updated": "2026-09-20T19:09:29Z",
+  "last_updated": "2026-09-20T19:20:01Z",
   "parent_issue_id": null,
   "priority_reason": "MIGRATED from M1_BLOCKING. The M1-relevant part is a *physical* check (feed cadence versus hypothesis horizon), which is computed in KG2/KG4 from verified venue facts. The latency of a pipeline that does not exist yet cannot be an M1 gate.",
   "priority_score": null,

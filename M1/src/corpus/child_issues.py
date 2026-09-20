@@ -213,9 +213,11 @@ CHILD_ISSUES = [
          "KG1 for candidates that would borrow the order-flow mechanism, and auditability of the "
          "mechanism-evidence row already in the ledger.",
          "PUBLIC_RESEARCH", "M1_BLOCKING", 1, "MEDIUM", "MEDIUM", "SMALL",
-         "Child scoped to the literature claims only: fee schedules, feed specifications and "
-         "regulatory facts are handled by their own children after independent re-derivation.",
-         _CME_ROWS + "|" + _NASDAQ_ROWS + "|TUP-EUREX-FESX-H2H3-OFIQ-MIX",
+         "Child scoped to the literature claims only, and only for branches that would borrow the "
+         "order-flow-imbalance claim: the Nasdaq queue-imbalance and micro-price rows no longer "
+         "depend on it (their anchors are the verified Gould & Bonart and the venue-unresolved "
+         "Stoikov record respectively), so they are not named here.",
+         _CME_ROWS + "|TUP-EUREX-FESX-H2H3-OFIQ-MIX",
          source_a="SRC-0102"),
     _row("UNK-0023-CME-DOCS", "UNK-0023",
          "Independent verifiability of the CME technical claims used by CME gates (MDP capability, "
@@ -243,6 +245,83 @@ CHILD_ISSUES = [
          "TUP-EUREX-FESX-H2H3-OFIQ-MIX|TUP-CBOE-USOPT-H5-SURFRV-MIX|"
          "TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG",
          severity="IMPORTANT", source_a="SRC-0110"),
+    # ------------------------------------------------- UNK-0027 exact instrument / universe rule
+    _row("UNK-0027-NASDAQ-LARGETICK", "UNK-0027",
+         "Exact universe rule for the Nasdaq large-tick queue-imbalance branch.",
+         "Rule NASDAQ-LARGETICK-QIMB-UNIV-v1 defines large-tick structurally (median quoted spread "
+         "equal to one tick and at least half of valid observations at one tick), eligibility "
+         "(Nasdaq primary venue, common stock, price >= $1, top-decile liquidity rank, 120-day "
+         "history, 90% lookback coverage), monthly causal selection with a 60-day lookback, "
+         "point-in-time membership, and explicit anti-leakage rules.",
+         "Nothing further for M1. The rule is frozen at M1/hypotheses/candidate_specs/ and its "
+         "remaining data dependency (point-in-time membership) is a KG2 requirement, not a "
+         "specification gap.",
+         "KG5 falsifiability for the Nasdaq queue-imbalance branch.",
+         "HUMAN_INPUT", "M1_BLOCKING", 1, "ONE", "LOW", "SMALL",
+         "Resolved by this iteration's universe specification; the rule is machine-readable and "
+         "approval is recorded before any M2 outcome inspection.",
+         "TUP-NASDAQ-LARGETICK-H2-QIMB-AGG", venue="VEN-NASDAQ-CONT",
+         severity="NON_BLOCKING", source_a="SRC-0241"),
+    _row("UNK-0027-NASDAQ-MICRO", "UNK-0027",
+         "Exact universe rule for the Nasdaq large-tick micro-price branch.",
+         "The queue-imbalance rule (NASDAQ-LARGETICK-QIMB-UNIV-v1) defines the same universe shape "
+         "and could be extended, but this branch's KG1 is BLOCKED because the micro-price study's "
+         "venue scope is not established, so specifying a universe would not move it.",
+         "Nothing is required until KG1 resolves; then the universe rule can be adopted or versioned "
+         "for this candidate.",
+         "KG5 for the micro-price branch (currently gated behind KG1).",
+         "DEFERRED", "M1_BLOCKING", 1, "ONE", "LOW", "SMALL",
+         "Deliberately not specified now: a universe rule for a branch that cannot pass KG1 would be "
+         "busywork, and the deferral is recorded rather than hidden.",
+         "TUP-NASDAQ-LARGETICK-H2H3-MICRO-AGG", venue="VEN-NASDAQ-CONT",
+         severity="NON_BLOCKING"),
+    _row("UNK-0027-CME-INDEX", "UNK-0027",
+         "Exact contract specification for the CME equity-index branches.",
+         "The rows name ES and NQ families; both are liquid and standard, but no contract month, "
+         "roll rule or continuous-series construction has been fixed.",
+         "A contract/roll specification: which expiry, the roll rule (volume or open-interest "
+         "crossing, day offset) and how a continuous series is built without lookahead.",
+         "KG5 for the ES H1, ES H3 and NQ H3 rows; also determines which historical data and fee "
+         "line items apply.",
+         "PUBLIC_RESEARCH", "M1_BLOCKING", 1, "MEDIUM", "MEDIUM", "SMALL",
+         "Scoped child: the CME index branches need a roll rule, which is a public market-structure "
+         "question, not a per-venue research project.",
+         "TUP-CME-ES-H1-QDEP-PAS|TUP-CME-ES-H3-OFI-AGG|TUP-CME-NQ-H3-OFI-AGG", venue="VEN-CME-ES"),
+    _row("UNK-0027-CME-OTHER", "UNK-0027",
+         "Exact contract specification for the CME Treasury and energy branches.",
+         "Both rows name a contract family (Treasury future; WTI month) without fixing an expiry.",
+         "One exact contract per branch plus its roll rule.",
+         "KG5 for those rows.",
+         "PUBLIC_RESEARCH", "M1_BLOCKING", 1, "SMALL", "MEDIUM", "SMALL",
+         "Scoped child; cheap and public.",
+         "TUP-CME-TSY-H2-QREPL-MIX|TUP-CME-WTI-H4-FLOWVOL-AGG", severity="IMPORTANT"),
+    _row("UNK-0027-AUCTION", "UNK-0027",
+         "Exact mechanism and contract for the Nasdaq closing-auction branch.",
+         "The row names closing-auction imbalance on Nasdaq-listed stocks but fixes neither the "
+         "symbol set nor the auction order type it would place.",
+         "A universe rule for the auction branch plus the exact auction order type.",
+         "KG5 for the auction row.",
+         "PUBLIC_RESEARCH", "M1_BLOCKING", 1, "ONE", "MEDIUM", "MEDIUM",
+         "Scoped child; the auction universe can reuse the large-tick rule's structure once the "
+         "mechanism gate resolves.",
+         "TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG", venue="VEN-NASDAQ-AUCTION", severity="IMPORTANT"),
+    _row("UNK-0027-OPTIONS-EVENT-FX", "UNK-0027",
+         "Exact instrument specification for the options, crypto-option, event-market and FX "
+         "branches.",
+         "These rows name instrument families (US option, BTC option, event contract, FX pair) with "
+         "no underlying, expiry, contract or venue pairing fixed, and several also lack venue "
+         "access.",
+         "Per branch: one exact instrument (underlying, expiry/tenor) or a preregistered universe "
+         "rule, after access is established.",
+         "KG5 and KG2 for those rows.",
+         "DEFERRED", "M1_BLOCKING", 1, "SMALL", "LOW", "MEDIUM",
+         "Deferred as a group: each of these branches is currently blocked on access or mechanism, "
+         "so instrument specification would not move them yet. Recorded so the group is visible "
+         "rather than silently unscheduled.",
+         "TUP-CBOE-USOPT-H5-SURFRV-MIX|TUP-DERIBIT-BTCOPT-H5-SURFRV-MIX|"
+         "TUP-KALSHI-EVENT-H5-EVENTINF-AGG|TUP-POLYMARKET-EVENT-H5-EVENTINF-AGG|"
+         "TUP-FX-ECN-H2H3-LEADLAG-AGG|TUP-FX-RETAILBROKER-H3H4-FEEDLAG-AGG",
+         severity="NON_BLOCKING"),
     _row("UNK-0023-PAIRED-TOKENS", "UNK-0023",
          "Whether the paired citation tokens (turn10search28, turn16search20, turn20view3) refer "
          "to distinct sources or are duplicates of an already re-derived source.",

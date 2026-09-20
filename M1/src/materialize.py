@@ -31,6 +31,7 @@ for _p in (str(SRC), str(ORCH)):
         sys.path.insert(0, _p)
 
 import candidate_gates  # noqa: E402
+import closure_mode  # noqa: E402
 import coverage  # noqa: E402
 import envelopes  # noqa: E402
 import gate_engine  # noqa: E402
@@ -64,10 +65,37 @@ def horizon_bounds(band):
     return None, None
 
 
+SPEC_DIR = M1 / "hypotheses" / "candidate_specs"
+
+
+def load_universe_specs():
+    """Approved universe-rule specs, read from the frozen artifacts.
+
+    A rule only counts if the artifact is APPROVED and declares the anti-leakage controls; an
+    approval without those controls would turn a specification into a license to overfit.
+    """
+    rules, specs = {}, []
+    for path in sorted(SPEC_DIR.glob("*.json")):
+        data = json.loads(path.read_text(encoding="utf-8"))
+        spec = {"file": str(path.relative_to(REPO)),
+                "candidate_id": data.get("candidate_id"),
+                "rule_id": data.get("universe_rule_id"),
+                "status": data.get("effective_status"),
+                "has_anti_leakage": bool(data.get("anti_leakage_rules")),
+                "has_m2_contract": bool(data.get("m2_test_contract")),
+                "has_pit_rule": bool(data.get("point_in_time_membership_rule"))}
+        specs.append(spec)
+        if (spec["status"] == "APPROVED" and spec["has_anti_leakage"]
+                and spec["has_m2_contract"] and spec["has_pit_rule"]):
+            rules[spec["rule_id"]] = spec["candidate_id"]
+    return rules, specs
+
+
 def candidate_rows():
     rows = []
     for row in tuples.ROWS:
         cand = dict(row)
+        cand.setdefault("universe_rule_id", None)
         lo, hi = horizon_bounds(cand["horizon_band"])
         cand["horizon_min_us"] = lo
         cand["horizon_max_us"] = hi
@@ -509,6 +537,10 @@ def main():
     attach_source_hashes()
 
     base_candidates = candidate_rows()
+    approved_rules, universe_specs = load_universe_specs()
+    rule_by_candidate = {cid: rule for rule, cid in approved_rules.items()}
+    for cand in base_candidates:
+        cand["universe_rule_id"] = rule_by_candidate.get(cand["candidate_id"])
     feas_by_id = {f["candidate_id"]: f for f in feasibility.ROWS}
 
     parent_rows = [dict(r) for r in unknowns.DISCREPANCIES]
@@ -550,11 +582,16 @@ def main():
 
     recorded_kills = recorded_kill_ids(base_candidates)
     computed = gate_engine.compute(base_candidates, evidence_rows, feas_out_by_id, env_by_id,
-                                   venue_by_id, spec_ids_by_candidate)
+                                   venue_by_id, spec_ids_by_candidate,
+                                   approved_universe_rules=set(approved_rules))
     candidates = apply_computed_gates(base_candidates, computed, generated_at, recorded_kills)
     cand_by_id = {c["candidate_id"]: c for c in candidates}
 
     apply_blocking_derivation(candidates, issue_rows, child_rows)
+    gate_status_by_id = {r["candidate_id"]: r for r in candidate_gates.gate_status_rows(candidates)}
+    closure_rows = closure_mode.metrics_rows(candidates, issue_rows, gate_status_by_id)
+    next_branch = closure_mode.next_autonomous_branch(closure_rows)
+    closure_modes = closure_mode.mode_counts(closure_rows)
 
     gate_rows = candidate_gates.gate_status_rows(candidates)
     coverage_rows = coverage.coverage_rows(evidence_rows, candidates, issue_rows)
@@ -617,10 +654,25 @@ def main():
         "gate_eligible": len(gate_eligible),
     }
 
+    awaiting = [r["candidate_id"] for r in closure_rows
+                if r["closure_mode"] == closure_mode.AWAITING_EXTERNAL_CLOSURE]
     closure_status = controller_status(closure, computed, candidates, status_counts, migration,
-                                       gate_eligible, generated_at, requests, spec_docs, patches)
+                                       gate_eligible, generated_at, requests, spec_docs, patches,
+                                       closure_modes, awaiting)
     closure["closure_status"] = closure_status
     deferred = closure_controller.deferred_cards(closure)
+    bundles = []
+    for row in closure_rows:
+        if row["closure_mode"] != closure_mode.AWAITING_EXTERNAL_CLOSURE:
+            continue
+        cand = cand_by_id[row["candidate_id"]]
+        bundle = closure_controller.closure_bundle_md(
+            row, cand, venue_by_id.get(cand["venue_id"], {}), env_by_id.get(cand["candidate_id"], {}),
+            closure["cards"])
+        path = M1 / "work" / "external_requests" / f"{row['candidate_id']}_CLOSURE_BUNDLE.md"
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(bundle, encoding="utf-8")
+        bundles.append(str(path.relative_to(REPO)))
     work_summary = closure_controller.write_work(closure, requests, closure_status, deferred)
 
     # ---- canonical tables
@@ -674,11 +726,14 @@ def main():
                  sorted(issue_rows, key=lambda r: r["issue_id"]))
     report.table(OUT / "non_frontier_issues.csv", NON_FRONTIER_COLUMNS, non_frontier)
     report.table(OUT / "status_derivation_review.csv", STATUS_REVIEW_COLUMNS, review_rows)
+    report.table(OUT / "candidate_closure_metrics.csv", CLOSURE_METRIC_COLUMNS, closure_rows)
     report.table(OUT / "kill_supersessions.csv", KILL_SUPERSESSION_COLUMNS,
                  tuples.KILL_SUPERSESSIONS)
 
     state = {
         "generated_at": generated_at,
+        "closure_rows": closure_rows,
+        "next_branch": next_branch,
         "status_counts": status_counts,
         "m1b_eligible": gate_eligible,
         "blocker_rows": blockers,
@@ -735,7 +790,13 @@ def main():
                    "status": {k: status_counts["ALL"][k]
                               for k in ("total", "ALIVE", "WEAK", "UNKNOWN", "DEAD")},
                    "status_by_class": status_counts,
-                   "m1b_eligible": gate_eligible},
+                   "m1b_eligible": gate_eligible,
+                   "closure_modes": closure_modes,
+                   "awaiting_external_closure": [r["candidate_id"] for r in closure_rows
+                                                 if r["closure_mode"]
+                                                 == closure_mode.AWAITING_EXTERNAL_CLOSURE],
+                   "next_autonomous_branch": next_branch["candidate_id"],
+                   "closure_bundles": len(bundles)},
         "gate_counts": gate_counts,
         "migration": migration,
         "patches": {
@@ -746,6 +807,10 @@ def main():
             "rejections": patch_mod.rejection_report(patches),
         },
         "m2_specs": spec_docs,
+        "universe_specs": universe_specs,
+        "closure_modes": closure_modes,
+        "next_autonomous_branch": next_branch,
+        "closure_bundles": bundles,
         "external_requests": [{"blocker_id": r["blocker_id"], "title": r["title"],
                                "priority_score": r["priority_score"],
                                "affected": len(r["affected_candidates"])} for r in requests],
@@ -770,7 +835,12 @@ def main():
                       "m2_specs": len(spec_docs),
                       "external_requests": len(requests),
                       "gate_eligible": len(gate_eligible),
-                      "migration": migration["by_stage"]}, indent=1))
+                      "migration": migration["by_stage"],
+                      "closure_modes": closure_modes,
+                      "next_autonomous_branch": next_branch["candidate_id"],
+                      "awaiting_external": [r["candidate_id"] for r in closure_rows
+                                            if r["closure_mode"]
+                                            == closure_mode.AWAITING_EXTERNAL_CLOSURE]}, indent=1))
     return 0
 
 
@@ -791,11 +861,13 @@ def _spec_link(issue_id):
 
 
 def controller_status(closure, computed, candidates, status_counts, migration, gate_eligible,
-                      generated_at, requests, spec_docs, patches):
+                      generated_at, requests, spec_docs, patches, closure_modes=None,
+                      awaiting=()):
     return closure_controller.frontier.closure_status(
         computed, candidates, closure["frontier_cards"], status_counts["ALL"], migration,
         generated_at,
-        len(requests), [d["spec_id"] for d in spec_docs], len(patches))
+        len(requests), [d["spec_id"] for d in spec_docs], len(patches),
+        closure_modes=closure_modes, awaiting_external=awaiting)
 
 
 def attach_priority_scores(blockers, frontier_cards):
@@ -920,6 +992,13 @@ MIGRATION_COLUMNS = [
 NON_FRONTIER_COLUMNS = [
     "issue_id", "resolution_method", "resolution_stage", "tier", "title", "migration_reason",
     "destination",
+]
+
+CLOSURE_METRIC_COLUMNS = [
+    "candidate_id", "candidate_class", "pass_count", "pass_gates", "blocked_gates",
+    "failed_gates", "closure_mode", "autonomous_distance_to_eligibility",
+    "external_distance_to_eligibility", "tier1_autonomous_blockers", "autonomous_blockers",
+    "external_blockers", "dispatch_note",
 ]
 
 KILL_SUPERSESSION_COLUMNS = [
