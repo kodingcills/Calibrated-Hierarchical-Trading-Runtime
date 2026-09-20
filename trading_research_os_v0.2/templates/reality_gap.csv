@@ -1,0 +1,1 @@
+event_id,trade_id,exchange_event_time,receive_time,feature_complete_time,model_start,model_end,decision_time,order_submit,order_ack,first_fill,last_fill,predicted_fill,actual_fill,data_residual,forecast_residual,latency_residual,queue_residual,fill_residual,slippage_residual,impact_residual,unexplained_residual,notes
