@@ -1,0 +1,307 @@
+{
+  "artifacts": [
+    "coverage_summary.csv",
+    "directional_sanity_summary.csv",
+    "ev_delay_descriptive.csv",
+    "future_return_summary.csv",
+    "idealized_execution_summary.csv",
+    "imbalance_distribution.csv",
+    "imbalance_response_by_horizon.csv",
+    "imbalance_response_by_symbol_day.csv",
+    "market_structure_summary.csv",
+    "monotonicity_diagnostics.csv",
+    "next_move_summary.csv",
+    "reconciliation_checks.csv",
+    "reference_cost_by_price.csv",
+    "reference_cost_by_quantity.csv",
+    "split_manifest.json",
+    "universe_membership.parquet"
+  ],
+  "blocked": [
+    {
+      "detail": "the frozen rule needs a point-in-time listing/security-type/corporate-action/halt reference as of each monthly selection date; none is procured",
+      "item": "point-in-time universe membership",
+      "reason": "BLOCKED_POINT_IN_TIME_REFERENCE_NOT_SECURED",
+      "status": "CALCULATION_BLOCKED"
+    },
+    {
+      "detail": "one sample day cannot supply a 60-day lookback of order-level book state",
+      "item": "60-trading-day causal lookback for the large-tick classification",
+      "reason": "BLOCKED_ORDER_LEVEL_LOOKBACK_UNAVAILABLE",
+      "status": "CALCULATION_BLOCKED"
+    },
+    {
+      "detail": "the TotalView-ITCH product carries no BBO/MBP record; the internal order-map rebuild is the only independent check available inside this product",
+      "item": "book cross-check against a provider BBO/MBP representation",
+      "reason": "SECOND_DATA_PRODUCT_REQUIRED",
+      "status": "CALCULATION_BLOCKED"
+    },
+    {
+      "detail": "one day has one day-level unit, so day dispersion is not computable; the block unit used is symbol x 30 minutes",
+      "item": "day-level dispersion and day-block bootstrap",
+      "reason": "SINGLE_SAMPLE_DAY",
+      "status": "CALCULATION_BLOCKED"
+    },
+    {
+      "detail": "fewer than three trading days; the sample day is DEVELOPMENT forever and is never renamed",
+      "item": "development / validation / sealed partitions",
+      "reason": "INSUFFICIENT_COVERAGE",
+      "status": "CALCULATION_BLOCKED"
+    },
+    {
+      "detail": "the free sample day is a 2019 development tape; it validates engineering only",
+      "item": "modern-regime transfer of any reported statistic",
+      "reason": "SAMPLE_DAY_IS_NOT_THE_INTENDED_WINDOW",
+      "status": "CALCULATION_BLOCKED"
+    },
+    {
+      "detail": "M2-0 produces descriptive inputs only; no profitability claim is admissible from it",
+      "item": "economic conclusion, promotion, kill or Jev comparison",
+      "reason": "M2_0_SCOPE",
+      "status": "NOT_ATTEMPTED_BY_DESIGN"
+    }
+  ],
+  "cost_ledger_id": "M2-COST-LEDGER-v1",
+  "coverage_date": "2019-07-30",
+  "data_status": "DATA_VALID",
+  "dataset": "NASDAQ-ITCH50-PUBLIC-SAMPLE-20190730",
+  "decision_observations_retained": 14274000,
+  "decision_observations_total": 14274000,
+  "decision_state_exclusions": {
+    "CROSSED_OR_LOCKED_SPREAD": 0,
+    "MISSING_SIDE": 0,
+    "NON_POSITIVE_DENOMINATOR": 0
+  },
+  "delay_missingness": [
+    {
+      "arrival_missing": 0,
+      "delay_ms": 0,
+      "future_missing": 0,
+      "horizon_ms": 100,
+      "observations": 1340431
+    },
+    {
+      "arrival_missing": 0,
+      "delay_ms": 0,
+      "future_missing": 0,
+      "horizon_ms": 250,
+      "observations": 1340431
+    },
+    {
+      "arrival_missing": 0,
+      "delay_ms": 0,
+      "future_missing": 0,
+      "horizon_ms": 500,
+      "observations": 1340431
+    },
+    {
+      "arrival_missing": 0,
+      "delay_ms": 0,
+      "future_missing": 0,
+      "horizon_ms": 1000,
+      "observations": 1340431
+    },
+    {
+      "arrival_missing": 0,
+      "delay_ms": 10,
+      "future_missing": 0,
+      "horizon_ms": 100,
+      "observations": 1340431
+    },
+    {
+      "arrival_missing": 0,
+      "delay_ms": 10,
+      "future_missing": 0,
+      "horizon_ms": 250,
+      "observations": 1340431
+    },
+    {
+      "arrival_missing": 0,
+      "delay_ms": 10,
+      "future_missing": 0,
+      "horizon_ms": 500,
+      "observations": 1340431
+    },
+    {
+      "arrival_missing": 0,
+      "delay_ms": 10,
+      "future_missing": 59,
+      "horizon_ms": 1000,
+      "observations": 1340372
+    },
+    {
+      "arrival_missing": 0,
+      "delay_ms": 25,
+      "future_missing": 0,
+      "horizon_ms": 100,
+      "observations": 1340431
+    },
+    {
+      "arrival_missing": 0,
+      "delay_ms": 25,
+      "future_missing": 0,
+      "horizon_ms": 250,
+      "observations": 1340431
+    },
+    {
+      "arrival_missing": 0,
+      "delay_ms": 25,
+      "future_missing": 0,
+      "horizon_ms": 500,
+      "observations": 1340431
+    },
+    {
+      "arrival_missing": 0,
+      "delay_ms": 25,
+      "future_missing": 59,
+      "horizon_ms": 1000,
+      "observations": 1340372
+    },
+    {
+      "arrival_missing": 0,
+      "delay_ms": 50,
+      "future_missing": 0,
+      "horizon_ms": 100,
+      "observations": 1340431
+    },
+    {
+      "arrival_missing": 0,
+      "delay_ms": 50,
+      "future_missing": 0,
+      "horizon_ms": 250,
+      "observations": 1340431
+    },
+    {
+      "arrival_missing": 0,
+      "delay_ms": 50,
+      "future_missing": 0,
+      "horizon_ms": 500,
+      "observations": 1340431
+    },
+    {
+      "arrival_missing": 0,
+      "delay_ms": 50,
+      "future_missing": 59,
+      "horizon_ms": 1000,
+      "observations": 1340372
+    },
+    {
+      "arrival_missing": 0,
+      "delay_ms": 100,
+      "future_missing": 0,
+      "horizon_ms": 100,
+      "observations": 1340431
+    },
+    {
+      "arrival_missing": 0,
+      "delay_ms": 100,
+      "future_missing": 0,
+      "horizon_ms": 250,
+      "observations": 1340431
+    },
+    {
+      "arrival_missing": 0,
+      "delay_ms": 100,
+      "future_missing": 0,
+      "horizon_ms": 500,
+      "observations": 1340431
+    },
+    {
+      "arrival_missing": 0,
+      "delay_ms": 100,
+      "future_missing": 59,
+      "horizon_ms": 1000,
+      "observations": 1340372
+    },
+    {
+      "arrival_missing": 0,
+      "delay_ms": 250,
+      "future_missing": 0,
+      "horizon_ms": 100,
+      "observations": 1340431
+    },
+    {
+      "arrival_missing": 0,
+      "delay_ms": 250,
+      "future_missing": 0,
+      "horizon_ms": 250,
+      "observations": 1340431
+    },
+    {
+      "arrival_missing": 0,
+      "delay_ms": 250,
+      "future_missing": 0,
+      "horizon_ms": 500,
+      "observations": 1340431
+    },
+    {
+      "arrival_missing": 0,
+      "delay_ms": 250,
+      "future_missing": 59,
+      "horizon_ms": 1000,
+      "observations": 1340372
+    },
+    {
+      "arrival_missing": 0,
+      "delay_ms": 500,
+      "future_missing": 0,
+      "horizon_ms": 100,
+      "observations": 1340431
+    },
+    {
+      "arrival_missing": 0,
+      "delay_ms": 500,
+      "future_missing": 0,
+      "horizon_ms": 250,
+      "observations": 1340431
+    },
+    {
+      "arrival_missing": 0,
+      "delay_ms": 500,
+      "future_missing": 0,
+      "horizon_ms": 500,
+      "observations": 1340431
+    },
+    {
+      "arrival_missing": 0,
+      "delay_ms": 500,
+      "future_missing": 59,
+      "horizon_ms": 1000,
+      "observations": 1340372
+    },
+    {
+      "arrival_missing": 0,
+      "delay_ms": 1000,
+      "future_missing": 59,
+      "horizon_ms": 100,
+      "observations": 1340372
+    },
+    {
+      "arrival_missing": 0,
+      "delay_ms": 1000,
+      "future_missing": 59,
+      "horizon_ms": 250,
+      "observations": 1340372
+    },
+    {
+      "arrival_missing": 0,
+      "delay_ms": 1000,
+      "future_missing": 59,
+      "horizon_ms": 500,
+      "observations": 1340372
+    },
+    {
+      "arrival_missing": 0,
+      "delay_ms": 1000,
+      "future_missing": 59,
+      "horizon_ms": 1000,
+      "observations": 1340372
+    }
+  ],
+  "delay_rows": 1427400,
+  "delay_surface_cells": 96,
+  "run_status": "CALCULATION_COMPLETE",
+  "scope_note": "statistics describe the development-scope symbols only; scope is not universe membership",
+  "scope_symbols": 61,
+  "symbols": 8849
+}

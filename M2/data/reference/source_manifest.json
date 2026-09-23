@@ -1,0 +1,15 @@
+{
+  "documents": [
+    {
+      "id": "REF-ITCH50-SPEC",
+      "title": "Nasdaq TotalView-ITCH 5.0 specification (revision log entry 2023-04-28)",
+      "publisher": "Nasdaq Stock Market LLC",
+      "url": "https://www.nasdaqtrader.com/content/technicalsupport/specifications/dataproducts/NQTVITCHspecification.pdf",
+      "access_date": "2026-09-22",
+      "local_path": "M2/data/reference/NQTVITCHspecification.pdf",
+      "sha256": "45e0531d1b4b3beb886e9618b2ab824a5aa9bda3a99c0dff03509306e68aacc3",
+      "bytes": 1200722,
+      "used_by": "M2/output/data_quality/schema_contract.md, M2/src/ingest.py"
+    }
+  ]
+}

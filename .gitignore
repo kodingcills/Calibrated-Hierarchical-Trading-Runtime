@@ -2,3 +2,8 @@ __pycache__/
 *.pyc
 .DS_Store
 .venv/
+
+# M2 raw and derived market data (immutable raw inputs are not committed)
+M2/data/raw/
+M2/data/derived/
+M2/output/tmp/

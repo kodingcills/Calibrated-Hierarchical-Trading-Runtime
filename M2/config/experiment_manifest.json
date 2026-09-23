@@ -1,0 +1,54 @@
+{
+  "candidate_id": "TUP-NASDAQ-LARGETICK-H2-QIMB-AGG",
+  "candidate_spec_path": "M1/hypotheses/candidate_specs/NASDAQ_LARGETICK_QUEUE_IMBALANCE_UNIVERSE.json",
+  "candidate_spec_sha256": "9ff81b4f5bc92687840ac4f568cf167afc1b470204919d2f0af236feec30a7dd",
+  "code_hashes": {
+    "M2/config/cost_ledger_v1.json": "52ce785fc7210138af4059e327fc7101dff7f78dff3f5156c045973c1ed4cb17",
+    "M2/config/nasdaq_qimb_m2_0.yaml": "0f366bb445418a85ca001a290006531a0bb6ca2cb759b7a11694030dac13a16b",
+    "M2/src/audit.py": "3af9e2d51acdb7d903285f2410a06ed64c25c14f78de7837e445dfd5d6170157",
+    "M2/src/book.py": "aad857659ac798acf18d1407cecc288f8cfe6f24903bd14794a747bf0f5d64ad",
+    "M2/src/calculate.py": "8a6a0534cec0142fbdc56fa4ea9d354f497cad2358f067b261a74a93439edef7",
+    "M2/src/config.py": "529cc4882ce7c0636e59995a04f540042bc7dd8c339e112c35d28d2d0483ced6",
+    "M2/src/costs.py": "1df0ed45e5663614f799350f87b52abcc863ba47f933fc0791e595cec0e3d36f",
+    "M2/src/features.py": "b70cde5dcd420ddd9b65aabaac79dee6189914dfd60436bffcefa23444d4bfae",
+    "M2/src/freeze_manifest.py": "f029ee69f57240f9f48f10aa0d65ea0c6cccb67f483f8cb9f84c1026c6430cf4",
+    "M2/src/ingest.py": "84b94a1a26f9771d1c498e1906666b0deaefd5f37c99a215a6fe0fc7c2f37fad",
+    "M2/src/labels.py": "97cf0befc7042f50f7fec93b5188dd7efe5dcf59e0e1966017d081e793a4a461",
+    "M2/src/universe.py": "1a17afc1e137241a4a190dcc7a85a0adacecaeff06787a0ba18a1420222390eb",
+    "M2/tests/test_m2.py": "c5ebe4dc240e56ddebecde47cd983c27a0ca8929554e29f9f003fc99e4c1aaa9"
+  },
+  "config_path": "M2/config/nasdaq_qimb_m2_0.yaml",
+  "config_sha256": "0f366bb445418a85ca001a290006531a0bb6ca2cb759b7a11694030dac13a16b",
+  "cost_ledger_id": "M2-COST-LEDGER-v1",
+  "cost_ledger_path": "M2/config/cost_ledger_v1.json",
+  "cost_ledger_sha256": "52ce785fc7210138af4059e327fc7101dff7f78dff3f5156c045973c1ed4cb17",
+  "data_vendor": "Nasdaq (public sample file service, emi.nasdaq.com)",
+  "dataset_coverage_date": "2019-07-30",
+  "dataset_id": "NASDAQ-ITCH50-PUBLIC-SAMPLE-20190730",
+  "dataset_role": "DEVELOPMENT",
+  "frozen_at_utc": "2026-09-23T16:29:06Z",
+  "frozen_before_outcome_inspection": true,
+  "git_commit_sha": "894c814dcc761e3de966f511459b1872e2291171",
+  "manifest_version": "M2-0-EXPERIMENT-v1",
+  "note": "no paid data acquisition is authorized by this manifest; the sample day is DEVELOPMENT data",
+  "raw_files": [
+    {
+      "bytes": 3662140094,
+      "md5": "8744aba2ea125bfdde1a340ee2cea924",
+      "messages": 282229684,
+      "path": "07302019.NASDAQ_ITCH50.gz",
+      "sha256": "c65784c48c28735901ae442dc00e215834218a359bc12a139ab4eec209bc2d4a",
+      "vendor_md5_available": false,
+      "vendor_md5_note": "the vendor-hosted md5sum sibling returned HTTP 404 at access time; the SHA-256 computed at freeze time is the integrity record for this pass"
+    }
+  ],
+  "reproduce_with": [
+    "python -m M2.src.ingest --config M2/config/nasdaq_qimb_m2_0.yaml",
+    "python -m M2.src.book --config M2/config/nasdaq_qimb_m2_0.yaml",
+    "python -m M2.src.calculate --config M2/config/nasdaq_qimb_m2_0.yaml",
+    "python -m M2.src.freeze_manifest --config M2/config/nasdaq_qimb_m2_0.yaml"
+  ],
+  "schema_id": "ITCH50-BINARY-V50-20230428",
+  "source_code_version": "M2-0.1.0",
+  "universe_rule_id": "NASDAQ-LARGETICK-QIMB-UNIV-v1"
+}

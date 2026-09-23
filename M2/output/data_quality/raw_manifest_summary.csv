@@ -1,0 +1,2 @@
+provider,dataset,schema,dataset_id,coverage_date,coverage_start_ns,coverage_end_ns,size_bytes,message_count,sha256,md5,access_timestamp_utc,immutability
+"Nasdaq (public sample file service, emi.nasdaq.com)",Nasdaq TotalView-ITCH 5.0 (binary),ITCH50-BINARY-V50-20230428,NASDAQ-ITCH50-PUBLIC-SAMPLE-20190730,2019-07-30,10970642174571,72300000037782,3662140094,282229684,c65784c48c28735901ae442dc00e215834218a359bc12a139ab4eec209bc2d4a,8744aba2ea125bfdde1a340ee2cea924,2026-09-22T14:29Z,raw file is never modified; all outputs are derived artifacts

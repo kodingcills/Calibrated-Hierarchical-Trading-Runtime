@@ -1,0 +1,7 @@
+{
+  "exit_code": 0,
+  "files_compared": 18,
+  "identical": true,
+  "mismatches": [],
+  "note": "the calculation stage is re-run from the same derived artifacts; any hash change means the descriptive results are not reproducible"
+}

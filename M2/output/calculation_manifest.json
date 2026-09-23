@@ -1,0 +1,100 @@
+{
+  "candidate_spec_sha256": "9ff81b4f5bc92687840ac4f568cf167afc1b470204919d2f0af236feec30a7dd",
+  "code_hashes": {
+    "M2/config/cost_ledger_v1.json": "52ce785fc7210138af4059e327fc7101dff7f78dff3f5156c045973c1ed4cb17",
+    "M2/config/nasdaq_qimb_m2_0.yaml": "0f366bb445418a85ca001a290006531a0bb6ca2cb759b7a11694030dac13a16b",
+    "M2/src/audit.py": "3af9e2d51acdb7d903285f2410a06ed64c25c14f78de7837e445dfd5d6170157",
+    "M2/src/book.py": "aad857659ac798acf18d1407cecc288f8cfe6f24903bd14794a747bf0f5d64ad",
+    "M2/src/calculate.py": "8a6a0534cec0142fbdc56fa4ea9d354f497cad2358f067b261a74a93439edef7",
+    "M2/src/config.py": "529cc4882ce7c0636e59995a04f540042bc7dd8c339e112c35d28d2d0483ced6",
+    "M2/src/costs.py": "1df0ed45e5663614f799350f87b52abcc863ba47f933fc0791e595cec0e3d36f",
+    "M2/src/features.py": "b70cde5dcd420ddd9b65aabaac79dee6189914dfd60436bffcefa23444d4bfae",
+    "M2/src/freeze_manifest.py": "f029ee69f57240f9f48f10aa0d65ea0c6cccb67f483f8cb9f84c1026c6430cf4",
+    "M2/src/ingest.py": "84b94a1a26f9771d1c498e1906666b0deaefd5f37c99a215a6fe0fc7c2f37fad",
+    "M2/src/labels.py": "97cf0befc7042f50f7fec93b5188dd7efe5dcf59e0e1966017d081e793a4a461",
+    "M2/src/universe.py": "1a17afc1e137241a4a190dcc7a85a0adacecaeff06787a0ba18a1420222390eb",
+    "M2/tests/test_m2.py": "c5ebe4dc240e56ddebecde47cd983c27a0ca8929554e29f9f003fc99e4c1aaa9"
+  },
+  "config_sha256": "0f366bb445418a85ca001a290006531a0bb6ca2cb759b7a11694030dac13a16b",
+  "cost_ledger_sha256": "52ce785fc7210138af4059e327fc7101dff7f78dff3f5156c045973c1ed4cb17",
+  "derived_artifacts": {
+    "decisions.parquet": {
+      "path": "M2/data/derived/NASDAQ-ITCH50-PUBLIC-SAMPLE-20190730/decisions.parquet",
+      "sha256": "d1943b46a0e50d9a8b8388a11f718e4b4f5abeb72760fc46fcc0000f9b6e6e11"
+    },
+    "delay_decisions.parquet": {
+      "path": "M2/data/derived/NASDAQ-ITCH50-PUBLIC-SAMPLE-20190730/delay_decisions.parquet",
+      "sha256": "c98c4170960998415d1f86696f0b1865e48bb242473f28125a4150f1197038fc"
+    },
+    "ingest_summary.json": {
+      "path": "M2/data/derived/NASDAQ-ITCH50-PUBLIC-SAMPLE-20190730/ingest_summary.json",
+      "sha256": "38b4b308a870eaf7069df461a9c63a9f794ca9633545d8ea522132ee5d6f6f24"
+    },
+    "replay_summary.json": {
+      "path": "M2/data/derived/NASDAQ-ITCH50-PUBLIC-SAMPLE-20190730/replay_summary.json",
+      "sha256": "39e4e58af29aea94a20c1ef7071b0dc02b4d11ca663a96269aa6fce67d8f825d"
+    },
+    "symbol_directory.parquet": {
+      "path": "M2/data/derived/NASDAQ-ITCH50-PUBLIC-SAMPLE-20190730/symbol_directory.parquet",
+      "sha256": "a8eee43e8119bde0b04d46ef427597654266a897b79e4a16fbb70d03e1ec9ef1"
+    }
+  },
+  "environment": {
+    "numpy": "2.5.3",
+    "pyarrow": "25.0.1",
+    "yaml": "6.0.3"
+  },
+  "generated_at_utc": "2026-09-23T16:29:06Z",
+  "git_commit_sha": "894c814dcc761e3de966f511459b1872e2291171",
+  "manifest_version": "M2-0-CALCULATION-v1",
+  "output_artifacts": {
+    "DATA_ACQUISITION_PLAN.md": "185680a89035f1a7e9fa6dc83443d679cb3083e14557fa43a14f5c8a2d3330ca",
+    "M2_0_STATUS.md": "ba8444ed78022f1bbe92e9bb7840e4e0f4e6fa224eb46ea802821f458251f1bb",
+    "calculation_manifest.json": "52545cf82b0a3d9c0d1577a7a993661c32db14768918ef9ea149ca2b552c7c43",
+    "calculations/calculation_status.json": "85f88531aef267d861806cb00d4be20d3855d8e67e7d088913da1bd41543b405",
+    "calculations/coverage_summary.csv": "c82bc416b4efc1b106465286d522a66713b001f4023238e1601dcb0e44993758",
+    "calculations/directional_sanity_summary.csv": "bc1fe646deffd5032dbd3c3c63ec8765111fbbc582fde19a4a27ea5cc5eab3a7",
+    "calculations/ev_delay_descriptive.csv": "d825088d8bcb21687a348ea16a38822382609a5b554a7a6dd401970173ded283",
+    "calculations/future_return_summary.csv": "1bac0c0eda075ecae7b8542794d91eb012e92ccb26db825d70ad353df1aff698",
+    "calculations/idealized_execution_summary.csv": "1a96d36fb90273e2fe12d2c402e39dfefb846480eb1ecfe0bf86d6ba39512c66",
+    "calculations/imbalance_distribution.csv": "c1bc4fadc1db0463eaabe98d8202cb6b1c3d55e12dcd79865b486b4e552fa23a",
+    "calculations/imbalance_response_by_horizon.csv": "b1b08a9d7f6eb6655c01fef5255f490be29c6547a912d164224c74f0bf96f2d7",
+    "calculations/imbalance_response_by_symbol_day.csv": "4fecf55a265cf7a831187f6603e12915dd5efcb675c12337174ab612413e6407",
+    "calculations/market_structure_summary.csv": "71410e69a76143d368d5d0b1839c7630e2e180b4fdcfc45b36f710d6f31603a5",
+    "calculations/monotonicity_diagnostics.csv": "78bdc0f4b9633a9ca5c4496f37d7f2553c1b90b84de4f76cc05a6395f2c3c29a",
+    "calculations/next_move_summary.csv": "9205af8a7c033729cafa67638e2ef2068fb047dae38e5eac9254191b0e99a9b2",
+    "calculations/reconciliation_checks.csv": "75d199535313b90a58e52277d77dd2e5a0e1f1b648698a807889749d2e1f7e9c",
+    "calculations/reference_cost_by_price.csv": "62b3d08a65a5cbd13d59e19010a18dd2533f7b8465325f67946c4c4804008942",
+    "calculations/reference_cost_by_quantity.csv": "e627b0d7b997b2da35ca055f7e1039608541f41a3c32d2c585ba20e6186a5445",
+    "calculations/split_manifest.json": "861b93aeac4ff1a6dc2320feb63c25b71de17f30e915d06d696f132ab2ae9fa8",
+    "calculations/universe_membership.parquet": "411fdfddd44360b183883d3b2c037277e0602cbce80e67c54b76c613c9266102",
+    "data_quality/book_crosscheck.csv": "d3ca839a8f09a75b1b367b3d226aa19b56765337b0ecb6d450dcde8d0078dae5",
+    "data_quality/book_reconstruction_audit.csv": "b68a47ce272a9db5691d36b18556f974f4cea6a2c5e4c5b8ad64a60b70115f45",
+    "data_quality/calculation_reproducibility_check.json": "4c3fffd679dbb4bba0bf8f76ed06c595103871326a8d75f6caca157365619be6",
+    "data_quality/ordering_anomalies.csv": "32f28133e03368c8c618c865e3a0fc7ecb468f7612e1b10d7ebc38babf621172",
+    "data_quality/raw_manifest_summary.csv": "4dbcf977ec49e8f2200ffe9b736ce39027a3566cb1479f39786438f2750770fe",
+    "data_quality/schema_contract.md": "3bd8b28142733f6af9d81d56e5bcb1606143d989103bf3dc192aaa168eaaf37f",
+    "data_quality/scope_exclusions.csv": "50a8638721d5a1e962698aaeee0fd10de7d6561daa0098c516623417ed8227b8",
+    "data_quality/scope_manifest.csv": "1f05b4e6da4abbaead57a3adffb25785666c44d5a12240887ab06493203487cb",
+    "data_quality/sequence_gap_audit.csv": "512cc632d3498226ab9aaf762f9f97328da1e1cc1e838ca072ae8297f4164b3f",
+    "data_quality/state_consistency_notes.md": "2ae7c5763c736e9cc6f3aee354b71e3d50064962b46189d632c46cdc39efd144",
+    "data_quality/timestamp_audit.csv": "17a86bdcff15dbb4a7d9abb36efea32cd7a3e4a3c565cfbfb6c343b8991a6d95",
+    "data_quality/universe_audit.csv": "7c50b101b64defe42ab3bc804c13de15d068585b5a506bfcea524bba2e0d5635"
+  },
+  "python_version": "3.14.7",
+  "raw_sha256": "c65784c48c28735901ae442dc00e215834218a359bc12a139ab4eec209bc2d4a",
+  "reference_documents": {
+    "REF-ITCH50-SPEC": {
+      "local_path": "M2/data/reference/NQTVITCHspecification.pdf",
+      "sha256": "45e0531d1b4b3beb886e9618b2ab824a5aa9bda3a99c0dff03509306e68aacc3",
+      "url": "https://www.nasdaqtrader.com/content/technicalsupport/specifications/dataproducts/NQTVITCHspecification.pdf"
+    }
+  },
+  "replay_summary": {
+    "decision_rows": 14274000,
+    "delay_rows": 1427400,
+    "messages": 282229684,
+    "quality_verdict": "DATA_VALID"
+  },
+  "source_code_version": "M2-0.1.0"
+}

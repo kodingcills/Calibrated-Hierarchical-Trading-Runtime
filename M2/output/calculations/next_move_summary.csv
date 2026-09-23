@@ -1,0 +1,2 @@
+observations,resolved,resolved_fraction,unresolved,unresolved_fraction,next_move_up,next_move_down,next_move_flat,up_fraction_of_resolved,late_label_resolutions,late_delay_resolutions,late_watch_resolutions,note
+14274000,14102273,0.9879692447807202,171727,0.01203075521927981,7218169,6884104,0,0.5118443672165472,0,0,171727,unresolved = the midpoint did not move inside decisions.next_move_wait_ns; the row is never filled with a fabricated direction

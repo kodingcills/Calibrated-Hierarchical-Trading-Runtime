@@ -1,0 +1,24 @@
+{
+  "generated_at_utc": "2026-09-23T16:29:06Z",
+  "records": [
+    {
+      "access_terms_note": "publicly hosted Nasdaq sample file; no credential used. The file is treated as DEVELOPMENT data and no outcome claim is made from it.",
+      "coverage_date": "2019-07-30",
+      "coverage_end_ns": 72300000037782,
+      "coverage_start_ns": 10970642174571,
+      "dataset": "Nasdaq TotalView-ITCH 5.0 (binary)",
+      "dataset_id": "NASDAQ-ITCH50-PUBLIC-SAMPLE-20190730",
+      "download_access_timestamp_utc": "2026-09-22T14:29Z",
+      "immutability": "raw file is never modified; all outputs are derived artifacts",
+      "instrument_mapping": "Stock Directory messages (locate code -> symbol), per trading day",
+      "local_path": "M2/data/raw/07302019.NASDAQ_ITCH50.gz",
+      "md5": "8744aba2ea125bfdde1a340ee2cea924",
+      "message_count": 282229684,
+      "provider": "Nasdaq (public sample file service, emi.nasdaq.com)",
+      "schema": "ITCH50-BINARY-V50-20230428",
+      "sha256": "c65784c48c28735901ae442dc00e215834218a359bc12a139ab4eec209bc2d4a",
+      "size_bytes": 3662140094,
+      "source_url": "https://emi.nasdaq.com/ITCH/Nasdaq%20ITCH/07302019.NASDAQ_ITCH50.gz"
+    }
+  ]
+}

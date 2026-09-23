@@ -1,0 +1,352 @@
+{
+  "ledger_id": "M2-COST-LEDGER-v1",
+  "created_utc": "2026-09-22",
+  "purpose": "Deterministic per-order cost arithmetic for the Nasdaq aggressive candidate. Every number carries its own source, access date, unit, formula, applicability and minimum/maximum. Nothing is folded into one opaque number.",
+  "regimes": [
+    "STRUCTURAL_COST_FLOOR",
+    "ACCESSIBLE_REFERENCE_PATH"
+  ],
+  "regime_definitions": {
+    "STRUCTURAL_COST_FLOOR": "Only unavoidable verified charges on the candidate's own venue path: the Nasdaq remove-liquidity fee plus the statutory sale-side fees any U.S. equity sale incurs. This is a lower bound, NOT an achievable execution path: it excludes broker commission, clearing, market data, slippage and impact.",
+    "ACCESSIBLE_REFERENCE_PATH": "A named broker path actually available to this project. Two schedules are carried separately because they are structurally different: an all-inclusive per-share schedule, and a pass-through schedule that adds venue, clearing, CAT and regulatory charges on top of the commission."
+  },
+  "execution_schedules": [
+    {
+      "regime": "STRUCTURAL_COST_FLOOR",
+      "broker_schedule": null,
+      "label": "structural_floor"
+    },
+    {
+      "regime": "ACCESSIBLE_REFERENCE_PATH",
+      "broker_schedule": "ibkr_pro_fixed",
+      "label": "accessible_fixed"
+    },
+    {
+      "regime": "ACCESSIBLE_REFERENCE_PATH",
+      "broker_schedule": "ibkr_pro_tiered",
+      "label": "accessible_tiered"
+    }
+  ],
+  "assumptions": {
+    "representative_order_shares": 100,
+    "assumption_status": "DECLARED_ASSUMPTION",
+    "assumption_note": "Per-order minimums make a bps figure order-size dependent, so the size used in the execution and delay tables is declared here and repeated in every artifact, rather than left implicit.",
+    "volume_tier": "IBKR tiered pricing is evaluated at the lowest published tier (<= 300,000 shares/month); the project has no verified monthly volume above it."
+  },
+  "broker_schedules": {
+    "ibkr_pro_fixed": {
+      "broker": "Interactive Brokers LLC",
+      "plan": "IBKR Pro - Fixed",
+      "per_share_usd": 0.005,
+      "min_per_order_usd": 1.0,
+      "max_pct_of_trade_value": 1.0,
+      "all_inclusive": true,
+      "all_inclusive_note": "IBKR states the fixed structure is 'All-inclusive pricing that includes all exchange, clearing and regulatory fees', so venue, clearing and regulatory line items are NOT added on top of this schedule (double counting is guarded in code).",
+      "effective_date": "UNDATED",
+      "source": {
+        "url": "https://www.interactivebrokers.com/en/pricing/commissions-stocks.php?region=americas",
+        "publisher": "Interactive Brokers LLC",
+        "access_date": "2026-09-22",
+        "quote": "USD 0.005 per share; Minimum per order (shares) USD 1.00; Maximum per order 1% of Trade Value"
+      },
+      "secondary_source": {
+        "url": "https://www.interactivebrokers.com/en/pricing/commissions-home.php",
+        "publisher": "Interactive Brokers LLC",
+        "access_date": "2026-09-22",
+        "quote": "All-inclusive pricing that includes all exchange, clearing and regulatory fees."
+      },
+      "date_basis": "the vendor publishes no effective date or version marker; the schedule is the one live at access time and IBKR may change it at any time"
+    },
+    "ibkr_pro_tiered": {
+      "broker": "Interactive Brokers LLC",
+      "plan": "IBKR Pro - Tiered, lowest published tier",
+      "per_share_usd": 0.0035,
+      "min_per_order_usd": 0.35,
+      "max_pct_of_trade_value": 0.5,
+      "all_inclusive": false,
+      "max_note": "Two primary IBKR pages disagree on the tiered cap: the schedule footnote gives 1% of trade value per order while the page disclosure states tiered commissions are capped at 0.5% of trade value. The stricter (0.5%) is encoded; the discrepancy is recorded rather than resolved silently.",
+      "effective_date": "UNDATED",
+      "source": {
+        "url": "https://www.interactivebrokers.com/en/pricing/commissions-stocks.php?region=americas",
+        "publisher": "Interactive Brokers LLC",
+        "access_date": "2026-09-22",
+        "quote": "<= 300,000 | USD 0.0035; Minimum per order (shares) USD 0.35; Plus the applicable exchange, ECN and/or specialist fees based on execution venue"
+      },
+      "date_basis": "undated vendor schedule; access date recorded"
+    }
+  },
+  "line_items": [
+    {
+      "id": "nasdaq_remove_liquidity_fee",
+      "name": "Nasdaq remove-liquidity fee (aggressive/marketable order, securities >= $1.00)",
+      "unit": "USD_PER_SHARE",
+      "value": 0.003,
+      "sides": "both",
+      "regimes": [
+        "STRUCTURAL_COST_FLOOR",
+        "ACCESSIBLE_REFERENCE_PATH"
+      ],
+      "formula": "0.0030 USD per share removed",
+      "applicability": "Nasdaq continuous book, displayed orders >= $1.00; base tier, no volume qualification",
+      "min": null,
+      "max": null,
+      "effective_date": "UNDATED_ON_RETRIEVED_PAGE",
+      "source": {
+        "url": "https://www.nasdaqtrader.com/Trader.aspx?id=PriceListTrading2",
+        "publisher": "Nasdaq Stock Market LLC (trading price list)",
+        "access_date": "2026-09-22",
+        "retrieval_status": "PRIMARY_EXCHANGE_PAGE_RETRIEVED_2026-09-22_AND_REPO_VERIFIED",
+        "quote": "All MPIDs $0.0030 (Fees to Remove Liquidity, shares executed at or above $1.00)"
+      },
+      "corroborating_source": {
+        "url": "https://www.interactivebrokers.com/en/accounts/fees/INETstkfee.php?nhf=T",
+        "publisher": "Interactive Brokers LLC (NASDAQ/Island exchange fee pass-through page)",
+        "access_date": "2026-09-22",
+        "quote": "NASDAQ >= $1.00 per share | Remove Liquidity | USD 0.0030"
+      },
+      "baseline_update_note": "Nasdaq's own page states the rate without an effective date in the retrieved copy; the value is recorded as the access-date rate and is not claimed to describe any earlier period.",
+      "page_state_note": "The Nasdaq Trader trading price-list page contains no 'prices effective as of' statement, so the schedule is undated and the access date is the only temporal anchor.",
+      "tier_note": "The base displayed-add/remove row is 'All other firms' with no stated volume qualification; exchange access still requires trading through a Nasdaq member/MPID."
+    },
+    {
+      "id": "sec_section_31_fee",
+      "name": "SEC Section 31 transaction fee (sale side only)",
+      "unit": "USD_PER_MILLION_OF_SALES",
+      "value": 20.6,
+      "sides": "sell",
+      "regimes": [
+        "STRUCTURAL_COST_FLOOR",
+        "ACCESSIBLE_REFERENCE_PATH"
+      ],
+      "formula": "rate x value of aggregate sales",
+      "applicability": "sales of securities; charged by the executing broker as a pass-through",
+      "min": null,
+      "max": null,
+      "effective_date": "2026-04-04",
+      "source": {
+        "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/04/2026-04233.txt",
+        "publisher": "U.S. Securities and Exchange Commission (Release No. 34-104909), via the Federal Register",
+        "access_date": "2026-09-22",
+        "quote": "the fee rates applicable under Sections 31(b) and (c) of the Exchange Act shall be $20.60 per $1,000,000 effective on April 4, 2026"
+      },
+      "cross_check_status": "PRIMARY_REGULATOR_SOURCE_VERIFIED",
+      "cross_check_note": "sec.gov itself returned HTTP 403 to this pass's fetches; the rate is taken from the Federal Register text of the SEC release, which is the same primary instrument. The broker pass-through page (USD 0.0000206 per USD of sales) equals this rate exactly at the fourth decimal.",
+      "corroborating_source": {
+        "url": "https://www.finra.org/rules-guidance/notices/information-notice-20260317",
+        "publisher": "FINRA",
+        "access_date": "2026-09-22",
+        "quote": "Information Notice dated 2026-03-17 announcing the Section 31 rate increase from $0.00 to $20.60 per million"
+      },
+      "prior_rate_note": "SEC Section 31 was $0.00 per million from 2025-05-14 until 2026-04-04; a cost model without an effective date cannot distinguish these periods."
+    },
+    {
+      "id": "finra_trading_activity_fee",
+      "name": "FINRA Trading Activity Fee (sale side only)",
+      "unit": "USD_PER_SHARE",
+      "value": 0.000195,
+      "sides": "sell",
+      "regimes": [
+        "STRUCTURAL_COST_FLOOR",
+        "ACCESSIBLE_REFERENCE_PATH"
+      ],
+      "formula": "0.000195 USD per share sold",
+      "applicability": "covered equity sales; each partial execution counts as one trade for the cap",
+      "min": null,
+      "max": {
+        "unit": "USD_PER_ORDER",
+        "value": 9.79
+      },
+      "effective_date": "2026-01-01",
+      "source": {
+        "url": "https://www.federalregister.gov/documents/full_text/text/2024/11/27/2024-27764.txt",
+        "publisher": "U.S. Securities and Exchange Commission (Release No. 34-101696, File No. SR-FINRA-2024-019) via the Federal Register",
+        "access_date": "2026-09-22",
+        "quote": "Covered Equity Security: $0.000195 per share (up to $9.79 max per trade) for 2026"
+      },
+      "cross_check_status": "PRIMARY_SRO_FILING_VERIFIED_WITH_LIVE_PAGE_DISCREPANCY",
+      "cross_check_note": "FINRA's live rulebook page still shows the pre-2026 figures ($0.000166 per share, $8.30 maximum), so the live page and the SEC-filed phased schedule disagree. Both are recorded; the filed 2026 step is encoded, and the discrepancy is named rather than resolved silently.",
+      "corroborating_source": {
+        "url": "https://www.interactivebrokers.com/en/pricing/commissions-stocks.php?region=americas",
+        "publisher": "Interactive Brokers LLC",
+        "access_date": "2026-09-22",
+        "quote": "FINRA Trading Activity Fee: USD 0.000195 * Quantity Sold; Maximum USD 9.79 per trade"
+      }
+    },
+    {
+      "id": "nscc_dtc_clearing_fee",
+      "name": "NSCC/DTC clearing fee (pass-through schedule only)",
+      "unit": "USD_PER_SHARE",
+      "value": 0.0002,
+      "sides": "both",
+      "regimes": [
+        "ACCESSIBLE_REFERENCE_PATH"
+      ],
+      "formula": "0.00020 USD per share",
+      "applicability": "IBKR tiered structure only; not charged under the all-inclusive fixed structure",
+      "min": null,
+      "max": {
+        "unit": "PCT_OF_TRADE_VALUE",
+        "value": 0.5
+      },
+      "effective_date": "UNDATED_ON_RETRIEVED_PAGE",
+      "source": {
+        "url": "https://www.interactivebrokers.com/en/pricing/commissions-stocks.php?region=americas",
+        "publisher": "Interactive Brokers LLC",
+        "access_date": "2026-09-22",
+        "quote": "NSCC, DTC Fees: USD 0.00020 per share; Maximum 0.5% of trade value."
+      },
+      "corroborating_source": {
+        "url": "https://www.interactivebrokers.com/en/accounts/fees/stocksPricing2.php?nhf=T",
+        "publisher": "Interactive Brokers LLC",
+        "access_date": "2026-09-22",
+        "quote": "worked example: Clearing $40 on 200,000 shares (USD 0.0002 per share)"
+      },
+      "cross_check_status": "BROKER_PASS_THROUGH_ONLY",
+      "cross_check_note": "DTCC's published fee schedule (Guide to the DTC Fee Schedule, as of 2026-03-31) charges participants per account-month and per deliver-order item (for example USD 0.68 per equity deliver order to the deliverer), not per share. No publicly derivable per-order pass-through to a customer exists, so the encoded USD 0.00020 per share is the broker's own published pass-through and is labelled as such; the underlying clearing cost remains UNKNOWN."
+    },
+    {
+      "id": "cat_fee",
+      "name": "FINRA Consolidated Audit Trail fee (both sides, pass-through schedule only)",
+      "unit": "USD_PER_SHARE",
+      "value": 3e-06,
+      "sides": "both",
+      "regimes": [
+        "ACCESSIBLE_REFERENCE_PATH"
+      ],
+      "formula": "0.000003 USD per share",
+      "applicability": "IBKR tiered structure; FINRA CAT reevaluates the prospective rate twice a year",
+      "min": null,
+      "max": null,
+      "effective_date": "UNDATED_ON_RETRIEVED_PAGE",
+      "source": {
+        "url": "https://www.interactivebrokers.com/en/pricing/commissions-stocks.php?region=americas",
+        "publisher": "Interactive Brokers LLC",
+        "access_date": "2026-09-22",
+        "quote": "FINRA Consolidated Audit Trail Fees: USD 0.000003 * Quantity"
+      },
+      "cross_check_status": "BROKER_PASS_THROUGH_ONLY",
+      "cross_check_note": "FINRA CAT publishes its own rate schedule twice a year; that primary page was not retrieved in this pass."
+    },
+    {
+      "id": "nyse_pass_through_fee",
+      "name": "NYSE pass-through fee (multiplier of commission, pass-through schedule only)",
+      "unit": "MULTIPLIER_OF_COMMISSION",
+      "value": 0.000175,
+      "sides": "both",
+      "regimes": [
+        "ACCESSIBLE_REFERENCE_PATH"
+      ],
+      "formula": "0.000175 x commission",
+      "applicability": "IBKR tiered structure",
+      "min": null,
+      "max": null,
+      "effective_date": "UNDATED_ON_RETRIEVED_PAGE",
+      "source": {
+        "url": "https://www.interactivebrokers.com/en/pricing/commissions-stocks.php?region=americas",
+        "publisher": "Interactive Brokers LLC",
+        "access_date": "2026-09-22",
+        "quote": "NYSE Pass Through Fees: Commissions * 0.000175"
+      },
+      "cross_check_status": "BROKER_PAGE_ONLY"
+    },
+    {
+      "id": "finra_pass_through_fee",
+      "name": "FINRA pass-through fee (multiplier of commission, pass-through schedule only)",
+      "unit": "MULTIPLIER_OF_COMMISSION",
+      "value": 0.000565,
+      "sides": "both",
+      "regimes": [
+        "ACCESSIBLE_REFERENCE_PATH"
+      ],
+      "formula": "0.000565 x commission",
+      "applicability": "IBKR tiered structure",
+      "min": null,
+      "max": null,
+      "effective_date": "UNDATED_ON_RETRIEVED_PAGE",
+      "source": {
+        "url": "https://www.interactivebrokers.com/en/pricing/commissions-stocks.php?region=americas",
+        "publisher": "Interactive Brokers LLC",
+        "access_date": "2026-09-22",
+        "quote": "FINRA Pass Through Fees: Commissions * 0.000565"
+      },
+      "discrepancy_note": "IBKR's worked-example page shows FINRA fee = 0.00056 x commission, a 0.000005 difference from the schedule page. The schedule page value is encoded and the discrepancy is recorded.",
+      "cross_check_status": "BROKER_PAGE_ONLY"
+    },
+    {
+      "id": "databento_xnas_mbo_data_cost",
+      "name": "Historical Nasdaq MBO data cost (operating economics, not per-order)",
+      "unit": "UNKNOWN",
+      "value": null,
+      "sides": "not_applicable",
+      "regimes": [
+        "STRUCTURAL_COST_FLOOR",
+        "ACCESSIBLE_REFERENCE_PATH"
+      ],
+      "formula": "UNKNOWN",
+      "applicability": "not a per-order charge; recorded because it enters operating economics",
+      "source": {
+        "url": "UNKNOWN",
+        "publisher": "UNKNOWN",
+        "access_date": "2026-09-22",
+        "quote": "UNKNOWN"
+      },
+      "status": "UNKNOWN",
+      "status_reason": "no published per-GB price was verified for this project's access path in this pass; see M2/output/DATA_ACQUISITION_PLAN.md"
+    },
+    {
+      "id": "nasdaq_historical_itch_license_cost",
+      "name": "Nasdaq Historical TotalView-ITCH licence cost (operating economics, not per-order)",
+      "unit": "UNKNOWN",
+      "value": null,
+      "sides": "not_applicable",
+      "regimes": [
+        "STRUCTURAL_COST_FLOOR",
+        "ACCESSIBLE_REFERENCE_PATH"
+      ],
+      "formula": "UNKNOWN",
+      "applicability": "not a per-order charge; recorded because it enters operating economics",
+      "source": {
+        "url": "https://www.nasdaqtrader.com/content/technicalSupport/specifications/dataproducts/ITCHFTP.pdf",
+        "publisher": "Nasdaq",
+        "access_date": "2026-09-22",
+        "quote": "Historical TotalView-ITCH requires the Nasdaq Global Data Agreement"
+      },
+      "status": "UNKNOWN",
+      "status_reason": "Nasdaq provides the historical order-level product by quote only; no published price was located, so no number is invented"
+    }
+  ],
+  "excluded_from_all_regimes": [
+    {
+      "item": "Nasdaq add-liquidity rebate ($0.0018/share Tapes A and B, $0.0013/share Tape C)",
+      "reason": "the candidate is aggressive-only; a rebate cannot be earned on a marketable order, so it may not reduce an aggressive cost",
+      "source_id": "SRC-0203"
+    },
+    {
+      "item": "Nasdaq displayed-add rebates confirmed at USD 0.0018/share (Tapes A and B) and USD 0.0013/share (Tape C), 'All other firms'",
+      "reason": "recorded for completeness only; the candidate is aggressive-only and a rebate cannot be earned on a marketable order",
+      "source": {
+        "url": "https://www.nasdaqtrader.com/Trader.aspx?id=PriceListTrading2",
+        "publisher": "Nasdaq Trader",
+        "access_date": "2026-09-22",
+        "quote": "All other firms $0.0018 for Tape A & B Securities, $0.0013 for Tape C Securities"
+      }
+    },
+    {
+      "item": "slippage, market impact, adverse selection, queue position",
+      "reason": "not cost schedule items; they are measured, not assumed, and are outside this pass"
+    },
+    {
+      "item": "colocation, direct-feed connectivity, hosted latency infrastructure",
+      "reason": "UNKNOWN for this project; no verified primary price and no measured latency path"
+    }
+  ],
+  "known_unknowns": [
+    "the NASDAQ exchange fee page and the IBKR schedules carry no effective date, so a cost model built on them cannot be shown to describe a past test period; the access date is the only temporal anchor (matches UNK-0035).",
+    "broker/sponsor identity for this project is a choice, not a verified fact; costs are therefore reported for a named reference path and not as realised cost.",
+    "the underlying clearing cost is not publicly derivable per order (DTCC charges participants per account-month and per item); only the broker's pass-through rate is known.",
+    "FINRA's live rulebook page and the SEC-filed phased TAF schedule disagree on the current TAF rate; the filed 2026 step is encoded.",
+    "2026 rate cards cannot be back-applied to the 2019 development tape; any cost-adjusted figure on that tape validates arithmetic only.",
+    "Nasdaq Historical TotalView-ITCH coverage start is reported inconsistently across primary pages: the SFTP access specification (repo-verified SRC-0201) states files from 2007-08-13, while the nasdaq.com product page retrieved 2026-09-22 states historical data back to 2014. The discrepancy is recorded and not resolved."
+  ],
+  "rates_apply_to_period": "2026 rate cards as accessed 2026-09-22. These rates may not be applied to a historical tape from a different era: the development sample day is 2019-07-30, and the statutory rates and exchange fee schedules in force then were different. Any cost-adjusted figure computed against the 2019 sample day is arithmetic validation of the pipeline, not a historical cost reconstruction."
+}

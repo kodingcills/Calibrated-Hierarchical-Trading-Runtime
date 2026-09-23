@@ -1,0 +1,223 @@
+# M2-0 deterministic calculation configuration.
+#
+# Frozen 2026-09-22 BEFORE any outcome was inspected. Every value here is either
+# (a) copied from the frozen M1 candidate specification
+#     (M1/hypotheses/candidate_specs/NASDAQ_LARGETICK_QUEUE_IMBALANCE_UNIVERSE.json,
+#      universe rule NASDAQ-LARGETICK-QIMB-UNIV-v1),
+# (b) copied from the Nasdaq TotalView-ITCH 5.0 specification (primary provider doc), or
+# (c) a compute/development-scope decision that uses no outcome information.
+# Changing anything here invalidates the run and requires a new config hash.
+
+run:
+  run_id: "M2-0-NASDAQ-QIMB-BASELINE"
+  candidate_id: "TUP-NASDAQ-LARGETICK-H2-QIMB-AGG"
+  universe_rule_id: "NASDAQ-LARGETICK-QIMB-UNIV-v1"
+  created_utc: "2026-09-22"
+  status_vocabulary: [DATA_VALID, DATA_INVALID, CALCULATION_COMPLETE, CALCULATION_BLOCKED, UNKNOWN]
+
+paths:
+  raw_dir: "M2/data/raw"
+  derived_dir: "M2/data/derived"
+  manifest_dir: "M2/data/manifests"
+  output_dir: "M2/output"
+
+# ---------------------------------------------------------------- dataset scope
+# The only order-level Nasdaq data this project holds without a paid purchase is
+# Nasdaq's own publicly hosted sample day. It is DEVELOPMENT data forever
+# (handoff 21/22): it may validate engineering; it may never become a holdout.
+dataset:
+  dataset_id: "NASDAQ-ITCH50-PUBLIC-SAMPLE-20190730"
+  product: "Nasdaq TotalView-ITCH 5.0 (binary)"
+  vendor: "Nasdaq (public sample file service, emi.nasdaq.com)"
+  venue: "XNAS"
+  schema_id: "ITCH50-BINARY-V50-20230428"
+  raw_files:
+    - "07302019.NASDAQ_ITCH50.gz"
+  duplicate_check_files:
+    - "07302019.NASDAQ_ITCH50.gz.md5sum"
+  compression: "gzip"
+  # Trading day the file covers; the parser does not assume it, it is recorded here
+  # for provenance and is verified against the file's own system-event timestamps.
+  coverage_date: "2019-07-30"
+  role: "DEVELOPMENT"
+  holdout_eligible: false
+  outcome_claim_permitted: false
+
+# --------------------------------------------------------------- market session
+# ITCH timestamps are nanoseconds since midnight (spec: Data Types).
+session:
+  # Continuous-trading evaluation window (candidate spec: "during the valid
+  # continuous-trading session"). Bounds are inclusive-start, exclusive-end.
+  continuous_start_ns: 34200000000000   # 09:30:00.000000000
+  continuous_end_ns: 57600000000000     # 16:00:00.000000000
+  # Book state is replayed from the first message of the file (including the
+  # pre-open), because the order map must be consistent from the start of day.
+  replay_from_file_start: true           # implied by the parser, recorded for clarity
+
+# ------------------------------------------------------------ system event codes
+# ITCH spec section 1.1 System Event Codes.
+system_events:
+  start_of_messages: "O"
+  start_of_system_hours: "S"
+  start_of_market_hours: "Q"
+  end_of_market_hours: "M"
+  end_of_system_hours: "E"
+  end_of_messages: "C"
+
+# ------------------------------------------------------------------ price ticks
+# Nasdaq tick regime for the candidate: securities >= $1.00 quote in $0.01 increments.
+# ITCH prices are integers with 4 implied decimals ("Price(4)").
+price_scale: 10000
+tick_raw: 100            # $0.01 expressed in Price(4) raw units
+tick_size_usd: 0.01
+price_floor_usd: 1.0     # candidate spec eligibility: price floor
+
+# ------------------------------------------------------------- decision sampling
+decisions:
+  # Frozen causal grid; the spec fixes 100 ms for the first deterministic pass.
+  grid_ns: 100000000      # 100 ms
+  # The delay sweep is computed on a 1 s decimation of the same grid so that the
+  # run fits in a single streaming pass. This is a COMPUTE-SCOPE decision (it uses
+  # no outcome information) and is frozen before any result is read.
+  delay_grid_ns: 1000000000
+  # Decision and delay rows are streamed to Parquet in chunks of this size rather
+  # than preallocated for the whole session. Chunking keeps the resident set of a
+  # whole-tape replay at a few tens of megabytes (a preallocated 14.27M-row table
+  # costs ~2.3 GB and starves a memory-tight host), and it removes any coupling
+  # between the compute scope and a fixed buffer capacity. A chunk takes longer to
+  # fill than the longest label lag, so no row is written before its labels resolve.
+  buffer_rows_per_chunk: 262144
+  # Rows accumulate until at least this many can be written as one Parquet row group,
+  # so the file keeps the compression of a table written in a few large pieces rather
+  # than one row group per grid instant. Must be larger than the pending window.
+  flush_min_rows: 131072
+  # A decision row may be written to Parquet only once its labels are final. Future
+  # mid-price labels resolve within one horizon; the next-real-mid-change label has no
+  # natural deadline, so it is given one: if the midpoint does not move within this
+  # window the row is written with that label unresolved (next_move_resolved = false)
+  # and the count is reported. The window also bounds the rows held in memory.
+  next_move_wait_ns: 60000000000
+  # Latest-available-book rule: a decision at grid time T uses the book state
+  # produced by every message that (i) precedes it in file order and (ii) carries
+  # a timestamp <= T. Messages that appear later in file order with an earlier
+  # timestamp are NOT retro-applied; they are counted as ordering anomalies.
+  as_of_rule: "FILE_ORDER_LAST_MESSAGE_WITH_TS_LE_DECISION_TS"
+
+# --------------------------------------------------------------------- horizons
+horizons_ms: [100, 250, 500, 1000]          # candidate spec, preregistered grid
+delay_ms: [0, 10, 25, 50, 100, 250, 500, 1000]
+
+# ------------------------------------------------------------------- imbalance
+# Candidate spec: I(t) = (Q_bid - Q_ask) / (Q_bid + Q_ask), displayed size at the
+# best quotes, computed only when Q_bid + Q_ask > 0 and both sides are valid.
+imbalance:
+  formula: "(q_bid - q_ask) / (q_bid + q_ask)"
+  require_denominator_positive: true
+  require_both_sides: true
+  bins:
+    edges: [-1.0, -0.8, -0.6, -0.4, -0.2, 0.0, 0.2, 0.4, 0.6, 0.8, 1.0]
+    convention: "LEFT_CLOSED_RIGHT_OPEN_EXCEPT_LAST"
+  extreme_threshold: 0.8
+
+# ------------------------------------------------------------- development scope
+# Compute scope only. This is NOT universe membership and never will be: the
+# frozen universe rule requires a 60-trading-day causal lookback plus a
+# point-in-time reference, neither of which this sample day can supply. The scope
+# ranks symbols by the number of order-add messages on the sample day, which uses
+# no return, no imbalance-predictiveness and no P&L information.
+dev_scope:
+  label: "DEVELOPMENT_SCOPE_NOT_UNIVERSE_MEMBERSHIP"
+  # Realised compute-scope size: 61 symbols x 234,000 grid instants = 14,274,000
+  # decisions, which is what the pre-allocated decision buffer is sized for. The
+  # value is the cap the code enforces; if a symbol fails the price floor it is
+  # deactivated and reported, and the scope is NOT re-filled.
+  candidate_pool_size: 61
+  rank_by: "order_add_message_count"
+  require_nasdaq_listed: true              # Stock Directory market category in Q/G/S
+  require_common_stock: true               # Stock Directory issue classification "C"
+  require_not_etp: true                    # Stock Directory ETP flag != "Y"
+  require_price_floor: true                # first valid mid of the sample day >= $1.00
+
+# ------------------------------------------------------------- universe (frozen)
+# Verbatim parameters of NASDAQ-LARGETICK-QIMB-UNIV-v1. The implementation in
+# src/universe.py reads these and applies them; it does not reinterpret them.
+# These thresholds are copies of the frozen specification and are passed INTO the
+# implementation at run time (universe.RuleParameters), so the config is the
+# authoritative source for them rather than a parallel record.
+universe:
+  rule_version: "NASDAQ-LARGETICK-QIMB-UNIV-v1"
+  spec_artifact: "M1/hypotheses/candidate_specs/NASDAQ_LARGETICK_QUEUE_IMBALANCE_UNIVERSE.json"
+  theta_fraction_at_one_tick: 0.50
+  median_spread_rule: "median quoted spread over the lookback equals exactly one tick"
+  liquidity_rule: "top decile of trailing 60-trading-day median daily dollar volume"
+  liquidity_lookback_trading_days: 60
+  minimum_history_trading_days: 120
+  coverage_rule_min_fraction: 0.90
+  minimum_universe_size: 5
+  minimum_pooled_events_per_month: 100000
+  rebalance_frequency: "monthly"
+  selection_date_rule: "first trading day of each calendar month T"
+  selection_information_deadline: "strictly before the open of T's first trading day"
+  halt_exclusion_percentile: 95
+  requires_point_in_time_reference: true
+  requires_order_level_lookback: true
+
+# ------------------------------------------------------------------ cost ledger
+cost_ledger:
+  ledger_id: "M2-COST-LEDGER-v1"
+  artifact: "M2/config/cost_ledger_v1.json"
+  regimes: [STRUCTURAL_COST_FLOOR, ACCESSIBLE_REFERENCE_PATH]
+  # Representative arithmetic grids (handoff 16). No profitability judgement.
+  representative_quantities: [1, 10, 100, 500, 1000]
+  representative_prices_usd: [5, 10, 25, 50, 100, 200, 500]
+  representative_prices_quantities: [100, 1000]
+  # Declared order size used to convert per-share costs into bps inside the
+  # execution and delay tables. Declared before any result was read; per-order
+  # minimums make the bps figure order-size dependent, so the size is part of the
+  # reported contract rather than an implicit default.
+  representative_order_shares: 100
+
+# ------------------------------------------------------------ data-quality rules
+data_quality:
+  # A day that breaches a BINDING limit is marked DATA_INVALID and the calculation
+  # stage refuses to run on it. Nothing is repaired and no limit is relaxed after
+  # the fact: a breach is a result.
+  binding_limits:
+    max_orphan_event_fraction: 0.0001        # 0.01% of scope book-modifying messages
+    max_negative_size_events: 0
+    max_order_id_collisions: 0
+    max_backwards_timestamp_fraction: 0.001  # 0.1% of all messages with ts < previous ts
+    max_crossed_book_update_fraction: 0.001  # 0.1% of scope book updates
+  # Reported with counts and rates, never used to invalidate a day (the declared
+  # report-only set; every one of these counters appears in the audit artifacts):
+  report_only_checks:
+    - late_after_decision
+    - locked_book_updates
+    - empty_side_updates
+    - identical_timestamp_messages
+    - adjacent_duplicates
+    - duplicates_within_bucket
+    - sequence_substitute_regressions
+    - reconciliation_mismatches
+  # Decision states excluded before any statistic is computed, with a recorded
+  # reason code per exclusion (handoff 5: never repair, always account). This list is
+  # the declared set; calculate.apply_exclusions implements exactly these three and
+  # reports the count of each.
+  decision_state_exclusions:
+    - CROSSED_OR_LOCKED_SPREAD      # best_ask <= best_bid at the decision instant
+    - MISSING_SIDE                  # one side of the book is empty
+    - NON_POSITIVE_DENOMINATOR      # q_bid + q_ask <= 0
+  fail_fast_on_impossible_state: true
+  book_audit_sample_interval_ns: 60000000000  # reconciliation sampling cadence
+
+# ------------------------------------------------------------------- statistics
+statistics:
+  bootstrap:
+    method: "BLOCK_BOOTSTRAP_BY_SYMBOL_DAY_BLOCK"
+    block_length_ns: 1800000000000        # 30 minutes
+    resamples: 2000
+    seed: 20190730
+    # One sample day cannot support a day-level bootstrap. The block unit is the
+    # (symbol, 30-minute block) cell, which is the finest dependence unit present.
+    unit: "SYMBOL_BLOCK"
+  dispersion_units: [symbol, symbol_block]
