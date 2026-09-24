@@ -24,7 +24,7 @@
   "known_source_ids": [
     "SRC-0107"
   ],
-  "last_updated": "2026-09-24T01:20:54Z",
+  "last_updated": "2026-09-24T11:46:43Z",
   "parent_issue_id": "UNK-0023",
   "priority_reason": "Child scoped to CME technical documentation; the fee question is an external action and is not part of this child.",
   "priority_score": null,

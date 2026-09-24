@@ -1,0 +1,604 @@
+{
+  "config_sha256": "faeafff442c01d531e2834c0f4d03d66820f99e44a0a8d713cfb6f69c6aa9ad5",
+  "primary": [
+    {
+      "locate": 4,
+      "symbol": "AABA"
+    },
+    {
+      "locate": 7,
+      "symbol": "AAL"
+    },
+    {
+      "locate": 14,
+      "symbol": "AAPL"
+    },
+    {
+      "locate": 325,
+      "symbol": "AMAT"
+    },
+    {
+      "locate": 337,
+      "symbol": "AMD"
+    },
+    {
+      "locate": 379,
+      "symbol": "AMTD"
+    },
+    {
+      "locate": 604,
+      "symbol": "ATVI"
+    },
+    {
+      "locate": 1311,
+      "symbol": "CELG"
+    },
+    {
+      "locate": 1327,
+      "symbol": "CERN"
+    },
+    {
+      "locate": 1534,
+      "symbol": "CMCSA"
+    },
+    {
+      "locate": 1740,
+      "symbol": "CSCO"
+    },
+    {
+      "locate": 1767,
+      "symbol": "CSX"
+    },
+    {
+      "locate": 1799,
+      "symbol": "CTSH"
+    },
+    {
+      "locate": 1808,
+      "symbol": "CTXS"
+    },
+    {
+      "locate": 2277,
+      "symbol": "EBAY"
+    },
+    {
+      "locate": 2884,
+      "symbol": "FISV"
+    },
+    {
+      "locate": 3339,
+      "symbol": "GILD"
+    },
+    {
+      "locate": 4184,
+      "symbol": "INTC"
+    },
+    {
+      "locate": 5020,
+      "symbol": "MDLZ"
+    },
+    {
+      "locate": 5273,
+      "symbol": "MRVL"
+    },
+    {
+      "locate": 5289,
+      "symbol": "MSFT"
+    },
+    {
+      "locate": 5334,
+      "symbol": "MU"
+    },
+    {
+      "locate": 5986,
+      "symbol": "PAYX"
+    },
+    {
+      "locate": 6089,
+      "symbol": "PEP"
+    },
+    {
+      "locate": 6474,
+      "symbol": "PYPL"
+    },
+    {
+      "locate": 6494,
+      "symbol": "QCOM"
+    },
+    {
+      "locate": 6964,
+      "symbol": "SBUX"
+    },
+    {
+      "locate": 7163,
+      "symbol": "SIRI"
+    },
+    {
+      "locate": 7701,
+      "symbol": "TER"
+    },
+    {
+      "locate": 7810,
+      "symbol": "TMUS"
+    },
+    {
+      "locate": 8470,
+      "symbol": "WBA"
+    },
+    {
+      "locate": 8497,
+      "symbol": "WDC"
+    },
+    {
+      "locate": 8665,
+      "symbol": "XEL"
+    }
+  ],
+  "scope_version": "M2-1-PASSIVE-SCOPE-v1",
+  "secondary": [
+    {
+      "locate": 4,
+      "symbol": "AABA"
+    },
+    {
+      "locate": 7,
+      "symbol": "AAL"
+    },
+    {
+      "locate": 14,
+      "symbol": "AAPL"
+    },
+    {
+      "locate": 33,
+      "symbol": "ABMD"
+    },
+    {
+      "locate": 91,
+      "symbol": "ADBE"
+    },
+    {
+      "locate": 94,
+      "symbol": "ADI"
+    },
+    {
+      "locate": 103,
+      "symbol": "ADP"
+    },
+    {
+      "locate": 111,
+      "symbol": "ADSK"
+    },
+    {
+      "locate": 250,
+      "symbol": "AKAM"
+    },
+    {
+      "locate": 280,
+      "symbol": "ALGN"
+    },
+    {
+      "locate": 320,
+      "symbol": "ALXN"
+    },
+    {
+      "locate": 325,
+      "symbol": "AMAT"
+    },
+    {
+      "locate": 337,
+      "symbol": "AMD"
+    },
+    {
+      "locate": 342,
+      "symbol": "AMGN"
+    },
+    {
+      "locate": 379,
+      "symbol": "AMTD"
+    },
+    {
+      "locate": 386,
+      "symbol": "AMZN"
+    },
+    {
+      "locate": 604,
+      "symbol": "ATVI"
+    },
+    {
+      "locate": 627,
+      "symbol": "AVGO"
+    },
+    {
+      "locate": 869,
+      "symbol": "BIIB"
+    },
+    {
+      "locate": 908,
+      "symbol": "BKNG"
+    },
+    {
+      "locate": 936,
+      "symbol": "BLUE"
+    },
+    {
+      "locate": 1142,
+      "symbol": "BYND"
+    },
+    {
+      "locate": 1311,
+      "symbol": "CELG"
+    },
+    {
+      "locate": 1327,
+      "symbol": "CERN"
+    },
+    {
+      "locate": 1363,
+      "symbol": "CGNX"
+    },
+    {
+      "locate": 1428,
+      "symbol": "CHTR"
+    },
+    {
+      "locate": 1534,
+      "symbol": "CMCSA"
+    },
+    {
+      "locate": 1539,
+      "symbol": "CME"
+    },
+    {
+      "locate": 1648,
+      "symbol": "COST"
+    },
+    {
+      "locate": 1740,
+      "symbol": "CSCO"
+    },
+    {
+      "locate": 1744,
+      "symbol": "CSGP"
+    },
+    {
+      "locate": 1767,
+      "symbol": "CSX"
+    },
+    {
+      "locate": 1774,
+      "symbol": "CTAS"
+    },
+    {
+      "locate": 1799,
+      "symbol": "CTSH"
+    },
+    {
+      "locate": 1808,
+      "symbol": "CTXS"
+    },
+    {
+      "locate": 2046,
+      "symbol": "DISH"
+    },
+    {
+      "locate": 2084,
+      "symbol": "DLTR"
+    },
+    {
+      "locate": 2263,
+      "symbol": "EA"
+    },
+    {
+      "locate": 2277,
+      "symbol": "EBAY"
+    },
+    {
+      "locate": 2519,
+      "symbol": "EQIX"
+    },
+    {
+      "locate": 2686,
+      "symbol": "EXAS"
+    },
+    {
+      "locate": 2698,
+      "symbol": "EXPE"
+    },
+    {
+      "locate": 2730,
+      "symbol": "FANG"
+    },
+    {
+      "locate": 2741,
+      "symbol": "FB"
+    },
+    {
+      "locate": 2884,
+      "symbol": "FISV"
+    },
+    {
+      "locate": 3318,
+      "symbol": "GHDX"
+    },
+    {
+      "locate": 3339,
+      "symbol": "GILD"
+    },
+    {
+      "locate": 3459,
+      "symbol": "GOOG"
+    },
+    {
+      "locate": 3460,
+      "symbol": "GOOGL"
+    },
+    {
+      "locate": 3499,
+      "symbol": "GRMN"
+    },
+    {
+      "locate": 3617,
+      "symbol": "HAS"
+    },
+    {
+      "locate": 4106,
+      "symbol": "ILMN"
+    },
+    {
+      "locate": 4144,
+      "symbol": "INCY"
+    },
+    {
+      "locate": 4184,
+      "symbol": "INTC"
+    },
+    {
+      "locate": 4189,
+      "symbol": "INTU"
+    },
+    {
+      "locate": 4212,
+      "symbol": "IPGP"
+    },
+    {
+      "locate": 4267,
+      "symbol": "ISRG"
+    },
+    {
+      "locate": 4777,
+      "symbol": "LGND"
+    },
+    {
+      "locate": 4878,
+      "symbol": "LRCX"
+    },
+    {
+      "locate": 4910,
+      "symbol": "LULU"
+    },
+    {
+      "locate": 4931,
+      "symbol": "LYFT"
+    },
+    {
+      "locate": 4953,
+      "symbol": "MAR"
+    },
+    {
+      "locate": 4991,
+      "symbol": "MCHP"
+    },
+    {
+      "locate": 5007,
+      "symbol": "MDB"
+    },
+    {
+      "locate": 5020,
+      "symbol": "MDLZ"
+    },
+    {
+      "locate": 5035,
+      "symbol": "MEDP"
+    },
+    {
+      "locate": 5039,
+      "symbol": "MELI"
+    },
+    {
+      "locate": 5273,
+      "symbol": "MRVL"
+    },
+    {
+      "locate": 5289,
+      "symbol": "MSFT"
+    },
+    {
+      "locate": 5334,
+      "symbol": "MU"
+    },
+    {
+      "locate": 5371,
+      "symbol": "MXIM"
+    },
+    {
+      "locate": 5417,
+      "symbol": "NBIX"
+    },
+    {
+      "locate": 5498,
+      "symbol": "NFLX"
+    },
+    {
+      "locate": 5702,
+      "symbol": "NVDA"
+    },
+    {
+      "locate": 5736,
+      "symbol": "NXPI"
+    },
+    {
+      "locate": 5825,
+      "symbol": "OKTA"
+    },
+    {
+      "locate": 5828,
+      "symbol": "OLED"
+    },
+    {
+      "locate": 5895,
+      "symbol": "ORLY"
+    },
+    {
+      "locate": 5913,
+      "symbol": "OSTK"
+    },
+    {
+      "locate": 5986,
+      "symbol": "PAYX"
+    },
+    {
+      "locate": 6089,
+      "symbol": "PEP"
+    },
+    {
+      "locate": 6474,
+      "symbol": "PYPL"
+    },
+    {
+      "locate": 6494,
+      "symbol": "QCOM"
+    },
+    {
+      "locate": 6631,
+      "symbol": "REGN"
+    },
+    {
+      "locate": 6779,
+      "symbol": "ROKU"
+    },
+    {
+      "locate": 6789,
+      "symbol": "ROST"
+    },
+    {
+      "locate": 6939,
+      "symbol": "SBAC"
+    },
+    {
+      "locate": 6964,
+      "symbol": "SBUX"
+    },
+    {
+      "locate": 7163,
+      "symbol": "SIRI"
+    },
+    {
+      "locate": 7289,
+      "symbol": "SNPS"
+    },
+    {
+      "locate": 7358,
+      "symbol": "SPLK"
+    },
+    {
+      "locate": 7450,
+      "symbol": "SSNC"
+    },
+    {
+      "locate": 7498,
+      "symbol": "STNE"
+    },
+    {
+      "locate": 7557,
+      "symbol": "SWKS"
+    },
+    {
+      "locate": 7701,
+      "symbol": "TER"
+    },
+    {
+      "locate": 7810,
+      "symbol": "TMUS"
+    },
+    {
+      "locate": 7895,
+      "symbol": "TROW"
+    },
+    {
+      "locate": 7928,
+      "symbol": "TSLA"
+    },
+    {
+      "locate": 7941,
+      "symbol": "TTD"
+    },
+    {
+      "locate": 7955,
+      "symbol": "TTWO"
+    },
+    {
+      "locate": 7991,
+      "symbol": "TXN"
+    },
+    {
+      "locate": 7992,
+      "symbol": "TXRH"
+    },
+    {
+      "locate": 8014,
+      "symbol": "UAL"
+    },
+    {
+      "locate": 8091,
+      "symbol": "ULTA"
+    },
+    {
+      "locate": 8388,
+      "symbol": "VRNS"
+    },
+    {
+      "locate": 8393,
+      "symbol": "VRSK"
+    },
+    {
+      "locate": 8399,
+      "symbol": "VRTX"
+    },
+    {
+      "locate": 8470,
+      "symbol": "WBA"
+    },
+    {
+      "locate": 8496,
+      "symbol": "WDAY"
+    },
+    {
+      "locate": 8497,
+      "symbol": "WDC"
+    },
+    {
+      "locate": 8649,
+      "symbol": "WYNN"
+    },
+    {
+      "locate": 8665,
+      "symbol": "XEL"
+    },
+    {
+      "locate": 8688,
+      "symbol": "XLNX"
+    },
+    {
+      "locate": 8794,
+      "symbol": "ZBRA"
+    },
+    {
+      "locate": 8822,
+      "symbol": "ZM"
+    }
+  ],
+  "source": {
+    "large_tick_membership": "M2/output/univproxy/data_quality/large_tick_proxy_membership.csv",
+    "source_derived_dir": "M2/data/derived_univproxy/NASDAQ-ITCH50-PUBLIC-SAMPLE-20190730"
+  }
+}

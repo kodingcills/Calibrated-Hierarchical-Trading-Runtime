@@ -4,28 +4,28 @@
       "name": "provenance references resolve",
       "note": "",
       "result": "PASS",
-      "rows_checked": 1266,
+      "rows_checked": 1283,
       "rule": "V1"
     },
     {
       "name": "numeric facts carry sources or are declared UNKNOWN",
       "note": "",
       "result": "PASS",
-      "rows_checked": 536,
+      "rows_checked": 547,
       "rule": "V2"
     },
     {
       "name": "gate ceiling and dead/ALIVE integrity",
-      "note": "1 kill(s) rest on a recorded decision; the remainder on computed FAILs",
+      "note": "2 kill(s) rest on a recorded decision; the remainder on computed FAILs",
       "result": "PASS",
-      "rows_checked": 36,
+      "rows_checked": 38,
       "rule": "V3"
     },
     {
       "name": "referential integrity",
       "note": "",
       "result": "PASS",
-      "rows_checked": 910,
+      "rows_checked": 933,
       "rule": "V4"
     },
     {
@@ -39,14 +39,14 @@
       "name": "stable ids unique",
       "note": "",
       "result": "PASS",
-      "rows_checked": 440,
+      "rows_checked": 447,
       "rule": "V6"
     },
     {
       "name": "time-sensitive sources dated",
       "note": "",
       "result": "PASS",
-      "rows_checked": 105,
+      "rows_checked": 107,
       "rule": "V7"
     },
     {
@@ -60,7 +60,7 @@
       "name": "decision-critical values remain UNKNOWN",
       "note": "",
       "result": "PASS",
-      "rows_checked": 280,
+      "rows_checked": 290,
       "rule": "V10"
     },
     {
@@ -109,21 +109,21 @@
       "name": "eligibility independent of non-M1 issues; every verdict rule-traced",
       "note": "",
       "result": "PASS",
-      "rows_checked": 140,
+      "rows_checked": 145,
       "rule": "V16"
     },
     {
       "name": "patch integrity",
       "note": "",
       "result": "PASS",
-      "rows_checked": 6,
+      "rows_checked": 8,
       "rule": "V17"
     },
     {
       "name": "work artefacts valid and complete",
       "note": "",
       "result": "PASS",
-      "rows_checked": 96,
+      "rows_checked": 97,
       "rule": "V18"
     },
     {
@@ -136,19 +136,19 @@
   ],
   "context": {
     "blocking_issues": 35,
-    "candidate_rows": 28,
+    "candidate_rows": 29,
     "m1b_eligible": [],
     "status": {
       "ALIVE": 0,
-      "DEAD": 8,
+      "DEAD": 9,
       "UNKNOWN": 16,
       "WEAK": 4,
-      "total": 28
+      "total": 29
     }
   },
   "details": [],
   "failures": 0,
-  "generated_at": "2026-09-24T01:22:13Z",
+  "generated_at": "2026-09-24T11:47:22Z",
   "overall": "PASS",
   "validator": "M1/src/validate.py"
 }

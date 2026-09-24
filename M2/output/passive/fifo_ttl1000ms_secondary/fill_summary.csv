@@ -1,0 +1,4 @@
+subset,attempts,filled_attempts,fill_rate,filled_shares,shares_per_attempt,partial_fill_attempts,complete_fill_attempts,partial_fill_share_of_fills,median_time_to_first_fill_ms,p90_time_to_first_fill_ms,median_queue_ahead_shares,median_queue_ahead_orders,queue_ahead_zero_share
+primary_large_tick_proxy,737768,6067,0.008223452359007167,538672.0,0.7301373873629651,1050,5017,0.17306741387835833,536.69965,916.2319894000002,700.0,5.0,0.0
+secondary_other_scope_names,1720654,9701,0.005637972538348791,774035.0,0.4498493014865278,2847,6854,0.2934748994948974,524.073773,906.647301,200.0,2.0,0.0
+all_replayed_names,2458422,15768,0.0064138703607435985,1312707.0,0.5339632495966925,3897,11871,0.2471461187214612,528.5171125,910.5009753,298.0,3.0,0.0

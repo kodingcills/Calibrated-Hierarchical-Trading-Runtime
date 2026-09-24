@@ -18,7 +18,7 @@
   "kill_potential": "MEDIUM",
   "known_evidence_ids": [],
   "known_source_ids": [],
-  "last_updated": "2026-09-24T01:20:54Z",
+  "last_updated": "2026-09-24T11:46:43Z",
   "parent_issue_id": "UNK-0027",
   "priority_reason": "Scoped child; cheap and public.",
   "priority_score": null,

@@ -4,7 +4,7 @@ Canonical machine-readable source: `M1/data/dead_candidates.csv`.
 Imported from the M1-A dead-candidate cemetery (SRC-0011) plus the two governance and
 technology admissions registered by M1-C.
 
-Registered dead rows: 8
+Registered dead rows: 9
 
 Re-entry policy: a dead candidate cannot re-enter silently. It requires NEW_EVIDENCE plus
 an explicit resurrection decision recorded in `DECISIONS.md`. The resurrection condition
@@ -15,9 +15,18 @@ is recorded per row so the decision can be made against a stated bar rather than
 - class: TUPLE
 - report kill gate (verbatim): M2 measured execution economics (no M1-A cemetery row)
 - cause: Aggressive execution cannot clear the tick-plus-fee friction: a measured signal of 0.0794 bps against a 4.1011 bps round trip, with a measured clairvoyant ceiling of 0.822 bps per trade at the structural floor and 0.219 bps per trade on the accessible reference path (M2-0-6-UNIVPROXY, freeze sha256 4fc098a3...c32b38b).
-- evidence: EVD-0004|EVD-0005|EVD-0012|EVD-0031|EVD-0032|EVD-0033|EVD-0034|EVD-0035|EVD-0041|EVD-0042|EVD-0064|EVD-0066|EVD-0067
+- evidence: EVD-0004|EVD-0005|EVD-0012|EVD-0031|EVD-0032|EVD-0033|EVD-0034|EVD-0035|EVD-0041|EVD-0042|EVD-0064|EVD-0066|EVD-0067|EVD-0068
 - death date: 2026-09-20 (date of the M1-A artifact (SRC-0011) for the original kills; M1-D0 computed-gate kills are dated by gate_recompute_date; a kill recorded from M2 evidence carries its experiment date in the cause text and in its evidence rows rather than in this column)
 - resurrection condition: A rule-conformant modern measurement with a pooled required/signal ratio at or below 5, which requires both a materially higher move scale and a materially higher price level for the universe's names than the measured 2019 session (M2/output/M2_AUTONOMOUS_STATUS.md).
+
+## TUP-NASDAQ-LARGETICK-H2-QIMB-PAS - killed by KG3_EXECUTION
+
+- class: TUPLE
+- report kill gate (verbatim): M2 measured passive-execution economics (no M1-A cemetery row)
+- cause: Passive monetization fails on both sides of the queue-position trade-off: patient orders are rarely reached by flow inside the signal's own 1 s horizon (0.82% of attempts, median 537 ms), and orders reached immediately - the optimistic bound - are selected against by -1.02 bps of midpoint drift, more than the entry spread they earn. Measured deterministically on the 2019-07-30 development tape (M2-1-PASSIVE-QIMB, freeze sha256 03efd04e...).
+- evidence: EVD-0068|EVD-0069
+- death date: 2026-09-20 (date of the M1-A artifact (SRC-0011) for the original kills; M1-D0 computed-gate kills are dated by gate_recompute_date; a kill recorded from M2 evidence carries its experiment date in the cause text and in its evidence rows rather than in this column)
+- resurrection condition: A rule-conformant measurement with non-negative fill-conditioned midpoint markout and queue reachability inside the signal's horizon, or a materially different formulation registered as its own candidate (passive exit, inventory, or venue liquidity-credit capture with an always-resting baseline).
 
 ## TUP-HYPERLIQUID-BTCPERP-H1-QDEP-AGGPAS - killed by KG2_DATA|KG4_HALF_LIFE
 

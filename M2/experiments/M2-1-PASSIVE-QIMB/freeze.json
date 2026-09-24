@@ -1,0 +1,116 @@
+{
+  "experiment_id": "M2-1-PASSIVE-QIMB",
+  "parent_id": "M2-0-6-UNIVPROXY",
+  "parent_candidate_id": "TUP-NASDAQ-LARGETICK-H2-QIMB-AGG",
+  "parent_terminal_state": "KILLED",
+  "candidate_id": "TUP-NASDAQ-LARGETICK-H2-QIMB-PAS",
+  "pivot_reason": "PIVOT_JUSTIFIED_EXECUTION_STYLE",
+  "frozen_at_utc": "2026-09-24",
+  "git_sha_at_freeze": "ade60dade88e0fb37e474152d917033a3208d1be",
+  "freeze_status": "FROZEN_BEFORE_THE_CANONICAL_REPLAY_WAS_RUN",
+
+  "hypothesis": "The queue-imbalance mechanism survived M2-0.6 as a directional predictor (0.0794 bps at 1000 ms in the rule-conformant population) but its aggressive monetization paid a 4.1011 bps round trip. A passive entry replaces the paid spread with an earned spread, at the cost of two new risks: the order may never reach the front of the queue, and the fills it does get may be adversely selected. This experiment measures both, deterministically, on the same development tape.",
+  "mechanism": "Top-of-book displayed queue imbalance selects the side of a resting order at the near touch; the order fills only through real queue depletion at that price.",
+  "decision_question": "Does queue-aware passive execution on the already-owned development tape have enough economic plausibility to justify acquiring modern/PIT-valid data for a real out-of-sample test?",
+  "decision_if_positive": "PIVOT_SURVIVES_DEVELOPMENT: quantify which modern parameter could move the decision, then request/scope the data acquisition. No profitability claim, no ADVANCE.",
+  "decision_if_negative": "KILLED: passive monetization of this mechanism is economically dead on available evidence; update DEAD_ENDS.md, the candidate ledger, DECISIONS.md and PROJECT_STATE.md, and assess whether the QIMB mechanism family has enough evidence to stop.",
+
+  "data_versions": {
+    "dataset_id": "NASDAQ-ITCH50-PUBLIC-SAMPLE-20190730",
+    "coverage_date": "2019-07-30",
+    "role": "DEVELOPMENT",
+    "holdout_eligible": false,
+    "outcome_claim_permitted": false,
+    "raw_sha256": "c65784c48c28735901ae442dc00e215834218a359bc12a139ab4eec209bc2d4a",
+    "attempt_schedule_source": "M2/data/derived_univproxy/NASDAQ-ITCH50-PUBLIC-SAMPLE-20190730/decisions.parquet (frozen M2-0.6 decision grid)",
+    "attempt_schedule_sha256": "4ce1082fe3bd7548093daebb528ef733b9b90183650ff4f85efcf1479ba5729a",
+    "no_sealed_partition": "none exists; a single day cannot support partitions"
+  },
+
+  "code_sha256": {
+    "M2/src/passive.py": "96f54513e19177fa3c12dc9c7a7fee34079ed434849ba260bdfeb064051d229b",
+    "M2/src/passive_analysis.py": "9ef94e1ad999f21b1ddf579ea9364e81e401e26630c1eb95ed06b7566f46670a",
+    "M2/src/book.py": "b75c39d7adf7897c3110a2b2c2cd88097ccafd64c67da3e5d9a579e399d119ee",
+    "M2/src/ingest.py": "84b94a1a26f9771d1c498e1906666b0deaefd5f37c99a215a6fe0fc7c2f37fad",
+    "M2/src/costs.py": "1df0ed45e5663614f799350f87b52abcc863ba47f933fc0791e595cec0e3d36f",
+    "M2/src/calculate.py": "8a6a0534cec0142fbdc56fa4ea9d354f497cad2358f067b261a74a93439edef7",
+    "M2/tests/test_passive.py": "23d00f6d8dd6b07de61a30e30965832070f3e2b49ddcbddf8b8660886af71c34"
+  },
+  "config_sha256": "faeafff442c01d531e2834c0f4d03d66820f99e44a0a8d713cfb6f69c6aa9ad5",
+  "cost_version": "M2-COST-LEDGER-v1 sha256 52ce785fc7210138af4059e327fc7101dff7f78dff3f5156c045973c1ed4cb17",
+  "universe_version": "NASDAQ-LARGETICK-QIMB-UNIV-v1, spec sha256 9ff81b4f5bc92687840ac4f568cf167afc1b470204919d2f0af236feec30a7dd",
+  "registered_specs_honoured": {
+    "M1/work/m2_specs/PASSIVE_FILL_MODEL.md": "38dcc649b6c0a6fd79ed4d26b41a52a7c11a257ba909eead1c86eabd268a1588: touch=fills is disallowed as an estimator and is retained only as a reference upper bound; the primary model is an explicit queue-aware deterministic fill model",
+    "M1/work/m2_specs/FILL_CONDITIONED_MARKOUT.md": "6047680ea19273d1fc3eb6ee751c0352580d846b02c85b6465938d898f02e9a5: E[markout | fill, state] with an exposure-matched null; the null here is the same-instant no-queue (immediate) fill counterfactual, and midpoint and fill-price markouts are reported separately"
+  },
+
+  "population": {
+    "primary": "the 33 rule-conformant large-tick names of the M2-0.6 single-day proxy (median quoted spread exactly one tick and at least THETA=0.50 of valid observations at one tick)",
+    "secondary": "all 115 replayed names of the M2-0.6 liquidity scope, analysed separately and never mixed into the primary number",
+    "scope_manifest": "M2/data/manifests/passive_scope.json (written deterministically from the frozen M2-0.6 membership artifact)",
+    "universe_membership": "still BLOCKED: this is a single-day proxy, not membership"
+  },
+
+  "sampling_rule": "one hypothetical order per symbol per second at the frozen M2-0.6 decision instants, 09:30:00-16:00:00, submitted on the same global clock the M2-0 engine used to emit decisions",
+  "feature_version": "I(t) = (Q_bid - Q_ask) / (Q_bid + Q_ask) at the decision instant, unchanged from M2-0",
+  "declared_imbalance_states": "|I| bins [0,0.2), [0.2,0.4), [0.4,0.6), [0.6,0.8), [0.8,1.0]; side = sign(I); no order when I == 0",
+
+  "frozen_model": {
+    "order_side": "sign(queue imbalance)",
+    "order_price": "join the near touch: best bid for a buy, best ask for a sell",
+    "order_size_shares": 100,
+    "queue_ahead_definition": "every displayed order resting at that price level at submission time is ahead; nothing arriving later is. Position is tracked per order reference number through a global arrival sequence, so a later-arriving order can never advance our position, and a cancel-replace (new reference number) moves behind us.",
+    "fill_criterion": "fill only against executions (E/C) at our price level, in file order, once the displayed quantity ahead is exhausted and the aggressor's executed quantity reaches our position; a fill is bounded by min(executed shares, our remaining size). Orphan executions, executions of orders behind us while quantity is still ahead, and non-displayed trade prints never fill us.",
+    "partial_fill_treatment": "partial fills accumulate on the same order; the first fill anchors the markout and exit clocks",
+    "ttl": "1000 ms primary (the mechanism's own H2 horizon); predeclared diagnostics at 5000 ms and 30000 ms, reported and never selected on",
+    "cancellation_policy": "none beyond TTL; no signal-based cancel, so no cancel-latency assumption enters the primary result",
+    "cancel_latency": "NOT_APPLICABLE by policy; fills occur only while the order is resting",
+    "markout_horizons_ms": [10, 25, 50, 100, 250, 500, 1000],
+    "markout_anchor": "the first fill timestamp, with the mid measured after the execution that filled us",
+    "exit_rule": "aggressive exit at the prevailing executable quote at fill + horizon: sell at the best bid after a buy fill, buy at the best ask after a sell fill",
+    "exit_resolution": "the book state at the first message strictly after fill + horizon (the same as-of rule the M2-0 engine uses); the realized lag is reported as exit_lag_mean_ns / exit_lag_max_ns",
+    "fee_treatment": "one-sided ledger breakdown: the passive entry leg is charged no exchange fee because the frozen ledger contains no add-liquidity item; the aggressive exit leg is charged its remove-liquidity fee, statutory charges and, on the accessible reference path, commission. A verified Nasdaq add-liquidity credit of $0.0018/share (SRC-0203, a 2026 card) is reported as a labelled sensitivity only."
+  },
+
+  "primary_metrics": {
+    "M1_fill_probability": "filled attempts / attempts, primary population",
+    "M2_fill_conditioned_mid_markout": "side-signed midpoint move in bps from the fill timestamp, with a block-bootstrap CI over symbol x 30-minute cells",
+    "M3_executable_net_per_filled_share": "passive entry, aggressive exit at 1000 ms, net of the structural floor; the accessible path is reported beside it",
+    "M4_expected_value_per_attempt": "sum over fills of (net bps x shares) / attempts, i.e. fill probability times per-fill value",
+    "M5_robustness": "the same quantities across the declared |I| states and queue-position bands, plus symbol concentration"
+  },
+
+  "precommitted_decision_rule": {
+    "kill_criteria": [
+      "K1 QUEUE_NON_IDENTIFIABLE: priority anomalies or orphan executions exceed 1% of fill events, or the model cannot be reconciled on sampled traces -> EXTERNAL_BLOCK, never fabricated fills",
+      "K2 FILL_STARVATION: primary fill rate below 1% of attempts",
+      "K3 ADVERSE_SELECTION_DOMINANCE: fill-conditioned midpoint markout at 1000 ms is negative and its 95% block-bootstrap CI excludes zero",
+      "K4 EXECUTABLE_NET_NEGATIVE: net per filled share at the structural floor is non-positive AND expected value per attempt is non-positive, with the labelled rebate sensitivity failing to flip the sign",
+      "K5 ONLY_UNREALISTIC_QUEUE_POSITIONS: positive expected value appears only in the top queue-position band(s) that jointly carry under 5% of attempts",
+      "K6 ECONOMIC_SCALE_NEGLIGIBLE: expected value per attempt below $0.01 of executable value at 100 shares, so positive per-fill economics cannot amortise data, connectivity and operational cost"
+    ],
+    "verdict_rule": "KILLED if K2 or K3 or K4 holds on the primary population, or if K6 holds while K3/K4 also hold on the fixed path; PIVOT_SURVIVES_DEVELOPMENT only if K4 fails to hold (net positive at the structural floor) with a fill rate of at least 1% and positive expected value in at least two declared states; EXTERNAL_BLOCK if K1 holds.",
+    "decision_order": "K1 is evaluated first (identifiability gates everything), then K2, K3, K4, then K5/K6 as scale checks",
+    "permitted_post_result_decisions": [
+      "assign one terminal state and stop",
+      "record the measured fill, adverse-selection and executable-economics quantities as durable evidence",
+      "update DEAD_ENDS.md, candidate ledger, DECISIONS.md, PROJECT_STATE.md, evidence ledger",
+      "scope a modern-data request only if the verdict is PIVOT_SURVIVES_DEVELOPMENT",
+      "register a passive-exit or inventory hypothesis as a separate candidate if evidence motivates it (never inside this experiment)"
+    ],
+    "prohibited_post_result_decisions": [
+      "editing this freeze",
+      "selecting the best imbalance state, queue-position band, TTL, horizon, size or symbol subset and presenting it as the strategy",
+      "adding a passive exit, inventory management or market making to rescue a failed maker-entry result",
+      "crediting a maker rebate in the primary result",
+      "using Jev/System-One, machine learning or any fitted fill model",
+      "claiming any current-market or out-of-sample conclusion"
+    ]
+  },
+
+  "reproduction": [
+    ".venv/bin/python -m M2.src.passive --config M2/config/nasdaq_qimb_m2_1_passive.yaml --stage scope",
+    ".venv/bin/python -m M2.src.passive --config M2/config/nasdaq_qimb_m2_1_passive.yaml --stage replay --scope secondary --ttl-ms 1000",
+    ".venv/bin/python -m M2.src.passive_analysis --config M2/config/nasdaq_qimb_m2_1_passive.yaml --label ttl1000ms_secondary"
+  ]
+}

@@ -1,0 +1,72 @@
+# M2-1 passive execution feasibility: deterministic queue-aware replay.
+#
+# The candidate, the session, the tick regime, the decision grid, the imbalance definition and
+# the cost ledger are inherited unchanged from the frozen M2-0 / M2-0.6 chain. What is new is
+# the execution model: a hypothetical passive order joins the back of its price level and fills
+# only when the displayed quantity ahead of it has been consumed or removed and real executable
+# flow reaches its position. No probabilistic fill assumption appears anywhere.
+
+run:
+  run_id: "M2-1-PASSIVE-QIMB"
+  candidate_id: "TUP-NASDAQ-LARGETICK-H2-QIMB-PAS"
+  parent_candidate_id: "TUP-NASDAQ-LARGETICK-H2-QIMB-AGG"
+  pivot_reason: "PIVOT_JUSTIFIED_EXECUTION_STYLE"
+  universe_rule_id: "NASDAQ-LARGETICK-QIMB-UNIV-v1"
+  created_utc: "2026-09-24"
+
+paths:
+  raw_dir: "M2/data/raw"
+  derived_dir: "M2/data/derived_passive"
+  manifest_dir: "M2/data/manifests"
+  output_dir: "M2/output/passive"
+
+dataset:
+  dataset_id: "NASDAQ-ITCH50-PUBLIC-SAMPLE-20190730"
+  product: "Nasdaq TotalView-ITCH 5.0 (binary)"
+  vendor: "Nasdaq (public sample file service, emi.nasdaq.com)"
+  venue: "XNAS"
+  schema_id: "ITCH50-BINARY-V50-20230428"
+  raw_files:
+    - "07302019.NASDAQ_ITCH50.gz"
+  compression: "gzip"
+  coverage_date: "2019-07-30"
+  role: "DEVELOPMENT"
+  holdout_eligible: false
+  outcome_claim_permitted: false
+
+session:
+  continuous_start_ns: 34200000000000
+  continuous_end_ns: 57600000000000
+
+price_scale: 10000
+tick_raw: 100
+tick_size_usd: 0.01
+price_floor_usd: 1.0
+
+# Must equal the decision grid of the source run: submissions are the frozen M2-0.6 decision
+# instants, one per symbol per second, and the imbalance at that instant selects the side.
+decisions:
+  grid_ns: 1000000000
+
+passive:
+  source_derived_dir: "M2/data/derived_univproxy/NASDAQ-ITCH50-PUBLIC-SAMPLE-20190730"
+  large_tick_membership: "M2/output/univproxy/data_quality/large_tick_proxy_membership.csv"
+  scope_manifest: "M2/data/manifests/passive_scope.json"
+
+universe:
+  rule_version: "NASDAQ-LARGETICK-QIMB-UNIV-v1"
+  theta_fraction_at_one_tick: 0.50
+
+statistics:
+  bootstrap:
+    method: "BLOCK_BOOTSTRAP_BY_SYMBOL_BLOCK"
+    block_length_ns: 1800000000000
+    resamples: 2000
+    seed: 20190730
+    unit: "SYMBOL_BLOCK"
+
+cost_ledger:
+  ledger_id: "M2-COST-LEDGER-v1"
+  artifact: "M2/config/cost_ledger_v1.json"
+  regimes: [STRUCTURAL_COST_FLOOR, ACCESSIBLE_REFERENCE_PATH]
+  representative_order_shares: 100

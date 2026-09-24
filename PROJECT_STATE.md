@@ -2,7 +2,7 @@
 
 Status: CURRENT
 Version: 1.0.0
-Last Updated: 2026-09-24T01:20:54Z
+Last Updated: 2026-09-24T11:46:43Z
 
 This is the canonical fast-orientation artifact. Read it before any other file. Its counts are
 generated from `M1/output/M1_STATE_SUMMARY.json` and enforced against the machine-readable
@@ -76,6 +76,42 @@ proxy-run observation was inspected).
   regime's move scale is below ≈ 2.1× that level and the pooled condition below ≈ 5×; beyond that
   only a modern-regime measurement could decide, which is the listed resurrection condition.
 
+## M2-1 — Passive execution feasibility: TERMINAL STATE `KILLED`
+
+Canonical detail: `M2/output/M2_PASSIVE_FEASIBILITY_STATUS.md`. Frozen contract:
+`M2/experiments/M2-1-PASSIVE-QIMB/freeze.json` (sha256 `03efd04e…83e7d0`, sealed before the
+canonical replay). As-run inputs, pre-result code corrections and artifact hashes:
+`M2/experiments/M2-1-PASSIVE-QIMB/run_inputs.json`. Queue identifiability:
+`M2/output/passive/QUEUE_IDENTIFIABILITY.md`.
+
+- **Hypothesis** (`TUP-NASDAQ-LARGETICK-H2-QIMB-PAS`, parent the killed aggressive row): passive
+  entry earns the spread the aggressive style paid, so the measured 0.0794 bps directional response
+  might survive once realistic queue position and fill-conditioned adverse selection are included.
+- **Model**: deterministic queue-aware replay of 100-share orders joining the back of the near touch
+  at every frozen decision instant, filling only after the displayed quantity ahead is consumed and
+  real executable flow reaches them; no probabilistic fills, no maker rebate in the primary result,
+  1 s lifetime, aggressive exit at the far touch 10 ms–1 s after the fill.
+- **Result**: 6,067 of 737,768 primary attempts fill (0.82%) at a median 537 ms behind a median
+  700-share queue; the fill-conditioned midpoint move is **−0.973 bps at 1000 ms** (CI
+  [−1.102, −0.867]) and −0.884 bps at 10 ms, against an **unconditional +0.079 bps** in the same
+  direction; the reference policy is negative **before any fee** (−1.32 to −1.48 bps gross) and
+  −2.02 bps per filled share at the structural floor; 0 of 5 states and 0 of 6 queue bands is
+  positive; 30 of 33 symbols lose. The **optimistic bound** (perfect queue position) gives 4.30%
+  fills and is more negative per attempt (−1.019 bps, CI [−1.116, −0.932]), so the verdict does not
+  rest on the queue model's conservatism.
+- **Terminal state `KILLED`** on the precommitted rule (K2 starvation, K3 adverse-selection
+  dominance, K6 scale; K4's rebate clause documented as not met because the exchange credit — a 2026
+  rate on a 2019 tape — would flip the sign of an exchange subsidy, not of the signal). Registered
+  dead in `DEAD_ENDS.md` and `M1/data/dead_candidates.csv` (KG3_EXECUTION FAIL; evidence `EVD-0069`;
+  patch `P-0008`).
+- **Modern-data value of information: zero for this family.** The binding failures are the Reg NMS
+  tick, the exchange/statutory fee floors and the fill-selection geometry; no purchasable parameter
+  moves the decision, and the signal would have to be 30–50× larger.
+- Also dead by the same standard: `TUP-NASDAQ-LARGETICK-H2-QIMB-AGG` (M2-0.6). The family
+  (`H2 Nasdaq large-tick queue imbalance`) is therefore **stopped**; the reusable lesson is that an
+  H2 top-of-book signal must show a magnitude of the same order as its round trip before an
+  execution model is built for it (`DECISIONS.md` D-0037).
+
 ## Milestone Status
 
 <!-- GENERATED:milestones -->
@@ -103,9 +139,11 @@ has passed only hard constraints and still has every economic gate BLOCKED. Cand
 their gate vectors are canonical in `M1/data/candidate_tuples.csv`; the surviving rows are listed
 in `M1/output/hard_constraint_survivors.csv`.
 
-`TUP-NASDAQ-LARGETICK-H2-QIMB-AGG` left this set on 2026-09-23: M2-0.6 measured its aggressive
-execution economics in the candidate's own population and failed KG3_EXECUTION (see the M2 section
-above). The four remaining WEAK rows (constraining evidence exists, nothing supports an upgrade):
+`TUP-NASDAQ-LARGETICK-H2-QIMB-AGG` left this set on 2026-09-23 (M2-0.6: aggressive execution
+economics measured and failed in the candidate's own population) and its passive pivot
+`TUP-NASDAQ-LARGETICK-H2-QIMB-PAS` followed on 2026-09-24 (M2-1: starvation inside the signal's own
+horizon plus adverse-selection dominance). The four remaining WEAK rows (constraining evidence
+exists, nothing supports an upgrade):
 
 | candidate | instrument | venue | horizon | mechanism | execution | blocking issue |
 |---|---|---|---|---|---|---|
@@ -114,11 +152,12 @@ above). The four remaining WEAK rows (constraining evidence exists, nothing supp
 | TUP-CBOEBZX-LARGETICK-H2H3-SPREADCAP-PAS | stock >= $1 | Cboe BZX | H2-H3 | spread capture | passive | queue/adverse selection unmeasured |
 | TUP-USSTOCK-XVENUE-H1-STALEQUOTE-AGG | stock, national market | multi-venue | H1 | stale quote | aggressive | latency race unmeasured (label basis recorded in UNK-0024) |
 
-**Reusable lesson now on record**: a measured aggressive round trip on Nasdaq large-tick names is
-one tick plus the venue/statutory fee floor, i.e. 1–5 bps of friction, while a top-of-book signal
-moves the mid by a small fraction of a tick. Any aggressive Nasdaq row that has not shown a
-signal magnitude of the same order as its friction should be treated as pre-falsified rather than
-pending.
+**Reusable lesson now on record (and now a gate on how candidates are admitted to M2)**: every
+measurement on this venue family — an aggressive round trip of 4.1 bps, a passive fill selected
+against by 1.0 bps of midpoint drift, a clairvoyant ceiling of 0.22 bps per trade — points the same
+way, so a top-of-book signal at H2 must show a magnitude of the same order as the round trip it
+faces *before* an execution model is built for it. `TUP-NASDAQ-LARGETICK-H2H3-MICRO-AGG`, the other
+aggressive Nasdaq large-tick row, should be put through that test next; it has not been.
 
 Fourteen rows are UNKNOWN (no venue-specific evidence at all): ES H3 OFI, NQ H3 OFI, Treasury
 queue/replenishment, WTI flow/volatility, Nasdaq auction imbalance, Hyperliquid H3 OFI/liquidation,
@@ -191,7 +230,17 @@ Durable, evidence-backed, and still less than tradable alpha:
 8. M1-A's stated reason "the paper and research OS were not retrievable" is now false: both are in
    this repository, hashed in `M1/raw/source_manifest.json`. The verdict is unchanged because the
    empirical blockers are independently sufficient (UNK-0030, ASM-0018).
-9. **The aggressive-execution friction of a Nasdaq large-tick round trip is now measured, and it
+9. **Both execution styles of a top-of-book H2 signal are now measured on Nasdaq large-tick names,
+   and both are negative for structural reasons rather than for want of a better model.** Aggressive:
+   a 4.1011 bps executed round trip against a 0.0794 bps directional response, with a clairvoyant
+   ceiling of only 0.822/0.219 bps per trade (floor/accessible). Passive (M2-1, EVD-0069): 0.82% of
+   attempts fill inside the signal's own 1 s life, the fills are selected against by −0.973 bps of
+   midpoint drift at 1000 ms and −0.884 bps already at 10 ms (against an unconditional +0.079 bps),
+   the reference policy is negative before any fee, no declared state or queue band is positive, and
+   the optimistic bound that grants perfect queue position is worse. The two failures are the two
+   sides of one geometry: the friction of participating is a tick plus a fee floor, and the flow that
+   reaches a resting order is the flow that is moving the price through it.
+10. **The aggressive-execution friction of a Nasdaq large-tick round trip is measured, and it
    dominates every top-of-book signal that has been assembled so far.** On the 2019-07-30
    development day, in the candidate's own population (one-tick median Nasdaq book spread,
    top-decile dollar volume, 33 names, 737,768 decisions at a 1 s grid), the executed round trip is
@@ -312,9 +361,9 @@ Machine-readable M1 state (canonical; regenerate with `python3 M1/src/materializ
 | ALIVE | 0 |
 | WEAK | 4 |
 | UNKNOWN | 16 |
-| DEAD | 8 |
+| DEAD | 9 |
 
-Registered candidate rows: 28 (23 tradable tuples + 5 non-tuple registrations). Verified sources: 93 (25 report-mediated, 0 with a recoverable URL). Evidence records: 66. M1 frontier items: 27 (7 measurement specs and 14 external requests now outside the frontier). Gate-eligible candidates: 0.
+Registered candidate rows: 29 (24 tradable tuples + 5 non-tuple registrations). Verified sources: 95 (25 report-mediated, 0 with a recoverable URL). Evidence records: 68. M1 frontier items: 27 (7 measurement specs and 14 external requests now outside the frontier). Gate-eligible candidates: 0.
 <!-- /GENERATED:counts -->
 
 

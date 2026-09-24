@@ -4,14 +4,14 @@
   ],
   "candidate_counts": {
     "ALIVE": 0,
-    "DEAD": 8,
+    "DEAD": 9,
     "UNKNOWN": 16,
     "WEAK": 4,
-    "total": 28
+    "total": 29
   },
   "closure_modes": {
     "AWAITING_EXTERNAL_CLOSURE": 1,
-    "BLOCKED_NOT_CLOSE": 3,
+    "BLOCKED_NOT_CLOSE": 4,
     "DISPATCHABLE": 19
   },
   "external_actions_queued": 14,
@@ -697,6 +697,33 @@
         "value": "PASS"
       }
     },
+    "TUP-NASDAQ-LARGETICK-H2-QIMB-PAS": {
+      "KG1_MECHANISM": {
+        "reason": "No venue-specific evidence that the mechanism operates on this venue/instrument. Borrowed evidence from another market is an extrapolation and cannot pass KG1.",
+        "rule": "KG1-R4",
+        "value": "BLOCKED"
+      },
+      "KG2_DATA": {
+        "reason": "No data-feasibility assessment authored for this row.",
+        "rule": "KG2-R0",
+        "value": "BLOCKED"
+      },
+      "KG3_EXECUTION": {
+        "reason": "No verified fee component exists for this venue, so the platform cannot assert that known costs do not already invalidate the thesis. Known mandatory cost is an M1 fact (UNK-0001/0005/0011/0012/0013/0022/0028).",
+        "rule": "KG3-R4",
+        "value": "BLOCKED"
+      },
+      "KG4_HALF_LIFE": {
+        "reason": "No positive horizon-plausibility evidence: the candidate has no sourced empirical effect, documented mechanism cadence or structural timing fact at a comparable horizon. Absence of a contradiction is not positive evidence, so the horizon claim is unsupported rather than established.",
+        "rule": "KG4-R5",
+        "value": "BLOCKED"
+      },
+      "KG5_FALSIFIABILITY": {
+        "reason": "Instrument is a family rather than an exact contract/symbol, so no measurable outcome can be attributed (UNK-0027).",
+        "rule": "KG5-R2",
+        "value": "BLOCKED"
+      }
+    },
     "TUP-NASDAQ-LARGETICK-H2H3-MICRO-AGG": {
       "KG1_MECHANISM": {
         "reason": "No venue-specific evidence that the mechanism operates on this venue/instrument. Borrowed evidence from another market is an extrapolation and cannot pass KG1.",
@@ -806,8 +833,8 @@
       }
     }
   },
-  "generated_at": "2026-09-24T01:20:54Z",
-  "iterations_recorded": 6,
+  "generated_at": "2026-09-24T11:46:43Z",
+  "iterations_recorded": 8,
   "m2_specs_generated": [
     "CAPACITY",
     "COST_SENSITIVITY",

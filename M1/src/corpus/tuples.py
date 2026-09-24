@@ -87,6 +87,8 @@ REPORT_KILL_GATE = {
     # Not from the cemetery: this row's kill is the project's own M2 measurement, so the verbatim
     # column records that fact rather than a report phrasing that does not exist.
     "TUP-NASDAQ-LARGETICK-H2-QIMB-AGG": "M2 measured execution economics (no M1-A cemetery row)",
+    "TUP-NASDAQ-LARGETICK-H2-QIMB-PAS": "M2 measured passive-execution economics (no M1-A "
+                                        "cemetery row)",
 }
 
 ROWS = []
@@ -232,6 +234,51 @@ add("TUP-NASDAQ-LARGETICK-H2-QIMB-AGG", "TUPLE", "Large-tick U.S. listed stock (
           "is NOT killed by this record - it is untested and requires a queue-aware fill model "
           "(PASSIVE_FILL_MODEL, FILL_CONDITIONED_MARKOUT); it must be registered as its own "
           "candidate rather than as a mode change on this row.")
+
+add("TUP-NASDAQ-LARGETICK-H2-QIMB-PAS", "TUPLE",
+    "Large-tick U.S. listed stock (symbol UNSPECIFIED)", "VEN-NASDAQ-CONT", "H2", "MECH-QIMB",
+    "PASSIVE",
+    "TotalView-ITCH order events with per-order identity, so a displayed queue can be "
+    "reconstructed causally; a queue-truth source (the project's own shadow orders) for "
+    "validation; own fill data for reconciliation",
+    "Queue position at the touch is the scarce resource: the signal is public, and the participant "
+    "ahead of us in the queue is the competition",
+    "PASS", "UNKNOWN", "LATENCY_UNMEASURED", (_P, _B, _F, _P, _P), "DEAD",
+    "KG3_EXECUTION fails on the project's own measured evidence (EVD-0069, patch P-0008): over "
+    "the rule-conformant large-tick names, queue-aware passive orders fill on 6,067 of 737,768 "
+    "attempts (0.82%) at a median 537 ms behind a median queue of 700 displayed shares, and the "
+    "fills are adversely selected - the side-signed midpoint move from the fill is -0.97 bps at "
+    "1000 ms (95% CI [-1.10, -0.87]) and -0.88 bps already at 10 ms, against an unconditional "
+    "post-decision response of +0.079 bps (EVD-0067). The passive-entry/aggressive-exit "
+    "reference policy is negative before any cost (-1.32 to -1.48 bps gross) and -2.02 bps per "
+    "filled share net of the structural floor; no declared imbalance state and no queue-position "
+    "band has positive expected value per attempt. The optimistic bound that grants perfect "
+    "queue position agrees (4.30% fills, -1.02 bps midpoint markout, 0 of 5 states positive).",
+    "UNK-0028",
+    "M2-1-PASSIVE-QIMB freeze + M2/output/M2_PASSIVE_FEASIBILITY_STATUS.md",
+    kill_gate="KG3_EXECUTION",
+    kill_reason="Passive monetization fails on both sides of the queue-position trade-off: "
+                "patient orders are rarely reached by flow inside the signal's own 1 s horizon "
+                "(0.82% of attempts, median 537 ms), and orders reached immediately - the "
+                "optimistic bound - are selected against by -1.02 bps of midpoint drift, more "
+                "than the entry spread they earn. Measured deterministically on the 2019-07-30 "
+                "development tape (M2-1-PASSIVE-QIMB, freeze sha256 03efd04e...).",
+    resurrection_condition="A rule-conformant measurement with non-negative fill-conditioned "
+                           "midpoint markout and queue reachability inside the signal's horizon, "
+                           "or a materially different formulation registered as its own candidate "
+                           "(passive exit, inventory, or venue liquidity-credit capture with an "
+                           "always-resting baseline).",
+    notes="Declared blockers are limited to the issues the registry attributes to this row; the "
+          "shared universe, point-in-time-reference and broker-cost items (UNK-0004, UNK-0005, "
+          "UNK-0018-NASDAQ, UNK-0027-NASDAQ-LARGETICK, UNK-0033) are registered against the parent "
+          "aggressive row and were inherited by this pivot. Candidate lineage stays explicit: "
+          "QIMB mechanism -> aggressive monetization (DEAD, "
+          "EVD-0067) -> passive monetization hypothesis (this row, DEAD, EVD-0069). The two "
+          "execution styles were measured on the same tape and fail for opposite reasons, which "
+          "is why the H2 Nasdaq large-tick QIMB family is recorded as stopped rather than as a "
+          "candidate with a remaining untested execution mode. The only non-negative "
+          "configuration credits a venue add-liquidity rebate: that is an exchange subsidy, not "
+          "the signal, and it would be a different candidate with an always-resting baseline.")
 
 add("TUP-NASDAQ-LARGETICK-H2H3-MICRO-AGG", "TUPLE",
     "Large-tick U.S. listed stock (symbol UNSPECIFIED)", "VEN-NASDAQ-CONT", "H2-H3", "MECH-MICRO",

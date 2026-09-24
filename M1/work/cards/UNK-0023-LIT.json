@@ -25,7 +25,7 @@
   "known_source_ids": [
     "SRC-0102"
   ],
-  "last_updated": "2026-09-24T01:20:54Z",
+  "last_updated": "2026-09-24T11:46:43Z",
   "parent_issue_id": "UNK-0023",
   "priority_reason": "Child scoped to the literature claims only, and only for branches that would borrow the order-flow-imbalance claim: the Nasdaq queue-imbalance and micro-price rows no longer depend on it (their anchors are the verified Gould & Bonart and the venue-unresolved Stoikov record respectively), so they are not named here.",
   "priority_score": null,

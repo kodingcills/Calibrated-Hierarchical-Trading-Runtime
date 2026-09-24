@@ -18,7 +18,7 @@
     "EVD-0013"
   ],
   "known_source_ids": [],
-  "last_updated": "2026-09-24T01:20:54Z",
+  "last_updated": "2026-09-24T11:46:43Z",
   "parent_issue_id": null,
   "priority_reason": "MIGRATED from M1_BLOCKING, and this is the single most important migration: requiring a measured half-life inside M1 made KG4 unpassable, which made M1-B impossible, which made M2 impossible. M1 now requires only that no *known physical* timing contradiction exists and that the delay experiment is preregistered.",
   "priority_score": null,

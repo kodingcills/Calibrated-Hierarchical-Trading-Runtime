@@ -1,0 +1,36 @@
+{
+  "attempts_parquet": "M2/data/derived_passive/NASDAQ-ITCH50-PUBLIC-SAMPLE-20190730/passive_attempts_fifo_ttl1000ms_secondary.parquet",
+  "attempts_parquet_sha256": "788dc1382326ea7769f8855da3f64cc7f14f42228e1c949e09672f9b79cb8a43",
+  "code_sha256": {
+    "M2/src/passive.py": "c607196f419551093cb84e2f4e830f5f1fd839cef4b64d88eda003522d71aa35",
+    "M2/src/passive_analysis.py": "659154e4c816fc19f5a6de9bc5199fcd8f335890f35fd51d8539211827087fa9"
+  },
+  "config_sha256": "1eb0d5faf6028ca50165dac7145a710e7fa65c221bf0520a17dece04107989e3",
+  "cost_ledger_sha256": "52ce785fc7210138af4059e327fc7101dff7f78dff3f5156c045973c1ed4cb17",
+  "label": "fifo_ttl1000ms_secondary",
+  "model": {
+    "cancellation_policy": "none beyond TTL: no signal-based cancel, so no cancel-latency assumption enters the primary result",
+    "exit_horizons_ms": [
+      10,
+      25,
+      50,
+      100,
+      250,
+      500,
+      1000
+    ],
+    "exit_rule": "aggressive exit at the prevailing executable quote at fill + horizon; sell at the best bid after a buy fill, buy at the best ask after a sell fill",
+    "fill_model": "fifo",
+    "fill_model_note": "fifo: a fill requires the displayed quantity ahead of us to be consumed or removed first (the conservative model). no_queue: the optimistic upper bound, in which any execution at our price level reaches us immediately, i.e. the queue-position penalty is set to zero. The two bracket the truth and are never mixed in one number.",
+    "fill_rule": "fill only against executions (E/C) at our price level, in file order, after the displayed quantity ahead of us has been consumed or removed and real executable flow reaches our position; no fill from non-displayed trade prints; no probabilistic fills",
+    "order_price_rule": "join the near touch: best bid for a buy, best ask for a sell",
+    "order_side_rule": "sign(queue_imbalance); no order is submitted when imbalance == 0",
+    "order_size_shares": 100,
+    "partial_fill_rule": "fill quantity is bounded by the aggressor's executed shares and by our remaining size",
+    "queue_ahead_rule": "every displayed order resting at that price level at submission is ahead of us; nothing arriving later is",
+    "scope_primary": "the 33 rule-conformant large-tick names of the M2-0.6 single-day proxy",
+    "scope_secondary": "all 115 replayed names of the M2-0.6 liquidity scope",
+    "ttl_ns": 1000000000
+  },
+  "run_summary_sha256": "fb461164392aad39d6149a343c21f0e20430d1487363481eae5731ac9c9834d1"
+}

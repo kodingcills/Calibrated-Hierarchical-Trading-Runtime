@@ -21,7 +21,7 @@
   "kill_potential": "LOW",
   "known_evidence_ids": [],
   "known_source_ids": [],
-  "last_updated": "2026-09-24T01:20:54Z",
+  "last_updated": "2026-09-24T11:46:43Z",
   "parent_issue_id": null,
   "priority_reason": "MIGRATED from M1_BLOCKING. Fill rates are an M2 output; the M1-relevant part (does an order-level feed exist to model them at all) is KG2 / UNK-0003 / UNK-0004.",
   "priority_score": null,

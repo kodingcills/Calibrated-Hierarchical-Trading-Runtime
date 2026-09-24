@@ -21,7 +21,7 @@
   "kill_potential": "HIGH",
   "known_evidence_ids": [],
   "known_source_ids": [],
-  "last_updated": "2026-09-24T01:20:54Z",
+  "last_updated": "2026-09-24T11:46:43Z",
   "parent_issue_id": "UNK-0009",
   "priority_reason": "New child created by the iteration-4 citation replacement: the claim is verified but its venue scope is not, so venue-specific KG1 credit is withheld.",
   "priority_score": null,

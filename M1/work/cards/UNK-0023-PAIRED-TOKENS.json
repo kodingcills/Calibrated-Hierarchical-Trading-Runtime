@@ -31,7 +31,7 @@
   "kill_potential": "LOW",
   "known_evidence_ids": [],
   "known_source_ids": [],
-  "last_updated": "2026-09-24T01:20:54Z",
+  "last_updated": "2026-09-24T11:46:43Z",
   "parent_issue_id": "UNK-0023",
   "priority_reason": "Deliberately non-blocking: historical completeness of the token inventory is not a decision input.",
   "priority_score": null,

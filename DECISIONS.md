@@ -372,3 +372,62 @@ decision is not evidence of progress, and continuing it is the failure mode this
 prevent (as D-0022 already does for kills made on evidence absence rather than on measured bounds).
 Enforced by: `M2/output/M2_AUTONOMOUS_STATUS.md` ("NEXT ACTION" names one action and nothing else),
 this ledger, and the resurrection conditions carried per dead row.
+
+## D-0036 - The passive pivot of the Nasdaq queue-imbalance candidate is killed on measured fill mechanics
+
+`TUP-NASDAQ-LARGETICK-H2-QIMB-PAS` fails KG3_EXECUTION and is registered DEAD (evidence EVD-0069,
+patch P-0008, `DEAD_ENDS.md`, `M1/data/dead_candidates.csv`). The experiment
+(`M2-1-PASSIVE-QIMB`, contract sha256 `03efd04e…83e7d0`, sealed before the canonical replay) is a
+deterministic queue-aware replay of hypothetical 100-share passive orders that join the back of the
+near touch, with no probabilistic fill assumption anywhere:
+
+1. **Starvation**: 6,067 of 737,768 primary attempts fill inside the mechanism's own 1 s lifetime
+   (0.82%) at a median 537 ms behind a median queue of 700 displayed shares; the median attempt sees
+   no executed flow at its quoted price at all. The order quotes the touch and the touch is a moving
+   target whose lifetime on these names is comparable to the signal's.
+2. **Adverse selection**: the side-signed midpoint move measured from the fill is **−0.973 bps at
+   1000 ms** (95% block-bootstrap CI [−1.102, −0.867]) and **−0.884 bps already at 10 ms**, against
+   an unconditional post-decision response of **+0.079 bps** in the same direction (EVD-0067). The
+   fill event selects the states in which the signal's direction reverses.
+3. **Executable economics**: passive entry with an aggressive exit is negative **before any fee**
+   (−1.32 to −1.48 bps gross) and −2.02 bps per filled share at the structural floor (−2.92 bps on
+   the accessible path); 0 of 5 declared imbalance states and 0 of 6 queue-position bands has
+   positive expected value per attempt; 30 of 33 symbols lose.
+4. **The optimistic bound closes the escape route**: granting perfect queue position (any execution
+   at our price fills us) gives 4.30% fills and is *more* negative per attempt (−1.019 bps midpoint
+   markout, CI [−1.116, −0.932]; 0 of 5 states positive). The strategy does not depend on an
+   inaccessible queue position — it fails while holding one.
+
+The precommitted rule is satisfied on K2 (starvation), K3 (adverse-selection dominance) and K6
+(negligible scale), and on K4's first two clauses. K4's third clause (the rebate failing to flip the
+sign) is *not* met: crediting the verified 2026 add-liquidity credit of $0.0018/share moves the
+conservative per-attempt value from −$0.00118 to +$0.00014. That residual is the exchange's
+liquidity subsidy rather than the queue-imbalance information — the signal's own contribution to a
+fill is the adverse drift — and it is a 2026 rate card applied to a 2019 tape at an unverified tier.
+Pursuing it would require a new candidate with an always-resting baseline and verification of the
+2019 schedule first, which is a published fact rather than a data purchase. K1 is tripped by the
+letter of its precommitted clause (priority anomalies exceed 1% of fill events) and was resolved as
+bounded, not blocking: the anomalous events are executions of later-arriving orders while earlier
+quantity still rests, which can only make the model wait longer, and the bound that is immune to
+that error is negative. Enforced by: `M2/experiments/M2-1-PASSIVE-QIMB/{freeze,run_inputs}.json`,
+`M2/output/M2_PASSIVE_FEASIBILITY_STATUS.md`, `M2/output/passive/QUEUE_IDENTIFIABILITY.md`.
+
+## D-0037 - The H2 Nasdaq large-tick queue-imbalance family is stopped, and the sequence of evidence is the reusable result
+
+Both execution styles of the family are now dead on measured, deterministic evidence:
+`TUP-NASDAQ-LARGETICK-H2-QIMB-AGG` (friction 52× the signal, plus a clairvoyant ceiling of
+0.219 bps per trade on the accessible path) and `TUP-NASDAQ-LARGETICK-H2-QIMB-PAS` (starvation
+inside the signal's own horizon plus adverse-selection dominance). No further formulation of this
+mechanism on this population will be registered without new external evidence, and no modern dataset
+purchase is justified for it: the friction components are the Reg NMS tick and the exchange and
+statutory fee floors, and the signal magnitude would have to be 30–50× larger for the economics to
+change.
+
+The durable lesson, which now governs how a candidate of this class is admitted to M2: **a
+top-of-book signal at H2 must demonstrate a magnitude of the same order as the round trip it will
+face before any execution model is built for it.** The two experiments that produced this rule are
+cheap to repeat for other rows (a deterministic replay of owned data, a declared state space, an
+oracle ceiling and a queue-aware fill model), and the same logic should be applied to the remaining
+aggressive Nasdaq row (`TUP-NASDAQ-LARGETICK-H2H3-MICRO-AGG`) before it consumes further effort.
+Enforced by: `PROJECT_STATE.md` (the M2-1 section and the candidate table), `DEAD_ENDS.md`, and the
+two frozen experiments.

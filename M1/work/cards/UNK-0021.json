@@ -17,7 +17,7 @@
   "kill_potential": "MEDIUM",
   "known_evidence_ids": [],
   "known_source_ids": [],
-  "last_updated": "2026-09-24T01:20:54Z",
+  "last_updated": "2026-09-24T11:46:43Z",
   "parent_issue_id": null,
   "priority_reason": "MIGRATED from M1_BLOCKING. M1 keeps the *structural* part via a physical latency check; the survival measurement itself is M2.",
   "priority_score": null,

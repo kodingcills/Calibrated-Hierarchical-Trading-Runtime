@@ -1,0 +1,118 @@
+{
+  "artifacts": {
+    "M2/data/derived_passive/NASDAQ-ITCH50-PUBLIC-SAMPLE-20190730/passive_attempts_fifo_ttl1000ms_secondary.parquet": "788dc1382326ea7769f8855da3f64cc7f14f42228e1c949e09672f9b79cb8a43",
+    "M2/data/derived_passive/NASDAQ-ITCH50-PUBLIC-SAMPLE-20190730/passive_attempts_no_queue_ttl1000ms_secondary.parquet": "b9d2db340b7198a0030dc28a7eb0add3b604a2d2999512797f3efc9e0db58568",
+    "M2/data/derived_passive/NASDAQ-ITCH50-PUBLIC-SAMPLE-20190730/passive_run_summary_fifo_ttl1000ms_secondary.json": "fb461164392aad39d6149a343c21f0e20430d1487363481eae5731ac9c9834d1",
+    "M2/data/derived_passive/NASDAQ-ITCH50-PUBLIC-SAMPLE-20190730/passive_run_summary_no_queue_ttl1000ms_secondary.json": "94be3cd1c6ebf9fe3dd4bba2a5a95b76f231b73ed703efd9e163719b5f50ca63",
+    "M2/output/M2_PASSIVE_FEASIBILITY_STATUS.md": "a66dfffcefdbbdc10142cc2c0369e8e70e72ba85faef4f6d4c929a2bca47aa61"
+  },
+  "as_run_configurations": [
+    {
+      "fill_model": "fifo",
+      "label": "fifo_ttl1000ms_secondary",
+      "role": "PRIMARY (frozen configuration)",
+      "scope": "secondary (115 names)",
+      "status": "complete",
+      "ttl_ms": 1000
+    },
+    {
+      "fill_model": "no_queue",
+      "label": "no_queue_ttl1000ms_secondary",
+      "role": "OPTIMISTIC BOUND (K1 bounding)",
+      "scope": "secondary (115 names)",
+      "status": "complete",
+      "ttl_ms": 1000
+    },
+    {
+      "fill_model": "fifo",
+      "label": "fifo_ttl5000ms_secondary",
+      "reason": "the job ran far longer than the frozen configuration under host contention from concurrent analysis work and was stopped deliberately; its decision content is dominated by the two completed configurations, because the conservative model's fills are already patient (median 537 ms behind a median 700-share queue) and the optimistic bound grants unconditional immediate fills and is still negative",
+      "role": "predeclared longer-lifetime diagnostic",
+      "scope": "secondary (115 names)",
+      "status": "ABANDONED_NOT_COMPLETED",
+      "ttl_ms": 5000
+    }
+  ],
+  "code_hash_note": "The frozen code hashes for M2/src/passive.py and M2/src/passive_analysis.py differ from those recorded in freeze.json because of the pre-result corrections below. The freeze's contract (population, model definition, metrics, thresholds, prohibitions) was not changed.",
+  "code_sha256_as_run": {
+    "M2/src/passive.py": "c607196f419551093cb84e2f4e830f5f1fd839cef4b64d88eda003522d71aa35",
+    "M2/src/passive_analysis.py": "659154e4c816fc19f5a6de9bc5199fcd8f335890f35fd51d8539211827087fa9",
+    "M2/tests/test_passive.py": "0f2e141c92a695ae732e232fc13bdd649e68eb8dfc40291f74ec9ee5ce20a870"
+  },
+  "config_sha256": "1eb0d5faf6028ca50165dac7145a710e7fa65c221bf0520a17dece04107989e3",
+  "cost_ledger_sha256": "52ce785fc7210138af4059e327fc7101dff7f78dff3f5156c045973c1ed4cb17",
+  "experiment_id": "M2-1-PASSIVE-QIMB",
+  "freeze_sha256_recomputed": "03efd04e032317a19c67105c35ab2196248d616507296246a18e46e52b83e7d0",
+  "freeze_sha256_recomputed_matches_sealed": true,
+  "late_report_edit": "the report's starvation-mechanics paragraph was sharpened with the verified counters (95.7% of attempts see zero displayed flow at their quoted price in the order's life; 1.47% receive enough flow to reach through the queue ahead; hidden flow present in 0.5%) after the numbers were re-derived from the attempt table; no economic quantity in the report changed",
+  "note": "The contract is M2/experiments/M2-1-PASSIVE-QIMB/freeze.json (sha256 03efd04e032317a19c67105c35ab2196248d616507296246a18e46e52b83e7d0), sealed before the canonical replay was executed and not modified since. This file records what was actually run. Every code correction below was made and re-run BEFORE any economic result was accepted; the runs it invalidated are named and their artifacts deleted.",
+  "pre_result_corrections": [
+    {
+      "defect": "executions did not reduce the quote book, so attempt prices, mids and exit quotes could reference a phantom price level whose quantity had already been executed",
+      "detected_by": "the queue_ahead_zero_share signal (26% of attempts joining a level with zero displayed quantity) on the first full replay, before any economics were read",
+      "fix": "every level-affecting event now reduces the quote book; a level_state_mismatches counter compares this accounting against each symbol's own book on every submission",
+      "id": "M2-1-C1",
+      "invalidated_runs": [
+        "passive_ttl1000ms_secondary (artifacts deleted)",
+        "trace windows on the same code"
+      ],
+      "tests_added": [
+        "test_attempt_after_a_level_is_executed_quotes_the_new_best_bid",
+        "test_level_accounting_never_diverges_from_the_quote_book"
+      ]
+    },
+    {
+      "defect": "the queue accounting and the level FIFOs were keyed by (side, price) globally, so two symbols quoting the same price shared one queue and the quantity ahead of a hypothetical order was inflated",
+      "detected_by": "level_state_mismatches = 1,492,983 (61% of attempts) with order_map_truth equal to the aggregate and the book under-counted, plus a divergence trace showing four different symbols at $212.50",
+      "fix": "level identity is (symbol, side, price)",
+      "id": "M2-1-C2",
+      "invalidated_runs": [
+        "fifo_ttl1000ms_secondary and no_queue_ttl1000ms_secondary from the first corrected pass (overwritten by the final pass)"
+      ],
+      "tests_added": [
+        "test_same_price_on_two_symbols_keeps_separate_queues"
+      ]
+    },
+    {
+      "defect": "the optimistic no-queue bound, required by freeze K1 and by the identifiability assessment, did not exist in the first sealed revision of the code; and the analysis module mixed raw and USD price units and used a hybrid EV unit",
+      "detected_by": "the identifiability assessment's own requirement that the queue-attribution gap be bounded, and the analysis unit test before any real table was read",
+      "fix": "added the no_queue fill model; exit prices converted to USD; per-attempt value reported both in dollars and in bps of one order's notional; a fixture test with hand-computed markouts pins the arithmetic",
+      "id": "M2-1-C3",
+      "invalidated_runs": [
+        "none (no real result had been produced)"
+      ],
+      "tests_added": [
+        "AnalysisArithmeticTest.test_markouts_and_ev_per_attempt",
+        "FillModelBoundTest.test_fifo_does_not_fill_but_no_queue_does"
+      ]
+    }
+  ],
+  "raw_sha256": "c65784c48c28735901ae442dc00e215834218a359bc12a139ab4eec209bc2d4a",
+  "record": "AS_RUN_INPUTS_ARTIFACTS_AND_PRE_RESULT_CORRECTIONS",
+  "result_tables": {
+    "optimistic_bound": {
+      "fill_conditioned_mid_markout": "e92d21bce528719285dfe937fe41473c380b38fefa9430ff45369da17cdcd48a",
+      "fill_summary": "f411cbd5cdbf77a8e4495fe90563355322fd915531bf2003e2afb8456e78d6e5",
+      "passive_entry_aggressive_exit": "0bb8c7761d831706a0de65c1c18d3448aba628f46e94ebcc0723be44434328aa",
+      "verdict": "fa7605f6ecf165f54058dd178fe349852dc143b5e93d5fd5777258795b253bbe"
+    },
+    "primary_conservative": {
+      "fill_by_imbalance_state": "b01fc0de1bebea4b4740a3f1dfe5d7d5be144ac48f3d4a409afd5e5d6611b134",
+      "fill_by_queue_position": "dc0413820690397de4ecd2a93dbf831f66785de1a92edcf4b772238727388967",
+      "fill_conditioned_mid_markout": "a322b7cffd3befcf6a8f36b408ec0fd52ab4aefde21ff179871355226d5c084d",
+      "fill_summary": "2d0ad96ba4091909fa388acd87fa464e51907cf8a068426063dd45afd033cec0",
+      "passive_entry_aggressive_exit": "f7c7c78e9c7ad0b31cad00b1690e6bff08cad1a0194182faf97f5b70ac5b7570",
+      "queue_model_audit": "e27ce1914e3069e5950a44680bb1eefedf6dfe1d297ecb2a1db49f834fe44230",
+      "verdict": "8ae983b1a8977826ecda3867431e31f9dbfaf63880ff2394c92e8a691b97fb18"
+    }
+  },
+  "scope_manifest_sha256": "c5a6ab8a165dd8e00ce063d79c04540aa77eb902152ce055bb65bb8200fec58b",
+  "validity": {
+    "contamination": "the day is DEVELOPMENT and cannot become a validation or sealed partition; no threshold, state, horizon, size, symbol or model was selected on any result",
+    "exit_clock": "the exit quote resolves at the first message strictly after fill + horizon; the realized lag averages 0.22 ms with a maximum of 5.7 ms across 110,324 resolved exits",
+    "independent_rederivation": "the headline metric (fill-conditioned midpoint markout at 1000 ms for the primary population) was recomputed outside the analysis module directly from the attempt table: mean -0.9734 bps, median -0.7115, block-bootstrap CI [-1.1019, -0.8672], identical to the module's output; during that check two errors in the independent script were found and fixed, which is why the module's numbers are the ones quoted",
+    "reconciliations": "the replay reports 0 orphan executions, 0 orphan cancels, 0 orphan deletes, 0 orphan replaces, 0 duplicate references, 0 level-accounting mismatches and 0 level-state mismatches over the whole tape in both completed configurations",
+    "tests": "20 tests in M2/tests/test_passive.py pass, including the five per-side fill fixtures with exact expected outcomes"
+  },
+  "written_after_run": true
+}

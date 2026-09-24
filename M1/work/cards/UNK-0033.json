@@ -29,7 +29,7 @@
     "SRC-0201",
     "SRC-0202"
   ],
-  "last_updated": "2026-09-24T01:20:54Z",
+  "last_updated": "2026-09-24T11:46:43Z",
   "parent_issue_id": null,
   "priority_reason": "New blocker surfaced by primary-source research: the exchange side of equity cost is public, the sponsored-access side is not, and the project cannot trade directly on these venues.",
   "priority_score": null,

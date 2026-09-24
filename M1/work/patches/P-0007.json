@@ -1,0 +1,79 @@
+{
+  "blocker_ids": [
+    "UNK-0007",
+    "UNK-0019"
+  ],
+  "candidate_ids": [
+    "TUP-NASDAQ-LARGETICK-H2-QIMB-PAS",
+    "TUP-NASDAQ-LARGETICK-H2-QIMB-AGG"
+  ],
+  "created_at": "2026-09-24T11:46:43Z",
+  "decision": "NO_CHANGE",
+  "modified_claims": [],
+  "new_evidence": [
+    {
+      "candidate_ids": "TUP-NASDAQ-LARGETICK-H2-QIMB-PAS|TUP-NASDAQ-LARGETICK-H2-QIMB-AGG",
+      "candidate_link_reason": "Both the dead aggressive row and its passive pivot rest on the same feed and the same mechanism; this record states what the feed can and cannot support for queue reconstruction.",
+      "claim": "Nasdaq's displayed order lifecycle is fully represented in TotalView-ITCH with per-order identity (adds, executions, partial cancels, deletes, and cancel-replaces that carry a new order reference and retire the original), and the feed disseminates payload messages in engine order, so time priority among displayed orders at one price is reconstructible. A replenished reserve display receives a new timestamp while its non-displayed portion keeps its timestamp (SEC Release 34-91109), and matches involving non-displayed orders are disseminated as Trade (non-cross) messages carrying no book identity. The verbatim ranking rule in force on the development tape date could not be retrieved, so displayed-versus-non-displayed priority at one price remains UNKNOWN and the queue model does not rely on it.",
+      "contradicts_mechanism": "NO",
+      "decision_implication": "A queue-aware passive fill model is identifiable from this feed for the axes that matter (displayed FIFO, cancel and replace semantics, reserve replenishment), which is the precondition for the M2-1 passive experiment to be evidence rather than assumption.",
+      "epistemic_class": "SUPPORTED_FINDING",
+      "evidence_id": "EVD-0068",
+      "evidence_origin": "EXTERNAL_VERIFIED",
+      "gross_or_net": "N/A",
+      "limitations": "Identifiability is a capability statement, not a fill or economic result. The ranking of displayed against non-displayed interest at one price is UNKNOWN for the tape date and is handled by measurement counters, not by assumption.",
+      "mechanism_id": "MECH-QIMB",
+      "methodology": "Direct reading of the provider specification retained in this repository plus one primary Commission order retrieved through the Federal Register API; the unverifiable component is recorded as UNKNOWN rather than assumed.",
+      "observed_horizon": "order lifetime",
+      "observed_instrument_or_universe": "Nasdaq-listed equity securities on the Nasdaq execution system",
+      "observed_market": "US equities",
+      "observed_period": "product specification current at access; rule amendment 2021",
+      "observed_venue": "VEN-NASDAQ-CONT",
+      "sample": "n/a (product specification and rule filing)",
+      "source_id": "SRC-0243",
+      "supports_or_weakens": "NEUTRAL",
+      "temporal_scope": "specification revision of 2023-04-28 for the feed; rule amendment approved 2021-02-11; tape date 2019-07-30",
+      "transfer_status": "DIRECT_PRODUCT_SEMANTICS",
+      "venue_id": "VEN-NASDAQ-CONT",
+      "verification_status": "PRIMARY_DOCUMENT_PLUS_SPECIFICATION"
+    }
+  ],
+  "new_sources": [
+    {
+      "access_date": "2026-09-24",
+      "authors_or_org": "U.S. Securities and Exchange Commission",
+      "claim_scope": "Reserve-order replenishment ranking (new timestamp on the displayed portion, retained timestamp on the non-displayed portion).",
+      "date_basis": "Federal Register publication 2021-02-18 (86 FR 10141); retrieved through the Federal Register API on the access date",
+      "doi": null,
+      "gross_or_net": "N/A",
+      "independent_replication": null,
+      "limitations": "Describes the rule as amended in 2021, which post-dates the 2019-07-30 development tape. The behaviour it states (a replenished display receives a new timestamp) is the long-standing one, and the amendment it approves concerns locking behaviour rather than ranking, but the rule text in force on the tape date was not independently retrieved.",
+      "local_path": null,
+      "market": "US equities",
+      "methodology": "Commission order describing and approving the amended rule text for reserve orders",
+      "primary_or_secondary": "primary_official",
+      "publication_date": "2021-02-18",
+      "raw_citation_token": "code:P-0007",
+      "sample_period": null,
+      "sample_size": null,
+      "sha256": null,
+      "source_id": "SRC-0243",
+      "source_type": "regulation",
+      "status": "VERIFIED",
+      "title": "Self-Regulatory Organizations; The Nasdaq Stock Market LLC; Order Approving a Proposed Rule Change To Amend the Exchange's Rules at Equity 4, Section 4703(h) Relating to Reserve Orders (Release No. 34-91109; File No. SR-NASDAQ-2020-090)",
+      "url": "https://www.federalregister.gov/documents/2021/02/18/2021-03214/self-regulatory-organizations-the-nasdaq-stock-market-llc-order-approving-a-proposed-rule-change-to",
+      "venue": "Nasdaq"
+    }
+  ],
+  "new_unknowns": [],
+  "patch_id": "P-0007",
+  "proposed_assumption_updates": [],
+  "proposed_candidate_updates": [],
+  "proposed_dead_end_updates": [],
+  "proposed_gate_changes": [],
+  "proposed_issue_updates": [],
+  "provenance": "code:p0007_queue_identifiability",
+  "reason": "Queue identifiability is a precondition for measuring a passive fill model, not an economic claim: no gate moves on this record.",
+  "status": "PROPOSED",
+  "verification_notes": "Contrary evidence was searched before this patch: the possibility that the feed omits displayed interest was checked against the specification's own statement that Add Order messages are for the displayable book, and the possibility that a replenishment or a replace retains priority was checked against both the specification (new reference, original inaccessible) and the Commission order (new timestamp on the replenished display). The one component that could not be verified (displayed-versus-non-displayed ranking on the tape date) is recorded as UNKNOWN and is bounded by counters in the experiment rather than assumed."
+}
