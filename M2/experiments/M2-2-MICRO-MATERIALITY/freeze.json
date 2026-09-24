@@ -1,0 +1,174 @@
+{
+  "experiment_id": "M2-2-MICRO-MATERIALITY",
+  "parent_id": "M2-0-6-UNIVPROXY",
+  "candidate_id": "TUP-NASDAQ-LARGETICK-H2H3-MICRO-AGG",
+  "frozen_at_utc": "2026-09-24",
+  "freeze_status": "FROZEN_BEFORE_ANY_M2_2_CANONICAL_ECONOMICS_WERE_INSPECTED",
+  "git_sha": "fa8a1146fbfe6896a84b23193c0efbc8b061ccfb",
+  "decision_question": "In the rule-conformant Nasdaq large-tick development population, is the realized predictive magnitude of the registered Stoikov-style microprice signal large enough to plausibly clear the aggressive execution friction already measured in M2-0.6 (4.1011 bps executed round trip), or is it small enough by a decisive multiple that no execution model, modern dataset or learned predictor could change the decision?",
+  "hypothesis": "The microprice candidate is the second aggressive Nasdaq large-tick top-of-book row of the same frozen universe rule. The queue-imbalance form of the same family has already failed on measured aggressive economics (M2-0.6) and on measured passive economics (M2-1, queue starvation plus adverse-selection dominance). This pass applies the reusable lesson recorded as D-0037 to the microprice form: measure the signal's own realized magnitude against the measured friction BEFORE any execution model is built for it.",
+  "estimator": {
+    "estimator_id": "STOIKOV-MICRO-FIRSTSTEP-v1",
+    "source": "Stoikov (2018), 'The micro-price: a high-frequency estimator of future prices', Quantitative Finance 18(12) 1959-1966, doi 10.1080/14697688.2018.1489139, as described in the author's own framework slides: p_micro = lim p_i, p_i = E[M(tau_i) | F_t], with the first approximation p_1 = M_t + g1(I_t, S_t), g1(I,S) = E[M(tau_1) - M_t | I_t = I, S_t = S], F_t = (M_t, I_t, S_t), I = Q_bid/(Q_bid + Q_ask), S = the quoted spread.",
+    "implemented_form": "p_micro(t) = mid(t) + g1(X_t) / 2, X_t = (imbalance bin, spread class); g1 is carried in mid2 = (best_bid + best_ask) raw units, i.e. exactly twice the price move, so g1/2 is the adjustment in price units and abs(g1)/spread_raw is exactly abs(microprice - mid)/half_spread.",
+    "first_step_only": "Only the first approximation p_1 = M + g1 is computed. The higher-order terms of the Stoikov recursion change the SIZE of the adjustment but not the sign of g1 for any populated state unless the calibrated conditional drift of that state has the opposite sign to its imbalance; the gate's primary quantity, signal_bps(h) = E[sign(D_t) * mid move], depends on the estimator through that sign only, so the primary result is the same for p_1 and for a converged micro-price. The omission is recorded rather than hidden; the bound it implies is stated in the status artifact.",
+    "prohibited_substitutions": [
+      "the weighted mid-price I*P_ask + (1-I)*P_bid (a different, parameter-free construct: it has no calibration and its sign is the imbalance sign by construction)",
+      "raw queue imbalance",
+      "an invented fair price",
+      "a learned predictor fitted on the evaluated outcome"
+    ],
+    "state_dimensions": "10 frozen imbalance bins x 2 frozen spread classes = 20 cells (the M1 candidate's own declared imbalance partition and the M2-0.6 spread classes); no price band enters the state, consistent with Stoikov's Assumption 2 (the transition law is independent of the price level)",
+    "output": "one price adjustment per observation, in raw mid2 units, from which D_t = microprice(t) - mid(t), side_t = sign(D_t) and the strength band follow"
+  },
+  "causal_calibration_rule": {
+    "window": "EXPANDING_PRIOR_SESSION_ONLY",
+    "refit_interval_ns": 300000000000,
+    "minimum_calibration_observations": 200,
+    "definition": "g1(X, block b) = mean of (mid2 at the next real mid-price change - mid2 at the decision instant) over observations with state X in blocks strictly earlier than b; an observation therefore can never calibrate itself and no block can use its own or a later block's data",
+    "target": "the size of the next real mid-price change (mid2(tau_1) - mid2(t)), resolved within the frozen 60 s watch window next_move_wait_ns",
+    "unresolved_policy": "an observation whose next mid change does not arrive inside the watch window contributes nothing to any calibration mean and is counted; no value is imputed for it and no estimator is substituted",
+    "below_minimum_policy": "a cell/block pair with fewer than the minimum prior resolved observations yields NO estimate for that observation, which is then counted as undefined and excluded from every signal cell - never imputed, never defaulted to zero",
+    "optimistic_side_calculation": "the SAME estimator refitted on the whole day (including the evaluated observation) is computed and reported separately as a labelled non-causal upper bound; it can never be presented as causal performance and cannot enter the decision",
+    "no_window_optimisation": "exactly one calibration rule exists in this experiment; no second window, refit cadence or minimum is computed, and no parameter is selected on any outcome"
+  },
+  "population": {
+    "dataset_id": "NASDAQ-ITCH50-PUBLIC-SAMPLE-20190730",
+    "coverage_date": "2019-07-30",
+    "role": "DEVELOPMENT",
+    "holdout_eligible": false,
+    "outcome_claim_permitted": false,
+    "compute_scope": "the same explicit locates manifest as M2-0.6 (M2/data/manifests/proxy_scope_manifest.json): the top dollar-volume names inside a single-day proxy of the frozen rule's own liquidity decile, with the same eligibility sentences, so the 115 replayed names are the M2-0.6 names",
+    "primary": "the rule-conformant large-tick proxy subset of that scope (M2/output/univproxy/data_quality/large_tick_proxy_subset.csv, 33 names), which is the population M2-0.6 measured the 4.1011 bps hurdle on",
+    "corroborating": "the full 115-name liquidity scope, reported separately and never pooled with the primary",
+    "decision_grid": "one decision per symbol per second, 09:30:00 to 16:00:00, causal as-of rule FILE_ORDER_LAST_MESSAGE_WITH_TS_LE_DECISION_TS",
+    "exclusions": [
+      "CROSSED_OR_LOCKED_SPREAD",
+      "MISSING_SIDE",
+      "NON_POSITIVE_DENOMINATOR",
+      "imbalance == 0 (no direction to trade)",
+      "rows without an estimate at their evaluation block",
+      "rows whose future quote is missing at that horizon"
+    ]
+  },
+  "horizons_ms": [
+    100,
+    250,
+    500,
+    1000,
+    2000,
+    5000,
+    10000,
+    15000
+  ],
+  "signal": {
+    "definition": "signal_bps(h) = E[ side_t * (mid(t+h) - mid(t)) / mid(t) * 10000 ], side_t = sign(microprice(t) - mid(t))",
+    "units": "bps of the arrival midpoint, computed from the exact integer mid2 representation",
+    "uncertainty": "block bootstrap over symbol x 30-minute cells, 2000 resamples, seed 20190730 (the M2-0 machinery, unchanged)",
+    "reported_for": "every frozen horizon, pooled; and every frozen state x horizon",
+    "handling_of_failure": "a zero, missing or negative pooled signal is a FAILURE at that horizon and its requirement is reported as infinite, never as a large finite number"
+  },
+  "signal_strength_states": {
+    "normalization": "abs(microprice - mid) / half_spread, which for this estimator is exactly abs(g1) / spread_raw",
+    "band_edges": [
+      0.0,
+      0.02,
+      0.05,
+      0.1,
+      0.2
+    ],
+    "convention": "left-closed, right-open; the last band is open-ended above 0.20; 5 bands",
+    "secondary_partition": "the 20 (imbalance bin x spread class) cells the estimator is defined on, also fully declared before the result",
+    "selection": "no cutoff, band edge, partition or state is chosen, merged or dropped after the result is seen"
+  },
+  "hurdle": {
+    "source": "the M2-0.6 execution arithmetic, reused unchanged through M2/src/feasibility.py build_frame and the frozen cost ledger",
+    "cost_version": "M2-COST-LEDGER-v1 sha256 52ce785fc7210138af4059e327fc7101dff7f78dff3f5156c045973c1ed4cb17",
+    "structural_floor_label": "STRUCTURAL_COST_FLOOR",
+    "definition": "hurdle_bps(h) = mean over the evaluated observations of (half the entry spread + half the future spread + the structural-floor round-trip fee in bps of entry notional), representative order 100 shares, evaluated at each observation's own entry price",
+    "not_hard_coded": "the pooled M2-0.6 figure of 4.1011 bps is NOT used as an input; the hurdle is recomputed on this experiment's own observation set with the same code and ledger, and the M2-0.6 value is reported only as a cross-check",
+    "broker_path": "the ACCESSIBLE_REFERENCE_PATH schedules are reported for context and are not part of the primary gate"
+  },
+  "oracle": {
+    "label": "ORACLE_UPPER_BOUND",
+    "rule": "at each valid observation and horizon, with perfect foresight of the future executable bid and ask, take the better of the aggressive long (cross in at the entry ask, cross out at the future bid) and the aggressive short (cross in at the entry bid, cross out at the future ask) and abstain when neither is positive after costs; this is the M2-0.6 oracle, unchanged",
+    "reported": "net EV per observation, net EV per trade, and trade coverage, at every frozen horizon, on the primary population and on the corroborating scope",
+    "status": "a ceiling, not a strategy: it uses information no causal rule can have"
+  },
+  "r_pooled_rule": "h* = the frozen horizon with the largest abs(pooled signal_bps) on the primary population (ties resolved toward the shorter horizon); R_pooled = hurdle_bps(h*) / abs(signal_bps(h*)); a non-positive or non-finite signal at h* makes R_pooled infinite. The full 8-horizon term structure is reported and cannot be substituted for h* after the fact.",
+  "r_best_rule": "R_best = the minimum of hurdle_bps(h) / abs(signal_bps(h)) over the union of the 5 frozen strength bands and the 20 frozen (imbalance x spread class) cells, across all 8 frozen horizons, restricted to states with at least minimum_state_observations evaluated observations. Taking the minimum over both declared partitions and every horizon is the reading most favourable to the candidate; no further state, threshold or horizon is created.",
+  "thresholds": {
+    "r_best_kill": 5.0,
+    "r_pooled_kill": 10.0,
+    "minimum_state_observations": 10000,
+    "oracle_contradiction_ratio": 0.25
+  },
+  "kill_survive_criterion": {
+    "KILLED": "R_best >= r_best_kill AND R_pooled >= r_pooled_kill, provided the oracle contradiction test below does not fire",
+    "SURVIVES_PRE_GATE": "R_best < 5 OR R_pooled < 10, or the oracle contradiction test fires",
+    "meaning_of_kill": "even the strongest declared state remains at least 5x too small and pooled behaviour at least 10x too small relative to structural friction: no execution model, no modern-data purchase, no learned predictor and no passive pivot is justified for this candidate",
+    "meaning_of_survive": "the signal magnitude is close enough to trading friction that execution modelling could change the decision; this is NOT a profitability claim and no experiment beyond the next freeze is authorised by it"
+  },
+  "oracle_contradiction_rule": {
+    "definition": "the signal gate may say kill while the state still contains large monetizable movement; that is a discrepancy, not a silent kill",
+    "test": "oracle_net_STRUCTURAL_COST_FLOOR_bps_per_observation / hurdle_bps at the primary horizon h* >= oracle_contradiction_ratio",
+    "reference_point": "M2-0.6 measured 0.0097 bps per observation against a 4.1011 bps hurdle at 1000 ms, i.e. 0.24% - the frozen threshold is about 100x that, so it is not a re-statement of the prior measurement",
+    "on_trigger": "return an explicit discrepancy state (SURVIVES_PRE_GATE with the contradiction recorded) rather than KILLED, and state exactly which quantity contradicted the gate"
+  },
+  "as_of": {
+    "price_units": "ITCH Price(4) raw integers; one cent is 100 raw units; midpoint carried as mid2 = best_bid + best_ask, exactly twice the midpoint, so bps conversions are exact ratios",
+    "next_move_watch_ns": 60000000000,
+    "session_ns": [
+      34200000000000,
+      57600000000000
+    ]
+  },
+  "data_versions": {
+    "raw_file": "M2/data/raw/07302019.NASDAQ_ITCH50.gz",
+    "raw_sha256": "c65784c48c28735901ae442dc00e215834218a359bc12a139ab4eec209bc2d4a",
+    "dataset_id": "NASDAQ-ITCH50-PUBLIC-SAMPLE-20190730",
+    "symbol_universe_manifest_sha256": "7629ec0967ad6f0c9d012249f6b273988717811bef5b202afbb37feaceb3b1ff",
+    "primary_subset_sha256": "f2194a2e54f37cb9fb084687d043e8019cdfbc12d4be5475260e1b234c3ef019"
+  },
+  "config_path": "M2/config/nasdaq_micro_m2_2.yaml",
+  "config_hash": "ea5d90d10d359aafd69b0b24b0a649fce13d9411036b1f104e7e244ff18ee9f4",
+  "code_sha256": {
+    "M2/src/book.py": "392cba8e0eadc65c2fe6e0a23822dd3c22c6065fac873a53982500449208e76c",
+    "M2/src/micro.py": "934d950a321d129b270c8e40faf4aae3e5e281077b2c9d8f12e19f19929cd200",
+    "M2/src/feasibility.py": "855eccc6ca438ff6ddd17b286a846d71a008f287e0b609293ab7e95cb9986b02",
+    "M2/src/calculate.py": "8a6a0534cec0142fbdc56fa4ea9d354f497cad2358f067b261a74a93439edef7",
+    "M2/src/costs.py": "1df0ed45e5663614f799350f87b52abcc863ba47f933fc0791e595cec0e3d36f",
+    "M2/src/features.py": "b70cde5dcd420ddd9b65aabaac79dee6189914dfd60436bffcefa23444d4bfae",
+    "M2/src/labels.py": "97cf0befc7042f50f7fec93b5188dd7efe5dcf59e0e1966017d081e793a4a461",
+    "M2/src/config.py": "529cc4882ce7c0636e59995a04f540042bc7dd8c339e112c35d28d2d0483ced6",
+    "M2/src/ingest.py": "84b94a1a26f9771d1c498e1906666b0deaefd5f37c99a215a6fe0fc7c2f37fad",
+    "M2/src/universe.py": "1a17afc1e137241a4a190dcc7a85a0adacecaeff06787a0ba18a1420222390eb",
+    "M2/src/universe_proxy.py": "ce527a3e34f80c315547985f32157e28f2c3a9d37e0d1d2e50fea8e872d8021d",
+    "M2/tests/test_micro.py": "972b7ad3e07bf2af4ad52a271e56ee6e8ae2541a9e34c1b61a128cd5c3d1e5bb"
+  },
+  "book_engine_change": "M2/src/book.py gains exactly one derived column, next_move_delta_raw (int32, 0 when unresolved), written on the same event as the existing next_move_direction. No existing column, rule or value changes, so every earlier M2 artifact stays reproducible from the same tape; the M2-2 derived directory is separate and no earlier artifact is rewritten.",
+  "own_manifest": "M2/experiments/M2-2-MICRO-MATERIALITY/run_inputs.json (written after the run; this freeze is not altered by it)",
+  "reproduction": [
+    "python3 -m M2.src.ingest --config M2/config/nasdaq_micro_m2_2.yaml",
+    "python3 -m M2.src.book --config M2/config/nasdaq_micro_m2_2.yaml",
+    "python3 -m M2.src.micro --config M2/config/nasdaq_micro_m2_2.yaml",
+    "python3 -m M2.src.micro --config M2/config/nasdaq_micro_m2_2.yaml --corroborating",
+    "python3 -m unittest M2.tests.test_micro"
+  ],
+  "permitted_post_result_decisions": [
+    "report every frozen horizon and every frozen state, including unfavourable ones",
+    "record an as-run deviation from this freeze with its cause and its effect on the verdict",
+    "record a defect found during the run, fix it, add a regression test and invalidate the affected numbers",
+    "update the M1 canonical registries in the direction the frozen rule dictates"
+  ],
+  "prohibited_post_result_decisions": [
+    "adding, merging, dropping or re-cutting a state, band, horizon, population or estimator after the result",
+    "changing the hurdle, the cost ledger, the oracle rule or the kill criterion after the result",
+    "building a queue model, a fill model, a routing model, an impact model, a capacity model, a learned predictor, a threshold search or a Jev/System-One component",
+    "acquiring or requesting modern data, or treating a 2019 development-day figure as a current-market profitability claim",
+    "presenting the non-causal whole-day estimator or the clairvoyant oracle as achievable performance",
+    "reopening M2-0, M2-0.5, M2-0.6 or M2-1"
+  ],
+  "multiple_testing_note": "one estimator, one causal calibration rule, one population pair, one barrier definition, eight frozen horizons, two declared state partitions and one decision rule; the minimum over states and horizons in R_best is deliberately the candidate-favourable reading, and the pooled horizon h* is selected by the frozen rule from the same eight candidates rather than by inspection",
+  "external_block_condition": "if the registered microprice definition could not be reconstructed from source material the correct output would be EXTERNAL_BLOCK with the missing information named; it was reconstructed (see estimator.source) so this branch does not apply"
+}

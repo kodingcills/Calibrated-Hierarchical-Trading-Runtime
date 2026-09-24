@@ -1,0 +1,195 @@
+# M2-2 deterministic calculation configuration: microprice economic-materiality gate.
+#
+# Base: M2/config/nasdaq_qimb_m2_0_6_univproxy.yaml, unchanged in every section that
+# defines the dataset, the session, the tick regime, the imbalance definition, the
+# development scope, the cost ledger, the quality limits and the statistics. The
+# candidate is the OTHER aggressive Nasdaq large-tick row of the same frozen universe
+# rule (TUP-NASDAQ-LARGETICK-H2H3-MICRO-AGG), so the population machinery is reused
+# rather than rebuilt:
+#
+#   (1) the same explicit locates manifest (M2/data/manifests/proxy_scope_manifest.json)
+#       and the same eligibility sentences, so the 115-name compute scope and the
+#       33-name rule-conformant large-tick proxy subset are the same sets M2-0.6 used;
+#   (2) the horizon grid is EXTENDED to the candidate's own H2-H3 window (100 ms ... 15 s).
+#       M2-0.6 measured 100/250/500/1000 ms only; the frozen candidate tuple spans
+#       100,000 ns to 15,000,000 ns, and the M2-2 freeze names all eight horizons
+#       before any canonical economics are inspected;
+#   (3) the delay sweep is reduced to the single 0 ms execution instant, which is the
+#       instant the M2-0.6 oracle ceiling and the structural cost floor are defined on.
+#       No delay surface is measured or used by M2-2;
+#   (4) derived and output directories are separate, so no M2-0, M2-0.6 or M2-1
+#       artifact is touched.
+#
+# This config produces a DIAGNOSTIC population, not universe membership: the frozen
+# rule needs a 60-trading-day causal lookback and a point-in-time reference, neither
+# of which a single sample day can supply. Membership remains BLOCKED.
+
+run:
+  run_id: "M2-2-NASDAQ-MICRO-MATERIALITY"
+  parent_run_id: "M2-0-6-NASDAQ-QIMB-UNIVPROXY"
+  candidate_id: "TUP-NASDAQ-LARGETICK-H2H3-MICRO-AGG"
+  universe_rule_id: "NASDAQ-LARGETICK-QIMB-UNIV-v1"
+  created_utc: "2026-09-24"
+  status_vocabulary: [DATA_VALID, DATA_INVALID, CALCULATION_COMPLETE, CALCULATION_BLOCKED, UNKNOWN]
+
+paths:
+  raw_dir: "M2/data/raw"
+  derived_dir: "M2/data/derived_micro"
+  manifest_dir: "M2/data/manifests"
+  output_dir: "M2/output/micro"
+
+dataset:
+  dataset_id: "NASDAQ-ITCH50-PUBLIC-SAMPLE-20190730"
+  product: "Nasdaq TotalView-ITCH 5.0 (binary)"
+  vendor: "Nasdaq (public sample file service, emi.nasdaq.com)"
+  venue: "XNAS"
+  schema_id: "ITCH50-BINARY-V50-20230428"
+  raw_files:
+    - "07302019.NASDAQ_ITCH50.gz"
+  duplicate_check_files:
+    - "07302019.NASDAQ_ITCH50.md5sum"
+  compression: "gzip"
+  coverage_date: "2019-07-30"
+  role: "DEVELOPMENT"
+  holdout_eligible: false
+  outcome_claim_permitted: false
+
+session:
+  continuous_start_ns: 34200000000000
+  continuous_end_ns: 57600000000000
+  replay_from_file_start: true
+
+system_events:
+  start_of_messages: "O"
+  start_of_system_hours: "S"
+  start_of_market_hours: "Q"
+  end_of_market_hours: "M"
+  end_of_system_hours: "E"
+  end_of_messages: "C"
+
+price_scale: 10000
+tick_raw: 100
+tick_size_usd: 0.01
+price_floor_usd: 1.0
+
+decisions:
+  # 1 s decision grid, unchanged from M2-0.6, so the microprice observations are the
+  # same instants the QIMB aggressive row was measured on.
+  grid_ns: 1000000000
+  delay_grid_ns: 1000000000
+  buffer_rows_per_chunk: 262144
+  flush_min_rows: 131072
+  next_move_wait_ns: 60000000000
+  as_of_rule: "FILE_ORDER_LAST_MESSAGE_WITH_TS_LE_DECISION_TS"
+
+# The candidate's own H2-H3 window (100 ms - 15 s), frozen before any canonical
+# economics were inspected. Every horizon is reported; none is selected on outcome.
+horizons_ms: [100, 250, 500, 1000, 2000, 5000, 10000, 15000]
+delay_ms: [0]
+
+imbalance:
+  formula: "(q_bid - q_ask) / (q_bid + q_ask)"
+  require_denominator_positive: true
+  require_both_sides: true
+  bins:
+    edges: [-1.0, -0.8, -0.6, -0.4, -0.2, 0.0, 0.2, 0.4, 0.6, 0.8, 1.0]
+    convention: "LEFT_CLOSED_RIGHT_OPEN_EXCEPT_LAST"
+  extreme_threshold: 0.8
+
+# ------------------------------------------------------------------- estimator
+# The registered mechanism MECH-MICRO is "the Stoikov-style micro-price": a
+# mid-price adjusted by the expected future mid-price change conditional on the
+# top-of-book state (imbalance, spread). Everything below is frozen before the
+# canonical result; the calibration rule is causal by construction.
+microprice:
+  estimator_id: "STOIKOV-MICRO-FIRSTSTEP-v1"
+  definition: "p_micro(t) = mid(t) + g1(X_t), X_t = (imbalance bin, spread class)"
+  first_step_target: "g1(X) = E[ mid2(tau1) - mid2(t) | X_t = X ], tau1 = first mid-price change after t"
+  state_dimensions: [imbalance_bin, spread_class]
+  spread_classes: [ONE_TICK, WIDER_THAN_ONE_TICK]
+  calibration_window: "EXPANDING_PRIOR_SESSION_ONLY"
+  refit_interval_ns: 300000000000
+  minimum_calibration_observations: 200
+  # A state is eligible to be reported as "the best declared state" only with at least
+  # this many evaluation observations, so a thin cell cannot win on sampling noise.
+  minimum_state_observations: 10000
+  unresolved_policy: "EXCLUDE_FROM_CALIBRATION_MEAN_AND_REPORT"
+  side_rule: "sign(microprice - mid)"
+  strength_normalization: "abs(microprice - mid) / half_spread = abs(g1) / spread_raw"
+  strength_band_edges: [0.0, 0.02, 0.05, 0.10, 0.20]
+  bands_are_open_ended_above_last_edge: true
+  optimistic_full_day_estimator: "LABELLED_UPPER_BOUND_NOT_CAUSAL"
+
+dev_scope:
+  label: "UNIVERSE_PROXY_SCOPE_NOT_UNIVERSE_MEMBERSHIP"
+  proxy_scope_size: 120
+  rank_by: "same_day_dollar_volume_from_venue_trade_tape"
+  explicit_locates_manifest: "M2/data/manifests/proxy_scope_manifest.json"
+  candidate_pool_size: 120
+  require_nasdaq_listed: true
+  require_common_stock: true
+  require_not_etp: true
+  require_price_floor: true
+
+universe:
+  rule_version: "NASDAQ-LARGETICK-QIMB-UNIV-v1"
+  spec_artifact: "M1/hypotheses/candidate_specs/NASDAQ_LARGETICK_QUEUE_IMBALANCE_UNIVERSE.json"
+  theta_fraction_at_one_tick: 0.50
+  median_spread_rule: "median quoted spread over the lookback equals exactly one tick"
+  liquidity_rule: "top decile of trailing 60-trading-day median daily dollar volume"
+  liquidity_lookback_trading_days: 60
+  liquidity_decile_fraction: 0.10
+  minimum_history_trading_days: 120
+  coverage_rule_min_fraction: 0.90
+  minimum_universe_size: 5
+  minimum_pooled_events_per_month: 100000
+  rebalance_frequency: "monthly"
+  selection_date_rule: "first trading day of each calendar month T"
+  selection_information_deadline: "strictly before the open of T's first trading day"
+  halt_exclusion_percentile: 95
+  requires_point_in_time_reference: true
+  requires_order_level_lookback: true
+
+cost_ledger:
+  ledger_id: "M2-COST-LEDGER-v1"
+  artifact: "M2/config/cost_ledger_v1.json"
+  regimes: [STRUCTURAL_COST_FLOOR, ACCESSIBLE_REFERENCE_PATH]
+  representative_quantities: [1, 10, 100, 500, 1000]
+  representative_prices_usd: [5, 10, 25, 50, 100, 200, 500]
+  representative_prices_quantities: [100, 1000]
+  representative_order_shares: 100
+
+data_quality:
+  binding_limits:
+    max_orphan_event_fraction: 0.0001
+    max_negative_size_events: 0
+    max_order_id_collisions: 0
+    max_backwards_timestamp_fraction: 0.001
+    max_crossed_book_update_fraction: 0.001
+  report_only_checks:
+    - late_after_decision
+    - locked_book_updates
+    - empty_side_updates
+    - identical_timestamp_messages
+    - adjacent_duplicates
+    - duplicates_within_bucket
+    - sequence_substitute_regressions
+    - reconciliation_mismatches
+  decision_state_exclusions:
+    - CROSSED_OR_LOCKED_SPREAD
+    - MISSING_SIDE
+    - NON_POSITIVE_DENOMINATOR
+  fail_fast_on_impossible_state: true
+  book_audit_sample_interval_ns: 60000000000
+
+feasibility:
+  frozen_execution_reference: "NONE"
+
+statistics:
+  bootstrap:
+    method: "BLOCK_BOOTSTRAP_BY_SYMBOL_DAY_BLOCK"
+    block_length_ns: 1800000000000
+    resamples: 2000
+    seed: 20190730
+    unit: "SYMBOL_BLOCK"
+  dispersion_units: [symbol, symbol_block]

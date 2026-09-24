@@ -12,3 +12,5 @@ M2/output/tmp/
 M2/data/derived_univproxy/
 # M2-1 passive replay artifacts (same policy as M2/data/derived)
 M2/data/derived_passive/
+# M2-2 microprice replay artifacts (same policy as M2/data/derived)
+M2/data/derived_micro/

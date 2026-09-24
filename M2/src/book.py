@@ -443,6 +443,11 @@ class Replayer:
             self.decisions.add_column(f"direction_{horizon_ms}ms", np.int8)
             self.decisions.add_column(f"label_status_{horizon_ms}ms", np.int8)
         self.decisions.add_column("next_move_direction", np.int8)
+        # The size of the next real mid-price change, in ``mid2`` raw units (i.e. twice
+        # the price move), written on the same event as ``next_move_direction``. It is
+        # the calibration target of the M2-2 Stoikov micro-price; it adds a column and
+        # changes no existing column, so it cannot alter any earlier measurement.
+        self.decisions.add_column("next_move_delta_raw", np.int32)
         self.decisions.add_column("next_move_resolved", np.bool_)
         self.delay_rows = ChunkedParquetWriter(
             os.path.join(derived_dir, "delay_decisions.parquet"), DELAY_SCHEMA, self.chunk_rows
@@ -531,6 +536,7 @@ class Replayer:
         column_staleness = columns["time_since_last_event_ns"]
         column_events = columns["events_in_prior_bucket"]
         next_move_direction_column = columns["next_move_direction"]
+        next_move_delta_column = columns["next_move_delta_raw"]
         next_move_resolved_column = columns["next_move_resolved"]
         horizon_columns = [
             (
@@ -596,6 +602,7 @@ class Replayer:
             # Every per-row column is written explicitly: the chunk is reused, so a
             # column left untouched would carry the previous chunk row's value.
             next_move_direction_column[index] = 0
+            next_move_delta_column[index] = 0
             next_move_resolved_column[index] = False
             for horizon_slot, (
                 mid2_column,
@@ -1092,8 +1099,10 @@ class Replayer:
                                     and mid2 != state.watch_mid2
                                 ):
                                     direction_column = self.decisions.columns["next_move_direction"]
+                                    delta_column = self.decisions.columns["next_move_delta_raw"]
                                     resolved_column = self.decisions.columns["next_move_resolved"]
                                     direction = labels.next_mid_move_direction(state.watch_mid2, mid2)
+                                    delta = int(mid2 - state.watch_mid2)
                                     for watch_row in state.watch_rows:
                                         local = watch_row - self.decisions_base_index
                                         if local < 0:
@@ -1103,6 +1112,7 @@ class Replayer:
                                             self.late_watch_resolutions += 1
                                             continue
                                         direction_column[local] = direction
+                                        delta_column[local] = delta
                                         resolved_column[local] = True
                                     del state.watch_rows[:]
                                     state.watch_mid2 = None
