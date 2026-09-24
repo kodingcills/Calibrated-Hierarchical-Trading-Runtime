@@ -1,0 +1,11 @@
+{
+  "config_sha256": "2ec5f58afeb2cf7462cb896642a53ccba62f26b0dfba0885cea57eb814b50119",
+  "excluded_for_fraction": 0,
+  "excluded_for_median_spread": 82,
+  "excluded_for_observation_count": 0,
+  "large_tick_proxy_symbols": 33,
+  "minimum_observations": 1000,
+  "proxy_status": "LARGE_TICK_PROXY_SINGLE_DAY_NOT_MEMBERSHIP",
+  "scope_symbols": 115,
+  "theta": 0.5
+}

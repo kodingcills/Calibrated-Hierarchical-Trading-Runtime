@@ -33,6 +33,9 @@ SOURCE_QUALITY = {
     "regulation": "PRIMARY",
     "vendor_price_list": "PRIMARY",
     "vendor_data_product": "PRIMARY",
+    # The project's own frozen, reproducible measurement of a market: primary for claims about
+    # that measurement, and never a substitute for an external fact.
+    "internal_measurement": "PRIMARY",
     "technical_secondary": "SECONDARY",
     "social_lead": "LEAD_ONLY",
 }

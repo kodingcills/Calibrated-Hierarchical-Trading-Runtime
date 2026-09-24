@@ -21,7 +21,7 @@
   "kill_potential": "LOW",
   "known_evidence_ids": [],
   "known_source_ids": [],
-  "last_updated": "2026-09-20T19:20:01Z",
+  "last_updated": "2026-09-24T01:20:54Z",
   "parent_issue_id": "UNK-0027",
   "priority_reason": "Deliberately not specified now: a universe rule for a branch that cannot pass KG1 would be busywork, and the deferral is recorded rather than hidden.",
   "priority_score": null,

@@ -16,7 +16,8 @@
     "EVD-0034",
     "EVD-0037",
     "EVD-0041",
-    "EVD-0042"
+    "EVD-0042",
+    "EVD-0067"
   ],
   "decision_prevented": "Passive-candidate economics; also the crossing case where the signal selects into an already-moving price.",
   "disallowed_evidence": "Unconditional markouts, or mid-price paths used as a fill proxy",
@@ -26,7 +27,7 @@
   "kill_potential": "LOW",
   "known_evidence_ids": [],
   "known_source_ids": [],
-  "last_updated": "2026-09-20T19:20:01Z",
+  "last_updated": "2026-09-24T01:20:54Z",
   "parent_issue_id": null,
   "priority_reason": "MIGRATED from M1_BLOCKING: markout is an M2 output; the M1 question is whether the data to measure it exists (KG2).",
   "priority_score": null,

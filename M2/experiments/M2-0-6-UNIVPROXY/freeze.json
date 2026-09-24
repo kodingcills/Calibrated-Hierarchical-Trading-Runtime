@@ -1,0 +1,115 @@
+{
+  "allowed_exclusions": [
+    "CROSSED_OR_LOCKED_SPREAD",
+    "MISSING_SIDE",
+    "NON_POSITIVE_DENOMINATOR",
+    "imbalance == 0 in side-dependent cells (the M2-0 execution filter)",
+    "rows whose label or arrival state is missing, counted per cell"
+  ],
+  "candidate_id": "TUP-NASDAQ-LARGETICK-H2-QIMB-AGG",
+  "code_sha256": {
+    "M2/src/book.py": "b75c39d7adf7897c3110a2b2c2cd88097ccafd64c67da3e5d9a579e399d119ee",
+    "M2/src/calculate.py": "8a6a0534cec0142fbdc56fa4ea9d354f497cad2358f067b261a74a93439edef7",
+    "M2/src/costs.py": "1df0ed45e5663614f799350f87b52abcc863ba47f933fc0791e595cec0e3d36f",
+    "M2/src/feasibility.py": "855eccc6ca438ff6ddd17b286a846d71a008f287e0b609293ab7e95cb9986b02",
+    "M2/src/features.py": "b70cde5dcd420ddd9b65aabaac79dee6189914dfd60436bffcefa23444d4bfae",
+    "M2/src/ingest.py": "84b94a1a26f9771d1c498e1906666b0deaefd5f37c99a215a6fe0fc7c2f37fad",
+    "M2/src/labels.py": "97cf0befc7042f50f7fec93b5188dd7efe5dcf59e0e1966017d081e793a4a461",
+    "M2/src/universe.py": "1a17afc1e137241a4a190dcc7a85a0adacecaeff06787a0ba18a1420222390eb",
+    "M2/src/universe_proxy.py": "ce527a3e34f80c315547985f32157e28f2c3a9d37e0d1d2e50fea8e872d8021d",
+    "M2/tests/test_feasibility.py": "9e18550f3f182e69f7e46715d3c4a67d6b620cd64c32ac5f6056f5e0dcc68b9f",
+    "M2/tests/test_universe_proxy.py": "fecbc916e8d483d278995975622b3379611d031a46d019e9b31553c34465a62d"
+  },
+  "config_hash": "2ec5f58afeb2cf7462cb896642a53ccba62f26b0dfba0885cea57eb814b50119",
+  "config_path": "M2/config/nasdaq_qimb_m2_0_6_univproxy.yaml",
+  "contamination_and_limits": {
+    "cost_limits": "2026 rate cards are applied to a 2019 tape to validate arithmetic and component ordering, not to reconstruct 2019 economics; the structural floor excludes commission, clearing, market data, slippage and impact",
+    "day_status": "2019-07-30 remains DEVELOPMENT for the lifetime of the project and can never become a validation or sealed partition",
+    "execution_limits": "idealized aggressive fills (sufficient displayed size, immediate fill, no impact, no queue effect); the delay grid tests achievable arrival, not queueing",
+    "multiple_testing": "the declared state space is the only one examined; no threshold, horizon, universe, feature or model is selected on the proxy data, and no post-result cell may be promoted to a strategy claim",
+    "proxy_limits": "the liquidity decile and the large-tick screen use one day instead of a 60-trading-day lookback, so the proxy population is not membership and its composition would differ from a rule-conformant universe"
+  },
+  "cost_version": "M2-COST-LEDGER-v1 sha256 52ce785fc7210138af4059e327fc7101dff7f78dff3f5156c045973c1ed4cb17",
+  "data_versions": {
+    "coverage_date": "2019-07-30",
+    "dataset_id": "NASDAQ-ITCH50-PUBLIC-SAMPLE-20190730",
+    "holdout_eligible": false,
+    "outcome_claim_permitted": false,
+    "raw_bytes": 3662140094,
+    "raw_sha256": "c65784c48c28735901ae442dc00e215834218a359bc12a139ab4eec209bc2d4a",
+    "role": "DEVELOPMENT",
+    "sealed_partition": "NONE (a single day cannot support partitions; M2/output/calculations/split_manifest.json already records NO_SPLIT_POSSIBLE_INSUFFICIENT_COVERAGE)"
+  },
+  "decision_if_negative": "coverage approaches or exceeds the hurdle in the intended population => the aggressive branch is NOT killed; the binding unknown becomes the modern regime and price level, which only paid data can supply => EXTERNAL_BLOCK with a quantified purchase request (provider, product, scope, cost status), and no further development-day tuning.",
+  "decision_if_positive": "coverage remains far below the hurdle in the intended population => the aggressive branch is KILLED, the modern-data purchase has no decision value for this hypothesis, and the M1 candidate table is updated (candidate moves from WEAK to DEAD with a resurrection condition). A passive-execution pivot is registered separately as a new candidate, not executed here.",
+  "decision_question": "In a single-day proxy of the frozen universe's own population - large-tick, top-dollar-volume, Nasdaq-listed common stock - does the aggressive/abstain form of the candidate retain enough economic room to justify paying for a modern-regime dataset and a point-in-time security master, or is the branch economically dead on structural grounds?",
+  "execution_version": "aggressive cross-in / cross-out at the far touch, arrival-time book, delay grid 0-1000 ms, representative order 100 shares; M2-0 definition, unchanged",
+  "experiment_id": "M2-0-6-UNIVPROXY",
+  "feasibility_reference": "NONE (M2-0.5's frozen-execution re-derivation is run-specific and cannot apply to a re-scoped run; the M2-0 defects D1/D2 stay recorded in M2/output/calculations/feasibility_status.json)",
+  "feature_version": "I(t) = (Q_bid - Q_ask) / (Q_bid + Q_ask), displayed size at the best quotes, one-sided-or-zero excluded; M2-0 definition, unchanged",
+  "freeze_status": "FROZEN_BEFORE_ANY_PROXY_RUN_OUTCOME_WAS_INSPECTED",
+  "frozen_at_utc": "2026-09-23",
+  "hypothesis": "The economic infeasibility measured in M2-0.5 (aggressive queue-imbalance trading pays a 3.37 bps spread plus a 1.44 bps floor fee to harvest a 0.085 bps 1 s mid move) is a property of the intended population or an artifact of the M2-0 compute scope. The M2-0 compute scope is the top 61 Nasdaq-listed non-ETP common stocks ranked by order-add message count; its mean quoted spread is 4.82 ticks and only 58.65% of its observations sit at one tick, while the frozen universe rule NASDAQ-LARGETICK-QIMB-UNIV-v1 requires a one-tick median spread. The scope is therefore not large-tick and is not a population in which the candidate's own mechanism can be evaluated.",
+  "mechanism": "Top-of-book displayed queue imbalance predicts the direction of the next midpoint move over 100 ms - 1 s. Aggressive monetization requires the predicted mid move to exceed the executed round trip: one full quoted spread plus venue and statutory fees.",
+  "multiple_testing_note": "one proxy population, one declared state space, one decision rule; no threshold, horizon, universe, feature or model is selected on the proxy data",
+  "own_manifest": "M2/experiments/M2-0-6-UNIVPROXY/run_inputs.json (written after the run; the M2-0 freeze_manifest stage writes fixed canonical paths and is deliberately not run for this pass)",
+  "parent_id": "M2-0-NASDAQ-QIMB-BASELINE",
+  "permitted_post_result_decisions": [
+    "KILLED / CONTINUE / PIVOT_JUSTIFIED / ADVANCE / EXTERNAL_BLOCK for the aggressive branch",
+    "recording the measured friction decomposition as durable evidence",
+    "registering a passive-execution candidate with an explicit fill-model specification (no aggressive-backtest reuse)",
+    "updating the M1 candidate table, DEAD_ENDS.md, the evidence ledger and PROJECT_STATE.md",
+    "requesting a written quote for modern Nasdaq order-level data and a point-in-time security master (a request, not a purchase)"
+  ],
+  "population": {
+    "not_claimed": "universe membership, eligibility, coverage, listing history, corporate-action or halt screening, or any modern-regime claim",
+    "primary_analysis_population": "large-tick proxy subset of the replay scope: per symbol, over the day's valid 1 s grid observations, median quoted spread equals exactly one tick AND fraction of valid observations at one tick >= THETA = 0.50 (the frozen rule's own large-tick sentences, applied to a one-day proxy of its 60-day lookback). Symbols with fewer than 1000 valid observations are excluded and counted.",
+    "scope_rule": "top 120 by same-day venue trade-tape dollar volume (E executions priced at the resting order, C executions at their execution price, P non-cross trades; crosses counted, never priced) inside the single-day top decile of the frozen rule's liquidity variable, computed by M2/src/universe_proxy.py with the rule's own primitive universe.top_decile_by_dollar_volume",
+    "scope_size": 120,
+    "scope_status": "UNIVERSE_PROXY_SCOPE_NOT_UNIVERSE_MEMBERSHIP",
+    "secondary_populations": [
+      "the whole replay scope (for like-for-like comparison against the M2-0 figures)",
+      "the predeclared price bands (5-25, 25-50, 50-100, 100-200, 200+) and spread classes of the M2-0.5 state space"
+    ]
+  },
+  "precommitted_decision_rule": {
+    "G1_best": "max over declared cells (>= 100 observations) of signal_multiple_T in the large-tick proxy subset, STRUCTURAL_COST_FLOOR",
+    "G1_pooled": "signal_multiple_T pooled over the large-tick proxy subset, STRUCTURAL_COST_FLOOR, best of the four preregistered horizons",
+    "G2": "ORACLE_UPPER_BOUND net of STRUCTURAL_COST_FLOOR, per trade at the same horizon",
+    "alive_criterion": "G1_best < 5.0 => the branch is not killed by this diagnostic; the binding unknown is the modern regime and price level, which needs paid data => EXTERNAL_BLOCK",
+    "corroboration_required": "G2 is reported and must be consistent with the verdict: if G1_best >= 5 but G2 per trade exceeds 5 bps, the automatic verdict is downgraded to CONTINUE and escalated as a written discrepancy rather than being applied silently",
+    "decision_after_kill": "update DEAD_ENDS.md, the M1 candidate table and the evidence ledger; register a passive-execution pivot as its own candidate and hypothesis if and only if a fill model is specified; stop the M2 run at its terminal state",
+    "degenerate_case": "if the large-tick proxy subset is empty or every cell has fewer than 100 observations, no verdict is issued from this experiment and the run reports INSUFFICIENT_PROXY_POPULATION",
+    "kill_criterion": "G1_best >= 5.0 AND G1_pooled >= 10.0 => KILLED. Rationale fixed in advance: the friction is already at its regulatory and pricing floor (one tick = the Reg NMS minimum for these securities, plus the exchange remove-liquidity fee and the statutory sale-side charges, with no broker layer); the only regime channel that changes the ratio is the per-second mid-move scale, whose plausible range around a 2019 low-volatility baseline is under about 3x, so a gap of 5x or more in the best declared cell cannot be closed by a regime change."
+  },
+  "primary_metric": {
+    "cell_grid": "10 imbalance bins x 2 spread classes x 5 price bands x 4 horizons (the M2-0.5 declared state space), plus the pooled and extreme-bin (|I| >= 0.8) views",
+    "definition": "required_move_bps / signal_bps, where required_move_bps is the mean execution hurdle in the same cell (STRUCTURAL_COST_FLOOR round trip at the arrival price + the full quoted spread paid) and signal_bps is the mean side-signed mid move (side = sign of ex-ante queue imbalance) at the same horizon; both read from breakeven_hurdle.csv and feasibility_status.json produced by the frozen M2-0.5 code on the proxy replay",
+    "minimum_cell_observations": 100,
+    "name": "signal_multiple_T"
+  },
+  "prohibited_post_result_decisions": [
+    "editing this freeze file",
+    "re-tuning thresholds, horizons, universes or bins on the proxy day",
+    "re-running M2-0's 100 ms configuration on the proxy scope to look for a better number",
+    "presenting the proxy population as universe membership",
+    "presenting the ORACLE_UPPER_BOUND as performance",
+    "treating the 2019 day as a basis for a modern-regime claim in either direction"
+  ],
+  "reproduction": [
+    ".venv/bin/python -m M2.src.universe_proxy --config M2/config/nasdaq_qimb_m2_0_6_univproxy.yaml",
+    ".venv/bin/python -m M2.src.book --config M2/config/nasdaq_qimb_m2_0_6_univproxy.yaml",
+    ".venv/bin/python -m M2.src.calculate --config M2/config/nasdaq_qimb_m2_0_6_univproxy.yaml",
+    ".venv/bin/python -m M2.src.feasibility --config M2/config/nasdaq_qimb_m2_0_6_univproxy.yaml"
+  ],
+  "sampling_rule": "one decision per symbol per second (grid_ns = 1 s), 09:30:00 to 16:00:00, causal as-of rule FILE_ORDER_LAST_MESSAGE_WITH_TS_LE_DECISION_TS; labels at 100/250/500/1000 ms; delay arrivals at 0/10/25/50/100/250/500/1000 ms",
+  "secondary_diagnostics": [
+    "ORACLE_UPPER_BOUND net of STRUCTURAL_COST_FLOOR and of each ACCESSIBLE_REFERENCE_PATH schedule, per observation and per trade (the ceiling on any causal policy at these instants)",
+    "QIMB_CONSTRAINED_BOUND (imbalance-dictated side, clairvoyant abstention only)",
+    "the mechanism decomposition by component (spread, floor fee, broker layer)",
+    "per-symbol and per-price-band dispersion, with block-bootstrap standard errors over symbol x 30-minute blocks",
+    "monotonicity of the imbalance-response relation, and the fraction of observations at one tick"
+  ],
+  "sibling_reference": "M2-0.5 (aggressive monetization feasibility bound, read-only analysis of M2-0)",
+  "universe_version": "NASDAQ-LARGETICK-QIMB-UNIV-v1, spec sha256 9ff81b4f5bc92687840ac4f568cf167afc1b470204919d2f0af236feec30a7dd"
+}

@@ -681,5 +681,64 @@ class StageIntegrationTests(unittest.TestCase):
         self.assertEqual(payload["run_status"], "CALCULATION_BLOCKED")
 
 
+class PopulationSubsetTests(unittest.TestCase):
+    """M2-0.6 restricts the whole pass to a frozen symbol subset."""
+
+    def test_subset_filters_every_column_and_reports_counts(self):
+        rows = [one_row(locate=1), one_row(locate=2), one_row(locate=1)]
+        columns = quote_columns(rows, configuration())
+        handle = tempfile.NamedTemporaryFile("w", suffix=".csv", delete=False)
+        handle.write("locate,symbol\n1,AAA\n")
+        handle.close()
+        try:
+            filtered, info = feasibility.apply_symbol_subset(columns, handle.name)
+        finally:
+            os.unlink(handle.name)
+        self.assertEqual(filtered["locate"].tolist(), [1, 1])
+        self.assertEqual(filtered["imbalance"].size, 2)
+        self.assertEqual(info["rows_after"], 2)
+        self.assertEqual(info["subset_locates_present"], 1)
+        self.assertEqual(info["subset_symbols"], 1)
+        self.assertEqual(len(info["subset_sha256"]), 64)
+
+    def test_no_subset_is_an_identity(self):
+        rows = [one_row(locate=1), one_row(locate=2)]
+        columns = quote_columns(rows, configuration())
+        filtered, info = feasibility.apply_symbol_subset(columns, None)
+        self.assertIs(filtered, columns)
+        self.assertIsNone(info["subset"])
+
+    def test_empty_subset_is_refused_rather_than_silently_empty(self):
+        columns = quote_columns([one_row(locate=1)], configuration())
+        handle = tempfile.NamedTemporaryFile("w", suffix=".csv", delete=False)
+        handle.write("locate,symbol\n")
+        handle.close()
+        try:
+            with self.assertRaises(ValueError):
+                feasibility.apply_symbol_subset(columns, handle.name)
+        finally:
+            os.unlink(handle.name)
+
+
+class FrozenReferenceTests(unittest.TestCase):
+    def test_reference_none_is_reported_as_not_evaluated_with_a_reason(self):
+        settings = configuration()
+        settings["feasibility"] = {"frozen_execution_reference": "NONE"}
+        pooled = {horizon: {"observations": 7} for horizon in (100, 250, 500, 1000)}
+        rows, discrepancies = feasibility._frozen_execution_rows(settings, {}, {}, ledger(), pooled)
+        self.assertEqual(discrepancies, [])
+        self.assertEqual(len(rows), 1)
+        self.assertEqual(rows[0]["outcome"], "NOT_EVALUATED_REFERENCE_ABSENT")
+        self.assertIn("run-specific", rows[0]["note"])
+
+    def test_absent_reference_file_is_not_evaluated_and_says_so(self):
+        settings = configuration()
+        settings["paths"]["output_dir"] = os.path.join(_TEST_ROOT, "output_absent_reference")
+        pooled = {horizon: {"observations": 7} for horizon in (100, 250, 500, 1000)}
+        rows, discrepancies = feasibility._frozen_execution_rows(settings, {}, {}, ledger(), pooled)
+        self.assertEqual(discrepancies, [])
+        self.assertEqual(rows[0]["outcome"], "NOT_EVALUATED_REFERENCE_ABSENT")
+
+
 if __name__ == "__main__":
     unittest.main()

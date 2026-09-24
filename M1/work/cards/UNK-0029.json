@@ -17,7 +17,7 @@
   "known_source_ids": [
     "SRC-0024"
   ],
-  "last_updated": "2026-09-20T19:20:01Z",
+  "last_updated": "2026-09-24T01:20:54Z",
   "parent_issue_id": null,
   "priority_reason": "MIGRATED to POST_M2: capacity is only meaningful for a strategy that has already shown positive net EV; it cannot gate selection among candidates with unknown EV.",
   "priority_score": null,

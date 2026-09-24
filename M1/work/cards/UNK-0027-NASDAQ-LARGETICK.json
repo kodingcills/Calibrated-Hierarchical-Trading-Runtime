@@ -11,7 +11,8 @@
     "EVD-0033",
     "EVD-0034",
     "EVD-0041",
-    "EVD-0042"
+    "EVD-0042",
+    "EVD-0067"
   ],
   "decision_prevented": "KG5 falsifiability for the Nasdaq queue-imbalance branch.",
   "disallowed_evidence": "Assumed values, secondary summaries, social posts",
@@ -23,7 +24,7 @@
   "known_source_ids": [
     "SRC-0241"
   ],
-  "last_updated": "2026-09-20T19:20:01Z",
+  "last_updated": "2026-09-24T01:20:54Z",
   "parent_issue_id": "UNK-0027",
   "priority_reason": "Resolved by this iteration's universe specification; the rule is machine-readable and approval is recorded before any M2 outcome inspection.",
   "priority_score": null,

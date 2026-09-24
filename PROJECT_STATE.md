@@ -2,7 +2,7 @@
 
 Status: CURRENT
 Version: 1.0.0
-Last Updated: 2026-09-20T19:20:01Z
+Last Updated: 2026-09-24T01:20:54Z
 
 This is the canonical fast-orientation artifact. Read it before any other file. Its counts are
 generated from `M1/output/M1_STATE_SUMMARY.json` and enforced against the machine-readable
@@ -33,6 +33,49 @@ Substage state (from repository evidence, not from plan):
 - M1-B is not yet authorized (no candidate is gate-eligible).
 - M1-D1 is not yet authorized (see `M1/output/M1_D1_BLOCKED.md`).
 
+## M2 — Autonomous falsification run: TERMINAL STATE `KILLED`
+
+Canonical detail: `M2/output/M2_AUTONOMOUS_STATUS.md`. Machine-readable verdict:
+`M2/output/univproxy/M2_0_6_VERDICT.json`. Sealed contract:
+`M2/experiments/M2-0-6-UNIVPROXY/freeze.json` (sha256 `4fc098a3…c32b38b`, hashed before any
+proxy-run observation was inspected).
+
+- **M2-0** (2026-09-22) replayed a free Nasdaq TotalView-ITCH 5.0 sample day (2019-07-30, raw
+  sha256 `c65784c4…09bc2d4a`) into a deterministic causal decision grid and completed the
+  calculation stage. Sample role: DEVELOPMENT, `holdout_eligible = false`,
+  `outcome_claim_permitted = false` — it can never become a validation or sealed partition.
+  Point-in-time universe membership: BLOCKED.
+- **M2-0.5** conditioned the aggressive-execution arithmetic on a declared state space and found
+  no positive state. It also found and recorded defects `M2-0-D1/D2/D3` in M2-0's frozen execution
+  table (cross-to-cross reported at half its true bps value; the fee evaluated at half the true
+  price). The frozen artifact was left untouched and the corrected quantities are the ones used
+  downstream; both defects pushed the reported figure in the candidate's favour.
+- **M2-0.6** (2026-09-23) tested whether the M2-0.5 verdict was an artifact of the M2-0 compute
+  scope (top 61 by order-add message count: mean quoted spread 4.82 ticks, mean price ≈ $43, almost
+  no high-priced one-tick names) rather than a property of the candidate's own population. It
+  re-scoped the replay to the top 120 dollar-volume names inside a single-day proxy of the frozen
+  rule's own liquidity decile, applied the rule's own large-tick sentence (33 of 115 replayed names
+  pass), and evaluated the identical declared state space with the identical cost ledger.
+- **Terminal state `KILLED`.** In the rule-conformant population the measured 1000 ms signal is
+  0.0794 bps against a 4.1011 bps executed round trip (1.94% coverage; required/signal 51.64 pooled
+  and 10.69 in the best of 356 declared states); 0 of 356 states is net-positive under the
+  structural cost floor; and a **clairvoyant** trader on the same instants nets +0.822 bps per trade
+  at the structural floor and +0.219 bps per trade on the accessible broker path, on 1.18% of
+  instants. The M2-0 scope hypothesis was tested and rejected (56.9 vs 51.64), and a broader 115-name
+  scope that contains the highest-priced names is worse (117.3). Registered dead in `DEAD_ENDS.md`
+  and `M1/data/dead_candidates.csv` (KG3_EXECUTION FAIL; evidence `EVD-0067`; patch `P-0006`).
+- **What is not dead**: the mechanism itself. A passive/queue formulation of the same signal
+  remains open and requires a queue-aware fill model (`M1/work/m2_specs/PASSIVE_FILL_MODEL.md`,
+  `FILL_CONDITIONED_MARKOUT.md`); it must be registered as its own candidate, never as an execution
+  mode change on the killed row. **No modern dataset purchase is justified for the aggressive
+  branch**: the friction is pinned by the Reg NMS minimum tick and the exchange/statutory fee floor,
+  and the candidate's own literature defines its large-tick universe as names where the tick is
+  economically large relative to price.
+- **Boundary of the kill** (stated, not hedged): one 2019 low-volatility session (measured move
+  scale 0.847 bps/s ≈ 20.6% annualised). The kill's best-state condition holds while a modern
+  regime's move scale is below ≈ 2.1× that level and the pooled condition below ≈ 5×; beyond that
+  only a modern-regime measurement could decide, which is the listed resurrection condition.
+
 ## Milestone Status
 
 <!-- GENERATED:milestones -->
@@ -60,15 +103,22 @@ has passed only hard constraints and still has every economic gate BLOCKED. Cand
 their gate vectors are canonical in `M1/data/candidate_tuples.csv`; the surviving rows are listed
 in `M1/output/hard_constraint_survivors.csv`.
 
-The five WEAK rows (constraining evidence exists, nothing supports an upgrade):
+`TUP-NASDAQ-LARGETICK-H2-QIMB-AGG` left this set on 2026-09-23: M2-0.6 measured its aggressive
+execution economics in the candidate's own population and failed KG3_EXECUTION (see the M2 section
+above). The four remaining WEAK rows (constraining evidence exists, nothing supports an upgrade):
 
 | candidate | instrument | venue | horizon | mechanism | execution | blocking issue |
 |---|---|---|---|---|---|---|
 | TUP-CME-ES-H1-QDEP-PAS | ES future | CME | H1 10-100 ms | queue depletion | passive | matching rule, fill probability, all-in cost |
-| TUP-NASDAQ-LARGETICK-H2-QIMB-AGG | large-tick stock | Nasdaq | H2 100 ms-1 s | queue imbalance | aggressive | 2015 gross evidence only; L3 history, fee tier |
 | TUP-NASDAQ-LARGETICK-H2H3-MICRO-AGG | large-tick stock | Nasdaq | H2-H3 | microprice | aggressive | estimator evidence only; no profit evidence |
 | TUP-CBOEBZX-LARGETICK-H2H3-SPREADCAP-PAS | stock >= $1 | Cboe BZX | H2-H3 | spread capture | passive | queue/adverse selection unmeasured |
 | TUP-USSTOCK-XVENUE-H1-STALEQUOTE-AGG | stock, national market | multi-venue | H1 | stale quote | aggressive | latency race unmeasured (label basis recorded in UNK-0024) |
+
+**Reusable lesson now on record**: a measured aggressive round trip on Nasdaq large-tick names is
+one tick plus the venue/statutory fee floor, i.e. 1–5 bps of friction, while a top-of-book signal
+moves the mid by a small fraction of a tick. Any aggressive Nasdaq row that has not shown a
+signal magnitude of the same order as its friction should be treated as pre-falsified rather than
+pending.
 
 Fourteen rows are UNKNOWN (no venue-specific evidence at all): ES H3 OFI, NQ H3 OFI, Treasury
 queue/replenishment, WTI flow/volatility, Nasdaq auction imbalance, Hyperliquid H3 OFI/liquidation,
@@ -77,10 +127,12 @@ Kalshi event inference, Polymarket event inference, institutional FX lead-lag, r
 
 ## Killed Candidates
 
-Nine registered rows are DEAD (4 tradable tuples, 5 non-tuple registrations). The ledger with
+Eight registered rows are DEAD: 5 tradable tuples and 3 non-tuple registrations. The ledger with
 cause, evidence and resurrection condition is `DEAD_ENDS.md` (machine-readable:
-`M1/data/dead_candidates.csv`). Re-entry requires NEW_EVIDENCE **and** an explicit resurrection
-decision recorded in `DECISIONS.md`; silent re-entry is prohibited.
+`M1/data/dead_candidates.csv`). One of the eight is an M2 kill rather than an M1 kill:
+`TUP-NASDAQ-LARGETICK-H2-QIMB-AGG`, failed on KG3_EXECUTION by measured execution economics
+(EVD-0067, patch P-0006). Re-entry requires NEW_EVIDENCE **and** an explicit resurrection decision
+recorded in `DECISIONS.md`; silent re-entry is prohibited.
 
 ## Current Strongest Findings
 
@@ -139,6 +191,20 @@ Durable, evidence-backed, and still less than tradable alpha:
 8. M1-A's stated reason "the paper and research OS were not retrievable" is now false: both are in
    this repository, hashed in `M1/raw/source_manifest.json`. The verdict is unchanged because the
    empirical blockers are independently sufficient (UNK-0030, ASM-0018).
+9. **The aggressive-execution friction of a Nasdaq large-tick round trip is now measured, and it
+   dominates every top-of-book signal that has been assembled so far.** On the 2019-07-30
+   development day, in the candidate's own population (one-tick median Nasdaq book spread,
+   top-decile dollar volume, 33 names, 737,768 decisions at a 1 s grid), the executed round trip is
+   4.1011 bps (2.5730 spread paid + 1.5281 exchange/statutory floor fee) against a 0.0794 bps mean
+   side-signed mid move at 1000 ms. Two model-free facts make this decisive rather than merely
+   discouraging: (a) with **perfect foresight** of the future quotes at every instant the aggressive
+   round trip nets +0.822 bps per trade at the structural floor and +0.219 bps per trade on the
+   accessible broker path, on 1.18% of instants — prediction cannot exceed clairvoyance; and
+   (b) perfect abstention with the imbalance-dictated side is worth 0.0052 bps per observation,
+   0.13% of the required move. The registry of these quantities is
+   `M2/output/univproxy/M2_0_6_VERDICT.json`; the durable consequence for M1 is that any aggressive
+   Nasdaq row must now evidence a signal of the same order as its friction before it is treated as
+   pending rather than pre-falsified.
 
 ## Critical Unknowns / Blockers
 
@@ -244,11 +310,11 @@ Machine-readable M1 state (canonical; regenerate with `python3 M1/src/materializ
 | status | count |
 |---|---|
 | ALIVE | 0 |
-| WEAK | 5 |
+| WEAK | 4 |
 | UNKNOWN | 16 |
-| DEAD | 7 |
+| DEAD | 8 |
 
-Registered candidate rows: 28 (23 tradable tuples + 5 non-tuple registrations). Verified sources: 92 (25 report-mediated, 0 with a recoverable URL). Evidence records: 65. M1 frontier items: 27 (7 measurement specs and 14 external requests now outside the frontier). Gate-eligible candidates: 0.
+Registered candidate rows: 28 (23 tradable tuples + 5 non-tuple registrations). Verified sources: 93 (25 report-mediated, 0 with a recoverable URL). Evidence records: 66. M1 frontier items: 27 (7 measurement specs and 14 external requests now outside the frontier). Gate-eligible candidates: 0.
 <!-- /GENERATED:counts -->
 
 

@@ -1,0 +1,127 @@
+{
+  "experiment_id": "M2-0-6-UNIVPROXY",
+  "parent_id": "M2-0-NASDAQ-QIMB-BASELINE",
+  "candidate_id": "TUP-NASDAQ-LARGETICK-H2-QIMB-AGG",
+  "verdict_timestamp_utc": "2026-09-23",
+  "freeze_sha256": "4fc098a36550854e93451e4d5408474fe771fc9ce9081d50ad0b71a20c32b38b",
+  "evaluated_by": "the precommitted rule in freeze.json, applied to the frozen artifacts by extraction only; no threshold, cell, horizon, population or cost assumption was changed after the result was seen",
+
+  "populations": {
+    "primary": {
+      "definition": "large-tick proxy subset of the replay scope: symbols whose same-day 1 s grid observations have a median quoted spread of exactly one tick and at least 50% of valid observations at one tick (the frozen rule's own large-tick sentences on a one-day proxy of its 60-day lookback)",
+      "symbols": 33,
+      "signal_defined_observations": 737768,
+      "mean_price_usd": 71.0,
+      "one_second_mid_move_sd_bps": 0.8469,
+      "implied_annualised_move_scale_percent": 20.6
+    },
+    "corroborating": {
+      "definition": "the whole replay scope (all replayed names inside the single-day top liquidity decile)",
+      "symbols": 115,
+      "signal_defined_observations": 2458422
+    },
+    "inherited_baseline": {
+      "definition": "M2-0 compute scope (top 61 by order-add message count) as measured by M2-0.5",
+      "symbols": 61,
+      "signal_defined_observations": 1340431
+    }
+  },
+
+  "gate": {
+    "G1_best": {
+      "definition": "min over declared cells with >= 100 observations of required_move_bps / signal_bps, STRUCTURAL_COST_FLOOR, primary population. 356 of the 400 declared cells carry >= 100 observations and 333 of those 356 have a positive pooled signal; the minimum is taken over the positive-signal cells, because the ratio is undefined in sign for the rest",
+      "threshold": 5.0,
+      "comparison": "KILL requires G1_best >= 5.0",
+      "value": 10.69,
+      "satisfied": true,
+      "cell": {
+        "imbalance_bin": "[0.8,1.0]",
+        "spread_class": "WIDER_THAN_ONE_TICK",
+        "price_band": "200+",
+        "horizon_ms": 1000,
+        "observations": 476,
+        "block_cells": 13,
+        "mean_price_usd": 208.41,
+        "mean_spread_bps": 1.0833,
+        "signal_signed_mid_move_bps": 0.14057,
+        "required_move_bps": 1.5034,
+        "net_structural_floor_bps": -1.3628,
+        "block_bootstrap_se_bps": 0.0738,
+        "block_bootstrap_ci_bps": [-1.5083, -1.2414],
+        "prob_net_positive": 0.01681
+      }
+    },
+    "G1_pooled": {
+      "definition": "required_move_bps / signal_bps pooled over the primary population, STRUCTURAL_COST_FLOOR, best of the four preregistered horizons",
+      "threshold": 10.0,
+      "comparison": "KILL requires G1_pooled >= 10.0",
+      "value": 51.64,
+      "horizon_ms": 1000,
+      "signal_bps": 0.0794,
+      "required_move_bps": 4.1011,
+      "coverage": 0.01936,
+      "by_horizon": {
+        "100": 292.60,
+        "250": 143.61,
+        "500": 85.58,
+        "1000": 51.64
+      },
+      "satisfied": true
+    },
+    "G2_corroboration": {
+      "definition": "ORACLE_UPPER_BOUND net of STRUCTURAL_COST_FLOOR per trade at the same horizon (the ceiling on any causal policy at these instants)",
+      "downgrade_rule": "if G1_best >= 5 but G2 per trade exceeds 5 bps, the verdict is downgraded to CONTINUE and escalated as a discrepancy",
+      "value_floor_bps_per_trade": 0.822,
+      "value_accessible_fixed_bps_per_trade": 0.219,
+      "value_accessible_tiered_bps_per_trade": 0.365,
+      "oracle_trade_fraction": 0.01176,
+      "oracle_net_per_observation_floor_bps": 0.00966,
+      "oracle_net_per_observation_accessible_fixed_bps": 0.00257,
+      "downgrade_triggered": false
+    }
+  },
+
+  "verdict": "KILLED",
+
+  "verdict_basis": [
+    "0 of the 356 declared states (>= 100 observations) in the rule-conformant population has a positive mean result under the STRUCTURAL_COST_FLOOR at any preregistered horizon (333 of those 356 have a positive pooled signal and every one of them still loses on average); the best state loses 0.975 bps per trade and the best state by signal multiple needs a 10.69x larger signal.",
+    "The pooled signal in the rule-conformant population supplies 1.94% of the execution hurdle at 1000 ms (T = 51.64); the horizon extension from 100 ms to 1000 ms closes none of the gap (T falls from 292.6 to 51.6, while the required move is horizon-invariant because it is set by the tick and the fee floor).",
+    "The measured ceiling: with perfect foresight of the future bid and ask at every decision instant (ORACLE_UPPER_BOUND), the aggressive round trip nets +0.822 bps per trade under the structural floor and +0.219 bps per trade under the accessible IBKR fixed schedule, on 1.18% of instants - i.e. 0.0097 and 0.0026 bps per observation against a 4.10 bps hurdle. No predictor can exceed this.",
+    "Perfect abstention with the imbalance-dictated side (QIMB_CONSTRAINED_BOUND) is worth 0.0052 bps per observation pooled (accessible path 0.0012) - 0.13% of the required move; its best cell is 0.127 bps per observation.",
+    "Selectivity does not rescue it from ex-ante state: P(a trade clears its own structural hurdle) is 0.279% unconditionally and at most 3.94% in the best declared state (a 14.2x lift driven by the price band rather than by the imbalance bin), and every such state still has a negative mean net result.",
+    "The conclusion is not a population artifact: the top-61-by-message-count scope M2-0 used gives T_pooled = 56.9 at 1000 ms, statistically indistinguishable from the rule-conformant population's 51.64; and the broader 115-name dollar-volume scope (which includes the high-priced multi-tick names such as AMZN, GOOGL, MELI, ISRG) gives 117.3 pooled and a best cell of 6.55x.",
+    "Modern data would not change the decision: the friction is pinned by the Reg NMS minimum tick and by the exchange plus statutory fee floor, while only the per-second move scale is regime-dependent, and the candidate's own literature (Gould & Bonart) defines its large-tick universe precisely as names where the tick is economically large relative to price."
+  ],
+
+  "regime_sensitivity": {
+    "measured_move_scale_bps": 0.8469,
+    "measured_implied_annualised_vol_percent": 20.6,
+    "best_cell_condition_holds_while_move_scale_multiplier_below": 2.14,
+    "pooled_condition_holds_while_move_scale_multiplier_below": 5.16,
+    "note": "The precommitted rule requires BOTH conditions. The kill is therefore robust to a modern regime whose per-second move scale is up to about 2.1x this low-volatility 2019 session (about 43% annualised in these names), and the pooled condition alone is robust to about 5x. Beyond roughly 2.1x, the best-declared-state condition would not have been met and the correct state would have been EXTERNAL_BLOCK (a modern-regime measurement). Two further considerations bound this optimism: stressed regimes widen the quoted spread, so the friction in bps is not constant; and a move-scale multiple raises the clairvoyant ceiling in the same proportion while leaving the causal signal's share of it unchanged."
+  },
+
+  "source_artifacts": {
+    "M2/output/univproxy/calculations/aggressive_feasibility_by_state.csv": "e557de418c034ba984153bf2e68ed29926a6bfa1783fe5f716d48a4420d438c2",
+    "M2/output/univproxy/calculations/breakeven_hurdle.csv": "e85caab279df6b41fe3c628eb6f0b7bdbb3d201be26b233f5bbd25f2cee9e170",
+    "M2/output/univproxy/calculations/oracle_upper_bound.csv": "9ac573c45adcaee8d6c3d2066566c20f8cce22fc3eb2bb244589feed32eb42ff",
+    "M2/output/univproxy/calculations/qimb_constrained_bound.csv": "e38a2242224c34136dd3082caa4da63bd3a9059b2a8500f904663f4e24bf8fd1",
+    "M2/output/univproxy/calculations/feasibility_status.json": "bff97e3569fd61fe6b97a3b1b2620307625c06c2f1f3a57b19aff91bad3d4e90",
+    "M2/output/univproxy/calculations_liquidity_scope/aggressive_feasibility_by_state.csv": "61dccaa160022b6b27ab13d5080635075cadac1a31361c07c26e667fe09cdb08",
+    "M2/output/univproxy/calculations_liquidity_scope/feasibility_status.json": "32a7cd3ae7a02703942c46cae40a4fe4ebab724bde5346628605add79a363155",
+    "M2/experiments/M2-0-6-UNIVPROXY/freeze.json": "4fc098a36550854e93451e4d5408474fe771fc9ce9081d50ad0b71a20c32b38b",
+    "M2/experiments/M2-0-6-UNIVPROXY/run_inputs.json": "written after the run; hashes of every as-run input and output"
+  },
+
+  "validity": {
+    "data_quality": "DATA_VALID; 0 binding-limit breaches; 0 orphan executions/cancels/deletes/replaces, 0 crossed or locked decision states, 0 missing sides",
+    "reconciliations": {
+      "calculate_stage": "23 checks, 0 failures",
+      "feasibility_primary": "9 checks, 0 failures, 1 not evaluated by config (frozen_execution_comparison, a run-specific re-derivation of M2-0's own columns)",
+      "feasibility_scope": "9 checks, 0 failures, 1 not evaluated by config"
+    },
+    "tests": "99 M2 tests pass, including 14 new tests for the proxy scan, the explicit-locates scope path and the population subset filter",
+    "independent_rederivation": "the primary population's pooled required move (4.1010 bps), signal (0.0794 bps) and row count (737,768) were re-derived by an independent script outside the feasibility module before the module's own numbers were read; the independent run also caught two errors in that script, which is recorded here because it is why the module's numbers are the ones quoted",
+    "contamination": "the day is DEVELOPMENT and is not, and cannot become, a validation or sealed partition; no sealed data was opened (none exists); no threshold was selected on any result"
+  }
+}

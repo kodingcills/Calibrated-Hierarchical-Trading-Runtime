@@ -16,7 +16,8 @@
     "EVD-0034",
     "EVD-0037",
     "EVD-0041",
-    "EVD-0042"
+    "EVD-0042",
+    "EVD-0067"
   ],
   "decision_prevented": "Whether the equity branch is profitable, which M2 exists to measure.",
   "disallowed_evidence": "Assumed values, secondary summaries, social posts",
@@ -26,7 +27,7 @@
   "kill_potential": "LOW",
   "known_evidence_ids": [],
   "known_source_ids": [],
-  "last_updated": "2026-09-20T19:20:01Z",
+  "last_updated": "2026-09-24T01:20:54Z",
   "parent_issue_id": "UNK-0009",
   "priority_reason": "Split from UNK-0009: after-cost profitability is an M2 measurement and is explicitly not a precondition for KG1.",
   "priority_score": null,

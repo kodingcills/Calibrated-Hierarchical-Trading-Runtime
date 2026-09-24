@@ -29,7 +29,7 @@
     "SRC-0112",
     "SRC-0113"
   ],
-  "last_updated": "2026-09-20T19:20:01Z",
+  "last_updated": "2026-09-24T01:20:54Z",
   "parent_issue_id": null,
   "priority_reason": "M1-BLOCKING retained: matching mechanics are a Tier-1 fact and a queue model cannot be built without it.",
   "priority_score": null,

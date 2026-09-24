@@ -1,0 +1,566 @@
+{
+  "answers": {
+    "mechanism": {
+      "best_declared_state_bin_horizon": {
+        "fee_accessible_fixed_bps": 2.6601508351712093,
+        "fee_accessible_tiered_bps": 2.0157245545244904,
+        "fee_structural_floor_bps": 1.029981721194282,
+        "horizon_ms": 1000,
+        "label_value": "[0.0,0.2)",
+        "mean_cross_to_cross_bps": -5.356524765631943,
+        "mean_full_spread_paid_bps": 5.3723961019346085,
+        "mean_price_usd": 173.8216210975804,
+        "mean_required_move_bps_structural": 6.4160095294378365,
+        "mean_signal_signed_mid_move_bps": 0.01587133630266628,
+        "mean_spread_bps": 5.386027808243555,
+        "net_accessible_fixed_bps": -8.01667560080315,
+        "net_accessible_tiered_bps": -7.372249320156433,
+        "net_structural_floor_bps": -6.3865064868262245,
+        "observations": 270249,
+        "prob_cross_to_cross_positive": 0.004832580324071504,
+        "prob_net_accessible_fixed_positive": 0.0012099952266243354,
+        "prob_net_accessible_tiered_positive": 0.0011803928969209877,
+        "prob_net_structural_floor_positive": 0.003119345492490259
+      },
+      "by_horizon": [
+        {
+          "fee_share_of_required": 0.14068229181918795,
+          "fee_structural_floor_bps": 0.9533445206257669,
+          "fee_to_signal_ratio": 91.83578804882667,
+          "full_spread_paid_bps": 5.823233457298092,
+          "horizon_ms": 100,
+          "net_structural_floor_bps": -6.766197008359805,
+          "required_move_bps": 6.776577977923859,
+          "signal_abs_bps": 0.010380969564053816,
+          "signal_bps": 0.010380969564053816,
+          "signal_coverage_of_required": 0.0015318896348381185,
+          "signal_multiple_needed_for_spread_only": 560.9527531476639,
+          "spread_share_of_required": 0.8593177081808121,
+          "spread_to_signal_ratio": 560.9527531476639
+        },
+        {
+          "fee_share_of_required": 0.14067808553559916,
+          "fee_structural_floor_bps": 0.9533445206257669,
+          "fee_to_signal_ratio": 45.15719903551687,
+          "full_spread_paid_bps": 5.823436077405042,
+          "horizon_ms": 250,
+          "net_structural_floor_bps": -6.755668913936409,
+          "required_move_bps": 6.776780598030809,
+          "signal_abs_bps": 0.02111168409439979,
+          "signal_bps": 0.02111168409439979,
+          "signal_coverage_of_required": 0.0031152969745743874,
+          "signal_multiple_needed_for_spread_only": 275.83948544160916,
+          "spread_share_of_required": 0.8593219144644009,
+          "spread_to_signal_ratio": 275.83948544160916
+        },
+        {
+          "fee_share_of_required": 0.14069529642308004,
+          "fee_structural_floor_bps": 0.9533445206257669,
+          "fee_to_signal_ratio": 27.383066870241368,
+          "full_spread_paid_bps": 5.8226070915659935,
+          "horizon_ms": 500,
+          "net_structural_floor_bps": -6.741136500898955,
+          "required_move_bps": 6.7759516121917605,
+          "signal_abs_bps": 0.034815111292804714,
+          "signal_bps": 0.034815111292804714,
+          "signal_coverage_of_required": 0.005138040128586952,
+          "signal_multiple_needed_for_spread_only": 167.24367308770775,
+          "spread_share_of_required": 0.8593047035769199,
+          "spread_to_signal_ratio": 167.24367308770775
+        },
+        {
+          "fee_share_of_required": 0.14072666291969516,
+          "fee_structural_floor_bps": 0.9533445206257669,
+          "fee_to_signal_ratio": 16.506888879820597,
+          "full_spread_paid_bps": 5.821096803047113,
+          "horizon_ms": 1000,
+          "net_structural_floor_bps": -6.71668698076995,
+          "required_move_bps": 6.77444132367288,
+          "signal_abs_bps": 0.0577543429029328,
+          "signal_bps": 0.0577543429029328,
+          "signal_coverage_of_required": 0.00852532926975302,
+          "signal_multiple_needed_for_spread_only": 100.790633404497,
+          "spread_share_of_required": 0.8592733370803048,
+          "spread_to_signal_ratio": 100.790633404497
+        }
+      ],
+      "combination": true,
+      "cuts": {
+        "HORIZON_CUT": 0.5,
+        "STATE_CUT": 0.5,
+        "note": "reporting cuts named before the verdict was computed; not fitted parameters"
+      },
+      "flags": {
+        "FEES_DOMINATE": false,
+        "POOLED_LOW_QUALITY_STATES": true,
+        "SIGNAL_MAGNITUDE_TOO_SMALL": true,
+        "SPREAD_DOMINATES": true,
+        "WRONG_HORIZON": false
+      },
+      "holding": [
+        "SPREAD_DOMINATES",
+        "SIGNAL_MAGNITUDE_TOO_SMALL",
+        "POOLED_LOW_QUALITY_STATES"
+      ],
+      "horizon_fraction_of_gap_closed": 0.007371197694876054,
+      "horizon_increments_bps": [
+        0.010528094423396084,
+        0.014532413037454006,
+        0.024449520129005364
+      ],
+      "net_by_schedule_at_longest_horizon": {
+        "accessible_fixed": -8.17607699000945,
+        "accessible_tiered": -7.610747475422292,
+        "structural_floor": -6.71668698076995
+      },
+      "oracle_bound_at_longest_horizon": {
+        "accessible_fixed": 0.006507452956587936,
+        "accessible_tiered": 0.00785048267272037,
+        "structural_floor": 0.011423213840381322
+      },
+      "rules": {
+        "FEES_DOMINATE": "the mean floor fee is more than half of the required move at the longest declared horizon",
+        "POOLED_LOW_QUALITY_STATES": "the dispersion of the net result across the declared (bin x horizon) states is less than half of its mean, i.e. the states barely separate",
+        "SIGNAL_MAGNITUDE_TOO_SMALL": "the side-signed mid move covers less than 10% of the required move at every declared horizon",
+        "SPREAD_DOMINATES": "the mean full spread paid is more than half of the required move at the longest declared horizon",
+        "WRONG_HORIZON": "extending the horizon across the whole declared grid (100 ms to 1000 ms, a factor of ten) closes at least half of the remaining gap"
+      },
+      "state_dispersion_bps": 0.7973062527615928,
+      "state_dispersion_ratio": 0.11809960990008328,
+      "state_space": {
+        "best_cell": {
+          "block_bootstrap_se_net_structural_floor_bps": 0.06542756619473124,
+          "block_cells": 42,
+          "cell": "[-1.0,-0.8) \u00b7 ONE_TICK \u00b7 $200+ \u00b7 250 ms",
+          "hurdle_coverage": 0.09343213115780791,
+          "mean_signal_signed_mid_move_bps": 0.09798457758925155,
+          "net_structural_floor_bps": -0.9507400568061097,
+          "observations": 1050,
+          "required_move_bps": 1.0487246343953613,
+          "share_of_signal_defined_observations": 0.00042710323939502655
+        },
+        "cells_at_hurdle_coverage_cut": {
+          "0.5": 0,
+          "0.75": 0,
+          "0.9": 0,
+          "1.0": 0
+        },
+        "cells_total": 400,
+        "cells_with_positive_net": 0,
+        "populated_cells": 400
+      }
+    },
+    "q1_any_state_approaches_or_exceeds_structural_hurdle": {
+      "best_declared_cell": {
+        "block_bootstrap_se_net_structural_floor_bps": 0.06542756619473124,
+        "block_cells": 42,
+        "cell": "[-1.0,-0.8) \u00b7 ONE_TICK \u00b7 $200+ \u00b7 250 ms",
+        "hurdle_coverage": 0.09343213115780791,
+        "mean_signal_signed_mid_move_bps": 0.09798457758925155,
+        "net_structural_floor_bps": -0.9507400568061097,
+        "observations": 1050,
+        "required_move_bps": 1.0487246343953613,
+        "share_of_signal_defined_observations": 0.00042710323939502655
+      },
+      "best_state": {
+        "fee_accessible_fixed_bps": 2.6601508351712093,
+        "fee_accessible_tiered_bps": 2.0157245545244904,
+        "fee_structural_floor_bps": 1.029981721194282,
+        "horizon_ms": 1000,
+        "label_value": "[0.0,0.2)",
+        "mean_cross_to_cross_bps": -5.356524765631943,
+        "mean_full_spread_paid_bps": 5.3723961019346085,
+        "mean_price_usd": 173.8216210975804,
+        "mean_required_move_bps_structural": 6.4160095294378365,
+        "mean_signal_signed_mid_move_bps": 0.01587133630266628,
+        "mean_spread_bps": 5.386027808243555,
+        "net_accessible_fixed_bps": -8.01667560080315,
+        "net_accessible_tiered_bps": -7.372249320156433,
+        "net_structural_floor_bps": -6.3865064868262245,
+        "observations": 270249,
+        "prob_cross_to_cross_positive": 0.004832580324071504,
+        "prob_net_accessible_fixed_positive": 0.0012099952266243354,
+        "prob_net_accessible_tiered_positive": 0.0011803928969209877,
+        "prob_net_structural_floor_positive": 0.003119345492490259
+      },
+      "best_state_share_of_observations": 0.10992783175549194,
+      "cells_at_hurdle_coverage_cut": {
+        "0.5": 0,
+        "0.75": 0,
+        "0.9": 0,
+        "1.0": 0
+      },
+      "declared_cells_total": 400,
+      "declared_cells_with_positive_net": 0,
+      "declared_states_in_bin_horizon_space": 40,
+      "definition": "hurdle coverage = mean side-signed mid move / mean required move (full spread + floor fee)",
+      "hurdle_coverage_cut_counts_bin_horizon": {
+        "0.5": 0,
+        "0.75": 0,
+        "0.9": 0,
+        "1.0": 0
+      },
+      "states_with_positive_net": 0
+    },
+    "q2_fraction_of_opportunities_of_best_state": {
+      "best_cell_observations": 1050,
+      "best_cell_share_of_signal_defined_observations": 0.00042710323939502655,
+      "best_state_observations": 270249,
+      "best_state_share_of_signal_defined_observations": 0.10992783175549194,
+      "signal_defined_observations": 2458422
+    },
+    "q3_clairvoyant_room_after_costs": {
+      "horizon_ms": 1000,
+      "mean_oracle_gross_bps": 0.018607286278528187,
+      "mean_oracle_net_by_schedule": {
+        "accessible_fixed": 0.006507452956587936,
+        "accessible_tiered": 0.00785048267272037,
+        "structural_floor": 0.011423213840381322
+      },
+      "mean_oracle_net_structural_floor_bps": 0.011423213840381322,
+      "observations": 2458422,
+      "oracle_bound_as_fraction_of_required_move": 0.0016862222720069305,
+      "prob_oracle_gross_positive": 0.008205871423262727,
+      "prob_oracle_net_structural_floor_positive": 0.007065403195837978,
+      "required_move_bps_at_that_horizon": 6.77444132367288
+    },
+    "q4_dominant_gap_component": [
+      "SPREAD_DOMINATES",
+      "SIGNAL_MAGNITUDE_TOO_SMALL",
+      "POOLED_LOW_QUALITY_STATES"
+    ]
+  },
+  "artifacts": [
+    "M2/output/calculations/aggressive_feasibility_by_state.csv",
+    "M2/output/calculations/breakeven_hurdle.csv",
+    "M2/output/calculations/oracle_upper_bound.csv",
+    "M2/output/calculations/qimb_constrained_bound.csv",
+    "M2/output/calculations/feasibility_status.json",
+    "M2/output/M2_0_5_FEASIBILITY.md"
+  ],
+  "candidate_id": "TUP-NASDAQ-LARGETICK-H2-QIMB-AGG",
+  "cell_dimensions": {
+    "cell_rows_total": 400,
+    "cells_per_horizon": 100,
+    "imbalance_bins": [
+      "[-1.0,-0.8)",
+      "[-0.8,-0.6)",
+      "[-0.6,-0.4)",
+      "[-0.4,-0.2)",
+      "[-0.2,0.0)",
+      "[0.0,0.2)",
+      "[0.2,0.4)",
+      "[0.4,0.6)",
+      "[0.6,0.8)",
+      "[0.8,1.0]"
+    ],
+    "price_bands": [
+      "5-25",
+      "25-50",
+      "50-100",
+      "100-200",
+      "200+"
+    ],
+    "spread_classes": [
+      "ONE_TICK",
+      "WIDER_THAN_ONE_TICK"
+    ]
+  },
+  "code_sha256": {
+    "M2/src/feasibility.py": "855eccc6ca438ff6ddd17b286a846d71a008f287e0b609293ab7e95cb9986b02"
+  },
+  "config_sha256": "2ec5f58afeb2cf7462cb896642a53ccba62f26b0dfba0885cea57eb814b50119",
+  "cost_ledger_id": "M2-COST-LEDGER-v1",
+  "cost_ledger_sha256": "52ce785fc7210138af4059e327fc7101dff7f78dff3f5156c045973c1ed4cb17",
+  "coverage_date": "2019-07-30",
+  "data_status": "DATA_VALID",
+  "dataset": "NASDAQ-ITCH50-PUBLIC-SAMPLE-20190730",
+  "derived_artifacts": {
+    "decisions.parquet": "4ce1082fe3bd7548093daebb528ef733b9b90183650ff4f85efcf1479ba5729a",
+    "delay_decisions.parquet": "6fe1aba7a9923514d7d1bf40a4ad5362cbd2c1c7a315b65f2fab2b44c9490412"
+  },
+  "discrepancies_in_frozen_M2_0_artifacts": [],
+  "failed_checks": [],
+  "mechanism_verdict": {
+    "best_declared_state_bin_horizon": {
+      "fee_accessible_fixed_bps": 2.6601508351712093,
+      "fee_accessible_tiered_bps": 2.0157245545244904,
+      "fee_structural_floor_bps": 1.029981721194282,
+      "horizon_ms": 1000,
+      "label_value": "[0.0,0.2)",
+      "mean_cross_to_cross_bps": -5.356524765631943,
+      "mean_full_spread_paid_bps": 5.3723961019346085,
+      "mean_price_usd": 173.8216210975804,
+      "mean_required_move_bps_structural": 6.4160095294378365,
+      "mean_signal_signed_mid_move_bps": 0.01587133630266628,
+      "mean_spread_bps": 5.386027808243555,
+      "net_accessible_fixed_bps": -8.01667560080315,
+      "net_accessible_tiered_bps": -7.372249320156433,
+      "net_structural_floor_bps": -6.3865064868262245,
+      "observations": 270249,
+      "prob_cross_to_cross_positive": 0.004832580324071504,
+      "prob_net_accessible_fixed_positive": 0.0012099952266243354,
+      "prob_net_accessible_tiered_positive": 0.0011803928969209877,
+      "prob_net_structural_floor_positive": 0.003119345492490259
+    },
+    "by_horizon": [
+      {
+        "fee_share_of_required": 0.14068229181918795,
+        "fee_structural_floor_bps": 0.9533445206257669,
+        "fee_to_signal_ratio": 91.83578804882667,
+        "full_spread_paid_bps": 5.823233457298092,
+        "horizon_ms": 100,
+        "net_structural_floor_bps": -6.766197008359805,
+        "required_move_bps": 6.776577977923859,
+        "signal_abs_bps": 0.010380969564053816,
+        "signal_bps": 0.010380969564053816,
+        "signal_coverage_of_required": 0.0015318896348381185,
+        "signal_multiple_needed_for_spread_only": 560.9527531476639,
+        "spread_share_of_required": 0.8593177081808121,
+        "spread_to_signal_ratio": 560.9527531476639
+      },
+      {
+        "fee_share_of_required": 0.14067808553559916,
+        "fee_structural_floor_bps": 0.9533445206257669,
+        "fee_to_signal_ratio": 45.15719903551687,
+        "full_spread_paid_bps": 5.823436077405042,
+        "horizon_ms": 250,
+        "net_structural_floor_bps": -6.755668913936409,
+        "required_move_bps": 6.776780598030809,
+        "signal_abs_bps": 0.02111168409439979,
+        "signal_bps": 0.02111168409439979,
+        "signal_coverage_of_required": 0.0031152969745743874,
+        "signal_multiple_needed_for_spread_only": 275.83948544160916,
+        "spread_share_of_required": 0.8593219144644009,
+        "spread_to_signal_ratio": 275.83948544160916
+      },
+      {
+        "fee_share_of_required": 0.14069529642308004,
+        "fee_structural_floor_bps": 0.9533445206257669,
+        "fee_to_signal_ratio": 27.383066870241368,
+        "full_spread_paid_bps": 5.8226070915659935,
+        "horizon_ms": 500,
+        "net_structural_floor_bps": -6.741136500898955,
+        "required_move_bps": 6.7759516121917605,
+        "signal_abs_bps": 0.034815111292804714,
+        "signal_bps": 0.034815111292804714,
+        "signal_coverage_of_required": 0.005138040128586952,
+        "signal_multiple_needed_for_spread_only": 167.24367308770775,
+        "spread_share_of_required": 0.8593047035769199,
+        "spread_to_signal_ratio": 167.24367308770775
+      },
+      {
+        "fee_share_of_required": 0.14072666291969516,
+        "fee_structural_floor_bps": 0.9533445206257669,
+        "fee_to_signal_ratio": 16.506888879820597,
+        "full_spread_paid_bps": 5.821096803047113,
+        "horizon_ms": 1000,
+        "net_structural_floor_bps": -6.71668698076995,
+        "required_move_bps": 6.77444132367288,
+        "signal_abs_bps": 0.0577543429029328,
+        "signal_bps": 0.0577543429029328,
+        "signal_coverage_of_required": 0.00852532926975302,
+        "signal_multiple_needed_for_spread_only": 100.790633404497,
+        "spread_share_of_required": 0.8592733370803048,
+        "spread_to_signal_ratio": 100.790633404497
+      }
+    ],
+    "combination": true,
+    "cuts": {
+      "HORIZON_CUT": 0.5,
+      "STATE_CUT": 0.5,
+      "note": "reporting cuts named before the verdict was computed; not fitted parameters"
+    },
+    "flags": {
+      "FEES_DOMINATE": false,
+      "POOLED_LOW_QUALITY_STATES": true,
+      "SIGNAL_MAGNITUDE_TOO_SMALL": true,
+      "SPREAD_DOMINATES": true,
+      "WRONG_HORIZON": false
+    },
+    "holding": [
+      "SPREAD_DOMINATES",
+      "SIGNAL_MAGNITUDE_TOO_SMALL",
+      "POOLED_LOW_QUALITY_STATES"
+    ],
+    "horizon_fraction_of_gap_closed": 0.007371197694876054,
+    "horizon_increments_bps": [
+      0.010528094423396084,
+      0.014532413037454006,
+      0.024449520129005364
+    ],
+    "net_by_schedule_at_longest_horizon": {
+      "accessible_fixed": -8.17607699000945,
+      "accessible_tiered": -7.610747475422292,
+      "structural_floor": -6.71668698076995
+    },
+    "oracle_bound_at_longest_horizon": {
+      "accessible_fixed": 0.006507452956587936,
+      "accessible_tiered": 0.00785048267272037,
+      "structural_floor": 0.011423213840381322
+    },
+    "rules": {
+      "FEES_DOMINATE": "the mean floor fee is more than half of the required move at the longest declared horizon",
+      "POOLED_LOW_QUALITY_STATES": "the dispersion of the net result across the declared (bin x horizon) states is less than half of its mean, i.e. the states barely separate",
+      "SIGNAL_MAGNITUDE_TOO_SMALL": "the side-signed mid move covers less than 10% of the required move at every declared horizon",
+      "SPREAD_DOMINATES": "the mean full spread paid is more than half of the required move at the longest declared horizon",
+      "WRONG_HORIZON": "extending the horizon across the whole declared grid (100 ms to 1000 ms, a factor of ten) closes at least half of the remaining gap"
+    },
+    "state_dispersion_bps": 0.7973062527615928,
+    "state_dispersion_ratio": 0.11809960990008328,
+    "state_space": {
+      "best_cell": {
+        "block_bootstrap_se_net_structural_floor_bps": 0.06542756619473124,
+        "block_cells": 42,
+        "cell": "[-1.0,-0.8) \u00b7 ONE_TICK \u00b7 $200+ \u00b7 250 ms",
+        "hurdle_coverage": 0.09343213115780791,
+        "mean_signal_signed_mid_move_bps": 0.09798457758925155,
+        "net_structural_floor_bps": -0.9507400568061097,
+        "observations": 1050,
+        "required_move_bps": 1.0487246343953613,
+        "share_of_signal_defined_observations": 0.00042710323939502655
+      },
+      "cells_at_hurdle_coverage_cut": {
+        "0.5": 0,
+        "0.75": 0,
+        "0.9": 0,
+        "1.0": 0
+      },
+      "cells_total": 400,
+      "cells_with_positive_net": 0,
+      "populated_cells": 400
+    }
+  },
+  "not_evaluated_checks": [
+    "frozen_execution_comparison"
+  ],
+  "observation_sets": {
+    "delay_rows_total": 2691000,
+    "future_unavailable": {
+      "100": 0,
+      "1000": 0,
+      "250": 0,
+      "500": 0
+    },
+    "outside_declared_price_bands": 0,
+    "outside_declared_state_space": {
+      "100": {
+        "signal_defined": 0,
+        "valid_states": 0
+      },
+      "1000": {
+        "signal_defined": 0,
+        "valid_states": 0
+      },
+      "250": {
+        "signal_defined": 0,
+        "valid_states": 0
+      },
+      "500": {
+        "signal_defined": 0,
+        "valid_states": 0
+      }
+    },
+    "signal_defined": 2458422,
+    "state_valid": 2691000,
+    "zero_imbalance_by_horizon": {
+      "100": 232578,
+      "1000": 232578,
+      "250": 232578,
+      "500": 232578
+    },
+    "zero_imbalance_state": 232578
+  },
+  "oracle_warning": "ORACLE_UPPER_BOUND uses future information by construction: at each decision instant it takes max(0, net_long, net_short) from the realised future bid/ask. It bounds what any causal side choice at these instants could have earned; it is not a strategy, not achievable, and must never enter model training, a backtest or a promotion decision.",
+  "population_subset": {
+    "subset": null
+  },
+  "qimb_warning": "QIMB_CONSTRAINED_BOUND keeps the side dictated by queue imbalance (the sign that defines the bin) and adds clairvoyant abstention only: max(0, net_side). No new threshold, no side choice and no model enters this bound.",
+  "reconciliation": [
+    {
+      "check": "execution_instant_is_decision_instant",
+      "method_a": "delay_decisions.parquet delay 0 arrival state",
+      "method_b": "decisions.parquet state at the same (ts_ns, locate)",
+      "mismatches": 0,
+      "observations": 2691000,
+      "outcome": "PASS",
+      "tolerance": 0
+    },
+    {
+      "check": "frozen_execution_comparison",
+      "method_a": "this pass",
+      "method_b": "idealized_execution_summary.csv of M2-0",
+      "note": "feasibility.frozen_execution_reference is NONE for this run: the comparison against M2-0's frozen execution table is a run-specific re-derivation of that run's own columns, and a re-scoped run cannot reproduce it. The M2-0 defects (D1, D2) remain recorded in M2/output/calculations/feasibility_status.json.",
+      "observations": 9833688,
+      "outcome": "NOT_EVALUATED_REFERENCE_ABSENT"
+    },
+    {
+      "check": "decomposition_identity_pooled",
+      "max_abs_difference": 2.6645352591003757e-15,
+      "method_a": "net_bps measured directly",
+      "method_b": "realized_move - half_entry_spread - half_future_spread - fee",
+      "observations": 9833688,
+      "outcome": "PASS",
+      "tolerance": 1e-09
+    },
+    {
+      "check": "spread_hurdle_is_cross_to_cross_breakeven",
+      "max_abs_difference": 1.1368683772161603e-13,
+      "method_a": "realized_move - full_spread - cross_to_cross",
+      "method_b": "minus the measured spread-change term (half_future_spread - half_entry_spread)",
+      "observations": 9833688,
+      "outcome": "PASS",
+      "tolerance": 1e-09
+    },
+    {
+      "check": "oracle_bound_dominates_and_is_non_negative",
+      "method_a": "ORACLE_UPPER_BOUND column",
+      "method_b": "max(0, net_long, net_short) recomputed from raw quotes",
+      "mismatches": 0,
+      "observations": 32292000,
+      "outcome": "PASS",
+      "tolerance": 1e-09
+    },
+    {
+      "check": "qimb_bound_below_oracle_bound",
+      "method_a": "QIMB_CONSTRAINED_BOUND",
+      "method_b": "ORACLE_UPPER_BOUND",
+      "mismatches": 0,
+      "observations": 29501064,
+      "outcome": "PASS",
+      "tolerance": 1e-09
+    },
+    {
+      "cell_total": 2458422,
+      "check": "state_partition_covers_every_observation",
+      "method_a": "signal-defined observations inside the declared price bands",
+      "method_b": "sum of the declared state cells",
+      "observations": 2458422,
+      "outcome": "PASS",
+      "outside_declared_state_space": 0,
+      "tolerance": 0
+    },
+    {
+      "check": "fee_lookup_matches_ledger_at_observation_prices",
+      "max_abs_difference": 0.0,
+      "method_a": "vectorised price lookup used by this pass",
+      "method_b": "costs.cost_in_bps_of_price per price",
+      "observations": 1506,
+      "outcome": "PASS",
+      "tolerance": 1e-09
+    },
+    {
+      "check": "tick_and_half_spread_arithmetic",
+      "max_abs_difference": 0.0,
+      "method_a": "stored spread and derived half spread",
+      "method_b": "tick arithmetic and (ask - mid) / mid * 10000",
+      "mismatches": 0,
+      "observations": 2691000,
+      "outcome": "PASS",
+      "tolerance": 1e-09
+    }
+  ],
+  "run_id": "M2-0-6-NASDAQ-QIMB-UNIVPROXY",
+  "run_status": "CALCULATION_COMPLETE",
+  "scope_note": "development-scope symbols on a single 2019 sample day; not universe membership, not a backtest, no promotion or kill decision, no model fitted, no data purchased"
+}

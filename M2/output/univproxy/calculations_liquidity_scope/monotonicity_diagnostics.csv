@@ -1,0 +1,5 @@
+horizon_ms,bins_with_data,rank_correlation_bin_midpoint_vs_mean_return,monotone_increasing_steps,monotone_decreasing_steps,total_steps,note
+100,10,0.9757575757575757,7,2,9,descriptive only; no profitability or edge claim
+250,10,0.9515151515151514,7,2,9,descriptive only; no profitability or edge claim
+500,10,0.9515151515151514,7,2,9,descriptive only; no profitability or edge claim
+1000,10,0.9757575757575757,7,2,9,descriptive only; no profitability or edge claim

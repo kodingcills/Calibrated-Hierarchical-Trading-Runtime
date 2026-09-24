@@ -1,0 +1,172 @@
+# M2-0.6 deterministic calculation configuration: universe-proxy re-scope.
+#
+# Base: M2/config/nasdaq_qimb_m2_0.yaml, unchanged in every section that defines the
+# candidate, the session, the tick regime, the horizons, the imbalance definition, the
+# cost ledger and the statistics. The differences are:
+#
+#   (1) the development *compute scope* is a single-day proxy of the frozen universe's
+#       liquidity criterion instead of the top-61 add-count ranking, because the add-count
+#       scope is not large-tick (its mean quoted spread is 4.8 ticks, while the frozen
+#       universe definition requires a one-tick median spread). Frozen before any
+#       proxy-run outcome was inspected;
+#   (2) the decision grid is 1 s rather than 100 ms, so that consecutive label windows do
+#       not overlap and the observation set matches the M2-0.5 feasibility pass (which
+#       reads the 1 s delay slice of M2-0);
+#   (3) derived and output directories are separate, so no M2-0 artifact is touched.
+#
+# This config produces a DIAGNOSTIC population, not universe membership: the frozen rule
+# needs a 60-trading-day causal lookback and a point-in-time reference, neither of which
+# a single sample day can supply. Membership remains BLOCKED.
+
+run:
+  run_id: "M2-0-6-NASDAQ-QIMB-UNIVPROXY"
+  parent_run_id: "M2-0-NASDAQ-QIMB-BASELINE"
+  candidate_id: "TUP-NASDAQ-LARGETICK-H2-QIMB-AGG"
+  universe_rule_id: "NASDAQ-LARGETICK-QIMB-UNIV-v1"
+  created_utc: "2026-09-23"
+  status_vocabulary: [DATA_VALID, DATA_INVALID, CALCULATION_COMPLETE, CALCULATION_BLOCKED, UNKNOWN]
+
+paths:
+  raw_dir: "M2/data/raw"
+  derived_dir: "M2/data/derived_univproxy"
+  manifest_dir: "M2/data/manifests"
+  output_dir: "M2/output/univproxy"
+
+dataset:
+  dataset_id: "NASDAQ-ITCH50-PUBLIC-SAMPLE-20190730"
+  product: "Nasdaq TotalView-ITCH 5.0 (binary)"
+  vendor: "Nasdaq (public sample file service, emi.nasdaq.com)"
+  venue: "XNAS"
+  schema_id: "ITCH50-BINARY-V50-20230428"
+  raw_files:
+    - "07302019.NASDAQ_ITCH50.gz"
+  duplicate_check_files:
+    - "07302019.NASDAQ_ITCH50.md5sum"
+  compression: "gzip"
+  coverage_date: "2019-07-30"
+  role: "DEVELOPMENT"
+  holdout_eligible: false
+  outcome_claim_permitted: false
+
+session:
+  continuous_start_ns: 34200000000000
+  continuous_end_ns: 57600000000000
+  replay_from_file_start: true
+
+system_events:
+  start_of_messages: "O"
+  start_of_system_hours: "S"
+  start_of_market_hours: "Q"
+  end_of_market_hours: "M"
+  end_of_system_hours: "E"
+  end_of_messages: "C"
+
+price_scale: 10000
+tick_raw: 100
+tick_size_usd: 0.01
+price_floor_usd: 1.0
+
+decisions:
+  # 1 s diagnostic grid (see the header note). The label grid - 100/250/500/1000 ms -
+  # is unchanged, so every preregistered horizon is still measured.
+  grid_ns: 1000000000
+  delay_grid_ns: 1000000000
+  buffer_rows_per_chunk: 262144
+  flush_min_rows: 131072
+  next_move_wait_ns: 60000000000
+  as_of_rule: "FILE_ORDER_LAST_MESSAGE_WITH_TS_LE_DECISION_TS"
+
+horizons_ms: [100, 250, 500, 1000]
+delay_ms: [0, 10, 25, 50, 100, 250, 500, 1000]
+
+imbalance:
+  formula: "(q_bid - q_ask) / (q_bid + q_ask)"
+  require_denominator_positive: true
+  require_both_sides: true
+  bins:
+    edges: [-1.0, -0.8, -0.6, -0.4, -0.2, 0.0, 0.2, 0.4, 0.6, 0.8, 1.0]
+    convention: "LEFT_CLOSED_RIGHT_OPEN_EXCEPT_LAST"
+  extreme_threshold: 0.8
+
+# ------------------------------------------------------------- development scope
+dev_scope:
+  label: "UNIVERSE_PROXY_SCOPE_NOT_UNIVERSE_MEMBERSHIP"
+  # The scope is the top `proxy_scope_size` dollar-volume names inside the single-day
+  # liquidity decile, in the order written by M2/src/universe_proxy.py. The ranking
+  # variable is the frozen rule's own liquidity variable (venue trade-tape dollar
+  # volume); no return, no imbalance-predictiveness and no P&L information enters it.
+  proxy_scope_size: 120
+  rank_by: "same_day_dollar_volume_from_venue_trade_tape"
+  explicit_locates_manifest: "M2/data/manifests/proxy_scope_manifest.json"
+  # Retained as the cap the ranking path enforces and as the guard used when the
+  # manifest path is active; the manifest length is authoritative there.
+  candidate_pool_size: 120
+  require_nasdaq_listed: true
+  require_common_stock: true
+  require_not_etp: true
+  require_price_floor: true
+
+universe:
+  rule_version: "NASDAQ-LARGETICK-QIMB-UNIV-v1"
+  spec_artifact: "M1/hypotheses/candidate_specs/NASDAQ_LARGETICK_QUEUE_IMBALANCE_UNIVERSE.json"
+  theta_fraction_at_one_tick: 0.50
+  median_spread_rule: "median quoted spread over the lookback equals exactly one tick"
+  liquidity_rule: "top decile of trailing 60-trading-day median daily dollar volume"
+  liquidity_lookback_trading_days: 60
+  liquidity_decile_fraction: 0.10
+  minimum_history_trading_days: 120
+  coverage_rule_min_fraction: 0.90
+  minimum_universe_size: 5
+  minimum_pooled_events_per_month: 100000
+  rebalance_frequency: "monthly"
+  selection_date_rule: "first trading day of each calendar month T"
+  selection_information_deadline: "strictly before the open of T's first trading day"
+  halt_exclusion_percentile: 95
+  requires_point_in_time_reference: true
+  requires_order_level_lookback: true
+
+cost_ledger:
+  ledger_id: "M2-COST-LEDGER-v1"
+  artifact: "M2/config/cost_ledger_v1.json"
+  regimes: [STRUCTURAL_COST_FLOOR, ACCESSIBLE_REFERENCE_PATH]
+  representative_quantities: [1, 10, 100, 500, 1000]
+  representative_prices_usd: [5, 10, 25, 50, 100, 200, 500]
+  representative_prices_quantities: [100, 1000]
+  representative_order_shares: 100
+
+data_quality:
+  binding_limits:
+    max_orphan_event_fraction: 0.0001
+    max_negative_size_events: 0
+    max_order_id_collisions: 0
+    max_backwards_timestamp_fraction: 0.001
+    max_crossed_book_update_fraction: 0.001
+  report_only_checks:
+    - late_after_decision
+    - locked_book_updates
+    - empty_side_updates
+    - identical_timestamp_messages
+    - adjacent_duplicates
+    - duplicates_within_bucket
+    - sequence_substitute_regressions
+    - reconciliation_mismatches
+  decision_state_exclusions:
+    - CROSSED_OR_LOCKED_SPREAD
+    - MISSING_SIDE
+    - NON_POSITIVE_DENOMINATOR
+  fail_fast_on_impossible_state: true
+  book_audit_sample_interval_ns: 60000000000
+
+# The M2-0.5 frozen-execution comparison re-derives M2-0's own columns and is
+# therefore run-specific; a re-scoped run cannot reproduce it.
+feasibility:
+  frozen_execution_reference: "NONE"
+
+statistics:
+  bootstrap:
+    method: "BLOCK_BOOTSTRAP_BY_SYMBOL_DAY_BLOCK"
+    block_length_ns: 1800000000000
+    resamples: 2000
+    seed: 20190730
+    unit: "SYMBOL_BLOCK"
+  dispersion_units: [symbol, symbol_block]

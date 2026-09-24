@@ -372,6 +372,40 @@ def load_execution_columns(derived: str, configuration: dict) -> dict[str, np.nd
     return {rename.get(name, name): table[name].to_numpy(zero_copy_only=False) for name in table.column_names}
 
 
+def apply_symbol_subset(columns: dict[str, np.ndarray], subset_path: str | None) -> tuple[dict[str, np.ndarray], dict]:
+    """Restrict every delay column to a frozen symbol subset.
+
+    Used by M2-0.6 to evaluate the aggressive arithmetic on the large-tick proxy
+    population only. The mask is applied to the raw columns before the frame is built,
+    so every downstream table, cell and bootstrap inherits it and no table can silently
+    mix populations. With no subset path the columns are returned unchanged, which is
+    what keeps the M2-0.5 numbers reproducible.
+    """
+    if not subset_path:
+        return columns, {"subset": None}
+    resolved = config_module.repo_path(subset_path)
+    import csv
+
+    locates: set[int] = set()
+    with open(resolved, newline="") as handle:
+        for row in csv.DictReader(handle):
+            if "locate" in row and row["locate"] not in ("", None):
+                locates.add(int(row["locate"]))
+    if not locates:
+        raise ValueError(f"symbol subset {resolved} contained no locates")
+    mask = np.isin(columns["locate"], np.fromiter(sorted(locates), dtype=columns["locate"].dtype))
+    filtered = {name: values[mask] for name, values in columns.items()}
+    info = {
+        "subset": subset_path,
+        "subset_sha256": config_module.sha256_file(subset_path),
+        "subset_symbols": len(locates),
+        "subset_locates_present": int(len(set(columns["locate"][mask].tolist()))),
+        "rows_before": int(columns["locate"].size),
+        "rows_after": int(mask.sum()),
+    }
+    return filtered, info
+
+
 def build_frame(columns: dict[str, np.ndarray], configuration: dict, ledger: dict) -> dict:
     """Per-observation aggressive economics for every declared horizon."""
     tick_raw = int(configuration["tick_raw"])
@@ -1193,12 +1227,35 @@ def _frozen_execution_rows(
     convention and matching its published columns bit for bit. This pass reports the
     correct quantities and records the difference; the frozen artifact is left untouched.
     """
-    path = config_module.repo_path(
-        config_module.output_dir(configuration, "calculations", "idealized_execution_summary.csv")
-    )
+    reference = configuration.get("feasibility", {}).get("frozen_execution_reference", "SAME_OUTPUT_DIR")
+    if reference == "NONE":
+        return (
+            [
+                {
+                    "check": "frozen_execution_comparison",
+                    "method_a": "this pass",
+                    "method_b": "idealized_execution_summary.csv of M2-0",
+                    "observations": int(sum(row["observations"] for row in pooled.values())),
+                    "outcome": "NOT_EVALUATED_REFERENCE_ABSENT",
+                    "note": (
+                        "feasibility.frozen_execution_reference is NONE for this run: the comparison against "
+                        "M2-0's frozen execution table is a run-specific re-derivation of that run's own "
+                        "columns, and a re-scoped run cannot reproduce it. The M2-0 defects (D1, D2) remain "
+                        "recorded in M2/output/calculations/feasibility_status.json."
+                    ),
+                }
+            ],
+            [],
+        )
+    if reference == "SAME_OUTPUT_DIR":
+        path = config_module.repo_path(
+            config_module.output_dir(configuration, "calculations", "idealized_execution_summary.csv")
+        )
+    else:
+        path = config_module.repo_path(reference)
+    frozen = {}
     floor = structural_label(ledger)
     shares = float(ledger["assumptions"]["representative_order_shares"])
-    frozen = {}
     if os.path.exists(path):
         import csv
 
@@ -2138,6 +2195,16 @@ def main(argv: list[str] | None = None) -> int:
         description="Run the M2-0.5 aggressive feasibility bound (read-only on the frozen M2-0 artifacts)."
     )
     parser.add_argument("--config", default="M2/config/nasdaq_qimb_m2_0.yaml")
+    parser.add_argument(
+        "--symbol-subset",
+        default=None,
+        help="CSV with a locate column: restrict every table to those symbols (M2-0.6 population filter)",
+    )
+    parser.add_argument(
+        "--report-name",
+        default="M2_0_5_FEASIBILITY.md",
+        help="report file name written into the configured output directory",
+    )
     arguments = parser.parse_args(argv)
 
     configuration = config_module.load(arguments.config)
@@ -2164,6 +2231,7 @@ def main(argv: list[str] | None = None) -> int:
     horizons_ms = configuration["horizons_ms"]
     bootstrap = configuration["statistics"]["bootstrap"]
     columns = load_execution_columns(derived, configuration)
+    columns, subset_info = apply_symbol_subset(columns, arguments.symbol_subset)
     frame = build_frame(columns, configuration, ledger)
 
     table1 = feasibility_rows(frame, configuration, ledger, bootstrap, horizons_ms)
@@ -2189,6 +2257,7 @@ def main(argv: list[str] | None = None) -> int:
             },
         }
     )
+    bundle["population_subset"] = subset_info
     bundle["reconciliation"] = reconciliation_rows(bundle, frame, columns, configuration, ledger)
     bundle["verdict"] = mechanism_verdict(bundle)
     bundle["answers"] = answers(bundle)
@@ -2202,7 +2271,7 @@ def main(argv: list[str] | None = None) -> int:
     not_evaluated = [
         row["check"] for row in bundle["reconciliation"] if row["outcome"] == "NOT_EVALUATED_REFERENCE_ABSENT"
     ]
-    report_path = config_module.repo_path(config_module.output_dir(configuration, "M2_0_5_FEASIBILITY.md"))
+    report_path = config_module.repo_path(config_module.output_dir(configuration, arguments.report_name))
     with open(report_path, "w") as handle:
         handle.write(render(bundle))
 
@@ -2220,6 +2289,7 @@ def main(argv: list[str] | None = None) -> int:
         "derived_artifacts": bundle["derived_artifacts"],
         "cell_dimensions": bundle["cell_dimensions"],
         "observation_sets": bundle["observation_sets"],
+        "population_subset": bundle["population_subset"],
         "reconciliation": bundle["reconciliation"],
         "discrepancies_in_frozen_M2_0_artifacts": bundle.get("discrepancies", []),
         "failed_checks": failed,

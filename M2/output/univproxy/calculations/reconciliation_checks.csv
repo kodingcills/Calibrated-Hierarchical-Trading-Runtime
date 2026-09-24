@@ -1,0 +1,24 @@
+check,method_a,method_b,observations,mismatches,tolerance,outcome,max_abs_difference,direction_mismatches
+one_tick_classification,stored one_tick boolean,spread_raw == tick_raw arithmetic,2691000,0,0,PASS,,
+midpoint_is_bid_plus_ask,stored mid2_raw,best_bid_raw + best_ask_raw,2691000,0,0,PASS,,
+imbalance_formula,stored imbalance (float32),(q_bid - q_ask) / (q_bid + q_ask) in float64,2691000,,1e-06,PASS,2.9797612044468735e-08,
+future_return_bps_100ms,stored ret_bps (float32),10000 * (mid2_future - mid2_decision) / mid2_decision in float64,2691000,,0.001,PASS,6.054094455976156e-06,0
+decimal_to_bps_identity_100ms,bps as stored,decimal return * 10000,2691000,,0.0,PASS,7.105427357601002e-15,
+future_return_bps_250ms,stored ret_bps (float32),10000 * (mid2_future - mid2_decision) / mid2_decision in float64,2691000,,0.001,PASS,5.3220920221974666e-06,0
+decimal_to_bps_identity_250ms,bps as stored,decimal return * 10000,2691000,,0.0,PASS,2.842170943040401e-14,
+future_return_bps_500ms,stored ret_bps (float32),10000 * (mid2_future - mid2_decision) / mid2_decision in float64,2691000,,0.001,PASS,5.895872476457953e-06,0
+decimal_to_bps_identity_500ms,bps as stored,decimal return * 10000,2691000,,0.0,PASS,2.842170943040401e-14,
+future_return_bps_1000ms,stored ret_bps (float32),10000 * (mid2_future - mid2_decision) / mid2_decision in float64,2691000,,0.001,PASS,1.409310903000005e-05,0
+decimal_to_bps_identity_1000ms,bps as stored,decimal return * 10000,2691000,,0.0,PASS,2.842170943040401e-14,
+commission_per_share_ibkr_pro_fixed_q1,commission_usd,per share * quantity,1,,1e-12,PASS,0.0,
+commission_per_share_ibkr_pro_tiered_q1,commission_usd,per share * quantity,1,,1e-12,PASS,0.0,
+commission_per_share_ibkr_pro_fixed_q10,commission_usd,per share * quantity,10,,1e-12,PASS,0.0,
+commission_per_share_ibkr_pro_tiered_q10,commission_usd,per share * quantity,10,,1e-12,PASS,0.0,
+commission_per_share_ibkr_pro_fixed_q100,commission_usd,per share * quantity,100,,1e-12,PASS,0.0,
+commission_per_share_ibkr_pro_tiered_q100,commission_usd,per share * quantity,100,,1e-12,PASS,0.0,
+commission_per_share_ibkr_pro_fixed_q500,commission_usd,per share * quantity,500,,1e-12,PASS,0.0,
+commission_per_share_ibkr_pro_tiered_q500,commission_usd,per share * quantity,500,,1e-12,PASS,0.0,
+commission_per_share_ibkr_pro_fixed_q1000,commission_usd,per share * quantity,1000,,1e-12,PASS,0.0,
+commission_per_share_ibkr_pro_tiered_q1000,commission_usd,per share * quantity,1000,,1e-12,PASS,0.0,
+tiered_commission_matches_rate_card,commission_usd(1000 shares at 50.0) = 3.5,1000 * 0.0035 (published lowest tier),1000,,1e-12,PASS,0.0,
+arrival_quote_not_crossed,delay-0 arrival bid/ask,bid < ask required,2691000,0,0,PASS,,

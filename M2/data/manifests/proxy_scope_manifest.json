@@ -1,0 +1,2398 @@
+{
+  "basis": "SINGLE_SAMPLE_DAY_LIQUIDITY_PROXY",
+  "code_sha256": "ce527a3e34f80c315547985f32157e28f2c3a9d37e0d1d2e50fea8e872d8021d",
+  "coverage_date": "2019-07-30",
+  "decile_fraction": 0.1,
+  "decile_locates": [
+    {
+      "dollar_volume_usd": 35481732.83,
+      "liquidity_rank": 111,
+      "locate": 4,
+      "median_trade_price_usd": 70.7,
+      "symbol": "AABA"
+    },
+    {
+      "dollar_volume_usd": 41574158.005,
+      "liquidity_rank": 95,
+      "locate": 7,
+      "median_trade_price_usd": 30.645,
+      "symbol": "AAL"
+    },
+    {
+      "dollar_volume_usd": 1523635898.25,
+      "liquidity_rank": 0,
+      "locate": 14,
+      "median_trade_price_usd": 208.92,
+      "symbol": "AAPL"
+    },
+    {
+      "dollar_volume_usd": 33725265.945,
+      "liquidity_rank": 112,
+      "locate": 33,
+      "median_trade_price_usd": 277.85,
+      "symbol": "ABMD"
+    },
+    {
+      "dollar_volume_usd": 28416971.74,
+      "liquidity_rank": 132,
+      "locate": 53,
+      "median_trade_price_usd": 39.6,
+      "symbol": "ACGL"
+    },
+    {
+      "dollar_volume_usd": 215781672.935,
+      "liquidity_rank": 13,
+      "locate": 91,
+      "median_trade_price_usd": 303.99,
+      "symbol": "ADBE"
+    },
+    {
+      "dollar_volume_usd": 47384259.385,
+      "liquidity_rank": 85,
+      "locate": 94,
+      "median_trade_price_usd": 120.96,
+      "symbol": "ADI"
+    },
+    {
+      "dollar_volume_usd": 85522867.05,
+      "liquidity_rank": 41,
+      "locate": 103,
+      "median_trade_price_usd": 165.92,
+      "symbol": "ADP"
+    },
+    {
+      "dollar_volume_usd": 50878100.865,
+      "liquidity_rank": 76,
+      "locate": 111,
+      "median_trade_price_usd": 161.04,
+      "symbol": "ADSK"
+    },
+    {
+      "dollar_volume_usd": 41148410.63,
+      "liquidity_rank": 96,
+      "locate": 250,
+      "median_trade_price_usd": 83.97,
+      "symbol": "AKAM"
+    },
+    {
+      "dollar_volume_usd": 120385794.68,
+      "liquidity_rank": 27,
+      "locate": 280,
+      "median_trade_price_usd": 202.23,
+      "symbol": "ALGN"
+    },
+    {
+      "dollar_volume_usd": 89569570.57,
+      "liquidity_rank": 37,
+      "locate": 320,
+      "median_trade_price_usd": 114.38,
+      "symbol": "ALXN"
+    },
+    {
+      "dollar_volume_usd": 57889668.71,
+      "liquidity_rank": 69,
+      "locate": 325,
+      "median_trade_price_usd": 50.76,
+      "symbol": "AMAT"
+    },
+    {
+      "dollar_volume_usd": 19720441.92,
+      "liquidity_rank": 180,
+      "locate": 336,
+      "median_trade_price_usd": 54.03,
+      "symbol": "AMCX"
+    },
+    {
+      "dollar_volume_usd": 473482546.465,
+      "liquidity_rank": 5,
+      "locate": 337,
+      "median_trade_price_usd": 33.32,
+      "symbol": "AMD"
+    },
+    {
+      "dollar_volume_usd": 17727150.325,
+      "liquidity_rank": 190,
+      "locate": 339,
+      "median_trade_price_usd": 136.3,
+      "symbol": "AMED"
+    },
+    {
+      "dollar_volume_usd": 97369134.715,
+      "liquidity_rank": 34,
+      "locate": 342,
+      "median_trade_price_usd": 176.03,
+      "symbol": "AMGN"
+    },
+    {
+      "dollar_volume_usd": 40190461.25,
+      "liquidity_rank": 97,
+      "locate": 379,
+      "median_trade_price_usd": 51.21,
+      "symbol": "AMTD"
+    },
+    {
+      "dollar_volume_usd": 1412928038.59,
+      "liquidity_rank": 1,
+      "locate": 386,
+      "median_trade_price_usd": 1898.0,
+      "symbol": "AMZN"
+    },
+    {
+      "dollar_volume_usd": 20400793.3,
+      "liquidity_rank": 174,
+      "locate": 409,
+      "median_trade_price_usd": 208.11,
+      "symbol": "ANSS"
+    },
+    {
+      "dollar_volume_usd": 17338715.75,
+      "liquidity_rank": 197,
+      "locate": 445,
+      "median_trade_price_usd": 95.02,
+      "symbol": "APPF"
+    },
+    {
+      "dollar_volume_usd": 51199424.24,
+      "liquidity_rank": 75,
+      "locate": 604,
+      "median_trade_price_usd": 47.98,
+      "symbol": "ATVI"
+    },
+    {
+      "dollar_volume_usd": 81299641.845,
+      "liquidity_rank": 43,
+      "locate": 627,
+      "median_trade_price_usd": 299.63,
+      "symbol": "AVGO"
+    },
+    {
+      "dollar_volume_usd": 17414372.045,
+      "liquidity_rank": 196,
+      "locate": 681,
+      "median_trade_price_usd": 134.62,
+      "symbol": "AZPN"
+    },
+    {
+      "dollar_volume_usd": 17155755.4,
+      "liquidity_rank": 202,
+      "locate": 724,
+      "median_trade_price_usd": 9.35,
+      "symbol": "BBBY"
+    },
+    {
+      "dollar_volume_usd": 102157142.665,
+      "liquidity_rank": 32,
+      "locate": 869,
+      "median_trade_price_usd": 240.65,
+      "symbol": "BIIB"
+    },
+    {
+      "dollar_volume_usd": 91370819.56,
+      "liquidity_rank": 36,
+      "locate": 908,
+      "median_trade_price_usd": 1914.81,
+      "symbol": "BKNG"
+    },
+    {
+      "dollar_volume_usd": 33140455.175,
+      "liquidity_rank": 115,
+      "locate": 936,
+      "median_trade_price_usd": 133.31,
+      "symbol": "BLUE"
+    },
+    {
+      "dollar_volume_usd": 22793822.28,
+      "liquidity_rank": 164,
+      "locate": 952,
+      "median_trade_price_usd": 80.92,
+      "symbol": "BMRN"
+    },
+    {
+      "dollar_volume_usd": 15550591.985,
+      "liquidity_rank": 216,
+      "locate": 1026,
+      "median_trade_price_usd": 48.46,
+      "symbol": "BRKR"
+    },
+    {
+      "dollar_volume_usd": 966951452.635,
+      "liquidity_rank": 2,
+      "locate": 1142,
+      "median_trade_price_usd": 199.3,
+      "symbol": "BYND"
+    },
+    {
+      "dollar_volume_usd": 19737863.03,
+      "liquidity_rank": 179,
+      "locate": 1157,
+      "median_trade_price_usd": 482.99,
+      "symbol": "CACC"
+    },
+    {
+      "dollar_volume_usd": 20289526.66,
+      "liquidity_rank": 176,
+      "locate": 1232,
+      "median_trade_price_usd": 175.07,
+      "symbol": "CBRL"
+    },
+    {
+      "dollar_volume_usd": 27798600.495,
+      "liquidity_rank": 134,
+      "locate": 1289,
+      "median_trade_price_usd": 75.52,
+      "symbol": "CDNS"
+    },
+    {
+      "dollar_volume_usd": 47794887.555,
+      "liquidity_rank": 84,
+      "locate": 1295,
+      "median_trade_price_usd": 113.32,
+      "symbol": "CDW"
+    },
+    {
+      "dollar_volume_usd": 86782366.43,
+      "liquidity_rank": 39,
+      "locate": 1311,
+      "median_trade_price_usd": 92.58,
+      "symbol": "CELG"
+    },
+    {
+      "dollar_volume_usd": 38551870.285,
+      "liquidity_rank": 102,
+      "locate": 1327,
+      "median_trade_price_usd": 73.59,
+      "symbol": "CERN"
+    },
+    {
+      "dollar_volume_usd": 65963096.585,
+      "liquidity_rank": 57,
+      "locate": 1363,
+      "median_trade_price_usd": 45.35,
+      "symbol": "CGNX"
+    },
+    {
+      "dollar_volume_usd": 36931088.32,
+      "liquidity_rank": 106,
+      "locate": 1419,
+      "median_trade_price_usd": 85.23,
+      "symbol": "CHRW"
+    },
+    {
+      "dollar_volume_usd": 147425297.985,
+      "liquidity_rank": 19,
+      "locate": 1428,
+      "median_trade_price_usd": 396.68,
+      "symbol": "CHTR"
+    },
+    {
+      "dollar_volume_usd": 24947678.49,
+      "liquidity_rank": 149,
+      "locate": 1458,
+      "median_trade_price_usd": 106.03,
+      "symbol": "CINF"
+    },
+    {
+      "dollar_volume_usd": 84189021.185,
+      "liquidity_rank": 42,
+      "locate": 1534,
+      "median_trade_price_usd": 43.98,
+      "symbol": "CMCSA"
+    },
+    {
+      "dollar_volume_usd": 79481725.29,
+      "liquidity_rank": 49,
+      "locate": 1539,
+      "median_trade_price_usd": 198.06,
+      "symbol": "CME"
+    },
+    {
+      "dollar_volume_usd": 17567576.405,
+      "liquidity_rank": 193,
+      "locate": 1622,
+      "median_trade_price_usd": 148.04,
+      "symbol": "COHR"
+    },
+    {
+      "dollar_volume_usd": 25318937.96,
+      "liquidity_rank": 145,
+      "locate": 1628,
+      "median_trade_price_usd": 107.17,
+      "symbol": "COLM"
+    },
+    {
+      "dollar_volume_usd": 19046105.85,
+      "liquidity_rank": 182,
+      "locate": 1632,
+      "median_trade_price_usd": 14.47,
+      "symbol": "COMM"
+    },
+    {
+      "dollar_volume_usd": 65810869.255,
+      "liquidity_rank": 58,
+      "locate": 1648,
+      "median_trade_price_usd": 279.67,
+      "symbol": "COST"
+    },
+    {
+      "dollar_volume_usd": 30830315.705,
+      "liquidity_rank": 121,
+      "locate": 1651,
+      "median_trade_price_usd": 139.07,
+      "symbol": "COUP"
+    },
+    {
+      "dollar_volume_usd": 21756483.895,
+      "liquidity_rank": 168,
+      "locate": 1676,
+      "median_trade_price_usd": 78.04,
+      "symbol": "CPRT"
+    },
+    {
+      "dollar_volume_usd": 16354738.215,
+      "liquidity_rank": 211,
+      "locate": 1699,
+      "median_trade_price_usd": 62.38,
+      "symbol": "CREE"
+    },
+    {
+      "dollar_volume_usd": 67433316.655,
+      "liquidity_rank": 56,
+      "locate": 1732,
+      "median_trade_price_usd": 93.07,
+      "symbol": "CRWD"
+    },
+    {
+      "dollar_volume_usd": 101331351.485,
+      "liquidity_rank": 33,
+      "locate": 1740,
+      "median_trade_price_usd": 56.65,
+      "symbol": "CSCO"
+    },
+    {
+      "dollar_volume_usd": 59744672.835,
+      "liquidity_rank": 64,
+      "locate": 1744,
+      "median_trade_price_usd": 619.99,
+      "symbol": "CSGP"
+    },
+    {
+      "dollar_volume_usd": 79594163.2,
+      "liquidity_rank": 48,
+      "locate": 1767,
+      "median_trade_price_usd": 69.89,
+      "symbol": "CSX"
+    },
+    {
+      "dollar_volume_usd": 39075657.045,
+      "liquidity_rank": 101,
+      "locate": 1774,
+      "median_trade_price_usd": 261.98,
+      "symbol": "CTAS"
+    },
+    {
+      "dollar_volume_usd": 50086138.09,
+      "liquidity_rank": 77,
+      "locate": 1799,
+      "median_trade_price_usd": 65.34,
+      "symbol": "CTSH"
+    },
+    {
+      "dollar_volume_usd": 63761144.495,
+      "liquidity_rank": 60,
+      "locate": 1808,
+      "median_trade_price_usd": 95.02,
+      "symbol": "CTXS"
+    },
+    {
+      "dollar_volume_usd": 25722154.185,
+      "liquidity_rank": 142,
+      "locate": 1841,
+      "median_trade_price_usd": 44.75,
+      "symbol": "CVLT"
+    },
+    {
+      "dollar_volume_usd": 25205995.8,
+      "liquidity_rank": 147,
+      "locate": 1894,
+      "median_trade_price_usd": 12.05,
+      "symbol": "CZR"
+    },
+    {
+      "dollar_volume_usd": 28939367.615,
+      "liquidity_rank": 128,
+      "locate": 2043,
+      "median_trade_price_usd": 30.85,
+      "symbol": "DISCA"
+    },
+    {
+      "dollar_volume_usd": 72356902.295,
+      "liquidity_rank": 51,
+      "locate": 2046,
+      "median_trade_price_usd": 35.56,
+      "symbol": "DISH"
+    },
+    {
+      "dollar_volume_usd": 52306347.63,
+      "liquidity_rank": 74,
+      "locate": 2084,
+      "median_trade_price_usd": 102.4,
+      "symbol": "DLTR"
+    },
+    {
+      "dollar_volume_usd": 25016189.755,
+      "liquidity_rank": 148,
+      "locate": 2242,
+      "median_trade_price_usd": 156.04,
+      "symbol": "DXCM"
+    },
+    {
+      "dollar_volume_usd": 135033125.39,
+      "liquidity_rank": 21,
+      "locate": 2263,
+      "median_trade_price_usd": 88.22,
+      "symbol": "EA"
+    },
+    {
+      "dollar_volume_usd": 53650363.925,
+      "liquidity_rank": 70,
+      "locate": 2277,
+      "median_trade_price_usd": 41.36,
+      "symbol": "EBAY"
+    },
+    {
+      "dollar_volume_usd": 18113799.83,
+      "liquidity_rank": 186,
+      "locate": 2334,
+      "median_trade_price_usd": 156.0,
+      "symbol": "EEFT"
+    },
+    {
+      "dollar_volume_usd": 28660171.505,
+      "liquidity_rank": 131,
+      "locate": 2385,
+      "median_trade_price_usd": 104.89,
+      "symbol": "EHTH"
+    },
+    {
+      "dollar_volume_usd": 24828639.64,
+      "liquidity_rank": 150,
+      "locate": 2468,
+      "median_trade_price_usd": 21.48,
+      "symbol": "ENPH"
+    },
+    {
+      "dollar_volume_usd": 15870257.845,
+      "liquidity_rank": 215,
+      "locate": 2476,
+      "median_trade_price_usd": 44.32,
+      "symbol": "ENTG"
+    },
+    {
+      "dollar_volume_usd": 68529357.085,
+      "liquidity_rank": 55,
+      "locate": 2519,
+      "median_trade_price_usd": 495.01,
+      "symbol": "EQIX"
+    },
+    {
+      "dollar_volume_usd": 24406739.67,
+      "liquidity_rank": 153,
+      "locate": 2532,
+      "median_trade_price_usd": 46.21,
+      "symbol": "ERI"
+    },
+    {
+      "dollar_volume_usd": 26364408.33,
+      "liquidity_rank": 138,
+      "locate": 2584,
+      "median_trade_price_usd": 48.63,
+      "symbol": "ETFC"
+    },
+    {
+      "dollar_volume_usd": 23806105.595,
+      "liquidity_rank": 156,
+      "locate": 2598,
+      "median_trade_price_usd": 68.5,
+      "symbol": "ETSY"
+    },
+    {
+      "dollar_volume_usd": 125992476.18,
+      "liquidity_rank": 26,
+      "locate": 2686,
+      "median_trade_price_usd": 117.91,
+      "symbol": "EXAS"
+    },
+    {
+      "dollar_volume_usd": 116523339.43,
+      "liquidity_rank": 29,
+      "locate": 2698,
+      "median_trade_price_usd": 134.97,
+      "symbol": "EXPE"
+    },
+    {
+      "dollar_volume_usd": 45066751.65,
+      "liquidity_rank": 91,
+      "locate": 2730,
+      "median_trade_price_usd": 102.45,
+      "symbol": "FANG"
+    },
+    {
+      "dollar_volume_usd": 20337669.805,
+      "liquidity_rank": 175,
+      "locate": 2735,
+      "median_trade_price_usd": 31.59,
+      "symbol": "FAST"
+    },
+    {
+      "dollar_volume_usd": 629117829.66,
+      "liquidity_rank": 3,
+      "locate": 2741,
+      "median_trade_price_usd": 196.98,
+      "symbol": "FB"
+    },
+    {
+      "dollar_volume_usd": 17844383.06,
+      "liquidity_rank": 189,
+      "locate": 2828,
+      "median_trade_price_usd": 16.12,
+      "symbol": "FEYE"
+    },
+    {
+      "dollar_volume_usd": 25784043.305,
+      "liquidity_rank": 141,
+      "locate": 2842,
+      "median_trade_price_usd": 149.9,
+      "symbol": "FFIV"
+    },
+    {
+      "dollar_volume_usd": 253780727.78,
+      "liquidity_rank": 11,
+      "locate": 2884,
+      "median_trade_price_usd": 103.88,
+      "symbol": "FISV"
+    },
+    {
+      "dollar_volume_usd": 27621216.65,
+      "liquidity_rank": 135,
+      "locate": 2886,
+      "median_trade_price_usd": 29.8,
+      "symbol": "FITB"
+    },
+    {
+      "dollar_volume_usd": 22002362.27,
+      "liquidity_rank": 167,
+      "locate": 2891,
+      "median_trade_price_usd": 116.71,
+      "symbol": "FIVE"
+    },
+    {
+      "dollar_volume_usd": 16703072.445,
+      "liquidity_rank": 206,
+      "locate": 2931,
+      "median_trade_price_usd": 50.61,
+      "symbol": "FLIR"
+    },
+    {
+      "dollar_volume_usd": 17336127.71,
+      "liquidity_rank": 199,
+      "locate": 3037,
+      "median_trade_price_usd": 37.86,
+      "symbol": "FOX"
+    },
+    {
+      "dollar_volume_usd": 18013662.33,
+      "liquidity_rank": 187,
+      "locate": 3038,
+      "median_trade_price_usd": 37.82,
+      "symbol": "FOXA"
+    },
+    {
+      "dollar_volume_usd": 31015846.545,
+      "liquidity_rank": 120,
+      "locate": 3130,
+      "median_trade_price_usd": 82.68,
+      "symbol": "FTNT"
+    },
+    {
+      "dollar_volume_usd": 61184771.825,
+      "liquidity_rank": 63,
+      "locate": 3318,
+      "median_trade_price_usd": 73.89,
+      "symbol": "GHDX"
+    },
+    {
+      "dollar_volume_usd": 117515694.965,
+      "liquidity_rank": 28,
+      "locate": 3339,
+      "median_trade_price_usd": 67.135,
+      "symbol": "GILD"
+    },
+    {
+      "dollar_volume_usd": 473233171.99,
+      "liquidity_rank": 6,
+      "locate": 3459,
+      "median_trade_price_usd": 1228.03,
+      "symbol": "GOOG"
+    },
+    {
+      "dollar_volume_usd": 400451545.2,
+      "liquidity_rank": 9,
+      "locate": 3460,
+      "median_trade_price_usd": 1230.54,
+      "symbol": "GOOGL"
+    },
+    {
+      "dollar_volume_usd": 58359447.54,
+      "liquidity_rank": 68,
+      "locate": 3499,
+      "median_trade_price_usd": 77.12,
+      "symbol": "GRMN"
+    },
+    {
+      "dollar_volume_usd": 15425181.175,
+      "liquidity_rank": 218,
+      "locate": 3554,
+      "median_trade_price_usd": 13.64,
+      "symbol": "GT"
+    },
+    {
+      "dollar_volume_usd": 48537092.71,
+      "liquidity_rank": 82,
+      "locate": 3617,
+      "median_trade_price_usd": 124.37,
+      "symbol": "HAS"
+    },
+    {
+      "dollar_volume_usd": 22374906.34,
+      "liquidity_rank": 165,
+      "locate": 3623,
+      "median_trade_price_usd": 14.35,
+      "symbol": "HBAN"
+    },
+    {
+      "dollar_volume_usd": 23001935.575,
+      "liquidity_rank": 161,
+      "locate": 3665,
+      "median_trade_price_usd": 41.26,
+      "symbol": "HDS"
+    },
+    {
+      "dollar_volume_usd": 28775559.145,
+      "liquidity_rank": 130,
+      "locate": 3774,
+      "median_trade_price_usd": 51.18,
+      "symbol": "HOLX"
+    },
+    {
+      "dollar_volume_usd": 16216241.385,
+      "liquidity_rank": 212,
+      "locate": 3819,
+      "median_trade_price_usd": 68.62,
+      "symbol": "HSIC"
+    },
+    {
+      "dollar_volume_usd": 27863873.44,
+      "liquidity_rank": 133,
+      "locate": 3907,
+      "median_trade_price_usd": 240.76,
+      "symbol": "IAC"
+    },
+    {
+      "dollar_volume_usd": 23190965.315,
+      "liquidity_rank": 160,
+      "locate": 4008,
+      "median_trade_price_usd": 285.39,
+      "symbol": "IDXX"
+    },
+    {
+      "dollar_volume_usd": 16481084.065,
+      "liquidity_rank": 209,
+      "locate": 4096,
+      "median_trade_price_usd": 39.93,
+      "symbol": "IIVI"
+    },
+    {
+      "dollar_volume_usd": 199033884.525,
+      "liquidity_rank": 15,
+      "locate": 4106,
+      "median_trade_price_usd": 299.08,
+      "symbol": "ILMN"
+    },
+    {
+      "dollar_volume_usd": 39852077.35,
+      "liquidity_rank": 99,
+      "locate": 4144,
+      "median_trade_price_usd": 84.11,
+      "symbol": "INCY"
+    },
+    {
+      "dollar_volume_usd": 190297680.655,
+      "liquidity_rank": 16,
+      "locate": 4184,
+      "median_trade_price_usd": 51.95,
+      "symbol": "INTC"
+    },
+    {
+      "dollar_volume_usd": 68909376.025,
+      "liquidity_rank": 54,
+      "locate": 4189,
+      "median_trade_price_usd": 279.81,
+      "symbol": "INTU"
+    },
+    {
+      "dollar_volume_usd": 46658510.555,
+      "liquidity_rank": 87,
+      "locate": 4212,
+      "median_trade_price_usd": 137.03,
+      "symbol": "IPGP"
+    },
+    {
+      "dollar_volume_usd": 17078103.35,
+      "liquidity_rank": 203,
+      "locate": 4236,
+      "median_trade_price_usd": 74.19,
+      "symbol": "IRBT"
+    },
+    {
+      "dollar_volume_usd": 75012565.35,
+      "liquidity_rank": 50,
+      "locate": 4267,
+      "median_trade_price_usd": 533.13,
+      "symbol": "ISRG"
+    },
+    {
+      "dollar_volume_usd": 20750512.07,
+      "liquidity_rank": 172,
+      "locate": 4366,
+      "median_trade_price_usd": 102.12,
+      "symbol": "JBHT"
+    },
+    {
+      "dollar_volume_usd": 15547845.625,
+      "liquidity_rank": 217,
+      "locate": 4369,
+      "median_trade_price_usd": 19.41,
+      "symbol": "JBLU"
+    },
+    {
+      "dollar_volume_usd": 17454537.22,
+      "liquidity_rank": 194,
+      "locate": 4437,
+      "median_trade_price_usd": 183.0,
+      "symbol": "JJSF"
+    },
+    {
+      "dollar_volume_usd": 29237653.64,
+      "liquidity_rank": 127,
+      "locate": 4592,
+      "median_trade_price_usd": 31.63,
+      "symbol": "KHC"
+    },
+    {
+      "dollar_volume_usd": 26245277.63,
+      "liquidity_rank": 140,
+      "locate": 4610,
+      "median_trade_price_usd": 140.01,
+      "symbol": "KLAC"
+    },
+    {
+      "dollar_volume_usd": 19020833.8,
+      "liquidity_rank": 183,
+      "locate": 4720,
+      "median_trade_price_usd": 101.84,
+      "symbol": "LBRDK"
+    },
+    {
+      "dollar_volume_usd": 36853465.38,
+      "liquidity_rank": 108,
+      "locate": 4777,
+      "median_trade_price_usd": 95.57,
+      "symbol": "LGND"
+    },
+    {
+      "dollar_volume_usd": 22801141.005,
+      "liquidity_rank": 163,
+      "locate": 4797,
+      "median_trade_price_usd": 58.58,
+      "symbol": "LITE"
+    },
+    {
+      "dollar_volume_usd": 20444242.75,
+      "liquidity_rank": 173,
+      "locate": 4806,
+      "median_trade_price_usd": 26.86,
+      "symbol": "LKQ"
+    },
+    {
+      "dollar_volume_usd": 58962734.665,
+      "liquidity_rank": 67,
+      "locate": 4878,
+      "median_trade_price_usd": 211.34,
+      "symbol": "LRCX"
+    },
+    {
+      "dollar_volume_usd": 49123509.81,
+      "liquidity_rank": 78,
+      "locate": 4910,
+      "median_trade_price_usd": 191.75,
+      "symbol": "LULU"
+    },
+    {
+      "dollar_volume_usd": 36384629.09,
+      "liquidity_rank": 109,
+      "locate": 4931,
+      "median_trade_price_usd": 62.36,
+      "symbol": "LYFT"
+    },
+    {
+      "dollar_volume_usd": 16033391.485,
+      "liquidity_rank": 213,
+      "locate": 4950,
+      "median_trade_price_usd": 87.27,
+      "symbol": "MANH"
+    },
+    {
+      "dollar_volume_usd": 46023361.97,
+      "liquidity_rank": 89,
+      "locate": 4953,
+      "median_trade_price_usd": 140.62,
+      "symbol": "MAR"
+    },
+    {
+      "dollar_volume_usd": 16444120.075,
+      "liquidity_rank": 210,
+      "locate": 4958,
+      "median_trade_price_usd": 157.79,
+      "symbol": "MASI"
+    },
+    {
+      "dollar_volume_usd": 16000231.26,
+      "liquidity_rank": 214,
+      "locate": 4959,
+      "median_trade_price_usd": 14.43,
+      "symbol": "MAT"
+    },
+    {
+      "dollar_volume_usd": 48362948.59,
+      "liquidity_rank": 83,
+      "locate": 4991,
+      "median_trade_price_usd": 96.56,
+      "symbol": "MCHP"
+    },
+    {
+      "dollar_volume_usd": 48908801.575,
+      "liquidity_rank": 79,
+      "locate": 5007,
+      "median_trade_price_usd": 142.88,
+      "symbol": "MDB"
+    },
+    {
+      "dollar_volume_usd": 80941520.74,
+      "liquidity_rank": 44,
+      "locate": 5020,
+      "median_trade_price_usd": 54.98,
+      "symbol": "MDLZ"
+    },
+    {
+      "dollar_volume_usd": 59683306.655,
+      "liquidity_rank": 65,
+      "locate": 5035,
+      "median_trade_price_usd": 79.225,
+      "symbol": "MEDP"
+    },
+    {
+      "dollar_volume_usd": 86518757.06,
+      "liquidity_rank": 40,
+      "locate": 5039,
+      "median_trade_price_usd": 635.53,
+      "symbol": "MELI"
+    },
+    {
+      "dollar_volume_usd": 17452080.06,
+      "liquidity_rank": 195,
+      "locate": 5082,
+      "median_trade_price_usd": 67.17,
+      "symbol": "MGLN"
+    },
+    {
+      "dollar_volume_usd": 16711325.54,
+      "liquidity_rank": 205,
+      "locate": 5112,
+      "median_trade_price_usd": 134.51,
+      "symbol": "MIDD"
+    },
+    {
+      "dollar_volume_usd": 27606496.96,
+      "liquidity_rank": 136,
+      "locate": 5142,
+      "median_trade_price_usd": 336.02,
+      "symbol": "MKTX"
+    },
+    {
+      "dollar_volume_usd": 17711884.875,
+      "liquidity_rank": 192,
+      "locate": 5143,
+      "median_trade_price_usd": 255.15,
+      "symbol": "MLAB"
+    },
+    {
+      "dollar_volume_usd": 29563373.205,
+      "liquidity_rank": 126,
+      "locate": 5207,
+      "median_trade_price_usd": 65.49,
+      "symbol": "MNST"
+    },
+    {
+      "dollar_volume_usd": 46383584.63,
+      "liquidity_rank": 88,
+      "locate": 5273,
+      "median_trade_price_usd": 26.87,
+      "symbol": "MRVL"
+    },
+    {
+      "dollar_volume_usd": 454326851.77,
+      "liquidity_rank": 8,
+      "locate": 5289,
+      "median_trade_price_usd": 140.565,
+      "symbol": "MSFT"
+    },
+    {
+      "dollar_volume_usd": 21020020.45,
+      "liquidity_rank": 170,
+      "locate": 5307,
+      "median_trade_price_usd": 75.47,
+      "symbol": "MTCH"
+    },
+    {
+      "dollar_volume_usd": 217773622.5,
+      "liquidity_rank": 12,
+      "locate": 5334,
+      "median_trade_price_usd": 47.02,
+      "symbol": "MU"
+    },
+    {
+      "dollar_volume_usd": 39096452.84,
+      "liquidity_rank": 100,
+      "locate": 5371,
+      "median_trade_price_usd": 64.135,
+      "symbol": "MXIM"
+    },
+    {
+      "dollar_volume_usd": 89122117.045,
+      "liquidity_rank": 38,
+      "locate": 5417,
+      "median_trade_price_usd": 95.35,
+      "symbol": "NBIX"
+    },
+    {
+      "dollar_volume_usd": 23411754.485,
+      "liquidity_rank": 159,
+      "locate": 5444,
+      "median_trade_price_usd": 96.56,
+      "symbol": "NDAQ"
+    },
+    {
+      "dollar_volume_usd": 478005002.87,
+      "liquidity_rank": 4,
+      "locate": 5498,
+      "median_trade_price_usd": 325.79,
+      "symbol": "NFLX"
+    },
+    {
+      "dollar_volume_usd": 27173959.755,
+      "liquidity_rank": 137,
+      "locate": 5647,
+      "median_trade_price_usd": 59.37,
+      "symbol": "NTAP"
+    },
+    {
+      "dollar_volume_usd": 24161892.02,
+      "liquidity_rank": 155,
+      "locate": 5669,
+      "median_trade_price_usd": 98.8,
+      "symbol": "NTRS"
+    },
+    {
+      "dollar_volume_usd": 17912873.745,
+      "liquidity_rank": 188,
+      "locate": 5697,
+      "median_trade_price_usd": 58.85,
+      "symbol": "NUVA"
+    },
+    {
+      "dollar_volume_usd": 207891407.025,
+      "liquidity_rank": 14,
+      "locate": 5702,
+      "median_trade_price_usd": 174.85,
+      "symbol": "NVDA"
+    },
+    {
+      "dollar_volume_usd": 28919321.97,
+      "liquidity_rank": 129,
+      "locate": 5723,
+      "median_trade_price_usd": 14.44,
+      "symbol": "NWL"
+    },
+    {
+      "dollar_volume_usd": 132374513.81,
+      "liquidity_rank": 24,
+      "locate": 5736,
+      "median_trade_price_usd": 104.94,
+      "symbol": "NXPI"
+    },
+    {
+      "dollar_volume_usd": 30314862.79,
+      "liquidity_rank": 123,
+      "locate": 5785,
+      "median_trade_price_usd": 164.0,
+      "symbol": "ODFL"
+    },
+    {
+      "dollar_volume_usd": 53209925.45,
+      "liquidity_rank": 71,
+      "locate": 5825,
+      "median_trade_price_usd": 132.24,
+      "symbol": "OKTA"
+    },
+    {
+      "dollar_volume_usd": 32713292.175,
+      "liquidity_rank": 117,
+      "locate": 5828,
+      "median_trade_price_usd": 212.96,
+      "symbol": "OLED"
+    },
+    {
+      "dollar_volume_usd": 29907356.815,
+      "liquidity_rank": 125,
+      "locate": 5830,
+      "median_trade_price_usd": 82.07,
+      "symbol": "OLLI"
+    },
+    {
+      "dollar_volume_usd": 20935078.23,
+      "liquidity_rank": 171,
+      "locate": 5845,
+      "median_trade_price_usd": 22.07,
+      "symbol": "ON"
+    },
+    {
+      "dollar_volume_usd": 59393374.54,
+      "liquidity_rank": 66,
+      "locate": 5895,
+      "median_trade_price_usd": 384.33,
+      "symbol": "ORLY"
+    },
+    {
+      "dollar_volume_usd": 36903111.98,
+      "liquidity_rank": 107,
+      "locate": 5913,
+      "median_trade_price_usd": 22.82,
+      "symbol": "OSTK"
+    },
+    {
+      "dollar_volume_usd": 71972450.005,
+      "liquidity_rank": 52,
+      "locate": 5986,
+      "median_trade_price_usd": 86.465,
+      "symbol": "PAYX"
+    },
+    {
+      "dollar_volume_usd": 32517176.92,
+      "liquidity_rank": 118,
+      "locate": 6021,
+      "median_trade_price_usd": 70.61,
+      "symbol": "PCAR"
+    },
+    {
+      "dollar_volume_usd": 16770489.76,
+      "liquidity_rank": 204,
+      "locate": 6051,
+      "median_trade_price_usd": 28.28,
+      "symbol": "PDCE"
+    },
+    {
+      "dollar_volume_usd": 133679243.74,
+      "liquidity_rank": 23,
+      "locate": 6089,
+      "median_trade_price_usd": 131.09,
+      "symbol": "PEP"
+    },
+    {
+      "dollar_volume_usd": 24343246.945,
+      "liquidity_rank": 154,
+      "locate": 6110,
+      "median_trade_price_usd": 59.05,
+      "symbol": "PFG"
+    },
+    {
+      "dollar_volume_usd": 30408490.475,
+      "liquidity_rank": 122,
+      "locate": 6410,
+      "median_trade_price_usd": 69.09,
+      "symbol": "PTC"
+    },
+    {
+      "dollar_volume_usd": 25233831.33,
+      "liquidity_rank": 146,
+      "locate": 6413,
+      "median_trade_price_usd": 10.95,
+      "symbol": "PTEN"
+    },
+    {
+      "dollar_volume_usd": 275076856.305,
+      "liquidity_rank": 10,
+      "locate": 6474,
+      "median_trade_price_usd": 111.68,
+      "symbol": "PYPL"
+    },
+    {
+      "dollar_volume_usd": 171205037.49,
+      "liquidity_rank": 17,
+      "locate": 6494,
+      "median_trade_price_usd": 74.81,
+      "symbol": "QCOM"
+    },
+    {
+      "dollar_volume_usd": 19381226.905,
+      "liquidity_rank": 181,
+      "locate": 6535,
+      "median_trade_price_usd": 75.0,
+      "symbol": "QRVO"
+    },
+    {
+      "dollar_volume_usd": 52452434.85,
+      "liquidity_rank": 73,
+      "locate": 6631,
+      "median_trade_price_usd": 309.07,
+      "symbol": "REGN"
+    },
+    {
+      "dollar_volume_usd": 17218846.395,
+      "liquidity_rank": 201,
+      "locate": 6680,
+      "median_trade_price_usd": 94.47,
+      "symbol": "RGEN"
+    },
+    {
+      "dollar_volume_usd": 18153251.21,
+      "liquidity_rank": 185,
+      "locate": 6683,
+      "median_trade_price_usd": 119.68,
+      "symbol": "RGLD"
+    },
+    {
+      "dollar_volume_usd": 103095913.24,
+      "liquidity_rank": 31,
+      "locate": 6779,
+      "median_trade_price_usd": 105.71,
+      "symbol": "ROKU"
+    },
+    {
+      "dollar_volume_usd": 32060246.96,
+      "liquidity_rank": 119,
+      "locate": 6789,
+      "median_trade_price_usd": 106.21,
+      "symbol": "ROST"
+    },
+    {
+      "dollar_volume_usd": 16549464.98,
+      "liquidity_rank": 207,
+      "locate": 6793,
+      "median_trade_price_usd": 63.9,
+      "symbol": "RP"
+    },
+    {
+      "dollar_volume_usd": 17726585.575,
+      "liquidity_rank": 191,
+      "locate": 6910,
+      "median_trade_price_usd": 162.27,
+      "symbol": "SAGE"
+    },
+    {
+      "dollar_volume_usd": 71451727.75,
+      "liquidity_rank": 53,
+      "locate": 6939,
+      "median_trade_price_usd": 246.98,
+      "symbol": "SBAC"
+    },
+    {
+      "dollar_volume_usd": 33631898.72,
+      "liquidity_rank": 113,
+      "locate": 6947,
+      "median_trade_price_usd": 50.02,
+      "symbol": "SBGI"
+    },
+    {
+      "dollar_volume_usd": 134564638.725,
+      "liquidity_rank": 22,
+      "locate": 6964,
+      "median_trade_price_usd": 97.08,
+      "symbol": "SBUX"
+    },
+    {
+      "dollar_volume_usd": 25537330.58,
+      "liquidity_rank": 143,
+      "locate": 7081,
+      "median_trade_price_usd": 26.43,
+      "symbol": "SFIX"
+    },
+    {
+      "dollar_volume_usd": 15276433.525,
+      "liquidity_rank": 219,
+      "locate": 7083,
+      "median_trade_price_usd": 50.62,
+      "symbol": "SFLY"
+    },
+    {
+      "dollar_volume_usd": 45982234.805,
+      "liquidity_rank": 90,
+      "locate": 7163,
+      "median_trade_price_usd": 6.2,
+      "symbol": "SIRI"
+    },
+    {
+      "dollar_volume_usd": 20089909.465,
+      "liquidity_rank": 178,
+      "locate": 7170,
+      "median_trade_price_usd": 229.94,
+      "symbol": "SIVB"
+    },
+    {
+      "dollar_volume_usd": 33086387.97,
+      "liquidity_rank": 116,
+      "locate": 7289,
+      "median_trade_price_usd": 135.55,
+      "symbol": "SNPS"
+    },
+    {
+      "dollar_volume_usd": 44843669.225,
+      "liquidity_rank": 92,
+      "locate": 7358,
+      "median_trade_price_usd": 137.96,
+      "symbol": "SPLK"
+    },
+    {
+      "dollar_volume_usd": 26352111.05,
+      "liquidity_rank": 139,
+      "locate": 7432,
+      "median_trade_price_usd": 149.43,
+      "symbol": "SRPT"
+    },
+    {
+      "dollar_volume_usd": 167284067.835,
+      "liquidity_rank": 18,
+      "locate": 7450,
+      "median_trade_price_usd": 49.52,
+      "symbol": "SSNC"
+    },
+    {
+      "dollar_volume_usd": 20189237.28,
+      "liquidity_rank": 177,
+      "locate": 7492,
+      "median_trade_price_usd": 32.52,
+      "symbol": "STLD"
+    },
+    {
+      "dollar_volume_usd": 42456016.375,
+      "liquidity_rank": 94,
+      "locate": 7498,
+      "median_trade_price_usd": 35.93,
+      "symbol": "STNE"
+    },
+    {
+      "dollar_volume_usd": 23755589.155,
+      "liquidity_rank": 157,
+      "locate": 7521,
+      "median_trade_price_usd": 47.4,
+      "symbol": "STX"
+    },
+    {
+      "dollar_volume_usd": 33524618.745,
+      "liquidity_rank": 114,
+      "locate": 7557,
+      "median_trade_price_usd": 87.5,
+      "symbol": "SWKS"
+    },
+    {
+      "dollar_volume_usd": 25467901.415,
+      "liquidity_rank": 144,
+      "locate": 7576,
+      "median_trade_price_usd": 21.99,
+      "symbol": "SYMC"
+    },
+    {
+      "dollar_volume_usd": 48772816.16,
+      "liquidity_rank": 81,
+      "locate": 7701,
+      "median_trade_price_usd": 57.25,
+      "symbol": "TER"
+    },
+    {
+      "dollar_volume_usd": 116185291.145,
+      "liquidity_rank": 30,
+      "locate": 7810,
+      "median_trade_price_usd": 81.47,
+      "symbol": "TMUS"
+    },
+    {
+      "dollar_volume_usd": 18864324.49,
+      "liquidity_rank": 184,
+      "locate": 7815,
+      "median_trade_price_usd": 64.25,
+      "symbol": "TNDM"
+    },
+    {
+      "dollar_volume_usd": 21226853.32,
+      "liquidity_rank": 169,
+      "locate": 7873,
+      "median_trade_price_usd": 327.3,
+      "symbol": "TREE"
+    },
+    {
+      "dollar_volume_usd": 24785285.03,
+      "liquidity_rank": 151,
+      "locate": 7880,
+      "median_trade_price_usd": 44.56,
+      "symbol": "TRIP"
+    },
+    {
+      "dollar_volume_usd": 35682939.685,
+      "liquidity_rank": 110,
+      "locate": 7895,
+      "median_trade_price_usd": 114.78,
+      "symbol": "TROW"
+    },
+    {
+      "dollar_volume_usd": 23631284.965,
+      "liquidity_rank": 158,
+      "locate": 7923,
+      "median_trade_price_usd": 109.96,
+      "symbol": "TSCO"
+    },
+    {
+      "dollar_volume_usd": 455874478.88,
+      "liquidity_rank": 7,
+      "locate": 7928,
+      "median_trade_price_usd": 239.57,
+      "symbol": "TSLA"
+    },
+    {
+      "dollar_volume_usd": 79647587.81,
+      "liquidity_rank": 47,
+      "locate": 7941,
+      "median_trade_price_usd": 265.69,
+      "symbol": "TTD"
+    },
+    {
+      "dollar_volume_usd": 63183066.12,
+      "liquidity_rank": 61,
+      "locate": 7955,
+      "median_trade_price_usd": 122.48,
+      "symbol": "TTWO"
+    },
+    {
+      "dollar_volume_usd": 16491472.515,
+      "liquidity_rank": 208,
+      "locate": 7986,
+      "median_trade_price_usd": 35.06,
+      "symbol": "TWOU"
+    },
+    {
+      "dollar_volume_usd": 145162601.755,
+      "liquidity_rank": 20,
+      "locate": 7991,
+      "median_trade_price_usd": 128.29,
+      "symbol": "TXN"
+    },
+    {
+      "dollar_volume_usd": 37665397.16,
+      "liquidity_rank": 104,
+      "locate": 7992,
+      "median_trade_price_usd": 56.86,
+      "symbol": "TXRH"
+    },
+    {
+      "dollar_volume_usd": 46717377.17,
+      "liquidity_rank": 86,
+      "locate": 8014,
+      "median_trade_price_usd": 93.34,
+      "symbol": "UAL"
+    },
+    {
+      "dollar_volume_usd": 63908665.5,
+      "liquidity_rank": 59,
+      "locate": 8091,
+      "median_trade_price_usd": 347.99,
+      "symbol": "ULTA"
+    },
+    {
+      "dollar_volume_usd": 48813083.685,
+      "liquidity_rank": 80,
+      "locate": 8388,
+      "median_trade_price_usd": 73.22,
+      "symbol": "VRNS"
+    },
+    {
+      "dollar_volume_usd": 37536241.09,
+      "liquidity_rank": 105,
+      "locate": 8393,
+      "median_trade_price_usd": 152.17,
+      "symbol": "VRSK"
+    },
+    {
+      "dollar_volume_usd": 22884548.32,
+      "liquidity_rank": 162,
+      "locate": 8394,
+      "median_trade_price_usd": 214.33,
+      "symbol": "VRSN"
+    },
+    {
+      "dollar_volume_usd": 80387316.05,
+      "liquidity_rank": 46,
+      "locate": 8399,
+      "median_trade_price_usd": 170.14,
+      "symbol": "VRTX"
+    },
+    {
+      "dollar_volume_usd": 37848751.49,
+      "liquidity_rank": 103,
+      "locate": 8470,
+      "median_trade_price_usd": 55.32,
+      "symbol": "WBA"
+    },
+    {
+      "dollar_volume_usd": 129630647.68,
+      "liquidity_rank": 25,
+      "locate": 8496,
+      "median_trade_price_usd": 208.41,
+      "symbol": "WDAY"
+    },
+    {
+      "dollar_volume_usd": 62027883.71,
+      "liquidity_rank": 62,
+      "locate": 8497,
+      "median_trade_price_usd": 56.0,
+      "symbol": "WDC"
+    },
+    {
+      "dollar_volume_usd": 52484294.17,
+      "liquidity_rank": 72,
+      "locate": 8649,
+      "median_trade_price_usd": 135.97,
+      "symbol": "WYNN"
+    },
+    {
+      "dollar_volume_usd": 43355270.275,
+      "liquidity_rank": 93,
+      "locate": 8665,
+      "median_trade_price_usd": 60.555,
+      "symbol": "XEL"
+    },
+    {
+      "dollar_volume_usd": 80462879.415,
+      "liquidity_rank": 45,
+      "locate": 8688,
+      "median_trade_price_usd": 119.79,
+      "symbol": "XLNX"
+    },
+    {
+      "dollar_volume_usd": 17231534.1,
+      "liquidity_rank": 200,
+      "locate": 8721,
+      "median_trade_price_usd": 56.65,
+      "symbol": "XRAY"
+    },
+    {
+      "dollar_volume_usd": 29917871.305,
+      "liquidity_rank": 124,
+      "locate": 8784,
+      "median_trade_price_usd": 48.68,
+      "symbol": "Z"
+    },
+    {
+      "dollar_volume_usd": 96877730.955,
+      "liquidity_rank": 35,
+      "locate": 8794,
+      "median_trade_price_usd": 217.08,
+      "symbol": "ZBRA"
+    },
+    {
+      "dollar_volume_usd": 22293683.33,
+      "liquidity_rank": 166,
+      "locate": 8813,
+      "median_trade_price_usd": 45.1,
+      "symbol": "ZION"
+    },
+    {
+      "dollar_volume_usd": 39980674.61,
+      "liquidity_rank": 98,
+      "locate": 8822,
+      "median_trade_price_usd": 96.7,
+      "symbol": "ZM"
+    },
+    {
+      "dollar_volume_usd": 17337340.57,
+      "liquidity_rank": 198,
+      "locate": 8825,
+      "median_trade_price_usd": 6.42,
+      "symbol": "ZNGA"
+    },
+    {
+      "dollar_volume_usd": 24722017.78,
+      "liquidity_rank": 152,
+      "locate": 8830,
+      "median_trade_price_usd": 84.93,
+      "symbol": "ZS"
+    }
+  ],
+  "decile_members": 220,
+  "raw_sha256": "c65784c48c28735901ae442dc00e215834218a359bc12a139ab4eec209bc2d4a",
+  "scope_locates": [
+    {
+      "dollar_volume_usd": 1523635898.25,
+      "liquidity_rank": 0,
+      "locate": 14,
+      "median_trade_price_usd": 208.92,
+      "symbol": "AAPL"
+    },
+    {
+      "dollar_volume_usd": 1412928038.59,
+      "liquidity_rank": 1,
+      "locate": 386,
+      "median_trade_price_usd": 1898.0,
+      "symbol": "AMZN"
+    },
+    {
+      "dollar_volume_usd": 966951452.635,
+      "liquidity_rank": 2,
+      "locate": 1142,
+      "median_trade_price_usd": 199.3,
+      "symbol": "BYND"
+    },
+    {
+      "dollar_volume_usd": 629117829.66,
+      "liquidity_rank": 3,
+      "locate": 2741,
+      "median_trade_price_usd": 196.98,
+      "symbol": "FB"
+    },
+    {
+      "dollar_volume_usd": 478005002.87,
+      "liquidity_rank": 4,
+      "locate": 5498,
+      "median_trade_price_usd": 325.79,
+      "symbol": "NFLX"
+    },
+    {
+      "dollar_volume_usd": 473482546.465,
+      "liquidity_rank": 5,
+      "locate": 337,
+      "median_trade_price_usd": 33.32,
+      "symbol": "AMD"
+    },
+    {
+      "dollar_volume_usd": 473233171.99,
+      "liquidity_rank": 6,
+      "locate": 3459,
+      "median_trade_price_usd": 1228.03,
+      "symbol": "GOOG"
+    },
+    {
+      "dollar_volume_usd": 455874478.88,
+      "liquidity_rank": 7,
+      "locate": 7928,
+      "median_trade_price_usd": 239.57,
+      "symbol": "TSLA"
+    },
+    {
+      "dollar_volume_usd": 454326851.77,
+      "liquidity_rank": 8,
+      "locate": 5289,
+      "median_trade_price_usd": 140.565,
+      "symbol": "MSFT"
+    },
+    {
+      "dollar_volume_usd": 400451545.2,
+      "liquidity_rank": 9,
+      "locate": 3460,
+      "median_trade_price_usd": 1230.54,
+      "symbol": "GOOGL"
+    },
+    {
+      "dollar_volume_usd": 275076856.305,
+      "liquidity_rank": 10,
+      "locate": 6474,
+      "median_trade_price_usd": 111.68,
+      "symbol": "PYPL"
+    },
+    {
+      "dollar_volume_usd": 253780727.78,
+      "liquidity_rank": 11,
+      "locate": 2884,
+      "median_trade_price_usd": 103.88,
+      "symbol": "FISV"
+    },
+    {
+      "dollar_volume_usd": 217773622.5,
+      "liquidity_rank": 12,
+      "locate": 5334,
+      "median_trade_price_usd": 47.02,
+      "symbol": "MU"
+    },
+    {
+      "dollar_volume_usd": 215781672.935,
+      "liquidity_rank": 13,
+      "locate": 91,
+      "median_trade_price_usd": 303.99,
+      "symbol": "ADBE"
+    },
+    {
+      "dollar_volume_usd": 207891407.025,
+      "liquidity_rank": 14,
+      "locate": 5702,
+      "median_trade_price_usd": 174.85,
+      "symbol": "NVDA"
+    },
+    {
+      "dollar_volume_usd": 199033884.525,
+      "liquidity_rank": 15,
+      "locate": 4106,
+      "median_trade_price_usd": 299.08,
+      "symbol": "ILMN"
+    },
+    {
+      "dollar_volume_usd": 190297680.655,
+      "liquidity_rank": 16,
+      "locate": 4184,
+      "median_trade_price_usd": 51.95,
+      "symbol": "INTC"
+    },
+    {
+      "dollar_volume_usd": 171205037.49,
+      "liquidity_rank": 17,
+      "locate": 6494,
+      "median_trade_price_usd": 74.81,
+      "symbol": "QCOM"
+    },
+    {
+      "dollar_volume_usd": 167284067.835,
+      "liquidity_rank": 18,
+      "locate": 7450,
+      "median_trade_price_usd": 49.52,
+      "symbol": "SSNC"
+    },
+    {
+      "dollar_volume_usd": 147425297.985,
+      "liquidity_rank": 19,
+      "locate": 1428,
+      "median_trade_price_usd": 396.68,
+      "symbol": "CHTR"
+    },
+    {
+      "dollar_volume_usd": 145162601.755,
+      "liquidity_rank": 20,
+      "locate": 7991,
+      "median_trade_price_usd": 128.29,
+      "symbol": "TXN"
+    },
+    {
+      "dollar_volume_usd": 135033125.39,
+      "liquidity_rank": 21,
+      "locate": 2263,
+      "median_trade_price_usd": 88.22,
+      "symbol": "EA"
+    },
+    {
+      "dollar_volume_usd": 134564638.725,
+      "liquidity_rank": 22,
+      "locate": 6964,
+      "median_trade_price_usd": 97.08,
+      "symbol": "SBUX"
+    },
+    {
+      "dollar_volume_usd": 133679243.74,
+      "liquidity_rank": 23,
+      "locate": 6089,
+      "median_trade_price_usd": 131.09,
+      "symbol": "PEP"
+    },
+    {
+      "dollar_volume_usd": 132374513.81,
+      "liquidity_rank": 24,
+      "locate": 5736,
+      "median_trade_price_usd": 104.94,
+      "symbol": "NXPI"
+    },
+    {
+      "dollar_volume_usd": 129630647.68,
+      "liquidity_rank": 25,
+      "locate": 8496,
+      "median_trade_price_usd": 208.41,
+      "symbol": "WDAY"
+    },
+    {
+      "dollar_volume_usd": 125992476.18,
+      "liquidity_rank": 26,
+      "locate": 2686,
+      "median_trade_price_usd": 117.91,
+      "symbol": "EXAS"
+    },
+    {
+      "dollar_volume_usd": 120385794.68,
+      "liquidity_rank": 27,
+      "locate": 280,
+      "median_trade_price_usd": 202.23,
+      "symbol": "ALGN"
+    },
+    {
+      "dollar_volume_usd": 117515694.965,
+      "liquidity_rank": 28,
+      "locate": 3339,
+      "median_trade_price_usd": 67.135,
+      "symbol": "GILD"
+    },
+    {
+      "dollar_volume_usd": 116523339.43,
+      "liquidity_rank": 29,
+      "locate": 2698,
+      "median_trade_price_usd": 134.97,
+      "symbol": "EXPE"
+    },
+    {
+      "dollar_volume_usd": 116185291.145,
+      "liquidity_rank": 30,
+      "locate": 7810,
+      "median_trade_price_usd": 81.47,
+      "symbol": "TMUS"
+    },
+    {
+      "dollar_volume_usd": 103095913.24,
+      "liquidity_rank": 31,
+      "locate": 6779,
+      "median_trade_price_usd": 105.71,
+      "symbol": "ROKU"
+    },
+    {
+      "dollar_volume_usd": 102157142.665,
+      "liquidity_rank": 32,
+      "locate": 869,
+      "median_trade_price_usd": 240.65,
+      "symbol": "BIIB"
+    },
+    {
+      "dollar_volume_usd": 101331351.485,
+      "liquidity_rank": 33,
+      "locate": 1740,
+      "median_trade_price_usd": 56.65,
+      "symbol": "CSCO"
+    },
+    {
+      "dollar_volume_usd": 97369134.715,
+      "liquidity_rank": 34,
+      "locate": 342,
+      "median_trade_price_usd": 176.03,
+      "symbol": "AMGN"
+    },
+    {
+      "dollar_volume_usd": 96877730.955,
+      "liquidity_rank": 35,
+      "locate": 8794,
+      "median_trade_price_usd": 217.08,
+      "symbol": "ZBRA"
+    },
+    {
+      "dollar_volume_usd": 91370819.56,
+      "liquidity_rank": 36,
+      "locate": 908,
+      "median_trade_price_usd": 1914.81,
+      "symbol": "BKNG"
+    },
+    {
+      "dollar_volume_usd": 89569570.57,
+      "liquidity_rank": 37,
+      "locate": 320,
+      "median_trade_price_usd": 114.38,
+      "symbol": "ALXN"
+    },
+    {
+      "dollar_volume_usd": 89122117.045,
+      "liquidity_rank": 38,
+      "locate": 5417,
+      "median_trade_price_usd": 95.35,
+      "symbol": "NBIX"
+    },
+    {
+      "dollar_volume_usd": 86782366.43,
+      "liquidity_rank": 39,
+      "locate": 1311,
+      "median_trade_price_usd": 92.58,
+      "symbol": "CELG"
+    },
+    {
+      "dollar_volume_usd": 86518757.06,
+      "liquidity_rank": 40,
+      "locate": 5039,
+      "median_trade_price_usd": 635.53,
+      "symbol": "MELI"
+    },
+    {
+      "dollar_volume_usd": 85522867.05,
+      "liquidity_rank": 41,
+      "locate": 103,
+      "median_trade_price_usd": 165.92,
+      "symbol": "ADP"
+    },
+    {
+      "dollar_volume_usd": 84189021.185,
+      "liquidity_rank": 42,
+      "locate": 1534,
+      "median_trade_price_usd": 43.98,
+      "symbol": "CMCSA"
+    },
+    {
+      "dollar_volume_usd": 81299641.845,
+      "liquidity_rank": 43,
+      "locate": 627,
+      "median_trade_price_usd": 299.63,
+      "symbol": "AVGO"
+    },
+    {
+      "dollar_volume_usd": 80941520.74,
+      "liquidity_rank": 44,
+      "locate": 5020,
+      "median_trade_price_usd": 54.98,
+      "symbol": "MDLZ"
+    },
+    {
+      "dollar_volume_usd": 80462879.415,
+      "liquidity_rank": 45,
+      "locate": 8688,
+      "median_trade_price_usd": 119.79,
+      "symbol": "XLNX"
+    },
+    {
+      "dollar_volume_usd": 80387316.05,
+      "liquidity_rank": 46,
+      "locate": 8399,
+      "median_trade_price_usd": 170.14,
+      "symbol": "VRTX"
+    },
+    {
+      "dollar_volume_usd": 79647587.81,
+      "liquidity_rank": 47,
+      "locate": 7941,
+      "median_trade_price_usd": 265.69,
+      "symbol": "TTD"
+    },
+    {
+      "dollar_volume_usd": 79594163.2,
+      "liquidity_rank": 48,
+      "locate": 1767,
+      "median_trade_price_usd": 69.89,
+      "symbol": "CSX"
+    },
+    {
+      "dollar_volume_usd": 79481725.29,
+      "liquidity_rank": 49,
+      "locate": 1539,
+      "median_trade_price_usd": 198.06,
+      "symbol": "CME"
+    },
+    {
+      "dollar_volume_usd": 75012565.35,
+      "liquidity_rank": 50,
+      "locate": 4267,
+      "median_trade_price_usd": 533.13,
+      "symbol": "ISRG"
+    },
+    {
+      "dollar_volume_usd": 72356902.295,
+      "liquidity_rank": 51,
+      "locate": 2046,
+      "median_trade_price_usd": 35.56,
+      "symbol": "DISH"
+    },
+    {
+      "dollar_volume_usd": 71972450.005,
+      "liquidity_rank": 52,
+      "locate": 5986,
+      "median_trade_price_usd": 86.465,
+      "symbol": "PAYX"
+    },
+    {
+      "dollar_volume_usd": 71451727.75,
+      "liquidity_rank": 53,
+      "locate": 6939,
+      "median_trade_price_usd": 246.98,
+      "symbol": "SBAC"
+    },
+    {
+      "dollar_volume_usd": 68909376.025,
+      "liquidity_rank": 54,
+      "locate": 4189,
+      "median_trade_price_usd": 279.81,
+      "symbol": "INTU"
+    },
+    {
+      "dollar_volume_usd": 68529357.085,
+      "liquidity_rank": 55,
+      "locate": 2519,
+      "median_trade_price_usd": 495.01,
+      "symbol": "EQIX"
+    },
+    {
+      "dollar_volume_usd": 67433316.655,
+      "liquidity_rank": 56,
+      "locate": 1732,
+      "median_trade_price_usd": 93.07,
+      "symbol": "CRWD"
+    },
+    {
+      "dollar_volume_usd": 65963096.585,
+      "liquidity_rank": 57,
+      "locate": 1363,
+      "median_trade_price_usd": 45.35,
+      "symbol": "CGNX"
+    },
+    {
+      "dollar_volume_usd": 65810869.255,
+      "liquidity_rank": 58,
+      "locate": 1648,
+      "median_trade_price_usd": 279.67,
+      "symbol": "COST"
+    },
+    {
+      "dollar_volume_usd": 63908665.5,
+      "liquidity_rank": 59,
+      "locate": 8091,
+      "median_trade_price_usd": 347.99,
+      "symbol": "ULTA"
+    },
+    {
+      "dollar_volume_usd": 63761144.495,
+      "liquidity_rank": 60,
+      "locate": 1808,
+      "median_trade_price_usd": 95.02,
+      "symbol": "CTXS"
+    },
+    {
+      "dollar_volume_usd": 63183066.12,
+      "liquidity_rank": 61,
+      "locate": 7955,
+      "median_trade_price_usd": 122.48,
+      "symbol": "TTWO"
+    },
+    {
+      "dollar_volume_usd": 62027883.71,
+      "liquidity_rank": 62,
+      "locate": 8497,
+      "median_trade_price_usd": 56.0,
+      "symbol": "WDC"
+    },
+    {
+      "dollar_volume_usd": 61184771.825,
+      "liquidity_rank": 63,
+      "locate": 3318,
+      "median_trade_price_usd": 73.89,
+      "symbol": "GHDX"
+    },
+    {
+      "dollar_volume_usd": 59744672.835,
+      "liquidity_rank": 64,
+      "locate": 1744,
+      "median_trade_price_usd": 619.99,
+      "symbol": "CSGP"
+    },
+    {
+      "dollar_volume_usd": 59683306.655,
+      "liquidity_rank": 65,
+      "locate": 5035,
+      "median_trade_price_usd": 79.225,
+      "symbol": "MEDP"
+    },
+    {
+      "dollar_volume_usd": 59393374.54,
+      "liquidity_rank": 66,
+      "locate": 5895,
+      "median_trade_price_usd": 384.33,
+      "symbol": "ORLY"
+    },
+    {
+      "dollar_volume_usd": 58962734.665,
+      "liquidity_rank": 67,
+      "locate": 4878,
+      "median_trade_price_usd": 211.34,
+      "symbol": "LRCX"
+    },
+    {
+      "dollar_volume_usd": 58359447.54,
+      "liquidity_rank": 68,
+      "locate": 3499,
+      "median_trade_price_usd": 77.12,
+      "symbol": "GRMN"
+    },
+    {
+      "dollar_volume_usd": 57889668.71,
+      "liquidity_rank": 69,
+      "locate": 325,
+      "median_trade_price_usd": 50.76,
+      "symbol": "AMAT"
+    },
+    {
+      "dollar_volume_usd": 53650363.925,
+      "liquidity_rank": 70,
+      "locate": 2277,
+      "median_trade_price_usd": 41.36,
+      "symbol": "EBAY"
+    },
+    {
+      "dollar_volume_usd": 53209925.45,
+      "liquidity_rank": 71,
+      "locate": 5825,
+      "median_trade_price_usd": 132.24,
+      "symbol": "OKTA"
+    },
+    {
+      "dollar_volume_usd": 52484294.17,
+      "liquidity_rank": 72,
+      "locate": 8649,
+      "median_trade_price_usd": 135.97,
+      "symbol": "WYNN"
+    },
+    {
+      "dollar_volume_usd": 52452434.85,
+      "liquidity_rank": 73,
+      "locate": 6631,
+      "median_trade_price_usd": 309.07,
+      "symbol": "REGN"
+    },
+    {
+      "dollar_volume_usd": 52306347.63,
+      "liquidity_rank": 74,
+      "locate": 2084,
+      "median_trade_price_usd": 102.4,
+      "symbol": "DLTR"
+    },
+    {
+      "dollar_volume_usd": 51199424.24,
+      "liquidity_rank": 75,
+      "locate": 604,
+      "median_trade_price_usd": 47.98,
+      "symbol": "ATVI"
+    },
+    {
+      "dollar_volume_usd": 50878100.865,
+      "liquidity_rank": 76,
+      "locate": 111,
+      "median_trade_price_usd": 161.04,
+      "symbol": "ADSK"
+    },
+    {
+      "dollar_volume_usd": 50086138.09,
+      "liquidity_rank": 77,
+      "locate": 1799,
+      "median_trade_price_usd": 65.34,
+      "symbol": "CTSH"
+    },
+    {
+      "dollar_volume_usd": 49123509.81,
+      "liquidity_rank": 78,
+      "locate": 4910,
+      "median_trade_price_usd": 191.75,
+      "symbol": "LULU"
+    },
+    {
+      "dollar_volume_usd": 48908801.575,
+      "liquidity_rank": 79,
+      "locate": 5007,
+      "median_trade_price_usd": 142.88,
+      "symbol": "MDB"
+    },
+    {
+      "dollar_volume_usd": 48813083.685,
+      "liquidity_rank": 80,
+      "locate": 8388,
+      "median_trade_price_usd": 73.22,
+      "symbol": "VRNS"
+    },
+    {
+      "dollar_volume_usd": 48772816.16,
+      "liquidity_rank": 81,
+      "locate": 7701,
+      "median_trade_price_usd": 57.25,
+      "symbol": "TER"
+    },
+    {
+      "dollar_volume_usd": 48537092.71,
+      "liquidity_rank": 82,
+      "locate": 3617,
+      "median_trade_price_usd": 124.37,
+      "symbol": "HAS"
+    },
+    {
+      "dollar_volume_usd": 48362948.59,
+      "liquidity_rank": 83,
+      "locate": 4991,
+      "median_trade_price_usd": 96.56,
+      "symbol": "MCHP"
+    },
+    {
+      "dollar_volume_usd": 47794887.555,
+      "liquidity_rank": 84,
+      "locate": 1295,
+      "median_trade_price_usd": 113.32,
+      "symbol": "CDW"
+    },
+    {
+      "dollar_volume_usd": 47384259.385,
+      "liquidity_rank": 85,
+      "locate": 94,
+      "median_trade_price_usd": 120.96,
+      "symbol": "ADI"
+    },
+    {
+      "dollar_volume_usd": 46717377.17,
+      "liquidity_rank": 86,
+      "locate": 8014,
+      "median_trade_price_usd": 93.34,
+      "symbol": "UAL"
+    },
+    {
+      "dollar_volume_usd": 46658510.555,
+      "liquidity_rank": 87,
+      "locate": 4212,
+      "median_trade_price_usd": 137.03,
+      "symbol": "IPGP"
+    },
+    {
+      "dollar_volume_usd": 46383584.63,
+      "liquidity_rank": 88,
+      "locate": 5273,
+      "median_trade_price_usd": 26.87,
+      "symbol": "MRVL"
+    },
+    {
+      "dollar_volume_usd": 46023361.97,
+      "liquidity_rank": 89,
+      "locate": 4953,
+      "median_trade_price_usd": 140.62,
+      "symbol": "MAR"
+    },
+    {
+      "dollar_volume_usd": 45982234.805,
+      "liquidity_rank": 90,
+      "locate": 7163,
+      "median_trade_price_usd": 6.2,
+      "symbol": "SIRI"
+    },
+    {
+      "dollar_volume_usd": 45066751.65,
+      "liquidity_rank": 91,
+      "locate": 2730,
+      "median_trade_price_usd": 102.45,
+      "symbol": "FANG"
+    },
+    {
+      "dollar_volume_usd": 44843669.225,
+      "liquidity_rank": 92,
+      "locate": 7358,
+      "median_trade_price_usd": 137.96,
+      "symbol": "SPLK"
+    },
+    {
+      "dollar_volume_usd": 43355270.275,
+      "liquidity_rank": 93,
+      "locate": 8665,
+      "median_trade_price_usd": 60.555,
+      "symbol": "XEL"
+    },
+    {
+      "dollar_volume_usd": 42456016.375,
+      "liquidity_rank": 94,
+      "locate": 7498,
+      "median_trade_price_usd": 35.93,
+      "symbol": "STNE"
+    },
+    {
+      "dollar_volume_usd": 41574158.005,
+      "liquidity_rank": 95,
+      "locate": 7,
+      "median_trade_price_usd": 30.645,
+      "symbol": "AAL"
+    },
+    {
+      "dollar_volume_usd": 41148410.63,
+      "liquidity_rank": 96,
+      "locate": 250,
+      "median_trade_price_usd": 83.97,
+      "symbol": "AKAM"
+    },
+    {
+      "dollar_volume_usd": 40190461.25,
+      "liquidity_rank": 97,
+      "locate": 379,
+      "median_trade_price_usd": 51.21,
+      "symbol": "AMTD"
+    },
+    {
+      "dollar_volume_usd": 39980674.61,
+      "liquidity_rank": 98,
+      "locate": 8822,
+      "median_trade_price_usd": 96.7,
+      "symbol": "ZM"
+    },
+    {
+      "dollar_volume_usd": 39852077.35,
+      "liquidity_rank": 99,
+      "locate": 4144,
+      "median_trade_price_usd": 84.11,
+      "symbol": "INCY"
+    },
+    {
+      "dollar_volume_usd": 39096452.84,
+      "liquidity_rank": 100,
+      "locate": 5371,
+      "median_trade_price_usd": 64.135,
+      "symbol": "MXIM"
+    },
+    {
+      "dollar_volume_usd": 39075657.045,
+      "liquidity_rank": 101,
+      "locate": 1774,
+      "median_trade_price_usd": 261.98,
+      "symbol": "CTAS"
+    },
+    {
+      "dollar_volume_usd": 38551870.285,
+      "liquidity_rank": 102,
+      "locate": 1327,
+      "median_trade_price_usd": 73.59,
+      "symbol": "CERN"
+    },
+    {
+      "dollar_volume_usd": 37848751.49,
+      "liquidity_rank": 103,
+      "locate": 8470,
+      "median_trade_price_usd": 55.32,
+      "symbol": "WBA"
+    },
+    {
+      "dollar_volume_usd": 37665397.16,
+      "liquidity_rank": 104,
+      "locate": 7992,
+      "median_trade_price_usd": 56.86,
+      "symbol": "TXRH"
+    },
+    {
+      "dollar_volume_usd": 37536241.09,
+      "liquidity_rank": 105,
+      "locate": 8393,
+      "median_trade_price_usd": 152.17,
+      "symbol": "VRSK"
+    },
+    {
+      "dollar_volume_usd": 36931088.32,
+      "liquidity_rank": 106,
+      "locate": 1419,
+      "median_trade_price_usd": 85.23,
+      "symbol": "CHRW"
+    },
+    {
+      "dollar_volume_usd": 36903111.98,
+      "liquidity_rank": 107,
+      "locate": 5913,
+      "median_trade_price_usd": 22.82,
+      "symbol": "OSTK"
+    },
+    {
+      "dollar_volume_usd": 36853465.38,
+      "liquidity_rank": 108,
+      "locate": 4777,
+      "median_trade_price_usd": 95.57,
+      "symbol": "LGND"
+    },
+    {
+      "dollar_volume_usd": 36384629.09,
+      "liquidity_rank": 109,
+      "locate": 4931,
+      "median_trade_price_usd": 62.36,
+      "symbol": "LYFT"
+    },
+    {
+      "dollar_volume_usd": 35682939.685,
+      "liquidity_rank": 110,
+      "locate": 7895,
+      "median_trade_price_usd": 114.78,
+      "symbol": "TROW"
+    },
+    {
+      "dollar_volume_usd": 35481732.83,
+      "liquidity_rank": 111,
+      "locate": 4,
+      "median_trade_price_usd": 70.7,
+      "symbol": "AABA"
+    },
+    {
+      "dollar_volume_usd": 33725265.945,
+      "liquidity_rank": 112,
+      "locate": 33,
+      "median_trade_price_usd": 277.85,
+      "symbol": "ABMD"
+    },
+    {
+      "dollar_volume_usd": 33631898.72,
+      "liquidity_rank": 113,
+      "locate": 6947,
+      "median_trade_price_usd": 50.02,
+      "symbol": "SBGI"
+    },
+    {
+      "dollar_volume_usd": 33524618.745,
+      "liquidity_rank": 114,
+      "locate": 7557,
+      "median_trade_price_usd": 87.5,
+      "symbol": "SWKS"
+    },
+    {
+      "dollar_volume_usd": 33140455.175,
+      "liquidity_rank": 115,
+      "locate": 936,
+      "median_trade_price_usd": 133.31,
+      "symbol": "BLUE"
+    },
+    {
+      "dollar_volume_usd": 33086387.97,
+      "liquidity_rank": 116,
+      "locate": 7289,
+      "median_trade_price_usd": 135.55,
+      "symbol": "SNPS"
+    },
+    {
+      "dollar_volume_usd": 32713292.175,
+      "liquidity_rank": 117,
+      "locate": 5828,
+      "median_trade_price_usd": 212.96,
+      "symbol": "OLED"
+    },
+    {
+      "dollar_volume_usd": 32517176.92,
+      "liquidity_rank": 118,
+      "locate": 6021,
+      "median_trade_price_usd": 70.61,
+      "symbol": "PCAR"
+    },
+    {
+      "dollar_volume_usd": 32060246.96,
+      "liquidity_rank": 119,
+      "locate": 6789,
+      "median_trade_price_usd": 106.21,
+      "symbol": "ROST"
+    }
+  ],
+  "scope_size": 120,
+  "scope_status": "REPLAY_SCOPE_NOT_UNIVERSE_MEMBERSHIP",
+  "security_type_eligible": 2387,
+  "selection_variable": "same-day dollar volume from the venue trade tape (E at the resting order price, C at the execution price, P non-cross trades); crosses excluded",
+  "status": "SINGLE_DAY_LIQUIDITY_PROXY_NOT_UNIVERSE_MEMBERSHIP",
+  "universe_rule_id": "NASDAQ-LARGETICK-QIMB-UNIV-v1"
+}

@@ -29,7 +29,7 @@
   "kill_potential": "LOW",
   "known_evidence_ids": [],
   "known_source_ids": [],
-  "last_updated": "2026-09-20T19:20:01Z",
+  "last_updated": "2026-09-24T01:20:54Z",
   "parent_issue_id": "UNK-0027",
   "priority_reason": "Deferred as a group: each of these branches is currently blocked on access or mechanism, so instrument specification would not move them yet. Recorded so the group is visible rather than silently unscheduled.",
   "priority_score": null,

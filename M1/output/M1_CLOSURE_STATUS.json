@@ -4,9 +4,9 @@
   ],
   "candidate_counts": {
     "ALIVE": 0,
-    "DEAD": 7,
+    "DEAD": 8,
     "UNKNOWN": 16,
-    "WEAK": 5,
+    "WEAK": 4,
     "total": 28
   },
   "closure_modes": {
@@ -806,8 +806,8 @@
       }
     }
   },
-  "generated_at": "2026-09-20T19:20:01Z",
-  "iterations_recorded": 5,
+  "generated_at": "2026-09-24T01:20:54Z",
+  "iterations_recorded": 6,
   "m2_specs_generated": [
     "CAPACITY",
     "COST_SENSITIVITY",

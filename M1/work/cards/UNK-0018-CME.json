@@ -25,7 +25,7 @@
     "SRC-0235",
     "SRC-0115"
   ],
-  "last_updated": "2026-09-20T19:20:01Z",
+  "last_updated": "2026-09-24T01:20:54Z",
   "parent_issue_id": "UNK-0018",
   "priority_reason": "Scoped child of the cross-venue timestamp blocker: the CME question is answerable by the exchange and does not depend on any other venue's feed.",
   "priority_score": null,

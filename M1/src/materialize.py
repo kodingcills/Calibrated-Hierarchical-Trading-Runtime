@@ -338,7 +338,9 @@ def build_dead_rows(candidates, ev_rows):
             "candidate_class": cand["candidate_class"],
             "death_date": "2026-09-20",
             "death_date_basis": "date of the M1-A artifact (SRC-0011) for the original kills; "
-                                "computed-gate kills are dated by gate_recompute_date",
+                                "M1-D0 computed-gate kills are dated by gate_recompute_date; a kill "
+                                "recorded from M2 evidence carries its experiment date in the cause "
+                                "text and in its evidence rows rather than in this column",
             "kill_gate": "|".join(fails) if fails else cand["kill_gate"],
             "kill_basis": "COMPUTED_GATE_FAIL" if computed_fail else "RECORDED_DECISION",
             "report_kill_gate": tuples.REPORT_KILL_GATE.get(cid),

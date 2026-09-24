@@ -28,7 +28,7 @@
   "known_source_ids": [
     "SRC-0111"
   ],
-  "last_updated": "2026-09-20T19:20:01Z",
+  "last_updated": "2026-09-24T01:20:54Z",
   "parent_issue_id": null,
   "priority_reason": "M1-BLOCKING retained; fee and liquidation facts are public research, replay procurement needs a vendor/data request, so the binding method is EXTERNAL_ACTION.",
   "priority_score": null,

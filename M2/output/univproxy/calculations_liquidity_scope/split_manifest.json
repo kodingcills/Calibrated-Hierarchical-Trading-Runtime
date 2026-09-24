@@ -1,0 +1,10 @@
+{
+  "available_days": [
+    "2019-07-30"
+  ],
+  "note": "the development sample day can never be renamed a test partition",
+  "partitions": [],
+  "rule": "development / validation / sealed_test require at least three trading days",
+  "sealed_test_readable_by_m2_0": false,
+  "status": "NO_SPLIT_POSSIBLE_INSUFFICIENT_COVERAGE"
+}

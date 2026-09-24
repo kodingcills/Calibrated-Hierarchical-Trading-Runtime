@@ -1,0 +1,82 @@
+{
+  "experiment_id": "M2-0-6-UNIVPROXY",
+  "record": "AS_RUN_INPUTS_AND_ARTIFACTS",
+  "written_after_run": true,
+  "note": "The experiment contract is M2/experiments/M2-0-6-UNIVPROXY/freeze.json, sealed before any proxy-run observation was inspected. This file records the inputs and artifacts as they were actually produced. It does not modify the freeze.",
+  "freeze_sha256_recomputed": "4fc098a36550854e93451e4d5408474fe771fc9ce9081d50ad0b71a20c32b38b",
+  "freeze_sha256_recomputed_matches_sealed": true,
+
+  "code_sha256": {
+    "M2/src/universe_proxy.py": "ce527a3e34f80c315547985f32157e28f2c3a9d37e0d1d2e50fea8e872d8021d",
+    "M2/src/book.py": "b75c39d7adf7897c3110a2b2c2cd88097ccafd64c67da3e5d9a579e399d119ee",
+    "M2/src/calculate.py": "8a6a0534cec0142fbdc56fa4ea9d354f497cad2358f067b261a74a93439edef7",
+    "M2/src/feasibility.py": "855eccc6ca438ff6ddd17b286a846d71a008f287e0b609293ab7e95cb9986b02",
+    "M2/src/universe.py": "1a17afc1e137241a4a190dcc7a85a0adacecaeff06787a0ba18a1420222390eb",
+    "M2/src/costs.py": "1df0ed45e5663614f799350f87b52abcc863ba47f933fc0791e595cec0e3d36f",
+    "M2/src/features.py": "b70cde5dcd420ddd9b65aabaac79dee6189914dfd60436bffcefa23444d4bfae",
+    "M2/src/labels.py": "97cf0befc7042f50f7fec93b5188dd7efe5dcf59e0e1966017d081e793a4a461",
+    "M2/src/ingest.py": "84b94a1a26f9771d1c498e1906666b0deaefd5f37c99a215a6fe0fc7c2f37fad",
+    "M2/tests/test_universe_proxy.py": "fecbc916e8d483d278995975622b3379611d031a46d019e9b31553c34465a62d",
+    "M2/tests/test_feasibility.py": "9e18550f3f182e69f7e46715d3c4a67d6b620cd64c32ac5f6056f5e0dcc68b9f",
+    "M1/src/book.py_unchanged_note": "M2-0's default add-count ranking path is unchanged; only an explicit-locates manifest branch was added, and the regression suite covers both paths (99 M2 tests pass)."
+  },
+  "config_sha256": "2ec5f58afeb2cf7462cb896642a53ccba62f26b0dfba0885cea57eb814b50119",
+  "cost_ledger_sha256": "52ce785fc7210138af4059e327fc7101dff7f78dff3f5156c045973c1ed4cb17",
+  "raw_sha256": "c65784c48c28735901ae442dc00e215834218a359bc12a139ab4eec209bc2d4a",
+
+  "inputs": {
+    "M2/data/manifests/proxy_scope_manifest.json": "7629ec0967ad6f0c9d012249f6b273988717811bef5b202afbb37feaceb3b1ff"
+  },
+  "derived": {
+    "M2/data/derived_univproxy/NASDAQ-ITCH50-PUBLIC-SAMPLE-20190730/ingest_summary.json": "38b4b308a870eaf7069df461a9c63a9f794ca9633545d8ea522132ee5d6f6f24",
+    "M2/data/derived_univproxy/NASDAQ-ITCH50-PUBLIC-SAMPLE-20190730/replay_summary.json": "f5e8cb5e2327d053e1cd989f44bcc63e6ff18d02fe8ae8cb72c88c9f4252c897",
+    "M2/data/derived_univproxy/NASDAQ-ITCH50-PUBLIC-SAMPLE-20190730/decisions.parquet": "4ce1082fe3bd7548093daebb528ef733b9b90183650ff4f85efcf1479ba5729a",
+    "M2/data/derived_univproxy/NASDAQ-ITCH50-PUBLIC-SAMPLE-20190730/delay_decisions.parquet": "6fe1aba7a9923514d7d1bf40a4ad5362cbd2c1c7a315b65f2fab2b44c9490412"
+  },
+  "population_artifacts": {
+    "M2/output/univproxy/data_quality/proxy_liquidity_scan.csv": "70f4ffe66141ee0d8d87c9f76695d5ad769d387975c3c2b58436a784f16f647a",
+    "M2/output/univproxy/data_quality/scope_manifest.csv": "0b8c0929d3dfc0b995da487a9d1ae6bf86a5f771268d548d5a989071b3244dad",
+    "M2/output/univproxy/data_quality/large_tick_proxy_membership.csv": "751f78aa467c867b2d5ca34431f35d52c464dc92e134b94c52358c2144ab4f2a",
+    "M2/output/univproxy/data_quality/large_tick_proxy_subset.csv": "f2194a2e54f37cb9fb084687d043e8019cdfbc12d4be5475260e1b234c3ef019"
+  },
+  "results": {
+    "primary_population_33_symbols": {
+      "M2/output/univproxy/calculations/aggressive_feasibility_by_state.csv": "e557de418c034ba984153bf2e68ed29926a6bfa1783fe5f716d48a4420d438c2",
+      "M2/output/univproxy/calculations/breakeven_hurdle.csv": "e85caab279df6b41fe3c628eb6f0b7bdbb3d201be26b233f5bbd25f2cee9e170",
+      "M2/output/univproxy/calculations/oracle_upper_bound.csv": "9ac573c45adcaee8d6c3d2066566c20f8cce22fc3eb2bb244589feed32eb42ff",
+      "M2/output/univproxy/calculations/qimb_constrained_bound.csv": "e38a2242224c34136dd3082caa4da63bd3a9059b2a8500f904663f4e24bf8fd1",
+      "M2/output/univproxy/calculations/feasibility_status.json": "bff97e3569fd61fe6b97a3b1b2620307625c06c2f1f3a57b19aff91bad3d4e90"
+    },
+    "liquidity_scope_115_symbols": {
+      "M2/output/univproxy/calculations_liquidity_scope/aggressive_feasibility_by_state.csv": "61dccaa160022b6b27ab13d5080635075cadac1a31361c07c26e667fe09cdb08",
+      "M2/output/univproxy/calculations_liquidity_scope/feasibility_status.json": "32a7cd3ae7a02703942c46cae40a4fe4ebab724bde5346628605add79a363155"
+    }
+  },
+  "as_run_deviations_from_freeze": [
+    {
+      "id": "M2-0-6-DEV1",
+      "frozen": "replay scope = top 120 by same-day dollar volume inside the single-day liquidity decile",
+      "as_run": "115 symbols",
+      "cause": "5 manifest names (CDW, CHRW, CRWD, PCAR, SBGI) failed the inherited dev_scope.require_price_floor guard because their FIRST pre-open add order was priced at $0.0088-$0.0100 (a stub quote). See defect M2-0-D4 below.",
+      "effect_on_verdict": "none: the loss is reported, not compensated; all five are mid-priced names whose inclusion would if anything have made the primary population larger, and the gate statistics are computed on the 115/33 actually replayed",
+      "recorded_in": "M2/output/univproxy/data_quality/scope_exclusions.csv"
+    }
+  ],
+  "defects_found": [
+    {
+      "id": "M2-0-D4",
+      "location": "M2/src/book.py::select_candidates — dev_scope.require_price_floor",
+      "expression": "first_add_price.get(locate, 0) < price_floor_raw",
+      "effect": "the $1 price floor is tested against the first ADD message of the day, which for 762 symbols is a pre-open stub order priced at about one cent; those symbols are excluded even when their traded price is far above $1. On this tape the guard removed 5 of 120 intended scope symbols.",
+      "impact_on_prior_evidence": "M2-0 reported no symbol lost to the price floor in its own 61-symbol add-count scope, so no M2-0 number changes; the defect only mislabelled the eligibility of names outside that scope.",
+      "correct_instrument": "a price statistic (M2/src/universe_proxy.py uses the day's trade-price median, which is what the frozen rule's relative-tick-size variable implies)",
+      "status": "REPORTED_NOT_REPAIRED (repair would invalidate the frozen run; the loss is recorded instead)"
+    },
+    {
+      "id": "M2-0-D5",
+      "location": "methodology note, not a code defect",
+      "observation": "the Nasdaq-only reconstructed book's touch is not the NBBO: 82 of 115 top-dollar-volume names have a median Nasdaq book spread above one tick (FB 2 ticks, NVDA 4 ticks, ...), so the frozen rule's one-tick large-tick screen selects 33 of the 115 largest names on this day.",
+      "impact": "this is a property of the candidate's own one-venue design and of the frozen universe rule, not an error; it is recorded because it bounds how many rule-conformant names exist"
+    }
+  ]
+}

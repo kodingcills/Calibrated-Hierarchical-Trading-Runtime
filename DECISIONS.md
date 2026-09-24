@@ -320,3 +320,55 @@ place in the human queue, and gets a consolidated bundle
 by candidate distance (fewest autonomous blockers, then most gates passed, then most Tier-1
 blockers, then fewest external items), not by issue breadth. The two metrics schedule work; they are
 never used to rank strategy quality.
+
+## D-0034 - The Nasdaq queue-imbalance aggressive candidate is killed on measured execution economics
+
+`TUP-NASDAQ-LARGETICK-H2-QIMB-AGG` fails KG3_EXECUTION and is registered DEAD (evidence EVD-0067,
+patch P-0006, `DEAD_ENDS.md`, `M1/data/dead_candidates.csv`). The kill rests on the project's own
+frozen measurement (experiment `M2-0-6-UNIVPROXY`, contract sha256 `4fc098a3…c32b38b`, sealed
+before any result was inspected), not on an inference:
+
+1. In the candidate's **own** population — Nasdaq-listed common stock with a one-tick median Nasdaq
+   book spread and top-decile dollar volume, i.e. the frozen rule's own sentences applied to a
+   one-day proxy of its 60-day lookback — the executed round trip is 4.1011 bps (2.5730 spread paid
+   plus 1.5281 exchange and statutory floor fee) against a 0.0794 bps mean side-signed mid move at
+   1000 ms. The signal supplies 1.94% of the hurdle; the required/signal ratio is 51.64 pooled and
+   10.69 in the best of 356 declared states.
+2. **0 of 356 declared states** is net-positive under the structural cost floor (the best loses
+   0.975 bps per trade), and the hurdle-clearing probability in the best state is 3.94% against a
+   0.279% unconditional base rate.
+3. The bound that decides it: with **perfect foresight** of the future bid and ask at every decision
+   instant, the aggressive round trip nets +0.822 bps per trade at the structural floor and
+   +0.219 bps per trade on the accessible broker path, on 1.18% of instants. Perfect abstention with
+   the imbalance-dictated side is worth 0.0052 bps per observation.
+4. The competing explanation was tested and rejected: the M2-0 compute scope (top 61 by order-add
+   message count) gives 56.9, statistically indistinguishable from 51.64, and a broader 115-name
+   dollar-volume scope containing the highest-priced names (AMZN $1898, GOOGL $1230, BKNG $1915)
+   gives 117.3 with a best cell of 6.55.
+
+This is not a cost-level kill of the kind D-0022 forbids: it rests on a *measured upper bound on the
+plausible gross effect* (a clairvoyant trade at the same instants and the same costs) that is
+smaller than the friction the strategy must pay.
+
+Boundaries recorded with the decision: one 2019 low-volatility session (measured move scale
+0.847 bps/s, ≈ 20.6% annualised). The best-state condition holds while a modern regime's move scale
+is below ≈ 2.1× that level and the pooled condition below ≈ 5×; beyond that the honest state would
+have been `EXTERNAL_BLOCK`, and the resurrection condition is a rule-conformant modern measurement
+with a pooled ratio at or below 5. **Passive execution is not killed**: it is untested, it requires a
+queue-aware fill model (`PASSIVE_FILL_MODEL`, `FILL_CONDITIONED_MARKOUT`), and it must be registered
+as its own candidate rather than as an execution-mode change on this row. No modern dataset purchase
+is justified for the aggressive branch. Enforced by: patch P-0006 (`M1/src/corpus/patches/`), the
+gate vector in `M1/src/corpus/tuples.py`, `M2/experiments/M2-0-6-UNIVPROXY/{freeze,run_inputs}.json`
+and `M2/output/M2_AUTONOMOUS_STATUS.md`.
+
+## D-0035 - A stop condition counts as a successful research outcome
+
+The M2 autonomous run terminated at `KILLED` and stopped. Recording the rule that made it stop, so a
+later session does not resume it out of habit: once an experiment's precommitted criterion is
+satisfied and no further available action could change one of `KILL` / `CONTINUE` / `PIVOT` /
+`ADVANCE` / `EXTERNAL_BLOCK`, the run ends and the repository is left with the evidence, the
+lineage, the boundary conditions and exactly one next action. Research activity that cannot change a
+decision is not evidence of progress, and continuing it is the failure mode this rule exists to
+prevent (as D-0022 already does for kills made on evidence absence rather than on measured bounds).
+Enforced by: `M2/output/M2_AUTONOMOUS_STATUS.md` ("NEXT ACTION" names one action and nothing else),
+this ledger, and the resurrection conditions carried per dead row.

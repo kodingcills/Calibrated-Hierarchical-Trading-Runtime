@@ -296,13 +296,20 @@ def select_candidates(
     summary: dict,
     directory: dict[int, dict],
 ) -> tuple[list[dict], list[dict]]:
-    """Rank structurally eligible symbols by order-add count.
+    """Rank structurally eligible symbols by order-add count, or take a frozen list.
 
     This is a COMPUTE-SCOPE decision for the development sample, not universe
     membership. It uses no return, no imbalance-predictiveness and no P&L
-    information; the ranking variable is a message count. The frozen universe rule
-    cannot be applied to a single day at all, because it requires a 60-trading-day
+    information; the default ranking variable is a message count. The frozen universe
+    rule cannot be applied to a single day at all, because it requires a 60-trading-day
     causal lookback plus a point-in-time reference.
+
+    When ``dev_scope.explicit_locates_manifest`` is set, the scope is the locate list
+    in that manifest instead of the add-count ranking. The manifest is produced by a
+    separate, frozen pass (``M2/src/universe_proxy.py``) whose ranking variable is the
+    rule's own liquidity variable; the same eligibility sentences below still apply,
+    so a locate in the manifest that fails them is excluded and reported rather than
+    silently accepted.
     """
     scope_config = configuration["dev_scope"]
     price_floor_raw = int(configuration["price_floor_usd"] * configuration["price_scale"])
@@ -338,6 +345,25 @@ def select_candidates(
                 "issue_classification": entry["issue_classification"],
             }
         )
+
+    manifest_path = scope_config.get("explicit_locates_manifest")
+    if manifest_path:
+        with open(config_module.repo_path(manifest_path), "r") as handle:
+            manifest = json.load(handle)
+        ordered = [int(entry["locate"]) for entry in manifest["scope_locates"]]
+        by_locate = {row["locate"]: row for row in candidates}
+        selected = []
+        for locate in ordered:
+            row = by_locate.pop(locate, None)
+            if row is None:
+                excluded.append({"locate": locate, "symbol": "", "reason": "MANIFEST_LOCATE_FAILS_ELIGIBILITY"})
+                continue
+            selected.append(row)
+        for row in by_locate.values():
+            excluded.append({"locate": row["locate"], "symbol": row["symbol"], "reason": "OUTSIDE_COMPUTE_SCOPE_MANIFEST"})
+        for rank, row in enumerate(selected):
+            row["rank"] = rank
+        return selected, excluded
 
     candidates.sort(key=lambda row: (-row["add_count"], row["symbol"]))
     pool = int(scope_config["candidate_pool_size"])
@@ -1314,7 +1340,7 @@ def main(argv: list[str] | None = None) -> int:
             "first_add_price_usd": row["first_add_price_raw"] / configuration["price_scale"],
             "market_category": row["market_category"],
             "issue_classification": row["issue_classification"],
-            "scope": "DEVELOPMENT_SCOPE_NOT_UNIVERSE_MEMBERSHIP",
+            "scope": configuration["dev_scope"].get("label", "DEVELOPMENT_SCOPE_NOT_UNIVERSE_MEMBERSHIP"),
         }
         for row in replayer.candidates
     ]

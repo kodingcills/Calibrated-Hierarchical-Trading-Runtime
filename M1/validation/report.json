@@ -4,7 +4,7 @@
       "name": "provenance references resolve",
       "note": "",
       "result": "PASS",
-      "rows_checked": 1251,
+      "rows_checked": 1266,
       "rule": "V1"
     },
     {
@@ -16,16 +16,16 @@
     },
     {
       "name": "gate ceiling and dead/ALIVE integrity",
-      "note": "0 kill(s) rest on a recorded decision; the remainder on computed FAILs",
+      "note": "1 kill(s) rest on a recorded decision; the remainder on computed FAILs",
       "result": "PASS",
-      "rows_checked": 35,
+      "rows_checked": 36,
       "rule": "V3"
     },
     {
       "name": "referential integrity",
       "note": "",
       "result": "PASS",
-      "rows_checked": 892,
+      "rows_checked": 910,
       "rule": "V4"
     },
     {
@@ -39,14 +39,14 @@
       "name": "stable ids unique",
       "note": "",
       "result": "PASS",
-      "rows_checked": 437,
+      "rows_checked": 440,
       "rule": "V6"
     },
     {
       "name": "time-sensitive sources dated",
       "note": "",
       "result": "PASS",
-      "rows_checked": 104,
+      "rows_checked": 105,
       "rule": "V7"
     },
     {
@@ -116,287 +116,7 @@
       "name": "patch integrity",
       "note": "",
       "result": "PASS",
-      "rows_checked": 5,
-      "rule": "V17"
-    },
-    {
-      "name": "work artefacts valid and complete",
-      "note": "",
-      "result": "PASS",
-      "rows_checked": 96,
-      "rule": "V18"
-    },
-    {
-      "name": "PROJECT_STATE prose carries no stale state values",
-      "note": "state-dependent numbers must live inside generated blocks",
-      "result": "PASS",
-      "rows_checked": 0,
-      "rule": "V19"
-    },
-    {
-      "name": "numeric facts carry sources or are declared UNKNOWN",
-      "note": "",
-      "result": "PASS",
-      "rows_checked": 2,
-      "rule": "V2"
-    },
-    {
-      "name": "numeric facts carry sources or are declared UNKNOWN",
-      "note": "",
-      "result": "PASS",
-      "rows_checked": 2,
-      "rule": "V2"
-    },
-    {
-      "name": "provenance references resolve",
-      "note": "",
-      "result": "PASS",
-      "rows_checked": 1251,
-      "rule": "V1"
-    },
-    {
-      "name": "numeric facts carry sources or are declared UNKNOWN",
-      "note": "",
-      "result": "PASS",
-      "rows_checked": 536,
-      "rule": "V2"
-    },
-    {
-      "name": "gate ceiling and dead/ALIVE integrity",
-      "note": "0 kill(s) rest on a recorded decision; the remainder on computed FAILs",
-      "result": "PASS",
-      "rows_checked": 35,
-      "rule": "V3"
-    },
-    {
-      "name": "referential integrity",
-      "note": "",
-      "result": "PASS",
-      "rows_checked": 892,
-      "rule": "V4"
-    },
-    {
-      "name": "no scoring or ranking artifacts",
-      "note": "",
-      "result": "PASS",
-      "rows_checked": 539,
-      "rule": "V5"
-    },
-    {
-      "name": "stable ids unique",
-      "note": "",
-      "result": "PASS",
-      "rows_checked": 437,
-      "rule": "V6"
-    },
-    {
-      "name": "time-sensitive sources dated",
-      "note": "",
-      "result": "PASS",
-      "rows_checked": 104,
-      "rule": "V7"
-    },
-    {
-      "name": "no unperformed experiment claims a result",
-      "note": "",
-      "result": "PASS",
-      "rows_checked": 9,
-      "rule": "V9"
-    },
-    {
-      "name": "decision-critical values remain UNKNOWN",
-      "note": "",
-      "result": "PASS",
-      "rows_checked": 280,
-      "rule": "V10"
-    },
-    {
-      "name": "cross-file consistency",
-      "note": "",
-      "result": "PASS",
-      "rows_checked": 14,
-      "rule": "V11"
-    },
-    {
-      "name": "raw provenance chain intact",
-      "note": "",
-      "result": "PASS",
-      "rows_checked": 42,
-      "rule": "V12"
-    },
-    {
-      "name": "paper cost arithmetic reproduces",
-      "note": "",
-      "result": "PASS",
-      "rows_checked": 2,
-      "rule": "V13"
-    },
-    {
-      "name": "two-dimension issue model complete",
-      "note": "",
-      "result": "PASS",
-      "rows_checked": 56,
-      "rule": "V14"
-    },
-    {
-      "name": "frontier restricted to dispatchable M1 blockers",
-      "note": "3 item(s) awaiting an external answer or spec ['UNK-0001', 'UNK-0004', 'UNK-0022']; 4 human/deferred item(s) excluded from dispatch ['UNK-0027-NASDAQ-LARGETICK', 'UNK-0027-NASDAQ-MICRO', 'UNK-0027-OPTIONS-EVENT-FX', 'UNK-0034']",
-      "result": "PASS",
-      "rows_checked": 63,
-      "rule": "V15"
-    },
-    {
-      "name": "frontier restricted to open M1 blockers",
-      "note": "",
-      "result": "PASS",
-      "rows_checked": 63,
-      "rule": "V15"
-    },
-    {
-      "name": "eligibility independent of non-M1 issues; every verdict rule-traced",
-      "note": "",
-      "result": "PASS",
-      "rows_checked": 140,
-      "rule": "V16"
-    },
-    {
-      "name": "patch integrity",
-      "note": "",
-      "result": "PASS",
-      "rows_checked": 5,
-      "rule": "V17"
-    },
-    {
-      "name": "work artefacts valid and complete",
-      "note": "",
-      "result": "PASS",
-      "rows_checked": 96,
-      "rule": "V18"
-    },
-    {
-      "name": "PROJECT_STATE prose carries no stale state values",
-      "note": "state-dependent numbers must live inside generated blocks",
-      "result": "PASS",
-      "rows_checked": 0,
-      "rule": "V19"
-    },
-    {
-      "name": "provenance references resolve",
-      "note": "",
-      "result": "PASS",
-      "rows_checked": 1251,
-      "rule": "V1"
-    },
-    {
-      "name": "numeric facts carry sources or are declared UNKNOWN",
-      "note": "",
-      "result": "PASS",
-      "rows_checked": 536,
-      "rule": "V2"
-    },
-    {
-      "name": "gate ceiling and dead/ALIVE integrity",
-      "note": "0 kill(s) rest on a recorded decision; the remainder on computed FAILs",
-      "result": "PASS",
-      "rows_checked": 35,
-      "rule": "V3"
-    },
-    {
-      "name": "referential integrity",
-      "note": "",
-      "result": "PASS",
-      "rows_checked": 892,
-      "rule": "V4"
-    },
-    {
-      "name": "no scoring or ranking artifacts",
-      "note": "",
-      "result": "PASS",
-      "rows_checked": 539,
-      "rule": "V5"
-    },
-    {
-      "name": "stable ids unique",
-      "note": "",
-      "result": "PASS",
-      "rows_checked": 437,
-      "rule": "V6"
-    },
-    {
-      "name": "time-sensitive sources dated",
-      "note": "",
-      "result": "PASS",
-      "rows_checked": 104,
-      "rule": "V7"
-    },
-    {
-      "name": "no unperformed experiment claims a result",
-      "note": "",
-      "result": "PASS",
-      "rows_checked": 9,
-      "rule": "V9"
-    },
-    {
-      "name": "decision-critical values remain UNKNOWN",
-      "note": "",
-      "result": "PASS",
-      "rows_checked": 280,
-      "rule": "V10"
-    },
-    {
-      "name": "cross-file consistency",
-      "note": "",
-      "result": "PASS",
-      "rows_checked": 14,
-      "rule": "V11"
-    },
-    {
-      "name": "raw provenance chain intact",
-      "note": "",
-      "result": "PASS",
-      "rows_checked": 42,
-      "rule": "V12"
-    },
-    {
-      "name": "paper cost arithmetic reproduces",
-      "note": "",
-      "result": "PASS",
-      "rows_checked": 2,
-      "rule": "V13"
-    },
-    {
-      "name": "two-dimension issue model complete",
-      "note": "",
-      "result": "PASS",
-      "rows_checked": 56,
-      "rule": "V14"
-    },
-    {
-      "name": "frontier restricted to dispatchable M1 blockers",
-      "note": "3 item(s) awaiting an external answer or spec ['UNK-0001', 'UNK-0004', 'UNK-0022']; 4 human/deferred item(s) excluded from dispatch ['UNK-0027-NASDAQ-LARGETICK', 'UNK-0027-NASDAQ-MICRO', 'UNK-0027-OPTIONS-EVENT-FX', 'UNK-0034']",
-      "result": "PASS",
-      "rows_checked": 63,
-      "rule": "V15"
-    },
-    {
-      "name": "frontier restricted to open M1 blockers",
-      "note": "",
-      "result": "PASS",
-      "rows_checked": 63,
-      "rule": "V15"
-    },
-    {
-      "name": "eligibility independent of non-M1 issues; every verdict rule-traced",
-      "note": "",
-      "result": "PASS",
-      "rows_checked": 140,
-      "rule": "V16"
-    },
-    {
-      "name": "patch integrity",
-      "note": "",
-      "result": "PASS",
-      "rows_checked": 5,
+      "rows_checked": 6,
       "rule": "V17"
     },
     {
@@ -420,15 +140,15 @@
     "m1b_eligible": [],
     "status": {
       "ALIVE": 0,
-      "DEAD": 7,
+      "DEAD": 8,
       "UNKNOWN": 16,
-      "WEAK": 5,
+      "WEAK": 4,
       "total": 28
     }
   },
   "details": [],
   "failures": 0,
-  "generated_at": "2026-09-20T19:20:02Z",
+  "generated_at": "2026-09-24T01:22:13Z",
   "overall": "PASS",
   "validator": "M1/src/validate.py"
 }

@@ -84,6 +84,9 @@ REPORT_KILL_GATE = {
     "TUP-GENERIC-CME-QUEUE": "Market-structure definition",
     "TUP-SYSTEMONE-HARDCORE-ENGINE": "Project admission policy",
     "TUP-JEV-HOSTED-LATENCY-UNMEASURED": "Technology admission",
+    # Not from the cemetery: this row's kill is the project's own M2 measurement, so the verbatim
+    # column records that fact rather than a report phrasing that does not exist.
+    "TUP-NASDAQ-LARGETICK-H2-QIMB-AGG": "M2 measured execution economics (no M1-A cemetery row)",
 }
 
 ROWS = []
@@ -204,13 +207,31 @@ add("TUP-NASDAQ-LARGETICK-H2-QIMB-AGG", "TUPLE", "Large-tick U.S. listed stock (
     "order-level data for validation; own fill data",
     "Crossing after imbalance selects into an already-moving price; the signal is public to anyone "
     "with the same feed",
-    "PASS", "UNKNOWN", "LATENCY_UNMEASURED", (_B, _B, _B, _B, _P), "WEAK",
-    "Direct published support exists for the venue and instrument class (EVD-0012) and live "
-    "full-depth observability is verified (EVD-0004), but the result is old, gross/predictive only, "
-    "and the historical L3 procurement, current fee tier and after-cost replication are unresolved "
-    "(EVD-0005).",
+    "PASS", "UNKNOWN", "LATENCY_UNMEASURED", (_B, _B, _F, _B, _P), "DEAD",
+    "KG3_EXECUTION fails on the project's own measured evidence (EVD-0067, patch P-0006): in the "
+    "candidate's rule-conformant population the mean 1000 ms side-signed mid move is 0.0794 bps "
+    "against a 4.1011 bps executed round trip, none of the 356 declared states is net-positive "
+    "under the structural cost floor, and a clairvoyant trader on the same instants nets only "
+    "0.219 bps per trade on the accessible broker path. Direct published support for the mechanism "
+    "(EVD-0012) is unchanged and is why the same signal remains a live input to passive "
+    "formulations; it is the aggressive execution style that fails.",
     "UNK-0004|UNK-0005|UNK-0006|UNK-0008|UNK-0009|UNK-0016|UNK-0018|UNK-0027",
-    "SRC-0011 tuple ledger row 6")
+    "SRC-0023 patch P-0006",
+    kill_gate="KG3_EXECUTION",
+    kill_reason="Aggressive execution cannot clear the tick-plus-fee friction: a measured signal of "
+                "0.0794 bps against a 4.1011 bps round trip, with a measured clairvoyant ceiling of "
+                "0.822 bps per trade at the structural floor and 0.219 bps per trade on the "
+                "accessible reference path (M2-0-6-UNIVPROXY, freeze sha256 4fc098a3...c32b38b).",
+    resurrection_condition="A rule-conformant modern measurement with a pooled required/signal "
+                           "ratio at or below 5, which requires both a materially higher move scale "
+                           "and a materially higher price level for the universe's names than the "
+                           "measured 2019 session (M2/output/M2_AUTONOMOUS_STATUS.md).",
+    notes="Killed by M2 evidence, not by an M1 inference: the experiment was designed to falsify "
+          "the opposite hypothesis (that the M2-0 compute scope, rather than the mechanism, was the "
+          "problem) and it rejected that hypothesis. Passive/queue monetization of the same signal "
+          "is NOT killed by this record - it is untested and requires a queue-aware fill model "
+          "(PASSIVE_FILL_MODEL, FILL_CONDITIONED_MARKOUT); it must be registered as its own "
+          "candidate rather than as a mode change on this row.")
 
 add("TUP-NASDAQ-LARGETICK-H2H3-MICRO-AGG", "TUPLE",
     "Large-tick U.S. listed stock (symbol UNSPECIFIED)", "VEN-NASDAQ-CONT", "H2-H3", "MECH-MICRO",
