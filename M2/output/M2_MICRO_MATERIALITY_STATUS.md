@@ -29,7 +29,7 @@ pooled, by horizon (side = sign(microprice - mid); bps of the arrival mid):
   100 ms  +0.0130   R = 307.26
   250 ms  +0.0266   R = 149.80
   500 ms  +0.0450   R =  88.65
-  1000 ms +0.0745   R =  53.60
+  1000 ms +0.0744   R =  53.60
   2000 ms +0.1153   R =  34.61
   5000 ms +0.1772   R =  22.51
  10000 ms +0.2194   R =  18.17
@@ -49,8 +49,9 @@ round trip = 3.9875 bps at 15000 ms (3.9901 bps at 1000 ms)
           = quoted spread paid + STRUCTURAL_COST_FLOOR round-trip fee, 100-share representative
             order, recomputed on this pass's own observation set with the M2-0.6 arithmetic
 cross-check: M2-0.6's all-instant figure at 1000 ms is 4.1011 bps; the 0.111 bps difference is the
-5.86% of instants the causal estimator cannot yet price (the session's first 5-minute block), and it
-moves the hurdle in the candidate's FAVOUR.
+5.86% of instants this pass excludes from the evaluated set (1.58% because the causal estimator has
+no prior data at the start of the session, 4.28% because the arrival book is exactly balanced and
+carries no direction to trade), and it moves the hurdle in the candidate's FAVOUR.
 
 MATERIALITY
 
@@ -71,7 +72,7 @@ best possible trader on these instants never captures half of one structural rou
 COMPARISON
 
 QIMB  signal = 0.0794 bps   (M2-0.6, same population, 1000 ms, R = 51.64)
-MICRO signal = 0.0745 bps   (same population, 1000 ms, R = 53.60)  -> uplift 0.94x
+MICRO signal = 0.0744 bps   (same population, 1000 ms, R = 53.60)  -> uplift 0.94x
 MICRO signal = 0.2333 bps   (best horizon, 15000 ms, R = 17.09)    -> uplift 2.94x vs QIMB at 1 s
 best declared state: QIMB R = 10.69 (M2-0.6) vs MICRO R = 5.02 (this pass) - the selective state is
 materially closer to its hurdle, and still 5x short.

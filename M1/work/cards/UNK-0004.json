@@ -33,7 +33,7 @@
     "SRC-0109",
     "SRC-0108"
   ],
-  "last_updated": "2026-09-24T14:06:09Z",
+  "last_updated": "2026-09-24T14:09:14Z",
   "parent_issue_id": null,
   "priority_reason": "M1-BLOCKING retained: granularity sufficiency is an M1 gate (measured against the mechanism's requirement), while fill rates themselves move to M2.",
   "priority_score": null,

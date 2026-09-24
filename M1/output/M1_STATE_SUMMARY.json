@@ -1,11 +1,11 @@
 {
   "artifact_hashes": {
     "M1/data/assumptions.csv": "a45b7c5a95f94bfa7213a43910bae5206bd9bdfc6878e4ab2adff089fbf2b25d",
-    "M1/data/candidate_tuples.csv": "54f9d1bb1f08918841f9d2e8c253fc516bb7abfd9f16301b4b48b7b12c55d38d",
+    "M1/data/candidate_tuples.csv": "efca4a22449ce9691414dad40b560981cbdf2b6906f2f8ba9238dc27de5153bf",
     "M1/data/data_feasibility.csv": "d292c27e17576a28a518f85051cfa511e74e9f1da7242a9237d0c732caff209e",
-    "M1/data/dead_candidates.csv": "67eba6e336e5600a13f0f7a04c16b69fd52ba8ec35865f622227d67f4a57aa8b",
-    "M1/data/discrepancies.csv": "6c23d758639ee6e3fb7af76f4e6154a7539b4ea96459188321998b96c50103e8",
-    "M1/data/evidence_ledger.csv": "ad64f95bc428a59c9ff41aeeca5e06ab24ce9046be81120dde84f14902ade1d0",
+    "M1/data/dead_candidates.csv": "8950936c3b419b38c9b7d7c22251ef2b76559eb7a1e8e3b7619e61b76cde3f06",
+    "M1/data/discrepancies.csv": "0b4693f0a7cdfee3ff04d71b2f9f7bd8490ba18a3f05843e37c48f15b2cc3fde",
+    "M1/data/evidence_ledger.csv": "66c91a2fc839770a996bb561116c273a483081cbb8c144599cc9fc403b5f6a3f",
     "M1/data/execution_envelopes.csv": "40e85e34e386409717046c6ffba8457a937114a6e35e671eec82530107693f9d",
     "M1/data/experiments.csv": "2bba0967fa761dcbe840fc0252c7fc72a5a19f381893e6768250dd438767754a",
     "M1/data/hypotheses.csv": "25ae83712418dc4f18bd18747c04163196ebccabb45ae841607e1aa30ec71c33",
@@ -29,7 +29,7 @@
     "M1/output/kill_supersessions.csv": "fd9cdd54a6e595433a85ef2d40136852e020c715e56676887c8b93b51a8c1859",
     "M1/output/latency_feasibility.csv": "00d02022576f411dc3794a3370523a324284c429081d1f6f294e63acf8428f5b",
     "M1/output/non_frontier_issues.csv": "966b4e1c76fe4466c123cea4edcf96e1123d2354b4752400d54757ec9c9cc27d",
-    "M1/output/status_derivation_review.csv": "9421354ccc8830952825534cc80ef33ed7727def288d754ac3bbe4ec31b29584",
+    "M1/output/status_derivation_review.csv": "afda9b653c395f63c0ba6511d2cd10359fa5051d30832cef4f44208ba6fcaa3d",
     "M1/output/venue_cost_reference.csv": "f8856e3c531be33675479bde5b7f4bbc2982994b3af48331edfb37c393243220"
   },
   "closure_bundles": [
@@ -242,7 +242,7 @@
       "PASS": 10
     }
   },
-  "generated_at": "2026-09-24T14:06:09Z",
+  "generated_at": "2026-09-24T14:09:14Z",
   "generated_by": "M1/src/materialize.py",
   "m2_specs": [
     {

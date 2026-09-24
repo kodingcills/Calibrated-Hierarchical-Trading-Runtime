@@ -44,7 +44,7 @@
   "known_source_ids": [
     "SRC-0011"
   ],
-  "last_updated": "2026-09-24T14:06:09Z",
+  "last_updated": "2026-09-24T14:09:14Z",
   "parent_issue_id": null,
   "priority_reason": "M1-BLOCKING retained: handoff \u00a711 makes exact-instrument definition an M1 requirement.",
   "priority_score": null,

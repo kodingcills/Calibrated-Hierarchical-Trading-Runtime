@@ -16,7 +16,7 @@ What this patch establishes:
   learned predictor are excluded by the frozen contract.
 * Pooled, the microprice direction earns **+0.2333 bps at 15000 ms** (95% block-bootstrap CI
   [0.2142, 0.2530]) against a **3.9875 bps** structural round trip: **R_pooled = 17.09**. The
-  horizon term structure is monotone but decelerating (+0.0130 at 100 ms, +0.0745 at 1000 ms,
+  horizon term structure is monotone but decelerating (+0.0130 at 100 ms, +0.0744 at 1000 ms,
   +0.1772 at 5000 ms, +0.2194 at 10000 ms), and the required move is horizon-invariant because it is
   set by the tick and the fee floor.
 * The strongest preregistered state is `imbalance in [0.8,1.0] x ONE_TICK` at 15000 ms:
@@ -29,7 +29,7 @@ What this patch establishes:
   3.9875 bps hurdle. Prediction cannot exceed clairvoyance, and clairvoyance captures 41% of one
   round trip at the floor.
 * vs the queue-imbalance row it is **not an uplift at the shared horizon**: at 1000 ms the
-  microprice direction is worth 0.0745 bps against QIMB's 0.0794 bps (0.94x). The microprice is
+  microprice direction is worth 0.0744 bps against QIMB's 0.0794 bps (0.94x). The microprice is
   materially larger only at the long end of its own band (2.94x at 15000 ms) and it is still 5x
   short of its own friction there.
 
@@ -103,7 +103,7 @@ def build(created_at):
                      "[0.8,1.0] with a one-tick spread, at 15000 ms - earns +0.5836 bps (CI "
                      "[0.4842, 0.6831]) on 2.98% of the direction-defined instants "
                      "(R_best = 5.02). At the queue-imbalance row's own horizon the microprice is "
-                     "not an uplift: 0.0745 bps at 1000 ms against 0.0794 bps for QIMB. With "
+                     "not an uplift: 0.0744 bps at 1000 ms against 0.0794 bps for QIMB. With "
                      "perfect foresight of the future executable quotes the aggressive round trip "
                      "nets +1.6275 bps per trade at the structural floor and +0.7012 bps on the "
                      "accessible broker path, on 19.51% of instants, against the same 3.9875 bps "
@@ -166,7 +166,7 @@ def build(created_at):
             "status": "CORRECTED",
             "reason": "Measured. The calibrated microprice direction agrees with the imbalance sign "
                       "on 94.85% of instants (100% under a non-causal whole-day refit), so at the "
-                      "shared 1000 ms horizon it is worth 0.0745 bps against QIMB's 0.0794 bps. It "
+                      "shared 1000 ms horizon it is worth 0.0744 bps against QIMB's 0.0794 bps. It "
                       "is materially larger only at long horizons (0.2333 bps at 15000 ms, 2.94x "
                       "the QIMB 1 s figure) where its own requirement is still 17.09x.",
         }],

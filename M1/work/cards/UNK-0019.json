@@ -28,7 +28,7 @@
   "kill_potential": "LOW",
   "known_evidence_ids": [],
   "known_source_ids": [],
-  "last_updated": "2026-09-24T14:06:09Z",
+  "last_updated": "2026-09-24T14:09:14Z",
   "parent_issue_id": null,
   "priority_reason": "MIGRATED from M1_BLOCKING: markout is an M2 output; the M1 question is whether the data to measure it exists (KG2).",
   "priority_score": null,

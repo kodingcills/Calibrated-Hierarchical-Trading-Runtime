@@ -306,7 +306,7 @@ add("TUP-NASDAQ-LARGETICK-H2H3-MICRO-AGG", "TUPLE",
                 "population: 0.2333 bps pooled at 15000 ms (R = 17.09) and 0.5836 bps in the best "
                 "declared state (R = 5.02) against a 3.9875 bps round trip, with a clairvoyant "
                 "ceiling of 1.63 bps per trade at the fee floor. It is not an uplift on the "
-                "queue-imbalance row at the shared horizon (0.0745 bps against 0.0794 bps at "
+                "queue-imbalance row at the shared horizon (0.0744 bps against 0.0794 bps at "
                 "1000 ms). Measured over 282,229,684 messages on the 2019-07-30 development tape "
                 "(M2-2-MICRO-MATERIALITY, freeze sha256 89f84b29...).",
     resurrection_condition="A rule-conformant measurement in which the pooled required/signal "

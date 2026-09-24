@@ -17,7 +17,7 @@
   "kill_potential": "MEDIUM",
   "known_evidence_ids": [],
   "known_source_ids": [],
-  "last_updated": "2026-09-24T14:06:09Z",
+  "last_updated": "2026-09-24T14:09:14Z",
   "parent_issue_id": "UNK-0018",
   "priority_reason": "Scoped child: this is a procurement and synchronisation question, not a per-venue one.",
   "priority_score": null,

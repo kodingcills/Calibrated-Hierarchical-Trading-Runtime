@@ -2,7 +2,7 @@
 
 Status: CURRENT
 Version: 1.0.0
-Last Updated: 2026-09-24T14:06:09Z
+Last Updated: 2026-09-24T14:09:14Z
 
 This is the canonical fast-orientation artifact. Read it before any other file. Its counts are
 generated from `M1/output/M1_STATE_SUMMARY.json` and enforced against the machine-readable
@@ -132,7 +132,7 @@ canonical economics were inspected); as-run inputs and artifact hashes:
   **+0.2333 bps at 15 s** (CI [0.2142, 0.2530]) against a **3.9875 bps** structural round trip
   (**R_pooled = 17.09**); the strongest preregistered state — imbalance in `[0.8,1.0]`, one-tick
   spread, 15 s, 2.98% of instants — is **+0.5836 bps** (CI [0.4842, 0.6831], **R_best = 5.02**). At
-  the queue-imbalance row's own horizon the microprice is **not** an uplift: 0.0745 bps against
+  the queue-imbalance row's own horizon the microprice is **not** an uplift: 0.0744 bps against
   0.0794 bps at 1000 ms.
 - **Clairvoyant ceiling**: with perfect foresight of the future executable quotes on the same
   instants the aggressive round trip nets **+1.6275 bps per trade at the structural floor**
@@ -310,7 +310,7 @@ Durable, evidence-backed, and still less than tradable alpha:
    candidate declares (15 s, CI [0.214, 0.253]) against a **3.9875 bps** structural round trip, and
    **+0.5836 bps** in its strongest preregistered state (2.98% of instants, CI [0.484, 0.683]): 17×
    and 5× too small respectively. Three readings fix the interpretation. It is *not* an uplift on the
-   queue-imbalance row at the shared horizon (0.0745 vs 0.0794 bps at 1 s), because the calibrated
+   queue-imbalance row at the shared horizon (0.0744 vs 0.0794 bps at 1 s), because the calibrated
    direction agrees with the imbalance sign on 94.85% of instants. The limitation is *not* the
    cascade's causality: a non-causal whole-day refit buys 8.0% more signal. And it is *not* a
    prediction-quality problem: with **perfect foresight** of the future executable quotes the same

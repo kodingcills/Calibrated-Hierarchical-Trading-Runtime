@@ -458,7 +458,7 @@ signal's realized magnitude against the friction *before* building any execution
    structural floor** (+0.7012 bps on the accessible broker path) on **19.51%** of instants. The
    candidate is not limited by prediction quality: clairvoyance itself does not clear one round trip.
 4. **It is not an uplift on the row it was meant to improve on.** At the queue-imbalance row's own
-   1000 ms horizon the microprice direction is worth 0.0745 bps against QIMB's 0.0794 bps, because the
+   1000 ms horizon the microprice direction is worth 0.0744 bps against QIMB's 0.0794 bps, because the
    calibrated direction agrees with the imbalance sign on 94.85% of instants. It is materially larger
    only at the long end of its own band — 2.94× at 15 s — and there it is still 17× short.
 5. **The margin is stated, not smoothed.** `R_best = 5.015` clears the frozen bar by 0.3%, and that

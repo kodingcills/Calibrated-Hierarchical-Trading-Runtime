@@ -27,7 +27,7 @@
   "known_source_ids": [
     "SRC-0121"
   ],
-  "last_updated": "2026-09-24T14:06:09Z",
+  "last_updated": "2026-09-24T14:09:14Z",
   "parent_issue_id": null,
   "priority_reason": "M1-BLOCKING retained: legality is explicitly an M1 gate (handoff \u00a72).",
   "priority_score": null,

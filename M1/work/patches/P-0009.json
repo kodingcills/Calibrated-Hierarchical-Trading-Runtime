@@ -6,12 +6,12 @@
   "candidate_ids": [
     "TUP-NASDAQ-LARGETICK-H2H3-MICRO-AGG"
   ],
-  "created_at": "2026-09-24T14:06:09Z",
+  "created_at": "2026-09-24T14:09:14Z",
   "decision": "KILLS",
   "modified_claims": [
     {
       "claim": "The microprice candidate is a materially different and materially stronger signal than the queue-imbalance row of the same family (MECH-MICRO vs MECH-QIMB).",
-      "reason": "Measured. The calibrated microprice direction agrees with the imbalance sign on 94.85% of instants (100% under a non-causal whole-day refit), so at the shared 1000 ms horizon it is worth 0.0745 bps against QIMB's 0.0794 bps. It is materially larger only at long horizons (0.2333 bps at 15000 ms, 2.94x the QIMB 1 s figure) where its own requirement is still 17.09x.",
+      "reason": "Measured. The calibrated microprice direction agrees with the imbalance sign on 94.85% of instants (100% under a non-causal whole-day refit), so at the shared 1000 ms horizon it is worth 0.0744 bps against QIMB's 0.0794 bps. It is materially larger only at long horizons (0.2333 bps at 15000 ms, 2.94x the QIMB 1 s figure) where its own requirement is still 17.09x.",
       "status": "CORRECTED"
     }
   ],
@@ -19,7 +19,7 @@
     {
       "candidate_ids": "TUP-NASDAQ-LARGETICK-H2H3-MICRO-AGG",
       "candidate_link_reason": "The experiment exists solely to measure this candidate's own registered estimator against the friction this same population was already measured to charge, before any execution model is built for it (the rule recorded as D-0037).",
-      "claim": "The registered Stoikov-style microprice direction earns +0.2333 bps of side-signed mid move at its best preregistered horizon (15000 ms, 95% CI [0.2142, 0.2530]) against a 3.9875 bps structural round trip, i.e. 5.9% of the friction (R_pooled = 17.09). The strongest declared state - imbalance in [0.8,1.0] with a one-tick spread, at 15000 ms - earns +0.5836 bps (CI [0.4842, 0.6831]) on 2.98% of the direction-defined instants (R_best = 5.02). At the queue-imbalance row's own horizon the microprice is not an uplift: 0.0745 bps at 1000 ms against 0.0794 bps for QIMB. With perfect foresight of the future executable quotes the aggressive round trip nets +1.6275 bps per trade at the structural floor and +0.7012 bps on the accessible broker path, on 19.51% of instants, against the same 3.9875 bps hurdle - the candidate is limited by friction, not by prediction quality. The whole-day non-causal refit moves the 15000 ms figure only to +0.2520 bps (R = 16.25), so causality is not what holds it back.",
+      "claim": "The registered Stoikov-style microprice direction earns +0.2333 bps of side-signed mid move at its best preregistered horizon (15000 ms, 95% CI [0.2142, 0.2530]) against a 3.9875 bps structural round trip, i.e. 5.9% of the friction (R_pooled = 17.09). The strongest declared state - imbalance in [0.8,1.0] with a one-tick spread, at 15000 ms - earns +0.5836 bps (CI [0.4842, 0.6831]) on 2.98% of the direction-defined instants (R_best = 5.02). At the queue-imbalance row's own horizon the microprice is not an uplift: 0.0744 bps at 1000 ms against 0.0794 bps for QIMB. With perfect foresight of the future executable quotes the aggressive round trip nets +1.6275 bps per trade at the structural floor and +0.7012 bps on the accessible broker path, on 19.51% of instants, against the same 3.9875 bps hurdle - the candidate is limited by friction, not by prediction quality. The whole-day non-causal refit moves the 15000 ms figure only to +0.2520 bps (R = 16.25), so causality is not what holds it back.",
       "contradicts_mechanism": "NO",
       "decision_implication": "KG3_EXECUTION fails for the microprice candidate: neither its pooled behaviour nor its strongest preregistered state is within 5x of the structural friction, and perfect foresight on the same instants does not clear one round trip. No execution model, modern-data purchase, learned predictor or passive pivot is justified for this candidate.",
       "epistemic_class": "SUPPORTED_FINDING",
