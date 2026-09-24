@@ -431,3 +431,62 @@ oracle ceiling and a queue-aware fill model), and the same logic should be appli
 aggressive Nasdaq row (`TUP-NASDAQ-LARGETICK-H2H3-MICRO-AGG`) before it consumes further effort.
 Enforced by: `PROJECT_STATE.md` (the M2-1 section and the candidate table), `DEAD_ENDS.md`, and the
 two frozen experiments.
+
+## D-0038 - The microprice row is killed on measured magnitude, and the Nasdaq large-tick top-of-book sequence is closed
+
+`TUP-NASDAQ-LARGETICK-H2H3-MICRO-AGG` fails KG3_EXECUTION and is registered DEAD (evidence `EVD-0070`,
+patch `P-0009`, `DEAD_ENDS.md`, `M1/data/dead_candidates.csv`). The experiment
+(`M2-2-MICRO-MATERIALITY`, contract sha256 `89f84b29…`, sealed before any canonical economics were
+inspected) applies D-0037's own admission rule to the last aggressive row of the family: measure the
+signal's realized magnitude against the friction *before* building any execution model for it.
+
+1. **The estimator was recovered, not substituted.** The registered mechanism is the Stoikov
+   micro-price — `p_micro = mid + g(X)`, `g(X) = E[mid(τ₁) − mid(t) | X = (imbalance bin, spread
+   class)]` — reconstructed from its own source material. The weighted mid-price (whose direction is
+   the imbalance sign by construction), raw imbalance and any learned predictor were excluded by the
+   frozen contract. Calibration is causal by construction: an expanding prior-session window, refitted
+   on a fixed 5-minute cadence, 200 prior resolved observations per cell, no imputation, so no
+   observation can see itself or any later one.
+2. **The measured magnitude is real and far too small.** Over the candidate's own H2–H3 band, pooled
+   across 726,943 direction-defined instants in the same 33-name population M2-0.6 measured, the
+   side-signed mid move is **+0.2333 bps at 15 s** (95% block-bootstrap CI [0.2142, 0.2530]) against a
+   **3.9875 bps** structural round trip — **R_pooled = 17.09**. The strongest preregistered state
+   (imbalance `[0.8,1.0]`, one-tick spread, 15 s; 2.98% of instants) is **+0.5836 bps** (CI
+   [0.4842, 0.6831]), **R_best = 5.02**; the strongest magnitude band is R = 7.32.
+3. **The clairvoyant ceiling closes the escape route.** With perfect foresight of the future
+   executable quotes at every instant the aggressive round trip nets **+1.6275 bps per trade at the
+   structural floor** (+0.7012 bps on the accessible broker path) on **19.51%** of instants. The
+   candidate is not limited by prediction quality: clairvoyance itself does not clear one round trip.
+4. **It is not an uplift on the row it was meant to improve on.** At the queue-imbalance row's own
+   1000 ms horizon the microprice direction is worth 0.0745 bps against QIMB's 0.0794 bps, because the
+   calibrated direction agrees with the imbalance sign on 94.85% of instants. It is materially larger
+   only at the long end of its own band — 2.94× at 15 s — and there it is still 17× short.
+5. **The margin is stated, not smoothed.** `R_best = 5.015` clears the frozen bar by 0.3%, and that
+   state's interval implies `R_best ∈ [4.28, 6.04]`: the best-state clause is a point estimate and not
+   a resolved separation. The kill does not depend on it. `R_pooled = 17.09` clears its own bar by
+   71%, and the oracle — which contains no estimator, no calibration and no mapping choice — leaves
+   41% of a round trip to the best possible trader even at the cheapest fee path. The frozen
+   thresholds were not adjusted after the result.
+6. **Modern-data value of information: zero.** The friction is pinned by the Reg NMS tick and the
+   exchange/statutory fee floor, and the signal would have to be 5–17× larger for the economics to
+   change.
+
+**The sequence is closed.** Three measurements on the same population and tape, all pointing the same
+way: an aggressive round trip of 4.1011 bps against a 0.0794 bps signal with a 0.822/0.219 bps
+clairvoyant ceiling (M2-0.6); a passive fill selected against by 0.973 bps of drift inside the
+signal's own horizon (M2-1); and now a long-horizon calibrated estimator worth 0.2333 bps against a
+3.9875 bps round trip with a 1.6275 bps clairvoyant ceiling (M2-2). No further Nasdaq large-tick
+top-of-book row is to be tested; the next task is candidate re-selection by expected decision value
+per unit research cost, preferring mechanisms whose natural payoff scale can survive realistic
+friction rather than adjacency to completed work.
+
+Enforced by: `M2/experiments/M2-2-MICRO-MATERIALITY/{freeze.json,freeze.sha256,run_inputs.json}`,
+`M2/output/M2_MICRO_MATERIALITY_STATUS.md`, `M2/output/micro/calculations/micro_verdict.json`,
+`DEAD_ENDS.md`, `M1/data/dead_candidates.csv`, `M1/src/corpus/patches/p0009_m2_micro_kill.py`, and
+`PROJECT_STATE.md` (the M2-2 section, the candidate table and finding 11).
+
+Supersedes: the closing instruction of D-0037 that the remaining aggressive Nasdaq large-tick row be
+put through the magnitude test next — that instruction is now executed and its result is a kill.
+D-0037's rule (a top-of-book signal at H2 must show a magnitude of the same order as its round trip
+before an execution model is built for it) remains in force and is now the standard this row was
+killed by.

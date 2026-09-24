@@ -1,35 +1,35 @@
 {
   "artifact_hashes": {
     "M1/data/assumptions.csv": "a45b7c5a95f94bfa7213a43910bae5206bd9bdfc6878e4ab2adff089fbf2b25d",
-    "M1/data/candidate_tuples.csv": "b2f05e21762b0454033af793a2feb2330829ab8e0aa7f96a2c4d5ed6e1f10cab",
+    "M1/data/candidate_tuples.csv": "54f9d1bb1f08918841f9d2e8c253fc516bb7abfd9f16301b4b48b7b12c55d38d",
     "M1/data/data_feasibility.csv": "d292c27e17576a28a518f85051cfa511e74e9f1da7242a9237d0c732caff209e",
-    "M1/data/dead_candidates.csv": "1659b74966a7cac286379abf518b3c90e6db88ddfbcd6a3d274a29801493876f",
-    "M1/data/discrepancies.csv": "e9f9ccdcb16c6abf3994ca442db4ee084da146691c978846b3d8671394b3f4e3",
-    "M1/data/evidence_ledger.csv": "6a8e0e380ae03c20789ea3776deabffaa84a6853c28211f4d9062d7aac31107f",
+    "M1/data/dead_candidates.csv": "67eba6e336e5600a13f0f7a04c16b69fd52ba8ec35865f622227d67f4a57aa8b",
+    "M1/data/discrepancies.csv": "6c23d758639ee6e3fb7af76f4e6154a7539b4ea96459188321998b96c50103e8",
+    "M1/data/evidence_ledger.csv": "ad64f95bc428a59c9ff41aeeca5e06ab24ce9046be81120dde84f14902ade1d0",
     "M1/data/execution_envelopes.csv": "40e85e34e386409717046c6ffba8457a937114a6e35e671eec82530107693f9d",
     "M1/data/experiments.csv": "2bba0967fa761dcbe840fc0252c7fc72a5a19f381893e6768250dd438767754a",
     "M1/data/hypotheses.csv": "25ae83712418dc4f18bd18747c04163196ebccabb45ae841607e1aa30ec71c33",
     "M1/data/kill_gates.csv": "479826e86097a8665432bea9bc15a5a56d2bb65c8489e68f321b73c3cc76d576",
     "M1/data/mechanisms.csv": "49227ed34e3eb929c46896fd38072df03070b6da748d0d8cd01359813125c364",
     "M1/data/open_questions.csv": "08f39eb554e0de71f5ad32fbe088463d72ff4a1bcc8dce4c70d0f1987e9f733d",
-    "M1/data/source_registry.csv": "f46eef3b23283ce913bd336e9ab9fbb08ea64278cd662f34845360adfa9578af",
+    "M1/data/source_registry.csv": "d62a62280b6119c826fefd647b812303ca17284733a5e862cac4ecc5b13c20e2",
     "M1/data/technology_fit.csv": "902584c18d84d9f9cf31917b2a636d9fbafe03301805332dba73b0af1eb95810",
     "M1/data/venue_facts.csv": "0cf5bc2c4c827fdbf0b34daa4906f12141a13fb42f0437089984096ae80f6a5d",
     "M1/output/blocker_priority.csv": "71477b5433040b17d87b4c44435c375d658f23d177c6149bd6c86da47ad04996",
     "M1/output/candidate_closure_metrics.csv": "f76cfaa437b155bdce4e5a826626368c277c20a31e269a5be469545fc17e4e3b",
-    "M1/output/candidate_gate_status.csv": "23eef6560e26952b0c9cf4b0acc830021d4dccc1ced5a25f4f6ec887bc4daa85",
+    "M1/output/candidate_gate_status.csv": "aaca14f0ac76f273cc4abfd18b80a7968c059d2aac9c2cc521c5959e4ca0521f",
     "M1/output/cost_envelopes.csv": "40e85e34e386409717046c6ffba8457a937114a6e35e671eec82530107693f9d",
     "M1/output/data_feasibility_verdicts.csv": "f97ba5ff8fd8b7f3a6656062e530ac67f561ef69041addd6729fdba88b550a37",
     "M1/output/dominated_candidates.csv": "242b755c0e52686b00424b8e35c51599eeaed23171e27254644e8ed5e4d06467",
-    "M1/output/evidence_coverage.csv": "2117fd159dcaa8405c26ac96e9892bf695b151ed0f2244fefdda7cf577fedf79",
+    "M1/output/evidence_coverage.csv": "47d5e3fc2202bdb142ede1f2d6197056b975da492895f5e687730543c3c82a48",
     "M1/output/gate_rule_trace.csv": "7282c2762ebf7879455ddcad200b416aa172d42e1608d270edb86014cea68b68",
     "M1/output/hard_constraint_eliminations.csv": "da1a2639d1abd0520207155068d9e75dd8eb6fb7d356ea4819ae063c79e5bbaa",
-    "M1/output/hard_constraint_survivors.csv": "e79444d1ae6eeef584a1baa96e336d33a1d1e7d158136f337321bd483da8d9cd",
+    "M1/output/hard_constraint_survivors.csv": "fac0094a7f9bd8dec6c9e9b6bc97cd3bf007b4f7bc938ca429835d5cbebb1ed2",
     "M1/output/issue_migration.csv": "3d29df280126e6d425d7ee9a68e2930c8aa2bb660abd9d67375bd1d4df56d2b9",
     "M1/output/kill_supersessions.csv": "fd9cdd54a6e595433a85ef2d40136852e020c715e56676887c8b93b51a8c1859",
     "M1/output/latency_feasibility.csv": "00d02022576f411dc3794a3370523a324284c429081d1f6f294e63acf8428f5b",
     "M1/output/non_frontier_issues.csv": "966b4e1c76fe4466c123cea4edcf96e1123d2354b4752400d54757ec9c9cc27d",
-    "M1/output/status_derivation_review.csv": "2b64a4057d85a8eeb981f4fa5b9d383c501170cc59e60925fabb6510bdcceee9",
+    "M1/output/status_derivation_review.csv": "9421354ccc8830952825534cc80ef33ed7727def288d754ac3bbe4ec31b29584",
     "M1/output/venue_cost_reference.csv": "f8856e3c531be33675479bde5b7f4bbc2982994b3af48331edfb37c393243220"
   },
   "closure_bundles": [
@@ -56,7 +56,7 @@
     },
     "computed_gate_kills": 7,
     "discrepancies": 56,
-    "evidence_records": 68,
+    "evidence_records": 69,
     "experiments_proposed_not_run": 9,
     "external_requests": 14,
     "external_token_sources": 25,
@@ -73,21 +73,21 @@
     "non_tuple_rows": 5,
     "open_issues": 50,
     "open_questions": 16,
-    "recorded_kill_decisions": 2,
-    "source_registry": 95,
+    "recorded_kill_decisions": 3,
+    "source_registry": 96,
     "status": {
       "ALIVE": 0,
-      "DEAD": 9,
+      "DEAD": 10,
       "UNKNOWN": 16,
-      "WEAK": 4,
+      "WEAK": 3,
       "total": 29
     },
     "status_by_class": {
       "ALL": {
         "ALIVE": 0,
-        "DEAD": 9,
+        "DEAD": 10,
         "UNKNOWN": 16,
-        "WEAK": 4,
+        "WEAK": 3,
         "total": 29
       },
       "GOVERNANCE": {
@@ -113,9 +113,9 @@
       },
       "TUPLE": {
         "ALIVE": 0,
-        "DEAD": 4,
+        "DEAD": 5,
         "UNKNOWN": 16,
-        "WEAK": 4,
+        "WEAK": 3,
         "total": 24
       },
       "UNIVERSE_DEFINITION": {
@@ -242,7 +242,7 @@
       "PASS": 10
     }
   },
-  "generated_at": "2026-09-24T11:46:43Z",
+  "generated_at": "2026-09-24T14:06:09Z",
   "generated_by": "M1/src/materialize.py",
   "m2_specs": [
     {
@@ -386,7 +386,7 @@
     "reason": "Dominated/dominated-set analysis was NOT performed. At this evidence state every decision-critical dimension (net-edge headroom, signal longevity, fill quality, capacity, capital efficiency) is UNKNOWN for every candidate, so any frontier would order missing values. The only eliminations applied are hard constraints backed by verified facts (HC1..HC8). Re-run this analysis in M1-D1 once M1-B has emitted a CURRENT synthesis artifact and the blocking issues are resolved."
   },
   "patches": {
-    "applied": 8,
+    "applied": 9,
     "audit": [
       {
         "applied": true,
@@ -861,9 +861,22 @@
         "sources_added": [
           "SRC-0244"
         ]
+      },
+      {
+        "applied": true,
+        "decision": "KILLS",
+        "evidence_added": [
+          "EVD-0070"
+        ],
+        "issue_updates": [],
+        "kind": "PATCH",
+        "patch_id": "P-0009",
+        "sources_added": [
+          "SRC-0245"
+        ]
       }
     ],
-    "proposed": 8,
+    "proposed": 9,
     "rejected": 0,
     "rejections": []
   },
@@ -876,6 +889,7 @@
     "TUP-NASDAQ-LARGETICK-H1H2-QUEUEPOS-L1ONLY-AGG",
     "TUP-NASDAQ-LARGETICK-H2-QIMB-AGG",
     "TUP-NASDAQ-LARGETICK-H2-QIMB-PAS",
+    "TUP-NASDAQ-LARGETICK-H2H3-MICRO-AGG",
     "TUP-SYSTEMONE-HARDCORE-ENGINE"
   ],
   "universe_specs": [

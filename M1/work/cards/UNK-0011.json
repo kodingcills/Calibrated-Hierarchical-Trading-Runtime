@@ -19,7 +19,7 @@
   "known_source_ids": [
     "SRC-0110"
   ],
-  "last_updated": "2026-09-24T11:46:43Z",
+  "last_updated": "2026-09-24T14:06:09Z",
   "parent_issue_id": null,
   "priority_reason": "M1-BLOCKING retained: access and cost are Tier-1/Tier-3 facts.",
   "priority_score": null,

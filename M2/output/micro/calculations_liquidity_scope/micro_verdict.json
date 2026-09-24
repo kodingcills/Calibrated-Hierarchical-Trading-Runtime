@@ -1,0 +1,25 @@
+{
+  "R_best": 5.219475964596194,
+  "R_pooled": 32.480074429697524,
+  "best_state": {
+    "dimension": "imbalance_x_spread",
+    "horizon_ms": 15000,
+    "required_over_signal": 5.219475964596194,
+    "state": "[-1.0,-0.8)|ONE_TICK"
+  },
+  "hurdle_bps_at_primary_horizon": 6.494242557016495,
+  "oracle_contradiction": false,
+  "oracle_ratio_at_primary_horizon": 0.06008838979199911,
+  "population": "liquidity_scope_115_symbols",
+  "primary_horizon_ms": 15000,
+  "signal_bps_at_primary_horizon": 0.19994543334785622,
+  "terminal_state": "KILLED",
+  "thresholds": {
+    "freeze_sha256": "89f84b29e0a509ee77838dcbddc8b57650bcf3ca4635fb75753445b3edf6a6ee",
+    "freeze_status": "FROZEN_BEFORE_ANY_M2_2_CANONICAL_ECONOMICS_WERE_INSPECTED",
+    "minimum_state_observations": 10000,
+    "oracle_contradiction_ratio": 0.25,
+    "r_best_kill": 5.0,
+    "r_pooled_kill": 10.0
+  }
+}

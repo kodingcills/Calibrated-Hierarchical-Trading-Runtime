@@ -1,0 +1,390 @@
+{
+  "band_labels": [
+    "abs_dev_over_half_spread_lt_0.02",
+    "0.02_to_0.05",
+    "0.05_to_0.10",
+    "0.10_to_0.20",
+    "gte_0.20"
+  ],
+  "best_horizon": {
+    "abs_signal_bps": 0.19994543334785622,
+    "horizon_ms": 15000
+  },
+  "best_state": {
+    "dimension": "imbalance_x_spread",
+    "horizon_ms": 15000,
+    "required_over_signal": 5.219475964596194,
+    "state": "[-1.0,-0.8)|ONE_TICK"
+  },
+  "bin_labels": [
+    "[-1.0,-0.8)",
+    "[-0.8,-0.6)",
+    "[-0.6,-0.4)",
+    "[-0.4,-0.2)",
+    "[-0.2,0.0)",
+    "[0.0,0.2)",
+    "[0.2,0.4)",
+    "[0.4,0.6)",
+    "[0.6,0.8)",
+    "[0.8,1.0]"
+  ],
+  "diagnostics": {
+    "band_counts": {
+      "0.02_to_0.05": 270905,
+      "0.05_to_0.10": 356527,
+      "0.10_to_0.20": 258344,
+      "abs_dev_over_half_spread_lt_0.02": 1488829,
+      "gte_0.20": 279708
+    },
+    "band_counts_optimistic": {
+      "0.02_to_0.05": 287870,
+      "0.05_to_0.10": 364840,
+      "0.10_to_0.20": 261945,
+      "abs_dev_over_half_spread_lt_0.02": 1528451,
+      "gte_0.20": 247894
+    },
+    "calibration_blocks": 78,
+    "estimator_id": "STOIKOV-MICRO-FIRSTSTEP-v1",
+    "mean_abs_deviation_over_half_spread": 0.10502792723083813,
+    "next_move_resolved_and_cell_fraction": 0.9977331846897064,
+    "next_move_resolved_fraction": 0.9977331846897064,
+    "observations_in_state_space": 2691000,
+    "observations_total": 2691000,
+    "observations_valid_state": 2691000,
+    "observations_with_calibration": 2654313,
+    "observations_with_calibration_optimistic": 2691000,
+    "population": "liquidity_scope_115_symbols",
+    "sign_agreement_with_imbalance": 0.961287056758565,
+    "state_cells": 20,
+    "structural_floor_label": "structural_floor",
+    "subset": {
+      "subset": null
+    }
+  },
+  "estimator_id": "STOIKOV-MICRO-FIRSTSTEP-v1",
+  "horizons_ms": [
+    100,
+    250,
+    500,
+    1000,
+    2000,
+    5000,
+    10000,
+    15000
+  ],
+  "optimistic_signal_by_horizon": [
+    {
+      "block_bootstrap_se_bps": 0.00041282798272611196,
+      "ci_high_bps": 0.01121860415760346,
+      "ci_low_bps": 0.009606906223044895,
+      "coverage_fraction": 0.913571906354515,
+      "horizon_ms": 100,
+      "hurdle_bps": 6.776577977923858,
+      "mean_signed_mid_move_bps": 0.010380969564053816,
+      "observations_defined_signal": 2458422,
+      "observations_valid_state": 2691000,
+      "required_over_signal": 652.7885411964904,
+      "signal_sign_ok": true
+    },
+    {
+      "block_bootstrap_se_bps": 0.0007008696692701831,
+      "ci_high_bps": 0.022536889820729638,
+      "ci_low_bps": 0.019803559973623364,
+      "coverage_fraction": 0.913571906354515,
+      "horizon_ms": 250,
+      "hurdle_bps": 6.7767805980308085,
+      "mean_signed_mid_move_bps": 0.02111168409439979,
+      "observations_defined_signal": 2458422,
+      "observations_valid_state": 2691000,
+      "required_over_signal": 320.996684477126,
+      "signal_sign_ok": true
+    },
+    {
+      "block_bootstrap_se_bps": 0.001063033614887663,
+      "ci_high_bps": 0.03698358509232392,
+      "ci_low_bps": 0.03286557161663236,
+      "coverage_fraction": 0.913571906354515,
+      "horizon_ms": 500,
+      "hurdle_bps": 6.7759516121917605,
+      "mean_signed_mid_move_bps": 0.034815111292804714,
+      "observations_defined_signal": 2458422,
+      "observations_valid_state": 2691000,
+      "required_over_signal": 194.6267399579491,
+      "signal_sign_ok": true
+    },
+    {
+      "block_bootstrap_se_bps": 0.0015755102778289257,
+      "ci_high_bps": 0.061036247513929026,
+      "ci_low_bps": 0.054817221661088766,
+      "coverage_fraction": 0.913571906354515,
+      "horizon_ms": 1000,
+      "hurdle_bps": 6.774441323672881,
+      "mean_signed_mid_move_bps": 0.0577543429029328,
+      "observations_defined_signal": 2458422,
+      "observations_valid_state": 2691000,
+      "required_over_signal": 117.29752228431762,
+      "signal_sign_ok": true
+    },
+    {
+      "block_bootstrap_se_bps": 0.0025081648285485794,
+      "ci_high_bps": 0.0958732427238152,
+      "ci_low_bps": 0.08602741073269189,
+      "coverage_fraction": 0.9135704424380826,
+      "horizon_ms": 2000,
+      "hurdle_bps": 6.77302192071833,
+      "mean_signed_mid_move_bps": 0.09087769625813012,
+      "observations_defined_signal": 2458313,
+      "observations_valid_state": 2690885,
+      "required_over_signal": 74.52897905202346,
+      "signal_sign_ok": true
+    },
+    {
+      "block_bootstrap_se_bps": 0.004693940854186998,
+      "ci_high_bps": 0.1590666651461743,
+      "ci_low_bps": 0.1403412572182798,
+      "coverage_fraction": 0.9135675366283348,
+      "horizon_ms": 5000,
+      "hurdle_bps": 6.771531923933704,
+      "mean_signed_mid_move_bps": 0.14963032826631384,
+      "observations_defined_signal": 2457990,
+      "observations_valid_state": 2690540,
+      "required_over_signal": 45.25507630967467,
+      "signal_sign_ok": true
+    },
+    {
+      "block_bootstrap_se_bps": 0.007819852895868415,
+      "ci_high_bps": 0.2133766499711032,
+      "ci_low_bps": 0.1829629533484162,
+      "coverage_fraction": 0.913554637327995,
+      "horizon_ms": 10000,
+      "hurdle_bps": 6.768961884494249,
+      "mean_signed_mid_move_bps": 0.1981510715026565,
+      "observations_defined_signal": 2457430,
+      "observations_valid_state": 2689965,
+      "required_over_signal": 34.160612068168916,
+      "signal_sign_ok": true
+    },
+    {
+      "block_bootstrap_se_bps": 0.01067329919298441,
+      "ci_high_bps": 0.2443234917538163,
+      "ci_low_bps": 0.20255864229390838,
+      "coverage_fraction": 0.9135454508271392,
+      "horizon_ms": 15000,
+      "hurdle_bps": 6.767085897118184,
+      "mean_signed_mid_move_bps": 0.22320885166027785,
+      "observations_defined_signal": 2456880,
+      "observations_valid_state": 2689390,
+      "required_over_signal": 30.31728288006085,
+      "signal_sign_ok": true
+    }
+  ],
+  "oracle_ceiling": [
+    {
+      "horizon_ms": 100,
+      "observations": 2691000,
+      "oracle_gross_bps_per_trade": 2.0736888071852997,
+      "oracle_net_accessible_fixed_bps_per_observation": 0.0004860159704369273,
+      "oracle_net_accessible_fixed_bps_per_trade": 0.6559021948073077,
+      "oracle_net_accessible_tiered_bps_per_observation": 0.0005891776403457872,
+      "oracle_net_accessible_tiered_bps_per_trade": 0.7951238867454932,
+      "oracle_net_floor_bps_per_observation": 0.0008869260464158857,
+      "oracle_net_floor_bps_per_trade": 1.1969498449875369,
+      "oracle_trade_coverage": 0.0007409884801189149
+    },
+    {
+      "horizon_ms": 250,
+      "observations": 2691000,
+      "oracle_gross_bps_per_trade": 2.0821219133451185,
+      "oracle_net_accessible_fixed_bps_per_observation": 0.001196215839839565,
+      "oracle_net_accessible_fixed_bps_per_trade": 0.6562725433248255,
+      "oracle_net_accessible_tiered_bps_per_observation": 0.0014567480933223515,
+      "oracle_net_accessible_tiered_bps_per_trade": 0.7992067521162992,
+      "oracle_net_floor_bps_per_observation": 0.002199437579167575,
+      "oracle_net_floor_bps_per_trade": 1.2066639195800088,
+      "oracle_trade_coverage": 0.001822742474916388
+    },
+    {
+      "horizon_ms": 500,
+      "observations": 2691000,
+      "oracle_gross_bps_per_trade": 2.1811280465850835,
+      "oracle_net_accessible_fixed_bps_per_observation": 0.0028062355682823745,
+      "oracle_net_accessible_fixed_bps_per_trade": 0.745246216742117,
+      "oracle_net_accessible_tiered_bps_per_observation": 0.0033681546847656595,
+      "oracle_net_accessible_tiered_bps_per_trade": 0.8944739225011732,
+      "oracle_net_floor_bps_per_observation": 0.004931441959235781,
+      "oracle_net_floor_bps_per_trade": 1.3096329134810507,
+      "oracle_trade_coverage": 0.003765514678558157
+    },
+    {
+      "horizon_ms": 1000,
+      "observations": 2691000,
+      "oracle_gross_bps_per_trade": 2.2675576204836227,
+      "oracle_net_accessible_fixed_bps_per_observation": 0.006507452956587936,
+      "oracle_net_accessible_fixed_bps_per_trade": 0.7930239972003504,
+      "oracle_net_accessible_tiered_bps_per_observation": 0.00785048267272037,
+      "oracle_net_accessible_tiered_bps_per_trade": 0.956690918951658,
+      "oracle_net_floor_bps_per_observation": 0.011423213840381322,
+      "oracle_net_floor_bps_per_trade": 1.3920780927663317,
+      "oracle_trade_coverage": 0.008205871423262727
+    },
+    {
+      "horizon_ms": 2000,
+      "observations": 2690885,
+      "oracle_gross_bps_per_trade": 2.404135771432198,
+      "oracle_net_accessible_fixed_bps_per_observation": 0.016268686318917945,
+      "oracle_net_accessible_fixed_bps_per_trade": 0.8928102295450312,
+      "oracle_net_accessible_tiered_bps_per_observation": 0.019524774674943818,
+      "oracle_net_accessible_tiered_bps_per_trade": 1.071501301188714,
+      "oracle_net_floor_bps_per_observation": 0.02782796908750922,
+      "oracle_net_floor_bps_per_trade": 1.5271728141872256,
+      "oracle_trade_coverage": 0.018221886108101982
+    },
+    {
+      "horizon_ms": 5000,
+      "observations": 2690540,
+      "oracle_gross_bps_per_trade": 2.7200599565497394,
+      "oracle_net_accessible_fixed_bps_per_observation": 0.056557512426258304,
+      "oracle_net_accessible_fixed_bps_per_trade": 1.1242141114485769,
+      "oracle_net_accessible_tiered_bps_per_observation": 0.0671476551410768,
+      "oracle_net_accessible_tiered_bps_per_trade": 1.3347182049193818,
+      "oracle_net_floor_bps_per_observation": 0.09223988451079863,
+      "oracle_net_floor_bps_per_trade": 1.8334855151317195,
+      "oracle_trade_coverage": 0.050308488258862534
+    },
+    {
+      "horizon_ms": 10000,
+      "observations": 2689965,
+      "oracle_gross_bps_per_trade": 3.1702073706497105,
+      "oracle_net_accessible_fixed_bps_per_observation": 0.15109052576957951,
+      "oracle_net_accessible_fixed_bps_per_trade": 1.486352494703653,
+      "oracle_net_accessible_tiered_bps_per_observation": 0.1759152015803926,
+      "oracle_net_accessible_tiered_bps_per_trade": 1.730565152205971,
+      "oracle_net_floor_bps_per_observation": 0.23112155950206556,
+      "oracle_net_floor_bps_per_trade": 2.2736574963647374,
+      "oracle_trade_coverage": 0.1016518802289249
+    },
+    {
+      "horizon_ms": 15000,
+      "observations": 2689390,
+      "oracle_gross_bps_per_trade": 3.550378226967269,
+      "oracle_net_accessible_fixed_bps_per_observation": 0.26730046118378553,
+      "oracle_net_accessible_fixed_bps_per_trade": 1.8148739145549906,
+      "oracle_net_accessible_tiered_bps_per_observation": 0.30631843445194495,
+      "oracle_net_accessible_tiered_bps_per_trade": 2.0797919082224183,
+      "oracle_net_floor_bps_per_observation": 0.39022857816979617,
+      "oracle_net_floor_bps_per_trade": 2.6495115799568505,
+      "oracle_trade_coverage": 0.14728321292188934
+    }
+  ],
+  "population": "liquidity_scope_115_symbols",
+  "signal_by_horizon": [
+    {
+      "block_bootstrap_se_bps": 0.0003441456196719779,
+      "ci_high_bps": 0.009803730784512268,
+      "ci_low_bps": 0.008441451276615658,
+      "coverage_fraction": 0.9014890375325157,
+      "horizon_ms": 100,
+      "hurdle_bps": 6.497963494494075,
+      "mean_signed_mid_move_bps": 0.009110664068827034,
+      "observations_defined_signal": 2425907,
+      "observations_valid_state": 2691000,
+      "required_over_signal": 713.2261101281792,
+      "signal_sign_ok": true
+    },
+    {
+      "block_bootstrap_se_bps": 0.0005752281211120136,
+      "ci_high_bps": 0.019523066111711635,
+      "ci_low_bps": 0.017275459267743036,
+      "coverage_fraction": 0.9014890375325157,
+      "horizon_ms": 250,
+      "hurdle_bps": 6.498284605797612,
+      "mean_signed_mid_move_bps": 0.018356239609015983,
+      "observations_defined_signal": 2425907,
+      "observations_valid_state": 2691000,
+      "required_over_signal": 354.00957626451265,
+      "signal_sign_ok": true
+    },
+    {
+      "block_bootstrap_se_bps": 0.0008563372656049934,
+      "ci_high_bps": 0.032576858417205194,
+      "ci_low_bps": 0.02917597533963571,
+      "coverage_fraction": 0.9014890375325157,
+      "horizon_ms": 500,
+      "hurdle_bps": 6.497806873002617,
+      "mean_signed_mid_move_bps": 0.03084643311974632,
+      "observations_defined_signal": 2425907,
+      "observations_valid_state": 2691000,
+      "required_over_signal": 210.65018596406372,
+      "signal_sign_ok": true
+    },
+    {
+      "block_bootstrap_se_bps": 0.001305770154741569,
+      "ci_high_bps": 0.054142974351277,
+      "ci_low_bps": 0.04897777850316129,
+      "coverage_fraction": 0.9014890375325157,
+      "horizon_ms": 1000,
+      "hurdle_bps": 6.497874440860437,
+      "mean_signed_mid_move_bps": 0.05149511600793849,
+      "observations_defined_signal": 2425907,
+      "observations_valid_state": 2691000,
+      "required_over_signal": 126.18428590118575,
+      "signal_sign_ok": true
+    },
+    {
+      "block_bootstrap_se_bps": 0.0020546090341042747,
+      "ci_high_bps": 0.08602110300992803,
+      "ci_low_bps": 0.07793021223903963,
+      "coverage_fraction": 0.9014870572321002,
+      "horizon_ms": 2000,
+      "hurdle_bps": 6.496800693604689,
+      "mean_signed_mid_move_bps": 0.08194948489316614,
+      "observations_defined_signal": 2425798,
+      "observations_valid_state": 2690885,
+      "required_over_signal": 79.27811507386869,
+      "signal_sign_ok": true
+    },
+    {
+      "block_bootstrap_se_bps": 0.0039898086966369895,
+      "ci_high_bps": 0.1446673305819018,
+      "ci_low_bps": 0.12917902021458527,
+      "coverage_fraction": 0.9014826020055453,
+      "horizon_ms": 5000,
+      "hurdle_bps": 6.495855411341824,
+      "mean_signed_mid_move_bps": 0.13681461013113025,
+      "observations_defined_signal": 2425475,
+      "observations_valid_state": 2690540,
+      "required_over_signal": 47.4792524359486,
+      "signal_sign_ok": true
+    },
+    {
+      "block_bootstrap_se_bps": 0.006470318896716387,
+      "ci_high_bps": 0.19226410052481696,
+      "ci_low_bps": 0.1672126390609472,
+      "coverage_fraction": 0.9014671194606622,
+      "horizon_ms": 10000,
+      "hurdle_bps": 6.494779825675453,
+      "mean_signed_mid_move_bps": 0.1794870467118761,
+      "observations_defined_signal": 2424915,
+      "observations_valid_state": 2689965,
+      "required_over_signal": 36.185228653860925,
+      "signal_sign_ok": true
+    },
+    {
+      "block_bootstrap_se_bps": 0.008712625020931801,
+      "ci_high_bps": 0.21747570121777332,
+      "ci_low_bps": 0.18348201920148194,
+      "coverage_fraction": 0.9014553486106515,
+      "horizon_ms": 15000,
+      "hurdle_bps": 6.494242557016495,
+      "mean_signed_mid_move_bps": 0.19994543334785622,
+      "observations_defined_signal": 2424365,
+      "observations_valid_state": 2689390,
+      "required_over_signal": 32.480074429697524,
+      "signal_sign_ok": true
+    }
+  ],
+  "spread_labels": [
+    "ONE_TICK",
+    "WIDER_THAN_ONE_TICK"
+  ]
+}

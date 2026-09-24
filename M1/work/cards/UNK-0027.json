@@ -31,7 +31,8 @@
     "EVD-0054",
     "EVD-0056",
     "EVD-0057",
-    "EVD-0067"
+    "EVD-0067",
+    "EVD-0070"
   ],
   "decision_prevented": "M2 registration and any falsifier (KG5) for the affected rows.",
   "disallowed_evidence": "Choosing the instrument with the best historical performance (selection leakage)",
@@ -43,7 +44,7 @@
   "known_source_ids": [
     "SRC-0011"
   ],
-  "last_updated": "2026-09-24T11:46:43Z",
+  "last_updated": "2026-09-24T14:06:09Z",
   "parent_issue_id": null,
   "priority_reason": "M1-BLOCKING retained: handoff \u00a711 makes exact-instrument definition an M1 requirement.",
   "priority_score": null,

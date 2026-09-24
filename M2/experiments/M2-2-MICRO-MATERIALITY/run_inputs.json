@@ -1,0 +1,93 @@
+{
+  "as_run_deviations_from_freeze": [
+    {
+      "as_run": "115 symbols, identical to M2-0.6",
+      "cause": "the same manifest and the same inherited eligibility sentences, including defect M2-0-D4 (the $1 price floor tested against the first pre-open add), which removes the same 5 names",
+      "effect_on_verdict": "none: verified by diffing M2/output/micro/data_quality/scope_manifest.csv against M2/output/univproxy/data_quality/scope_manifest.csv, which are identical in (locate, symbol) for all 115 rows",
+      "frozen": "replay scope = the explicit locates manifest of M2-0.6 (top dollar-volume names inside the single-day liquidity decile)",
+      "id": "M2-2-DEV1",
+      "recorded_in": "M2/output/micro/data_quality/scope_exclusions.csv"
+    },
+    {
+      "as_run": "3.9901 bps at 1000 ms and 3.9875 bps at 15000 ms, against M2-0.6's all-instant 4.1011 bps at 1000 ms",
+      "cause": "the causal estimator cannot price the session's first 5-minute block (no prior data) and a cell/block below its frozen minimum, so 5.86% of instants leave the evaluated set; those instants have a slightly wider quoted spread than the day average",
+      "effect_on_verdict": "none, and in the candidate's favour: the hurdle applied here is 0.11 bps SMALLER than the previously measured one, so every requirement ratio reported is if anything understated",
+      "frozen": "the hurdle is recomputed on this experiment's own observation set",
+      "id": "M2-2-DEV2",
+      "recorded_in": "M2/output/M2_MICRO_MATERIALITY_STATUS.md"
+    },
+    {
+      "as_run": "h* = 15000 ms, the longest frozen horizon",
+      "cause": "the frozen rule, applied after the run; the term structure is monotone over the whole grid",
+      "effect_on_verdict": "the reported R_pooled = 17.09 is the most favourable of the eight; the 1000 ms requirement is 53.60",
+      "frozen": "the pooled horizon h* is selected from the eight frozen horizons by the largest absolute pooled signal",
+      "id": "M2-2-DEV3",
+      "recorded_in": "M2/output/micro/calculations/micro_signal_by_horizon.csv"
+    }
+  ],
+  "code_and_input_sha256": {
+    "M2/src/book.py": "392cba8e0eadc65c2fe6e0a23822dd3c22c6065fac873a53982500449208e76c",
+    "M2/src/calculate.py": "8a6a0534cec0142fbdc56fa4ea9d354f497cad2358f067b261a74a93439edef7",
+    "M2/src/config.py": "529cc4882ce7c0636e59995a04f540042bc7dd8c339e112c35d28d2d0483ced6",
+    "M2/src/costs.py": "1df0ed45e5663614f799350f87b52abcc863ba47f933fc0791e595cec0e3d36f",
+    "M2/src/feasibility.py": "855eccc6ca438ff6ddd17b286a846d71a008f287e0b609293ab7e95cb9986b02",
+    "M2/src/features.py": "b70cde5dcd420ddd9b65aabaac79dee6189914dfd60436bffcefa23444d4bfae",
+    "M2/src/ingest.py": "84b94a1a26f9771d1c498e1906666b0deaefd5f37c99a215a6fe0fc7c2f37fad",
+    "M2/src/labels.py": "97cf0befc7042f50f7fec93b5188dd7efe5dcf59e0e1966017d081e793a4a461",
+    "M2/src/micro.py": "934d950a321d129b270c8e40faf4aae3e5e281077b2c9d8f12e19f19929cd200",
+    "M2/src/universe.py": "1a17afc1e137241a4a190dcc7a85a0adacecaeff06787a0ba18a1420222390eb",
+    "M2/src/universe_proxy.py": "ce527a3e34f80c315547985f32157e28f2c3a9d37e0d1d2e50fea8e872d8021d",
+    "M2/tests/test_micro.py": "972b7ad3e07bf2af4ad52a271e56ee6e8ae2541a9e34c1b61a128cd5c3d1e5bb",
+    "config": "ea5d90d10d359aafd69b0b24b0a649fce13d9411036b1f104e7e244ff18ee9f4",
+    "cost_ledger": "52ce785fc7210138af4059e327fc7101dff7f78dff3f5156c045973c1ed4cb17",
+    "decisions.parquet": "a05bda3a8de880bc80dea937469d8aae63c3bba609cfdde328d7d686ca0667c3",
+    "delay_decisions.parquet": "9a0dc7c5c82c16e87ee8249734400be7b1598f046dad9039c57c209bbdfcc135",
+    "freeze.json": "89f84b29e0a509ee77838dcbddc8b57650bcf3ca4635fb75753445b3edf6a6ee",
+    "ingest_summary": "38b4b308a870eaf7069df461a9c63a9f794ca9633545d8ea522132ee5d6f6f24",
+    "primary_subset": "f2194a2e54f37cb9fb084687d043e8019cdfbc12d4be5475260e1b234c3ef019",
+    "proxy_scope_manifest": "7629ec0967ad6f0c9d012249f6b273988717811bef5b202afbb37feaceb3b1ff",
+    "replay_summary": "773a178b8cea9c13a10d3166d2c6ed447ba4c164589eaa9c83f49ab43d1cee86"
+  },
+  "defects_found": [],
+  "experiment_id": "M2-2-MICRO-MATERIALITY",
+  "freeze_sha256_recomputed": "89f84b29e0a509ee77838dcbddc8b57650bcf3ca4635fb75753445b3edf6a6ee",
+  "freeze_sha256_sealed": "89f84b29e0a509ee77838dcbddc8b57650bcf3ca4635fb75753445b3edf6a6ee",
+  "note": "The experiment contract is M2/experiments/M2-2-MICRO-MATERIALITY/freeze.json, sealed before any canonical economics were inspected. This file records the inputs and artifacts as they were actually produced and does not modify the freeze.",
+  "record": "AS_RUN_INPUTS_AND_ARTIFACTS",
+  "result_artifacts": {
+    "M2/output/micro/calculations": {
+      "calculation_status.json": "cc328067a9ad6de8de2226df911dea8097c07e55a263db825ef109f248efc71b",
+      "micro_materiality.json": "997a05c49c30f53c7db6afa0bc9a2422608c121360eb9c9663ab0543674e2c83",
+      "micro_oracle_ceiling.csv": "c985a9bfb901897ceb92a1c09cf5f601b784dc59462c161ba7eb1df74ebd98cf",
+      "micro_signal_by_horizon.csv": "fdeebff4f8f9f3b8993ecd835ba8e9d438e51e192540e44238bb8973c800a7a0",
+      "micro_signal_by_imbalance_spread_cell.csv": "dce1e3c5f7fd8ea2b154d6863c2ee9395b425f905e55f4d3e604ea6e5621a73e",
+      "micro_signal_by_strength_band.csv": "d5a71f2ed18e8ca3bedaeeb961d3be0aa02028b51cc1ac91f90c5bf0258fba46",
+      "micro_signal_optimistic_by_horizon.csv": "7e2818214e0f19495f70b9823525326260c5e5c26885461ae1e3eb22cd1d8422",
+      "micro_verdict.json": "384098e72754a3192094a0e390a5bbf0beea81b6d38682b19ef65b373a7952a1"
+    },
+    "M2/output/micro/calculations_liquidity_scope": {
+      "calculation_status.json": "df30c8e1521cf8f340c454f89b3f250b0f77144d0445dd5212222a1f5e9534d2",
+      "micro_materiality.json": "a02da4cefaac41ef3e36a2f5f98c73ba5963a0eca7b8ba9cb9f755dc890e5aef",
+      "micro_oracle_ceiling.csv": "793e106d934b2f4b1d45308100c89a2dfa149cef307afe3ccabfb2e9e46a8dd1",
+      "micro_signal_by_horizon.csv": "d81ee323a3b2b36d9b0278c63d0eb1c6cde435b8e348bfd45134f0a76af42210",
+      "micro_signal_by_imbalance_spread_cell.csv": "666fa65a2179d505f787831139a140a9d26a2765957cb76d80a83f59cf248648",
+      "micro_signal_by_strength_band.csv": "de6013b435b1e7ffe23e8961802c844eea7daf1bd648558ef2781ee460fd7616",
+      "micro_signal_optimistic_by_horizon.csv": "e83d8c4ffc59bac74d72209f7cc2775d7adf70e3f9f9930edaef7d352856a089",
+      "micro_verdict.json": "7fa6174dd482d759c74210af10b8ae7c4f533c01d6555613d7dd9cecd1a97c39"
+    }
+  },
+  "status_artifact_sha256": "f47ed503aa664c4c24b6d0e70a1c82c6e4fa7326e22b976e1df0bc9945c8247b",
+  "terminal_state": "KILLED",
+  "validity": {
+    "decision_rows": 2691000,
+    "delay_rows": 2691000,
+    "direction_delta_sign_mismatches": 0,
+    "m1_validator": "PASS, 0 failures across 19 rule groups",
+    "m2_test_suite": "136 tests OK (17 new in M2/tests/test_micro.py)",
+    "next_move_resolved_fraction": 0.9977,
+    "replay_verdict": "DATA_VALID",
+    "rows_aligned_between_decisions_and_delay": "asserted in M2/src/micro.py::evaluate before any join",
+    "scope_identical_to_M2_0_6": true
+  },
+  "written_after_run": true
+}

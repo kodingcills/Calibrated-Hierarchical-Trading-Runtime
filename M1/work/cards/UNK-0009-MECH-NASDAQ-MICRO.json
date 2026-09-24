@@ -11,7 +11,8 @@
     "EVD-0033",
     "EVD-0034",
     "EVD-0041",
-    "EVD-0042"
+    "EVD-0042",
+    "EVD-0070"
   ],
   "decision_prevented": "KG1 for the Nasdaq micro-price tuple.",
   "disallowed_evidence": "Assumed values, secondary summaries, social posts",
@@ -21,7 +22,7 @@
   "kill_potential": "HIGH",
   "known_evidence_ids": [],
   "known_source_ids": [],
-  "last_updated": "2026-09-24T11:46:43Z",
+  "last_updated": "2026-09-24T14:06:09Z",
   "parent_issue_id": "UNK-0009",
   "priority_reason": "New child created by the iteration-4 citation replacement: the claim is verified but its venue scope is not, so venue-specific KG1 credit is withheld.",
   "priority_score": null,

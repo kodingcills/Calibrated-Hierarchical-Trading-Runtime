@@ -15,7 +15,8 @@
     "EVD-0034",
     "EVD-0041",
     "EVD-0042",
-    "EVD-0067"
+    "EVD-0067",
+    "EVD-0070"
   ],
   "decision_prevented": "Causal replay and therefore queue/fill claims for the Nasdaq equity rows (KG2).",
   "disallowed_evidence": "Assumed values, secondary summaries, social posts",
@@ -27,7 +28,7 @@
   "known_source_ids": [
     "SRC-0201"
   ],
-  "last_updated": "2026-09-24T11:46:43Z",
+  "last_updated": "2026-09-24T14:06:09Z",
   "parent_issue_id": "UNK-0018",
   "priority_reason": "Scoped child: Nasdaq's timestamp question is settled by one product specification and a sample, independently of CME or Eurex.",
   "priority_score": null,

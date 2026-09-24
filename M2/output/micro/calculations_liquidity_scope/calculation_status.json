@@ -1,0 +1,20 @@
+{
+  "blockers": [],
+  "estimator_id": "STOIKOV-MICRO-FIRSTSTEP-v1",
+  "freeze_sha256": "89f84b29e0a509ee77838dcbddc8b57650bcf3ca4635fb75753445b3edf6a6ee",
+  "horizons_ms": [
+    100,
+    250,
+    500,
+    1000,
+    2000,
+    5000,
+    10000,
+    15000
+  ],
+  "note": "descriptive measurement on a single 2019 development day; no profitability claim and no current-market inference",
+  "population": "liquidity_scope_115_symbols",
+  "status": "CALCULATION_COMPLETE",
+  "structural_floor_label": "structural_floor",
+  "terminal_state": "KILLED"
+}

@@ -21,7 +21,8 @@
     "EVD-0034",
     "EVD-0041",
     "EVD-0042",
-    "EVD-0067"
+    "EVD-0067",
+    "EVD-0070"
   ],
   "decision_prevented": "Nothing decision-critical; recorded so the token inventory is complete.",
   "disallowed_evidence": "Assumed values, secondary summaries, social posts",
@@ -31,7 +32,7 @@
   "kill_potential": "LOW",
   "known_evidence_ids": [],
   "known_source_ids": [],
-  "last_updated": "2026-09-24T11:46:43Z",
+  "last_updated": "2026-09-24T14:06:09Z",
   "parent_issue_id": "UNK-0023",
   "priority_reason": "Deliberately non-blocking: historical completeness of the token inventory is not a decision input.",
   "priority_score": null,

@@ -4,7 +4,7 @@ Canonical machine-readable source: `M1/data/dead_candidates.csv`.
 Imported from the M1-A dead-candidate cemetery (SRC-0011) plus the two governance and
 technology admissions registered by M1-C.
 
-Registered dead rows: 9
+Registered dead rows: 10
 
 Re-entry policy: a dead candidate cannot re-enter silently. It requires NEW_EVIDENCE plus
 an explicit resurrection decision recorded in `DECISIONS.md`. The resurrection condition
@@ -27,6 +27,15 @@ is recorded per row so the decision can be made against a stated bar rather than
 - evidence: EVD-0068|EVD-0069
 - death date: 2026-09-20 (date of the M1-A artifact (SRC-0011) for the original kills; M1-D0 computed-gate kills are dated by gate_recompute_date; a kill recorded from M2 evidence carries its experiment date in the cause text and in its evidence rows rather than in this column)
 - resurrection condition: A rule-conformant measurement with non-negative fill-conditioned midpoint markout and queue reachability inside the signal's horizon, or a materially different formulation registered as its own candidate (passive exit, inventory, or venue liquidity-credit capture with an always-resting baseline).
+
+## TUP-NASDAQ-LARGETICK-H2H3-MICRO-AGG - killed by KG3_EXECUTION
+
+- class: TUPLE
+- report kill gate (verbatim): None
+- cause: The registered microprice direction is real but economically immaterial on this population: 0.2333 bps pooled at 15000 ms (R = 17.09) and 0.5836 bps in the best declared state (R = 5.02) against a 3.9875 bps round trip, with a clairvoyant ceiling of 1.63 bps per trade at the fee floor. It is not an uplift on the queue-imbalance row at the shared horizon (0.0745 bps against 0.0794 bps at 1000 ms). Measured over 282,229,684 messages on the 2019-07-30 development tape (M2-2-MICRO-MATERIALITY, freeze sha256 89f84b29...).
+- evidence: EVD-0004|EVD-0005|EVD-0014|EVD-0031|EVD-0032|EVD-0033|EVD-0034|EVD-0035|EVD-0041|EVD-0042|EVD-0065|EVD-0070
+- death date: 2026-09-20 (date of the M1-A artifact (SRC-0011) for the original kills; M1-D0 computed-gate kills are dated by gate_recompute_date; a kill recorded from M2 evidence carries its experiment date in the cause text and in its evidence rows rather than in this column)
+- resurrection condition: A rule-conformant measurement in which the pooled required/signal ratio at the candidate's own horizon is at or below 5, which requires a materially larger per-second move scale or a materially higher price level for the universe's names than the measured 2019 session; or a materially different formulation (passive, inventory, or a state the estimator does not currently use) registered as its own candidate and friction-measured before any execution model is built for it.
 
 ## TUP-HYPERLIQUID-BTCPERP-H1-QDEP-AGGPAS - killed by KG2_DATA|KG4_HALF_LIFE
 

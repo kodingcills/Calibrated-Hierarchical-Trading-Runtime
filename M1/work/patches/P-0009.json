@@ -1,0 +1,106 @@
+{
+  "blocker_ids": [
+    "UNK-0018-NASDAQ",
+    "UNK-0027-NASDAQ-LARGETICK"
+  ],
+  "candidate_ids": [
+    "TUP-NASDAQ-LARGETICK-H2H3-MICRO-AGG"
+  ],
+  "created_at": "2026-09-24T14:06:09Z",
+  "decision": "KILLS",
+  "modified_claims": [
+    {
+      "claim": "The microprice candidate is a materially different and materially stronger signal than the queue-imbalance row of the same family (MECH-MICRO vs MECH-QIMB).",
+      "reason": "Measured. The calibrated microprice direction agrees with the imbalance sign on 94.85% of instants (100% under a non-causal whole-day refit), so at the shared 1000 ms horizon it is worth 0.0745 bps against QIMB's 0.0794 bps. It is materially larger only at long horizons (0.2333 bps at 15000 ms, 2.94x the QIMB 1 s figure) where its own requirement is still 17.09x.",
+      "status": "CORRECTED"
+    }
+  ],
+  "new_evidence": [
+    {
+      "candidate_ids": "TUP-NASDAQ-LARGETICK-H2H3-MICRO-AGG",
+      "candidate_link_reason": "The experiment exists solely to measure this candidate's own registered estimator against the friction this same population was already measured to charge, before any execution model is built for it (the rule recorded as D-0037).",
+      "claim": "The registered Stoikov-style microprice direction earns +0.2333 bps of side-signed mid move at its best preregistered horizon (15000 ms, 95% CI [0.2142, 0.2530]) against a 3.9875 bps structural round trip, i.e. 5.9% of the friction (R_pooled = 17.09). The strongest declared state - imbalance in [0.8,1.0] with a one-tick spread, at 15000 ms - earns +0.5836 bps (CI [0.4842, 0.6831]) on 2.98% of the direction-defined instants (R_best = 5.02). At the queue-imbalance row's own horizon the microprice is not an uplift: 0.0745 bps at 1000 ms against 0.0794 bps for QIMB. With perfect foresight of the future executable quotes the aggressive round trip nets +1.6275 bps per trade at the structural floor and +0.7012 bps on the accessible broker path, on 19.51% of instants, against the same 3.9875 bps hurdle - the candidate is limited by friction, not by prediction quality. The whole-day non-causal refit moves the 15000 ms figure only to +0.2520 bps (R = 16.25), so causality is not what holds it back.",
+      "contradicts_mechanism": "NO",
+      "decision_implication": "KG3_EXECUTION fails for the microprice candidate: neither its pooled behaviour nor its strongest preregistered state is within 5x of the structural friction, and perfect foresight on the same instants does not clear one round trip. No execution model, modern-data purchase, learned predictor or passive pivot is justified for this candidate.",
+      "epistemic_class": "SUPPORTED_FINDING",
+      "evidence_id": "EVD-0070",
+      "evidence_origin": "PROJECT_ARITHMETIC",
+      "gross_or_net": "NET for the hurdle and the oracle; gross mid-to-mid for the signal",
+      "limitations": "One development day; a single-day universe proxy; 2026 fee cards on a 2019 tape; first-step estimator only; the best-state clause clears its frozen bar by 0.3% and its confidence interval on the signal implies R in [4.28, 6.04], so the best-state condition is met at the point estimate and is not resolved by this sample at conventional confidence - the pooled condition (17.09 against a bar of 10) and the clairvoyant ceiling are what make the verdict decisive. No passive or inventory formulation is tested.",
+      "mechanism_id": "MECH-MICRO",
+      "methodology": "Deterministic replay and cost arithmetic; the estimator's calibration uses only strictly earlier session data and cannot see its own or any later observation; the oracle is computed from the realized future quotes themselves and depends on no model, threshold or fitted parameter; uncertainty is a block bootstrap over symbol x 30-minute cells; 17 new unit tests plus the 119 pre-existing M2 tests pass, and the replay reports DATA_VALID with 0 direction/delta sign mismatches.",
+      "observed_horizon": "H2-H3 (100 ms - 15 s)",
+      "observed_instrument_or_universe": "top-dollar-volume Nasdaq-listed common stock with a one-tick median Nasdaq book spread (one-day proxy of NASDAQ-LARGETICK-QIMB-UNIV-v1)",
+      "observed_market": "US equities",
+      "observed_period": "2019-07-30",
+      "observed_venue": "VEN-NASDAQ-CONT",
+      "sample": "33 rule-conformant names, 726,943 direction-defined decision instants at the primary population; 115-name scope, 2,425,329 for the corroborating population",
+      "source_id": "SRC-0245",
+      "supports_or_weakens": "WEAKENS",
+      "temporal_scope": "2019-07-30 (DEVELOPMENT, holdout-ineligible)",
+      "transfer_status": "SAME_POPULATION_PROXY",
+      "venue_id": "VEN-NASDAQ-CONT",
+      "verification_status": "FROZEN_PRECOMMITTED_REPRODUCIBLE"
+    }
+  ],
+  "new_sources": [
+    {
+      "access_date": "2026-09-24",
+      "authors_or_org": "This project (M2 autonomous run)",
+      "claim_scope": "Measured realized predictive magnitude of the registered microprice signal, the structural hurdle it faces, and the clairvoyant ceiling on the same instants, in the candidate's own population and horizon band.",
+      "date_basis": "experiment frozen and run 2026-09-24; the freeze manifest was sealed before any canonical economics of this experiment were inspected",
+      "doi": null,
+      "gross_or_net": "NET (after spread, exchange and statutory costs) for the hurdle and the oracle; the measured signal itself is a gross mid-to-mid move",
+      "independent_replication": null,
+      "limitations": "One 2019 low-volatility development day; a single-day proxy of the universe rule rather than membership; 2026 rate cards on a 2019 tape; only the first step of the Stoikov estimator is computed (the sign, on which the measured quantity depends, is unchanged by the higher-order terms); only the aggressive execution style is evaluated.",
+      "local_path": "M2/output/M2_MICRO_MATERIALITY_STATUS.md",
+      "market": "US equities",
+      "methodology": "The registered Stoikov first-step micro-price (p = mid + g1(X), X = (imbalance bin, spread class)) with an expanding prior-session calibration (5-minute refit, 200 prior resolved observations per cell, no imputation), evaluated as the side-signed future mid move; the M2-0.6 aggressive cross-to-cross arithmetic, structural cost floor and clairvoyant oracle reused unchanged; the replay engine reused with one added derived column (the size of the next mid-price change) and no changed column",
+      "primary_or_secondary": "primary_own_measurement",
+      "publication_date": "2026-09-24",
+      "raw_citation_token": "code:P-0009",
+      "sample_period": "one trading day, 2019-07-30, 09:30:00-16:00:00",
+      "sample_size": "115 replayed symbols; primary population 33 one-tick rule-conformant names; 772,200 decision instants at a 1 s grid, of which 726,943 carry a causal microprice direction; horizons 100 ms - 15 s",
+      "sha256": "89f84b29e0a509ee77838dcbddc8b57650bcf3ca4635fb75753445b3edf6a6ee",
+      "source_id": "SRC-0245",
+      "source_type": "internal_measurement",
+      "status": "PARTIAL",
+      "title": "M2-2 microprice economic-materiality gate for TUP-NASDAQ-LARGETICK-H2H3-MICRO-AGG (project's own frozen experiment M2-2-MICRO-MATERIALITY)",
+      "url": null,
+      "venue": "Nasdaq (XNAS), Nasdaq-only reconstructed book"
+    }
+  ],
+  "new_unknowns": [],
+  "patch_id": "P-0009",
+  "proposed_assumption_updates": [],
+  "proposed_candidate_updates": [
+    {
+      "candidate_id": "TUP-NASDAQ-LARGETICK-H2H3-MICRO-AGG",
+      "fields": {
+        "KG3_EXECUTION": "FAIL",
+        "kill_gate": "KG3_EXECUTION",
+        "kill_reason": "The registered microprice direction is real but far too small for the friction of participating: +0.2333 bps pooled at 15000 ms (R = 17.09) and +0.5836 bps in the best declared state (R = 5.02) against a 3.9875 bps round trip, with a clairvoyant ceiling of 1.63 bps per trade at the fee floor. Measured on 282,229,684 messages over the rule-conformant population (M2-2-MICRO-MATERIALITY, freeze sha256 89f84b29...).",
+        "overall_status": "DEAD",
+        "resurrection_condition": "A rule-conformant measurement in which the pooled required/signal ratio at the candidate's own horizon is at or below 5 - which requires a materially larger per-second move scale or a materially higher price level for the universe's names than the measured 2019 session - or a materially different formulation (passive, inventory, or a state the estimator does not currently use) registered as its own candidate with its own friction measurement first.",
+        "status_basis": "KG3_EXECUTION fails on the project's own measured evidence (EVD-0070): the pooled microprice signal supplies 5.9% of the structural round trip at the longest horizon the candidate declares, the strongest declared state still needs a 5x larger signal, and a clairvoyant trader on the same instants nets 1.63 bps per trade at the structural floor (0.70 bps on the accessible path) against a 3.99 bps round trip."
+      }
+    }
+  ],
+  "proposed_dead_end_updates": [],
+  "proposed_gate_changes": [
+    {
+      "candidate_id": "TUP-NASDAQ-LARGETICK-H2H3-MICRO-AGG",
+      "from_value": "BLOCKED",
+      "gates": [
+        "KG3_EXECUTION"
+      ],
+      "reason": "EVD-0070: the execution requirement is measured on the candidate's own population and horizon band, and it is failed by a factor of 5 in the strongest declared state and 17 pooled.",
+      "to_value": "FAIL"
+    }
+  ],
+  "proposed_issue_updates": [],
+  "provenance": "code:p0009_m2_micro_kill",
+  "reason": "The candidate's registered estimator carries real but economically immaterial information on this population: it is rejected before any execution model is built for it, which is exactly the order of work the family's own history (EVD-0067, EVD-0069) made mandatory.",
+  "status": "PROPOSED",
+  "verification_notes": "Contrary evidence was searched before this patch was written: the estimator was reconstructed from its own source material rather than substituted by the weighted mid-price (whose sign is the imbalance sign by construction and which the frozen contract prohibits); a non-causal whole-day refit was computed explicitly to test whether causality was the binding limitation (it is not: 8.0% of extra signal); every horizon of the candidate's own H2-H3 band was reported rather than the one that looks best; the strongest magnitude band and the strongest (imbalance x spread) cell were both examined; the hurdle was recomputed on this pass's own observation set (3.9901 bps at 1000 ms) rather than copied from M2-0.6 (4.1011 bps), and the recomputed value is the SMALLER, i.e. the reading more favourable to the candidate; and the best-state clause's 0.3% margin and its confidence interval are recorded rather than presented as a decisive separation. Every number is reproduced from frozen artifacts whose hashes are recorded in M2/experiments/M2-2-MICRO-MATERIALITY/run_inputs.json."
+}

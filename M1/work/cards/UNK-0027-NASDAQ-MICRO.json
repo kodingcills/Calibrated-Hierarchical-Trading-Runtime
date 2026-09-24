@@ -11,7 +11,8 @@
     "EVD-0033",
     "EVD-0034",
     "EVD-0041",
-    "EVD-0042"
+    "EVD-0042",
+    "EVD-0070"
   ],
   "decision_prevented": "KG5 for the micro-price branch (currently gated behind KG1).",
   "disallowed_evidence": "Assumed values, secondary summaries, social posts",
@@ -21,7 +22,7 @@
   "kill_potential": "LOW",
   "known_evidence_ids": [],
   "known_source_ids": [],
-  "last_updated": "2026-09-24T11:46:43Z",
+  "last_updated": "2026-09-24T14:06:09Z",
   "parent_issue_id": "UNK-0027",
   "priority_reason": "Deliberately not specified now: a universe rule for a branch that cannot pass KG1 would be busywork, and the deferral is recorded rather than hidden.",
   "priority_score": null,

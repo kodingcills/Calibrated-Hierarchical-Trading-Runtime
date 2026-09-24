@@ -18,7 +18,8 @@
     "EVD-0037",
     "EVD-0041",
     "EVD-0042",
-    "EVD-0067"
+    "EVD-0067",
+    "EVD-0070"
   ],
   "decision_prevented": "Net-economics arithmetic for equity tuples (KG3).",
   "disallowed_evidence": "Published headline rates assumed to be the realized rates",
@@ -33,7 +34,7 @@
   "known_source_ids": [
     "SRC-0114"
   ],
-  "last_updated": "2026-09-24T11:46:43Z",
+  "last_updated": "2026-09-24T14:06:09Z",
   "parent_issue_id": null,
   "priority_reason": "M1-BLOCKING retained: known costs are Tier-1 killers.",
   "priority_score": null,

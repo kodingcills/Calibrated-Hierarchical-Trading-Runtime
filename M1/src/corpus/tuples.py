@@ -287,11 +287,47 @@ add("TUP-NASDAQ-LARGETICK-H2H3-MICRO-AGG", "TUPLE",
     "fill data",
     "The estimator must be converted into an execution decision that beats the OFI/logistic "
     "baseline on net utility, not on estimator error",
-    "PASS", "UNKNOWN", "LATENCY_UNMEASURED", (_B, _B, _B, _B, _P), "WEAK",
-    "Estimator evidence exists (EVD-0014) but profit evidence does not; the same unresolved "
-    "historical-data, fee-tier and after-cost replication gaps constrain it.",
+    "PASS", "UNKNOWN", "LATENCY_UNMEASURED", (_B, _B, _F, _B, _P), "DEAD",
+    "KG3_EXECUTION fails on the project's own measured evidence (EVD-0070, patch P-0009): the "
+    "registered Stoikov first-step microprice direction (estimated with an expanding "
+    "prior-session calibration that cannot see its own or any later observation) earns 0.2333 bps "
+    "of side-signed mid move at the longest horizon the candidate declares (15000 ms, 95% CI "
+    "[0.2142, 0.2530]) against a 3.9875 bps structural round trip (R = 17.09), and its strongest "
+    "declared state - imbalance in [0.8,1.0] with a one-tick spread - earns 0.5836 bps on 2.98% of "
+    "instants (R = 5.02). With perfect foresight of the future executable quotes the same instants "
+    "yield only +1.6275 bps per trade at the structural floor (+0.7012 bps on the accessible "
+    "broker path) on 19.51% of instants, so the candidate is limited by friction rather than by "
+    "prediction quality. The estimator evidence in EVD-0014 is unchanged and is not contradicted: "
+    "the information is present, weak and not executable.",
     "UNK-0004|UNK-0005|UNK-0006|UNK-0008|UNK-0009|UNK-0016|UNK-0018|UNK-0027",
-    "SRC-0011 tuple ledger row 7")
+    "SRC-0023 patch P-0009",
+    kill_gate="KG3_EXECUTION",
+    kill_reason="The registered microprice direction is real but economically immaterial on this "
+                "population: 0.2333 bps pooled at 15000 ms (R = 17.09) and 0.5836 bps in the best "
+                "declared state (R = 5.02) against a 3.9875 bps round trip, with a clairvoyant "
+                "ceiling of 1.63 bps per trade at the fee floor. It is not an uplift on the "
+                "queue-imbalance row at the shared horizon (0.0745 bps against 0.0794 bps at "
+                "1000 ms). Measured over 282,229,684 messages on the 2019-07-30 development tape "
+                "(M2-2-MICRO-MATERIALITY, freeze sha256 89f84b29...).",
+    resurrection_condition="A rule-conformant measurement in which the pooled required/signal "
+                           "ratio at the candidate's own horizon is at or below 5, which requires "
+                           "a materially larger per-second move scale or a materially higher price "
+                           "level for the universe's names than the measured 2019 session; or a "
+                           "materially different formulation (passive, inventory, or a state the "
+                           "estimator does not currently use) registered as its own candidate and "
+                           "friction-measured before any execution model is built for it.",
+    notes="Killed by M2 evidence, not by an M1 inference, and killed at the gate that D-0037 "
+          "installed: the signal's own realized magnitude was measured against the friction before "
+          "any execution model was built for it, which is the order of work the queue-imbalance "
+          "sibling's history made mandatory. Two limits are stated rather than hidden. First, the "
+          "best-state clause clears its frozen 5x bar by 0.3% and the interval on that state's "
+          "signal implies R in [4.28, 6.04], so the best-state condition is a point estimate and "
+          "not a resolved separation; the pooled condition (17.09 against a bar of 10) and the "
+          "clairvoyant ceiling are what make the verdict decisive, and the ceiling contains no "
+          "estimator at all. Second, only the aggressive style is evaluated here; the passive "
+          "formulation of this mechanism is not tested by this row and is not falsified by it, but "
+          "it inherits the same one-tick/one-fee-floor geometry that killed the passive "
+          "queue-imbalance pivot (EVD-0069) and would need its own candidate registration.")
 
 add("TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG", "TUPLE", "U.S. listed stock (closing auction)",
     "VEN-NASDAQ-AUCTION", "H4", "MECH-AUCTIONIMB", "AUCTION",
