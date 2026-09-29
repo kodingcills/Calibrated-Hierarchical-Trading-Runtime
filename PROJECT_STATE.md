@@ -2,7 +2,7 @@
 
 Status: CURRENT
 Version: 1.0.0
-Last Updated: 2026-09-28T22:05:29Z
+Last Updated: 2026-09-29T14:37:21Z
 
 This is the canonical fast-orientation artifact. Read it before any other file. Its counts are
 generated from `M1/output/M1_STATE_SUMMARY.json` and enforced against the machine-readable
@@ -221,6 +221,17 @@ P-0006), its passive pivot `TUP-NASDAQ-LARGETICK-H2-QIMB-PAS` (measured passive 
 adverse-selection economics, EVD-0069, patch P-0008), and `TUP-NASDAQ-LARGETICK-H2H3-MICRO-AGG`
 (measured microprice magnitude, EVD-0070, patch P-0009). Re-entry requires NEW_EVIDENCE **and** an
 explicit resurrection decision recorded in `DECISIONS.md`; silent re-entry is prohibited.
+
+## GOAL-001 canonical reselection state
+
+Terminal state: **EXTERNAL_BLOCK**. Primary `TEST_NOW`: **NONE**. Conditional economic frontier:
+`TUP-CME-ES-H3-OFI-AGG`. Its conditional experiment is `EXTERNAL_BLOCKED_NOT_AUTHORIZED`; it is
+not registered for M2, and no data purchase or trading action is authorized. The next required
+external action is to identify the operator/account path, obtain an exact ES historical sample with
+validated timestamp semantics, and obtain exact account-level CME/FCM all-in costs. Coinbase and
+Kraken are `DEPRIORITIZE`, not the strategic frontier. The generic closure orchestrator's
+`next_autonomous_branch` is a mechanical blocker-dispatch field and must not override this
+reselection decision. Nasdaq large-tick QIMB/microprice remains CLOSED; no candidate is ALIVE.
 
 ## Current Strongest Findings
 

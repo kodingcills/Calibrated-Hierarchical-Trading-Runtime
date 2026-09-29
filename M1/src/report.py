@@ -32,7 +32,7 @@ def write_csv(path: Path, columns, rows, numeric_map=None):
     numeric_map = numeric_map or {}
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", newline="", encoding="utf-8") as fh:
-        writer = csv.writer(fh)
+        writer = csv.writer(fh, lineterminator="\n")
         writer.writerow(columns)
         for row in rows:
             rendered = []
