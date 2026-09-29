@@ -1,0 +1,166 @@
+{
+  "actions": [
+    {
+      "action_id": "ACT-E01-ES-EXTERNAL-CLOSURE",
+      "blocked": true,
+      "blocked_on": [
+        "external operator/account and data authorization"
+      ],
+      "capability": "EXTERNAL_REQUEST",
+      "decision_changed": "whether ES can move from conditional frontier to an authorized experiment",
+      "duplication_risk": "NONE",
+      "estimated_cost": "LOW",
+      "expected_decision_impact": "CRITICAL",
+      "prerequisites": [
+        "operator/account classification",
+        "exact ES data path",
+        "account-level cost schedule"
+      ],
+      "question": "Can the exact ES account, historical sample, and mechanism prerequisites be supplied?",
+      "resolution_confidence": "HIGH",
+      "reuse_value": "HIGH",
+      "source": "DERIVED",
+      "status": "BLOCKED_EXTERNAL",
+      "target_candidate_ids": [
+        "TUP-CME-ES-H3-OFI-AGG"
+      ],
+      "target_uncertainty_or_blocker": "UNK-0002|UNK-0003|UNK-0009-MECH-CME|UNK-0023-CME-DOCS",
+      "topology": "EXTERNAL",
+      "verification": "request_contract_check"
+    },
+    {
+      "action_id": "ACT-E01-CANONICAL-DETERMINISTIC-CHECK",
+      "blocked": false,
+      "blocked_on": [],
+      "capability": "DETERMINISTIC_ANALYSIS",
+      "decision_changed": "whether tactical blocker order should receive strategic priority",
+      "duplication_risk": "NONE",
+      "estimated_cost": "LOW",
+      "expected_decision_impact": "HIGH",
+      "prerequisites": [
+        "M1 state summary",
+        "closure frontier",
+        "candidate and dead registries"
+      ],
+      "question": "Does the current canonical state support a strategic frontier distinct from controller.py next?",
+      "resolution_confidence": "HIGH",
+      "reuse_value": "HIGH",
+      "source": "DERIVED",
+      "status": "READY",
+      "target_candidate_ids": [],
+      "target_uncertainty_or_blocker": "canonical-state-consistency",
+      "topology": "DETERMINISTIC",
+      "verification": "deterministic_reproduction"
+    },
+    {
+      "action_id": "ACT-E01-ES-MINIMUM-PRECURSOR",
+      "blocked": true,
+      "blocked_on": [
+        "external data/account facts"
+      ],
+      "capability": "DERIVE_PRECURSOR",
+      "decision_changed": "whether ES can be cheaply screened before any full experiment or purchase",
+      "duplication_risk": "NONE",
+      "estimated_cost": "LOW",
+      "expected_decision_impact": "HIGH",
+      "prerequisites": [
+        "existing reselection specification"
+      ],
+      "question": "What is the smallest fixed evidence contract that could make the conditional ES experiment decidable?",
+      "resolution_confidence": "HIGH",
+      "reuse_value": "HIGH",
+      "source": "STRATEGIC_PROPOSAL",
+      "status": "BLOCKED_EXTERNAL",
+      "target_candidate_ids": [
+        "TUP-CME-ES-H3-OFI-AGG"
+      ],
+      "target_uncertainty_or_blocker": "UNK-0002|UNK-0003|UNK-0009-MECH-CME",
+      "topology": "DETERMINISTIC",
+      "verification": "deterministic_reproduction"
+    },
+    {
+      "action_id": "ACT-E01-DIVERSITY-HYPERLIQUID",
+      "blocked": false,
+      "blocked_on": [],
+      "capability": "DIVERSITY_SCOUT",
+      "decision_changed": "whether an independent family deserves priority while ES waits",
+      "duplication_risk": "PARTIAL",
+      "estimated_cost": "LOW",
+      "expected_decision_impact": "HIGH",
+      "prerequisites": [
+        "candidate row",
+        "canonical venue facts",
+        "current reselection state"
+      ],
+      "question": "Could the surviving Hyperliquid H4 funding/basis family offer a materially cheaper decision path than the externally blocked ES branch?",
+      "resolution_confidence": "MEDIUM",
+      "reuse_value": "HIGH",
+      "source": "STRATEGIC_PROPOSAL",
+      "status": "READY",
+      "target_candidate_ids": [
+        "TUP-HYPERLIQUID-BTCPERP-H4-FUNDBASIS-MIX"
+      ],
+      "target_uncertainty_or_blocker": "UNK-0009-ECON-CRYPTO-SPOT|UNK-0018-HYPERLIQUID",
+      "topology": "PARALLEL_SEARCH",
+      "verification": "independent_source_verification"
+    },
+    {
+      "action_id": "ACT-E01-DIVERSITY-AUCTION",
+      "blocked": false,
+      "blocked_on": [],
+      "capability": "DIVERSITY_SCOUT",
+      "decision_changed": "whether an independent auction family merits bounded research",
+      "duplication_risk": "NONE",
+      "estimated_cost": "LOW",
+      "expected_decision_impact": "MEDIUM",
+      "prerequisites": [
+        "candidate row",
+        "dead-family registry"
+      ],
+      "question": "Could closing-auction imbalance be a distinct, decision-relevant family rather than a resurrection of the closed top-of-book sequence?",
+      "resolution_confidence": "MEDIUM",
+      "reuse_value": "MEDIUM",
+      "source": "STRATEGIC_PROPOSAL",
+      "status": "READY",
+      "target_candidate_ids": [
+        "TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG"
+      ],
+      "target_uncertainty_or_blocker": "UNK-0027-AUCTION|UNK-0004",
+      "topology": "PARALLEL_SEARCH",
+      "verification": "independent_source_verification"
+    }
+  ],
+  "autonomous_action_count": 3,
+  "canonical_reselection": {
+    "conditional_frontier": "After operator/account and data-access facts are supplied, select exactly one branch and preregister the cheapest gross-magnitude-versus-friction falsifier before any queue or strategy model is built.",
+    "terminal_state": "EXTERNAL_BLOCK"
+  },
+  "external_action_count": 1,
+  "generated_at": "2026-09-29T17:15:14Z",
+  "state_reference": {
+    "files": [
+      "PROJECT_STATE.md",
+      "M1/data/candidate_tuples.csv",
+      "M1/data/dead_candidates.csv",
+      "M1/data/discrepancies.csv",
+      "M1/data/evidence_ledger.csv",
+      "M1/output/M1_CANDIDATE_RESELECTION.json",
+      "M1/output/M1_STATE_SUMMARY.json",
+      "M1/work/frontier.json"
+    ],
+    "sha256": "5c330bf8400d283e53037a7b2f1b34526d8d0c8868ec3ad9d7f70d8f4a7ae098"
+  },
+  "suppressed_dead_candidates": [
+    "TUP-GENERIC-CME-QUEUE",
+    "TUP-GENERIC-CRYPTO-MICRO",
+    "TUP-HYPERLIQUID-BTCPERP-H1-QDEP-AGGPAS",
+    "TUP-JEV-HOSTED-LATENCY-UNMEASURED",
+    "TUP-METHOD-PASSIVE-TOUCHFILL",
+    "TUP-NASDAQ-LARGETICK-H1H2-QUEUEPOS-L1ONLY-AGG",
+    "TUP-NASDAQ-LARGETICK-H2-QIMB-AGG",
+    "TUP-NASDAQ-LARGETICK-H2-QIMB-PAS",
+    "TUP-NASDAQ-LARGETICK-H2H3-MICRO-AGG",
+    "TUP-SYSTEMONE-HARDCORE-ENGINE"
+  ],
+  "tactical_frontier_reference": "M1/work/frontier.json"
+}

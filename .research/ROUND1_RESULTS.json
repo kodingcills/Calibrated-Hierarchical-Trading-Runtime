@@ -1,0 +1,18 @@
+{
+  "campaign": "bounded-edge-discovery-2026-09-29",
+  "budget": {"groups": 7, "rounds": 2, "round_1": "one bounded read-only pass per group", "round_2": "reallocated only after verification"},
+  "independence": "Groups received only canonical repository state and their own scope; no group consumed another group's output.",
+  "incumbent": [
+    {"id":"TUP-CME-ES-H3-OFI-AGG","role":"incumbent","status":"EXTERNAL_BLOCKED","finding":"Retain. Cheapest falsifier is fixed-contract/roll causal gross-markout versus exact account-level round-trip friction before strategy or passive modeling."},
+    {"id":"TUP-CME-ES-H1-QDEP-PAS","role":"incumbent-subbranch","status":"EXTERNAL_BLOCKED","finding":"Retain separately. Queue allocation, passive fills, and fill-conditioned markouts make it structurally distinct from H3 aggressive OFI."}
+  ],
+  "groups": [
+    {"name":"forced-flow","survivors":["TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG","TUP-CME-WTI-H4-FLOWVOL-AGG"],"kills":["TUP-HYPERLIQUID-BTCPERP-H3-OFILIQ-AGG current market-wide liquidation form","generic stop cascade","generic fastest event latency"],"decision":"Auction receives priority; WTI remains secondary."},
+    {"name":"relative-value","survivors":["TUP-HYPERLIQUID-BTCPERP-H4-FUNDBASIS-MIX","TUP-DERIBIT-BTCOPT-H5-SURFRV-MIX"],"kills":["broad US stale-quote formulation","unspecified FX lead-lag formulation"],"deferred":["TUP-CBOE-USOPT-H5-SURFRV-MIX"],"decision":"Only funding/basis and Deribit RV receive bounded precursor allocation; no profitability claim."},
+    {"name":"market-design","survivors":["TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG","exact-contract CME product-rule passive reformulation","TUP-EUREX-FESX-H2H3-OFIQ-MIX","TUP-CBOEBZX-LARGETICK-H2H3-SPREADCAP-PAS"],"kills":["generic CME queue","generic rebate harvesting","NOII observability as alpha"],"decision":"Exact venue x instrument x order-type x rule is required."},
+    {"name":"horizon-mismatch","survivors":["auction/mandate flow","funding/basis","options inventory/RV","calendar roll as mechanism-only"],"kills":["generic capacity story without measurable payer constraint","generic balance-sheet story without proxy"],"decision":"Capacity/persistence is a verification requirement, not a branch by itself."},
+    {"name":"cheap-precursors","survivors":["static gate/status ceiling","exact-instrument screen","gross-magnitude-versus-friction screen","data/timestamp contract screen","EV(delay) after valid replay"],"kills":["no local ES economic kill possible","Nasdaq replay cannot transfer to other venues"],"decision":"Use existing frozen precursor ladder; do not invent thresholds."},
+    {"name":"search-red-team","survivors":["lineage and dependency audit","family-level multiplicity control","selector/leakage audit","survivorship and horizon/regime audit"],"kills":["best-cell claims as branch evidence","cross-venue/next-tick transfer","oracle-derived strategy metrics","duplicate branches counted independently"],"decision":"Controls are gates, not alpha discoveries."},
+    {"name":"incumbent-ES","survivors":["TUP-CME-ES-H3-OFI-AGG","TUP-CME-ES-H1-QDEP-PAS"],"kills":[],"decision":"ES preserved as one branch, not the only branch."}
+  ]
+}

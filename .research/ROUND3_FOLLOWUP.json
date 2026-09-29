@@ -1,0 +1,64 @@
+{
+  "round": "verification-driven-survivor-follow-up",
+  "allocation_basis": "Round 1 verification and Round 2 reallocation; no branch expansion.",
+  "results": [
+    {
+      "branch":"TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG",
+      "decision":"BLOCK",
+      "current_formulation":"KILL overbroad ANYCAP/unspecified-order-type formulation only",
+      "verified":"Historical NOII availability is recorded, but exact universe, order type, validated dissemination/event timestamps, auction-print sample, and auction-specific all-in costs are absent.",
+      "next_budget":"Keep only a prerequisite screen; do not fund gross replay until exact universe/order type and timestamp contract are supplied.",
+      "evidence_paths":["M1/work/cards/UNK-0027-AUCTION.json","M1/data/candidate_tuples.csv:10","M1/data/data_feasibility.csv:10","M1/data/data_feasibility_verdicts.csv:10","M1/data/evidence_ledger.csv:23,31-35","M1/output/gate_rule_trace.csv:107-111","M1/output/cost_envelopes.csv:10"]
+    },
+    {
+      "branch":"TUP-HYPERLIQUID-BTCPERP-H4-FUNDBASIS-MIX",
+      "decision":"BLOCK",
+      "verified":"Perp fee/archive/API facts do not clear exact hedge instrument, point-in-time completeness, timestamps, borrow/capital/margin, or second-leg execution costs.",
+      "next_budget":"No replay allocation; require named perp/hedge pair and dated completeness/cost package first.",
+      "evidence_paths":["M1/data/candidate_tuples.csv:16","M1/data/data_feasibility.csv:16","M1/data/evidence_ledger.csv:43-47","M1/data/execution_envelopes.csv:16","DISCREPANCIES_AND_UNKNOWNS.md:407-433,740-797"]
+    },
+    {
+      "branch":"TUP-DERIBIT-BTCOPT-H5-SURFRV-MIX",
+      "decision":"BLOCK",
+      "verified":"Option fee/backfill facts do not clear named strike/expiry, PIT multi-leg quotes, eligibility, legging, hedge, margin, or borrow terms.",
+      "next_budget":"No replay allocation; require named complex and executable history/hedge package first.",
+      "evidence_paths":["M1/data/candidate_tuples.csv:19","M1/data/data_feasibility.csv:19","M1/data/evidence_ledger.csv:48-50","M1/data/execution_envelopes.csv:19","DISCREPANCIES_AND_UNKNOWNS.md:154-202,407-433"]
+    },
+    {
+      "branch":"TUP-CME-ES-H3-OFI-AGG",
+      "decision":"RETAIN-BLOCKED",
+      "verified":"H3 is the cheapest ES readiness chain and can precede H1, but exact contract/roll, CME sample/timestamps, account costs, and venue-specific evidence remain external blockers.",
+      "next_budget":"Preserve incumbent allocation; run fixed gross-markout-versus-friction precursor only after external readiness.",
+      "evidence_paths":["M1/output/candidate_gate_status.csv","M1/output/gate_rule_trace.csv","M1/work/reselection_specs/TUP-CME-ES-H3-OFI-AGG.json","M1/output/M1_CANDIDATE_RESELECTION.md"]
+    },
+    {
+      "branch":"TUP-CME-ES-H1-QDEP-PAS",
+      "decision":"RETAIN-BLOCKED-SEPARATE",
+      "verified":"H1 remains distinct and later: exact matching rule, full-depth MBO, queue reconstruction, own fills, and fill-conditioned markouts are required.",
+      "next_budget":"No H1 replay before H3/data/rule prerequisites; never substitute H3 evidence.",
+      "evidence_paths":["M1/data/candidate_tuples.csv","M1/output/candidate_gate_status.csv","M1/output/M1_CANDIDATE_RESELECTION.md"]
+    },
+    {
+      "branch":"TUP-CME-WTI-H4-FLOWVOL-AGG",
+      "decision":"BLOCK-CURRENT-FORM",
+      "verified":"No exact contract month/roll rule is registered; WTI cannot borrow ES evidence. A WTI-only transition screen is registrable in principle after exact specification.",
+      "next_budget":"Defer; do not spend replay budget until contract/roll and fixed transition state are supplied.",
+      "evidence_paths":["M1/output/candidate_gate_status.csv","M1/output/gate_rule_trace.csv","M1/output/M1_D0_READINESS.md","M1/data/candidate_tuples.csv","M1/data/discrepancies.csv"]
+    },
+    {
+      "branch":"red-team-controls",
+      "decision":"PARTIAL-PASS",
+      "verified":"Lineage/multiplicity containment, selector freeze, and oracle/leakage handling pass for completed Nasdaq M2 runs. Survivorship, citation scope, and horizon/regime transfer remain blocked.",
+      "next_budget":"Move control budget toward primary-citation resolution and point-in-time universe/data-access closure; retain auction only as prerequisite screen.",
+      "evidence_paths":["M2/experiments/M2-0-6-UNIVPROXY/freeze.json","M2/experiments/M2-0-6-UNIVPROXY/run_inputs.json","M2/experiments/M2-2-MICRO-MATERIALITY/run_inputs.json","M1/work/cards/UNK-0023.json","M1/data/open_questions.csv"]
+    }
+  ],
+  "reallocation_after_followup": {
+    "highest_priority":"primary citation resolution and PIT universe/data-access closure",
+    "preserve":"ES H3 incumbent, with H1 separate and later",
+    "bounded_alternatives":"auction prerequisite screen only; funding/basis and Deribit remain blocked prerequisite funnels",
+    "defer":"WTI, Eurex, BZX until exact specification/access packages",
+    "stop":"new branch/model search until blocked controls and external prerequisites change",
+    "next_round":"Not predefined; any next allocation must follow observed prerequisite resolution."
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "round": "verification-then-reallocation",
+  "verification": {
+    "material_findings": [
+      {"finding":"ES H3/H1 are blocked, not dead; H3 gross-vs-friction is cheapest, H1 needs queue-specific replay.","verified_by":["IncumbentES","CheapPrecursors","MarketDesign"],"result":"retain incumbent pair"},
+      {"finding":"Auction is structurally distinct from closed continuous Nasdaq top-of-book family.","verified_by":["ForcedFlow","HorizonMismatch","MarketDesign"],"result":"survive bounded precursor"},
+      {"finding":"Funding/basis and Deribit surface RV are conditional only; cross-venue stale/FX broad forms are underspecified.","verified_by":["RelativeValue","HorizonMismatch"],"result":"survive access/cost precursor; kill broad forms"},
+      {"finding":"Generic liquidation, stop-cascade, event-latency, generic CME queue, and rebate-only stories fail cheap observability/specification gates.","verified_by":["ForcedFlow","MarketDesign","RelativeValue"],"result":"kill or defer current forms"},
+      {"finding":"The Nasdaq development tape cannot validate current-market or cross-venue claims; branch duplication and best-cell selection are material threats.","verified_by":["SearchRedTeam","CheapPrecursors"],"result":"apply process gates"}
+    ],
+    "cross_pollination_rule": "Only shared findings independently reproduced by at least two groups were propagated. No unverified numeric result, profitability claim, or missing prerequisite was propagated. The ES branch was not replaced by alternatives."
+  },
+  "reallocation": {
+    "not_predefined": true,
+    "basis": "Verification results: structural distinctness plus a cheap falsifier and observable payer/data path; branches lacking these were killed/deferred.",
+    "survivors_after_reallocation": [
+      {"id":"TUP-CME-ES-H3-OFI-AGG","allocation":"incumbent-preserve","next":"external readiness, then fixed gross-vs-friction precursor"},
+      {"id":"TUP-CME-ES-H1-QDEP-PAS","allocation":"incumbent-preserve-lower","next":"only after H3/data/rule prerequisites; exact queue replay"},
+      {"id":"TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG","allocation":"highest alternative","next":"exact universe/order type + NOII timestamp/coverage + conservative auction-cost gross screen"},
+      {"id":"TUP-HYPERLIQUID-BTCPERP-H4-FUNDBASIS-MIX","allocation":"medium alternative","next":"named perp/hedge pair + dated data completeness + all-in wedge screen"},
+      {"id":"TUP-DERIBIT-BTCOPT-H5-SURFRV-MIX","allocation":"medium-low alternative","next":"named complex + PIT multi-leg quote availability + executable residual-cost screen"},
+      {"id":"TUP-CME-WTI-H4-FLOWVOL-AGG","allocation":"secondary alternative","next":"exact contract/roll + fixed transition flag + gross markout-cost screen"},
+      {"id":"TUP-EUREX-FESX-H2H3-OFIQ-MIX","allocation":"deferred","next":"only exact contract, T7 allocation, EOBI schema/access"},
+      {"id":"TUP-CBOEBZX-LARGETICK-H2H3-SPREADCAP-PAS","allocation":"deferred","next":"symbol, fee-code, queue and fill-conditioned markout package"}
+    ],
+    "killed_or_stopped": [
+      "TUP-HYPERLIQUID-BTCPERP-H3-OFILIQ-AGG current market-wide liquidation formulation",
+      "generic stop cascade",
+      "generic fastest event latency",
+      "generic CME queue",
+      "generic rebate harvesting",
+      "broad US stale-quote / unspecified FX lead-lag formulations",
+      "capacity or balance-sheet narratives without observable payer proxies",
+      "all closed Nasdaq continuous-book QIMB/passive-QIMB/microprice branches"
+    ],
+    "follow_up_budget": {
+      "ES": 2,
+      "auction": 3,
+      "funding_basis": 2,
+      "Deribit_RV": 2,
+      "WTI": 1,
+      "Eurex_BZX": 0,
+      "red_team_controls": 2,
+      "unit":"bounded verification questions, not profitability scores"
+    },
+    "next_round_rule": "No fixed round after this artifact. Reallocate again only from observed prerequisite/verification results; do not predefine horizons, states, or successor branches."
+  }
+}
