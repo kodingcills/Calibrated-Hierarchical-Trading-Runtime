@@ -1,0 +1,185 @@
+Toggle Dropdown
+LOG IN
+MARKETS
+DATA
+SOLUTIONS
+INSIGHTS
+EDUCATION
+S&P Index futures and options
+View an Equity Index Product
+E-mini S&P 500
+Futures and Options
+GLOBEX CODE
+ESZ6
+LAST
+7719.50
+CHANGE
+-27.25 (-0.35%)
+VOLUME
+1,060,625
+WATCHLISTS
+Last Updated29 Sep 2026 12:59:32 PM CT.Market data is delayed by at least 10 minutes
+OVERVIEW
+QUOTES
+SETTLEMENTS
+VOLUME & OI
+SPECS
+MARGINS
+CALENDAR
+FUTURES
+OPTIONS
+E-MINI S&P 500 FUTURES - CONTRACT SPECS
+CONTRACT UNIT	
+$50 x S&P 500 Index
+
+PRICE QUOTATION	
+U.S. dollars and cents per index point
+
+TRADING HOURS	
+CME Globex:
+Sunday 6:00 p.m. - Friday - 5:00 p.m. ET (5:00 p.m. - 4:00 p.m. CT) with a daily maintenance period from 5:00 p.m. - 6:00 p.m. ET (4:00 p.m. - 5:00 p.m. CT)
+
+TACO: Sunday - Friday 6:00 p.m. - 9:30 a.m. ET. Monday - Friday 11:00 a.m. - 5:00 p.m. ET with a daily maintenance period 5:00 p.m. - 6:00 p.m. ET
+
+BTIC: Sunday - Friday 6:00 p.m. - 4:00 p.m. ET
+
+TMAC: Sunday - Friday 6:00 p.m. - 4:00 p.m. ET
+CME ClearPort:
+Sunday 6:00 p.m. - Friday 6:45 p.m. ET (Sun 5:00 - Fri 5:45 p.m. CT) with no reporting Monday - Thursday 6:45 p.m. - 7:00 p.m. ET (5:45 p.m. - 6:00 p.m. CT)
+
+TACO:  Sunday 6:00 p.m. - Monday 9:30 a.m. ET. Monday - Thursday 11:00 a.m. - 5:00 p.m. ET and 6:00 p.m. - 9:30 a.m. ET
+
+BTIC: Sunday - Friday 6:00 p.m. - 4:00 p.m. ET. BTICs for the following trading day can be submitted after 7:00 p.m. ET (6:00 p.m. CT)
+
+TMAC: Sunday - Friday 6:00 p.m. - 4:00 p.m. ET. TMACs for the following trading day can be submitted after 7:00 p.m. ET (6:00 p.m. CT)
+
+MINIMUM PRICE FLUCTUATION	
+Outright:
+0.25 index points = $12.50
+
+TACO: 0.05 index points = $2.50
+
+BTIC: 0.05 index points = $2.50
+
+TMAC: 0.05 index points = $2.50
+Zero or +/- 20 ticks (4 futures ticks) around the Market at Close price of the outright
+CALENDAR SPREAD
+0.05 index points = $2.50
+
+PRODUCT CODE	
+CME Globex: ESCME ClearPort: ESClearing: ESBTIC: ESTTACO: ESQTMAC: ESX
+
+LISTED CONTRACTS	
+Quarterly contracts (Mar, Jun, Sep, Dec) listed for 21 consecutive quarters
+
+
+BTIC & TACO: Eligible in all listed contract months
+
+ 
+TMAC: Eligible in the contract month nearest to expiry. The next quarterly TMAC is eligible for trading on Sunday of the week of the prior contract month’s expiration.
+
+SETTLEMENT METHOD	
+Financially Settled
+
+TERMINATION OF TRADING	
+Trading terminates at 9:30 a.m. ET on the 3rd Friday of the contract month.
+
+TACO trading terminates at 9:30 a.m. ET on the Thursday before the 3rd Friday of the contract month.
+
+BTIC trading terminates at 4:00 p.m. ET on the Thursday before the 3rd Friday of contract month.
+
+TMAC trading terminates at 4:00 p.m. ET on the Thursday before the 3rd Friday of the contract month.
+
+TAM OR TAS RULES	
+Trade Marker at Close (TMAC) is subject to the requirements of Rule 524.D. TMAC trades off a "Base Price" of zero to create a differential versus the daily Marker at Close price on the underlying futures contract month. The TMAC clearing price equals the daily Market at Close price of the underlying futures contract month plus or minus the TMAC transaction price.
+
+SETTLEMENT PROCEDURES	
+Settlement Procedures
+
+POSITION LIMITS	
+Position Limits
+
+EXCHANGE RULEBOOK	
+CME 358
+
+BLOCK MINIMUM	
+Block Table
+
+PRICE LIMIT OR CIRCUIT	
+Price Limits
+
+VENDOR CODES	
+Quote Vendor Symbols
+
+Equity Total Cost Analysis Tool
+
+Analyze the all-in costs of replicating the S&P 500 by trading Equity Index futures versus ETFs.
+
+Options Expiration Calendar
+
+Inform your roll strategy with daily updates and analytics on roll activity in Cryptocurrency futures.
+
+Dividend Futures Term Structure Tool
+
+Explore the market's view of S&P 500 expected dividends on a quarterly and annual basis. Then analyze changes in dividend term structure across multiple points in time.
+Looking for more? Explore our additional resources
+PRODUCTS
+Micro E-mini futures
+E-nano Equity Index futures
+Equity Index Dividend futures
+AIR Total Return futures
+Options on futures
+RESOURCES
+Trading resources
+Expiration calendars
+BTIC/Block Liquidity Providers
+Equity Index Product Insights Report
+View the latest Equity Insights Report
+
+QUARTERLY EQUITY INSIGHTS REPORT:
+READ LATEST ISSUE
+
+COMPANY
+About Us
+Corporate Citizenship
+Media Room
+Careers
+Investor Relations
+Subscription Center
+Contact Us
+INTERNATIONAL
+Global Offices
+Partner Exchanges
+Latin America
+Europe, Middle East & Africa
+Asia-Pacific
+MARKET REGULATION
+Overview
+Rulebooks
+Regulatory Guidance
+Rule Filings
+Regulatory Outreach
+OUR EXCHANGES
+CME
+CBOT
+NYMEX
+COMEX
+     
+English
+FEEDBACK
+
+CME Group is the world’s leading derivatives marketplace. The company is comprised of four Designated Contract Markets (DCMs). 
+Further information on each exchange's rules and product listings can be found by clicking on the links to CME, CBOT, NYMEX and COMEX.
+
+© 2026 CME Group Inc. All rights reserved.
+
+Disclaimer  |  Privacy Notice  |  Cookie Notice  |  Terms of Use  |  Data Terms of Use  |  Modern Slavery Act Transparency Statement  |  Report a Security Concern
+
+By clicking “Accept All Cookies,” you agree to the storing of cookies on your device to enhance site navigation, analyze site usage, and assist in our marketing efforts.
+Cookies Settings
+Accept All Cookies
+ Pin
+ Share
+ Post
+ Email
+ Share

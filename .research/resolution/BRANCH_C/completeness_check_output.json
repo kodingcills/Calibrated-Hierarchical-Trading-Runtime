@@ -1,0 +1,49 @@
+{
+  "binance_error": "<HTTPError 451: ''>",
+  "hyperliquid_ctx_shape": {
+    "asset_context_count": 234,
+    "is_two_part": true
+  },
+  "hyperliquid_funding": {
+    "completeness": {
+      "duplicate_times": [],
+      "expected_hours": 2,
+      "missing_times": [
+        1790697600000
+      ],
+      "observed_rows": 1,
+      "observed_timestamps_ms": [
+        1790694000109
+      ],
+      "strict_hourly_complete": false,
+      "timestamps_are_ms_epoch": true
+    },
+    "rows": [
+      {
+        "coin": "BTC",
+        "fundingRate": "0.0000106749",
+        "premium": "-0.0004146009",
+        "time": 1790694000109
+      }
+    ]
+  },
+  "hyperliquid_meta": {
+    "btc_exists": true,
+    "btc_record": {
+      "marginTableId": 56,
+      "maxLeverage": 40,
+      "name": "BTC",
+      "szDecimals": 5
+    }
+  },
+  "no_purchase": true,
+  "pair": {
+    "binance": "BTCUSDT (USD\u24c8-M perpetual)",
+    "hyperliquid": "BTC (first perp dex)"
+  },
+  "retrieved_utc": "2026-09-29T17:58:25.529956+00:00",
+  "window": {
+    "end_ms": 1790697600000,
+    "start_ms": 1790694000000
+  }
+}

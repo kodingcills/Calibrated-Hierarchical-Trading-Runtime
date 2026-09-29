@@ -330,6 +330,10 @@ Durable, evidence-backed, and still less than tradable alpha:
    `M2/output/M2_MICRO_MATERIALITY_STATUS.md`; machine-readable registry
    `M2/output/micro/calculations/micro_materiality.json`.
 
+12. **Resolution sprint 001 did not clear any branch, but produced three exact external-only contracts.** Independent verification on 2026-09-29 confirms: ES contract/API scope is verified while historical replay schema/sample/entitlement and exact account costs remain unresolved; Nasdaq live NOII/ITCH fields, exchange timestamps and closing schedule are verified while historical replay/retention is unverified; Hyperliquid hourly funding semantics, BTC metadata, archive warnings and base fees are verified while the paired historical panel and all-leg costs are unresolved. The saved claim matrix is `.research/resolution/VERIFICATION/REPORT.md`.
+13. **Freeze-ready definitions exist without promotion.** The Nasdaq auction precursor is signed late NOII imbalance change from 15:50 to 15:55 ET against closing-cross displacement, using the same-day point-in-time Stock Directory universe (`M1/work/reselection_specs/TUP-NASDAQ-CLOSING-AUCTION-LATE-NOII.json`). The Hyperliquid definition is Hyperliquid Core BTC perpetual versus Binance USDⓈ-M BTCUSDT perpetual with a strict completeness gate (`M1/work/reselection_specs/TUP-HYPERLIQUID-BTC-FUNDING-BASIS.json`); no pilot ran because the no-purchase check failed completeness and Binance access returned HTTP 451 in this environment.
+14. **Canonical branch state remains unchanged:** `ALIVE=0`, `TEST_NOW=NONE`, ES H3 OFI=`EXTERNAL_BLOCKED_NOT_AUTHORIZED`, Nasdaq continuous-book family=`CLOSED`, Nasdaq closing-auction=`EXTERNAL_ONLY`, Hyperliquid funding/basis=`EXTERNAL_ONLY`. No quantitative economic result was inspected for any branch.
+
 ## Critical Unknowns / Blockers
 
 Issue classification is two-dimensional (see Issue Stages below): a resolution *method* and a

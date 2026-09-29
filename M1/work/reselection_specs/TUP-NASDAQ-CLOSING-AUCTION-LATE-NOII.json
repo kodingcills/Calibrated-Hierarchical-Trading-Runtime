@@ -1,0 +1,45 @@
+{
+  "spec_id": "RESOL-001-NASDAQ-CLOSING-AUCTION-LATE-NOII",
+  "status": "AUCTION_EXTERNAL_ONLY",
+  "candidate_id": "TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG",
+  "mechanism": "Signed late NOII imbalance change as causal pressure on Nasdaq Closing Cross clearing displacement.",
+  "mechanism_boundary": "This is not an indicative-price, post-close reversal, or benchmark-flow strategy; those mechanisms are out of scope.",
+  "freeze": {
+    "timezone": "America/New_York",
+    "early_observation": "Last eligible NOII I message with Cross Type C and exchange timestamp t < 15:50:00 ET; if no exact boundary message exists, first message at or after 15:50 is used.",
+    "late_observation": "Last eligible NOII I message with Cross Type C and exchange timestamp t <= 15:55:00 ET.",
+    "signal": "signed_imbalance(15:55) - signed_imbalance(15:50)",
+    "sign": "Direction B = +ImbalanceShares; Direction S = -ImbalanceShares; N/O/P is missing and ineligible.",
+    "optional_scale": "delta_imbalance / max(PairedShares_15:55, 1), declared before replay and not tuned.",
+    "outcome": "(ClosingCrossPrice - CurrentReferencePrice_15:55) / CurrentReferencePrice_15:55",
+    "outcome_source": "Cross Trade Q with Cross Type C after the 16:00 close.",
+    "no_forward_fill": true,
+    "no_outcome_tuning": true
+  },
+  "universe": {
+    "rule_id": "NASDAQ-CLOSING-CROSS-PIT-STOCK-DIRECTORY-v1",
+    "membership": "The same date's TotalView-ITCH Stock Directory spin.",
+    "include": ["Authenticity=P", "ETP Flag=N", "Issue Classification=C", "Issue Sub-Type=C", "Market Category in Q,G,S,N,A,P,Z,V"],
+    "identity": "Date-specific symbol and Stock Locate; no cross-date survivor list or current constituent list.",
+    "required_events": ["NOII I Cross Type C", "Cross Trade Q Cross Type C"],
+    "survivorship_control": "Delisted, renamed, halted, and acquired securities remain eligible only for the dates on which the date-specific directory qualifies them."
+  },
+  "timestamp_contract": {
+    "event_clock": "Nasdaq exchange nanoseconds since midnight; retain raw timestamp and convert session display to ET only for schedule checks.",
+    "ordering": "Retain feed sequence/tracking metadata and packet-gap status.",
+    "invalid_day": "Missing required NOII/cross messages, unresolved duplicate ordering, or unrepaired feed gap invalidates the day."
+  },
+  "execution": {
+    "precursor": "Observation-only gross materiality measurement; no order, account, route, or paper trade.",
+    "later_separate_test": "If separately authorized, test a Market-On-Close order submitted after the 15:55 freeze through an exchange-member route; LOC is a separate protocol and is not included here."
+  },
+  "external_prerequisite": "One regular month or 20 consecutive regular sessions of raw TotalView-ITCH 5.0 captures including the daily spin and 15:49:50-16:00:10 ET for all symbols, I/Q messages, nanosecond timestamps, sequence/packet identifiers, gap/retransmission metadata, retention/correction policy, delivery terms, and price.",
+  "primary_metric": "Gross clearing displacement conditional on the frozen signed late imbalance change, with coverage and confidence interval.",
+  "kill_rule": "Do not replay if historical NOII/ITCH retention, fields, timestamps, identity, or sequence completeness cannot be verified.",
+  "continuation_rule": "Only after the historical sample passes the timestamp, identity, gap, and completeness contract may a gross precursor run be authorized; execution economics remain a later separate gate.",
+  "sources": [
+    "https://www.nasdaqtrader.com/Trader.aspx?id=OpenClose",
+    "https://www.nasdaqtrader.com/content/technicalsupport/specifications/dataproducts/NQTVITCHSpecification.pdf",
+    "https://www.nasdaqtrader.com/TraderNews.aspx?id=ETA2026-32"
+  ]
+}

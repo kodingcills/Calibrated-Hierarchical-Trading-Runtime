@@ -1,0 +1,171 @@
+Toggle Dropdown
+LOG IN
+MARKETS
+DATA
+SOLUTIONS
+INSIGHTS
+EDUCATION
+ Connect Data
+Market Data APIs
+
+REST and real-time streaming APIs offer simple, reliable, and cost-effective solutions to integrate CME Group market data directly into your systems.
+
+Key benefits
+Frictionless integration
+
+Easily integrate JSON-formatted APIs into systems for a simple, low-cost way to directly access CME Group market data.
+
+Reliable distribution
+
+Ensure data quality, accuracy, and security by receiving market data directly from the source.
+
+Flexible access
+
+Scalable, cloud-hosted APIs that unlock insights across trading analysis, risk management, or redistribution.
+
+Explore our API offerings
+Real-Time Futures & Options Data API
+
+Stream real-time futures and options data for top-of-book prices, trade information, and market statistics straight from the cloud into your system via CME Group’s WebSocket API. Data is delivered in a JSON format for easy integration of data into trading, risk, or distribution systems.
+
+HOW TO ACCESS
+
+Get connected to WebSocket API in minutes through our new self-service API portal.
+
+CME Term SOFR API
+
+The CME Term SOFR API delivers CME Term SOFR Reference Rates that provide a forward-looking measurement of overnight SOFR rates, based on market expectations implied from leading derivatives markets. The data is delivered in a JSON format over a REST API with real-time updates, along with complete history.
+
+HOW TO ACCESS
+
+Get connected to CME TERM SOFR API in minutes through our new self-service API portal.
+
+CME FutureSports Performance Indexes API
+
+Stream data for the CME FutureSports Performance Indexes straight from the cloud into your system via our WebSocket API, enabling for easy integration. These rules-based reference benchmarks are designed to measure cumulative team performance over time through the systematic aggregation of officially reported league performance statistics.
+
+HOW TO ACCESS
+
+Get connected to WebSocket API via the DataMine Catalog for NHL.
+
+CME EUR/USD Cross Currency Basis Index API
+
+The CME EUR/USD Cross Currency Basis Index measures the basis point deviation from the covered interest parity implied forward FX price. The data is delivered in a JSON format over a REST API with real-time updates, along with complete history.
+
+HOW TO ACCESS
+
+Get connected to CME EUR/USD Cross Currency Basis Index API in minutes through our new self-service API portal.
+
+FedWatch API
+
+The FedWatch API allows you to integrate the tool's data directly into your systems through a REST API. Track and analyze the probability of changes to the Fed Funds rate and U.S. monetary policy, as implied by 30-Day Fed Funds futures pricing data.
+
+HOW TO ACCESS
+
+Get connected to FedWatch API in minutes through our new self-service API portal.
+
+Real-Time Greeks and Implied Volatility Data via REST API
+
+Access a five-minute snapshot of Greeks and Implied Volatility, utilizing CME Globex market data for selected liquid products across all 7 asset classes. The data is provided in JSON format, facilitating easy integration into trading, risk or distribution systems.
+
+HOW TO ACCESS
+
+Get connected to Greeks and Implied Volatility data via REST API in minutes through our self-service API portal.
+
+Access historical data via CME DataMine.
+
+Reference Data API
+
+Access the information you need through the CME Reference Data API, the first ever real-time API solution for every CME Group product and instrument. Embed the API in your system’s product matrices and databases to automate market understanding for all CME Group and hosted partner markets.
+
+HOW TO ACCESS
+
+To access the Reference Data API, please reach out to a data expert by filling out the form below.
+
+Real-time CVOL End of Day via REST API
+
+The CVOL EOD REST API delivers the proprietary set of volatility indices that use CME Group's liquid options markets to estimate 30-day forward-looking implied volatility across over 30 markets, including proprietary multi-asset volatility indices, and provides values for key derivative indicators (UpVar, DnVar, Skew, ATM, Convexity). The data is delivered in a JSON format over a REST API with real-time daily updates, along with complete history.
+
+HOW TO ACCESS
+
+Get connected to Real-time CVOL End of Day REST API in minutes through our new self-service API portal.
+
+CME FX Tape+ API
+
+CME FX Tape+ delivers unmatched price transparency by offering a consolidated, centralized real-time view of FX liquidity. Stream data blended from four CME FX Central Limit Order Books (CLOBs)—FX Spot+, EBS Market, FX Futures, and FX Link—to gain insight into proprietary 'True Mid-Prices' across G10 currency pairs. The data is delivered via WebSocket API for easy integration.
+
+HOW TO ACCESS
+
+Get connected to CME FX Tape+ API in minutes through our new self-service API portal.
+
+Access historical data via CME DataMine.
+
+Contact a Data expert
+
+For CME Term SOFR Licensing or Reference Data API fill out this form and a data expert will reach out to you.
+
+FIRST NAME
+LAST NAME
+BUSINESS EMAIL
+BUSINESS PHONE NUMBER (Optional)
+LOCATION
+UNITED STATES OF AMERICA
+STATE
+Please Select...
+COMPANY NAME
+JOB ROLE
+Please Select...
+COMPANY TYPE
+Please Select...
+A BRIEF SUMMARY OF YOUR DATA NEEDS
+ I have read and understand the Privacy Policy.
+ I have read and agree the Terms of Service and Cookie Policy.
+ Yes. I would like to receive communications regarding CME Group products, services, & events. I understand that I can unsubscribe at any time. By registering, I agree to the processing of my personal data in accordance with the CME Group Privacy Policy. (Optional)
+SUBMIT
+
+This site is protected by reCAPTCHA and the Google Privacy Policy and Terms of Service apply.
+
+COMPANY
+About Us
+Corporate Citizenship
+Media Room
+Careers
+Investor Relations
+Subscription Center
+Contact Us
+INTERNATIONAL
+Global Offices
+Partner Exchanges
+Latin America
+Europe, Middle East & Africa
+Asia-Pacific
+MARKET REGULATION
+Overview
+Rulebooks
+Regulatory Guidance
+Rule Filings
+Regulatory Outreach
+OUR EXCHANGES
+CME
+CBOT
+NYMEX
+COMEX
+     
+English
+FEEDBACK
+
+CME Group is the world’s leading derivatives marketplace. The company is comprised of four Designated Contract Markets (DCMs). 
+Further information on each exchange's rules and product listings can be found by clicking on the links to CME, CBOT, NYMEX and COMEX.
+
+© 2026 CME Group Inc. All rights reserved.
+
+Disclaimer  |  Privacy Notice  |  Cookie Notice  |  Terms of Use  |  Data Terms of Use  |  Modern Slavery Act Transparency Statement  |  Report a Security Concern
+
+By clicking “Accept All Cookies,” you agree to the storing of cookies on your device to enhance site navigation, analyze site usage, and assist in our marketing efforts.
+Cookies Settings
+Accept All Cookies
+ Pin
+ Share
+ Post
+ Email
+ Share

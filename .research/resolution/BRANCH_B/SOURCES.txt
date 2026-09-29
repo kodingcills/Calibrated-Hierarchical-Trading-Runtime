@@ -1,0 +1,16 @@
+Retrieved 2026-09-29 (all URLs official Nasdaq).
+
+S1 — Opening and Closing Crosses: https://www.nasdaqtrader.com/Trader.aspx?id=OpenClose
+Supports: all nationally listed securities eligible; closing NOII disseminated 15:50–16:00 ET; order types ON-CLOSE and IMBALANCE-ONLY CLOSE; NOII provides indicative opening/closing prices and imbalance information. Page does not state historical archive/replay availability.
+
+S2 — Nasdaq TotalView-ITCH 5.0 specification (PDF): https://www.nasdaqtrader.com/content/technicalsupport/specifications/dataproducts/NQTVITCHSpecification.pdf
+Sections Overview (PDF p.3), Stock Directory (p.5–7), Cross Trade (p.17), NOII (p.18). Supports: direct outbound feed; NOII carries paired shares, imbalance shares, direction, Far/Near/Current Reference prices, Stock, Cross Type; timestamps are nanoseconds since midnight; Stock Directory starts each trading day and includes daily locate code, symbol, listing category, issue classification/subtype, authenticity and ETP flag; Cross Trade Q includes shares, symbol, cross price, timestamp and cross type C. It describes live protocol and does not establish a historical replay product or retention.
+
+S3 — Nasdaq TotalView product: https://www.nasdaq.com/products/data/equities/nasdaq-totalview
+Dated page accessed 2026-09-29. Supports: TotalView disseminates NOII in real time before official Open/Close; access via direct feed, Data Link API/web products, and market-data vendors. It does not say that historical NOII/ITCH files are downloadable or replayable.
+
+S4 — Equity Trader Alert #2026-32 (2026-06-23): https://www.nasdaqtrader.com/TraderNews.aspx?id=ETA2026-32
+Supports: current closing timeline: early dissemination 15:50; full dissemination 15:55; MOC entry stops 15:55; LOC entry until 15:58; IO entry until 16:00; closing process begins 16:00. This is an operational timing source, not a historical-data product.
+
+S5 — Nasdaq Data Link NTV documentation landing page: https://data.nasdaq.com/databases/NTV/documentation
+Fetched 2026-09-29. Page renders only generic Data Link metadata in this access path; no NOII historical schema, retention, or replay entitlement was verifiable. Do not treat this as proof of historical availability.

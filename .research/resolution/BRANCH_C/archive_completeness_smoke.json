@@ -1,0 +1,10 @@
+{
+  "complete_for_declared_gap_limit": true,
+  "duplicate_timestamps": 0,
+  "gaps_over_limit": 0,
+  "max_gap_ms": 1000,
+  "missing_timestamp_rows": 0,
+  "rows": 2,
+  "rows_with_timestamp": 2,
+  "strictly_increasing": true
+}
