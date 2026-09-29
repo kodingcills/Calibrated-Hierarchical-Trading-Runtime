@@ -68,4 +68,8 @@ The research OS defines G0..G8 (`IDEA -> REGISTERED -> BASELINED -> RETROSPECTIV
 SHADOW -> MICRO_LIVE -> SCALE_LADDER -> PRODUCTION`). Every candidate row currently sits below G1:
 no candidate has a dataset version, baseline set, null set or kill criterion, because several are
 not yet specified down to an exact instrument. Capability milestones beyond M1 are not scheduled
+
+## GOAL-001 candidate reselection (2026-09-28)
+
+Terminal state: **EXTERNAL_BLOCK**. No surviving tuple is `TEST_NOW`. The conditional frontier is `TUP-CME-ES-H3-OFI-AGG`, but its minimum gross-markout-versus-friction experiment requires an operator-selected account path, an exact all-in CME/FCM cost schedule, and a validated historical event sample. No purchase or external account action is authorized in this goal. Coinbase and Kraken remain `DEPRIORITIZE`, not dead, because the current methodology forbids a fee-only kill without a sourced venue-specific gross-effect bound. See `M1/output/M1_CANDIDATE_RESELECTION.md` and `M1/output/M1_CANDIDATE_RESELECTION.json`.
 here; they become schedulable only when M1 emits a survivor set with measured dimensions.

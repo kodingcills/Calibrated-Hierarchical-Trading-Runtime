@@ -1,0 +1,41 @@
+{
+  "artifact": "M1_CANDIDATE_RESELECTION",
+  "version": "1.0",
+  "as_of": "2026-09-28",
+  "terminal_state": "EXTERNAL_BLOCK",
+  "primary_test_now": null,
+  "backup": null,
+  "decision": "No surviving candidate can run a valid empirical experiment from currently owned/free data and autonomous permissions. Every meaningful branch requires at least one external account, vendor, exchange, broker, legal, or historical-data action before causal measurement is possible.",
+  "nasdaq_large_tick_sequence": "CLOSED; no resurrection evidence found",
+  "candidates": [
+    {"candidate_id":"TUP-CME-ES-H1-QDEP-PAS","prior_status":"WEAK","scheduling_state":"EXTERNAL_BLOCK","mechanism":"queue depletion / queue imbalance","experiment_gate":"CME product matching rule, historical MBO sample/timestamp validation, and account cost path"},
+    {"candidate_id":"TUP-CME-ES-H3-OFI-AGG","prior_status":"UNKNOWN","scheduling_state":"EXTERNAL_BLOCK","mechanism":"order-flow imbalance","experiment_gate":"CME-specific mechanism evidence, historical trade feed/sample, and account cost path"},
+    {"candidate_id":"TUP-CME-NQ-H3-OFI-AGG","prior_status":"UNKNOWN","scheduling_state":"EXTERNAL_BLOCK","mechanism":"order-flow imbalance","experiment_gate":"CME-specific mechanism evidence, historical trade feed/sample, and account cost path"},
+    {"candidate_id":"TUP-CME-TSY-H2-QREPL-MIX","prior_status":"UNKNOWN","scheduling_state":"EXTERNAL_BLOCK","mechanism":"liquidity replenishment failure","experiment_gate":"exact Treasury contract/rule, historical MBO/MBP sample, and account cost path"},
+    {"candidate_id":"TUP-CME-WTI-H4-FLOWVOL-AGG","prior_status":"UNKNOWN","scheduling_state":"EXTERNAL_BLOCK","mechanism":"volatility transition / flow response","experiment_gate":"exact contract, historical event/market sample, and account cost path"},
+    {"candidate_id":"TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG","prior_status":"UNKNOWN","scheduling_state":"EXTERNAL_BLOCK","mechanism":"closing-auction imbalance","experiment_gate":"historical NOII/auction sample with dissemination timestamps and routing-cost path"},
+    {"candidate_id":"TUP-CBOEBZX-LARGETICK-H2H3-SPREADCAP-PAS","prior_status":"WEAK","scheduling_state":"EXTERNAL_BLOCK","mechanism":"passive spread capture","experiment_gate":"BZX depth/history sample, timestamp semantics, fee-code and sponsor path"},
+    {"candidate_id":"TUP-COINBASE-BTCUSD-H3-MICROOFI-AGG","prior_status":"UNKNOWN","scheduling_state":"DEPRIORITIZE","mechanism":"microprice/order-flow imbalance","experiment_gate":"venue-specific gross-magnitude evidence against 120 bps fee floor; operator account eligibility"},
+    {"candidate_id":"TUP-KRAKEN-BTCUSD-H3-MICROOFI-AGG","prior_status":"UNKNOWN","scheduling_state":"DEPRIORITIZE","mechanism":"microprice/order-flow imbalance","experiment_gate":"venue-specific gross-magnitude evidence against 160 bps fee floor; operator account eligibility"},
+    {"candidate_id":"TUP-HYPERLIQUID-BTCPERP-H3-OFILIQ-AGG","prior_status":"UNKNOWN","scheduling_state":"EXTERNAL_BLOCK","mechanism":"order-flow / liquidation cascade","experiment_gate":"operator eligibility, dated historical event-level archive and liquidation observability"},
+    {"candidate_id":"TUP-HYPERLIQUID-BTCPERP-H4-FUNDBASIS-MIX","prior_status":"UNKNOWN","scheduling_state":"EXTERNAL_BLOCK","mechanism":"funding/basis dislocation","experiment_gate":"operator eligibility, dated historical funding/basis and hedge data"},
+    {"candidate_id":"TUP-EUREX-FESX-H2H3-OFIQ-MIX","prior_status":"UNKNOWN","scheduling_state":"EXTERNAL_BLOCK","mechanism":"order-flow / queue imbalance","experiment_gate":"participant access, instrument fee/matching facts and historical EOBI sample"},
+    {"candidate_id":"TUP-CBOE-USOPT-H5-SURFRV-MIX","prior_status":"UNKNOWN","scheduling_state":"EXTERNAL_BLOCK","mechanism":"options surface relative value","experiment_gate":"named option, fee decomposition, OPRA/proprietary surface history and hedge path"},
+    {"candidate_id":"TUP-DERIBIT-BTCOPT-H5-SURFRV-MIX","prior_status":"UNKNOWN","scheduling_state":"EXTERNAL_BLOCK","mechanism":"options surface relative value","experiment_gate":"operator jurisdiction, access, named option and historical book/surface data"},
+    {"candidate_id":"TUP-KALSHI-EVENT-H5-EVENTINF-AGG","prior_status":"UNKNOWN","scheduling_state":"EXTERNAL_BLOCK","mechanism":"event/news latency","experiment_gate":"operator jurisdiction and contract access, then historical contract/API data"},
+    {"candidate_id":"TUP-POLYMARKET-EVENT-H5-EVENTINF-AGG","prior_status":"UNKNOWN","scheduling_state":"EXTERNAL_BLOCK","mechanism":"event/news latency","experiment_gate":"operator jurisdiction/product eligibility and historical venue data"},
+    {"candidate_id":"TUP-USSTOCK-XVENUE-H1-STALEQUOTE-AGG","prior_status":"WEAK","scheduling_state":"EXTERNAL_BLOCK","mechanism":"fragmented stale pricing","experiment_gate":"synchronized direct-feed history and sponsor/routing path"},
+    {"candidate_id":"TUP-FX-ECN-H2H3-LEADLAG-AGG","prior_status":"UNKNOWN","scheduling_state":"EXTERNAL_BLOCK","mechanism":"cross-venue lead-lag","experiment_gate":"named ECN, participant eligibility, protocol and historical feed"},
+    {"candidate_id":"TUP-FX-RETAILBROKER-H3H4-FEEDLAG-AGG","prior_status":"UNKNOWN","scheduling_state":"EXTERNAL_BLOCK","mechanism":"retail feed lag","experiment_gate":"named broker, account eligibility, execution policy and history"}
+  ],
+  "external_block": {
+    "minimum_actions": [
+      "Operator supplies jurisdiction, entity/person classification, and intended account/access class (UNK-0034).",
+      "Operator selects one branch and authorizes the minimum vendor/exchange/broker data request; no purchase is authorized by this goal.",
+      "For the selected branch, obtain a sample/quote or documented free historical source sufficient to validate timestamps, instrument identity, and causal replay." 
+    ],
+    "highest_value_missing_evidence": "A decision-ready owned/free historical sample plus exact account-level all-in cost for one candidate branch; without both, no after-friction empirical result can change scheduling.",
+    "successor_goal": "After operator/account and data-access facts are supplied, select exactly one branch and preregister the cheapest gross-magnitude-versus-friction falsifier before any queue or strategy model is built."
+  },
+  "prohibited_inference": ["No candidate promoted to TEST_NOW", "No numeric strategy scores", "No DEAD candidate resurrected", "No missing fee, fill, latency, or data values imputed"]
+}

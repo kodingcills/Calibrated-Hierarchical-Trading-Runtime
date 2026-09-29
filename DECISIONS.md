@@ -490,3 +490,13 @@ put through the magnitude test next — that instruction is now executed and its
 D-0037's rule (a top-of-book signal at H2 must show a magnitude of the same order as its round trip
 before an execution model is built for it) remains in force and is now the standard this row was
 killed by.
+
+## D-0039 - Candidate reselection is externally blocked; CME ES H3 OFI is conditional frontier
+
+The 2026-09-28 candidate reselection evaluated every surviving tradable WEAK or UNKNOWN tuple and assigned a scheduling state without numeric strategy scores. The Nasdaq large-tick H1-H3 top-of-book family was not resurrected: no new resurrection evidence exists after D-0037/D-0038.
+
+No candidate earns `TEST_NOW`. The cheapest decision-relevant empirical falsifier is conditionally specified for `TUP-CME-ES-H3-OFI-AGG`: a causal gross-markout-versus-exact-account-cost measurement on one named ES contract, with validated historical event timestamps and a preregistered state space. It cannot run under the current access boundaries because the repository does not own a validated historical sample or exact account-level CME/FCM cost path, and this goal forbids data purchase and external account actions.
+
+The terminal state is `EXTERNAL_BLOCK`, not `M1_FAILED_OR_PARTIAL`: the remaining uncertainty is an explicit operator/data-access/account action, and the evidence does not establish that all surviving mechanisms are economically impossible. Coinbase and Kraken remain `DEPRIORITIZE`, not dead, because D-0022/D-0026 prohibit killing on fee level without a sourced venue-specific gross-effect bound.
+
+The durable report is `M1/output/M1_CANDIDATE_RESELECTION.md`; the machine-readable companion is `M1/output/M1_CANDIDATE_RESELECTION.json`; the conditional experiment contract is `M1/work/reselection_specs/TUP-CME-ES-H3-OFI-AGG.json`. Minimum successor action: provide operator jurisdiction/entity/account classification, then obtain or authorize one exact ES historical sample and account-level all-in cost schedule. No candidate is promoted by this decision.

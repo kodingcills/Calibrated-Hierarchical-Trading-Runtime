@@ -1,0 +1,23 @@
+{
+  "spec_id": "RESEL-001-CME-ES-H3-OFI-GROSS-FRICTION",
+  "status": "EXTERNAL_BLOCKED_NOT_AUTHORIZED",
+  "candidate_id": "TUP-CME-ES-H3-OFI-AGG",
+  "mechanism": "Signed order-flow imbalance: causal aggressive signed flow relative to contemporaneous executable ES liquidity, defined before outcome inspection.",
+  "decision_question": "Does the causal H3 signal have gross displacement of the same order as exact all-in round-trip friction before any execution model or strategy evaluation?",
+  "data": {
+    "required": ["one exact ES contract", "pre-registered roll rule", "historical event/trade sample", "sequence numbers", "exchange timestamps", "security definitions", "validated clock semantics"],
+    "ownership": "EXTERNAL_REQUIRED",
+    "current_status": "Not owned or validated in the canonical repository; no purchase authorized by GOAL-001."
+  },
+  "causal_state": "Only messages and book/trade state available at the decision timestamp; no future messages, ex-post selection, oracle, or ML feature.",
+  "outcome": "Side-signed midpoint or executable-price markout at fixed pre-registered H3 delays, with coverage and confidence intervals.",
+  "friction_comparator": "Exact account-level exchange, clearing, FCM/commission, spread and declared execution-cost floor; no generic or industry-imputed values.",
+  "null": "No conditional displacement beyond the unconditional signed markout, and no economically material difference from the predeclared null state.",
+  "primary_metric": "Pooled gross markout divided by the exact round-trip cost floor, with cost ledger and horizons fixed before result inspection.",
+  "kill_criterion": "Pre-registered pooled ratio below the project's admission bar, or non-positive gross markout after the declared comparator. The numerical bar must be fixed before data inspection in the successor run.",
+  "continuation_criterion": "Causally valid positive gross headroom over the declared comparator with adequate coverage and no timestamp, identity, or leakage failure; authorizes only a true M2 feasibility run.",
+  "prohibited_post_result_tuning": ["contract", "horizon", "OFI bins", "universe", "roll rule", "cost tier", "side convention", "threshold", "state selection", "oracle", "ML feature"],
+  "stopping_condition": "Stop after the fixed sample, state space and horizons are evaluated, or immediately if timestamp/identity validation fails. Do not run full M2 strategy evaluation as part of reselection.",
+  "external_prerequisites": ["operator jurisdiction/entity and intended account class", "CME data/sample access path", "exact account-level all-in cost schedule"],
+  "traceability": ["PROJECT_STATE.md", "M1/output/M1_D0_READINESS.md", "M1/output/blocker_priority.csv", "M1/data/evidence_ledger.csv", "M1/data/data_feasibility.csv"]
+}
