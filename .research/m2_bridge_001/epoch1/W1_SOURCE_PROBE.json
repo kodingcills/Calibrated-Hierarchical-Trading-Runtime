@@ -1,0 +1,57 @@
+{
+  "probe": "W1-AUCTION-SOURCE-PROBE",
+  "campaign": "GOAL-M2-BRIDGE-001",
+  "epoch": 1,
+  "retrieved_utc": "2026-09-29T22:00:46Z",
+  "method": "curl -r 0-1023 -sS -L -D <headers> -o <slice> <url>; BinaryFILE frames decoded from the raw-inflated first 1 KiB with M2/src/itch_stream_window.py --probe-head",
+  "note_head_404_is_not_absence": "The bare paths https://emi.nasdaq.com/ITCH/S061226-v50.txt.gz and https://emi.nasdaq.com/ITCH/itch50_05_15.gz return HTTP 404. The objects live one directory deeper, under the URL-encoded name 'Nasdaq%20ITCH'. Both spellings were probed with a range GET.",
+  "primary": {
+    "role": "admitted_session",
+    "trade_date": "2026-06-12",
+    "url_404": "https://emi.nasdaq.com/ITCH/S061226-v50.txt.gz",
+    "url_206": "https://emi.nasdaq.com/ITCH/Nasdaq%20ITCH/S061226-v50.txt.gz",
+    "http_status": 206,
+    "content_type": "application/x-gzip",
+    "content_range": "bytes 0-1023/17894268560",
+    "content_range_total": 17894268560,
+    "accept_ranges": "bytes",
+    "last_modified": "Tue, 23 Jun 2026 19:17:54 GMT",
+    "etag": "\"cde32cfe443dd1:0\"",
+    "server": "Microsoft-IIS/10.0",
+    "slice_bytes": 1024,
+    "slice_sha256": "7f877f0611198c4265fbce687fcf0af8688c319ae820645721b2348c14244acc",
+    "slice_path_retained": "M2/data/raw/2026-06-12/S061226-v50.head1024.bin",
+    "first_frames": [
+      {"index": 0, "length": 12, "type": "S", "locate": 0, "tracking": 0, "timestamp_ns": 10892008976642, "timestamp": "03:01:32.008976642"},
+      {"index": 1, "length": 39, "type": "R", "locate": 1, "tracking": 0, "timestamp_ns": 11097195265907, "timestamp": "03:04:57.195265907"},
+      {"index": 2, "length": 39, "type": "R", "locate": 2, "tracking": 0, "timestamp_ns": 11097195301062, "timestamp": "03:04:57.195301062"},
+      {"index": 3, "length": 39, "type": "R", "locate": 3, "tracking": 0, "timestamp_ns": 11097195319061, "timestamp": "03:04:57.195319061"}
+    ],
+    "frame0_expectation": "BinaryFILE: frame 0 is the 'S' System Event (length 12, locate 0) followed by the 'R' Stock Directory spin - observed"
+  },
+  "replication_reservation": {
+    "role": "replication_candidate_metadata_only",
+    "claimed_trade_date": "2026-05-15 (inferred from the name and the server drop date; the filename does not follow the S<MMDDYY> convention, so the date is inference, not a provider assertion)",
+    "url_404": "https://emi.nasdaq.com/ITCH/itch50_05_15.gz",
+    "url_206": "https://emi.nasdaq.com/ITCH/Nasdaq%20ITCH/itch50_05_15.gz",
+    "http_status": 206,
+    "content_type": "application/x-gzip",
+    "content_range": "bytes 0-1023/13047496628",
+    "content_range_total": 13047496628,
+    "accept_ranges": "bytes",
+    "last_modified": "Tue, 09 Jun 2026 19:13:08 GMT",
+    "slice_bytes": 1024,
+    "fetchable": true,
+    "streamed": false,
+    "analysed": false,
+    "first_frames": [
+      {"index": 0, "length": 12, "type": "S", "locate": 0, "timestamp_ns": 10883320897326, "timestamp": "03:01:23.320897326"},
+      {"index": 1, "length": 39, "type": "R", "locate": 1, "timestamp_ns": 11089203601861, "timestamp": "03:04:49.203601861"}
+    ]
+  },
+  "constraints_honoured": [
+    "no purchase, no subscription, no API key, no credential, no account, no geographic or entitlement circumvention",
+    "the primary object was streamed once (hash + parse on the fly); it was never written to disk",
+    "the reserved replication session was range-probed for metadata only; it was not streamed and not analysed"
+  ]
+}

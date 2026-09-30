@@ -1,0 +1,90 @@
+{
+  "adversarial": [
+    {
+      "adversarial": "A1_wrong_declared_hash",
+      "checks_fired": [
+        "files.hash"
+      ],
+      "expect_refused": true,
+      "refused": true,
+      "state": "DATA_INVALID",
+      "verdict_ok": true
+    },
+    {
+      "adversarial": "A2_missing_declared_hash",
+      "checks_fired": [
+        "files.hash"
+      ],
+      "expect_refused": true,
+      "refused": true,
+      "state": "DATA_INCOMPLETE",
+      "verdict_ok": true
+    },
+    {
+      "adversarial": "A3_coverage_just_below_tolerance",
+      "checks_fired": [
+        "coverage.contract",
+        "intervals.coverage"
+      ],
+      "expect_refused": true,
+      "refused": true,
+      "state": "DATA_INVALID",
+      "verdict_ok": true
+    },
+    {
+      "adversarial": "A4_window_kept_bucket_dropped_ratio_1",
+      "checks_fired": [
+        "intervals.coverage"
+      ],
+      "expect_refused": true,
+      "refused": true,
+      "state": "DATA_INCOMPLETE",
+      "verdict_ok": true
+    },
+    {
+      "adversarial": "A5_wrong_timezone_internally_consistent",
+      "checks_fired": [
+        "timestamp.identity",
+        "timezone.contract"
+      ],
+      "expect_refused": true,
+      "refused": true,
+      "state": "DATA_INVALID",
+      "verdict_ok": true
+    },
+    {
+      "adversarial": "A6_wrong_instrument_identity",
+      "checks_fired": [
+        "instrument.identity"
+      ],
+      "expect_refused": true,
+      "refused": true,
+      "state": "DATA_INVALID",
+      "verdict_ok": true
+    },
+    {
+      "adversarial": "A7_wrong_declared_byte_count",
+      "checks_fired": [
+        "files.hash"
+      ],
+      "expect_refused": true,
+      "refused": true,
+      "state": "DATA_INVALID",
+      "verdict_ok": true
+    }
+  ],
+  "all_adversarial_refused": true,
+  "baseline_state": "DATA_VALID",
+  "empty_object_manifest": "DATA_INCOMPLETE",
+  "hash_check_is_load_bearing": {
+    "with_check": "DATA_INVALID",
+    "without_files_hash_check": "DATA_VALID"
+  },
+  "non_object_manifest": "DATA_INCOMPLETE",
+  "precedence_invalid_over_incomplete": {
+    "incomplete_reasons": 1,
+    "invalid_reasons": 1,
+    "precedence_ok": true,
+    "state": "DATA_INVALID"
+  }
+}

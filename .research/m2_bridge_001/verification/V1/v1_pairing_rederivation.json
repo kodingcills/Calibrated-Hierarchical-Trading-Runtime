@@ -1,0 +1,102 @@
+{
+  "checks": {
+    "era": {
+      "era_expected_hours": 29038,
+      "era_missing": [
+        "2023-07-02T20:00:00Z",
+        "2023-08-23T20:00:00Z",
+        "2024-08-15T13:00:00Z"
+      ],
+      "era_missing_count": 3,
+      "era_present_hours": 29035,
+      "hourly_era_start_utc": "2023-06-08T01:00:00Z"
+    },
+    "hl_candle_shape": {
+      "all_spans_1h": true,
+      "fields": [
+        "T",
+        "c",
+        "h",
+        "i",
+        "l",
+        "n",
+        "o",
+        "s",
+        "t",
+        "v"
+      ],
+      "rows": 5003,
+      "unique_t_close_pairs": 5003
+    },
+    "independent_pairing": {
+      "duplicate_buckets": 0,
+      "expected": 4981,
+      "matched": 4981,
+      "missing": 0,
+      "missing_detail": [],
+      "verdict": "PAIRED_100PCT"
+    },
+    "jitter_window": {
+      "max": 0.261,
+      "min": 0.0,
+      "nonzero": 4915,
+      "over_1s": 0,
+      "over_3600s": 0,
+      "rows": 4981
+    },
+    "mark_vs_last": {
+      "common_hours": 5088,
+      "hours_identical": 0,
+      "hours_with_different_value": 5088,
+      "max_relative_diff": 0.001625718395762034
+    },
+    "producer_value_comparison": {
+      "detail": [],
+      "independent_rows": 4981,
+      "producer_rows": 4981,
+      "value_mismatches": 0
+    },
+    "window_bounds": {
+      "binding_end": [
+        "binance_kline",
+        "binance_mark"
+      ],
+      "binding_start": [
+        "hl_candle"
+      ],
+      "ends": {
+        "binance_kline": "2026-09-28T23:00:00Z",
+        "binance_mark": "2026-09-28T23:00:00Z",
+        "hl_candle": "2026-09-29T21:00:00Z",
+        "hl_funding": "2026-09-29T22:00:00Z"
+      },
+      "expected_hours": 4981,
+      "starts": {
+        "binance_kline": "2026-03-01T00:00:00Z",
+        "binance_mark": "2026-03-01T00:00:00Z",
+        "hl_candle": "2026-03-05T11:00:00Z",
+        "hl_funding": "2023-06-08T01:00:00Z"
+      },
+      "window_end_utc": "2026-09-28T23:00:00Z",
+      "window_start_utc": "2026-03-05T11:00:00Z"
+    }
+  },
+  "findings": [],
+  "raw_load": {
+    "hl_candle_hours": 5003,
+    "hl_candle_rows": 5003,
+    "hl_funding_first": "2023-05-12T00:00:00Z",
+    "hl_funding_hour_dupes": 0,
+    "hl_funding_hours": 29117,
+    "hl_funding_last": "2026-09-29T22:00:00Z",
+    "hl_funding_page_boundary_dupes": 58,
+    "hl_funding_pages": 59,
+    "hl_funding_rows": 29117,
+    "klines_duplicate_hours": 0,
+    "klines_files": 34,
+    "klines_hours": 5088,
+    "mark_duplicate_hours": 0,
+    "mark_files": 35,
+    "mark_hours": 5088
+  }
+}

@@ -1,0 +1,155 @@
+{
+  "c0_provenance": {
+    "finra_trading_activity_fee": {
+      "applicability": "covered equity sales; each partial execution counts as one trade for the cap",
+      "cross_check_status": "PRIMARY_SRO_FILING_VERIFIED_WITH_LIVE_PAGE_DISCREPANCY",
+      "effective_date": "2026-01-01",
+      "retrieval_status": null,
+      "source_publisher": "U.S. Securities and Exchange Commission (Release No. 34-101696, File No. SR-FINRA-2024-019) via the Federal Register",
+      "source_url": "https://www.federalregister.gov/documents/full_text/text/2024/11/27/2024-27764.txt",
+      "unit": "USD_PER_SHARE",
+      "value": 0.000195
+    },
+    "nasdaq_remove_liquidity_fee": {
+      "applicability": "Nasdaq continuous book, displayed orders >= $1.00; base tier, no volume qualification",
+      "cross_check_status": null,
+      "effective_date": "UNDATED_ON_RETRIEVED_PAGE",
+      "retrieval_status": "PRIMARY_EXCHANGE_PAGE_RETRIEVED_2026-09-22_AND_REPO_VERIFIED",
+      "source_publisher": "Nasdaq Stock Market LLC (trading price list)",
+      "source_url": "https://www.nasdaqtrader.com/Trader.aspx?id=PriceListTrading2",
+      "unit": "USD_PER_SHARE",
+      "value": 0.003
+    },
+    "sec_section_31_fee": {
+      "applicability": "sales of securities; charged by the executing broker as a pass-through",
+      "cross_check_status": "PRIMARY_REGULATOR_SOURCE_VERIFIED",
+      "effective_date": "2026-04-04",
+      "retrieval_status": null,
+      "source_publisher": "U.S. Securities and Exchange Commission (Release No. 34-104909), via the Federal Register",
+      "source_url": "https://www.federalregister.gov/documents/full_text/text/2026/03/04/2026-04233.txt",
+      "unit": "USD_PER_MILLION_OF_SALES",
+      "value": 20.6
+    }
+  },
+  "c0_set_reference_path": [
+    "nasdaq_remove_liquidity_fee",
+    "sec_section_31_fee",
+    "finra_trading_activity_fee"
+  ],
+  "c0_set_structural_floor": [
+    "nasdaq_remove_liquidity_fee",
+    "sec_section_31_fee",
+    "finra_trading_activity_fee"
+  ],
+  "c1_known_breakdown": {
+    "bounded": false,
+    "known_usd": 0.0,
+    "unevaluated_item_ids": [],
+    "unknown_item_ids": [
+      "databento_xnas_mbo_data_cost",
+      "nasdaq_historical_itch_license_cost"
+    ]
+  },
+  "c1_set_reference_path": [
+    "nscc_dtc_clearing_fee",
+    "cat_fee",
+    "nyse_pass_through_fee",
+    "finra_pass_through_fee",
+    "databento_xnas_mbo_data_cost",
+    "nasdaq_historical_itch_license_cost"
+  ],
+  "c1_set_structural_floor": [
+    "databento_xnas_mbo_data_cost",
+    "nasdaq_historical_itch_license_cost"
+  ],
+  "c1_total_usd_with_unknown": null,
+  "c1_unevaluable_known": {
+    "bounded": true,
+    "known_usd": 0.0,
+    "unevaluated_item_ids": [],
+    "unknown_item_ids": []
+  },
+  "c1_unevaluable_total": 0.0,
+  "c1_unknown_known_usd": {
+    "bounded": false,
+    "known_usd": 0.0,
+    "unevaluated_item_ids": [],
+    "unknown_item_ids": [
+      "cme"
+    ]
+  },
+  "c1_unknown_total_is_none": null,
+  "classify_cases": {
+    "g<0": "KILL_MATERIALITY",
+    "g<=0 and lo>C0 (precedence)": "KILL_MATERIALITY",
+    "g=0": "KILL_MATERIALITY",
+    "hi==C0": "KILL_MATERIALITY",
+    "lo==C0": "INDETERMINATE",
+    "lo>C0": "SURVIVE_PROVISIONAL",
+    "straddle": "INDETERMINATE",
+    "unsorted interval (hi,lo swapped)": "INDETERMINATE"
+  },
+  "classify_cases_detail": {
+    "g_le_0_precedence_expected": "KILL_MATERIALITY",
+    "hi_eq_c0_expected": "KILL_MATERIALITY",
+    "lo_eq_c0_expected": "INDETERMINATE",
+    "lo_gt_c0_expected": "SURVIVE_PROVISIONAL"
+  },
+  "classify_flags_significance_not_criterion": false,
+  "classify_signature": "(gross_usd: 'float', uncertainty_lo_usd: 'float', uncertainty_hi_usd: 'float', c0_usd: 'float') -> 'dict'",
+  "rates_apply_to_period": "2026 rate cards as accessed 2026-09-22. These rates may not be applied to a historical tape from a different era: the development sample day is 2019-07-30, and the statutory rates and exchange fee schedules in force then were different. Any cost-adjusted figure computed against the 2019 sample day is arithmetic validation of the pipeline, not a historical cost reconstruction.",
+  "reference_path_c1_known": {
+    "bounded": false,
+    "known_usd": 0.0,
+    "unevaluated_item_ids": [
+      "nscc_dtc_clearing_fee",
+      "cat_fee",
+      "nyse_pass_through_fee",
+      "finra_pass_through_fee"
+    ],
+    "unknown_item_ids": [
+      "databento_xnas_mbo_data_cost",
+      "nasdaq_historical_itch_license_cost"
+    ]
+  },
+  "reference_path_c1_total": null,
+  "significance_is_not_a_param": true,
+  "significance_role": "REPORTED_ONLY",
+  "structural_c0_usd_no_basis": {
+    "exc": "MissingUnitInput",
+    "msg": "quantity required to evaluate USD_PER_SHARE in USD",
+    "ok": false
+  },
+  "unknown_unit": {
+    "contract_without_multiplier_to_bps": {
+      "exc": "MissingUnitInput",
+      "msg": "multiplier required to convert USD_PER_CONTRACT to bps: the contract notional is unknown and must not be assumed to be one",
+      "ok": false
+    },
+    "convert": {
+      "exc": "UnsupportedUnitConversion",
+      "msg": "no USD evaluation defined for unit 'WIDGETS'",
+      "ok": false
+    },
+    "convert_usd_to_widgets": {
+      "exc": "UnsupportedUnitConversion",
+      "msg": "no 'WIDGETS' expression defined for a USD amount",
+      "ok": false
+    },
+    "from_usd": {
+      "exc": "UnsupportedUnitConversion",
+      "msg": "no 'WIDGETS' expression defined for a USD amount",
+      "ok": false
+    },
+    "to_usd": {
+      "exc": "UnsupportedUnitConversion",
+      "msg": "no USD evaluation defined for unit 'WIDGETS'",
+      "ok": false
+    },
+    "unknown_value_to_usd": {
+      "exc": "MissingUnitInput",
+      "msg": "USD value is UNKNOWN; an unknown cost is never treated as zero",
+      "ok": false
+    }
+  }
+}

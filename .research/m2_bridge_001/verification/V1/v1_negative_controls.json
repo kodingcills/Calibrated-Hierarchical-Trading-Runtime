@@ -1,0 +1,41 @@
+{
+  "NC1_missing_binance_mark_hour": {
+    "detected": true,
+    "missing": [
+      "2026-04-11T16:00:00Z"
+    ],
+    "verdict": "PAIRING_GAP",
+    "victim": "2026-04-11T16:00:00Z"
+  },
+  "NC2_shifted_funding_row": {
+    "detected": true,
+    "missing": [
+      "2026-03-05T16:00:00Z"
+    ],
+    "verdict": "PAIRING_GAP",
+    "victim": "2026-03-05T16:00:00Z"
+  },
+  "NC3_corrupted_candle_value": {
+    "value_mismatch_detected": true,
+    "victim": "2026-03-05T11:00:00Z"
+  },
+  "NC4_exact_ms_join_drops_rows": {
+    "drops": 4937,
+    "exact_ms_hits": 66,
+    "funding_rows_compared": 5003
+  },
+  "NC5_grid_integrity": {
+    "binance_kline_missing": 0,
+    "binance_mark_missing": 0,
+    "hl_candle_missing": 0,
+    "hl_funding_missing": 0
+  },
+  "all_negative_controls_detected": true,
+  "baseline": {
+    "dupes": 0,
+    "expected": 4981,
+    "matched": 4981,
+    "missing": [],
+    "verdict": "PAIRED_100PCT"
+  }
+}

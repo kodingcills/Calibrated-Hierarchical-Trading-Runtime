@@ -1,0 +1,314 @@
+[
+ {
+  "dir": "Nasdaq ITCH",
+  "file": "01302019.NASDAQ_ITCH50.gz",
+  "status": "200",
+  "content_length": "4764426091"
+ },
+ {
+  "dir": "Nasdaq ITCH",
+  "file": "01302020.NASDAQ_ITCH50.gz",
+  "status": "200",
+  "content_length": "5597158940"
+ },
+ {
+  "dir": "Nasdaq ITCH",
+  "file": "03272019.NASDAQ_ITCH50.gz",
+  "status": "200",
+  "content_length": "5510131732"
+ },
+ {
+  "dir": "Nasdaq ITCH",
+  "file": "07302019.NASDAQ_ITCH50.gz",
+  "status": "200",
+  "content_length": "3662140094"
+ },
+ {
+  "dir": "Nasdaq ITCH",
+  "file": "08302019.NASDAQ_ITCH50.gz",
+  "status": "200",
+  "content_length": "4075649457"
+ },
+ {
+  "dir": "Nasdaq ITCH",
+  "file": "10302019.NASDAQ_ITCH50.gz",
+  "status": "200",
+  "content_length": "3872931242"
+ },
+ {
+  "dir": "Nasdaq ITCH",
+  "file": "12302019.NASDAQ_ITCH50.gz",
+  "status": "200",
+  "content_length": "3524013057"
+ },
+ {
+  "dir": "Nasdaq ITCH",
+  "file": "S010303-v2.zip",
+  "status": "200",
+  "content_length": "58907174"
+ },
+ {
+  "dir": "Nasdaq ITCH",
+  "file": "S061226-v50.txt.gz",
+  "status": "200",
+  "content_length": "17894268560"
+ },
+ {
+  "dir": "Nasdaq ITCH",
+  "file": "S071321-v50.txt.gz",
+  "status": "200",
+  "content_length": "5996745270"
+ },
+ {
+  "dir": "Nasdaq ITCH",
+  "file": "S081321-v50.txt.gz",
+  "status": "200",
+  "content_length": "4889328604"
+ },
+ {
+  "dir": "Nasdaq ITCH",
+  "file": "S101819-v50.txt.gz",
+  "status": "200",
+  "content_length": "3951201663"
+ },
+ {
+  "dir": "Nasdaq ITCH",
+  "file": "S112825-v50.txt.gz",
+  "status": "200",
+  "content_length": "4735308661"
+ },
+ {
+  "dir": "Nasdaq ITCH",
+  "file": "S120825-v50.txt.gz",
+  "status": "200",
+  "content_length": "8775891119"
+ },
+ {
+  "dir": "Nasdaq ITCH",
+  "file": "S120925-v50.txt.gz",
+  "status": "200",
+  "content_length": "7929915419"
+ },
+ {
+  "dir": "Nasdaq ITCH",
+  "file": "S121025-v50.txt.gz",
+  "status": "200",
+  "content_length": "11557662295"
+ },
+ {
+  "dir": "Nasdaq ITCH",
+  "file": "S121125-v50.txt.gz",
+  "status": "200",
+  "content_length": "10471034001"
+ },
+ {
+  "dir": "Nasdaq ITCH",
+  "file": "S121225-v50.txt.gz",
+  "status": "200",
+  "content_length": "12551644054"
+ },
+ {
+  "dir": "Nasdaq ITCH",
+  "file": "itch50_05_15.gz",
+  "status": "200",
+  "content_length": "13047496628"
+ },
+ {
+  "dir": "Nasdaq ITCH",
+  "file": "itch50_05_18.gz",
+  "status": "200",
+  "content_length": "16150095810"
+ },
+ {
+  "dir": "Nasdaq ITCH",
+  "file": "tvagg.gz",
+  "status": "200",
+  "content_length": "294755242"
+ },
+ {
+  "dir": "Nasdaq ITCH/NOII",
+  "file": "S050922-v50-NOII.txt.gz",
+  "status": "200",
+  "content_length": "96588423"
+ },
+ {
+  "dir": "GIS/BX Jan 2020",
+  "file": "S012720-v50-bx.txt.gz",
+  "status": "200",
+  "content_length": "645425799"
+ },
+ {
+  "dir": "GIS/BX Jan 2020",
+  "file": "S012820-v50-bx.txt.gz",
+  "status": "200",
+  "content_length": "481399682"
+ },
+ {
+  "dir": "GIS/BX Jan 2020",
+  "file": "S013120-v50-bx.txt.gz",
+  "status": "200",
+  "content_length": "866287383"
+ },
+ {
+  "dir": "GIS/Nov 18, Dec 18, Jan 19",
+  "file": "S121318-v50.txt.gz",
+  "status": "200",
+  "content_length": "5244679335"
+ },
+ {
+  "dir": "GIS/Nov 18, Dec 18, Jan 19",
+  "file": "S121418-v50.txt.gz",
+  "status": "200",
+  "content_length": "5049507039"
+ },
+ {
+  "dir": "GIS/Nov 18, Dec 18, Jan 19",
+  "file": "S123118-v50.txt.gz",
+  "status": "200",
+  "content_length": "4931688102"
+ },
+ {
+  "dir": "GIS/NOII 2019",
+  "file": "12062019.NOII.gz",
+  "status": "200",
+  "content_length": "53963965"
+ },
+ {
+  "dir": "Nasdaq BX ITCH",
+  "file": "20181228.BX_ITCH_50.gz",
+  "status": "200",
+  "content_length": "1657609465"
+ },
+ {
+  "dir": "Nasdaq BX ITCH",
+  "file": "20190130.BX_ITCH_50.gz",
+  "status": "200",
+  "content_length": "1097205622"
+ },
+ {
+  "dir": "Nasdaq BX ITCH",
+  "file": "20190327.BX_ITCH_50.gz",
+  "status": "200",
+  "content_length": "1209123918"
+ },
+ {
+  "dir": "Nasdaq BX ITCH",
+  "file": "20190530.BX_ITCH_50.gz",
+  "status": "200",
+  "content_length": "497884404"
+ },
+ {
+  "dir": "Nasdaq BX ITCH",
+  "file": "20190730.BX_ITCH_50.gz",
+  "status": "200",
+  "content_length": "391242214"
+ },
+ {
+  "dir": "Nasdaq BX ITCH",
+  "file": "20190830.BX_ITCH_50.gz",
+  "status": "200",
+  "content_length": "449303567"
+ },
+ {
+  "dir": "Nasdaq BX ITCH",
+  "file": "20191030.BX_ITCH_50.gz",
+  "status": "200",
+  "content_length": "403851104"
+ },
+ {
+  "dir": "Nasdaq BX ITCH",
+  "file": "20191230.BX_ITCH_50.gz",
+  "status": "200",
+  "content_length": "390561039"
+ },
+ {
+  "dir": "Nasdaq BX ITCH",
+  "file": "20200130.BX_ITCH_50.gz",
+  "status": "200",
+  "content_length": "721906618"
+ },
+ {
+  "dir": "Nasdaq BX ITCH/March 20",
+  "file": "S030220-v50-bx.txt.gz",
+  "status": "200",
+  "content_length": "1503031926"
+ },
+ {
+  "dir": "Nasdaq PSX ITCH",
+  "file": "05302019.NASDAQ_ITCH50.gz",
+  "status": "200",
+  "content_length": "4246501580"
+ },
+ {
+  "dir": "Nasdaq PSX ITCH",
+  "file": "20181228.PSX_ITCH_50.gz",
+  "status": "200",
+  "content_length": "848675534"
+ },
+ {
+  "dir": "Nasdaq PSX ITCH",
+  "file": "20190130.PSX_ITCH_50.gz",
+  "status": "200",
+  "content_length": "537949108"
+ },
+ {
+  "dir": "Nasdaq PSX ITCH",
+  "file": "20190327.PSX_ITCH_50.gz",
+  "status": "200",
+  "content_length": "816988479"
+ },
+ {
+  "dir": "Nasdaq PSX ITCH",
+  "file": "20190530.PSX_ITCH_50.gz",
+  "status": "200",
+  "content_length": "576045196"
+ },
+ {
+  "dir": "Nasdaq PSX ITCH",
+  "file": "20190730.PSX_ITCH_50.gz",
+  "status": "200",
+  "content_length": "411831929"
+ },
+ {
+  "dir": "Nasdaq PSX ITCH",
+  "file": "20190830.PSX_ITCH_50.gz",
+  "status": "200",
+  "content_length": "534501464"
+ },
+ {
+  "dir": "Nasdaq PSX ITCH",
+  "file": "20191030.PSX_ITCH_50.gz",
+  "status": "200",
+  "content_length": "443863576"
+ },
+ {
+  "dir": "Nasdaq PSX ITCH",
+  "file": "20191230.PSX_ITCH_50.gz",
+  "status": "200",
+  "content_length": "531176933"
+ },
+ {
+  "dir": "Nasdaq PSX ITCH",
+  "file": "20200130.PSX_ITCH_50.gz",
+  "status": "200",
+  "content_length": "964492140"
+ },
+ {
+  "dir": "Nasdaq ITCH",
+  "file": "07302019.NASDAQ_ITCH50.gz.md5sum",
+  "status": "404",
+  "content_length": "1245"
+ },
+ {
+  "dir": "Nasdaq ITCH",
+  "file": "20190730.BX_ITCH_50.gz.md5sum",
+  "status": "404",
+  "content_length": "1245"
+ },
+ {
+  "dir": "Nasdaq ITCH",
+  "file": "S112825-v50.txt.done",
+  "status": "404",
+  "content_length": "1245"
+ }
+]

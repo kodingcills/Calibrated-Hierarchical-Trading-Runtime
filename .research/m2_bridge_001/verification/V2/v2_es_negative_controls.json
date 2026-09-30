@@ -1,0 +1,27 @@
+{
+  "NC5_byte_flip": {
+    "corrupted_sha256": "6e14117958cd121ce81d26327f420fa981cad3b7e3b51dad285e4d0e6e1ab03b",
+    "detected": true,
+    "digest_differs_from_declared": true,
+    "framing_error": null,
+    "messages": 449989,
+    "trades": 18122
+  },
+  "NC6_truncation": {
+    "bytes": 33346183,
+    "detected": true,
+    "records": 189695,
+    "sha256": "cf84ebc638cead4555d81dc811aa2c1d4bd085f1300f7728dd1523de6565bf4e",
+    "sha_differs_from_declared": true,
+    "tail_problem": "29 trailing bytes that are not a complete pcap record"
+  },
+  "NC7_pristine_decode": {
+    "framing_error": null,
+    "messages": 449990,
+    "trades": 18122
+  },
+  "declared_sha256": "c938273d6a17cd90b0f44b47a820f6567bb698ffbac50b6bc76052ae71b6c88e",
+  "pristine_bytes": 66692366,
+  "pristine_matches_declared": true,
+  "pristine_sha256": "c938273d6a17cd90b0f44b47a820f6567bb698ffbac50b6bc76052ae71b6c88e"
+}

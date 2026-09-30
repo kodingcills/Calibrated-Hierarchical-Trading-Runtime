@@ -1,0 +1,126 @@
+{
+  "aggressor_at_own_side_pct_of_checked": 98.12196199734865,
+  "bbo_rows": 312358,
+  "bbo_sequence_regressions": 0,
+  "bbo_timestamp_order": {
+    "exchange_send>ts_recv": 0,
+    "ts_event>exchange_send": 0,
+    "ts_event>ts_recv": 0
+  },
+  "bbo_timestamp_order_worst_ns": {
+    "exchange_send>ts_recv": 0,
+    "ts_event>ts_recv": 0
+  },
+  "bbo_ts_event_regressions": 0,
+  "bbo_ts_recv_regressions": 0,
+  "lookahead_bbo_rebuild": {
+    "at_own_side": 17764,
+    "at_wrong_side": 271,
+    "checked": 18104,
+    "inside_or_at": 18035,
+    "outside_above_ask": 32,
+    "outside_below_bid": 37
+  },
+  "lookahead_examples": [
+    {
+      "aggressor": "1",
+      "ask": 453650000000000,
+      "bid": 453625000000000,
+      "distance_ticks": 1.0,
+      "price": 453675000000000,
+      "sequence": 1121295
+    },
+    {
+      "aggressor": "1",
+      "ask": 453725000000000,
+      "bid": 453700000000000,
+      "distance_ticks": 1.0,
+      "price": 453750000000000,
+      "sequence": 1122882
+    },
+    {
+      "aggressor": "1",
+      "ask": 453725000000000,
+      "bid": 453700000000000,
+      "distance_ticks": 1.0,
+      "price": 453750000000000,
+      "sequence": 1122883
+    },
+    {
+      "aggressor": "1",
+      "ask": 453725000000000,
+      "bid": 453700000000000,
+      "distance_ticks": 1.0,
+      "price": 453750000000000,
+      "sequence": 1122884
+    },
+    {
+      "aggressor": "1",
+      "ask": 453850000000000,
+      "bid": 453825000000000,
+      "distance_ticks": 1.0,
+      "price": 453875000000000,
+      "sequence": 1127745
+    },
+    {
+      "aggressor": "1",
+      "ask": 453900000000000,
+      "bid": 453875000000000,
+      "distance_ticks": 1.0,
+      "price": 453925000000000,
+      "sequence": 1130503
+    }
+  ],
+  "price_scale_settlement_checks": {
+    "17077": {
+      "equal": true,
+      "index_points_via_producer_scale": 4637.5,
+      "multiplier_x_increment_check": true,
+      "price_display_factor": 0.01,
+      "secdef_settl_price_units": 463750.0,
+      "secdef_units_times_factor": 4637.5,
+      "symbol": "ESH4",
+      "tick_value_usd": 12.5
+    },
+    "314863": {
+      "equal": true,
+      "index_points_via_producer_scale": 4586.25,
+      "multiplier_x_increment_check": true,
+      "price_display_factor": 0.01,
+      "secdef_settl_price_units": 458625.0,
+      "secdef_units_times_factor": 4586.25,
+      "symbol": "ESZ3",
+      "tick_value_usd": 12.5
+    },
+    "3445": {
+      "equal": true,
+      "index_points_via_producer_scale": 4536.75,
+      "multiplier_x_increment_check": true,
+      "price_display_factor": 0.01,
+      "secdef_settl_price_units": 453675.0,
+      "secdef_units_times_factor": 4536.75,
+      "symbol": "ESU3",
+      "tick_value_usd": 12.5
+    },
+    "4155": {
+      "equal": true,
+      "index_points_via_producer_scale": 43.0,
+      "multiplier_x_increment_check": null,
+      "price_display_factor": 0.01,
+      "secdef_settl_price_units": 4300.0,
+      "secdef_units_times_factor": 43.0,
+      "symbol": "ESM4-ESU4",
+      "tick_value_usd": null
+    }
+  },
+  "trades_rows": 18122,
+  "trades_timestamp_order": {
+    "exchange_send>ts_recv": 0,
+    "ts_event>exchange_send": 0,
+    "ts_event>ts_recv": 0
+  },
+  "trades_timestamp_order_worst_ns": {
+    "exchange_send>ts_recv": 0,
+    "ts_event>ts_recv": 0
+  }
+}

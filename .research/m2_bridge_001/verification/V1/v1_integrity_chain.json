@@ -1,0 +1,1500 @@
+{
+  "binance_zips": {
+    "checked": 70,
+    "mismatch_or_missing": [],
+    "n_bad": 0,
+    "ok": 70
+  },
+  "funding_zips": {
+    "bad": 0,
+    "checked": 6,
+    "ok": 6
+  },
+  "hl_pages": {
+    "bad": [],
+    "checked": 61,
+    "mismatch": 0,
+    "missing_raw": 0,
+    "ok": 61
+  },
+  "prior_probe_crosscheck": {
+    "inside_window": 276,
+    "rows": 276,
+    "value_mismatches": 0
+  },
+  "prior_probe_csv_present": true,
+  "request_summary": {
+    "by_host": {
+      "api.hyperliquid.xyz": 61,
+      "data.binance.vision": 83
+    },
+    "cached_reused": 136,
+    "log": [
+      {
+        "bytes": 695632,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "POST",
+        "name": "hl_candles_1h_0.json",
+        "retrieved_utc": "2026-09-29T21:59:35Z",
+        "sha256": "27a7f070839e69d105f53a93f7bd78d902fdbf540304d729ee6ca736cf6d19ac",
+        "url": "https://api.hyperliquid.xyz/info"
+      },
+      {
+        "bytes": 44817,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "POST",
+        "name": "hl_funding_depthprobe_1.json",
+        "retrieved_utc": "2026-09-29T21:59:35Z",
+        "sha256": "aff6213fba21d02999686abd7f69f427f67233fe856359876c1ff98815db7999",
+        "url": "https://api.hyperliquid.xyz/info"
+      },
+      {
+        "bytes": 44834,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "POST",
+        "name": "hl_funding_depthprobe_1687687200201.json",
+        "retrieved_utc": "2026-09-29T21:59:36Z",
+        "sha256": "47518d87a4ff2def92c996523912d79dcedd402cf801211289d5524488e647b2",
+        "url": "https://api.hyperliquid.xyz/info"
+      },
+      {
+        "bytes": 45252,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "POST",
+        "name": "hl_funding_depthprobe_1689487200030.json",
+        "retrieved_utc": "2026-09-29T21:59:36Z",
+        "sha256": "5bcb8d0dce015cc0c32f9532975c263e2a346e4b594f2534745ec5e2fd3e1b46",
+        "url": "https://api.hyperliquid.xyz/info"
+      },
+      {
+        "bytes": 45601,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "POST",
+        "name": "hl_funding_depthprobe_1691283600725.json",
+        "retrieved_utc": "2026-09-29T21:59:37Z",
+        "sha256": "954b0d7ac39cbdc472e5605021e1960b24947b00f8617726516c6765e087f7ee",
+        "url": "https://api.hyperliquid.xyz/info"
+      },
+      {
+        "bytes": 45379,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "POST",
+        "name": "hl_funding_depthprobe_1693083600076.json",
+        "retrieved_utc": "2026-09-29T21:59:38Z",
+        "sha256": "21d1fd9db4d10c57320cdf73b886534f955d763a72cd18a7be9c5d07be734b5d",
+        "url": "https://api.hyperliquid.xyz/info"
+      },
+      {
+        "bytes": 44110,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "POST",
+        "name": "hl_funding_depthprobe_1694880000106.json",
+        "retrieved_utc": "2026-09-29T21:59:38Z",
+        "sha256": "de701ef925dcb038392df8ca42b4a70b1c9d5b2f5dd80f556a87c42daae33bd8",
+        "url": "https://api.hyperliquid.xyz/info"
+      },
+      {
+        "bytes": 44280,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "POST",
+        "name": "hl_funding_depthprobe_1696676400000.json",
+        "retrieved_utc": "2026-09-29T21:59:39Z",
+        "sha256": "50d4b91a9268a97974ecd8547ee2682756562df6a7859477ef69ef3d27d13c8b",
+        "url": "https://api.hyperliquid.xyz/info"
+      },
+      {
+        "bytes": 44623,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "POST",
+        "name": "hl_funding_depthprobe_1698472800033.json",
+        "retrieved_utc": "2026-09-29T21:59:40Z",
+        "sha256": "bc09d4e44e9cff83f90aa9acd031a45b50f5488ebb6e1310e959e985557173a1",
+        "url": "https://api.hyperliquid.xyz/info"
+      },
+      {
+        "bytes": 44069,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "POST",
+        "name": "hl_funding_depthprobe_1700269200010.json",
+        "retrieved_utc": "2026-09-29T21:59:40Z",
+        "sha256": "81d84e4a81e5559a2ae88c0ba9ff943e72d6cbbba4b426e43b73a5ebc3ced741",
+        "url": "https://api.hyperliquid.xyz/info"
+      },
+      {
+        "bytes": 44547,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "POST",
+        "name": "hl_funding_depthprobe_1702065600034.json",
+        "retrieved_utc": "2026-09-29T21:59:41Z",
+        "sha256": "0a27b1a3cb02417b36033378ed0df0745719212d0d119cec6c9036b61feda5c6",
+        "url": "https://api.hyperliquid.xyz/info"
+      },
+      {
+        "bytes": 44602,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "POST",
+        "name": "hl_funding_depthprobe_1703862000298.json",
+        "retrieved_utc": "2026-09-29T21:59:42Z",
+        "sha256": "74c19ca5ccf1603e36d06b24da821a26d16e0b5475c5557151feea3d8f0a5832",
+        "url": "https://api.hyperliquid.xyz/info"
+      },
+      {
+        "bytes": 44418,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "POST",
+        "name": "hl_funding_depthprobe_1705658400153.json",
+        "retrieved_utc": "2026-09-29T21:59:42Z",
+        "sha256": "c112789b8b844fe9d583476e52a92caeea87dccb9c43190a37f46b9e0a444dbd",
+        "url": "https://api.hyperliquid.xyz/info"
+      },
+      {
+        "bytes": 44345,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "POST",
+        "name": "hl_funding_depthprobe_1707454800395.json",
+        "retrieved_utc": "2026-09-29T21:59:43Z",
+        "sha256": "8baa9b7775874be4206200dbf864ce9d0f2fd49db294e98306d07a13f5718dcd",
+        "url": "https://api.hyperliquid.xyz/info"
+      },
+      {
+        "bytes": 44737,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "POST",
+        "name": "hl_funding_depthprobe_1709251200311.json",
+        "retrieved_utc": "2026-09-29T21:59:44Z",
+        "sha256": "59cf9de11d99d3519ca7b19956540f7a247a5b89d67805310c7f6ebdaf801bb9",
+        "url": "https://api.hyperliquid.xyz/info"
+      },
+      {
+        "bytes": 44428,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "POST",
+        "name": "hl_funding_depthprobe_1711047600219.json",
+        "retrieved_utc": "2026-09-29T21:59:44Z",
+        "sha256": "a3385f445bd4ca8236543abcd19eaa31ad9be152d9b67ffa12f19c5bcad963ec",
+        "url": "https://api.hyperliquid.xyz/info"
+      },
+      {
+        "bytes": 44209,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "POST",
+        "name": "hl_funding_depthprobe_1712844000272.json",
+        "retrieved_utc": "2026-09-29T21:59:45Z",
+        "sha256": "494bfb824283dcb51eb85766b291018e25de6984e833a8d7c4e741c79ab8c9c4",
+        "url": "https://api.hyperliquid.xyz/info"
+      },
+      {
+        "bytes": 43997,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "POST",
+        "name": "hl_funding_depthprobe_1714640400331.json",
+        "retrieved_utc": "2026-09-29T21:59:46Z",
+        "sha256": "cffbe067e1f3e9789b5bd36ac654ad0d032873a18ca242ccb6d88e0c9d879066",
+        "url": "https://api.hyperliquid.xyz/info"
+      },
+      {
+        "bytes": 44245,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "POST",
+        "name": "hl_funding_depthprobe_1716436800078.json",
+        "retrieved_utc": "2026-09-29T21:59:46Z",
+        "sha256": "6df31d5c8970893c0b125d8b7116a929680e3fd91d85e2f8a2ac32c8a99f3ac3",
+        "url": "https://api.hyperliquid.xyz/info"
+      },
+      {
+        "bytes": 43943,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "POST",
+        "name": "hl_funding_depthprobe_1718233200029.json",
+        "retrieved_utc": "2026-09-29T21:59:47Z",
+        "sha256": "15989fc17b0d4ca6ba5e08c279277c97b3b95b0a472f01a772e1e29634c3ccb2",
+        "url": "https://api.hyperliquid.xyz/info"
+      },
+      {
+        "bytes": 44226,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "POST",
+        "name": "hl_funding_depthprobe_1720029600088.json",
+        "retrieved_utc": "2026-09-29T21:59:48Z",
+        "sha256": "87483ff717e8e900020a47391ecd2e2fa7f8da5714ebba5d1e544368ed041494",
+        "url": "https://api.hyperliquid.xyz/info"
+      },
+      {
+        "bytes": 43954,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "POST",
+        "name": "hl_funding_depthprobe_1721826000092.json",
+        "retrieved_utc": "2026-09-29T21:59:48Z",
+        "sha256": "4a00f9453e144a8e8b5f5cf5f0be2c5b61c3a17fef61e99e489a91eded668d57",
+        "url": "https://api.hyperliquid.xyz/info"
+      },
+      {
+        "bytes": 44148,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "POST",
+        "name": "hl_funding_depthprobe_1723622400153.json",
+        "retrieved_utc": "2026-09-29T21:59:49Z",
+        "sha256": "e3e360c268e705873806144e79fdb9b49f74be6b8153c748852650b33f2677e8",
+        "url": "https://api.hyperliquid.xyz/info"
+      },
+      {
+        "bytes": 44112,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "POST",
+        "name": "hl_funding_depthprobe_1725422400017.json",
+        "retrieved_utc": "2026-09-29T21:59:50Z",
+        "sha256": "5c229e518f168f4f3de07abe504da81ae63cba3836feb8eacb25ad90e4900573",
+        "url": "https://api.hyperliquid.xyz/info"
+      },
+      {
+        "bytes": 44068,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "POST",
+        "name": "hl_funding_depthprobe_1727218800109.json",
+        "retrieved_utc": "2026-09-29T21:59:51Z",
+        "sha256": "f8410b8df242a3bf7c027cc3e5eb3172cfa4e5dfcf0cfd18487504892ed61456",
+        "url": "https://api.hyperliquid.xyz/info"
+      },
+      {
+        "bytes": 43838,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "POST",
+        "name": "hl_funding_depthprobe_1729015200005.json",
+        "retrieved_utc": "2026-09-29T21:59:52Z",
+        "sha256": "227bd8574d47796aaa20be97f3a96e979550086436ffe775b9d3c39e0426e741",
+        "url": "https://api.hyperliquid.xyz/info"
+      },
+      {
+        "bytes": 44626,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "POST",
+        "name": "hl_funding_depthprobe_1730811600070.json",
+        "retrieved_utc": "2026-09-29T21:59:52Z",
+        "sha256": "b81e660a41ac83ba9fb2e0df87e5c5258cb921312ca402bbc947f5605340d62b",
+        "url": "https://api.hyperliquid.xyz/info"
+      },
+      {
+        "bytes": 44580,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "POST",
+        "name": "hl_funding_depthprobe_1732608000020.json",
+        "retrieved_utc": "2026-09-29T21:59:53Z",
+        "sha256": "45c963c4c25b720d7570fc1dab2da7ca6fb880de436cee5ebd32b44e8b5e0d28",
+        "url": "https://api.hyperliquid.xyz/info"
+      },
+      {
+        "bytes": 43962,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "POST",
+        "name": "hl_funding_depthprobe_1734404400052.json",
+        "retrieved_utc": "2026-09-29T21:59:54Z",
+        "sha256": "de468b71f44de95d8aa4a226871bc6b970864c6e62896bfe08d2753d74390b49",
+        "url": "https://api.hyperliquid.xyz/info"
+      },
+      {
+        "bytes": 44077,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "POST",
+        "name": "hl_funding_depthprobe_1736200800121.json",
+        "retrieved_utc": "2026-09-29T21:59:55Z",
+        "sha256": "1f284b1dc84d90ce5a6925ce667f2684324833a5c16b8a2918107a0ac1560a4e",
+        "url": "https://api.hyperliquid.xyz/info"
+      },
+      {
+        "bytes": 43805,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "POST",
+        "name": "hl_funding_depthprobe_1737997200007.json",
+        "retrieved_utc": "2026-09-29T21:59:55Z",
+        "sha256": "6db3fbf95b3e743132d755c641f7023a5e81558f45fc1a59ed6e987d214225dc",
+        "url": "https://api.hyperliquid.xyz/info"
+      },
+      {
+        "bytes": 44270,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "POST",
+        "name": "hl_funding_depthprobe_1739793600035.json",
+        "retrieved_utc": "2026-09-29T21:59:56Z",
+        "sha256": "50606038030f3c61b5c029c1413a67acbfa75e9228494c64151cf30a069ca679",
+        "url": "https://api.hyperliquid.xyz/info"
+      },
+      {
+        "bytes": 45003,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "POST",
+        "name": "hl_funding_depthprobe_1741590000004.json",
+        "retrieved_utc": "2026-09-29T21:59:57Z",
+        "sha256": "8babcde16f2676651279f6470583efc26b48a552d1201987d95daf9834f47034",
+        "url": "https://api.hyperliquid.xyz/info"
+      },
+      {
+        "bytes": 44542,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "POST",
+        "name": "hl_funding_depthprobe_1743386400051.json",
+        "retrieved_utc": "2026-09-29T21:59:57Z",
+        "sha256": "95aa6aa384e713df229bb203185e5885758e44910e3bc4d3c6d0d8c3f07bf20c",
+        "url": "https://api.hyperliquid.xyz/info"
+      },
+      {
+        "bytes": 44387,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "POST",
+        "name": "hl_funding_depthprobe_1745182800039.json",
+        "retrieved_utc": "2026-09-29T21:59:58Z",
+        "sha256": "381089cf90074c065ec1b3e90788d34cbbeba100997501f0a6920d7cefc09437",
+        "url": "https://api.hyperliquid.xyz/info"
+      },
+      {
+        "bytes": 44118,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "POST",
+        "name": "hl_funding_depthprobe_1746979200034.json",
+        "retrieved_utc": "2026-09-29T21:59:59Z",
+        "sha256": "e2a35d51c8dab977ff0dc6bae4f5af66a5c7be0cbdd49587ac4c420d60a79a72",
+        "url": "https://api.hyperliquid.xyz/info"
+      },
+      {
+        "bytes": 44335,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "POST",
+        "name": "hl_funding_depthprobe_1748775600046.json",
+        "retrieved_utc": "2026-09-29T21:59:59Z",
+        "sha256": "3e29385cde56638b520465fbe9335578eca1374c27dacadaf4ca4af296646dd6",
+        "url": "https://api.hyperliquid.xyz/info"
+      },
+      {
+        "bytes": 44287,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "POST",
+        "name": "hl_funding_depthprobe_1750572000038.json",
+        "retrieved_utc": "2026-09-29T22:00:00Z",
+        "sha256": "7354a912a71dc8aa19e32dc3874837bb0c08a84d4897d65ca8eda5f44f92a1b8",
+        "url": "https://api.hyperliquid.xyz/info"
+      },
+      {
+        "bytes": 44384,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "POST",
+        "name": "hl_funding_depthprobe_1752368400010.json",
+        "retrieved_utc": "2026-09-29T22:00:01Z",
+        "sha256": "0c3595d3a2558f7dd1c4ee9c10248d0f12903f4ee69a0c0ca00a67a6fe8bb8c9",
+        "url": "https://api.hyperliquid.xyz/info"
+      },
+      {
+        "bytes": 44170,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "POST",
+        "name": "hl_funding_depthprobe_1754164800108.json",
+        "retrieved_utc": "2026-09-29T22:00:02Z",
+        "sha256": "954d66db56f41998e8017016e27613fde3674b68248acceac81697e9c062bd34",
+        "url": "https://api.hyperliquid.xyz/info"
+      },
+      {
+        "bytes": 43869,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "POST",
+        "name": "hl_funding_depthprobe_1755961200004.json",
+        "retrieved_utc": "2026-09-29T22:00:02Z",
+        "sha256": "12520d56b1714f92bfe39f43122238f0d3084ebaab9c73156d6618687903d561",
+        "url": "https://api.hyperliquid.xyz/info"
+      },
+      {
+        "bytes": 44033,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "POST",
+        "name": "hl_funding_depthprobe_1757757600044.json",
+        "retrieved_utc": "2026-09-29T22:00:03Z",
+        "sha256": "3ec0d7894b2671398412478ac6b8561fee061d6f52f19d77f7e70237bcf07d06",
+        "url": "https://api.hyperliquid.xyz/info"
+      },
+      {
+        "bytes": 44293,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "POST",
+        "name": "hl_funding_depthprobe_1759554000098.json",
+        "retrieved_utc": "2026-09-29T22:00:04Z",
+        "sha256": "c562e03d2775c0310dd20d19272003a032c0afb0f592144a9a0a1b5ca7a0d484",
+        "url": "https://api.hyperliquid.xyz/info"
+      },
+      {
+        "bytes": 43911,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "POST",
+        "name": "hl_funding_depthprobe_1761350400014.json",
+        "retrieved_utc": "2026-09-29T22:00:04Z",
+        "sha256": "4eb5b063829256f1812e6a358a58819ca6fd49a0256bfcdaa2807dab349a4658",
+        "url": "https://api.hyperliquid.xyz/info"
+      },
+      {
+        "bytes": 44531,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "POST",
+        "name": "hl_funding_depthprobe_1763146800005.json",
+        "retrieved_utc": "2026-09-29T22:00:05Z",
+        "sha256": "0ceddd739099c268f637a15e9f84889633cd4f650d8707754b9fa61488fb6c5e",
+        "url": "https://api.hyperliquid.xyz/info"
+      },
+      {
+        "bytes": 44855,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "POST",
+        "name": "hl_funding_depthprobe_1764943200047.json",
+        "retrieved_utc": "2026-09-29T22:00:06Z",
+        "sha256": "04c664725c3390a7e551429438a23abbf8bf9b5cec9eae46c6cc2245a535c0f4",
+        "url": "https://api.hyperliquid.xyz/info"
+      },
+      {
+        "bytes": 44226,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "POST",
+        "name": "hl_funding_depthprobe_1766739600017.json",
+        "retrieved_utc": "2026-09-29T22:00:06Z",
+        "sha256": "571958adcbabe30a793d15b63b62030ac3be63c1d394c778ce86d97864a6c992",
+        "url": "https://api.hyperliquid.xyz/info"
+      },
+      {
+        "bytes": 44796,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "POST",
+        "name": "hl_funding_depthprobe_1768536000096.json",
+        "retrieved_utc": "2026-09-29T22:00:07Z",
+        "sha256": "e5451064f8ea40c7301ae5bb9641d6f5aa9deaa394850becabc9380488b52982",
+        "url": "https://api.hyperliquid.xyz/info"
+      },
+      {
+        "bytes": 45203,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "POST",
+        "name": "hl_funding_depthprobe_1770332400019.json",
+        "retrieved_utc": "2026-09-29T22:00:08Z",
+        "sha256": "2c5908ed457e440dff036654d4b16928173d56891e449dec2a91eabc31be7bab",
+        "url": "https://api.hyperliquid.xyz/info"
+      },
+      {
+        "bytes": 45413,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "POST",
+        "name": "hl_funding_depthprobe_1772128800023.json",
+        "retrieved_utc": "2026-09-29T22:00:08Z",
+        "sha256": "72a2b89ebc3d4007410b01570b70c1f313b2a5154be523510866e3e2a74b6eb4",
+        "url": "https://api.hyperliquid.xyz/info"
+      },
+      {
+        "bytes": 45267,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "POST",
+        "name": "hl_funding_depthprobe_1773925200045.json",
+        "retrieved_utc": "2026-09-29T22:00:09Z",
+        "sha256": "8c3909b2c293060d9347974bf65b37ea18091e3be2b5d471bf91906aa47655dc",
+        "url": "https://api.hyperliquid.xyz/info"
+      },
+      {
+        "bytes": 45424,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "POST",
+        "name": "hl_funding_depthprobe_1775721600056.json",
+        "retrieved_utc": "2026-09-29T22:00:10Z",
+        "sha256": "47cc776a402125ebbd448c045f0f578f53ef840f531e244713f7f6a3c307c47c",
+        "url": "https://api.hyperliquid.xyz/info"
+      },
+      {
+        "bytes": 45140,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "POST",
+        "name": "hl_funding_depthprobe_1777518000073.json",
+        "retrieved_utc": "2026-09-29T22:00:10Z",
+        "sha256": "8c7bbcad97683f7ee93f32841183dc5d0bdfd49833bc58beb16e5d27be67dca9",
+        "url": "https://api.hyperliquid.xyz/info"
+      },
+      {
+        "bytes": 44968,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "POST",
+        "name": "hl_funding_depthprobe_1779314400084.json",
+        "retrieved_utc": "2026-09-29T22:00:11Z",
+        "sha256": "3a6033f8fa222d55aa67bfd4988c4168351569192e6c57647e2d06eedec41005",
+        "url": "https://api.hyperliquid.xyz/info"
+      },
+      {
+        "bytes": 45067,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "POST",
+        "name": "hl_funding_depthprobe_1781110800012.json",
+        "retrieved_utc": "2026-09-29T22:00:12Z",
+        "sha256": "2e3074798a8d242f21340ee6b704be1d09f8ca3cf9e3a9bf44bae0e3c176d19a",
+        "url": "https://api.hyperliquid.xyz/info"
+      },
+      {
+        "bytes": 43940,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "POST",
+        "name": "hl_funding_depthprobe_1782907200044.json",
+        "retrieved_utc": "2026-09-29T22:00:13Z",
+        "sha256": "9eebdce35f2f26182d6a095a165d80b1f8863e9c5d9e44a42e72242de0d35c50",
+        "url": "https://api.hyperliquid.xyz/info"
+      },
+      {
+        "bytes": 44876,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "POST",
+        "name": "hl_funding_depthprobe_1784703600019.json",
+        "retrieved_utc": "2026-09-29T22:00:13Z",
+        "sha256": "eb58dabc313ffc364d111040ede0cc9e3d849d0b4de0224361096dc0856cb847",
+        "url": "https://api.hyperliquid.xyz/info"
+      },
+      {
+        "bytes": 44276,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "POST",
+        "name": "hl_funding_depthprobe_1786500000027.json",
+        "retrieved_utc": "2026-09-29T22:00:14Z",
+        "sha256": "9f98d127e368b1dda7533c41a8188dd669bd13405e2f0e9be929512244f16601",
+        "url": "https://api.hyperliquid.xyz/info"
+      },
+      {
+        "bytes": 44407,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "POST",
+        "name": "hl_funding_depthprobe_1788296400010.json",
+        "retrieved_utc": "2026-09-29T22:00:15Z",
+        "sha256": "44de0fa2f7f0be47cfc92433b02d533df28036121916a7e187a81b9232acb622",
+        "url": "https://api.hyperliquid.xyz/info"
+      },
+      {
+        "bytes": 15553,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "POST",
+        "name": "hl_funding_depthprobe_1790092800071.json",
+        "retrieved_utc": "2026-09-29T22:00:15Z",
+        "sha256": "557f09822eba32123cdbc92eb0f47b60b7ec6cd48b8ad9bb860204febf680592",
+        "url": "https://api.hyperliquid.xyz/info"
+      },
+      {
+        "bytes": 1349,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "POST",
+        "name": "hl_funding_cadence_1687689000000.json",
+        "retrieved_utc": "2026-09-29T22:00:15Z",
+        "sha256": "fc056e7967f32b882888e8ae1b03f0d2f6407e85ca6c4ee3b96083272b8ed766",
+        "url": "https://api.hyperliquid.xyz/info"
+      },
+      {
+        "bytes": null,
+        "cache_reused": false,
+        "content_range": null,
+        "http_status": 404,
+        "method": "GET (Range: bytes=0-1023)",
+        "name": "probe",
+        "retrieved_utc": "2026-09-29T22:10:50Z",
+        "sha256": null,
+        "status": 404,
+        "total_bytes": null,
+        "url": "https://data.binance.vision/data/futures/um/daily/klines/BTCUSDT/1h/BTCUSDT-1h-2026-09-29.zip"
+      },
+      {
+        "bytes": null,
+        "cache_reused": false,
+        "content_range": null,
+        "http_status": 404,
+        "method": "GET (Range: bytes=0-1023)",
+        "name": "probe",
+        "retrieved_utc": "2026-09-29T22:10:50Z",
+        "sha256": null,
+        "status": 404,
+        "total_bytes": null,
+        "url": "https://data.binance.vision/data/futures/um/daily/markPriceKlines/BTCUSDT/1h/BTCUSDT-1h-2026-09-29.zip"
+      },
+      {
+        "bytes": 1562,
+        "cache_reused": false,
+        "content_range": "bytes 0-1023/1562",
+        "http_status": 206,
+        "method": "GET (Range: bytes=0-1023)",
+        "name": "probe",
+        "retrieved_utc": "2026-09-29T22:10:50Z",
+        "sha256": null,
+        "status": 206,
+        "total_bytes": 1562,
+        "url": "https://data.binance.vision/data/futures/um/daily/klines/BTCUSDT/1h/BTCUSDT-1h-2026-09-28.zip"
+      },
+      {
+        "bytes": 1012,
+        "cache_reused": false,
+        "content_range": "bytes 0-1011/1012",
+        "http_status": 206,
+        "method": "GET (Range: bytes=0-1023)",
+        "name": "probe",
+        "retrieved_utc": "2026-09-29T22:10:50Z",
+        "sha256": null,
+        "status": 206,
+        "total_bytes": 1012,
+        "url": "https://data.binance.vision/data/futures/um/daily/markPriceKlines/BTCUSDT/1h/BTCUSDT-1h-2026-09-28.zip"
+      },
+      {
+        "bytes": 37271,
+        "cache_reused": false,
+        "content_range": "bytes 0-1023/37271",
+        "http_status": 206,
+        "method": "GET (Range: bytes=0-1023)",
+        "name": "probe",
+        "retrieved_utc": "2026-09-29T22:10:51Z",
+        "sha256": null,
+        "status": 206,
+        "total_bytes": 37271,
+        "url": "https://data.binance.vision/data/futures/um/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2020-01.zip"
+      },
+      {
+        "bytes": 27231,
+        "cache_reused": false,
+        "content_range": "bytes 0-1023/27231",
+        "http_status": 206,
+        "method": "GET (Range: bytes=0-1023)",
+        "name": "probe",
+        "retrieved_utc": "2026-09-29T22:10:51Z",
+        "sha256": null,
+        "status": 206,
+        "total_bytes": 27231,
+        "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/BTCUSDT/1h/BTCUSDT-1h-2020-01.zip"
+      },
+      {
+        "bytes": null,
+        "cache_reused": false,
+        "content_range": null,
+        "http_status": 404,
+        "method": "GET (Range: bytes=0-1023)",
+        "name": "probe",
+        "retrieved_utc": "2026-09-29T22:10:51Z",
+        "sha256": null,
+        "status": 404,
+        "total_bytes": null,
+        "url": "https://data.binance.vision/data/futures/um/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2019-12.zip"
+      },
+      {
+        "bytes": null,
+        "cache_reused": false,
+        "content_range": null,
+        "http_status": 404,
+        "method": "GET (Range: bytes=0-1023)",
+        "name": "probe",
+        "retrieved_utc": "2026-09-29T22:10:52Z",
+        "sha256": null,
+        "status": 404,
+        "total_bytes": null,
+        "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/BTCUSDT/1h/BTCUSDT-1h-2019-12.zip"
+      },
+      {
+        "bytes": 38671,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "GET",
+        "name": "klines-1h-2026-03.zip",
+        "retrieved_utc": "2026-09-29T22:00:56Z",
+        "sha256": "41199df2dd62c333ea306d28de331bfffbbfed03609d100c63b2de1d173f7414",
+        "url": "https://data.binance.vision/data/futures/um/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2026-03.zip"
+      },
+      {
+        "bytes": 36965,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "GET",
+        "name": "klines-1h-2026-04.zip",
+        "retrieved_utc": "2026-09-29T22:00:56Z",
+        "sha256": "c822801b16eb317f4672e376a73664f2e5f9180409c57b6c7517707f4f873e8c",
+        "url": "https://data.binance.vision/data/futures/um/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2026-04.zip"
+      },
+      {
+        "bytes": 37968,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "GET",
+        "name": "klines-1h-2026-05.zip",
+        "retrieved_utc": "2026-09-29T22:00:57Z",
+        "sha256": "9a367708c90de999a7a9d3114fd111ff28203b13c8daef77d154b5216fb571f7",
+        "url": "https://data.binance.vision/data/futures/um/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2026-05.zip"
+      },
+      {
+        "bytes": 37239,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "GET",
+        "name": "klines-1h-2026-06.zip",
+        "retrieved_utc": "2026-09-29T22:00:57Z",
+        "sha256": "30bba473837a672a6a00a181a447446852414e6927bbda6684f873571788e9aa",
+        "url": "https://data.binance.vision/data/futures/um/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2026-06.zip"
+      },
+      {
+        "bytes": 37864,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "GET",
+        "name": "klines-1h-2026-07.zip",
+        "retrieved_utc": "2026-09-29T22:00:58Z",
+        "sha256": "a09f135066ace6925ce051ddbbdd4345c103423fbe35d32b568942de978dcc7c",
+        "url": "https://data.binance.vision/data/futures/um/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2026-07.zip"
+      },
+      {
+        "bytes": 37864,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "GET",
+        "name": "klines-1h-2026-08.zip",
+        "retrieved_utc": "2026-09-29T22:00:59Z",
+        "sha256": "b594301740cbb39818ba60f2835e4636aa06ad53308e25b1b312f1443fe0ccfe",
+        "url": "https://data.binance.vision/data/futures/um/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-2026-08.zip"
+      },
+      {
+        "bytes": 1560,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "GET",
+        "name": "klines-1h-2026-09-01.zip",
+        "retrieved_utc": "2026-09-29T22:01:00Z",
+        "sha256": "07c83be69038f2aee3f66670d1e64149b8d4ecaf45e9fef441563f3f7b5b9c06",
+        "url": "https://data.binance.vision/data/futures/um/daily/klines/BTCUSDT/1h/BTCUSDT-1h-2026-09-01.zip"
+      },
+      {
+        "bytes": 1560,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "GET",
+        "name": "klines-1h-2026-09-02.zip",
+        "retrieved_utc": "2026-09-29T22:01:01Z",
+        "sha256": "5d8d658e4bfa630b704aad95352254e676f677a07e8e56fe3b607b1dc2024453",
+        "url": "https://data.binance.vision/data/futures/um/daily/klines/BTCUSDT/1h/BTCUSDT-1h-2026-09-02.zip"
+      },
+      {
+        "bytes": 1584,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "GET",
+        "name": "klines-1h-2026-09-03.zip",
+        "retrieved_utc": "2026-09-29T22:01:05Z",
+        "sha256": "9e879345e80c38296567f86e2a77104df3b8233ad64616f93e6ffb2e876292d7",
+        "url": "https://data.binance.vision/data/futures/um/daily/klines/BTCUSDT/1h/BTCUSDT-1h-2026-09-03.zip"
+      },
+      {
+        "bytes": 1548,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "GET",
+        "name": "klines-1h-2026-09-04.zip",
+        "retrieved_utc": "2026-09-29T22:01:13Z",
+        "sha256": "e7df84258bbf2fbe9c7220997a6f99019daa5c0bf7b57595715b3d90a229c62f",
+        "url": "https://data.binance.vision/data/futures/um/daily/klines/BTCUSDT/1h/BTCUSDT-1h-2026-09-04.zip"
+      },
+      {
+        "bytes": 1502,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "GET",
+        "name": "klines-1h-2026-09-05.zip",
+        "retrieved_utc": "2026-09-29T22:01:21Z",
+        "sha256": "cb66ff7dd4417c904a5e94fc2d29c32f40a8e10cae06eebdd15bcad79f1be883",
+        "url": "https://data.binance.vision/data/futures/um/daily/klines/BTCUSDT/1h/BTCUSDT-1h-2026-09-05.zip"
+      },
+      {
+        "bytes": 1512,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "GET",
+        "name": "klines-1h-2026-09-06.zip",
+        "retrieved_utc": "2026-09-29T22:01:41Z",
+        "sha256": "0c77782b131802acc6e118cb2c31a90b01a6dc84c4e1dff0dc95c26b804f67f5",
+        "url": "https://data.binance.vision/data/futures/um/daily/klines/BTCUSDT/1h/BTCUSDT-1h-2026-09-06.zip"
+      },
+      {
+        "bytes": 1545,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "GET",
+        "name": "klines-1h-2026-09-07.zip",
+        "retrieved_utc": "2026-09-29T22:01:42Z",
+        "sha256": "999bca534ffc6d07df2c9234e5404d592d26ef4cb671dffc8660e5f56da4c190",
+        "url": "https://data.binance.vision/data/futures/um/daily/klines/BTCUSDT/1h/BTCUSDT-1h-2026-09-07.zip"
+      },
+      {
+        "bytes": 1558,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "GET",
+        "name": "klines-1h-2026-09-08.zip",
+        "retrieved_utc": "2026-09-29T22:01:51Z",
+        "sha256": "74ed2c748649f088c6975cdff957da7b5415f746f7fb8010c8caf429dcbd37bd",
+        "url": "https://data.binance.vision/data/futures/um/daily/klines/BTCUSDT/1h/BTCUSDT-1h-2026-09-08.zip"
+      },
+      {
+        "bytes": 1562,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "GET",
+        "name": "klines-1h-2026-09-09.zip",
+        "retrieved_utc": "2026-09-29T22:01:51Z",
+        "sha256": "d3ca6ea403ae7595fac0043a0e4e1650d7059e8ce5d618a7d44f0c0e0c0e2bc6",
+        "url": "https://data.binance.vision/data/futures/um/daily/klines/BTCUSDT/1h/BTCUSDT-1h-2026-09-09.zip"
+      },
+      {
+        "bytes": 1555,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "GET",
+        "name": "klines-1h-2026-09-10.zip",
+        "retrieved_utc": "2026-09-29T22:01:52Z",
+        "sha256": "f4ed719a81b178f749800160c44471f9759925e58ee86da907bfabd8fd44350e",
+        "url": "https://data.binance.vision/data/futures/um/daily/klines/BTCUSDT/1h/BTCUSDT-1h-2026-09-10.zip"
+      },
+      {
+        "bytes": 1558,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "GET",
+        "name": "klines-1h-2026-09-11.zip",
+        "retrieved_utc": "2026-09-29T22:01:52Z",
+        "sha256": "5efab1bc9def6c10d896489225e0ff482d672772d4bf8710dbf5744a827a1109",
+        "url": "https://data.binance.vision/data/futures/um/daily/klines/BTCUSDT/1h/BTCUSDT-1h-2026-09-11.zip"
+      },
+      {
+        "bytes": 1493,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "GET",
+        "name": "klines-1h-2026-09-12.zip",
+        "retrieved_utc": "2026-09-29T22:01:52Z",
+        "sha256": "546738ff7eb1a4069d67eba925e1ae5dea7ce0bb8196b1673909b10720ca7dac",
+        "url": "https://data.binance.vision/data/futures/um/daily/klines/BTCUSDT/1h/BTCUSDT-1h-2026-09-12.zip"
+      },
+      {
+        "bytes": 1526,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "GET",
+        "name": "klines-1h-2026-09-13.zip",
+        "retrieved_utc": "2026-09-29T22:01:53Z",
+        "sha256": "779ea4b4fe07740b78993692102cac51d5b5c2147172401ef078b1127d29c07a",
+        "url": "https://data.binance.vision/data/futures/um/daily/klines/BTCUSDT/1h/BTCUSDT-1h-2026-09-13.zip"
+      },
+      {
+        "bytes": 1558,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "GET",
+        "name": "klines-1h-2026-09-14.zip",
+        "retrieved_utc": "2026-09-29T22:01:53Z",
+        "sha256": "2b6e676f6c4e8069c59b5bf040c02d93e84d1c9e4a87434d7947a93ab4f9bf11",
+        "url": "https://data.binance.vision/data/futures/um/daily/klines/BTCUSDT/1h/BTCUSDT-1h-2026-09-14.zip"
+      },
+      {
+        "bytes": 1575,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "GET",
+        "name": "klines-1h-2026-09-15.zip",
+        "retrieved_utc": "2026-09-29T22:01:53Z",
+        "sha256": "729df200755acade79f431714e7694fc852665a8e9750a1507ec532a66813cd0",
+        "url": "https://data.binance.vision/data/futures/um/daily/klines/BTCUSDT/1h/BTCUSDT-1h-2026-09-15.zip"
+      },
+      {
+        "bytes": 1568,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "GET",
+        "name": "klines-1h-2026-09-16.zip",
+        "retrieved_utc": "2026-09-29T22:01:54Z",
+        "sha256": "82e545b1fa1e77b041ae1c6021c45cdcefa310acd434b3361cccd8603abc7b95",
+        "url": "https://data.binance.vision/data/futures/um/daily/klines/BTCUSDT/1h/BTCUSDT-1h-2026-09-16.zip"
+      },
+      {
+        "bytes": 1542,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "GET",
+        "name": "klines-1h-2026-09-17.zip",
+        "retrieved_utc": "2026-09-29T22:01:54Z",
+        "sha256": "c02f41b7aaad772cd0048d1633f15ec73e4995b558b4e0711fcfcbcd3df87a58",
+        "url": "https://data.binance.vision/data/futures/um/daily/klines/BTCUSDT/1h/BTCUSDT-1h-2026-09-17.zip"
+      },
+      {
+        "bytes": 1584,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "GET",
+        "name": "klines-1h-2026-09-18.zip",
+        "retrieved_utc": "2026-09-29T22:01:55Z",
+        "sha256": "b1c50a3166210b5fcbdd9e224d4a18a73358ea8c9cde2a77d10a537d92597ebb",
+        "url": "https://data.binance.vision/data/futures/um/daily/klines/BTCUSDT/1h/BTCUSDT-1h-2026-09-18.zip"
+      },
+      {
+        "bytes": 1530,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "GET",
+        "name": "klines-1h-2026-09-19.zip",
+        "retrieved_utc": "2026-09-29T22:01:55Z",
+        "sha256": "6eacc92c9d63a485ad764eb8c6e1081e2a5938d19aebda17b1fd986a5ec452aa",
+        "url": "https://data.binance.vision/data/futures/um/daily/klines/BTCUSDT/1h/BTCUSDT-1h-2026-09-19.zip"
+      },
+      {
+        "bytes": 1549,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "GET",
+        "name": "klines-1h-2026-09-20.zip",
+        "retrieved_utc": "2026-09-29T22:01:55Z",
+        "sha256": "5cc6e5e95f50d744a27b9f4df1142afd741a8e538ee9950b4ae387409eb320fc",
+        "url": "https://data.binance.vision/data/futures/um/daily/klines/BTCUSDT/1h/BTCUSDT-1h-2026-09-20.zip"
+      },
+      {
+        "bytes": 1579,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "GET",
+        "name": "klines-1h-2026-09-21.zip",
+        "retrieved_utc": "2026-09-29T22:01:56Z",
+        "sha256": "546ace8cb262dbc81bf9fab86ee0b813140dc4ad5d4c520e60fe27c8fe21aed8",
+        "url": "https://data.binance.vision/data/futures/um/daily/klines/BTCUSDT/1h/BTCUSDT-1h-2026-09-21.zip"
+      },
+      {
+        "bytes": 1557,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "GET",
+        "name": "klines-1h-2026-09-22.zip",
+        "retrieved_utc": "2026-09-29T22:01:56Z",
+        "sha256": "dd61897b9a3784bf04597dbfd59b33bc0ea2362255cfc8c8c4db2dcdec96d63c",
+        "url": "https://data.binance.vision/data/futures/um/daily/klines/BTCUSDT/1h/BTCUSDT-1h-2026-09-22.zip"
+      },
+      {
+        "bytes": 1572,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "GET",
+        "name": "klines-1h-2026-09-23.zip",
+        "retrieved_utc": "2026-09-29T22:01:56Z",
+        "sha256": "552d819cb87ed4a397409ce41985602def93275d31a1c3954b6fb59d22b96c88",
+        "url": "https://data.binance.vision/data/futures/um/daily/klines/BTCUSDT/1h/BTCUSDT-1h-2026-09-23.zip"
+      },
+      {
+        "bytes": 1565,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "GET",
+        "name": "klines-1h-2026-09-24.zip",
+        "retrieved_utc": "2026-09-29T22:01:57Z",
+        "sha256": "2b9da7fbf53895dd715886d1ea613a937a18520b13c7fa6219fec99fd9591a42",
+        "url": "https://data.binance.vision/data/futures/um/daily/klines/BTCUSDT/1h/BTCUSDT-1h-2026-09-24.zip"
+      },
+      {
+        "bytes": 1555,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "GET",
+        "name": "klines-1h-2026-09-25.zip",
+        "retrieved_utc": "2026-09-29T22:01:57Z",
+        "sha256": "e912b776ab0412999c7f75f35482b8bfcd785e4b11d6b57860b39f3ea41c6043",
+        "url": "https://data.binance.vision/data/futures/um/daily/klines/BTCUSDT/1h/BTCUSDT-1h-2026-09-25.zip"
+      },
+      {
+        "bytes": 1488,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "GET",
+        "name": "klines-1h-2026-09-26.zip",
+        "retrieved_utc": "2026-09-29T22:01:58Z",
+        "sha256": "571978500e18a9f83473d536cdbce97095a05af7754d1aa3928a6bf0f65d7f85",
+        "url": "https://data.binance.vision/data/futures/um/daily/klines/BTCUSDT/1h/BTCUSDT-1h-2026-09-26.zip"
+      },
+      {
+        "bytes": 1545,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "GET",
+        "name": "klines-1h-2026-09-27.zip",
+        "retrieved_utc": "2026-09-29T22:01:58Z",
+        "sha256": "07c3d0bc54b948363bf2c6d7bbc8058e9cb45f544e7b1b1f0e25981ff78df2fd",
+        "url": "https://data.binance.vision/data/futures/um/daily/klines/BTCUSDT/1h/BTCUSDT-1h-2026-09-27.zip"
+      },
+      {
+        "bytes": 1562,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "GET",
+        "name": "klines-1h-2026-09-28.zip",
+        "retrieved_utc": "2026-09-29T22:01:58Z",
+        "sha256": "a34fd63829fe6ef735072977db49abf98b09188d86e5bf26c2ecbf710003263d",
+        "url": "https://data.binance.vision/data/futures/um/daily/klines/BTCUSDT/1h/BTCUSDT-1h-2026-09-28.zip"
+      },
+      {
+        "bytes": 22245,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "GET",
+        "name": "markPriceKlines-1h-2026-03.zip",
+        "retrieved_utc": "2026-09-29T22:01:59Z",
+        "sha256": "f5f15aedeece7ff54412e83def94c9788fbb184ad9b707af0f89bc9a50df918f",
+        "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/BTCUSDT/1h/BTCUSDT-1h-2026-03.zip"
+      },
+      {
+        "bytes": 20641,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "GET",
+        "name": "markPriceKlines-1h-2026-04.zip",
+        "retrieved_utc": "2026-09-29T22:01:59Z",
+        "sha256": "bf1abad992eb1107ee5f3a05003e3a806ed06e22385ea3e594857fe7c9a40716",
+        "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/BTCUSDT/1h/BTCUSDT-1h-2026-04.zip"
+      },
+      {
+        "bytes": 21149,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "GET",
+        "name": "markPriceKlines-1h-2026-05.zip",
+        "retrieved_utc": "2026-09-29T22:01:59Z",
+        "sha256": "4930e4401f6d663cf9fe2fb082738b011e619e77972bfe764b2600f05fc91b72",
+        "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/BTCUSDT/1h/BTCUSDT-1h-2026-05.zip"
+      },
+      {
+        "bytes": 20367,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "GET",
+        "name": "markPriceKlines-1h-2026-06.zip",
+        "retrieved_utc": "2026-09-29T22:02:00Z",
+        "sha256": "7d1d36168726c482372301b51ac2b035a974a82b6ece309c3dbcd196b872edba",
+        "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/BTCUSDT/1h/BTCUSDT-1h-2026-06.zip"
+      },
+      {
+        "bytes": 21070,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "GET",
+        "name": "markPriceKlines-1h-2026-07.zip",
+        "retrieved_utc": "2026-09-29T22:02:00Z",
+        "sha256": "1b9a914bf005f439cc83d953ab65cd098703aba1436914bddd0ffd5638e17212",
+        "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/BTCUSDT/1h/BTCUSDT-1h-2026-07.zip"
+      },
+      {
+        "bytes": 21194,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "GET",
+        "name": "markPriceKlines-1h-2026-08.zip",
+        "retrieved_utc": "2026-09-29T22:02:01Z",
+        "sha256": "b51fcdc17ed10a3f91a0711944eae97978c0b9c57999a0dfce65ce64e1259540",
+        "url": "https://data.binance.vision/data/futures/um/monthly/markPriceKlines/BTCUSDT/1h/BTCUSDT-1h-2026-08.zip"
+      },
+      {
+        "bytes": 1017,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "GET",
+        "name": "markPriceKlines-1h-2026-09-01.zip",
+        "retrieved_utc": "2026-09-29T22:02:01Z",
+        "sha256": "adc12f8952bf42f7b83cb4e8a809ac402c3a41ebd9ab4a96e0ecf34fcf79da92",
+        "url": "https://data.binance.vision/data/futures/um/daily/markPriceKlines/BTCUSDT/1h/BTCUSDT-1h-2026-09-01.zip"
+      },
+      {
+        "bytes": 1030,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "GET",
+        "name": "markPriceKlines-1h-2026-09-02.zip",
+        "retrieved_utc": "2026-09-29T22:02:02Z",
+        "sha256": "f2c8bf04c354e3561aab4b3c2ee8a5f8981654b84f9f380cc626d94864632a89",
+        "url": "https://data.binance.vision/data/futures/um/daily/markPriceKlines/BTCUSDT/1h/BTCUSDT-1h-2026-09-02.zip"
+      },
+      {
+        "bytes": 1044,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "GET",
+        "name": "markPriceKlines-1h-2026-09-03.zip",
+        "retrieved_utc": "2026-09-29T22:02:02Z",
+        "sha256": "b154f9d55a9d17fff82bf27d9c2f082360f224499fa3eb7285b6bc17cbd0c858",
+        "url": "https://data.binance.vision/data/futures/um/daily/markPriceKlines/BTCUSDT/1h/BTCUSDT-1h-2026-09-03.zip"
+      },
+      {
+        "bytes": 1018,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "GET",
+        "name": "markPriceKlines-1h-2026-09-04.zip",
+        "retrieved_utc": "2026-09-29T22:02:03Z",
+        "sha256": "181f554f28417aff73f6d40ec3fd10bfb72cfee28c67e744112c1b928bab0a69",
+        "url": "https://data.binance.vision/data/futures/um/daily/markPriceKlines/BTCUSDT/1h/BTCUSDT-1h-2026-09-04.zip"
+      },
+      {
+        "bytes": 965,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "GET",
+        "name": "markPriceKlines-1h-2026-09-05.zip",
+        "retrieved_utc": "2026-09-29T22:02:04Z",
+        "sha256": "4d8a58404fede16780f75380c36256317b89f5e8c38f677a86a7d754799a22fa",
+        "url": "https://data.binance.vision/data/futures/um/daily/markPriceKlines/BTCUSDT/1h/BTCUSDT-1h-2026-09-05.zip"
+      },
+      {
+        "bytes": 968,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "GET",
+        "name": "markPriceKlines-1h-2026-09-06.zip",
+        "retrieved_utc": "2026-09-29T22:02:05Z",
+        "sha256": "7de693d174d8b47bae84eb0ac4b8c79aaf6659274ad791ceedcac74f8bfa050d",
+        "url": "https://data.binance.vision/data/futures/um/daily/markPriceKlines/BTCUSDT/1h/BTCUSDT-1h-2026-09-06.zip"
+      },
+      {
+        "bytes": 990,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "GET",
+        "name": "markPriceKlines-1h-2026-09-07.zip",
+        "retrieved_utc": "2026-09-29T22:02:06Z",
+        "sha256": "f9185d3cea0388e4e4c344255b6e6eb501e0ad458945cb52efd76d946d83ae12",
+        "url": "https://data.binance.vision/data/futures/um/daily/markPriceKlines/BTCUSDT/1h/BTCUSDT-1h-2026-09-07.zip"
+      },
+      {
+        "bytes": 975,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "GET",
+        "name": "markPriceKlines-1h-2026-09-08.zip",
+        "retrieved_utc": "2026-09-29T22:02:06Z",
+        "sha256": "923fb4066f366ff1b403ad92938033aeeb3055549219938698a85bf90f1f5fb2",
+        "url": "https://data.binance.vision/data/futures/um/daily/markPriceKlines/BTCUSDT/1h/BTCUSDT-1h-2026-09-08.zip"
+      },
+      {
+        "bytes": 1010,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "GET",
+        "name": "markPriceKlines-1h-2026-09-09.zip",
+        "retrieved_utc": "2026-09-29T22:02:07Z",
+        "sha256": "921b5eddf5987e09028645eb6986117e8686893c45286ac0291e5b9da554ce10",
+        "url": "https://data.binance.vision/data/futures/um/daily/markPriceKlines/BTCUSDT/1h/BTCUSDT-1h-2026-09-09.zip"
+      },
+      {
+        "bytes": 1023,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "GET",
+        "name": "markPriceKlines-1h-2026-09-10.zip",
+        "retrieved_utc": "2026-09-29T22:02:07Z",
+        "sha256": "1585e92ee86a45fce5326678f03b288feedcc11b9d24587cef18e9d9892a3914",
+        "url": "https://data.binance.vision/data/futures/um/daily/markPriceKlines/BTCUSDT/1h/BTCUSDT-1h-2026-09-10.zip"
+      },
+      {
+        "bytes": 1019,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "GET",
+        "name": "markPriceKlines-1h-2026-09-11.zip",
+        "retrieved_utc": "2026-09-29T22:02:08Z",
+        "sha256": "f264f2ee704a0c753bca0638e1fb84c35d8db68267756052cb382980742177e9",
+        "url": "https://data.binance.vision/data/futures/um/daily/markPriceKlines/BTCUSDT/1h/BTCUSDT-1h-2026-09-11.zip"
+      },
+      {
+        "bytes": 959,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "GET",
+        "name": "markPriceKlines-1h-2026-09-12.zip",
+        "retrieved_utc": "2026-09-29T22:02:08Z",
+        "sha256": "314f985a952cd66fd9732bfe2d2502c3d654e6c78b0f2791d343702d7ceb922c",
+        "url": "https://data.binance.vision/data/futures/um/daily/markPriceKlines/BTCUSDT/1h/BTCUSDT-1h-2026-09-12.zip"
+      },
+      {
+        "bytes": 981,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "GET",
+        "name": "markPriceKlines-1h-2026-09-13.zip",
+        "retrieved_utc": "2026-09-29T22:02:09Z",
+        "sha256": "2c8267bf7394490fc29bc11d1ea62935752890d65f4bd95eb9e3188ca006024a",
+        "url": "https://data.binance.vision/data/futures/um/daily/markPriceKlines/BTCUSDT/1h/BTCUSDT-1h-2026-09-13.zip"
+      },
+      {
+        "bytes": 1046,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "GET",
+        "name": "markPriceKlines-1h-2026-09-14.zip",
+        "retrieved_utc": "2026-09-29T22:02:09Z",
+        "sha256": "e05a3f2fa7488ec766feb16502e26d6cfca5461131607e7e6ffab7718aaa8f31",
+        "url": "https://data.binance.vision/data/futures/um/daily/markPriceKlines/BTCUSDT/1h/BTCUSDT-1h-2026-09-14.zip"
+      },
+      {
+        "bytes": 1022,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "GET",
+        "name": "markPriceKlines-1h-2026-09-15.zip",
+        "retrieved_utc": "2026-09-29T22:02:10Z",
+        "sha256": "cc2834abf156cfaacd794b02ba5a2daec50a69b75be9ae3112833aafac6ac03e",
+        "url": "https://data.binance.vision/data/futures/um/daily/markPriceKlines/BTCUSDT/1h/BTCUSDT-1h-2026-09-15.zip"
+      },
+      {
+        "bytes": 1033,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "GET",
+        "name": "markPriceKlines-1h-2026-09-16.zip",
+        "retrieved_utc": "2026-09-29T22:02:11Z",
+        "sha256": "1de6d2b5d6664fd750f58c74e46b9f574b42063d71cf2c30854b0b03a891fcc9",
+        "url": "https://data.binance.vision/data/futures/um/daily/markPriceKlines/BTCUSDT/1h/BTCUSDT-1h-2026-09-16.zip"
+      },
+      {
+        "bytes": 1005,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "GET",
+        "name": "markPriceKlines-1h-2026-09-17.zip",
+        "retrieved_utc": "2026-09-29T22:02:11Z",
+        "sha256": "583660ccb2db2ff87089b8cbe66a0137cf307268176ef20094f81bf2c75d1ecf",
+        "url": "https://data.binance.vision/data/futures/um/daily/markPriceKlines/BTCUSDT/1h/BTCUSDT-1h-2026-09-17.zip"
+      },
+      {
+        "bytes": 1011,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "GET",
+        "name": "markPriceKlines-1h-2026-09-18.zip",
+        "retrieved_utc": "2026-09-29T22:02:11Z",
+        "sha256": "bfa6628c269ea35e02a8663cf6824ed8e2a6100e64b4d03c411bc8c20ddd4614",
+        "url": "https://data.binance.vision/data/futures/um/daily/markPriceKlines/BTCUSDT/1h/BTCUSDT-1h-2026-09-18.zip"
+      },
+      {
+        "bytes": 965,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "GET",
+        "name": "markPriceKlines-1h-2026-09-19.zip",
+        "retrieved_utc": "2026-09-29T22:02:12Z",
+        "sha256": "10f0a3a06b40d8829154093e1784c1e86478858647d566955f8103108070759b",
+        "url": "https://data.binance.vision/data/futures/um/daily/markPriceKlines/BTCUSDT/1h/BTCUSDT-1h-2026-09-19.zip"
+      },
+      {
+        "bytes": 977,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "GET",
+        "name": "markPriceKlines-1h-2026-09-20.zip",
+        "retrieved_utc": "2026-09-29T22:02:13Z",
+        "sha256": "81d3d3bac07f374aaab3b648634d5955362b37ab8f195325af7f638ae2921efd",
+        "url": "https://data.binance.vision/data/futures/um/daily/markPriceKlines/BTCUSDT/1h/BTCUSDT-1h-2026-09-20.zip"
+      },
+      {
+        "bytes": 1033,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "GET",
+        "name": "markPriceKlines-1h-2026-09-21.zip",
+        "retrieved_utc": "2026-09-29T22:02:14Z",
+        "sha256": "2fa74288690b5eb77ede55ba3d571fcf58d67ce858da829a1a548ebedaadfede",
+        "url": "https://data.binance.vision/data/futures/um/daily/markPriceKlines/BTCUSDT/1h/BTCUSDT-1h-2026-09-21.zip"
+      },
+      {
+        "bytes": 1002,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "GET",
+        "name": "markPriceKlines-1h-2026-09-22.zip",
+        "retrieved_utc": "2026-09-29T22:02:15Z",
+        "sha256": "bd22b40d7ee2206375b9866929d52a8163d30c5bdcea5f0b916f3a5e06e929ec",
+        "url": "https://data.binance.vision/data/futures/um/daily/markPriceKlines/BTCUSDT/1h/BTCUSDT-1h-2026-09-22.zip"
+      },
+      {
+        "bytes": 1010,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "GET",
+        "name": "markPriceKlines-1h-2026-09-23.zip",
+        "retrieved_utc": "2026-09-29T22:02:15Z",
+        "sha256": "8bece7025357f36a9da8e8ff4f3e0dd1d4a7f69fc2a240d27fb332fd111a4a7a",
+        "url": "https://data.binance.vision/data/futures/um/daily/markPriceKlines/BTCUSDT/1h/BTCUSDT-1h-2026-09-23.zip"
+      },
+      {
+        "bytes": 1019,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "GET",
+        "name": "markPriceKlines-1h-2026-09-24.zip",
+        "retrieved_utc": "2026-09-29T22:02:16Z",
+        "sha256": "34c6aca20b9754f538693da607c97a0f2d9f77faef5e3a9975d239fae595f5ba",
+        "url": "https://data.binance.vision/data/futures/um/daily/markPriceKlines/BTCUSDT/1h/BTCUSDT-1h-2026-09-24.zip"
+      },
+      {
+        "bytes": 953,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "GET",
+        "name": "markPriceKlines-1h-2026-09-25.zip",
+        "retrieved_utc": "2026-09-29T22:02:17Z",
+        "sha256": "8a8f913765f85dd9e280d827e0028d396c1b4cd266b9542f57bce9565378de22",
+        "url": "https://data.binance.vision/data/futures/um/daily/markPriceKlines/BTCUSDT/1h/BTCUSDT-1h-2026-09-25.zip"
+      },
+      {
+        "bytes": 992,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "GET",
+        "name": "markPriceKlines-1h-2026-09-26.zip",
+        "retrieved_utc": "2026-09-29T22:02:17Z",
+        "sha256": "cde3dbad3810a6d8c3a90a8784d58a31649d9c032bb6472c559ab94179982a2b",
+        "url": "https://data.binance.vision/data/futures/um/daily/markPriceKlines/BTCUSDT/1h/BTCUSDT-1h-2026-09-26.zip"
+      },
+      {
+        "bytes": 988,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "GET",
+        "name": "markPriceKlines-1h-2026-09-27.zip",
+        "retrieved_utc": "2026-09-29T22:02:17Z",
+        "sha256": "d15c3ee8a55f523d8e8c91e21c6a0513ec1a4481947b34549bd7ef5f2947edfa",
+        "url": "https://data.binance.vision/data/futures/um/daily/markPriceKlines/BTCUSDT/1h/BTCUSDT-1h-2026-09-27.zip"
+      },
+      {
+        "bytes": 1012,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "GET",
+        "name": "markPriceKlines-1h-2026-09-28.zip",
+        "retrieved_utc": "2026-09-29T22:02:18Z",
+        "sha256": "af4c5510c934cddb64aa5c228c9a1018d11828c9dfaf59e886d8f7a4b404f67b",
+        "url": "https://data.binance.vision/data/futures/um/daily/markPriceKlines/BTCUSDT/1h/BTCUSDT-1h-2026-09-28.zip"
+      },
+      {
+        "bytes": 997,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "GET",
+        "name": "markPriceKlines-1h-2026-06-29.zip",
+        "retrieved_utc": "2026-09-29T22:02:18Z",
+        "sha256": "122fd96f8693a9794e2dbdb4491858078676045170acce68046e32f32f7b4068",
+        "url": "https://data.binance.vision/data/futures/um/daily/markPriceKlines/BTCUSDT/1h/BTCUSDT-1h-2026-06-29.zip"
+      },
+      {
+        "bytes": 1008,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "GET",
+        "name": "fundingRate-2026-03.zip",
+        "retrieved_utc": "2026-09-29T22:02:28Z",
+        "sha256": "5c069d5e9597a44fd0e213395082e59ff223fb99c9eab3a2a5a2a5622ba7867c",
+        "url": "https://data.binance.vision/data/futures/um/monthly/fundingRate/BTCUSDT/BTCUSDT-fundingRate-2026-03.zip"
+      },
+      {
+        "bytes": 960,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "GET",
+        "name": "fundingRate-2026-04.zip",
+        "retrieved_utc": "2026-09-29T22:02:28Z",
+        "sha256": "51cdeb4de7d5ef1d4eece80b6115e391bdf7a2d0803bf9ad8371ab23340b22d3",
+        "url": "https://data.binance.vision/data/futures/um/monthly/fundingRate/BTCUSDT/BTCUSDT-fundingRate-2026-04.zip"
+      },
+      {
+        "bytes": 980,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "GET",
+        "name": "fundingRate-2026-05.zip",
+        "retrieved_utc": "2026-09-29T22:02:28Z",
+        "sha256": "445b65fd6b17bfcfb5e4d035db29fad34f729fa078f0449024db42621be84e6e",
+        "url": "https://data.binance.vision/data/futures/um/monthly/fundingRate/BTCUSDT/BTCUSDT-fundingRate-2026-05.zip"
+      },
+      {
+        "bytes": 964,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "GET",
+        "name": "fundingRate-2026-06.zip",
+        "retrieved_utc": "2026-09-29T22:02:29Z",
+        "sha256": "cff97ce688329592bccbbf5873b5c7021649e093f5f5806e332c5b4fb7fd6a00",
+        "url": "https://data.binance.vision/data/futures/um/monthly/fundingRate/BTCUSDT/BTCUSDT-fundingRate-2026-06.zip"
+      },
+      {
+        "bytes": 914,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "GET",
+        "name": "fundingRate-2026-07.zip",
+        "retrieved_utc": "2026-09-29T22:02:29Z",
+        "sha256": "e36fcc66f493d7d9ec348c852fc22e9f318c79cf7adae17398a3994ae0adc41e",
+        "url": "https://data.binance.vision/data/futures/um/monthly/fundingRate/BTCUSDT/BTCUSDT-fundingRate-2026-07.zip"
+      },
+      {
+        "bytes": 896,
+        "cache_reused": true,
+        "http_status": 200,
+        "method": "GET",
+        "name": "fundingRate-2026-08.zip",
+        "retrieved_utc": "2026-09-29T22:02:30Z",
+        "sha256": "7c108b3a02bd6dc7345ca7323e3a49664edcea0afdcf780ffb3b44762c45a964",
+        "url": "https://data.binance.vision/data/futures/um/monthly/fundingRate/BTCUSDT/BTCUSDT-fundingRate-2026-08.zip"
+      }
+    ],
+    "total_requests": 144
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "controls": {
+    "NC1_truncation": {
+      "bytes": 380083960,
+      "decoded_bytes": 906717081,
+      "detected": true,
+      "framing_error": "truncated frame at 906717062",
+      "sha": "f29e0d034048e2b0d05f0205bef1c88bbed5accea0e09fa3a62be707b72bb0fb",
+      "sha_differs_from_declared": true,
+      "zero_len_frames": 0,
+      "zlib_eof": false,
+      "zlib_error": null
+    },
+    "NC2_byte_flip": {
+      "corrupt_file_bytes": 760167921,
+      "corrupted_sha": "2cb8deaa2913e47e32acab29a37737c1e712060a985ba7d095180195a2a4cbe5",
+      "digest_detects": true,
+      "gzip_member_error": {
+        "zlib_error": "Error -3 while decompressing data: incorrect data check"
+      },
+      "pristine_sha_matches_declared": true
+    },
+    "NC3_terminator_detector": {
+      "decoded_prefix_bytes": 5028423,
+      "detector_flips": true,
+      "framing_error_after": null,
+      "framing_error_before": null,
+      "pristine_window_zero_len_frames": 0,
+      "trimmed_to_boundary_bytes": 5028412,
+      "zeros_after_injection": 1,
+      "zeros_before_injection": 0
+    },
+    "NC4_slice_deletion": {
+      "detected": true,
+      "framing_error": "unknown type 0x2a at 2000003"
+    }
+  },
+  "local_reference_tape": {
+    "bytes": 3662140094,
+    "bytes_after_last_frame": 0,
+    "decompressed_bytes": 8661679413,
+    "framing_error_in_tail": "unknown type 0xff at 4",
+    "gzip_eof": true,
+    "last16_hex": "d989000c530000000041c1a7d1cb9643",
+    "last_frame_declared_len": 12,
+    "last_frame_event_code": "C",
+    "last_frame_is_C_end_of_messages": true,
+    "last_frame_len_matches_documented_12": true,
+    "last_frame_payload_hex": "530000000041c1a7d1cb9643",
+    "last_frame_type": "S",
+    "path": "M2/data/raw/07302019.NASDAQ_ITCH50.gz",
+    "tail_decoded_bytes": 4096,
+    "tail_ends_at_gzip_member_end": true,
+    "zero_len_frames_in_tail": 2,
+    "zero_len_terminator_at_end": false
+  }
+}

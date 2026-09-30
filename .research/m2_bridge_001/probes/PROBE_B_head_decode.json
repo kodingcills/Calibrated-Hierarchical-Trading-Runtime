@@ -1,0 +1,123 @@
+{
+ "01302019.NASDAQ_ITCH50.gz": {
+  "frame0_type": "S",
+  "frame0_len": 12,
+  "frame0_loc": 0,
+  "start_ts_ns": 11039687760787,
+  "next_types": [
+   "R",
+   "R",
+   "R"
+  ]
+ },
+ "01302020.NASDAQ_ITCH50.gz": {
+  "frame0_type": "S",
+  "frame0_len": 12,
+  "frame0_loc": 0,
+  "start_ts_ns": 10953404452051,
+  "next_types": [
+   "R",
+   "R",
+   "R"
+  ]
+ },
+ "03272019.NASDAQ_ITCH50.gz": {
+  "frame0_type": "S",
+  "frame0_len": 12,
+  "frame0_loc": 0,
+  "start_ts_ns": 10951068525924,
+  "next_types": [
+   "R",
+   "R",
+   "R"
+  ]
+ },
+ "08302019.NASDAQ_ITCH50.gz": {
+  "frame0_type": "S",
+  "frame0_len": 12,
+  "frame0_loc": 0,
+  "start_ts_ns": 11046036981912,
+  "next_types": [
+   "R",
+   "R",
+   "R"
+  ]
+ },
+ "10302019.NASDAQ_ITCH50.gz": {
+  "frame0_type": "S",
+  "frame0_len": 12,
+  "frame0_loc": 0,
+  "start_ts_ns": 10951647283487,
+  "next_types": [
+   "R",
+   "R",
+   "R"
+  ]
+ },
+ "12302019.NASDAQ_ITCH50.gz": {
+  "frame0_type": "S",
+  "frame0_len": 12,
+  "frame0_loc": 0,
+  "start_ts_ns": 11072057543747,
+  "next_types": [
+   "R",
+   "R",
+   "R"
+  ]
+ },
+ "S101819-v50.txt.gz": {
+  "frame0_type": "S",
+  "frame0_len": 12,
+  "frame0_loc": 0,
+  "start_ts_ns": 11022641474038,
+  "next_types": [
+   "R",
+   "R",
+   "R"
+  ]
+ },
+ "S112825-v50.txt.gz": {
+  "frame0_type": "S",
+  "frame0_len": 12,
+  "frame0_loc": 0,
+  "start_ts_ns": 10889349046735,
+  "next_types": [
+   "R",
+   "R",
+   "R"
+  ]
+ },
+ "S121225-v50.txt.gz": {
+  "frame0_type": "S",
+  "frame0_len": 12,
+  "frame0_loc": 0,
+  "start_ts_ns": 10889228827478,
+  "next_types": [
+   "R",
+   "R",
+   "R"
+  ]
+ },
+ "S061226-v50.txt.gz": {
+  "frame0_type": "S",
+  "frame0_len": 12,
+  "frame0_loc": 0,
+  "start_ts_ns": 10892008976642,
+  "next_types": [
+   "R",
+   "R",
+   "R"
+  ]
+ },
+ "itch50_05_15.gz": {
+  "frame0_type": "S",
+  "frame0_len": 12,
+  "frame0_loc": 0,
+  "start_ts_ns": 10883320897326,
+  "next_types": [
+   "R",
+   "R",
+   "R"
+  ]
+ }
+}

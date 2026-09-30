@@ -1,0 +1,453 @@
+{
+  "aapl_directory_record": {
+    "authenticity": "P",
+    "etp_flag": "N",
+    "issue_classification": "C",
+    "issue_sub_type": "Z",
+    "market_category": "Q",
+    "symbol": "AAPL"
+  },
+  "backwards_timestamps": 0,
+  "bytes_match": true,
+  "classification_C_subtype_C": 31,
+  "classification_C_subtype_Z": 4183,
+  "classification_subtype_pairs": {
+    "A/C": 1,
+    "A/N": 1,
+    "A/Z": 382,
+    "C/C": 31,
+    "C/D": 1,
+    "C/Q": 256,
+    "C/RT": 98,
+    "C/T": 4,
+    "C/Z": 4183,
+    "L/C": 1,
+    "L/Z": 41,
+    "O/C": 27,
+    "O/Z": 806,
+    "P/RT": 1,
+    "P/Z": 477,
+    "Q/A": 17,
+    "Q/B": 3,
+    "Q/CB": 20,
+    "Q/E": 9,
+    "Q/EN": 12,
+    "Q/G": 181,
+    "Q/I": 5296,
+    "Q/RC": 3,
+    "Q/V": 1,
+    "Q/W": 1,
+    "Q/Y": 1,
+    "R/Z": 109,
+    "S/C": 11,
+    "S/Q": 56,
+    "S/RT": 24,
+    "S/Z": 15,
+    "T/Z": 1,
+    "U/Z": 290,
+    "V/Z": 11,
+    "W/Z": 438
+  },
+  "coverage_matrix": [
+    {
+      "denominator": 17,
+      "numerator": 0,
+      "qualified": 31,
+      "ratio": 0.0,
+      "read_semantics": "AT_OR_BEFORE",
+      "reasons": {
+        "directory_ineligible": 12778,
+        "no_read": 17,
+        "zero_share_cross": 14
+      },
+      "universe": "FROZEN_5_CLAUSE"
+    },
+    {
+      "denominator": 17,
+      "numerator": 17,
+      "qualified": 31,
+      "ratio": 1.0,
+      "read_semantics": "FROZEN_CONTRACT",
+      "reasons": {
+        "directory_ineligible": 12778,
+        "ineligible_direction": 5,
+        "zero_share_cross": 14
+      },
+      "universe": "FROZEN_5_CLAUSE"
+    },
+    {
+      "denominator": 17,
+      "numerator": 17,
+      "qualified": 31,
+      "ratio": 1.0,
+      "read_semantics": "INSTANT_ALIGNED",
+      "reasons": {
+        "directory_ineligible": 12778,
+        "ineligible_direction": 8,
+        "zero_share_cross": 14
+      },
+      "universe": "FROZEN_5_CLAUSE"
+    },
+    {
+      "denominator": 2497,
+      "numerator": 0,
+      "qualified": 4543,
+      "ratio": 0.0,
+      "read_semantics": "AT_OR_BEFORE",
+      "reasons": {
+        "directory_ineligible": 8266,
+        "no_read": 2497,
+        "zero_share_cross": 2046
+      },
+      "universe": "CLASSIFICATION_ONLY"
+    },
+    {
+      "denominator": 2497,
+      "numerator": 2497,
+      "qualified": 4543,
+      "ratio": 1.0,
+      "read_semantics": "FROZEN_CONTRACT",
+      "reasons": {
+        "directory_ineligible": 8266,
+        "ineligible_direction": 1210,
+        "zero_share_cross": 2046
+      },
+      "universe": "CLASSIFICATION_ONLY"
+    },
+    {
+      "denominator": 2497,
+      "numerator": 2497,
+      "qualified": 4543,
+      "ratio": 1.0,
+      "read_semantics": "INSTANT_ALIGNED",
+      "reasons": {
+        "directory_ineligible": 8266,
+        "ineligible_direction": 1345,
+        "zero_share_cross": 2046
+      },
+      "universe": "CLASSIFICATION_ONLY"
+    }
+  ],
+  "cross_symbols_match_directory": 12809,
+  "cross_trade_by_type": {
+    "C": 12809
+  },
+  "cross_ts_range": [
+    "16:00:00.000315131",
+    "16:00:00.857985216"
+  ],
+  "cross_validity_by_class_subtype": {
+    "A/C/zero": 1,
+    "A/N/zero": 1,
+    "A/Z/nonzero": 184,
+    "A/Z/zero": 198,
+    "C/C/nonzero": 17,
+    "C/C/zero": 14,
+    "C/D/zero": 1,
+    "C/Q/nonzero": 33,
+    "C/Q/zero": 223,
+    "C/RT/nonzero": 22,
+    "C/RT/zero": 76,
+    "C/T/nonzero": 2,
+    "C/T/zero": 2,
+    "C/Z/nonzero": 2423,
+    "C/Z/zero": 1760,
+    "L/C/zero": 1,
+    "L/Z/nonzero": 7,
+    "L/Z/zero": 34,
+    "O/C/nonzero": 23,
+    "O/C/zero": 4,
+    "O/Z/nonzero": 553,
+    "O/Z/zero": 253,
+    "P/RT/zero": 1,
+    "P/Z/nonzero": 87,
+    "P/Z/zero": 390,
+    "Q/A/nonzero": 2,
+    "Q/A/zero": 15,
+    "Q/B/zero": 3,
+    "Q/CB/nonzero": 10,
+    "Q/CB/zero": 10,
+    "Q/E/zero": 9,
+    "Q/EN/zero": 12,
+    "Q/G/nonzero": 42,
+    "Q/G/zero": 139,
+    "Q/I/nonzero": 834,
+    "Q/I/zero": 4462,
+    "Q/RC/nonzero": 3,
+    "Q/V/zero": 1,
+    "Q/W/zero": 1,
+    "Q/Y/zero": 1,
+    "R/Z/nonzero": 2,
+    "R/Z/zero": 107,
+    "S/C/zero": 11,
+    "S/Q/nonzero": 1,
+    "S/Q/zero": 55,
+    "S/RT/nonzero": 3,
+    "S/RT/zero": 21,
+    "S/Z/nonzero": 1,
+    "S/Z/zero": 14,
+    "T/Z/zero": 1,
+    "U/Z/nonzero": 9,
+    "U/Z/zero": 281,
+    "V/Z/nonzero": 1,
+    "V/Z/zero": 10,
+    "W/Z/nonzero": 22,
+    "W/Z/zero": 416
+  },
+  "cross_zero_share": 8528,
+  "cross_zero_share_zero_price": 8528,
+  "declared": {
+    "bytes": 760167921,
+    "sha256": "28ed7b973807fdbfd3558dfbd2fdc5e1580a0227860d0f129ff6c67091d59597"
+  },
+  "directory_authenticity": {
+    "P": 12776,
+    "T": 33
+  },
+  "directory_classification": {
+    "A": 384,
+    "C": 4573,
+    "L": 42,
+    "O": 833,
+    "P": 478,
+    "Q": 5544,
+    "R": 109,
+    "S": 106,
+    "T": 1,
+    "U": 290,
+    "V": 11,
+    "W": 438
+  },
+  "directory_etp_flag": {
+    "N": 7469,
+    "Y": 5340
+  },
+  "directory_locates": 12809,
+  "directory_market_category": {
+    "A": 316,
+    "G": 2391,
+    "M": 1,
+    "N": 2930,
+    "P": 2653,
+    "Q": 1451,
+    "S": 1670,
+    "V": 3,
+    "Z": 1394
+  },
+  "directory_messages": 12809,
+  "directory_subtype": {
+    "A": 17,
+    "B": 3,
+    "C": 71,
+    "CB": 20,
+    "D": 1,
+    "E": 9,
+    "EN": 12,
+    "G": 181,
+    "I": 5296,
+    "N": 1,
+    "Q": 312,
+    "RC": 3,
+    "RT": 123,
+    "T": 4,
+    "V": 1,
+    "W": 1,
+    "Y": 1,
+    "Z": 6753
+  },
+  "directory_ts_range": [
+    "03:04:57.195265907",
+    "03:04:57.345169396"
+  ],
+  "first_1550_after_ts": "15:50:00.000298551",
+  "first_file_frames": [
+    {
+      "len": 12,
+      "name": "system_event",
+      "type": "S"
+    },
+    {
+      "len": 39,
+      "name": "stock_directory",
+      "type": "R"
+    },
+    {
+      "len": 39,
+      "name": "stock_directory",
+      "type": "R"
+    },
+    {
+      "len": 39,
+      "name": "stock_directory",
+      "type": "R"
+    }
+  ],
+  "first_read_after_1550_ts": "15:50:00.000298551",
+  "first_read_after_1555_ts": "15:55:00.000102712",
+  "first_ts": "03:01:32.008976642",
+  "frames_total": 55711528,
+  "framing_error_count": 0,
+  "framing_errors": [],
+  "gzip_eof": true,
+  "histogram_in_window": {
+    "add_order": 16333551,
+    "add_order_mpid": 190497,
+    "cross_trade": 12809,
+    "luld_auction_collar": 1,
+    "noii": 4227767,
+    "order_cancel": 334597,
+    "order_delete": 19700484,
+    "order_executed": 1922519,
+    "order_executed_with_price": 57856,
+    "order_replace": 11924113,
+    "reg_sho": 14,
+    "stock_trading_action": 2,
+    "system_event": 1,
+    "trade_non_cross": 994503
+  },
+  "histogram_window": {
+    "add_order": 16333551,
+    "add_order_mpid": 190497,
+    "cross_trade": 12809,
+    "luld_auction_collar": 1,
+    "noii": 4227767,
+    "order_cancel": 334597,
+    "order_delete": 19700484,
+    "order_executed": 1922519,
+    "order_executed_with_price": 57856,
+    "order_replace": 11924113,
+    "reg_sho": 14,
+    "stock_directory": 12809,
+    "stock_trading_action": 2,
+    "system_event": 6,
+    "trade_non_cross": 994503
+  },
+  "in_window_frames": 55698714,
+  "last_message_is_C": true,
+  "last_ts": "20:05:00.000020522",
+  "locates_with_C_cross": 12809,
+  "locates_with_any_cross": 12809,
+  "noii_at_or_before_1550": 0,
+  "noii_at_or_before_1555": 384270,
+  "noii_count": 4227767,
+  "noii_cross_type_counts": {
+    "C": 4227767
+  },
+  "noii_first_ts": "15:50:00.000298551",
+  "noii_last_ts": "16:00:00.459966440",
+  "reads_1550_count": 0,
+  "reads_1550_ts_range": null,
+  "reads_1555_count": 12809,
+  "reads_1555_ts_range": [
+    "15:54:50.000031202",
+    "15:54:50.145578267"
+  ],
+  "reads_after_1550_count": 12809,
+  "reads_after_1555_count": 12809,
+  "session_date_evidence": {
+    "in_band_date_field": false,
+    "note": "ITCH 5.0 messages carry nanoseconds-since-midnight only; no trade date is encoded anywhere in the payload. The date is inferred from the object name S061226-v50.txt.gz and the provider directory index, not proven by tape content.",
+    "ns_domain_check": {
+      "first_ts_lt_24h": true,
+      "last_ts_lt_24h": true
+    }
+  },
+  "sha256_match": true,
+  "system_events": [
+    {
+      "code": "O",
+      "ts": 10892008976642,
+      "ts_str": "03:01:32.008976642"
+    },
+    {
+      "code": "S",
+      "ts": 14400000105640,
+      "ts_str": "04:00:00.000105640"
+    },
+    {
+      "code": "Q",
+      "ts": 34200000052397,
+      "ts_str": "09:30:00.000052397"
+    },
+    {
+      "code": "M",
+      "ts": 57600000026381,
+      "ts_str": "16:00:00.000026381"
+    },
+    {
+      "code": "E",
+      "ts": 72000000018415,
+      "ts_str": "20:00:00.000018415"
+    },
+    {
+      "code": "C",
+      "ts": 72300000020522,
+      "ts_str": "20:05:00.000020522"
+    }
+  ],
+  "trailing_bytes": 0,
+  "window_bytes": 760167921,
+  "window_sha256": "28ed7b973807fdbfd3558dfbd2fdc5e1580a0227860d0f129ff6c67091d59597",
+  "zero_len_frames": 0,
+  "zero_print_concentration": {
+    "classification_only": {
+      "A": {
+        "no_cross": 0,
+        "with_valid_cross": 4,
+        "zero_share_cross": 236
+      },
+      "G": {
+        "no_cross": 0,
+        "with_valid_cross": 373,
+        "zero_share_cross": 4
+      },
+      "N": {
+        "no_cross": 0,
+        "with_valid_cross": 28,
+        "zero_share_cross": 1791
+      },
+      "Q": {
+        "no_cross": 0,
+        "with_valid_cross": 1145,
+        "zero_share_cross": 4
+      },
+      "S": {
+        "no_cross": 0,
+        "with_valid_cross": 947,
+        "zero_share_cross": 10
+      },
+      "Z": {
+        "no_cross": 0,
+        "with_valid_cross": 0,
+        "zero_share_cross": 1
+      }
+    },
+    "frozen_C_C": {
+      "A": {
+        "no_cross": 0,
+        "with_valid_cross": 0,
+        "zero_share_cross": 2
+      },
+      "G": {
+        "no_cross": 0,
+        "with_valid_cross": 2,
+        "zero_share_cross": 0
+      },
+      "N": {
+        "no_cross": 0,
+        "with_valid_cross": 0,
+        "zero_share_cross": 12
+      },
+      "Q": {
+        "no_cross": 0,
+        "with_valid_cross": 4,
+        "zero_share_cross": 0
+      },
+      "S": {
+        "no_cross": 0,
+        "with_valid_cross": 11,
+        "zero_share_cross": 0
+      }
+    }
+  }
+}

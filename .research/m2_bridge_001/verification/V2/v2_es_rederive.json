@@ -1,0 +1,735 @@
+{
+  "bbo_byte_identical": true,
+  "claim11": {
+    "grid_points": 60000,
+    "half_spread_points_mean_recomputed": 0.12922298704978416,
+    "identity_check_absdiff": 0.0,
+    "identity_half_S_entry_plus_half_S_exit_mean": 0.2584459740995683,
+    "identity_note": "E[1/2 S_entry + 1/2 S_exit] = 1/2 E[S_entry] + 1/2 E[S_exit] = E[S] when entry/exit spreads are i.i.d. samples on the same grid; it equals the mean spread, NOT 2 x (half of mean spread).",
+    "one_tick_points": 58832,
+    "spread_points_max": 2.7500000000000004,
+    "spread_points_mean_recomputed": 0.2584459740995683,
+    "spread_points_min": 0.25,
+    "spread_usd_mean": 12.922298704978417,
+    "tick_counts": {
+      "1.0": 58832,
+      "10.0": 12,
+      "11.0": 3,
+      "2.0": 797,
+      "3.0": 187,
+      "4.0": 77,
+      "5.0": 17,
+      "6.0": 46,
+      "7.0": 7,
+      "8.0": 21
+    },
+    "with_quote": 59999
+  },
+  "layout_check": {
+    "checks": [
+      {
+        "check": "trade.blockLength",
+        "expected": 11,
+        "observed": 11,
+        "ok": true
+      },
+      {
+        "check": "trade.NoMDEntries.MDEntryPx.offset",
+        "expected": 0,
+        "observed": 0,
+        "ok": true
+      },
+      {
+        "check": "trade.NoMDEntries.MDEntrySize.offset",
+        "expected": 8,
+        "observed": 8,
+        "ok": true
+      },
+      {
+        "check": "trade.NoMDEntries.SecurityID.offset",
+        "expected": 12,
+        "observed": 12,
+        "ok": true
+      },
+      {
+        "check": "trade.NoMDEntries.RptSeq.offset",
+        "expected": 16,
+        "observed": 16,
+        "ok": true
+      },
+      {
+        "check": "trade.NoMDEntries.NumberOfOrders.offset",
+        "expected": 20,
+        "observed": 20,
+        "ok": true
+      },
+      {
+        "check": "trade.NoMDEntries.AggressorSide.offset",
+        "expected": 24,
+        "observed": 24,
+        "ok": true
+      },
+      {
+        "check": "trade.NoMDEntries.MDUpdateAction.offset",
+        "expected": 25,
+        "observed": 25,
+        "ok": true
+      },
+      {
+        "check": "trade.NoMDEntries.MDTradeEntryID.offset",
+        "expected": 26,
+        "observed": 26,
+        "ok": true
+      },
+      {
+        "check": "trade.NoMDEntries.blockLength",
+        "expected": 32,
+        "observed": 32,
+        "ok": true
+      },
+      {
+        "check": "trade.NoMDEntries.dim",
+        "expected": "groupSize",
+        "observed": "groupSize",
+        "ok": true
+      },
+      {
+        "check": "book.blockLength",
+        "expected": 11,
+        "observed": 11,
+        "ok": true
+      },
+      {
+        "check": "book.NoMDEntries.MDEntryPx.offset",
+        "expected": 0,
+        "observed": 0,
+        "ok": true
+      },
+      {
+        "check": "book.NoMDEntries.MDEntrySize.offset",
+        "expected": 8,
+        "observed": 8,
+        "ok": true
+      },
+      {
+        "check": "book.NoMDEntries.SecurityID.offset",
+        "expected": 12,
+        "observed": 12,
+        "ok": true
+      },
+      {
+        "check": "book.NoMDEntries.RptSeq.offset",
+        "expected": 16,
+        "observed": 16,
+        "ok": true
+      },
+      {
+        "check": "book.NoMDEntries.NumberOfOrders.offset",
+        "expected": 20,
+        "observed": 20,
+        "ok": true
+      },
+      {
+        "check": "book.NoMDEntries.MDPriceLevel.offset",
+        "expected": 24,
+        "observed": 24,
+        "ok": true
+      },
+      {
+        "check": "book.NoMDEntries.MDUpdateAction.offset",
+        "expected": 25,
+        "observed": 25,
+        "ok": true
+      },
+      {
+        "check": "book.NoMDEntries.MDEntryType.offset",
+        "expected": 26,
+        "observed": 26,
+        "ok": true
+      },
+      {
+        "check": "book.NoMDEntries.blockLength",
+        "expected": 32,
+        "observed": 32,
+        "ok": true
+      },
+      {
+        "check": "book.NoMDEntries.dim",
+        "expected": "groupSize",
+        "observed": "groupSize",
+        "ok": true
+      }
+    ],
+    "ok": true,
+    "schema_templates": {
+      "46": {
+        "blockLength": 11,
+        "groups": [
+          [
+            "NoMDEntries",
+            [
+              [
+                "MDEntryPx",
+                0
+              ],
+              [
+                "MDEntrySize",
+                8
+              ],
+              [
+                "SecurityID",
+                12
+              ],
+              [
+                "RptSeq",
+                16
+              ],
+              [
+                "NumberOfOrders",
+                20
+              ],
+              [
+                "MDPriceLevel",
+                24
+              ],
+              [
+                "MDUpdateAction",
+                25
+              ],
+              [
+                "MDEntryType",
+                26
+              ],
+              [
+                "__blockLength",
+                32
+              ],
+              [
+                "__dim",
+                "groupSize"
+              ]
+            ]
+          ],
+          [
+            "NoOrderIDEntries",
+            [
+              [
+                "OrderID",
+                0
+              ],
+              [
+                "MDOrderPriority",
+                8
+              ],
+              [
+                "MDDisplayQty",
+                16
+              ],
+              [
+                "ReferenceID",
+                20
+              ],
+              [
+                "OrderUpdateAction",
+                21
+              ],
+              [
+                "__blockLength",
+                24
+              ],
+              [
+                "__dim",
+                "groupSize8Byte"
+              ]
+            ]
+          ]
+        ]
+      },
+      "48": {
+        "blockLength": 11,
+        "groups": [
+          [
+            "NoMDEntries",
+            [
+              [
+                "MDEntryPx",
+                0
+              ],
+              [
+                "MDEntrySize",
+                8
+              ],
+              [
+                "SecurityID",
+                12
+              ],
+              [
+                "RptSeq",
+                16
+              ],
+              [
+                "NumberOfOrders",
+                20
+              ],
+              [
+                "AggressorSide",
+                24
+              ],
+              [
+                "MDUpdateAction",
+                25
+              ],
+              [
+                "MDTradeEntryID",
+                26
+              ],
+              [
+                "__blockLength",
+                32
+              ],
+              [
+                "__dim",
+                "groupSize"
+              ]
+            ]
+          ],
+          [
+            "NoOrderIDEntries",
+            [
+              [
+                "OrderID",
+                0
+              ],
+              [
+                "LastQty",
+                8
+              ],
+              [
+                "__blockLength",
+                16
+              ],
+              [
+                "__dim",
+                "groupSize8Byte"
+              ]
+            ]
+          ]
+        ]
+      }
+    }
+  },
+  "primary": {
+    "contract_multiplier": 50.0,
+    "min_price_increment": "25.000000000",
+    "price_display_factor": 0.01,
+    "security_id": 3445,
+    "settl_price": "453675.000000000",
+    "symbol": "ESU3",
+    "tick_points": 0.25
+  },
+  "producer_bbo_sha256": "937b0557a916cb30a3cae02753edff68604bcba59f9d1c76f07d0d0f176552e5",
+  "producer_grid_sha256": "5f99dc16e65f260cf3fcf743623d266f8f5487403414bb973291abd801fe2919",
+  "producer_trades_sha256": "d3db3cd75e082196cac13c43f1220d117c1f9f2c98a0e49ec0559b22d183210e",
+  "re-derived": {},
+  "rederived_bbo_sha256": "937b0557a916cb30a3cae02753edff68604bcba59f9d1c76f07d0d0f176552e5",
+  "rederived_grid_sha256": "5f99dc16e65f260cf3fcf743623d266f8f5487403414bb973291abd801fe2919",
+  "rederived_trades_sha256": "d3db3cd75e082196cac13c43f1220d117c1f9f2c98a0e49ec0559b22d183210e",
+  "secdef_es_instruments": 32,
+  "sequence_per_feed": {
+    "A": {
+      "count": 361754,
+      "first": 1118771,
+      "gap_events": 19511,
+      "last": 1501663,
+      "missing_over_span": 21139
+    },
+    "B": {
+      "count": 21139,
+      "first": 1118792,
+      "gap_events": 19510,
+      "last": 1501649,
+      "missing_over_span": 361719
+    }
+  },
+  "sequence_union": {
+    "count": 382893,
+    "duplicates": 0,
+    "first": 1118771,
+    "gaps": 0,
+    "last": 1501663
+  },
+  "stats": {
+    "aggressor_at_tob": 18017,
+    "aggressor_checked": 18122,
+    "aggressor_outside": 71,
+    "bbo_rows": 312358,
+    "book_entry_events": 399843,
+    "book_resets": 0,
+    "by_aggressor": {
+      "B": 9009,
+      "S": 9113
+    },
+    "by_symbol": {
+      "ESU3": 18104,
+      "ESU3-ESZ3": 1,
+      "ESZ3": 17
+    },
+    "capture_time_regressions": 0,
+    "crossed_or_locked": 0,
+    "es_packet_seq_span": [
+      1118771,
+      1501663
+    ],
+    "es_packets": 382893,
+    "level1_deletes": 6161,
+    "level1_deletes_without_replacement": 91,
+    "level1_missing_after_change": 28,
+    "messages": 449990,
+    "off_channel_ids": {},
+    "out_of_window_packets": 0,
+    "outside_distance_ticks": {
+      "1.0": 66,
+      "2.0": 4,
+      "3.0": 1
+    },
+    "pcap_records": 382893,
+    "reconstruction_events": [
+      {
+        "instrument_id": 3445,
+        "level_used": 3,
+        "price": 453450000000000,
+        "sequence": 1119234,
+        "side": "B",
+        "size": 85,
+        "touched_action": "New",
+        "touched_entry_type": "0",
+        "touched_level": 10
+      },
+      {
+        "instrument_id": 3445,
+        "level_used": 2,
+        "price": 453450000000000,
+        "sequence": 1119276,
+        "side": "B",
+        "size": 85,
+        "touched_action": "New",
+        "touched_entry_type": "0",
+        "touched_level": 10
+      },
+      {
+        "instrument_id": 314863,
+        "level_used": 5,
+        "price": 458725000000000,
+        "sequence": 1119966,
+        "side": "A",
+        "size": 14,
+        "touched_action": "New",
+        "touched_entry_type": "1",
+        "touched_level": 10
+      },
+      {
+        "instrument_id": 314863,
+        "level_used": 4,
+        "price": 458700000000000,
+        "sequence": 1119979,
+        "side": "A",
+        "size": 21,
+        "touched_action": "Change",
+        "touched_entry_type": "1",
+        "touched_level": 4
+      },
+      {
+        "instrument_id": 314863,
+        "level_used": 4,
+        "price": 458350000000000,
+        "sequence": 1120195,
+        "side": "B",
+        "size": 12,
+        "touched_action": "New",
+        "touched_entry_type": "0",
+        "touched_level": 10
+      },
+      {
+        "instrument_id": 18909,
+        "level_used": 2,
+        "price": 10175000000000,
+        "sequence": 1121654,
+        "side": "A",
+        "size": 2,
+        "touched_action": "New",
+        "touched_entry_type": "1",
+        "touched_level": 2
+      },
+      {
+        "instrument_id": 314863,
+        "level_used": 2,
+        "price": 458675000000000,
+        "sequence": 1121916,
+        "side": "A",
+        "size": 12,
+        "touched_action": "New",
+        "touched_entry_type": "1",
+        "touched_level": 10
+      },
+      {
+        "instrument_id": 17077,
+        "level_used": 2,
+        "price": 463950000000000,
+        "sequence": 1122178,
+        "side": "A",
+        "size": 1,
+        "touched_action": "New",
+        "touched_entry_type": "1",
+        "touched_level": 2
+      },
+      {
+        "instrument_id": 33040,
+        "level_used": 2,
+        "price": 5655000000000,
+        "sequence": 1132122,
+        "side": "A",
+        "size": 2,
+        "touched_action": "New",
+        "touched_entry_type": "1",
+        "touched_level": 2
+      },
+      {
+        "instrument_id": 33040,
+        "level_used": 2,
+        "price": 5265000000000,
+        "sequence": 1132158,
+        "side": "A",
+        "size": 2,
+        "touched_action": "Delete",
+        "touched_entry_type": "1",
+        "touched_level": 3
+      },
+      {
+        "instrument_id": 33040,
+        "level_used": 2,
+        "price": 5005000000000,
+        "sequence": 1133409,
+        "side": "B",
+        "size": 2,
+        "touched_action": "New",
+        "touched_entry_type": "0",
+        "touched_level": 10
+      },
+      {
+        "instrument_id": 17077,
+        "level_used": 2,
+        "price": 463775000000000,
+        "sequence": 1134403,
+        "side": "B",
+        "size": 1,
+        "touched_action": "New",
+        "touched_entry_type": "0",
+        "touched_level": 2
+      },
+      {
+        "instrument_id": 33040,
+        "level_used": 2,
+        "price": 5275000000000,
+        "sequence": 1153936,
+        "side": "A",
+        "size": 2,
+        "touched_action": "New",
+        "touched_entry_type": "1",
+        "touched_level": 2
+      },
+      {
+        "instrument_id": 17077,
+        "level_used": 5,
+        "price": 461575000000000,
+        "sequence": 1178287,
+        "side": "B",
+        "size": 1,
+        "touched_action": "New",
+        "touched_entry_type": "0",
+        "touched_level": 5
+      },
+      {
+        "instrument_id": 17077,
+        "level_used": 5,
+        "price": 461575000000000,
+        "sequence": 1181848,
+        "side": "B",
+        "size": 1,
+        "touched_action": "New",
+        "touched_entry_type": "0",
+        "touched_level": 5
+      },
+      {
+        "instrument_id": 17077,
+        "level_used": 5,
+        "price": 461575000000000,
+        "sequence": 1207261,
+        "side": "B",
+        "size": 1,
+        "touched_action": "New",
+        "touched_entry_type": "0",
+        "touched_level": 5
+      },
+      {
+        "instrument_id": 17077,
+        "level_used": 5,
+        "price": 461500000000000,
+        "sequence": 1216452,
+        "side": "B",
+        "size": 1,
+        "touched_action": "New",
+        "touched_entry_type": "0",
+        "touched_level": 5
+      },
+      {
+        "instrument_id": 17077,
+        "level_used": 6,
+        "price": 466650000000000,
+        "sequence": 1230645,
+        "side": "A",
+        "size": 1,
+        "touched_action": "New",
+        "touched_entry_type": "1",
+        "touched_level": 6
+      },
+      {
+        "instrument_id": 17077,
+        "level_used": 6,
+        "price": 466700000000000,
+        "sequence": 1236514,
+        "side": "A",
+        "size": 1,
+        "touched_action": "New",
+        "touched_entry_type": "1",
+        "touched_level": 6
+      },
+      {
+        "instrument_id": 17077,
+        "level_used": 5,
+        "price": 461725000000000,
+        "sequence": 1255129,
+        "side": "B",
+        "size": 1,
+        "touched_action": "New",
+        "touched_entry_type": "0",
+        "touched_level": 5
+      },
+      {
+        "instrument_id": 17077,
+        "level_used": 2,
+        "price": 464550000000000,
+        "sequence": 1266249,
+        "side": "A",
+        "size": 1,
+        "touched_action": "New",
+        "touched_entry_type": "1",
+        "touched_level": 2
+      },
+      {
+        "instrument_id": 35947,
+        "level_used": 9,
+        "price": 4805000000000,
+        "sequence": 1285417,
+        "side": "B",
+        "size": 7,
+        "touched_action": "New",
+        "touched_entry_type": "0",
+        "touched_level": 10
+      },
+      {
+        "instrument_id": 17077,
+        "level_used": 2,
+        "price": 463975000000000,
+        "sequence": 1288480,
+        "side": "B",
+        "size": 10,
+        "touched_action": "New",
+        "touched_entry_type": "0",
+        "touched_level": 2
+      },
+      {
+        "instrument_id": 33040,
+        "level_used": 2,
+        "price": 5510000000000,
+        "sequence": 1381045,
+        "side": "A",
+        "size": 2,
+        "touched_action": "New",
+        "touched_entry_type": "1",
+        "touched_level": 2
+      },
+      {
+        "instrument_id": 33040,
+        "level_used": 2,
+        "price": 5290000000000,
+        "sequence": 1389747,
+        "side": "A",
+        "size": 2,
+        "touched_action": "Delete",
+        "touched_entry_type": "1",
+        "touched_level": 3
+      },
+      {
+        "instrument_id": 33040,
+        "level_used": 2,
+        "price": 5290000000000,
+        "sequence": 1419971,
+        "side": "A",
+        "size": 2,
+        "touched_action": "New",
+        "touched_entry_type": "1",
+        "touched_level": 2
+      },
+      {
+        "instrument_id": 33040,
+        "level_used": 2,
+        "price": 5290000000000,
+        "sequence": 1426581,
+        "side": "A",
+        "size": 2,
+        "touched_action": "New",
+        "touched_entry_type": "1",
+        "touched_level": 2
+      },
+      {
+        "instrument_id": 33040,
+        "level_used": 2,
+        "price": 5290000000000,
+        "sequence": 1430270,
+        "side": "A",
+        "size": 2,
+        "touched_action": "New",
+        "touched_entry_type": "1",
+        "touched_level": 2
+      },
+      {
+        "instrument_id": 314863,
+        "level_used": 2,
+        "price": 459425000000000,
+        "sequence": 1468463,
+        "side": "A",
+        "size": 4,
+        "touched_action": "New",
+        "touched_entry_type": "1",
+        "touched_level": 10
+      }
+    ],
+    "rows_by_flag": {
+      "direct_l1": 312329,
+      "reconstructed": 29
+    },
+    "send_time_regressions": 0,
+    "seq_by_port": {},
+    "templates": {
+      "37": 17524,
+      "46": 377976,
+      "47": 36286,
+      "48": 18092,
+      "49": 1,
+      "51": 111
+    },
+    "trades_rows": 18122,
+    "ts_regressions": 0
+  },
+  "trades_byte_identical": true
+}

@@ -1,0 +1,21 @@
+{
+  "pristine_decoded_bytes": 1824239389,
+  "pristine_gzip_eof": true,
+  "spliced_bytes": 16777206,
+  "spliced_contract_verdict": "PASS",
+  "spliced_gzip_eof_crc_isize_pass": true,
+  "spliced_markers": {
+    "frames": 598810,
+    "framing_error": null,
+    "last_event_code": "C",
+    "last_frame_type": "S",
+    "max_ts_gap_ns": 22789999970996,
+    "terminal_C_is_last_frame": true,
+    "trailing_bytes": 0,
+    "ts_gap_at_frame": 12813,
+    "zero_len_frames": 0
+  },
+  "spliced_percent_of_pristine": 0.9196822577763121,
+  "spliced_sha256": "0fea827a9c8149a768502ac87df4421a2c603c0826e129aa7ee04064d3e358d9",
+  "verdict_note": "The spliced artefact keeps only ~0.92% of the decoded session, yet every marker of the declared contract (gzip CRC32/ISIZE, 0 framing errors, 0 trailing bytes, terminal 'C' as the last frame) passes. Only an unrequested heuristic (max inter-frame timestamp jump = 22790.000 s) reveals the hole. The contract therefore certifies transport/structural integrity, not session completeness."
+}

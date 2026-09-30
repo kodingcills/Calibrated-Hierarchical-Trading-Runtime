@@ -1,0 +1,26 @@
+{
+  "A10_short_key_list": {
+    "checks_fired": [],
+    "state": "DATA_VALID"
+  },
+  "A11_non_monotonic_timestamp": {
+    "checks_fired": [
+      "timestamps.monotonic"
+    ],
+    "state": "DATA_INVALID"
+  },
+  "A12_grid_offset_by_one_hour": {
+    "checks_fired": [],
+    "state": "DATA_VALID"
+  },
+  "A8_consistent_4h_shift": {
+    "checks_fired": [],
+    "state": "DATA_VALID"
+  },
+  "A9_duplicate_record_key": {
+    "checks_fired": [
+      "records.duplicates"
+    ],
+    "state": "DATA_INVALID"
+  }
+}
