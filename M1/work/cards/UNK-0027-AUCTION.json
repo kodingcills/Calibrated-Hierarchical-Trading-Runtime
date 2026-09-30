@@ -1,7 +1,8 @@
 {
   "acceptable_evidence": "Any primary source that answers the claim needed",
   "affected_candidates": [
-    "TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG"
+    "TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG",
+    "TUP-NASDAQ-CLOSE-H4-LATENOII-AGG"
   ],
   "affected_gates": "NONE",
   "blocker_id": "UNK-0027-AUCTION",
@@ -14,24 +15,24 @@
     "EVD-0041",
     "EVD-0042"
   ],
-  "decision_prevented": "KG5 for the auction row.",
+  "decision_prevented": "KG5/KG2 for the auction branch: the declaration is not yet a canonically approved rule.",
   "disallowed_evidence": "Assumed values, secondary summaries, social posts",
   "estimated_effort": "MEDIUM",
   "is_aggregate_parent": "NO",
-  "kill_condition": "KG5 for the auction row.",
+  "kill_condition": "KG5/KG2 for the auction branch: the declaration is not yet a canonically approved rule.",
   "kill_potential": "MEDIUM",
   "known_evidence_ids": [],
   "known_source_ids": [],
-  "last_updated": "2026-09-29T17:15:14Z",
+  "last_updated": "2026-09-29T22:20:27Z",
   "parent_issue_id": "UNK-0027",
-  "priority_reason": "Scoped child; the auction universe can reuse the large-tick rule's structure once the mechanism gate resolves.",
+  "priority_reason": "Scoped child; the auction universe is declared by the frozen reformulation and needs the same approval path the large-tick rule took.",
   "priority_score": null,
-  "required_answer": "A universe rule for the auction branch plus the exact auction order type.",
+  "required_answer": "An approved, machine-readable spec artifact for the closing-cross Stock Directory universe rule with its anti-leakage controls, plus a decision on whether the auction order type is exercised or left out of scope.",
   "resolution_method": "PUBLIC_RESEARCH",
   "resolution_stage": "M1_BLOCKING",
   "resurrection_condition": null,
   "status": "OPEN",
-  "success_condition": "A universe rule for the auction branch plus the exact auction order type.",
+  "success_condition": "An approved, machine-readable spec artifact for the closing-cross Stock Directory universe rule with its anti-leakage controls, plus a decision on whether the auction order type is exercised or left out of scope.",
   "tier": 1,
   "title": "Exact mechanism and contract for the Nasdaq closing-auction branch."
 }

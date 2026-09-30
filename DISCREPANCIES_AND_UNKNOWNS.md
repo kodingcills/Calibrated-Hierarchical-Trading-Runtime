@@ -3,7 +3,7 @@
 Canonical machine-readable source: `M1/data/discrepancies.csv` (generated from `M1/src/corpus/unknowns.py`).
 This file is a rendering of that registry; edit the corpus module, not this file.
 
-Materialised (UTC): 2026-09-29T17:15:14Z
+Materialised (UTC): 2026-09-29T22:20:27Z
 
 Registered issues: 56 | open: 35 | blocking: 34
 
@@ -14,9 +14,9 @@ and the judgment used is stated together with its basis.
 
 ## UNK-0001 - BLOCKING - EXTERNAL_REQUEST_READY
 
-- claim needed: Exact project-level all-in per-contract cost for the CME candidates (exchange fee + clearing fee + NFA/FCM commission + market-data and connectivity).
-- known evidence: CME market-data architecture and product structure are verified; no fee schedule value was captured in the M1-A pass.
-- specific evidence required: Current CME/FCM schedule for the exact account path, registered as an immutable M2 cost configuration.
+- claim needed: CME execution-cost components on the gross-precursor path: the verified structural cost C0 (published exchange fee, clearing fee and mandatory venue fees for the exact contract path) and a declared parameterization of the unresolved cost C1 (broker/FCM commission and other account-specific components), carried as an unknown-valued parameter. Market-data and connectivity entitlements stay separate (UNK-0033/UNK-0028).
+- known evidence: CME market-data architecture and product structure are verified; no fee schedule value was captured in the M1-A pass. Under DECISIONS D-0042 the exact account-level broker/FCM schedule is no longer a prerequisite of the gross-materiality precursor: it is the gate before shadow/micro-live and is tracked on UNK-0009-ECON-CME-MEASURED.
+- specific evidence required: Current CME and clearing fee pages for the exact product, dated, plus a written declaration of the C1 parameter range the gross precursor will use (unknown never zero).
 - decision prevented: Aggressive CME execution viability (KG3) for every CME tuple.
 - conflict type: NO_CONFLICT_INCOMPLETENESS
 - sources: A=SRC-0107, B=None
@@ -65,7 +65,7 @@ and the judgment used is stated together with its basis.
 - searches attempted: None
 - resolvable by web research: UNKNOWN; vendor quote: YES; M2 measurement: UNKNOWN
 - resolution class: B
-- affected: TUP-NASDAQ-LARGETICK-H2-QIMB-AGG|TUP-NASDAQ-LARGETICK-H2H3-MICRO-AGG|TUP-NASDAQ-LARGETICK-H1H2-QUEUEPOS-L1ONLY-AGG|TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG
+- affected: TUP-NASDAQ-LARGETICK-H2-QIMB-AGG|TUP-NASDAQ-LARGETICK-H2H3-MICRO-AGG|TUP-NASDAQ-LARGETICK-H1H2-QUEUEPOS-L1ONLY-AGG|TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG|TUP-NASDAQ-CLOSE-H4-LATENOII-AGG
 - evidence: EVD-0005|EVD-0004
 
 ## UNK-0005 - BLOCKING - IN_PROGRESS
@@ -79,7 +79,7 @@ and the judgment used is stated together with its basis.
 - searches attempted: None
 - resolvable by web research: PARTIAL (published schedules exist; the project's routing outcome does not); vendor quote: YES; M2 measurement: UNKNOWN
 - resolution class: B
-- affected: TUP-NASDAQ-LARGETICK-H2-QIMB-AGG|TUP-NASDAQ-LARGETICK-H2H3-MICRO-AGG|TUP-CBOEBZX-LARGETICK-H2H3-SPREADCAP-PAS|TUP-USSTOCK-XVENUE-H1-STALEQUOTE-AGG|TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG
+- affected: TUP-NASDAQ-LARGETICK-H2-QIMB-AGG|TUP-NASDAQ-LARGETICK-H2H3-MICRO-AGG|TUP-CBOEBZX-LARGETICK-H2H3-SPREADCAP-PAS|TUP-USSTOCK-XVENUE-H1-STALEQUOTE-AGG|TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG|TUP-NASDAQ-CLOSE-H4-LATENOII-AGG
 - evidence: EVD-0006|EVD-0021
 
 ## UNK-0006 - IMPORTANT - OPEN
@@ -303,7 +303,7 @@ and the judgment used is stated together with its basis.
 - searches attempted: None
 - resolvable by web research: UNKNOWN; vendor quote: YES; M2 measurement: UNKNOWN
 - resolution class: B
-- affected: TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG
+- affected: TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG|TUP-NASDAQ-CLOSE-H4-LATENOII-AGG
 - evidence: None
 
 ## UNK-0021 - IMPORTANT - OPEN
@@ -485,7 +485,7 @@ and the judgment used is stated together with its basis.
 - searches attempted: None
 - resolvable by web research: None; vendor quote: None; M2 measurement: None
 - resolution class: None
-- affected: TUP-NASDAQ-LARGETICK-H2-QIMB-AGG|TUP-NASDAQ-LARGETICK-H2H3-MICRO-AGG|TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG
+- affected: TUP-NASDAQ-LARGETICK-H2-QIMB-AGG|TUP-NASDAQ-LARGETICK-H2H3-MICRO-AGG|TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG|TUP-NASDAQ-CLOSE-H4-LATENOII-AGG
 - evidence: None
 
 ## UNK-0018-BZX - BLOCKING - OPEN
@@ -597,15 +597,15 @@ and the judgment used is stated together with its basis.
 - searches attempted: None
 - resolvable by web research: None; vendor quote: None; M2 measurement: None
 - resolution class: None
-- affected: TUP-NASDAQ-LARGETICK-H2-QIMB-AGG|TUP-NASDAQ-LARGETICK-H2H3-MICRO-AGG|TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG|TUP-CBOEBZX-LARGETICK-H2H3-SPREADCAP-PAS
+- affected: TUP-NASDAQ-LARGETICK-H2-QIMB-AGG|TUP-NASDAQ-LARGETICK-H2H3-MICRO-AGG|TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG|TUP-NASDAQ-CLOSE-H4-LATENOII-AGG|TUP-CBOEBZX-LARGETICK-H2H3-SPREADCAP-PAS
 - evidence: None
 
 ## UNK-0009-ECON-CME-MEASURED - IMPORTANT - OPEN
 
-- claim needed: After-cost replication on CME once the cost schedule and matching rule are known.
-- known evidence: No CME fee value is verified; the public fee search is exhausted (patch P-0003).
-- specific evidence required: Execution-aware replication after the cost configuration is locked.
-- decision prevented: Whether the CME branch is profitable (M2).
+- claim needed: CME after-cost replication, including the gate before shadow/micro-live that requires the exact account-level broker/FCM/commission schedule.
+- known evidence: No CME fee value is verified; the public fee search is exhausted (patch P-0003), so the exact account-level schedule is UNKNOWN. Nothing here asserts that it has been obtained.
+- specific evidence required: The exact broker/FCM/account-level all-in schedule for the intended account type, registered as an immutable cost configuration before any shadow or micro-live run; at this gate a parameter value is not a substitute for the schedule.
+- decision prevented: Whether the CME branch is profitable, and whether shadow/micro-live may start at all.
 - conflict type: NO_CONFLICT_INCOMPLETENESS
 - sources: A=None, B=None
 - searches attempted: None
@@ -715,15 +715,15 @@ and the judgment used is stated together with its basis.
 ## UNK-0027-AUCTION - BLOCKING - OPEN
 
 - claim needed: Exact mechanism and contract for the Nasdaq closing-auction branch.
-- known evidence: The row names closing-auction imbalance on Nasdaq-listed stocks but fixes neither the symbol set nor the auction order type it would place.
-- specific evidence required: A universe rule for the auction branch plus the exact auction order type.
-- decision prevented: KG5 for the auction row.
+- known evidence: The broad ANYCAP row fixes neither the symbol set nor the auction order type it would place, which is why it was deprioritised. The narrowed reformulation `TUP-NASDAQ-CLOSE-H4-LATENOII-AGG` now declares its unit of analysis in RESOL-001 as the signed NOII imbalance change 15:50->15:55 ET against Closing Cross displacement, over the same-day TotalView-ITCH Stock Directory universe. Two gaps remain: no approved universe-rule spec artifact exists under M1/hypotheses/candidate_specs/ for NASDAQ-CLOSING-CROSS-PIT-STOCK-DIRECTORY-v1 (the rule is declared, not approved), and the order type it would actually place (a Market-On-Close order, not a Limit-On-Close) is deferred to a separately authorized later test.
+- specific evidence required: An approved, machine-readable spec artifact for the closing-cross Stock Directory universe rule with its anti-leakage controls, plus a decision on whether the auction order type is exercised or left out of scope.
+- decision prevented: KG5/KG2 for the auction branch: the declaration is not yet a canonically approved rule.
 - conflict type: NO_CONFLICT_INCOMPLETENESS
 - sources: A=None, B=None
 - searches attempted: None
 - resolvable by web research: None; vendor quote: None; M2 measurement: None
 - resolution class: None
-- affected: TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG
+- affected: TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG|TUP-NASDAQ-CLOSE-H4-LATENOII-AGG
 - evidence: None
 
 ## UNK-0027-OPTIONS-EVENT-FX - BLOCKING - OPEN
@@ -751,7 +751,7 @@ and the judgment used is stated together with its basis.
 - searches attempted: None
 - resolvable by web research: None; vendor quote: None; M2 measurement: None
 - resolution class: None
-- affected: TUP-CME-ES-H1-QDEP-PAS|TUP-CME-ES-H3-OFI-AGG|TUP-CME-NQ-H3-OFI-AGG|TUP-CME-TSY-H2-QREPL-MIX|TUP-CME-WTI-H4-FLOWVOL-AGG|TUP-NASDAQ-LARGETICK-H2-QIMB-AGG|TUP-NASDAQ-LARGETICK-H2H3-MICRO-AGG|TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG
+- affected: TUP-CME-ES-H1-QDEP-PAS|TUP-CME-ES-H3-OFI-AGG|TUP-CME-NQ-H3-OFI-AGG|TUP-CME-TSY-H2-QREPL-MIX|TUP-CME-WTI-H4-FLOWVOL-AGG|TUP-NASDAQ-LARGETICK-H2-QIMB-AGG|TUP-NASDAQ-LARGETICK-H2H3-MICRO-AGG|TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG|TUP-NASDAQ-CLOSE-H4-LATENOII-AGG
 - evidence: None
 
 ## UNK-0033 - BLOCKING - OPEN

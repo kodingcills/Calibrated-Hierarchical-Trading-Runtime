@@ -88,11 +88,14 @@ SPEC_DEFINITIONS = {
         "question": "Does the candidate's net-edge sign survive conservative fee, spread and "
                     "slippage assumptions?",
         "why_not_public": "It requires the candidate's own measured gross effect as an input.",
-        "dataset": "Measured gross effect plus the venue's verified fee schedule for the "
-                   "project's account path.",
+        "dataset": "Measured gross effect plus the verified structural cost C0 schedule for the "
+                   "exact contract and a declared unresolved cost C1 parameter range (unknown "
+                   "never zero); the exact account-level schedule is the pre-shadow gate "
+                   "(DECISIONS D-0042).",
         "primary_metric": "Sign stability of net edge across the preregistered cost range",
         "null": "Zero-cost counterfactual, reported only to quantify cost drag",
-        "baseline": "Point-estimate cost assumption from the verified schedule",
+        "baseline": "Verified structural cost C0, with the break-even residual cost C* reported "
+                    "against the declared C1 range",
         "kill_criterion": "Net-edge sign flips inside the plausible cost range.",
         "output": "M1/output/specs/COST_SENSITIVITY.json",
         "gate_effect": "Robustness requirement of the project's G4 gate.",
@@ -370,8 +373,12 @@ REQUEST_CONTENT = {
     "UNK-0001": {
         "contact": "The intended FCM / introducing broker for the account, plus CME's published "
                    "fee and clearing schedule.",
-        "information": "Per-contract exchange fee, clearing fee, NFA/regulatory fee and your "
-                       "commission for ES and NQ, for our account type, with effective dates.",
+        "information": "The published per-contract exchange, clearing and mandatory venue fees for "
+                       "ES and NQ (C0), with effective dates. This alone unblocks the "
+                       "gross-materiality precursor: until the account-level schedule below "
+                       "arrives, commission is carried as a declared parameter C1 (never zero, "
+                       "never an industry default) and the precursor reports the break-even "
+                       "residual cost C* instead of net edge (DECISIONS D-0042).",
         "product": "CME Globex ES and NQ futures, round-turn",
         "date_range": "Current schedule plus the previous schedule if a change occurred in 2026",
         "schema": "Fee per contract by product, member/non-member, with effective date and any "
@@ -380,8 +387,12 @@ REQUEST_CONTENT = {
         "licensing": "Any minimum monthly volume, seat, membership or market-data entitlement "
                      "bundled with these fees",
         "sample": "A redacted statement or fee confirmation for one month at our expected size",
-        "substitute": "CME's public fee schedule plus a written broker commission quote is "
-                      "sufficient; an estimate is not.",
+        "substitute": "CME's published fee and clearing schedule closes C0 on its own; the "
+                      "unresolved cost C1 is then declared by the project as an explicit parameter "
+                      "range (never zero, never an industry-typical value). The exact account-level "
+                      "commission remains the gate before shadow/micro-live (UNK-0009-ECON-CME-"
+                      "MEASURED). An estimate masquerading as a verified cost is not a substitute "
+                      "at either stage.",
     },
     "UNK-0003": {
         "contact": "CME Data Services / Market Data Platform licensing, and any licensed "

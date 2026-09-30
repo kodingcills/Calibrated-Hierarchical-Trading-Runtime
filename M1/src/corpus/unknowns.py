@@ -72,12 +72,20 @@ _CME = "TUP-CME-ES-H1-QDEP-PAS|TUP-CME-ES-H3-OFI-AGG|TUP-CME-NQ-H3-OFI-AGG|" \
        "TUP-CME-TSY-H2-QREPL-MIX|TUP-CME-WTI-H4-FLOWVOL-AGG"
 
 d("UNK-0001",
-  claim_needed="Exact project-level all-in per-contract cost for the CME candidates "
-               "(exchange fee + clearing fee + NFA/FCM commission + market-data and connectivity).",
+  claim_needed="CME execution-cost components on the gross-precursor path: the verified structural "
+               "cost C0 (published exchange fee, clearing fee and mandatory venue fees for the "
+               "exact contract path) and a declared parameterization of the unresolved cost C1 "
+               "(broker/FCM commission and other account-specific components), carried as an "
+               "unknown-valued parameter. Market-data and connectivity entitlements stay separate "
+               "(UNK-0033/UNK-0028).",
   known_evidence="CME market-data architecture and product structure are verified; no fee schedule "
-                 "value was captured in the M1-A pass.",
-  specific_evidence_needed="Current CME/FCM schedule for the exact account path, registered as an "
-                           "immutable M2 cost configuration.",
+                 "value was captured in the M1-A pass. Under DECISIONS D-0042 the exact "
+                 "account-level broker/FCM schedule is no longer a prerequisite of the "
+                 "gross-materiality precursor: it is the gate before shadow/micro-live and is "
+                 "tracked on UNK-0009-ECON-CME-MEASURED.",
+  specific_evidence_needed="Current CME and clearing fee pages for the exact product, dated, plus a "
+                           "written declaration of the C1 parameter range the gross precursor will "
+                           "use (unknown never zero).",
   decision_prevented="Aggressive CME execution viability (KG3) for every CME tuple.",
   severity="BLOCKING", resolution_class="B", source_A="SRC-0107", affected=_CME,
   search_attempts="Two passes. M1-A searched CME product/MDP documentation and market-data "
@@ -124,7 +132,8 @@ d("UNK-0004",
   decision_prevented="Queue-aware backtesting of every Nasdaq equity tuple (KG2).",
   severity="BLOCKING", resolution_class="B", source_A="SRC-0109", source_B="SRC-0108",
   affected="TUP-NASDAQ-LARGETICK-H2-QIMB-AGG|TUP-NASDAQ-LARGETICK-H2H3-MICRO-AGG|"
-           "TUP-NASDAQ-LARGETICK-H1H2-QUEUEPOS-L1ONLY-AGG|TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG",
+           "TUP-NASDAQ-LARGETICK-H1H2-QUEUEPOS-L1ONLY-AGG|TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG|"
+           "TUP-NASDAQ-CLOSE-H4-LATENOII-AGG",
   exact_conflict="Product-scope difference, not a contradiction: Tick History (L1) and TotalView "
                  "(full depth) are different products; the risk is backtesting a queue strategy on "
                  "the easier product.",
@@ -143,7 +152,8 @@ d("UNK-0005",
                                 "TUP-NASDAQ-LARGETICK-H2H3-MICRO-AGG|"
                                 "TUP-CBOEBZX-LARGETICK-H2H3-SPREADCAP-PAS|"
                                 "TUP-USSTOCK-XVENUE-H1-STALEQUOTE-AGG|"
-                                "TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG",
+                                "TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG|"
+                                "TUP-NASDAQ-CLOSE-H4-LATENOII-AGG",
   web_research_resolvable="PARTIAL (published schedules exist; the project's routing outcome does not)",
   requires_vendor_quote="YES", evidence_ids="EVD-0006|EVD-0021")
 
@@ -342,7 +352,8 @@ d("UNK-0020",
   decision_prevented="Auction tuple feasibility (KG2): without it the auction candidate has no "
                      "historical basis for testing.",
   severity="BLOCKING", resolution_class="B", source_A="SRC-0108", source_B="SRC-0120",
-  affected="TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG", requires_vendor_quote="YES")
+  affected="TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG|TUP-NASDAQ-CLOSE-H4-LATENOII-AGG",
+  requires_vendor_quote="YES")
 
 d("UNK-0021",
   claim_needed="Cross-venue source-to-decision-to-venue latency and stale-quote survival for a "
@@ -518,12 +529,15 @@ q("OQ-0001", "Which of the M1-A external claims survive independent verification
   "repository artifacts.", "25 tokens unresolved.", "Resolve token by token against primary sources "
   "and snapshot each page.", "UNK-0023")
 
-q("OQ-0002", "What is the project-level all-in per-contract cost for the CME candidates?",
+q("OQ-0002", "What is the verified structural cost C0 for the CME candidates, and what "
+             "unresolved cost C1 range applies?",
   "It decides whether any CME tuple can survive aggressive execution.",
   "Venue economics", "CRITICAL", "M1-B", "not_started",
-  "UNKNOWN: only CME market-data architecture was verified.", "No account-path fee schedule.",
-  "Obtain FCM/broker schedule for the intended account and register it as an immutable M2 cost "
-  "configuration.", "UNK-0001|UNK-0028")
+  "UNKNOWN: only CME market-data architecture was verified.", "No C0 fee schedule and no "
+  "declared C1 range.",
+  "Obtain the published CME/clearing schedule for the exact contract (C0) and declare the C1 "
+  "parameter range used by the gross precursor; the exact account-level schedule is registered "
+  "separately as the pre-shadow gate (D-0042).", "UNK-0001|UNK-0028")
 
 q("OQ-0003", "What is the current CME matching/allocation rule for each named candidate contract "
              "and order type?",

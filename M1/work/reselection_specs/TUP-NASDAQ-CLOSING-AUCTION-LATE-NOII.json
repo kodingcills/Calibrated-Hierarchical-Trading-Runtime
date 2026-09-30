@@ -1,7 +1,13 @@
 {
   "spec_id": "RESOL-001-NASDAQ-CLOSING-AUCTION-LATE-NOII",
   "status": "AUCTION_EXTERNAL_ONLY",
-  "candidate_id": "TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG",
+  "candidate_id": "TUP-NASDAQ-CLOSE-H4-LATENOII-AGG",
+  "ancestry": {
+    "descended_from": "TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG",
+    "relation": "NARROW_REFORMULATION",
+    "decision": "DECISIONS D-0041"
+  },
+  "provenance_note": "Retargeted 2026-09-29 from TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG, where this frozen formulation was first attached, to the narrowed candidate row TUP-NASDAQ-CLOSE-H4-LATENOII-AGG (DECISIONS D-0041). The parent row stays registered as the historical provenance of the broad ANYCAP/unspecified-order-type formulation, with its own recorded verdict; this spec no longer describes it. Nothing in the frozen formulation below changed in the retarget - the freeze, universe rule, timestamp contract, execution boundary, prerequisite, metric and kill rule are the text frozen before the retarget.",
   "mechanism": "Signed late NOII imbalance change as causal pressure on Nasdaq Closing Cross clearing displacement.",
   "mechanism_boundary": "This is not an indicative-price, post-close reversal, or benchmark-flow strategy; those mechanisms are out of scope.",
   "freeze": {

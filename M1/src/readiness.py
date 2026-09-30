@@ -230,11 +230,13 @@ def readiness_md(state) -> str:
         "Ranked by the number of candidates whose status could move, not by ease:",
         "",
         _table(["rank", "measurement", "why it changes decisions"],
-               [[1, "Exact account-level fee/commission schedule per venue "
-                    "(UNK-0001, UNK-0005, UNK-0028)",
-                 "A verified all-in cost floor can kill an entire venue branch without any "
+               [[1, "Verified structural cost C0 schedule per venue plus a declared unresolved "
+                    "cost C1 range (UNK-0001, UNK-0005, UNK-0028; exact account-level costs are "
+                    "the pre-shadow gate, DECISIONS D-0042)",
+                 "A verified structural cost floor can kill an entire venue branch without any "
                  "modelling: it already killed two crypto tuples and could equally clear or kill "
-                 "the CME and equity branches."],
+                 "the CME and equity branches. A declared C1 range is what turns an unknown cost "
+                 "into a reported break-even residual instead of a stall."],
                 [2, "Historical order-level data availability, cost and timestamp semantics "
                     "(UNK-0003, UNK-0004, UNK-0020)",
                  "Determines whether causal replay is possible at all for the three largest "
@@ -290,7 +292,8 @@ def d1_blocked_md(state) -> str:
         "M1-D1 is a comparison, and a comparison requires comparable measured dimensions. Every",
         "dimension that would drive the comparison is currently an open blocking unknown:",
         "",
-        "- exact all-in venue costs (UNK-0001, UNK-0005, UNK-0028),",
+        "- venue cost structure: verified structural cost C0 and a declared unresolved cost C1 "
+        "(UNK-0001, UNK-0005, UNK-0028; exact account-level costs sit at the pre-shadow gate),",
         "- historical order-level data procurement (UNK-0003, UNK-0004, UNK-0020, UNK-0011, "
         "UNK-0012, UNK-0013),",
         "- queue reconstructability and passive fill modelling (UNK-0007, UNK-0019),",

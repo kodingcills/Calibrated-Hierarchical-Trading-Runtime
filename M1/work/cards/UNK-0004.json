@@ -4,7 +4,8 @@
     "TUP-NASDAQ-LARGETICK-H2-QIMB-AGG",
     "TUP-NASDAQ-LARGETICK-H2H3-MICRO-AGG",
     "TUP-NASDAQ-LARGETICK-H1H2-QUEUEPOS-L1ONLY-AGG",
-    "TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG"
+    "TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG",
+    "TUP-NASDAQ-CLOSE-H4-LATENOII-AGG"
   ],
   "affected_gates": "KG2_DATA",
   "blocker_id": "UNK-0004",
@@ -33,7 +34,7 @@
     "SRC-0109",
     "SRC-0108"
   ],
-  "last_updated": "2026-09-29T17:15:14Z",
+  "last_updated": "2026-09-29T22:20:27Z",
   "parent_issue_id": null,
   "priority_reason": "M1-BLOCKING retained: granularity sufficiency is an M1 gate (measured against the mechanism's requirement), while fill rates themselves move to M2.",
   "priority_score": null,

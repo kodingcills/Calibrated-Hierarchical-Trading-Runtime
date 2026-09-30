@@ -108,7 +108,8 @@ e("EXP-0005", "EXP-0001",
   "fee/slippage/spread assumptions?",
   "sign stability of execution-aware net edge",
   "break-even fee level; break-even spread level",
-  "Verified venue fee schedule for the project's account path",
+  "Verified structural cost C0 schedule plus a declared unresolved cost C1 parameter range "
+  "(exact account-level schedule is the pre-shadow gate, DECISIONS D-0042)",
   "UNK-0001|UNK-0005|UNK-0006|UNK-0018",
   "Required by the project's own G4 robustness gate; cheap and can kill a branch.",
   hypothesis_id=UNKNOWN)

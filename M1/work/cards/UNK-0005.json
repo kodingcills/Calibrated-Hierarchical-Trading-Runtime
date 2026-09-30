@@ -5,7 +5,8 @@
     "TUP-NASDAQ-LARGETICK-H2H3-MICRO-AGG",
     "TUP-CBOEBZX-LARGETICK-H2H3-SPREADCAP-PAS",
     "TUP-USSTOCK-XVENUE-H1-STALEQUOTE-AGG",
-    "TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG"
+    "TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG",
+    "TUP-NASDAQ-CLOSE-H4-LATENOII-AGG"
   ],
   "affected_gates": "KG3_EXECUTION",
   "blocker_id": "UNK-0005",
@@ -34,7 +35,7 @@
   "known_source_ids": [
     "SRC-0114"
   ],
-  "last_updated": "2026-09-29T17:15:14Z",
+  "last_updated": "2026-09-29T22:20:27Z",
   "parent_issue_id": null,
   "priority_reason": "M1-BLOCKING retained: known costs are Tier-1 killers.",
   "priority_score": null,

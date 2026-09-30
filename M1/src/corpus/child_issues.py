@@ -36,7 +36,7 @@ COLUMNS = [
 ]
 
 _NASDAQ_ROWS = ("TUP-NASDAQ-LARGETICK-H2-QIMB-AGG|TUP-NASDAQ-LARGETICK-H2H3-MICRO-AGG|"
-                "TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG")
+                "TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG|TUP-NASDAQ-CLOSE-H4-LATENOII-AGG")
 _CME_ROWS = ("TUP-CME-ES-H1-QDEP-PAS|TUP-CME-ES-H3-OFI-AGG|TUP-CME-NQ-H3-OFI-AGG|"
              "TUP-CME-TSY-H2-QREPL-MIX|TUP-CME-WTI-H4-FLOWVOL-AGG")
 _CRYPTO_ROWS = ("TUP-COINBASE-BTCUSD-H3-MICROOFI-AGG|TUP-KRAKEN-BTCUSD-H3-MICROOFI-AGG|"
@@ -193,12 +193,20 @@ CHILD_ISSUES = [
          "not a precondition for KG1.",
          _NASDAQ_ROWS + "|TUP-CBOEBZX-LARGETICK-H2H3-SPREADCAP-PAS"),
     _row("UNK-0009-ECON-CME-MEASURED", "UNK-0009",
-         "After-cost replication on CME once the cost schedule and matching rule are known.",
-         "No CME fee value is verified; the public fee search is exhausted (patch P-0003).",
-         "Execution-aware replication after the cost configuration is locked.",
-         "Whether the CME branch is profitable (M2).",
+         "CME after-cost replication, including the gate before shadow/micro-live that requires "
+         "the exact account-level broker/FCM/commission schedule.",
+         "No CME fee value is verified; the public fee search is exhausted (patch P-0003), so the "
+         "exact account-level schedule is UNKNOWN. Nothing here asserts that it has been obtained.",
+         "The exact broker/FCM/account-level all-in schedule for the intended account type, "
+         "registered as an immutable cost configuration before any shadow or micro-live run; at "
+         "this gate a parameter value is not a substitute for the schedule.",
+         "Whether the CME branch is profitable, and whether shadow/micro-live may start at all.",
          "EMPIRICAL_MEASUREMENT", "M2_MEASUREMENT", 4, "MEDIUM", "LOW", "LARGE",
-         "Split from UNK-0009 and parked at M2: it cannot start before the M1 cost items close.",
+         "Corrected by DECISIONS D-0042: exact broker/FCM/account costs are demanded here rather "
+         "than before the gross-materiality precursor. The precursor runs on the verified "
+         "structural cost C0 plus a parameterized unresolved cost C1 (UNK-0001) and reports the "
+         "break-even residual C*; shadow/micro-live still requires the exact schedule, because "
+         "realized execution economics cannot be measured against a parameter.",
          _CME_ROWS),
 
     # ------------------------------------------------------------- UNK-0023 source integrity
@@ -297,14 +305,24 @@ CHILD_ISSUES = [
          "TUP-CME-TSY-H2-QREPL-MIX|TUP-CME-WTI-H4-FLOWVOL-AGG", severity="IMPORTANT"),
     _row("UNK-0027-AUCTION", "UNK-0027",
          "Exact mechanism and contract for the Nasdaq closing-auction branch.",
-         "The row names closing-auction imbalance on Nasdaq-listed stocks but fixes neither the "
-         "symbol set nor the auction order type it would place.",
-         "A universe rule for the auction branch plus the exact auction order type.",
-         "KG5 for the auction row.",
+         "The broad ANYCAP row fixes neither the symbol set nor the auction order type it would "
+         "place, which is why it was deprioritised. The narrowed reformulation "
+         "`TUP-NASDAQ-CLOSE-H4-LATENOII-AGG` now declares its unit of analysis in RESOL-001 as the "
+         "signed NOII imbalance change 15:50->15:55 ET against Closing Cross displacement, over "
+         "the same-day TotalView-ITCH Stock Directory universe. Two gaps remain: no approved "
+         "universe-rule spec artifact exists under M1/hypotheses/candidate_specs/ for "
+         "NASDAQ-CLOSING-CROSS-PIT-STOCK-DIRECTORY-v1 (the rule is declared, not approved), and "
+         "the order type it would actually place (a Market-On-Close order, not a Limit-On-Close) "
+         "is deferred to a separately authorized later test.",
+         "An approved, machine-readable spec artifact for the closing-cross Stock Directory "
+         "universe rule with its anti-leakage controls, plus a decision on whether the auction "
+         "order type is exercised or left out of scope.",
+         "KG5/KG2 for the auction branch: the declaration is not yet a canonically approved rule.",
          "PUBLIC_RESEARCH", "M1_BLOCKING", 1, "ONE", "MEDIUM", "MEDIUM",
-         "Scoped child; the auction universe can reuse the large-tick rule's structure once the "
-         "mechanism gate resolves.",
-         "TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG", venue="VEN-NASDAQ-AUCTION", severity="IMPORTANT"),
+         "Scoped child; the auction universe is declared by the frozen reformulation and needs "
+         "the same approval path the large-tick rule took.",
+         "TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG|TUP-NASDAQ-CLOSE-H4-LATENOII-AGG",
+         venue="VEN-NASDAQ-AUCTION", severity="IMPORTANT"),
     _row("UNK-0027-OPTIONS-EVENT-FX", "UNK-0027",
          "Exact instrument specification for the options, crypto-option, event-market and FX "
          "branches.",

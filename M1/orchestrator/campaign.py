@@ -133,7 +133,9 @@ def _external_actions(candidates: list[dict[str, str]], reselection: dict) -> li
         "Can the exact ES account, historical sample, and mechanism prerequisites be supplied?",
         "whether ES can move from conditional frontier to an authorized experiment",
         "CRITICAL", "HIGH", "LOW", "HIGH", "NONE",
-        ["operator/account classification", "exact ES data path", "account-level cost schedule"],
+        ["operator/account classification", "exact ES data path",
+         "verified structural cost C0 and a declared unresolved cost C1 parameterization",
+         "exact account-level cost schedule (gate before shadow/micro-live, not before the gross precursor)"],
         True, ["external operator/account and data authorization"], "EXTERNAL",
         "request_contract_check", "DERIVED", "BLOCKED_EXTERNAL")]
 
@@ -274,9 +276,9 @@ def _execute(action: dict, frontier: dict) -> dict:
     elif action["action_id"] == "ACT-E01-ES-MINIMUM-PRECURSOR":
         spec = _read_json(WORK / "reselection_specs" / "TUP-CME-ES-H3-OFI-AGG.json")
         result.update({
-            "result": "Minimum ES contract preserved: exact contract, roll rule, event/trade sample, sequence numbers, exchange timestamps, security definitions, clock semantics, account path and all-in cost.",
+            "result": "Minimum ES contract preserved: exact contract, roll rule, event/trade sample, sequence numbers, exchange timestamps, security definitions, clock semantics, and the corrected friction comparator (verified structural cost C0 + parameterized unresolved cost C1, unknown never zero, reported as the break-even residual cost C*). Exact account-level cost is a later gate before shadow/micro-live (D-0042).",
             "evidence_produced": ["M1/work/reselection_specs/TUP-CME-ES-H3-OFI-AGG.json"],
-            "verification": "PASS: required/data/outcome/friction/null/kill/continuation fields retained; no values imputed.",
+            "verification": "PASS: required/data/outcome/friction/null/kill/continuation fields retained; account-cost gate and methodology correction recorded; no values imputed.",
             "decision_changed": False,
             "spec_field_counts": {k: len(v) if isinstance(v, list) else 1 for k, v in spec.items()},
         })

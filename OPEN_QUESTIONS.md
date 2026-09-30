@@ -22,15 +22,15 @@ Open questions: 16
 
 ## OQ-0002 - priority CRITICAL
 
-**What is the project-level all-in per-contract cost for the CME candidates?**
+**What is the verified structural cost C0 for the CME candidates, and what unresolved cost C1 range applies?**
 
 - why it matters: It decides whether any CME tuple can survive aggressive execution.
 - workstream: Venue economics
 - answer required before gate: M1-B
 - search status: not_started
 - current best answer: UNKNOWN: only CME market-data architecture was verified.
-- unresolved gap: No account-path fee schedule.
-- next search: Obtain FCM/broker schedule for the intended account and register it as an immutable M2 cost configuration.
+- unresolved gap: No C0 fee schedule and no declared C1 range.
+- next search: Obtain the published CME/clearing schedule for the exact contract (C0) and declare the C1 parameter range used by the gross precursor; the exact account-level schedule is registered separately as the pre-shadow gate (D-0042).
 - related issues: UNK-0001|UNK-0028
 - legacy id: None
 

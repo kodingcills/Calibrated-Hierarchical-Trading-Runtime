@@ -98,7 +98,14 @@ def add(candidate_id, candidate_class, instrument, venue_id, horizon_band, mecha
         execution_style, required_data, competitive_vector, observability_status,
         persistence_status, technology_status, gates, overall_status, status_basis,
         blocking_issue_ids, report_row_ref, kill_gate=UNKNOWN, kill_reason=UNKNOWN,
-        resurrection_condition=UNKNOWN, notes=UNKNOWN):
+        resurrection_condition=UNKNOWN, notes=UNKNOWN, status_source_id="SRC-0011"):
+    """Register a candidate row.
+
+    ``status_source_id`` names what the *status* rests on. It defaults to SRC-0011 because that
+    ledger is where the M1-A labels come from; a row registered after that pass states its own
+    provenance (or UNKNOWN when no source artifact carries the status) rather than borrowing the
+    ledger's authority.
+    """
     kg1, kg2, kg3, kg4, kg5 = gates
     ROWS.append(dict(
         candidate_id=candidate_id,
@@ -119,7 +126,7 @@ def add(candidate_id, candidate_class, instrument, venue_id, horizon_band, mecha
         KG4_HALF_LIFE=kg4,
         KG5_FALSIFIABILITY=kg5,
         overall_status=overall_status,
-        status_source_id="SRC-0011",
+        status_source_id=status_source_id,
         status_basis=status_basis,
         blocking_issue_ids=blocking_issue_ids,
         kill_gate=kill_gate,
@@ -340,6 +347,55 @@ add("TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG", "TUPLE", "U.S. listed stock (closing auc
     "historical NOII source, auction fees and order-type replication are unresolved.",
     "UNK-0004|UNK-0006|UNK-0009|UNK-0020|UNK-0027",
     "SRC-0011 tuple ledger row 8")
+
+# The narrowed closing-auction formulation, registered as its own row (DECISIONS D-0041). The
+# broad ANYCAP row above named neither a universe nor an auction order type and was deprioritised
+# on exactly that ground (.research/ROUND3_FOLLOWUP.json); the frozen reformulation in
+# M1/work/reselection_specs/TUP-NASDAQ-CLOSING-AUCTION-LATE-NOII.json fixes both. A narrowed
+# mechanism is registered as a new candidate rather than as a mode change on the old row (D-0020),
+# so ancestry is recorded here and the old row keeps its own recorded verdict untouched.
+add("TUP-NASDAQ-CLOSE-H4-LATENOII-AGG", "TUPLE",
+    "U.S. listed stock in the Nasdaq Closing Cross (same-day TotalView-ITCH Stock Directory "
+    "universe)",
+    "VEN-NASDAQ-AUCTION", "H4", "MECH-AUCTIONIMB", "AUCTION",
+    "Raw TotalView-ITCH 5.0 captures for one regular month or 20 consecutive sessions covering "
+    "the daily Stock Directory spin and 15:49:50-16:00:10 ET for all symbols: NOII I messages with "
+    "Cross Type C, Cross Trade Q prints, nanosecond exchange timestamps, feed sequence/packet "
+    "identifiers and gap/retransmission metadata",
+    "The imbalance is publicly disseminated, so persistence must come from risk, capacity or "
+    "mandate constraints rather than information exclusivity (EVD-0022)",
+    "PASS", "UNKNOWN", "PHYSICALLY_PLAUSIBLE_ONLY", (_B, _B, _B, _B, _P), "UNKNOWN",
+    "Registered 2026-09-29 by the operator-authorized narrow reformulation (DECISIONS D-0041) and "
+    "blocked pending admission: the frozen formulation (RESOL-001: signed NOII imbalance change "
+    "15:50->15:55 ET against Closing Cross displacement, point-in-time Stock Directory universe) "
+    "is specifiable, but the historical ITCH/NOII sample, its timestamp semantics, the fee tier "
+    "and the universe rule's approved spec artifact are all unresolved. No net-edge evidence "
+    "exists and no gate is passed on admission grounds; the row inherits none of the broad "
+    "formulation's verdict and must clear its own admission.",
+    "UNK-0004|UNK-0005|UNK-0006|UNK-0018|UNK-0020|UNK-0027",
+    "M1/work/reselection_specs/TUP-NASDAQ-CLOSING-AUCTION-LATE-NOII.json (RESOL-001)",
+    status_source_id=UNKNOWN,
+    notes="Ancestry: descended_from=TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG; "
+          "relation=NARROW_REFORMULATION. The parent row stays registered as the historical "
+          "provenance of the broad ANYCAP/unspecified-order-type formulation and keeps its own "
+          "recorded verdict: this row neither inherits nor revives it, and it was not created by "
+          "a resurrection decision (D-0011 does not apply - the parent is not in the dead "
+          "ledger). KG5 is a computability verdict only: the frozen formulation fixes the "
+          "signal, the outcome, the null and the kill rule before any result is seen, which is "
+          "what KG5 asks. It is not an admission, and the universe rule "
+          "NASDAQ-CLOSING-CROSS-PIT-STOCK-DIRECTORY-v1 is declared in the reselection spec but "
+          "has no approved spec artifact under M1/hypotheses/candidate_specs/, so the unit of "
+          "analysis is not yet canonically approved. Auction-specific fee treatment is NOT "
+          "concluded here: VEN-NASDAQ-AUCTION carries no verified fee value, so the execution "
+          "envelope stays UNKNOWN and no cost conclusion is asserted. Identifier note: the "
+          "mechanism slot carries the signal variant (LATENOII) as several registered rows do "
+          "(MICROOFI, QUEUEPOS, L1ONLY); the mechanism column is MECH-AUCTIONIMB. Cleared "
+          "blockers for the broad formulation are not inherited as passes: any item this row "
+          "needs is registered against this row. No separate data-feasibility assessment is "
+          "authored for this row, so KG2 reports a missing assessment rather than a verdict; the "
+          "data path itself is the parent's, whose authored assessment stands at "
+          "M1/data/data_feasibility.csv (Nasdaq auction row) and likewise records the historical "
+          "product as unverified.")
 
 # ---------------------------------------------------------------- Cboe equity
 add("TUP-CBOEBZX-LARGETICK-H2H3-SPREADCAP-PAS", "TUPLE",

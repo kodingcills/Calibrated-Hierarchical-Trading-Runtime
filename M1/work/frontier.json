@@ -63,7 +63,7 @@
     ]
   },
   "gate_eligible_candidates": [],
-  "generated_at": "2026-09-29T17:15:14Z",
+  "generated_at": "2026-09-29T22:20:27Z",
   "items": [
     {
       "affected_candidates": [
@@ -171,7 +171,8 @@
       "affected_candidates": [
         "TUP-NASDAQ-LARGETICK-H2-QIMB-AGG",
         "TUP-NASDAQ-LARGETICK-H2H3-MICRO-AGG",
-        "TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG"
+        "TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG",
+        "TUP-NASDAQ-CLOSE-H4-LATENOII-AGG"
       ],
       "affected_gates": "NONE",
       "blocker_id": "UNK-0018-NASDAQ",
@@ -437,7 +438,8 @@
         "TUP-NASDAQ-LARGETICK-H2H3-MICRO-AGG",
         "TUP-CBOEBZX-LARGETICK-H2H3-SPREADCAP-PAS",
         "TUP-USSTOCK-XVENUE-H1-STALEQUOTE-AGG",
-        "TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG"
+        "TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG",
+        "TUP-NASDAQ-CLOSE-H4-LATENOII-AGG"
       ],
       "affected_gates": "KG3_EXECUTION",
       "blocker_id": "UNK-0005",
@@ -526,18 +528,19 @@
     },
     {
       "affected_candidates": [
-        "TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG"
+        "TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG",
+        "TUP-NASDAQ-CLOSE-H4-LATENOII-AGG"
       ],
       "affected_gates": "NONE",
       "blocker_id": "UNK-0027-AUCTION",
-      "decision_prevented": "KG5 for the auction row.",
-      "kill_condition": "KG5 for the auction row.",
-      "priority_reason": "Scoped child; the auction universe can reuse the large-tick rule's structure once the mechanism gate resolves.",
+      "decision_prevented": "KG5/KG2 for the auction branch: the declaration is not yet a canonically approved rule.",
+      "kill_condition": "KG5/KG2 for the auction branch: the declaration is not yet a canonically approved rule.",
+      "priority_reason": "Scoped child; the auction universe is declared by the frozen reformulation and needs the same approval path the large-tick rule took.",
       "priority_score": 4.0,
       "resolution_method": "PUBLIC_RESEARCH",
       "resolution_stage": "M1_BLOCKING",
       "status": "OPEN",
-      "success_condition": "A universe rule for the auction branch plus the exact auction order type.",
+      "success_condition": "An approved, machine-readable spec artifact for the closing-cross Stock Directory universe rule with its anti-leakage controls, plus a decision on whether the auction order type is exercised or left out of scope.",
       "tier": 1,
       "title": "Exact mechanism and contract for the Nasdaq closing-auction branch."
     },

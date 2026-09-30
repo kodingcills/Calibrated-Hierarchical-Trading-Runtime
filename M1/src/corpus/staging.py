@@ -61,13 +61,26 @@ COLUMNS = [
 #  acceptable_evidence, disallowed_evidence, success_condition, kill_condition, reason)
 _T = [
     ("UNK-0001", "EXTERNAL_ACTION", "M1_BLOCKING", 3, "SMALL", "HIGH", "MEDIUM",
-     "Exact project-level CME all-in execution cost",
-     "Per-contract exchange, clearing and commission cost for the exact account path",
-     "Broker/FCM schedule plus published CME and clearing fee pages, dated",
-     "An assumed or industry-typical per-contract cost; a member rate applied to a non-member path",
-     "A dated all-in cost per contract for the intended account type",
-     "Verified all-in cost implies the hypothesised gross effect cannot cover round-trip cost",
-     "M1-BLOCKING retained: a known mandatory cost is a cheap killer and cannot be deferred."),
+     "CME execution-cost components on the gross-precursor path (verified structural C0)",
+     "The verified structural cost C0 for the exact contract path (published exchange and "
+     "clearing fees and mandatory venue fees) plus a declared parameterization of the unresolved "
+     "cost C1 covering broker/FCM commission, spread and account-specific components, with C1 "
+     "carried as an unknown-valued parameter and never as zero",
+     "Published CME and clearing fee pages for the exact product, dated, plus a written "
+     "declaration of the C1 parameter range used by the gross precursor",
+     "An assumed or industry-typical per-contract cost presented as verified; a member rate "
+     "applied to a non-member path; a zero, midpoint or industry default substituted for C1",
+     "C0 verified from primary schedules and C1 declared as an explicit parameter, so the gross "
+     "precursor reports the break-even residual cost C* rather than net edge; the exact "
+     "broker/FCM/account-level all-in schedule is a later gate (UNK-0009-ECON-CME-MEASURED)",
+     "Verified structural cost C0 implies the hypothesised gross effect cannot cover C0 alone, "
+     "which is a cheap killer that survives the correction",
+     "Corrected by DECISIONS D-0042: the M1 obligation is verified structural cost C0 plus a "
+     "parameterized unresolved cost C1 (unknown never zero), which is what the gross-materiality "
+     "precursor needs. Exact account-level broker/FCM cost moved to the gate before "
+     "shadow/micro-live and is tracked on UNK-0009-ECON-CME-MEASURED; mandatory fees, timestamps "
+     "and execution realism are unchanged. Still M1-BLOCKING: a known mandatory cost is a cheap "
+     "killer and cannot be deferred."),
 
     ("UNK-0002", "PUBLIC_RESEARCH", "M1_BLOCKING", 1, "SMALL", "HIGH", "SMALL",
      "Exact CME matching/allocation rule per candidate contract",

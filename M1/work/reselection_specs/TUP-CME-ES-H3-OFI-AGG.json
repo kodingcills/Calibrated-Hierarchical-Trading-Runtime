@@ -3,7 +3,7 @@
   "status": "EXTERNAL_BLOCKED_NOT_AUTHORIZED",
   "candidate_id": "TUP-CME-ES-H3-OFI-AGG",
   "mechanism": "Signed order-flow imbalance: causal aggressive signed flow relative to contemporaneous executable ES liquidity, defined before outcome inspection.",
-  "decision_question": "Does the causal H3 signal have gross displacement of the same order as exact all-in round-trip friction before any execution model or strategy evaluation?",
+  "decision_question": "Does the causal H3 signal have gross displacement that exceeds the verified structural cost C0, and what unresolved cost C* would erase it, before any execution model or strategy evaluation?",
   "data": {
     "required": ["one exact ES contract", "pre-registered roll rule", "historical event/trade sample", "sequence numbers", "exchange timestamps", "security definitions", "validated clock semantics"],
     "ownership": "EXTERNAL_REQUIRED",
@@ -11,13 +11,22 @@
   },
   "causal_state": "Only messages and book/trade state available at the decision timestamp; no future messages, ex-post selection, oracle, or ML feature.",
   "outcome": "Side-signed midpoint or executable-price markout at fixed pre-registered H3 delays, with coverage and confidence intervals.",
-  "friction_comparator": "Exact account-level exchange, clearing, FCM/commission, spread and declared execution-cost floor; no generic or industry-imputed values.",
+  "friction_comparator": "Verified structural cost C0 (published exchange, clearing and mandatory venue fees for the named contract, priced for the candidate's execution style) plus a parameterized unresolved cost C1 covering broker/FCM/commission, spread and other account-specific components. C1 is declared as an explicit parameter with a stated range before the run and is never treated as zero; the precursor reports the break-even residual C* (the admissible unresolved cost at which the gross displacement vanishes). No generic or industry-imputed value may be substituted for C0 or hidden inside C1. Exact account-level broker/FCM cost is NOT required before this precursor: it is the gate before shadow/micro-live (UNK-0009-ECON-CME-MEASURED).",
   "null": "No conditional displacement beyond the unconditional signed markout, and no economically material difference from the predeclared null state.",
-  "primary_metric": "Pooled gross markout divided by the exact round-trip cost floor, with cost ledger and horizons fixed before result inspection.",
-  "kill_criterion": "Pre-registered pooled ratio below the project's admission bar, or non-positive gross markout after the declared comparator. The numerical bar must be fixed before data inspection in the successor run.",
-  "continuation_criterion": "Causally valid positive gross headroom over the declared comparator with adequate coverage and no timestamp, identity, or leakage failure; authorizes only a true M2 feasibility run.",
+  "primary_metric": "Pooled gross markout less verified structural cost C0, reported against the declared C1 parameter range, with the break-even residual cost C* as the headline comparison; cost ledger, C1 range and horizons fixed before result inspection.",
+  "kill_criterion": "Pre-registered pooled gross markout below C0 alone, or a break-even residual cost C* that is smaller than the lower bound of the declared C1 range, or a ratio below the project's admission bar; that bar and the C1 range must be fixed before data inspection in the successor run.",
+  "continuation_criterion": "Causally valid positive gross headroom over C0 with a break-even residual cost C* that survives the declared C1 range and adequate coverage, and no timestamp, identity, or leakage failure; authorizes only a true M2 feasibility run, not execution.",
+  "account_cost_gate": "The exact account-level broker/FCM/commission schedule for the intended account type is a mandatory gate before any shadow or micro-live run (UNK-0009-ECON-CME-MEASURED). A parameter value is not a substitute at that gate: realized execution economics cannot be measured against a parameter.",
+  "methodology_correction": {
+    "decision": "DECISIONS D-0042",
+    "date": "2026-09-29",
+    "replaces": "exact account-level all-in cost required before the gross-materiality precursor",
+    "with": "causal admitted data + verified structural cost C0 + parameterized unresolved cost C1 (unknown never zero) + break-even residual cost C*",
+    "unchanged": ["causal timestamps and ordering", "instrument and identity discipline", "historical completeness and gap handling", "venue mechanics", "mandatory fees and clearing charges as verified facts", "execution realism"],
+    "note": "A methodology-stage correction, not a weakening of execution economics. No gate is passed, no data is admitted and no cost is verified by this correction."
+  },
   "prohibited_post_result_tuning": ["contract", "horizon", "OFI bins", "universe", "roll rule", "cost tier", "side convention", "threshold", "state selection", "oracle", "ML feature"],
   "stopping_condition": "Stop after the fixed sample, state space and horizons are evaluated, or immediately if timestamp/identity validation fails. Do not run full M2 strategy evaluation as part of reselection.",
-  "external_prerequisites": ["operator jurisdiction/entity and intended account class", "CME data/sample access path", "exact account-level all-in cost schedule"],
+  "external_prerequisites": ["operator jurisdiction/entity and intended account class", "CME data/sample access path", "verified structural cost C0 schedule for the named contract (published exchange, clearing and mandatory venue fees)", "declared parameterization of the unresolved cost C1 with its stated range (unknown never zero)"],
   "traceability": ["PROJECT_STATE.md", "M1/output/M1_D0_READINESS.md", "M1/output/blocker_priority.csv", "M1/data/evidence_ledger.csv", "M1/data/data_feasibility.csv"]
 }

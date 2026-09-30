@@ -246,8 +246,12 @@ def apply_computed_gates(candidates, computed, generated_at, recorded_kills=()):
                                    "comparison (not a profitability claim).")
         else:
             row["overall_status"] = cand["overall_status"]
+            # Only an M1-A ledger row may claim that artifact as its status provenance; a row
+            # registered afterwards states its own basis instead of borrowing the ledger's.
+            provenance = ("M1-A label preserved" if cand["status_source_id"] == "SRC-0011"
+                          else "registered status preserved (no M1-A ledger row)")
             row["status_basis"] = (
-                f"Computed gates: BLOCKED on {', '.join(blocks)}. M1-A label preserved "
+                f"Computed gates: BLOCKED on {', '.join(blocks)}. {provenance} "
                 f"({cand['overall_status']}); the ceiling forbids ALIVE while a gate is BLOCKED.")
         row["gate_recompute_date"] = generated_at
         out.append(row)

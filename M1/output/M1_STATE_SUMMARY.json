@@ -1,35 +1,35 @@
 {
   "artifact_hashes": {
     "M1/data/assumptions.csv": "889130b825b131953423600ea3db823d4b43e669de4a50e7592e5b3b6f6574df",
-    "M1/data/candidate_tuples.csv": "4425dec89a99529d681adecd99d122b09c4b2464843234a7e66a26c805d2977c",
+    "M1/data/candidate_tuples.csv": "72f49ccbb8da31071eba1382a67f489c3381444ad8129f44fcf6209fee40ab1a",
     "M1/data/data_feasibility.csv": "d254d47b36c6b5163ed45751c524296c0a99d398432358407bee17142f910617",
     "M1/data/dead_candidates.csv": "d59023eff479b174ffb0fc735e7865579084859ca52a7fb246e6bbd642f60eb1",
-    "M1/data/discrepancies.csv": "27c444c3331decb4d051538cf914b254df89e8b9955f89dbcfa5a3ea2c79e3c3",
+    "M1/data/discrepancies.csv": "a6b4cff1a2c92a3d987c2bbe69a1f1f874c05d290b62fc978d8576eff8df14b9",
     "M1/data/evidence_ledger.csv": "a2d6ac1d50ae933a295413d5c3fd2150b4b76aac25d10623ee948fb21860e87c",
-    "M1/data/execution_envelopes.csv": "a3b81fe3ddeb671ef8b9ca5fecca001104cda772d38227fc6c072144652feddc",
-    "M1/data/experiments.csv": "c8c5d138f32650894483644151b887be59f723fcd89e8752080524f4862fe395",
+    "M1/data/execution_envelopes.csv": "8946607791f68c4ea05ac167dbab6ab1ee2cdf8b40c354fa32acfe9aae33d024",
+    "M1/data/experiments.csv": "b206409600430ff3b8019904cef12c6ae5a90aa5d976098c5946e2a64006dc15",
     "M1/data/hypotheses.csv": "ee92222d16873a55560827435d7c24748dd9c0445b0d9492a5625259be88c9e6",
-    "M1/data/kill_gates.csv": "5f23222576c1c4f60455c12ddd935a284a7b62a0be4575605e4b920af0b1ca73",
+    "M1/data/kill_gates.csv": "f589c5916f707ebd06274b48e27b658d1280072a9bd8957d92f628f3e0d0fefe",
     "M1/data/mechanisms.csv": "cdcc25bb7ef3ca612ffec5ba8e8e4bc32d5c16b1bc2c604a605cb2c289f85bbd",
-    "M1/data/open_questions.csv": "e2b4dc73312001444da97428c156595931201f9755aeec922f522a3546621677",
+    "M1/data/open_questions.csv": "3ee99f02f2f99cad62447e997458624f8c8e7a61f1a28e99e9687bee4a9ed614",
     "M1/data/source_registry.csv": "9f1446325a04e6366ac5c4717553607c43a90e51c0be1ad39cd4c6a3e5f7f396",
     "M1/data/technology_fit.csv": "8997ee6e17d2944643c0516e73739f30df9e705f27af4fc8690beedd9dec0c84",
     "M1/data/venue_facts.csv": "03b633734b007adb3afdb01b9612a965e0986a4d493d5b174be8146e5ea06917",
-    "M1/output/blocker_priority.csv": "b86c165c08ca52890674f17f2aab26c43475c99c99eb280a288a88906a5c0364",
-    "M1/output/candidate_closure_metrics.csv": "7161ec632d80401592847af265a3fef47f1904f548a40e2f8ab31e136bff883c",
-    "M1/output/candidate_gate_status.csv": "938d2b5855b6ba313f97e82697d74d07ca6affe80776b9965bf90c5517c781e3",
-    "M1/output/cost_envelopes.csv": "a3b81fe3ddeb671ef8b9ca5fecca001104cda772d38227fc6c072144652feddc",
+    "M1/output/blocker_priority.csv": "1564fa54a0aea62df177c63a22b46d18bfac02d714875f70ca18186a3c4a9d79",
+    "M1/output/candidate_closure_metrics.csv": "2f86f437e69e3b944d65b25cebe60f7f9b427290279ae7c2a8c724a8f0c0f766",
+    "M1/output/candidate_gate_status.csv": "a1ff67a834ac9aabb5597968d7e82f403846d837ea8a75af64a678d8ffc6ed37",
+    "M1/output/cost_envelopes.csv": "8946607791f68c4ea05ac167dbab6ab1ee2cdf8b40c354fa32acfe9aae33d024",
     "M1/output/data_feasibility_verdicts.csv": "625fd9fcb2dd1f980daa743b040d8ebbba3c7519fe861c888b5f50bb72138b01",
-    "M1/output/dominated_candidates.csv": "092dabc20ce08999f33503f943204e84bf643081e87700ee5d12ccaf00ff8a0f",
-    "M1/output/evidence_coverage.csv": "7dd09f0e3dbe60e93c592b9374c9a278184131d647c9e763e2b6fb8a91c01ad4",
-    "M1/output/gate_rule_trace.csv": "6a12a4dff45e36367ffcf1ed67d24bd18e6bf4bf626606ae8403c7820f4a1390",
+    "M1/output/dominated_candidates.csv": "188715a5f0d675ea20d74bcdd755e57a03204a52861102fb8ac1b89a26838add",
+    "M1/output/evidence_coverage.csv": "c860c0255d2073d4bdaeb604186770e31f90738cf4fc31d3dff2c11932c64a0b",
+    "M1/output/gate_rule_trace.csv": "bb822a2f64854c0ca951596d1b70975cc579873e0619beb1fa46de111288f41e",
     "M1/output/hard_constraint_eliminations.csv": "1c2af219234e03ed4bab39bf868354bc3494c65d9fe77d70d532d0aca8ed8a9a",
-    "M1/output/hard_constraint_survivors.csv": "e107c37cb576d039c256c257494b9ab6dc1b1aa8a2482d26ad4cb27da0d00a2d",
-    "M1/output/issue_migration.csv": "1e268df4a88d56dca66a379bddd74fb1e73afe5324ebc170fa6936fb4ae627e8",
+    "M1/output/hard_constraint_survivors.csv": "366fec35cb0262027bc41dcb390d49d0ed24a07cf6fa5ace9f2cb63d338efb76",
+    "M1/output/issue_migration.csv": "8924b3ae13cbd6163097f4f823cca4e3cf5c473489e3303613dd386d6c906ce5",
     "M1/output/kill_supersessions.csv": "de912baa9e0707a2286271d8a062f4f355978cf233e15128cd73be8b79619096",
-    "M1/output/latency_feasibility.csv": "7ee7db38ab00ca0c68abb3ffc1b97e1475bba9a35f6b3aeb3603072b7d34a516",
-    "M1/output/non_frontier_issues.csv": "79a86ea1b1f65409cb66f46db40b347719746cb179edae696675d3a76e98b41f",
-    "M1/output/status_derivation_review.csv": "754e3c3c87e95bbacc8b116cdc91834ce7a6eb121a25578dbd383a1040605d92",
+    "M1/output/latency_feasibility.csv": "3cc448309a72f4b352034c134b9536d5dd2781499f32440aecdd557a01e46df1",
+    "M1/output/non_frontier_issues.csv": "d52fb1bbb4b5471de61e1b7d4fd5bfdf8a48b9469229b4718928ffffe254ae02",
+    "M1/output/status_derivation_review.csv": "106dd700a6e6fae53fe6f6b5c2b27cb21aeadf036edf0e3ec32d244ea3040d69",
     "M1/output/venue_cost_reference.csv": "f74ae22b5ea53e936114f0f3413d7307df7a5e8adb51bb023ffa402aac4d14f0"
   },
   "closure_bundles": [
@@ -38,7 +38,7 @@
   "closure_modes": {
     "AWAITING_EXTERNAL_CLOSURE": 1,
     "BLOCKED_NOT_CLOSE": 4,
-    "DISPATCHABLE": 19
+    "DISPATCHABLE": 20
   },
   "counts": {
     "assumptions": 29,
@@ -46,13 +46,13 @@
       "TUP-NASDAQ-LARGETICK-H2-QIMB-AGG"
     ],
     "blocking_issues": 35,
-    "candidate_rows": 29,
+    "candidate_rows": 30,
     "ceiling_violations": 0,
     "closure_bundles": 1,
     "closure_modes": {
       "AWAITING_EXTERNAL_CLOSURE": 1,
       "BLOCKED_NOT_CLOSE": 4,
-      "DISPATCHABLE": 19
+      "DISPATCHABLE": 20
     },
     "computed_gate_kills": 7,
     "discrepancies": 56,
@@ -63,7 +63,7 @@
     "frontier_items": 27,
     "gate_eligible": 0,
     "hard_constraint_eliminations": 7,
-    "hard_constraint_survivors": 22,
+    "hard_constraint_survivors": 23,
     "hypotheses_registered": 0,
     "m1b_eligible": [],
     "m2_specs": 7,
@@ -78,17 +78,17 @@
     "status": {
       "ALIVE": 0,
       "DEAD": 10,
-      "UNKNOWN": 16,
+      "UNKNOWN": 17,
       "WEAK": 3,
-      "total": 29
+      "total": 30
     },
     "status_by_class": {
       "ALL": {
         "ALIVE": 0,
         "DEAD": 10,
-        "UNKNOWN": 16,
+        "UNKNOWN": 17,
         "WEAK": 3,
-        "total": 29
+        "total": 30
       },
       "GOVERNANCE": {
         "ALIVE": 0,
@@ -114,9 +114,9 @@
       "TUPLE": {
         "ALIVE": 0,
         "DEAD": 5,
-        "UNKNOWN": 16,
+        "UNKNOWN": 17,
         "WEAK": 3,
-        "total": 24
+        "total": 25
       },
       "UNIVERSE_DEFINITION": {
         "ALIVE": 0,
@@ -126,7 +126,7 @@
         "total": 2
       }
     },
-    "tradable_tuples": 24,
+    "tradable_tuples": 25,
     "venue_rows": 19
   },
   "external_requests": [
@@ -137,7 +137,7 @@
       "title": "Historical and live feed timestamp semantics"
     },
     {
-      "affected": 3,
+      "affected": 4,
       "blocker_id": "UNK-0018-NASDAQ",
       "priority_score": 18.0,
       "title": "Timestamp semantics for Nasdaq order-level history and the live TotalView feed: event vers"
@@ -167,13 +167,13 @@
       "title": "Capital requirement, margin and account/tier eligibility"
     },
     {
-      "affected": 4,
+      "affected": 5,
       "blocker_id": "UNK-0004",
       "priority_score": 9.0,
       "title": "US equity historical order-level depth procurement"
     },
     {
-      "affected": 5,
+      "affected": 6,
       "blocker_id": "UNK-0005",
       "priority_score": 9.0,
       "title": "US equity fee tier and routing economics for this project"
@@ -182,7 +182,7 @@
       "affected": 5,
       "blocker_id": "UNK-0001",
       "priority_score": 6.0,
-      "title": "Exact project-level CME all-in execution cost"
+      "title": "CME execution-cost components on the gross-precursor path (verified structural C0)"
     },
     {
       "affected": 5,
@@ -217,32 +217,32 @@
   ],
   "gate_counts": {
     "KG1_MECHANISM": {
-      "BLOCKED": 26,
+      "BLOCKED": 27,
       "FAIL": 2,
       "PASS": 1
     },
     "KG2_DATA": {
-      "BLOCKED": 27,
+      "BLOCKED": 28,
       "FAIL": 2,
       "PASS": 0
     },
     "KG3_EXECUTION": {
-      "BLOCKED": 27,
+      "BLOCKED": 28,
       "FAIL": 2,
       "PASS": 0
     },
     "KG4_HALF_LIFE": {
-      "BLOCKED": 27,
+      "BLOCKED": 28,
       "FAIL": 1,
       "PASS": 1
     },
     "KG5_FALSIFIABILITY": {
       "BLOCKED": 14,
       "FAIL": 5,
-      "PASS": 10
+      "PASS": 11
     }
   },
-  "generated_at": "2026-09-29T17:15:14Z",
+  "generated_at": "2026-09-29T22:20:27Z",
   "generated_by": "M1/src/materialize.py",
   "m2_specs": [
     {
@@ -253,28 +253,28 @@
       "stage": "POST_M2"
     },
     {
-      "candidates": 24,
+      "candidates": 25,
       "complexity": "SHARED_HARNESS",
       "path": "M1/work/m2_specs/COST_SENSITIVITY.md",
       "spec_id": "COST_SENSITIVITY",
       "stage": "M2_MEASUREMENT"
     },
     {
-      "candidates": 24,
+      "candidates": 25,
       "complexity": "SHARED_HARNESS",
       "path": "M1/work/m2_specs/EV_DELAY_SWEEP.md",
       "spec_id": "EV_DELAY_SWEEP",
       "stage": "M2_MEASUREMENT"
     },
     {
-      "candidates": 24,
+      "candidates": 25,
       "complexity": "REPLAY_PLUS_MATCHING_RULE",
       "path": "M1/work/m2_specs/FILL_CONDITIONED_MARKOUT.md",
       "spec_id": "FILL_CONDITIONED_MARKOUT",
       "stage": "M2_MEASUREMENT"
     },
     {
-      "candidates": 24,
+      "candidates": 25,
       "complexity": "SHADOW_PATH",
       "path": "M1/work/m2_specs/LIVE_LATENCY.md",
       "spec_id": "LIVE_LATENCY",
@@ -288,7 +288,7 @@
       "stage": "M2_MEASUREMENT"
     },
     {
-      "candidates": 24,
+      "candidates": 25,
       "complexity": "SEALED_COMPARISON",
       "path": "M1/work/m2_specs/SYSTEM_ONE_INCREMENTAL_UTILITY.md",
       "spec_id": "SYSTEM_ONE_INCREMENTAL_UTILITY",

@@ -4,6 +4,7 @@
     "TUP-NASDAQ-LARGETICK-H2-QIMB-AGG",
     "TUP-NASDAQ-LARGETICK-H2H3-MICRO-AGG",
     "TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG",
+    "TUP-NASDAQ-CLOSE-H4-LATENOII-AGG",
     "TUP-CBOEBZX-LARGETICK-H2H3-SPREADCAP-PAS"
   ],
   "affected_gates": "NONE",
@@ -28,7 +29,7 @@
   "kill_potential": "LOW",
   "known_evidence_ids": [],
   "known_source_ids": [],
-  "last_updated": "2026-09-29T17:15:14Z",
+  "last_updated": "2026-09-29T22:20:27Z",
   "parent_issue_id": "UNK-0009",
   "priority_reason": "Split from UNK-0009: after-cost profitability is an M2 measurement and is explicitly not a precondition for KG1.",
   "priority_score": null,

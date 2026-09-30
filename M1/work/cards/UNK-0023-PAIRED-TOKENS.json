@@ -8,7 +8,8 @@
     "TUP-CME-WTI-H4-FLOWVOL-AGG",
     "TUP-NASDAQ-LARGETICK-H2-QIMB-AGG",
     "TUP-NASDAQ-LARGETICK-H2H3-MICRO-AGG",
-    "TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG"
+    "TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG",
+    "TUP-NASDAQ-CLOSE-H4-LATENOII-AGG"
   ],
   "affected_gates": "NONE",
   "blocker_id": "UNK-0023-PAIRED-TOKENS",
@@ -32,7 +33,7 @@
   "kill_potential": "LOW",
   "known_evidence_ids": [],
   "known_source_ids": [],
-  "last_updated": "2026-09-29T17:15:14Z",
+  "last_updated": "2026-09-29T22:20:27Z",
   "parent_issue_id": "UNK-0023",
   "priority_reason": "Deliberately non-blocking: historical completeness of the token inventory is not a decision input.",
   "priority_score": null,

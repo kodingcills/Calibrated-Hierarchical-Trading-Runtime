@@ -2,7 +2,7 @@
 
 Status: CURRENT
 Version: 1.0.0
-Last Updated: 2026-09-29T17:15:14Z
+Last Updated: 2026-09-29T22:20:27Z
 
 This is the canonical fast-orientation artifact. Read it before any other file. Its counts are
 generated from `M1/output/M1_STATE_SUMMARY.json` and enforced against the machine-readable
@@ -193,7 +193,7 @@ friction, 5× short in the strongest declared state and 17× pooled). The three 
 
 | candidate | instrument | venue | horizon | mechanism | execution | blocking issue |
 |---|---|---|---|---|---|---|
-| TUP-CME-ES-H1-QDEP-PAS | ES future | CME | H1 10-100 ms | queue depletion | passive | matching rule, fill probability, all-in cost |
+| TUP-CME-ES-H1-QDEP-PAS | ES future | CME | H1 10-100 ms | queue depletion | passive | matching rule, fill probability, structural cost C0 + parameterized C1 |
 | TUP-CBOEBZX-LARGETICK-H2H3-SPREADCAP-PAS | stock >= $1 | Cboe BZX | H2-H3 | spread capture | passive | queue/adverse selection unmeasured |
 | TUP-USSTOCK-XVENUE-H1-STALEQUOTE-AGG | stock, national market | multi-venue | H1 | stale quote | aggressive | latency race unmeasured (label basis recorded in UNK-0024) |
 
@@ -206,8 +206,10 @@ so a top-of-book signal at H2 must show a magnitude of the same order as the rou
 of the Nasdaq large-tick ledger and both failed it on measurement, which is why the sequence is
 closed rather than continued (`DECISIONS.md` D-0037, D-0038).
 
-Fourteen rows are UNKNOWN (no venue-specific evidence at all): ES H3 OFI, NQ H3 OFI, Treasury
-queue/replenishment, WTI flow/volatility, Nasdaq auction imbalance, Hyperliquid H3 OFI/liquidation,
+Fifteen rows are UNKNOWN (no venue-specific evidence at all): ES H3 OFI, NQ H3 OFI, Treasury
+queue/replenishment, WTI flow/volatility, Nasdaq closing-auction imbalance (the broad-formulation
+provenance row `TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG` and its narrowed closing-cross reformulation
+`TUP-NASDAQ-CLOSE-H4-LATENOII-AGG`, `DECISIONS.md` D-0041), Hyperliquid H3 OFI/liquidation,
 Hyperliquid H4 funding/basis, Eurex OFI/queue, Cboe options surface RV, Deribit options surface RV,
 Kalshi event inference, Polymarket event inference, institutional FX lead-lag, retail FX feed lag.
 
@@ -227,8 +229,12 @@ explicit resurrection decision recorded in `DECISIONS.md`; silent re-entry is pr
 Terminal state: **EXTERNAL_BLOCK**. Primary `TEST_NOW`: **NONE**. Conditional economic frontier:
 `TUP-CME-ES-H3-OFI-AGG`. Its conditional experiment is `EXTERNAL_BLOCKED_NOT_AUTHORIZED`; it is
 not registered for M2, and no data purchase or trading action is authorized. The next required
-external action is to identify the operator/account path, obtain an exact ES historical sample with
-validated timestamp semantics, and obtain exact account-level CME/FCM all-in costs. Coinbase and
+external action is to identify the operator/account path and obtain an exact ES historical sample
+with validated timestamp semantics, a verified structural cost C0 schedule for the named contract,
+and a declared parameterization of the unresolved cost C1 (unknown never zero), so the precursor can
+report the break-even residual cost C* (`DECISIONS.md` D-0042). Exact account-level CME/FCM costs are
+still required, but at the gate before shadow/micro-live rather than before the gross precursor.
+Coinbase and
 Kraken are `DEPRIORITIZE`, not the strategic frontier. The generic closure orchestrator's
 `next_autonomous_branch` is a mechanical blocker-dispatch field and must not override this
 reselection decision. Nasdaq large-tick QIMB/microprice remains CLOSED; no candidate is ALIVE.
@@ -350,7 +356,7 @@ leaving 19 M1-blocking issues.
 | 24.0 | 1 | `UNK-0023-CME-DOCS` | PUBLIC_RESEARCH | 5 | KG1/KG2 evidence quality for the CME rows, and auditability of the MDP feasibility claim. |
 | 24.0 | 1 | `UNK-0023-LIT` | PUBLIC_RESEARCH | 6 | KG1 for candidates that would borrow the order-flow mechanism, and auditability of the mechanism-evidence row  |
 | 24.0 | 1 | `UNK-0027-CME-INDEX` | PUBLIC_RESEARCH | 3 | KG5 for the ES H1, ES H3 and NQ H3 rows; also determines which historical data and fee line items apply. |
-| 18.0 | 3 | `UNK-0018-NASDAQ` | EXTERNAL_ACTION | 3 | Causal replay and therefore queue/fill claims for the Nasdaq equity rows (KG2). |
+| 18.0 | 3 | `UNK-0018-NASDAQ` | EXTERNAL_ACTION | 4 | Causal replay and therefore queue/fill claims for the Nasdaq equity rows (KG2). |
 | 18.0 | 3 | `UNK-0033` | EXTERNAL_ACTION | 4 | All-in per-share cost for every equity tuple, and therefore the cost floor used in KG3. |
 | 16.0 | 1 | `UNK-0023-EXCH-OTHER` | PUBLIC_RESEARCH | 3 | Evidence quality for the Eurex tuple and for the options candidate's Gate-2 status. |
 | 16.0 | 1 | `UNK-0027-CME-OTHER` | PUBLIC_RESEARCH | 2 | KG5 for those rows. |
@@ -439,10 +445,10 @@ Machine-readable M1 state (canonical; regenerate with `python3 M1/src/materializ
 |---|---|
 | ALIVE | 0 |
 | WEAK | 3 |
-| UNKNOWN | 16 |
+| UNKNOWN | 17 |
 | DEAD | 10 |
 
-Registered candidate rows: 29 (24 tradable tuples + 5 non-tuple registrations). Verified sources: 96 (25 report-mediated, 0 with a recoverable URL). Evidence records: 69. M1 frontier items: 27 (7 measurement specs and 14 external requests now outside the frontier). Gate-eligible candidates: 0.
+Registered candidate rows: 30 (25 tradable tuples + 5 non-tuple registrations). Verified sources: 96 (25 report-mediated, 0 with a recoverable URL). Evidence records: 69. M1 frontier items: 27 (7 measurement specs and 14 external requests now outside the frontier). Gate-eligible candidates: 0.
 <!-- /GENERATED:counts -->
 
 

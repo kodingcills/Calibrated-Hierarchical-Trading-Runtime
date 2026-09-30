@@ -8,13 +8,13 @@ Open external requests: 14
 | priority | blocker | what it decides | affected | packet |
 |---|---|---|---|---|
 | 30.0 | `UNK-0018` (IN_PROGRESS) | Causal replay and therefore every queue, priority or fill claim; applies to any candidate that reaches replay. | 1 rows | `M1/work/external_requests/UNK-0018.md` |
-| 18.0 | `UNK-0018-NASDAQ` (OPEN) | Causal replay and therefore queue/fill claims for the Nasdaq equity rows (KG2). | 3 rows | `M1/work/external_requests/UNK-0018-NASDAQ.md` |
+| 18.0 | `UNK-0018-NASDAQ` (OPEN) | Causal replay and therefore queue/fill claims for the Nasdaq equity rows (KG2). | 4 rows | `M1/work/external_requests/UNK-0018-NASDAQ.md` |
 | 18.0 | `UNK-0033` (OPEN) | All-in per-share cost for every equity tuple, and therefore the cost floor used in KG3. | 4 rows | `M1/work/external_requests/UNK-0033.md` |
 | 12.0 | `UNK-0010` (IN_PROGRESS) | Net-edge feasibility for the Hyperliquid H3/H4 candidates. | 3 rows | `M1/work/external_requests/UNK-0010.md` |
 | 12.0 | `UNK-0018-CME` (OPEN) | Causal replay for every CME candidate (KG2). | 5 rows | `M1/work/external_requests/UNK-0018-CME.md` |
 | 10.0 | `UNK-0028` (OPEN) | Deployment-shape decisions (not M1 selection); also drives which fee tier applies in M2 cost configuration. | 1 rows | `M1/work/external_requests/UNK-0028.md` |
-| 9.0 | `UNK-0004` (EXTERNAL_REQUEST_READY) | Queue-aware backtesting of every Nasdaq equity tuple (KG2). | 4 rows | `M1/work/external_requests/UNK-0004.md` |
-| 9.0 | `UNK-0005` (IN_PROGRESS) | Net-economics arithmetic for equity tuples (KG3). | 5 rows | `M1/work/external_requests/UNK-0005.md` |
+| 9.0 | `UNK-0004` (EXTERNAL_REQUEST_READY) | Queue-aware backtesting of every Nasdaq equity tuple (KG2). | 5 rows | `M1/work/external_requests/UNK-0004.md` |
+| 9.0 | `UNK-0005` (IN_PROGRESS) | Net-economics arithmetic for equity tuples (KG3). | 6 rows | `M1/work/external_requests/UNK-0005.md` |
 | 6.0 | `UNK-0001` (EXTERNAL_REQUEST_READY) | Aggressive CME execution viability (KG3) for every CME tuple. | 5 rows | `M1/work/external_requests/UNK-0001.md` |
 | 6.0 | `UNK-0003` (IN_PROGRESS) | Causal queue replay for CME candidates (KG2), and therefore M2 for them. | 5 rows | `M1/work/external_requests/UNK-0003.md` |
 | 4.0 | `UNK-0018-BZX` (OPEN) | Causal replay for the BZX passive tuple (KG2). | 1 rows | `M1/work/external_requests/UNK-0018-BZX.md` |
@@ -88,12 +88,12 @@ Open external requests: 14
 - answer that kills the branch: Verified realized fees leave no headroom for the hypothesised effect
 - return the answer by writing a patch JSON into `M1/work/patches/UNK-0005_response.json`, or copy the raw document into `M1/work/external_requests/UNK-0005_received/`
 
-### UNK-0001 - Exact project-level CME all-in execution cost
+### UNK-0001 - CME execution-cost components on the gross-precursor path (verified structural C0)
 
 - send to: see `M1/work/external_requests/UNK-0001.md` section `PURPOSE`
 - exact ask: Aggressive CME execution viability (KG3) for every CME tuple.
-- answer that clears the branch: A dated all-in cost per contract for the intended account type
-- answer that kills the branch: Verified all-in cost implies the hypothesised gross effect cannot cover round-trip cost
+- answer that clears the branch: C0 verified from primary schedules and C1 declared as an explicit parameter, so the gross precursor reports the break-even residual cost C* rather than net edge; the exact broker/FCM/account-level all-in schedule is a later gate (UNK-0009-ECON-CME-MEASURED)
+- answer that kills the branch: Verified structural cost C0 implies the hypothesised gross effect cannot cover C0 alone, which is a cheap killer that survives the correction
 - return the answer by writing a patch JSON into `M1/work/patches/UNK-0001_response.json`, or copy the raw document into `M1/work/external_requests/UNK-0001_received/`
 
 ### UNK-0003 - CME historical order-level data procurement

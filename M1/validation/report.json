@@ -4,28 +4,28 @@
       "name": "provenance references resolve",
       "note": "",
       "result": "PASS",
-      "rows_checked": 1297,
+      "rows_checked": 1324,
       "rule": "V1"
     },
     {
       "name": "numeric facts carry sources or are declared UNKNOWN",
       "note": "",
       "result": "PASS",
-      "rows_checked": 547,
+      "rows_checked": 558,
       "rule": "V2"
     },
     {
       "name": "gate ceiling and dead/ALIVE integrity",
       "note": "3 kill(s) rest on a recorded decision; the remainder on computed FAILs",
       "result": "PASS",
-      "rows_checked": 39,
+      "rows_checked": 40,
       "rule": "V3"
     },
     {
       "name": "referential integrity",
       "note": "",
       "result": "PASS",
-      "rows_checked": 950,
+      "rows_checked": 968,
       "rule": "V4"
     },
     {
@@ -39,7 +39,7 @@
       "name": "stable ids unique",
       "note": "",
       "result": "PASS",
-      "rows_checked": 450,
+      "rows_checked": 452,
       "rule": "V6"
     },
     {
@@ -60,7 +60,7 @@
       "name": "decision-critical values remain UNKNOWN",
       "note": "",
       "result": "PASS",
-      "rows_checked": 290,
+      "rows_checked": 300,
       "rule": "V10"
     },
     {
@@ -109,7 +109,7 @@
       "name": "eligibility independent of non-M1 issues; every verdict rule-traced",
       "note": "",
       "result": "PASS",
-      "rows_checked": 145,
+      "rows_checked": 150,
       "rule": "V16"
     },
     {
@@ -123,7 +123,7 @@
       "name": "work artefacts valid and complete",
       "note": "",
       "result": "PASS",
-      "rows_checked": 97,
+      "rows_checked": 98,
       "rule": "V18"
     },
     {
@@ -151,28 +151,28 @@
       "name": "provenance references resolve",
       "note": "",
       "result": "PASS",
-      "rows_checked": 1297,
+      "rows_checked": 1324,
       "rule": "V1"
     },
     {
       "name": "numeric facts carry sources or are declared UNKNOWN",
       "note": "",
       "result": "PASS",
-      "rows_checked": 547,
+      "rows_checked": 558,
       "rule": "V2"
     },
     {
       "name": "gate ceiling and dead/ALIVE integrity",
       "note": "3 kill(s) rest on a recorded decision; the remainder on computed FAILs",
       "result": "PASS",
-      "rows_checked": 39,
+      "rows_checked": 40,
       "rule": "V3"
     },
     {
       "name": "referential integrity",
       "note": "",
       "result": "PASS",
-      "rows_checked": 950,
+      "rows_checked": 968,
       "rule": "V4"
     },
     {
@@ -186,7 +186,7 @@
       "name": "stable ids unique",
       "note": "",
       "result": "PASS",
-      "rows_checked": 450,
+      "rows_checked": 452,
       "rule": "V6"
     },
     {
@@ -207,7 +207,7 @@
       "name": "decision-critical values remain UNKNOWN",
       "note": "",
       "result": "PASS",
-      "rows_checked": 290,
+      "rows_checked": 300,
       "rule": "V10"
     },
     {
@@ -256,7 +256,7 @@
       "name": "eligibility independent of non-M1 issues; every verdict rule-traced",
       "note": "",
       "result": "PASS",
-      "rows_checked": 145,
+      "rows_checked": 150,
       "rule": "V16"
     },
     {
@@ -270,7 +270,7 @@
       "name": "work artefacts valid and complete",
       "note": "",
       "result": "PASS",
-      "rows_checked": 97,
+      "rows_checked": 98,
       "rule": "V18"
     },
     {
@@ -284,28 +284,28 @@
       "name": "provenance references resolve",
       "note": "",
       "result": "PASS",
-      "rows_checked": 1297,
+      "rows_checked": 1324,
       "rule": "V1"
     },
     {
       "name": "numeric facts carry sources or are declared UNKNOWN",
       "note": "",
       "result": "PASS",
-      "rows_checked": 547,
+      "rows_checked": 558,
       "rule": "V2"
     },
     {
       "name": "gate ceiling and dead/ALIVE integrity",
       "note": "3 kill(s) rest on a recorded decision; the remainder on computed FAILs",
       "result": "PASS",
-      "rows_checked": 39,
+      "rows_checked": 40,
       "rule": "V3"
     },
     {
       "name": "referential integrity",
       "note": "",
       "result": "PASS",
-      "rows_checked": 950,
+      "rows_checked": 968,
       "rule": "V4"
     },
     {
@@ -319,7 +319,7 @@
       "name": "stable ids unique",
       "note": "",
       "result": "PASS",
-      "rows_checked": 450,
+      "rows_checked": 452,
       "rule": "V6"
     },
     {
@@ -340,7 +340,7 @@
       "name": "decision-critical values remain UNKNOWN",
       "note": "",
       "result": "PASS",
-      "rows_checked": 290,
+      "rows_checked": 300,
       "rule": "V10"
     },
     {
@@ -389,7 +389,7 @@
       "name": "eligibility independent of non-M1 issues; every verdict rule-traced",
       "note": "",
       "result": "PASS",
-      "rows_checked": 145,
+      "rows_checked": 150,
       "rule": "V16"
     },
     {
@@ -403,7 +403,7 @@
       "name": "work artefacts valid and complete",
       "note": "",
       "result": "PASS",
-      "rows_checked": 97,
+      "rows_checked": 98,
       "rule": "V18"
     },
     {
@@ -416,19 +416,19 @@
   ],
   "context": {
     "blocking_issues": 35,
-    "candidate_rows": 29,
+    "candidate_rows": 30,
     "m1b_eligible": [],
     "status": {
       "ALIVE": 0,
       "DEAD": 10,
-      "UNKNOWN": 16,
+      "UNKNOWN": 17,
       "WEAK": 3,
-      "total": 29
+      "total": 30
     }
   },
   "details": [],
   "failures": 0,
-  "generated_at": "2026-09-29T14:37:22Z",
+  "generated_at": "2026-09-30T18:41:54Z",
   "overall": "PASS",
   "validator": "M1/src/validate.py"
 }

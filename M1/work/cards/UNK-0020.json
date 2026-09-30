@@ -1,7 +1,8 @@
 {
   "acceptable_evidence": "Vendor product terms and sample",
   "affected_candidates": [
-    "TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG"
+    "TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG",
+    "TUP-NASDAQ-CLOSE-H4-LATENOII-AGG"
   ],
   "affected_gates": "KG2_DATA",
   "blocker_id": "UNK-0020",
@@ -25,7 +26,7 @@
     "SRC-0108",
     "SRC-0120"
   ],
-  "last_updated": "2026-09-29T17:15:14Z",
+  "last_updated": "2026-09-29T22:20:27Z",
   "parent_issue_id": null,
   "priority_reason": "M1-BLOCKING retained: data existence is Tier 1/3.",
   "priority_score": null,

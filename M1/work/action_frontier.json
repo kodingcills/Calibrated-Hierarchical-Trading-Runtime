@@ -14,7 +14,8 @@
       "prerequisites": [
         "operator/account classification",
         "exact ES data path",
-        "account-level cost schedule"
+        "verified structural cost C0 and a declared unresolved cost C1 parameterization",
+        "exact account-level cost schedule (gate before shadow/micro-live, not before the gross precursor)"
       ],
       "question": "Can the exact ES account, historical sample, and mechanism prerequisites be supplied?",
       "resolution_confidence": "HIGH",
@@ -136,7 +137,7 @@
     "terminal_state": "EXTERNAL_BLOCK"
   },
   "external_action_count": 1,
-  "generated_at": "2026-09-29T17:15:14Z",
+  "generated_at": "2026-09-29T22:20:28Z",
   "state_reference": {
     "files": [
       "PROJECT_STATE.md",
@@ -148,7 +149,7 @@
       "M1/output/M1_STATE_SUMMARY.json",
       "M1/work/frontier.json"
     ],
-    "sha256": "5c330bf8400d283e53037a7b2f1b34526d8d0c8868ec3ad9d7f70d8f4a7ae098"
+    "sha256": "73e32e35397a102404b2097584628f3f373b9a683b0181fd606835907a928d22"
   },
   "suppressed_dead_candidates": [
     "TUP-GENERIC-CME-QUEUE",
