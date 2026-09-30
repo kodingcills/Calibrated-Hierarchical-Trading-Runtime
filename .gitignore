@@ -14,3 +14,12 @@ M2/data/derived_univproxy/
 M2/data/derived_passive/
 # M2-2 microprice replay artifacts (same policy as M2/data/derived)
 M2/data/derived_micro/
+# GOAL-M2-BRIDGE-001 closing-auction window artifacts (same policy as M2/data/derived)
+M2/data/derived_auction/
+# GOAL-M2-BRIDGE-001 branch-C availability/pairing artifacts (same policy as M2/data/derived)
+M2/data/derived_basis/
+# GOAL-M2-BRIDGE-001 W2 CME ES MDP 3.0 sample artifacts (same policy as M2/data/derived)
+M2/data/derived_es/
+# Verification re-derivations of market data (same policy as M2/data/derived; sha256 values
+# are recorded in .research/m2_bridge_001/verification/V2/REPORT.md)
+.research/m2_bridge_001/verification/*/rederived_*.csv
