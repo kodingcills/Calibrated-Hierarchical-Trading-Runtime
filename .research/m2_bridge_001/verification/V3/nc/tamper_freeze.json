@@ -1,0 +1,216 @@
+{
+  "block_condition": {
+    "condition": "if the admitted stream cannot support a causal OFI state at 1 s without lookahead, the named defect is reported instead of substituting a proxy",
+    "finding": "not triggered: the state consumes only messages stamped at or before the decision instant, and the independent strictly-past rebuild of level 1 from direct level-1 increments reproduces the admitted grid midpoint at 59,999 / 59,999 quoted instants exactly (M2/src/es_materiality.py audit)"
+  },
+  "branch": "A",
+  "c_star_rule": "C* = g - C0 (M2/src/envelope.py::break_even_residual); it is the largest unresolved cost per round trip at which the measured gross displacement vanishes, and it is reported in bps of the entry midpoint and in USD per contract",
+  "candidate_id": "TUP-CME-ES-H3-OFI-AGG",
+  "classification_contract": {
+    "coverage_failure": "INDETERMINATE_COVERAGE with the failing metric named",
+    "executor": "M2/src/envelope.py::classify_materiality, called by M2/src/es_materiality.py::classify",
+    "kill": "KILL_MATERIALITY when g <= 0 OR the uncertainty upper bound hi <= C0",
+    "otherwise": "INDETERMINATE",
+    "sample_scope_rule": "an admitted single 10-minute window can produce at most a SAMPLE-SCOPED DEVELOPMENT KILL; a nominal SURVIVE_PROVISIONAL is downgraded to INDETERMINATE_COVERAGE with the scope clause naming the single window and is never reported as survival",
+    "significance": "statistical significance is never an input to the classification",
+    "survive": "SURVIVE_PROVISIONAL when the lower bound lo > C0"
+  },
+  "clock": {
+    "consume_rule": "a decision at instant t consumes exactly the messages whose exchange_send_ns <= t; a message stamped after t is never consumed, and the exit state consumes exactly the quotes whose exchange_send_ns <= t + horizon",
+    "primary": "exchange_send_ns",
+    "robustness": "ts_recv_ns",
+    "robustness_reason": "capture receipt is the strictest availability clock available on this slice; the admitted slice satisfies transact_time <= exchange_send <= ts_recv for every row. The conservative pass is reported in full and is never the reported verdict."
+  },
+  "code_sha256": {
+    "M2/src/es_materiality.py": "2a07bbd45dc42dd6bd18d66d83563bbbf18dffd96b52dc6b1bd6824c27b3101c",
+    "M2/tests/test_es_materiality.py": "ecfd95f0744c25be134cfa14353dd38a2646a67fa7aa256b0716722d0abc3e25"
+  },
+  "cost_items": [
+    {
+      "id": "cost.cme.exchange_transaction_fee.es",
+      "mandatory": true,
+      "name": "CME exchange transaction fee, ES non-member/incentive default class",
+      "notes": "the linked fee schedule could not be extracted in this environment and the exchange's own technical pages returned 403 / page-not-found (.research/resolution/BRANCH_A/REPORT.md S3, S5); the one third-party per-side figure that was found (USD 1.28) is recorded as REJECTED in M1/work/patches/P-0003.json because it came from a non-primary article. No amount is therefore admissible.",
+      "provenance": {
+        "access_date": "",
+        "effective_period": "",
+        "publisher": "CME Group",
+        "quote": "",
+        "source_id": "SRC-CME-FEE-SCHEDULE-UNRETRIEVED",
+        "status": "UNVERIFIED",
+        "url": "https://www.cmegroup.com/company/clearing-fees.html"
+      },
+      "side": "both",
+      "unit": "USD_PER_CONTRACT",
+      "value": null,
+      "varies_with_account_state": true
+    },
+    {
+      "id": "cost.cme.clearing_fee.es",
+      "mandatory": true,
+      "name": "CME clearing fee for the selected customer class, if separately itemized",
+      "notes": "same unreachable schedule; no clearing amount is verified for any participant status.",
+      "provenance": {
+        "access_date": "",
+        "effective_period": "",
+        "publisher": "CME Group",
+        "quote": "",
+        "source_id": "SRC-CME-FEE-SCHEDULE-UNRETRIEVED",
+        "status": "UNVERIFIED",
+        "url": "https://www.cmegroup.com/company/clearing-fees.html"
+      },
+      "side": "both",
+      "unit": "USD_PER_CONTRACT",
+      "value": null,
+      "varies_with_account_state": true
+    },
+    {
+      "id": "cost.fcm.commission_and_routing.es",
+      "mandatory": true,
+      "name": "FCM commission, routing and platform pass-through",
+      "notes": "account-specific and not owned by this project; the exact account-level schedule is the pre-shadow gate UNK-0009-ECON-CME-MEASURED, not a precursor input.",
+      "provenance": {
+        "access_date": "",
+        "effective_period": "",
+        "publisher": "",
+        "quote": "",
+        "source_id": "SRC-FCM-SCHEDULE-NOT-OWNED",
+        "status": "UNKNOWN",
+        "url": ""
+      },
+      "side": "both",
+      "unit": "USD_PER_CONTRACT",
+      "value": null,
+      "varies_with_account_state": true
+    }
+  ],
+  "coverage_floor": {
+    "applies_to": "the PRIMARY horizon only",
+    "min_observations": 250,
+    "observation_coverage_definition": "evaluated slots (quote at entry and exit AND a non-zero state) over all primary decision slots",
+    "observation_coverage_min": 0.75,
+    "quote_coverage_definition": "decision slots in the primary horizon whose entry instant carries a two-sided strictly positive uncrossed quote, over all primary decision slots",
+    "quote_coverage_min": 0.95,
+    "rule": "a floor failure is reported as INDETERMINATE_COVERAGE with the failing metric named; it never silently re-scopes the measurement, and the nominal figures are still reported"
+  },
+  "data": {
+    "derived_dir": "M2/data/derived_es/2023-07-17T133000Z",
+    "instrument": "ESU3 (CME SecurityID 3445, read from admission.json at run time)",
+    "point_value_usd": 50.0,
+    "price_scale_index_points_per_mantissa_unit": 1e-11,
+    "spread_grid": "spread_grid.csv",
+    "trades": "trades.csv",
+    "window": "2023-07-17T13:30:00Z-2023-07-17T13:40:00Z, read from admission.json at run time"
+  },
+  "decision_question": "On the single admitted CME ESU3 10-minute RTH-open slice (2023-07-17 13:30:00Z-13:40:00Z), does a causal signed order-flow-imbalance state have side-signed midpoint displacement at the frozen H3 horizons that can clear the measured observed-spread structural cost C0, or is it small enough at the primary horizon that no execution model could change the decision?",
+  "epoch": 5,
+  "experiment_id": "M2-BRIDGE-ES-H3-OFI",
+  "external_dependency": "the admitted artefacts above were produced by W2 (epoch 1) and independently re-derived byte-identically by V2 (verification wave 2); trades.csv and bbo_increments.csv hashes above equal V2's independent re-derivations",
+  "freeze_status": "SEALED_BEFORE_ANY_BRANCH_A_GROSS_MARKOUT_WAS_INSPECTED",
+  "friction": {
+    "basis": "1/2 S_entry + 1/2 S_exit from the OBSERVED quoted spread prevailing at the entry instant and at the exit instant, expressed in bps of the entry midpoint, evaluated by M2/src/envelope.py::midpoint_markout_friction_bps",
+    "forbidden": [
+      "a hard-coded one-tick-per-side spread",
+      "any arbitrary multiple of C0 as a safety factor",
+      "executable-price substitution in the outcome"
+    ],
+    "identity_note": "E[1/2 S_entry + 1/2 S_exit] = E[S] is an identity, not evidence; the friction is taken per observation at both instants rather than from a single pooled mean"
+  },
+  "frozen_utc": "2026-09-30",
+  "git_sha": "ac28929c790812c29ecabd4fcf7ebef34459c832",
+  "grid_step_ns": 10000000,
+  "horizons": {
+    "censoring": "a decision slot at second k is evaluated only when k + horizon <= 599, i.e. the exit instant lies inside the admitted 10 ms grid",
+    "out_of_contract": "sub-100 ms delays are explicitly out of contract for this branch",
+    "primary_reason": "1 s is the earliest H3 point and the one whose forward window contains the least later, irrelevant flow",
+    "primary_rule": "the verdict is computed at the primary horizon only; the 5 s and 15 s points are the reported term structure and can never be substituted for it after the fact",
+    "primary_s": 5
+  },
+  "horizons_s": [
+    1,
+    5,
+    15
+  ],
+  "input_sha256": {
+    "M2/data/derived_es/2023-07-17T133000Z/acquisition.json": "60dd30dc02969e5fb172b14268240687a4dc8b10e9828a9c0e42439c10a99d42",
+    "M2/data/derived_es/2023-07-17T133000Z/admission.json": "44c7462abddcd5c4df455d108d8a19a06e7b286a5d88a605221545dcd736ebd4",
+    "M2/data/derived_es/2023-07-17T133000Z/bbo_increments.csv": "937b0557a916cb30a3cae02753edff68604bcba59f9d1c76f07d0d0f176552e5",
+    "M2/data/derived_es/2023-07-17T133000Z/spread_distribution.json": "99d89e685b906624dccbf02a311341e8bb79f3c976e2faf394d2ee8cec792c2a",
+    "M2/data/derived_es/2023-07-17T133000Z/spread_grid.csv": "5f99dc16e65f260cf3fcf743623d266f8f5487403414bb973291abd801fe2919",
+    "M2/data/derived_es/2023-07-17T133000Z/trades.csv": "d3db3cd75e082196cac13c43f1220d117c1f9f2c98a0e49ec0559b22d183210e"
+  },
+  "mechanism": "Causal signed order-flow imbalance built from aggressor-signed trades relative to the contemporaneous displayed executable liquidity, computed only from messages available at the decision instant.",
+  "outcome": "side-signed midpoint markout in bps of the entry midpoint, on the reconstructed top of book: direction * (M(t + horizon) - M(t)) / M(t) * 1e4. No executable-price substitution anywhere in the outcome.",
+  "own_manifest": "M2/experiments/M2-BRIDGE-ES-H3-OFI/run_inputs.json (written after the run; it never alters this freeze)",
+  "parent_id": "GOAL-M2-BRIDGE-001",
+  "permitted_post_result_decisions": [
+    "reporting additional summary statistics of the already-evaluated observation set",
+    "fixing a defect that prevents the frozen measurement from running, without changing any frozen parameter",
+    "proposing a canonical update for the controller to apply"
+  ],
+  "prohibited_post_result_decisions": [
+    "contract",
+    "horizon",
+    "universe",
+    "state definition or bins",
+    "lookback window",
+    "cost treatment or C0/C1 split",
+    "metric",
+    "kill rule",
+    "coverage threshold",
+    "bootstrap block length, seed or resample count",
+    "primary horizon substitution",
+    "any second outcome pass on this window"
+  ],
+  "reproduction": [
+    ".venv/bin/python -m M2.src.es_materiality audit",
+    ".venv/bin/python -m unittest M2.tests.test_es_materiality",
+    ".venv/bin/python -m M2.src.es_materiality run --freeze M2/experiments/M2-BRIDGE-ES-H3-OFI/freeze.json --out M2/experiments/M2-BRIDGE-ES-H3-OFI/results.json"
+  ],
+  "results_artifact": "M2/experiments/M2-BRIDGE-ES-H3-OFI/results.json",
+  "reused_module_sha256": {
+    "M2/config/cost_ledger_v1.json": "52ce785fc7210138af4059e327fc7101dff7f78dff3f5156c045973c1ed4cb17",
+    "M2/src/calculate.py": "8a6a0534cec0142fbdc56fa4ea9d354f497cad2358f067b261a74a93439edef7",
+    "M2/src/envelope.py": "a2777d0568a450e1ce48bc4becdcb3c49c7c3740a82da748ece31f223c7670c0"
+  },
+  "scope": {
+    "rule": "a nominal SURVIVE_PROVISIONAL is downgraded to INDETERMINATE_COVERAGE with the SINGLE_ADMITTED_WINDOW_SCOPE clause; a KILL stands and is recorded as a SAMPLE_SCOPED_DEVELOPMENT_KILL with its boundary (round trip in bps, the window, the contract, the horizon)",
+    "statement": "One admitted CME ESU3 window (2023-07-17 13:30:00Z-13:40:00Z), one venue, one instrument, one session, one contract month. This measurement can support at most a sample-scoped development kill; it cannot support survival, breadth or regime claims."
+  },
+  "state": {
+    "definition": "x(t) = (V_buy - V_sell) / D(t), where V_* is the aggressor-signed ESU3 trade size stamped in the half-open interval (t - 1 s, t] and D(t) = bid_sz + ask_sz displayed at the decision instant",
+    "direction_rule": "x > 0 is LONG, x < 0 is SHORT; aggressor_side 1 = buy aggressor, 2 = sell aggressor",
+    "lookback_basis": "one decision interval, the shortest accumulation window consistent with the 1 s primary horizon; fixed here and never searched",
+    "lookback_ns": 1000000000,
+    "states": [
+      "LONG",
+      "SHORT"
+    ],
+    "thresholds": "none: the sign of the state is the direction, so no threshold exists to tune",
+    "zero_policy": "x == 0, no trades in the lookback, or a missing / zero-depth / crossed quote is NO position and is excluded from the evaluated set while still being counted in coverage; it is never a zero-valued observation"
+  },
+  "statistics": {
+    "block_slots": 60,
+    "cluster_count_limit": "with one admitted instrument the instrument-level cluster is the window itself, so the 60 s block is the finest declared dependence unit that leaves more than one cluster; the resulting interval is development-grade and is reported with its cluster count",
+    "dependence_unit": "one instrument x one contiguous 60-decision-slot (60 s) block; overlapping forward returns inside a block share a price path",
+    "interval": "percentile 2.5 / 97.5 of the cluster-resample distribution of the mean, via M2/src/calculate.py::block_bootstrap_ci",
+    "min_state_observations": 100,
+    "resamples": 2000,
+    "seed": 20260717,
+    "seed_rule": "seed + horizon_seconds * seed_stride + state_index, state_index 0 for the pooled horizon figure, 1 for LONG, 2 for SHORT",
+    "seed_stride": 3,
+    "significance": "reported separately through envelope.significance_against_zero and never an input to the classification"
+  },
+  "unresolved_c1_scenarios_basis": "a DISPLAY lattice of 0.25, 0.5, 1, 2 and 4 times the verified one-tick contract value (ESU3 tick 0.25 index points x ContractMultiplier 50 = USD 12.50, from the instrument's own secdef via M2/data/derived_es/2023-07-17T133000Z/admission.json). It is contract economics, NOT a fee estimate: no level is a verified charge, no probability is assigned to any level, and C1's true value stays UNKNOWN (never zero). The reporter's break-even residual C* is the admissible unresolved cost, and it is comparable to this lattice only as a magnitude.",
+  "unresolved_c1_scenarios_usd": [
+    3.125,
+    6.25,
+    12.5,
+    25.0,
+    50.0
+  ],
+  "window": {
+    "end_utc": "2023-07-17T13:40:00Z",
+    "start_utc": "2023-07-17T13:30:00Z"
+  }
+}
