@@ -27,6 +27,7 @@ import tempfile
 import unittest
 
 from M2.src import admission as admission_module
+from M2.src import admission_auction
 from M2.src import auction_certificate as certificate
 from M2.src import auction_materiality as materiality
 from M2.src import envelope
@@ -765,7 +766,7 @@ class SealedArtefactTest(unittest.TestCase):
 # ---------------------------------------------------------------------------
 
 
-CONTRACT_CONTINUITY_MARKERS = admission_module.AUCTION_CONTRACT_V2["continuity_markers"]
+CONTRACT_CONTINUITY_MARKERS = admission_auction.AUCTION_CONTRACT_V2["continuity_markers"]
 
 
 def _role_file(root: str, name: str, role: str, payload: bytes = b"fixture") -> dict:
@@ -897,10 +898,10 @@ class AuctionV2ContractTest(TemporaryTapeTest):
     """The v2 key's own checks, including the splice attack as a fixture."""
 
     def evaluate(self, manifest: dict) -> dict:
-        return admission_module.evaluate(
+        return admission_auction.evaluate(
             manifest,
-            admission_module.contract_for("AUCTION_V2"),
-            admission_module.Context(root=self.tmp),
+            admission_auction.contract_for("AUCTION_V2"),
+            admission_auction.Context(root=self.tmp),
         )
 
     def clean_certificate(self) -> dict:
@@ -949,7 +950,7 @@ class AuctionV2ContractTest(TemporaryTapeTest):
         self.assertNotIn("require_coverage_certificate", admission_module.AUCTION_CONTRACT)
         # The v2 key registers a new contract and extends the registry additively.
         self.assertEqual(
-            admission_module.BUILTIN_CONTRACTS["AUCTION_V2"]["contract_id"],
+            admission_auction.BUILTIN_CONTRACTS["AUCTION_V2"]["contract_id"],
             "ADMISSION-AUCTION-v2",
         )
         self.assertEqual(len(admission_module.CHECKS), len(admission_module.CHECK_IDS))

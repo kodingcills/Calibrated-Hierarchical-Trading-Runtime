@@ -24,6 +24,7 @@ MODULES = (
     "M2/src/auction_certificate.py",
     "M2/src/auction_materiality.py",
     "M2/src/admission.py",
+    "M2/src/admission_auction.py",
     "M2/src/envelope.py",
     "M2/src/itch_stream_window.py",
     "M2/src/ingest.py",
@@ -362,7 +363,7 @@ def main() -> int:
                 "python3 M2/experiments/M2-BRIDGE-AUCTION-LATENOII-MATERIALITY/build_manifest.py"
             ),
             (
-                "python3 -m M2.src.admission --manifest "
+                "python3 -m M2.src.admission_auction --manifest "
                 "M2/experiments/M2-BRIDGE-AUCTION-LATENOII-MATERIALITY/admission_manifest_v2.json "
                 "--branch AUCTION_V2 --root . --json-out "
                 "M2/experiments/M2-BRIDGE-AUCTION-LATENOII-MATERIALITY/admission_v2_result.json"
