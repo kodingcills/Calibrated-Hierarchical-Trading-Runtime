@@ -1,0 +1,49 @@
+{
+  "experiment_id": "M2-BRIDGE-AUCTION-LATENOII-MATERIALITY",
+  "created_utc": "2026-09-30",
+  "statement": "Recorded beside the sealed freeze rather than inside results.json: freeze.json is sealed and is not edited after the run, and the sealed module does not emit a deviation field (see proposal.json:B5-D4). Nothing here changes a frozen parameter, threshold, seed, metric, cost treatment or clause; each item states what was done and why.",
+  "deviations": [
+    {
+      "id": "B5-A1",
+      "as_run": "The engine verdict was taken with --branch AUCTION_V2 (contract ADMISSION-AUCTION-v2) rather than the assignment's suggested --branch AUCTION.",
+      "cause": "AUCTION_CONTRACT v1 and BUILTIN_CONTRACTS[\"AUCTION\"] were kept unchanged so the existing AUCTION fixtures keep their verdicts; the corrected contract is registered additively as AUCTION_V2 with the two operator-authorized changes.",
+      "effect_on_verdict": "none: the manifest is DATA_VALID with no findings under v2, and DATA_VALID under v1 as well (the v1 clause admits it as before).",
+      "frozen": "the assignment wording '--branch AUCTION'; the frozen contract text itself is unchanged."
+    },
+    {
+      "id": "B5-A2",
+      "as_run": "The entry-print extraction (book replay) ran BEFORE freeze.json was sealed; the manifest and the freeze therefore hash it.",
+      "cause": "The entry print is a quote observation, not an outcome, and the admission manifest must hash every retained object it declares. No outcome quantity was computed before the seal: no Closing Cross price was read, no return, no cost-adjusted figure and no P&L.",
+      "effect_on_verdict": "none.",
+      "frozen": "freeze-before-outcome."
+    },
+    {
+      "id": "B5-A3",
+      "as_run": "The NOII cadence bound is stated over the signal interval (15:50:00-15:55:00 ET) at 15 s = 1.5x the 10 s dissemination period this session shows, not over the whole 10-minute window at 10 s.",
+      "cause": "The first draft bounded the whole window at 10 s and failed every symbol, because the feed's own period is 10.0-10.14 s; a bound below the feed's designed cadence certifies nothing. The sealed certificate states both the bound and the interval, and the whole-window cadence is reported beside it as a diagnostic.",
+      "effect_on_verdict": "turns a vacuous check into 'no missed dissemination cycle'. All 2465 denominator symbols pass; the bound is not outcome-related.",
+      "frozen": "the certificate's own bounds block."
+    },
+    {
+      "id": "B5-A4",
+      "as_run": "The reconstruction gate is UNEVALUABLE as specified (exchange Near/Far band = 0 in every analysed read) and the frozen code path treats that as a failed gate, so the delivered verdict is INDETERMINATE (ENTRY_BOOK_RECONSTRUCTION_UNVALIDATED) while the rule's own verdict on the analysed sample is KILL_MATERIALITY.",
+      "cause": "The gate was declared before the run with threshold 0.90; nothing about it was changed after the result. Both outcomes are reported.",
+      "effect_on_verdict": "reported in full: results.json:decision.rule_verdict = KILL_MATERIALITY, delivered verdict INDETERMINATE with the named clause.",
+      "frozen": "the gate and its threshold."
+    },
+    {
+      "id": "B5-A5",
+      "as_run": "The entry deadline (15:59:00 ET) never bound: all 2465 denominator symbols received an eligible entry print, the last of them within seconds of 15:55:00.",
+      "cause": "observed after the run.",
+      "effect_on_verdict": "none.",
+      "frozen": "the deadline."
+    },
+    {
+      "id": "B5-A6",
+      "as_run": "25 signal-defined symbols have delta_imbalance == 0 once the frozen sign rule is applied (their direction is B or S but the signed change is zero), so 1286 signal-defined symbols reduce to 1261 analysed.",
+      "cause": "the frozen 'zero signal' exclusion, applied before any outcome was computed.",
+      "effect_on_verdict": "none; reported in results.json:coverage.missingness_reason_counts.",
+      "frozen": "the signal definition."
+    }
+  ]
+}

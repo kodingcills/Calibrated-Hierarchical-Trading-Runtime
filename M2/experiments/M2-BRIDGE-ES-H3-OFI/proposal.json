@@ -1,0 +1,101 @@
+{
+  "proposal_id": "PROPOSAL-M2-BRIDGE-ES-H3-OFI-0001",
+  "proposed_patch_id": "P-0010",
+  "proposed_evidence_id": "EVD-0071",
+  "status": "PROPOSED_NOT_APPLIED",
+  "created_utc": "2026-09-30",
+  "record": "CANONICAL_UPDATE_PROPOSAL",
+  "decision": "KILLS",
+  "candidate_ids": ["TUP-CME-ES-H3-OFI-AGG"],
+  "blocker_ids": ["UNK-0018-CME"],
+  "reason": "The registered H3 aggressive order-flow-imbalance mechanism was measured against its own friction exactly once, on the single admitted ESU3 window, with the contract, horizons, state, friction treatment, coverage floor, metric, kill rule and seeds sealed before any gross markout was inspected. At the primary horizon the pooled side-signed gross markout is non-positive (-0.0047336 bps, 95% cluster interval [-0.0468503, +0.0403358], n = 583) against a measured observed-spread structural round trip of 0.5770016 bps, and every reported term-structure point (5 s = -0.0014608 bps, 15 s = +0.0502825 bps) is at most 8.7% of that floor. The unconditional side-ignoring markout at the same instants is +0.0156746 bps at 1 s, so the conditional state is not an uplift on doing nothing at that instant. The measurement is scoped to one 10-minute window and is therefore a SAMPLE-SCOPED DEVELOPMENT KILL, not a session-, regime- or product-level kill.",
+  "operator_decision_required": [
+    "whether a single-window development kill may transition a canonical candidate row to DEAD, or must be recorded as a scope-limited kill",
+    "which gate the measured failure is charged to: KG1_MECHANISM is proposed (the mechanism's own displacement claim is what was measured and it is non-positive at the primary horizon); KG3_EXECUTION is the alternative reading if the operator treats the friction comparison as the operative failure, as the M2-2 microprice precedent did"
+  ],
+  "evidence": {
+    "evidence_id": "EVD-0071",
+    "claim": "On the admitted CME ESU3 window 2023-07-17 13:30:00Z-13:40:00Z, the causal signed order-flow-imbalance state x(t) = (aggressor-buy volume - aggressor-sell volume) over (t-1s, t] divided by the displayed bid_sz+ask_sz at t, traded on its own sign at the midpoint, earns -0.0047336 bps of side-signed markout at 1 s (95% instrument x 60 s block cluster interval [-0.0468503, +0.0403358], n = 583 of 599 decision slots, se 0.0222976, t = -0.212), -0.0014608 bps at 5 s and +0.0502825 bps at 15 s, against a measured observed-spread round-trip friction of 0.5770016 bps (1/2 S_entry + 1/2 S_exit per observation, mean quoted spread 1.047 ticks on the evaluated pairs). The break-even residual is C* = -0.5817352 bps = -13.21 USD per contract. The unconditional side-ignoring markout is +0.0156746 bps at 1 s. Per-state at 1 s: LONG +0.0171552 bps (n = 273), SHORT -0.0240099 bps (n = 310), both intervals containing zero and both far below C0.",
+    "candidate_ids": "TUP-CME-ES-H3-OFI-AGG",
+    "candidate_link_reason": "The experiment exists solely to measure this candidate's own registered mechanism against the friction of participating, before any execution model or strategy evaluation is built for it (the order of work recorded as D-0037 and applied to this branch by D-0042).",
+    "contradicts_mechanism": "NO",
+    "decision_implication": "The H3 aggressive OFI mechanism shows no positive displacement on this window at any reported horizon, so no execution model, latency investment, data purchase or passive pivot is justified by it; the precursor this branch was blocked on is discharged and its result is negative.",
+    "epistemic_class": "SUPPORTED_FINDING",
+    "evidence_origin": "PROJECT_ARITHMETIC",
+    "gross_or_net": "GROSS side-signed midpoint markout for the signal; the friction term is measured separately from observed quoted spreads and is not subtracted from the reported gross",
+    "evidence_state": "PATCH_SUPPLIED",
+    "methodology": "Frozen single-pass measurement on admitted CME MDP 3.0 artefacts: state from aggressor-signed ESU3 trade volume in the one-second interval ending at the decision instant, divided by displayed top-of-book depth; outcome from the reconstructed top-of-book midpoint at the entry and exit instants; friction from the observed quoted spread at both instants through M2/src/envelope.py; interval from a cluster bootstrap over instrument x 60 s blocks (2000 resamples, fixed seed); verdict from M2/src/envelope.py::classify_materiality.",
+    "sample": "18,104 ESU3 trades over 60,000 10 ms grid instants; 583 evaluated 1 s decisions",
+    "temporal_scope": "2023-07-17T13:30:00Z-2023-07-17T13:40:00Z",
+    "limitations": "One venue, one instrument, one contract month, one 10-minute RTH-open window, one session: this supports a sample-scoped development kill only and no breadth, regime or session-level inference. The book is a reconstruction from in-window increments; instrument identity rests on the channel config and secdef rather than an in-stream SecurityStatus; the capture lag is 89 microseconds at worst and the two availability clocks (venue send, capture receipt) induce identical 1-second buckets here, so the robustness pass is not an independent clock test. C0 contains no verified exchange/clearing/FCM charge, so the measured 0.5770016 bps is a floor, not an all-in cost; that omission can only make the candidate look better and it still fails.",
+    "contradictory_evidence_search": "The hypothesis was exposed to the reading most favourable to it before it was believed: the longer horizons were reported in full (15 s, where any delayed effect would show, is the only positive point at +0.0502825 bps); both states were reported separately after pooling; the capture-clock pass was computed; the state was allowed to trade both directions rather than only the assumed one; the null baseline was reported explicitly; and the friction comparator was measured rather than assumed. Nothing was re-searched after the result was seen, and no second pass exists on this window."
+  },
+  "proposed_candidate_updates": [
+    {
+      "candidate_id": "TUP-CME-ES-H3-OFI-AGG",
+      "fields": {
+        "overall_status": "DEAD",
+        "kill_gate": "KG1_MECHANISM",
+        "kill_reason": "The registered H3 aggressive OFI mechanism has no positive displacement on the only window its data prerequisite admitted: -0.0047336 bps pooled at the primary 1 s horizon (95% cluster interval [-0.0468503, +0.0403358]) and at most +0.0502825 bps at 15 s, against a measured observed-spread round trip of 0.5770016 bps. Measured on the admitted CME ESU3 slice 2023-07-17 13:30:00Z-13:40:00Z (M2-BRIDGE-ES-H3-OFI, freeze sha256 42a158c5...), scoped to that single window.",
+        "resurrection_condition": "A rule-conformant measurement on a materially wider ES sample (multiple sessions or a full session and a roll) in which the pooled side-signed positive-horizon gross markout exceeds the measured observed-spread round trip with a lower confidence bound above C0; or a materially different formulation (a depth-aware or order-level OFI, a passive or queue formulation, or a state the current sign rule does not use) registered as its own candidate and friction-measured before any execution model is built for it. A different window alone is not a resurrection basis unless the registered contract is unchanged.",
+        "status_basis": "Measured evidence EVD-0071 (this proposal). The sample-scope rule is explicit: one admitted 10-minute window can support at most a sample-scoped development kill, and the recorded boundary is a 0.5770016 bps round trip on ESU3 in 2023-07-17 13:30:00Z-13:40:00Z at a 1 s horizon."
+      }
+    }
+  ],
+  "proposed_gate_changes": [
+    {
+      "candidate_id": "TUP-CME-ES-H3-OFI-AGG",
+      "gate": "KG1_MECHANISM",
+      "from": "BLOCKED",
+      "to": "FAIL",
+      "basis": "EVD-0071: the mechanism's own registered displacement claim was measured on admitted data and is non-positive at the primary horizon."
+    }
+  ],
+  "proposed_experiment_rows": [
+    {
+      "experiment_id": "M2-BRIDGE-ES-H3-OFI",
+      "experiment_class": "M2_MEASUREMENT",
+      "preregistered": "YES",
+      "freeze_path": "M2/experiments/M2-BRIDGE-ES-H3-OFI/freeze.json",
+      "freeze_sha256": "42a158c584552392e6c21535f35b3887228ea209c47257dee97672f6bfd75568",
+      "run_state": "RUN",
+      "decision": "KILLS",
+      "primary_metric": "pooled side-signed 1 s midpoint markout versus the measured observed-spread structural cost C0, with the break-even residual C* reported",
+      "result_summary": "KILL_MATERIALITY (PRIMARY_HORIZON_GROSS_NOT_POSITIVE), scoped SAMPLE_SCOPED_DEVELOPMENT_KILL",
+      "artifact_hash": "09c8562999304072a5f5b5184bece3ba0588d1d57754ae776b3c6934f1487ac2"
+    }
+  ],
+  "proposed_dead_end_updates": [
+    {
+      "update": "ADD",
+      "dead_end": "Signed aggressive order-flow imbalance at the top of a single 10-minute ES RTH-open window",
+      "finding": "Traded on its own sign at the midpoint it earned -0.0047336 bps at 1 s and at most +0.0502825 bps at 15 s against a 0.5770016 bps observed-spread round trip on 583 of 599 decisions; the conditional state did not beat the unconditional +0.0156746 bps drift at the same instants.",
+      "scope_limit": "one venue, one instrument, one window, one session; a development-grade kill",
+      "evidence_id": "EVD-0071"
+    }
+  ],
+  "not_proposed": [
+    "no change to UNK-0001 or any cost unknown: C0 still contains no verified CME exchange/clearing/FMC charge, and this measurement does not verify one",
+    "no closure of UNK-0018-CME (timestamp/ordering questions outside the single admitted window remain open)",
+    "no change to any other candidate row, no revival of any dead row, no new candidate registration",
+    "no gate change for any row other than TUP-CME-ES-H3-OFI-AGG",
+    "no removal of the data-feasibility or external-prerequisite record for this branch",
+    "no claim of survival, breadth or robustness anywhere"
+  ],
+  "already_applied_by_this_branch": [
+    {
+      "artifact": "M1/work/reselection_specs/TUP-CME-ES-H3-OFI-AGG.json",
+      "sha256": "385354abb32d989ec13d68a3f5cea7a216bf3da4402b0c00d83038c229836dc8",
+      "change": "status EXTERNAL_BLOCKED_NOT_AUTHORIZED -> MEASURED_KILL_SAMPLE_SCOPED with a status_history, plus an additive frozen_measurement block recording the frozen horizons, friction treatment, coverage floor, inference and scope. No existing field of the frozen formulation was altered, and the spec is this branch's own file."
+    }
+  ],
+  "artifacts": {
+    "M2/experiments/M2-BRIDGE-ES-H3-OFI/freeze.json": "42a158c584552392e6c21535f35b3887228ea209c47257dee97672f6bfd75568",
+    "M2/experiments/M2-BRIDGE-ES-H3-OFI/freeze.sha256": "d2a6fa7f7a4ee02fdd96efd5c598a0a37720268d585214b5534af899cdeaae12",
+    "M2/experiments/M2-BRIDGE-ES-H3-OFI/results.json": "09c8562999304072a5f5b5184bece3ba0588d1d57754ae776b3c6934f1487ac2",
+    "M2/src/es_materiality.py": "2a07bbd45dc42dd6bd18d66d83563bbbf18dffd96b52dc6b1bd6824c27b3101c",
+    "M2/tests/test_es_materiality.py": "ecfd95f0744c25be134cfa14353dd38a2646a67fa7aa256b0716722d0abc3e25"
+  },
+  "provenance": "code:a5_es_h3_ofi_materiality",
+  "verification_notes": "No canonical artifact was modified by this proposal: it is a machine-readable request for the controller to apply. The measurement itself was sealed before its outcome and re-verified at run time (module hash, six input hashes, three reused-module hashes, and the sealed-contract hash all unchanged), and the independent strictly-past level-1 rebuild reproduced the admitted grid midpoint exactly at all 59,999 quoted instants. The branch did not run M1/src/materialize.py or M1/src/validate.py, did not commit, and did not touch another branch's files."
+}

@@ -1,0 +1,12 @@
+== frozen auction materiality (branch B, TUP-NASDAQ-CLOSE-H4-LATENOII-AGG) ==
+coverage (input availability): 1.0000  (floor 0.95, 2465 of 2465 universe-qualified symbols with a valid Closing Cross)
+signal-defined population     : 0.5217  (1286 symbols; frozen N/O/P direction rule)
+analysed symbols              : 1261  (of 2465 in the denominator)
+gross executable capture    : -108.8946 bps (mean), -0.103625 USD/share
+uncertainty (clustered CI)  : [-0.148416, -0.064857] USD/share
+structural cost C0          : 0.001597 USD/share (1.0218 bps)
+break-even residual C*      : -0.105222 USD/share (-109.9165 bps)
+mechanism (side-signed)     : 6.5168 bps
+DECISION                    : INDETERMINATE
+                              clauses=ENTRY_BOOK_RECONSTRUCTION_UNVALIDATED,SIGNAL_SCOPE_SUBFLOOR
+results -> M2/experiments/M2-BRIDGE-AUCTION-LATENOII-MATERIALITY/results.json sha256=15b7a3d51c1e6d0ce897ec31d63357657df47a9d59d8af6316b2a513c50d2f63

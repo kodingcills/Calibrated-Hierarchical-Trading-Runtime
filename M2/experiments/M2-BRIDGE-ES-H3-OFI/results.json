@@ -1,0 +1,501 @@
+{
+  "branch": "A",
+  "c0_c1": {
+    "c1_scenario_basis": "a DISPLAY lattice of 0.25, 0.5, 1, 2 and 4 times the verified one-tick contract value (ESU3 tick 0.25 index points x ContractMultiplier 50 = USD 12.50, from the instrument's own secdef via M2/data/derived_es/2023-07-17T133000Z/admission.json). It is contract economics, NOT a fee estimate: no level is a verified charge, no probability is assigned to any level, and C1's true value stays UNKNOWN (never zero). The reporter's break-even residual C* is the admissible unresolved cost, and it is comparable to this lattice only as a magnitude.",
+    "c1_scenarios_usd": [
+      3.125,
+      6.25,
+      12.5,
+      25.0,
+      50.0
+    ],
+    "c1_sensitivity": {
+      "c0_usd": 13.100383910802963,
+      "c1_breakeven_usd": -13.207856988400616,
+      "distribution_assumption": "NONE",
+      "gross_usd": -0.10747307759765315,
+      "note": "C1 has no assigned probability distribution; levels are caller-supplied scenarios.",
+      "rows": [
+        {
+          "c1_usd": 3.125,
+          "c_star_usd": -16.332856988400614,
+          "survives_floor": false
+        },
+        {
+          "c1_usd": 6.25,
+          "c_star_usd": -19.457856988400614,
+          "survives_floor": false
+        },
+        {
+          "c1_usd": 12.5,
+          "c_star_usd": -25.707856988400614,
+          "survives_floor": false
+        },
+        {
+          "c1_usd": 25.0,
+          "c_star_usd": -38.207856988400614,
+          "survives_floor": false
+        },
+        {
+          "c1_usd": 50.0,
+          "c_star_usd": -63.207856988400614,
+          "survives_floor": false
+        }
+      ]
+    },
+    "c1_status": "UNKNOWN",
+    "c1_value": null,
+    "c_star_bps": -0.5817352357823415,
+    "c_star_usd": -13.207856988400616,
+    "friction_basis": "1/2 S_entry + 1/2 S_exit from the OBSERVED quoted spread prevailing at the entry instant and at the exit instant, expressed in bps of the entry midpoint, evaluated by M2/src/envelope.py::midpoint_markout_friction_bps",
+    "friction_c0_bps": 0.5770016233430615,
+    "note": "no independently verified account-independent mandatory charge exists for this contract in this environment, so C0 is the measured observed-spread friction alone and every declared venue/clearing/FCM charge stays in C1 with an UNKNOWN value; an unknown cost is never added as zero",
+    "unresolved_c1_items": [
+      {
+        "c0_eligible": false,
+        "class": "UNRESOLVED_C1",
+        "id": "cost.cme.exchange_transaction_fee.es",
+        "name": "CME exchange transaction fee, ES non-member/incentive default class",
+        "provenance": {
+          "access_date": "",
+          "effective_period": "",
+          "publisher": "CME Group",
+          "quote": "",
+          "source_id": "SRC-CME-FEE-SCHEDULE-UNRETRIEVED",
+          "status": "UNVERIFIED",
+          "url": "https://www.cmegroup.com/company/clearing-fees.html"
+        },
+        "scenario_role": "REFERENCE_EXECUTION_PATH",
+        "unit": "USD_PER_CONTRACT",
+        "usd": null,
+        "usd_status": "NOT_EVALUATED",
+        "value": null,
+        "varies_with_account_state": true,
+        "varies_with_staking": false,
+        "varies_with_volume": false
+      },
+      {
+        "c0_eligible": false,
+        "class": "UNRESOLVED_C1",
+        "id": "cost.cme.clearing_fee.es",
+        "name": "CME clearing fee for the selected customer class, if separately itemized",
+        "provenance": {
+          "access_date": "",
+          "effective_period": "",
+          "publisher": "CME Group",
+          "quote": "",
+          "source_id": "SRC-CME-FEE-SCHEDULE-UNRETRIEVED",
+          "status": "UNVERIFIED",
+          "url": "https://www.cmegroup.com/company/clearing-fees.html"
+        },
+        "scenario_role": "REFERENCE_EXECUTION_PATH",
+        "unit": "USD_PER_CONTRACT",
+        "usd": null,
+        "usd_status": "NOT_EVALUATED",
+        "value": null,
+        "varies_with_account_state": true,
+        "varies_with_staking": false,
+        "varies_with_volume": false
+      },
+      {
+        "c0_eligible": false,
+        "class": "UNRESOLVED_C1",
+        "id": "cost.fcm.commission_and_routing.es",
+        "name": "FCM commission, routing and platform pass-through",
+        "provenance": {
+          "access_date": "",
+          "effective_period": "",
+          "publisher": "",
+          "quote": "",
+          "source_id": "SRC-FCM-SCHEDULE-NOT-OWNED",
+          "status": "UNKNOWN",
+          "url": ""
+        },
+        "scenario_role": "REFERENCE_EXECUTION_PATH",
+        "unit": "USD_PER_CONTRACT",
+        "usd": null,
+        "usd_status": "NOT_EVALUATED",
+        "value": null,
+        "varies_with_account_state": true,
+        "varies_with_staking": false,
+        "varies_with_volume": false
+      }
+    ],
+    "verified_mandatory_charge_items": []
+  },
+  "candidate_id": "TUP-CME-ES-H3-OFI-AGG",
+  "classification": {
+    "bps": {
+      "c0_bps": 0.5770016233430615,
+      "c_star_bps": -0.5817352357823415,
+      "gross_bps": -0.004733612439280016,
+      "uncertainty_hi_bps": 0.04033579324042719,
+      "uncertainty_lo_bps": -0.046850251511832974
+    },
+    "clause": "PRIMARY_HORIZON_GROSS_NOT_POSITIVE",
+    "coverage_failures": [],
+    "coverage_gate_passed": true,
+    "nominal_verdict_before_scope_and_coverage": "KILL_MATERIALITY",
+    "primary_horizon_s": 1,
+    "rule": "KILL if g<=0 or hi<=C0; SURVIVE_PROVISIONAL if lo>C0; else INDETERMINATE",
+    "scope": "SAMPLE_SCOPED_DEVELOPMENT_KILL",
+    "scope_statement": "One admitted CME ESU3 window (2023-07-17 13:30:00Z-13:40:00Z), one venue, one instrument, one session, one contract month. This measurement can support at most a sample-scoped development kill; it cannot support survival, breadth or regime claims.",
+    "scoped_boundary": {
+      "candidate_id": "TUP-CME-ES-H3-OFI-AGG",
+      "contract": "ESU3",
+      "horizon_s": 1,
+      "round_trip_required_bps": 0.5770016233430615,
+      "window": "2023-07-17T13:30:00Z..2023-07-17T13:40:00Z"
+    },
+    "significance_is_decision_criterion": false,
+    "usd": {
+      "c0_usd": 13.100383910802963,
+      "c_star_usd": -13.207856988400616,
+      "gross_usd": -0.10747307759765315,
+      "notional_usd_per_contract": 227042.40994854204,
+      "uncertainty_hi_usd": 0.9157935704492701,
+      "uncertainty_lo_usd": -1.0636994009941885
+    },
+    "verdict": "KILL_MATERIALITY"
+  },
+  "contract": {
+    "consume_rule": "a decision at instant t consumes exactly the messages whose exchange_send_ns <= t; a message stamped after t is never consumed, and the exit state consumes exactly the quotes whose exchange_send_ns <= t + horizon",
+    "coverage_floor": {
+      "applies_to": "the PRIMARY horizon only",
+      "min_observations": 250,
+      "observation_coverage_definition": "evaluated slots (quote at entry and exit AND a non-zero state) over all primary decision slots",
+      "observation_coverage_min": 0.75,
+      "quote_coverage_definition": "decision slots in the primary horizon whose entry instant carries a two-sided strictly positive uncrossed quote, over all primary decision slots",
+      "quote_coverage_min": 0.95,
+      "rule": "a floor failure is reported as INDETERMINATE_COVERAGE with the failing metric named; it never silently re-scopes the measurement, and the nominal figures are still reported"
+    },
+    "friction": {
+      "basis": "1/2 S_entry + 1/2 S_exit from the OBSERVED quoted spread prevailing at the entry instant and at the exit instant, expressed in bps of the entry midpoint, evaluated by M2/src/envelope.py::midpoint_markout_friction_bps",
+      "forbidden": [
+        "a hard-coded one-tick-per-side spread",
+        "any arbitrary multiple of C0 as a safety factor",
+        "executable-price substitution in the outcome"
+      ],
+      "identity_note": "E[1/2 S_entry + 1/2 S_exit] = E[S] is an identity, not evidence; the friction is taken per observation at both instants rather than from a single pooled mean"
+    },
+    "horizons_s": [
+      1,
+      5,
+      15
+    ],
+    "outcome": "side-signed midpoint markout in bps of the entry midpoint, on the reconstructed top of book: direction * (M(t + horizon) - M(t)) / M(t) * 1e4. No executable-price substitution anywhere in the outcome.",
+    "primary_horizon_s": 1,
+    "state": {
+      "definition": "x(t) = (V_buy - V_sell) / D(t), where V_* is the aggressor-signed ESU3 trade size stamped in the half-open interval (t - 1 s, t] and D(t) = bid_sz + ask_sz displayed at the decision instant",
+      "direction_rule": "x > 0 is LONG, x < 0 is SHORT; aggressor_side 1 = buy aggressor, 2 = sell aggressor",
+      "lookback_basis": "one decision interval, the shortest accumulation window consistent with the 1 s primary horizon; fixed here and never searched",
+      "lookback_ns": 1000000000,
+      "states": [
+        "LONG",
+        "SHORT"
+      ],
+      "thresholds": "none: the sign of the state is the direction, so no threshold exists to tune",
+      "zero_policy": "x == 0, no trades in the lookback, or a missing / zero-depth / crossed quote is NO position and is excluded from the evaluated set while still being counted in coverage; it is never a zero-valued observation"
+    },
+    "statistics": {
+      "block_slots": 60,
+      "cluster_count_limit": "with one admitted instrument the instrument-level cluster is the window itself, so the 60 s block is the finest declared dependence unit that leaves more than one cluster; the resulting interval is development-grade and is reported with its cluster count",
+      "dependence_unit": "one instrument x one contiguous 60-decision-slot (60 s) block; overlapping forward returns inside a block share a price path",
+      "interval": "percentile 2.5 / 97.5 of the cluster-resample distribution of the mean, via M2/src/calculate.py::block_bootstrap_ci",
+      "min_state_observations": 100,
+      "resamples": 2000,
+      "seed": 20260717,
+      "seed_rule": "seed + horizon_seconds * seed_stride + state_index, state_index 0 for the pooled horizon figure, 1 for LONG, 2 for SHORT",
+      "seed_stride": 3,
+      "significance": "reported separately through envelope.significance_against_zero and never an input to the classification"
+    }
+  },
+  "experiment_id": "M2-BRIDGE-ES-H3-OFI",
+  "headline": {
+    "c0_bps": 0.5770016233430615,
+    "c_star_bps": -0.5817352357823415,
+    "ci_high_bps": 0.04033579324042719,
+    "ci_low_bps": -0.046850251511832974,
+    "clusters": 10,
+    "gross_markout_bps": -0.004733612439280016,
+    "horizon_s": 1,
+    "observations": 583,
+    "se_bps": 0.022297599249178377
+  },
+  "null_baseline": {
+    "note": "the side-ignoring unconditional markout is reported so the conditional gross can be read against it; it is not an input to the classification",
+    "unconditional_markout_bps_by_horizon": {
+      "1": 0.015674606811580484,
+      "15": 0.13408166662905527,
+      "5": 0.06310906077195741
+    }
+  },
+  "per_horizon": [
+    {
+      "clusters": 10,
+      "decision_slots": 599,
+      "friction_c0_bps": 0.5770016233430615,
+      "gross_ci_high_bps": 0.04033579324042719,
+      "gross_ci_low_bps": -0.046850251511832974,
+      "gross_markout_bps": -0.004733612439280016,
+      "gross_se_bps": 0.022297599249178377,
+      "horizon_s": 1,
+      "observation_coverage": 0.9732888146911519,
+      "observations": 583,
+      "quote_coverage": 0.998330550918197,
+      "state_long": 273,
+      "state_short": 310,
+      "unconditional_markout_bps": 0.015674606811580484
+    },
+    {
+      "clusters": 10,
+      "decision_slots": 595,
+      "friction_c0_bps": 0.5776598977241896,
+      "gross_ci_high_bps": 0.08071507197548941,
+      "gross_ci_low_bps": -0.08958342121933428,
+      "gross_markout_bps": -0.0014608308473328167,
+      "gross_se_bps": 0.04439857778647617,
+      "horizon_s": 5,
+      "observation_coverage": 0.973109243697479,
+      "observations": 579,
+      "quote_coverage": 0.9983193277310924,
+      "state_long": 271,
+      "state_short": 308,
+      "unconditional_markout_bps": 0.06310906077195741
+    },
+    {
+      "clusters": 10,
+      "decision_slots": 585,
+      "friction_c0_bps": 0.5776520990236363,
+      "gross_ci_high_bps": 0.15498325807277952,
+      "gross_ci_low_bps": -0.04355652317717464,
+      "gross_markout_bps": 0.0502825067187364,
+      "gross_se_bps": 0.05137513285301638,
+      "horizon_s": 15,
+      "observation_coverage": 0.9726495726495726,
+      "observations": 569,
+      "quote_coverage": 0.9982905982905983,
+      "state_long": 266,
+      "state_short": 303,
+      "unconditional_markout_bps": 0.13408166662905527
+    }
+  ],
+  "per_state": [
+    {
+      "clusters": 10,
+      "gross_ci_high_bps": 0.07615407478802087,
+      "gross_ci_low_bps": -0.04075003446545779,
+      "gross_markout_bps": 0.017155248190908367,
+      "gross_se_bps": 0.029907635911516937,
+      "horizon_s": 1,
+      "observations": 273,
+      "reported": true,
+      "state": "LONG"
+    },
+    {
+      "clusters": 10,
+      "gross_ci_high_bps": 0.04422693206818017,
+      "gross_ci_low_bps": -0.0951536156244017,
+      "gross_markout_bps": -0.02400993163941367,
+      "gross_se_bps": 0.035852941429444375,
+      "horizon_s": 1,
+      "observations": 310,
+      "reported": true,
+      "state": "SHORT"
+    },
+    {
+      "clusters": 10,
+      "gross_ci_high_bps": 0.23262789988049115,
+      "gross_ci_low_bps": -0.14541744799259762,
+      "gross_markout_bps": 0.056932934693171275,
+      "gross_se_bps": 0.09606982713928384,
+      "horizon_s": 5,
+      "observations": 271,
+      "reported": true,
+      "state": "LONG"
+    },
+    {
+      "clusters": 10,
+      "gross_ci_high_bps": 0.17783763419522758,
+      "gross_ci_low_bps": -0.33261426257431054,
+      "gross_markout_bps": -0.052839760917062065,
+      "gross_se_bps": 0.13093208560250383,
+      "horizon_s": 5,
+      "observations": 308,
+      "reported": true,
+      "state": "SHORT"
+    },
+    {
+      "clusters": 10,
+      "gross_ci_high_bps": 0.6488018743484356,
+      "gross_ci_low_bps": -0.34942258809336857,
+      "gross_markout_bps": 0.18647078906293427,
+      "gross_se_bps": 0.25641198409037763,
+      "horizon_s": 15,
+      "observations": 266,
+      "reported": true,
+      "state": "LONG"
+    },
+    {
+      "clusters": 10,
+      "gross_ci_high_bps": 0.4402078790021599,
+      "gross_ci_low_bps": -0.6541692826789669,
+      "gross_markout_bps": -0.06927552332600492,
+      "gross_se_bps": 0.27819898474956783,
+      "horizon_s": 15,
+      "observations": 303,
+      "reported": true,
+      "state": "SHORT"
+    }
+  ],
+  "robustness": {
+    "clock": "ts_recv_ns",
+    "reason": "capture receipt is the strictest availability clock available on this slice; the admitted slice satisfies transact_time <= exchange_send <= ts_recv for every row. The conservative pass is reported in full and is never the reported verdict.",
+    "rows": [
+      {
+        "clusters": 10,
+        "decision_slots": 599,
+        "friction_c0_bps": 0.5770016233430615,
+        "gross_ci_high_bps": 0.04033579324042719,
+        "gross_ci_low_bps": -0.046850251511832974,
+        "gross_markout_bps": -0.004733612439280016,
+        "gross_se_bps": 0.022297599249178377,
+        "horizon_s": 1,
+        "observation_coverage": 0.9732888146911519,
+        "observations": 583,
+        "quote_coverage": 0.998330550918197,
+        "state_long": 273,
+        "state_short": 310,
+        "unconditional_markout_bps": 0.015674606811580484
+      },
+      {
+        "clusters": 10,
+        "decision_slots": 595,
+        "friction_c0_bps": 0.5776598977241896,
+        "gross_ci_high_bps": 0.08071507197548941,
+        "gross_ci_low_bps": -0.08958342121933428,
+        "gross_markout_bps": -0.0014608308473328167,
+        "gross_se_bps": 0.04439857778647617,
+        "horizon_s": 5,
+        "observation_coverage": 0.973109243697479,
+        "observations": 579,
+        "quote_coverage": 0.9983193277310924,
+        "state_long": 271,
+        "state_short": 308,
+        "unconditional_markout_bps": 0.06310906077195741
+      },
+      {
+        "clusters": 10,
+        "decision_slots": 585,
+        "friction_c0_bps": 0.5776520990236363,
+        "gross_ci_high_bps": 0.15498325807277952,
+        "gross_ci_low_bps": -0.04355652317717464,
+        "gross_markout_bps": 0.0502825067187364,
+        "gross_se_bps": 0.05137513285301638,
+        "horizon_s": 15,
+        "observation_coverage": 0.9726495726495726,
+        "observations": 569,
+        "quote_coverage": 0.9982905982905983,
+        "state_long": 266,
+        "state_short": 303,
+        "unconditional_markout_bps": 0.13408166662905527
+      }
+    ]
+  },
+  "significance": {
+    "estimate": -0.004733612439280016,
+    "note": "statistical significance against zero is not the materiality decision criterion",
+    "role": "REPORTED_ONLY",
+    "standard_error": 0.022297599249178377,
+    "t_stat": -0.2122924708790988
+  },
+  "validity_checks": {
+    "causal_consumption": "the state uses only trades stamped at or before the decision instant and the outcome only quotes stamped at or before the exit instant; no future message enters either side",
+    "freeze_integrity": {
+      "analysis_module": {
+        "declared": "2a07bbd45dc42dd6bd18d66d83563bbbf18dffd96b52dc6b1bd6824c27b3101c",
+        "observed": "2a07bbd45dc42dd6bd18d66d83563bbbf18dffd96b52dc6b1bd6824c27b3101c",
+        "path": "M2/src/es_materiality.py",
+        "unchanged": true
+      },
+      "inputs": {
+        "M2/data/derived_es/2023-07-17T133000Z/acquisition.json": {
+          "declared": "60dd30dc02969e5fb172b14268240687a4dc8b10e9828a9c0e42439c10a99d42",
+          "observed": "60dd30dc02969e5fb172b14268240687a4dc8b10e9828a9c0e42439c10a99d42",
+          "unchanged": true
+        },
+        "M2/data/derived_es/2023-07-17T133000Z/admission.json": {
+          "declared": "44c7462abddcd5c4df455d108d8a19a06e7b286a5d88a605221545dcd736ebd4",
+          "observed": "44c7462abddcd5c4df455d108d8a19a06e7b286a5d88a605221545dcd736ebd4",
+          "unchanged": true
+        },
+        "M2/data/derived_es/2023-07-17T133000Z/bbo_increments.csv": {
+          "declared": "937b0557a916cb30a3cae02753edff68604bcba59f9d1c76f07d0d0f176552e5",
+          "observed": "937b0557a916cb30a3cae02753edff68604bcba59f9d1c76f07d0d0f176552e5",
+          "unchanged": true
+        },
+        "M2/data/derived_es/2023-07-17T133000Z/spread_distribution.json": {
+          "declared": "99d89e685b906624dccbf02a311341e8bb79f3c976e2faf394d2ee8cec792c2a",
+          "observed": "99d89e685b906624dccbf02a311341e8bb79f3c976e2faf394d2ee8cec792c2a",
+          "unchanged": true
+        },
+        "M2/data/derived_es/2023-07-17T133000Z/spread_grid.csv": {
+          "declared": "5f99dc16e65f260cf3fcf743623d266f8f5487403414bb973291abd801fe2919",
+          "observed": "5f99dc16e65f260cf3fcf743623d266f8f5487403414bb973291abd801fe2919",
+          "unchanged": true
+        },
+        "M2/data/derived_es/2023-07-17T133000Z/trades.csv": {
+          "declared": "d3db3cd75e082196cac13c43f1220d117c1f9f2c98a0e49ec0559b22d183210e",
+          "observed": "d3db3cd75e082196cac13c43f1220d117c1f9f2c98a0e49ec0559b22d183210e",
+          "unchanged": true
+        }
+      },
+      "reused_modules": {
+        "M2/config/cost_ledger_v1.json": {
+          "declared": "52ce785fc7210138af4059e327fc7101dff7f78dff3f5156c045973c1ed4cb17",
+          "observed": "52ce785fc7210138af4059e327fc7101dff7f78dff3f5156c045973c1ed4cb17",
+          "unchanged": true
+        },
+        "M2/src/calculate.py": {
+          "declared": "8a6a0534cec0142fbdc56fa4ea9d354f497cad2358f067b261a74a93439edef7",
+          "observed": "8a6a0534cec0142fbdc56fa4ea9d354f497cad2358f067b261a74a93439edef7",
+          "unchanged": true
+        },
+        "M2/src/envelope.py": {
+          "declared": "a2777d0568a450e1ce48bc4becdcb3c49c7c3740a82da748ece31f223c7670c0",
+          "observed": "a2777d0568a450e1ce48bc4becdcb3c49c7c3740a82da748ece31f223c7670c0",
+          "unchanged": true
+        }
+      },
+      "sealed_contract": {
+        "declared": "42a158c584552392e6c21535f35b3887228ea209c47257dee97672f6bfd75568",
+        "observed": "42a158c584552392e6c21535f35b3887228ea209c47257dee97672f6bfd75568",
+        "path": "M2/experiments/M2-BRIDGE-ES-H3-OFI/freeze.json",
+        "unchanged": true
+      }
+    },
+    "grid_causality_audit": {
+      "agreement_fraction": 1.0,
+      "instants_compared": 59999,
+      "instants_grid_only": 0,
+      "instants_rebuild_only": 0,
+      "max_abs_deviation_points": 0.0,
+      "nonzero_deviations": 0,
+      "note": "strictly-past direct level-1 replay vs the admitted grid; a non-zero deviation marks an instant where the producer's maintained book used a deeper level or a compaction step that direct level-1 rows alone do not express"
+    },
+    "trades_used_primary": 18104,
+    "trades_used_robustness": 18104
+  },
+  "verdict": "KILL_MATERIALITY",
+  "window": {
+    "admitted_grid_coverage": 0.9999833333333333,
+    "end_utc": "2023-07-17T13:40:00Z",
+    "grid_points": 60000,
+    "instrument": "ESU3",
+    "instrument_id": 3445,
+    "session_close_ns": 1689601200000000000,
+    "session_open_ns": 1689600600000000000,
+    "start_utc": "2023-07-17T13:30:00Z",
+    "venue": "CME"
+  }
+}

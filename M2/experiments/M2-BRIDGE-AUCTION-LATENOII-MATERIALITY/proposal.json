@@ -1,0 +1,303 @@
+{
+ "author": "B5 (GOAL-M2-BRIDGE-001 epoch 5, branch AUCTION)",
+ "created_at_utc": "2026-09-30",
+ "discrepancies_and_unknowns": [
+  {
+   "action_needed": "Operator decision on whether the frozen sign clause should be re-read for a future run (it was NOT changed in this run).",
+   "claim": "The frozen NOII sign rule removes 47.8% of the universe-qualified population from the decision set.",
+   "evidence": "1179 of 2465 universe-qualified Nasdaq-listed common stocks carry direction N/O/P at one of the two frozen reads; every such read carries ImbalanceShares == 0, and the 637 symbols with N at both reads have delta_imbalance == 0 under any reading.",
+   "id": "B5-D1",
+   "impact": "The decision rests on 1286 signal-defined symbols (52.2%). Reported by identity in certificate.json:coverage_certificate.signal_scope and results.json:coverage. The signal-defined group is larger by paired shares (median 41,982 vs 3,223) than the removed group, so the measurement is not sampled from the illiquid tail.",
+   "severity": "MATERIAL"
+  },
+  {
+   "action_needed": "UNK-0036 (specification text for the near/far fields) or a replacement reconstruction gate on a feed that publishes the band.",
+   "claim": "The preregistered entry-book reconstruction gate could not be evaluated as specified.",
+   "evidence": "Every analysed 15:55 Closing-Cross read carries Near Price = 0 and Far Price = 0 (results.json:book_reconstruction, per-symbol near/far columns), so the 'reconstructed mid inside the exchange near/far band' ratio is 0/1219 evaluable.",
+   "id": "B5-D2",
+   "impact": "The frozen clause order returns INDETERMINATE (ENTRY_BOOK_RECONSTRUCTION_UNVALIDATED) rather than the rule's KILL_MATERIALITY.",
+   "severity": "MATERIAL"
+  },
+  {
+   "action_needed": "Rename in the next revision of the module; not changed here because the module is sealed.",
+   "claim": "results.json:decision.coverage_ratio is the analysed/denominator ratio (0.5116) while the frozen 0.95 floor applies to input availability (1.0000).",
+   "evidence": "results.json:coverage carries both figures with floor_applies_to named; the decision block re-uses the field name 'coverage_ratio' for the analysed ratio.",
+   "id": "B5-D3",
+   "impact": "A reader of the decision block alone could misread which ratio the floor governs.",
+   "severity": "MINOR"
+  },
+  {
+   "action_needed": "Correct the pointer in the next freeze revision.",
+   "claim": "The seal text points at a results.json field that the sealed module does not emit.",
+   "evidence": "freeze.json:as_run_deviations_from_freeze says deviations are recorded in results.json:as_run_deviations_from_freeze; the field is absent, and the deviations are recorded beside the freeze in as_run_deviations.json instead.",
+   "id": "B5-D4",
+   "impact": "Provenance prose, not numbers: freeze.json was left sealed and unedited after the run.",
+   "severity": "MINOR"
+  }
+ ],
+ "evidence_ledger_rows": [
+  {
+   "candidate_ids": "TUP-NASDAQ-CLOSE-H4-LATENOII-AGG",
+   "candidate_link_reason": "Directly measures the candidate's frozen primary metric",
+   "claim": "Frozen executable-capture measurement of the Nasdaq late-NOII closing displacement signal on 2026-06-12: -108.89 bps pooled (1261 symbols, CI [-169.84, -64.04] bps) against a verified C0 of 1.02 bps.",
+   "contradicts_mechanism": "NO",
+   "decision_implication": "Executable capture does not clear entry friction on this sample",
+   "epistemic_class": "SUPPORTED_FINDING",
+   "evidence_id": "EVD-0071",
+   "evidence_origin": "INTERNAL_EXPERIMENT",
+   "evidence_state": "MEASURED",
+   "gross_or_net": "NET_OF_C0",
+   "limitations": "One session; entry book reconstructed from the retained window alone (lower bound); reconstruction gate unevaluable (exchange near/far band absent)",
+   "mechanism_id": "MECH-AUCTIONIMB",
+   "methodology": "Preregistered freeze then run; entry at the first eligible post-15:55 ask/bid, exit at the Closing Cross; C0 = SEC Section 31 + FINRA TAF on the sell leg; symbol-clustered bootstrap, 10000 resamples, seed 20260612",
+   "observed_horizon": "H4 (15:50 -> 16:00 ET)",
+   "observed_instrument_or_universe": "Nasdaq-listed common stock (C, Q/G/S), 2465 with a valid Closing Cross",
+   "observed_market": "US_EQUITY",
+   "observed_period": "2026-06-12",
+   "observed_venue": "NASDAQ",
+   "sample": "1261 of 2465 universe-qualified symbols with a B/S signal at both frozen reads",
+   "source_id": "SRC-0201",
+   "supports_or_weakens": "WEAKENS",
+   "temporal_scope": "2026-06-12 15:55-16:00 ET",
+   "transfer_status": "SINGLE_SESSION",
+   "venue_id": "VEN-NASDAQ-AUCTION",
+   "verification_status": "REPRODUCIBLE_FROM_SEALED_ARTEFACTS"
+  },
+  {
+   "candidate_ids": "TUP-NASDAQ-CLOSE-H4-LATENOII-AGG",
+   "candidate_link_reason": "Mechanism-magnitude half of the same measurement",
+   "claim": "Frozen mechanism metric (side-signed Closing Cross displacement vs the 15:55 Current Reference Price) is +6.52 bps pooled, CI [2.00, 11.00] bps, over the same 1261 symbols.",
+   "contradicts_mechanism": "NO",
+   "decision_implication": "Predicted displacement exists but is ~17x smaller than the entry friction",
+   "epistemic_class": "SUPPORTED_FINDING",
+   "evidence_id": "EVD-0072",
+   "evidence_origin": "INTERNAL_EXPERIMENT",
+   "evidence_state": "MEASURED",
+   "gross_or_net": "GROSS",
+   "limitations": "Reference price is a crossing-price construct, not the inside midpoint",
+   "mechanism_id": "MECH-AUCTIONIMB",
+   "methodology": "Preregistered secondary metric on the same freeze",
+   "observed_horizon": "H4",
+   "observed_instrument_or_universe": "Nasdaq-listed common stock",
+   "observed_market": "US_EQUITY",
+   "observed_period": "2026-06-12",
+   "observed_venue": "NASDAQ",
+   "sample": "1261 symbols",
+   "source_id": "SRC-0201",
+   "supports_or_weakens": "NEUTRAL",
+   "temporal_scope": "2026-06-12",
+   "transfer_status": "SINGLE_SESSION",
+   "venue_id": "VEN-NASDAQ-AUCTION",
+   "verification_status": "REPRODUCIBLE_FROM_SEALED_ARTEFACTS"
+  },
+  {
+   "candidate_ids": "TUP-NASDAQ-CLOSE-H4-LATENOII-AGG",
+   "candidate_link_reason": "Data-admission basis of the branch",
+   "claim": "Nasdaq's published TotalView-ITCH captures carry no BinaryFILE zero-length terminating frame; completeness must be carried by transport markers plus a measurement-window continuity and coverage certificate, and the known splice attack passes every transport marker while holding 0.92% of the decoded session.",
+   "contradicts_mechanism": "NO",
+   "decision_implication": "Any future branch on this tape must state completeness over its own window",
+   "epistemic_class": "SUPPORTED_FINDING",
+   "evidence_id": "EVD-0073",
+   "evidence_origin": "INTERNAL_EXPERIMENT",
+   "evidence_state": "MEASURED",
+   "gross_or_net": "N/A",
+   "limitations": "Certifies the measurement window, not original-session completeness",
+   "mechanism_id": "MECH-AUCTIONIMB",
+   "methodology": "Certificate + re-run splice negative control over the retained window (transport PASS, continuity FAIL, identity FAIL on the spliced artefact)",
+   "observed_horizon": "15:49:50-16:00:10 ET",
+   "observed_instrument_or_universe": "all 12809 locates in the session directory",
+   "observed_market": "US_EQUITY",
+   "observed_period": "2026-06-12",
+   "observed_venue": "NASDAQ",
+   "sample": "one retained 760 MB window artefact and a synthetic splice of it",
+   "source_id": "SRC-0201",
+   "supports_or_weakens": "NEUTRAL",
+   "temporal_scope": "2026-09-30",
+   "transfer_status": "GENERAL",
+   "venue_id": "VEN-NASDAQ-AUCTION",
+   "verification_status": "NEGATIVE_CONTROL_VERIFIED"
+  }
+ ],
+ "experiment": {
+  "artifact_dir": "M2/experiments/M2-BRIDGE-AUCTION-LATENOII-MATERIALITY/",
+  "branch": "AUCTION",
+  "candidate_id": "TUP-NASDAQ-CLOSE-H4-LATENOII-AGG",
+  "conclusion": "The frozen executable-capture measurement on 1261 signal-defined Nasdaq-listed common stocks is -108.89 bps pooled (CI [-169.84, -64.04]), against a structural cost floor C0 of 1.02 bps and a break-even residual C* of -109.92 bps. The frozen clause order delivers INDETERMINATE because the preregistered entry-book reconstruction gate is not satisfied (the exchange published no near/far price band in any analysed 15:55 read, and the evaluable diagnostic agrees with the exchange reference price only 41.5% of the time) and because the signal-defined population is 52.2% of the universe. The rule's own verdict on the analysed sample is KILL_MATERIALITY: the measured capture is negative by two orders of magnitude relative to C0. The measurement is a LOWER bound on the true capture, and the missing pre-window liquidity that bounds it inflates the measured entry spread, so the negative figure is not robust enough to be recorded as a defensible kill without the operator accepting that residual.",
+  "experiment_id": "M2-BRIDGE-AUCTION-LATENOII-MATERIALITY",
+  "freeze_sha256": "9baff3dd69a08dfc2883e972cddda763666819b4e83234960ec0b72b19e91393",
+  "results_sha256": "15b7a3d51c1e6d0ce897ec31d63357657df47a9d59d8af6316b2a513c50d2f63",
+  "rule_verdict_on_analysed_sample": "KILL_MATERIALITY",
+  "session": "2026-06-12, Nasdaq TotalView-ITCH 5.0, 15:49:50-16:00:10 ET",
+  "verdict": "INDETERMINATE (ENTRY_BOOK_RECONSTRUCTION_UNVALIDATED; SIGNAL_SCOPE_SUBFLOOR)"
+ },
+ "experiment_row": {
+  "artifact_hash": "freeze 9baff3dd69a08dfc2883e972cddda763666819b4e83234960ec0b72b19e91393; results 15b7a3d51c1e6d0ce897ec31d63357657df47a9d59d8af6316b2a513c50d2f63",
+  "blocking_issue_ids": "UNK-0037",
+  "calibration_version": "NONE",
+  "change_from_parent": "FIRST_RUN (new candidate row)",
+  "dataset_version": "NASDAQ-TOTALVIEW-ITCH50-2026-06-12 (retained window 760167921 bytes, sha256 28ed7b97...59597)",
+  "decision": "INDETERMINATE",
+  "execution_model_version": "EXECUTABLE_CAPTURE_POST_1555_QUOTE (entry prints sha256 9f52149c...474d4f2)",
+  "experiment_id": "M2-BRIDGE-AUCTION-LATENOII-MATERIALITY",
+  "feature_version": "NOII-Closing-Cross-C reads at 15:50/15:55, per-symbol extract sha256 46366346...5d5889",
+  "hypothesis_id": "UNKNOWN (no hypothesis row is registered; HYPOTHESES.csv carries only its header)",
+  "label_version": "Closing Cross print (Cross Trade Q, Cross Type C)",
+  "model_version": "NONE (deterministic frozen signal)",
+  "notes": "One session only; no execution was performed; no order, account or route existed. As-run deviations are recorded in M2/experiments/M2-BRIDGE-AUCTION-LATENOII-MATERIALITY/as_run_deviations.json.",
+  "parent_experiment_id": "NONE (first measurement of this candidate)",
+  "preregistered": "YES",
+  "primary_metric": "executable capture g_exec in bps, side-signed",
+  "reason_before_result": "The frozen formulation had never been measured; the operator authorized a development-grade single-session measurement with a preregistered kill rule and cost treatment.",
+  "registered_at": "2026-09-30",
+  "required_preconditions": "Free public ITCH session tape including 15:49:50-16:00:10 ET; verified SEC Section 31 and FINRA TAF rates effective for the sample date",
+  "result_summary": "g_exec = -108.89 bps (CI [-169.84, -64.04]) over 1261 symbols; mechanism displacement +6.52 bps (CI [2.00, 11.00]); C0 = 1.02 bps; C* = -109.92 bps; coverage (input availability) 1.0000; signal-defined population 0.5217; frozen decision INDETERMINATE (ENTRY_BOOK_RECONSTRUCTION_UNVALIDATED, SIGNAL_SCOPE_SUBFLOOR); rule verdict KILL_MATERIALITY",
+  "run_state": "RUN",
+  "sealed_holdout_accessed": "NO",
+  "secondary_metrics": "side-signed Closing Cross displacement vs 15:55 reference price; 4-quantile state partition of scaled delta imbalance; symbol-clustered bootstrap CI; C1 sensitivity"
+ },
+ "not_applied": {
+  "canonical_artifacts_untouched": [
+   "DEAD_ENDS.md",
+   "EVIDENCE_LEDGER.csv",
+   "EXPERIMENTS.csv",
+   "ASSUMPTIONS.csv",
+   "HYPOTHESES.csv",
+   "DISCREPANCIES_AND_UNKNOWNS.md",
+   "OPEN_QUESTIONS.md",
+   "WATCHLIST.md",
+   "DECISIONS.md",
+   "PROJECT_STATE.md",
+   "M1/data/dead_candidates.csv",
+   "M1/data/candidate_tuples.csv",
+   "M1/work/patches/",
+   "M1/work/frontier.json"
+  ],
+  "proposed_new_ids": {
+   "evidence": [
+    "EVD-0071",
+    "EVD-0072",
+    "EVD-0073"
+   ],
+   "patch": "P-9001",
+   "unknowns": [
+    "UNK-0036",
+    "UNK-0037"
+   ]
+  }
+ },
+ "patch": {
+  "blocker_ids": [
+   "UNK-0005",
+   "UNK-0006"
+  ],
+  "candidate_ids": [
+   "TUP-NASDAQ-CLOSE-H4-LATENOII-AGG"
+  ],
+  "created_at": "2026-09-30",
+  "decision": "WEAKENS",
+  "modified_claims": [],
+  "new_evidence": [
+   {
+    "candidate_ids": "TUP-NASDAQ-CLOSE-H4-LATENOII-AGG",
+    "claim": "On the admitted 2026-06-12 Nasdaq closing session, the frozen executable-capture measurement of the late-NOII imbalance-change signal is -108.89 bps pooled (equal-share bundle, 1261 signal-defined Nasdaq-listed common stocks, symbol-clustered 95% CI [-169.84, -64.04] bps), against a verified structural cost floor C0 of 1.02 bps (SEC Section 31 on the sell leg plus FINRA TAF) and a break-even residual C* of -109.92 bps.",
+    "decision_implication": "The executable-capture form of this mechanism does not clear its own entry friction on this sample by a wide margin; a kill is warranted only if the operator accepts that the reconstruction bias cannot account for a -109 bps gap.",
+    "epistemic_class": "SUPPORTED_FINDING",
+    "evidence_id": "EVD-0071",
+    "evidence_origin": "INTERNAL_EXPERIMENT",
+    "gross_or_net": "NET of verified mandatory charges C0; excludes unresolved C1",
+    "limitations": "One session, one venue. The entry print comes from a book reconstructed from the retained window alone, which cannot see orders added before 15:49:50: the measured entry spread is therefore an upper bound and the measured capture a lower bound. The exchange published no near/far price band in any of the analysed 15:55 reads, so the preregistered reconstruction gate could not be evaluated as specified. 47.8% of the universe is removed by the frozen N/O/P direction rule.",
+    "methodology": "Preregistered freeze (sha256 9baff3dd...e91393) then run: entry at the first eligible post-15:55 best ask (positive signal) or best bid (negative), exit at the Closing Cross; books reconstructed from the retained window; SEC Section 31 and FINRA TAF on the sell leg; symbol-clustered percentile bootstrap, 10000 resamples, seed 20260612.",
+    "sample": "1261 of 2465 universe-qualified Nasdaq-listed common stocks with a valid Closing Cross carrying a B/S signed imbalance at both frozen reads, one session",
+    "source_id": "SRC-0201",
+    "supports_or_weakens": "WEAKENS",
+    "temporal_scope": "2026-06-12, 15:55:00-16:00:00 ET",
+    "verification_status": "REPRODUCIBLE_FROM_SEALED_ARTEFACTS"
+   },
+   {
+    "candidate_ids": "TUP-NASDAQ-CLOSE-H4-LATENOII-AGG",
+    "claim": "The frozen mechanism metric - the side-signed Closing Cross displacement against the 15:55 Current Reference Price - is +6.52 bps pooled (95% CI [2.00, 11.00] bps) over the same 1261 symbols, i.e. the cross moves in the signal's direction but by roughly 1/17 of the entry friction the executable capture pays.",
+    "decision_implication": "The displacement the mechanism predicts is real but an order of magnitude smaller than the spread it must cross at 15:55.",
+    "epistemic_class": "SUPPORTED_FINDING",
+    "evidence_id": "EVD-0072",
+    "evidence_origin": "INTERNAL_EXPERIMENT",
+    "gross_or_net": "GROSS (no cost deduction)",
+    "limitations": "The reference price is a crossing-price construct, not the inside midpoint, so this is a displacement measure rather than an achievable return.",
+    "methodology": "Preregistered secondary metric, same freeze and sample; raw displacement reported unsigned alongside (-4.77 bps pooled).",
+    "sample": "1261 symbols, one session",
+    "source_id": "SRC-0201",
+    "supports_or_weakens": "WEAKENS",
+    "temporal_scope": "2026-06-12",
+    "verification_status": "REPRODUCIBLE_FROM_SEALED_ARTEFACTS"
+   }
+  ],
+  "new_sources": [],
+  "new_unknowns": [
+   {
+    "branch_impact": "AUCTION",
+    "claim_needed": "Do Nasdaq Closing-Cross NOII reads publish the Near Price / Far Price band at all, and if so under what condition?",
+    "decision_prevented": "An independent reconstruction-validation gate for any future Nasdaq quote-imputation measurement.",
+    "estimated_effort": "LOW",
+    "issue_id": "UNK-0036",
+    "kill_potential": "NO",
+    "known_evidence": "On the admitted 2026-06-12 session every analysed 15:55 Cross-Type-C read carries Near Price = 0 and Far Price = 0.",
+    "migration_reason": "Discovered by this measurement; blocks nothing today, but it is the reason the reconstruction clause is UNEVALUABLE rather than FAILED.",
+    "resolution_method": "DOCUMENT_READ",
+    "resolution_stage": "PRE_EXECUTION",
+    "severity": "MEDIUM",
+    "specific_evidence_needed": "The current NQTV ITCH 5.0 / NOII specification text for the near/far price fields, plus a session in which they are observed non-zero.",
+    "tier": 2
+   },
+   {
+    "branch_impact": "AUCTION",
+    "claim_needed": "How much of the measured entry spread is an artefact of reconstructing the book from the retained window alone (orders added before 15:49:50 are invisible)?",
+    "decision_prevented": "A defensible KILL on the executable-capture metric of this branch.",
+    "estimated_effort": "LOW (the same free host carries the full session; a 5 GB-day-wide retention rule is the only obstacle)",
+    "issue_id": "UNK-0037",
+    "kill_potential": "NO",
+    "known_evidence": "7,176,224 orphan book messages (35.8% of in-scope book messages) reference pre-window orders; the bias direction is one-way (missing resting orders can only widen the quote).",
+    "migration_reason": "The single binding limitation of this measurement.",
+    "resolution_method": "DATA_ACQUISITION",
+    "resolution_stage": "PRE_EXECUTION",
+    "severity": "HIGH",
+    "specific_evidence_needed": "A retained window that starts at the session open, or an exchange snapshot, to measure the true inside spread at 15:55.",
+    "tier": 1
+   }
+  ],
+  "patch_id": "P-9001",
+  "proposed_assumption_updates": [
+   {
+    "claim": "Nasdaq NOII dissemination carries usable Near Price / Far Price fields for close reads",
+    "proposed": "WEAKENED: on 2026-06-12 every analysed 15:55 Closing-Cross read carried Near Price = Far Price = 0, so the exchange's own price-variation band is not available as an independent book check on this feed.",
+    "reason": "Measured on the sealed certificate/extract; affects any future reconstruction-validation gate."
+   }
+  ],
+  "proposed_candidate_updates": [
+   {
+    "candidate_id": "TUP-NASDAQ-CLOSE-H4-LATENOII-AGG",
+    "fields": {
+     "notes": "Epoch-5 measurement complete. Frozen clause order returns INDETERMINATE (ENTRY_BOOK_RECONSTRUCTION_UNVALIDATED, SIGNAL_SCOPE_SUBFLOOR); the rule verdict on the analysed sample is KILL_MATERIALITY.",
+     "primary_metric": "Mechanism displacement measured; executable capture measured net of C0 (freeze 9baff3dd...e91393)"
+    },
+    "reason": "Records the measured outcome without asserting a kill the frozen clauses do not deliver."
+   }
+  ],
+  "proposed_dead_end_updates": [
+   {
+    "candidate_id": "TUP-NASDAQ-CLOSE-H4-LATENOII-AGG",
+    "cause": "Executable capture -108.89 bps pooled (CI [-169.84, -64.04]) against C0 of 1.02 bps and C* of -109.92 bps on the frozen 2026-06-12 measurement; the mechanism displacement it monetizes is +6.52 bps.",
+    "condition": "The operator must accept that the one-way-conservative book-reconstruction bias cannot account for the measured -109.92 bps break-even residual before this is recorded as a kill; otherwise the row stays open with the INDETERMINATE clause on record.",
+    "evidence_ids": "EVD-0071|EVD-0072",
+    "proposed_status": "CONDITIONAL_KILL_PROPOSAL",
+    "resurrection_condition": "A rule-conformant, book-validated sample in which the 15:55 inside spread on the signal-defined Nasdaq-listed common-stock population is materially narrower than the measured displacement - or an execution route (e.g. a separately authorized Market-On-Close submission) that enters at a materially better price than the post-15:55 continuous-book quote."
+   }
+  ],
+  "proposed_gate_changes": [],
+  "proposed_issue_updates": [],
+  "reason": "The measured executable capture is negative by two orders of magnitude relative to C0; the frozen clauses nevertheless deliver INDETERMINATE because the preregistered reconstruction gate is unevaluable as specified and the signal-defined population is 52.2% of the universe.",
+  "status": "PROPOSED",
+  "verification_notes": "Re-run from the sealed freeze reproduces results.json byte-identically. Negative control: the V2 splice attack is refused by the measurement-window certificate on three independent grounds while passing every transport marker."
+ },
+ "proposal_id": "PROPOSAL-B5-AUCTION-MATERIALITY",
+ "statement": "Every entry below is a PROPOSAL. No canonical artefact has been edited: DEAD_ENDS.md, EVIDENCE_LEDGER.csv, EXPERIMENTS.csv, ASSUMPTIONS.csv, DISCREPANCIES_AND_UNKNOWNS.md, M1/data/dead_candidates.csv and M1/work/patches/ are untouched by this worker.",
+ "status": "PROPOSED_NOT_APPLIED"
+}

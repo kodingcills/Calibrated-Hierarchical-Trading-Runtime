@@ -1,0 +1,48 @@
+{
+  "hyperliquid": {
+    "id": "hl_perp_taker_base_tier",
+    "name": "Hyperliquid perp taker fee at the published base tier, open+close (2 x 0.045% of notional per one-hour hold)",
+    "unit": "PCT_OF_TRADE_VALUE",
+    "value": 0.09,
+    "class": "UNRESOLVED_C1",
+    "scenario_role": "REFERENCE_EXECUTION_PATH",
+    "varies_with_volume": true,
+    "varies_with_staking": false,
+    "varies_with_account_state": false,
+    "provenance": {
+      "source_id": "SRC-0213",
+      "url": "https://hyperliquid.gitbook.io/hyperliquid-docs/trading/fees.md",
+      "publisher": "Hyperliquid documentation (official fee schedule)",
+      "access_date": "2026-09-20",
+      "effective_period": "current schedule at access (2026-09-20); contemporaneous with the 2026-03-05..2026-09-28 sample window",
+      "quote": "base tier (< $5m 14-day volume) taker/maker 0.045%/0.015%, with tier rungs to 0.024%/0% above $7b; staking and referral modifiers documented",
+      "status": "VERIFIED"
+    },
+    "usd": 0.0009,
+    "usd_status": "EVALUATED"
+  },
+  "binance": {
+    "id": "binance_usdm_taker_base_tier",
+    "name": "Binance USD(S)-M BTCUSDT perp taker fee at the published base tier, open+close",
+    "unit": "PCT_OF_TRADE_VALUE",
+    "value": null,
+    "class": "UNRESOLVED_C1",
+    "scenario_role": "REFERENCE_EXECUTION_PATH",
+    "varies_with_volume": true,
+    "varies_with_staking": false,
+    "varies_with_account_state": false,
+    "provenance": {
+      "source_id": "",
+      "url": "",
+      "publisher": "",
+      "access_date": "",
+      "effective_period": "",
+      "quote": "",
+      "status": "UNKNOWN"
+    },
+    "usd": null,
+    "usd_status": "NOT_EVALUATED"
+  },
+  "may_decide_the_kill": false,
+  "note": "reported separately exactly as the operator's rule requires; the unresolved component of these state-dependent tiers stays in C1."
+}

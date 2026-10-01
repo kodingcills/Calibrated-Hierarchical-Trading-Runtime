@@ -1,0 +1,78 @@
+{
+  "branch": "AUCTION",
+  "candidate_id": "TUP-NASDAQ-CLOSE-H4-LATENOII-AGG",
+  "checks_run": [
+    "manifest.load",
+    "manifest.sections",
+    "source.identity",
+    "schema.identity",
+    "files.required",
+    "files.hash",
+    "archive.completeness",
+    "fields.required",
+    "fields.types",
+    "timestamp.identity",
+    "timezone.contract",
+    "session.identity",
+    "session.completeness",
+    "records.session_window",
+    "session.window_alignment",
+    "instrument.identity",
+    "universe.pit",
+    "ordering.causal",
+    "timestamps.monotonic",
+    "sequence.integrity",
+    "records.duplicates",
+    "intervals.coverage",
+    "intervals.grid_identity",
+    "coverage.contract",
+    "coverage.claim",
+    "objects.present",
+    "session.continuity",
+    "coverage.certificate"
+  ],
+  "contract_id": "ADMISSION-AUCTION-v2",
+  "dataset_id": "NASDAQ-TOTALVIEW-ITCH50-2026-06-12",
+  "manifest_id": "M2-BRIDGE-AUCTION-LATENOII-AGG-2026-06-12-v2",
+  "notes": [
+    {
+      "check": "files.retained",
+      "detail": "source streamed and not retained: its digest is a producer assertion and was not recomputed from disk",
+      "observed": {
+        "bytes": 17894268560,
+        "role": "raw",
+        "upstream_sha256": "1f9d35e12120ef37ea22df9f59dc5207fe51b075b6ccf1c9cdfd09fa566dc1d5",
+        "upstream_url": "https://emi.nasdaq.com/ITCH/Nasdaq%20ITCH/S061226-v50.txt.gz"
+      }
+    },
+    {
+      "check": "session.completeness",
+      "detail": "stream completeness is producer-declared evidence (counters and container checks), not recomputed by the engine from the source",
+      "observed": {
+        "final_frame_is_C_end_of_messages": true,
+        "framing_errors": 0,
+        "gzip_integrity": "PASS",
+        "out_of_window_holes": "DECLARED_NON_MATERIAL_TO_BRANCH_INPUTS",
+        "received_bytes_equals_content_range_total": true,
+        "splice_negative_control": "FLAGGED",
+        "trailing_bytes_after_frames": 0,
+        "transport_markers_prove_original_session_completeness": false,
+        "window_continuity_certificate": "PASS",
+        "window_coverage_certificate": "PASS"
+      }
+    },
+    {
+      "check": "session.terminating_frame",
+      "detail": "declared frame marker recorded; this product carries no zero-length terminating frame, so completeness is carried by the markers above",
+      "observed": {
+        "terminating_frame_present": false
+      }
+    }
+  ],
+  "reason_counts": {
+    "INCOMPLETE": 0,
+    "INVALID": 0
+  },
+  "reasons": [],
+  "state": "DATA_VALID"
+}

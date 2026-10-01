@@ -1,0 +1,71 @@
+{
+  "record": "AS_RUN_INPUTS_AND_ARTIFACTS",
+  "experiment_id": "M2-BRIDGE-ES-H3-OFI",
+  "candidate_id": "TUP-CME-ES-H3-OFI-AGG",
+  "branch": "A",
+  "written_after_run": true,
+  "note": "The experiment contract is M2/experiments/M2-BRIDGE-ES-H3-OFI/freeze.json, sealed before any branch-A gross markout was inspected and re-verified at run time. This file records the inputs and artifacts as they were actually produced and does not modify the freeze.",
+  "terminal_state": "KILLED_SAMPLE_SCOPED",
+  "verdict": "KILL_MATERIALITY",
+  "clause": "PRIMARY_HORIZON_GROSS_NOT_POSITIVE",
+  "scope": "SAMPLE_SCOPED_DEVELOPMENT_KILL",
+  "freeze_sha256_sealed": "42a158c584552392e6c21535f35b3887228ea209c47257dee97672f6bfd75568",
+  "freeze_sha256_recomputed": "42a158c584552392e6c21535f35b3887228ea209c47257dee97672f6bfd75568",
+  "seal_history": [
+    {
+      "seal_number": 1,
+      "freeze_json_sha256": "54b64f7c097511e7585012ae7ad278222b741a76a8d0876e8aba19eb8725b367",
+      "when": "before any real measurement was executed",
+      "note": "first seal; recorded the measured module hash 2a07bbd4... and the then-current test-file hash 40bcae96..."
+    },
+    {
+      "seal_number": 2,
+      "freeze_json_sha256": "42a158c584552392e6c21535f35b3887228ea209c47257dee97672f6bfd75568",
+      "when": "still before any real measurement was executed",
+      "note": "the unit tests exposed a wrong expectation inside M2/tests/test_es_materiality.py (the fixture's grid spanned 6 s, not 600 s, so the hand-computed markout expectation was wrong); only that test file and its recorded hash changed. The measured module hash is identical in both seals (2a07bbd4...). No frozen parameter, horizon, state, friction treatment, floor, metric, kill rule or seed was altered by either seal."
+    }
+  ],
+  "as_run_deviations_from_freeze": [],
+  "as_run_deviation_note": "none: the horizons, primary horizon, clock, state, lookback, friction treatment, coverage floor, metric, kill rule, block length, resample count and seeds used by the run are exactly the values in the sealed contract.",
+  "defects_found": [],
+  "code_and_input_sha256": {
+    "M2/src/es_materiality.py": "2a07bbd45dc42dd6bd18d66d83563bbbf18dffd96b52dc6b1bd6824c27b3101c",
+    "M2/tests/test_es_materiality.py": "ecfd95f0744c25be134cfa14353dd38a2646a67fa7aa256b0716722d0abc3e25",
+    "M2/src/envelope.py": "a2777d0568a450e1ce48bc4becdcb3c49c7c3740a82da748ece31f223c7670c0",
+    "M2/src/calculate.py": "8a6a0534cec0142fbdc56fa4ea9d354f497cad2358f067b261a74a93439edef7",
+    "M2/config/cost_ledger_v1.json": "52ce785fc7210138af4059e327fc7101dff7f78dff3f5156c045973c1ed4cb17",
+    "M2/data/derived_es/2023-07-17T133000Z/trades.csv": "d3db3cd75e082196cac13c43f1220d117c1f9f2c98a0e49ec0559b22d183210e",
+    "M2/data/derived_es/2023-07-17T133000Z/bbo_increments.csv": "937b0557a916cb30a3cae02753edff68604bcba59f9d1c76f07d0d0f176552e5",
+    "M2/data/derived_es/2023-07-17T133000Z/spread_grid.csv": "5f99dc16e65f260cf3fcf743623d266f8f5487403414bb973291abd801fe2919",
+    "M2/data/derived_es/2023-07-17T133000Z/spread_distribution.json": "99d89e685b906624dccbf02a311341e8bb79f3c976e2faf394d2ee8cec792c2a",
+    "M2/data/derived_es/2023-07-17T133000Z/admission.json": "44c7462abddcd5c4df455d108d8a19a06e7b286a5d88a605221545dcd736ebd4",
+    "M2/data/derived_es/2023-07-17T133000Z/acquisition.json": "60dd30dc02969e5fb172b14268240687a4dc8b10e9828a9c0e42439c10a99d42",
+    "freeze.json": "42a158c584552392e6c21535f35b3887228ea209c47257dee97672f6bfd75568",
+    "freeze.sha256": "d2a6fa7f7a4ee02fdd96efd5c598a0a37720268d585214b5534af899cdeaae12"
+  },
+  "result_artifacts": {
+    "M2/experiments/M2-BRIDGE-ES-H3-OFI/results.json": "09c8562999304072a5f5b5184bece3ba0588d1d57754ae776b3c6934f1487ac2",
+    "M2/experiments/M2-BRIDGE-ES-H3-OFI/proposal.json": "c57c7d18d68e8c0725d471998cfda0ce67b51f6dcf6380cbfb7f6ac61f7b2d5b",
+    "M1/work/reselection_specs/TUP-CME-ES-H3-OFI-AGG.json": "385354abb32d989ec13d68a3f5cea7a216bf3da4402b0c00d83038c229836dc8"
+  },
+  "validity": {
+    "freeze_integrity": "module hash, six declared input hashes, three reused-module hashes and the sealed-contract hash all unchanged at run time",
+    "grid_causality_audit": "strictly-past direct level-1 replay agrees with the admitted grid midpoint at 59,999 / 59,999 quoted instants (max deviation 0.0 points)",
+    "trades_used": {"primary_clock": 18104, "capture_clock": 18104},
+    "clock_sensitivity": "0 of 18,104 trades cross a 1 s bucket boundary between the venue send and capture receipt stamps (worst lag 89,153 ns), so the robustness pass is bit-identical and is NOT an independent clock test",
+    "observations_primary": 583,
+    "decision_slots_primary": 599,
+    "quote_coverage_primary": 0.998330550918197,
+    "observation_coverage_primary": 0.9732888146911519,
+    "coverage_floor_passed": true,
+    "clusters_primary": 10,
+    "m2_es_tests": "30 tests OK (M2/tests/test_es_materiality.py)",
+    "reruns_of_the_sealed_measurement": 1,
+    "post_result_parameter_changes": "NONE"
+  },
+  "reproduction": [
+    ".venv/bin/python -m M2.src.es_materiality audit",
+    ".venv/bin/python -m unittest M2.tests.test_es_materiality",
+    ".venv/bin/python -m M2.src.es_materiality run --freeze M2/experiments/M2-BRIDGE-ES-H3-OFI/freeze.json --out M2/experiments/M2-BRIDGE-ES-H3-OFI/results.json"
+  ]
+}

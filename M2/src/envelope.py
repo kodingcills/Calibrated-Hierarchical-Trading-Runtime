@@ -674,6 +674,36 @@ def two_leg_net(legs: Sequence[Mapping]) -> dict:
     }
 
 
+def perp_price_pnl(
+    *,
+    entry_price: float | None,
+    exit_price: float | None,
+    position: str,
+    notional_usd: float | None,
+) -> float:
+    """Signed mark-to-market P&L of ONE perpetual leg sized at ``notional_usd`` at entry.
+
+    The leg holds ``notional_usd / entry_price`` units. A ``short`` loses when the price
+    rises, a ``long`` loses when it falls. The result is USD and is price only: no fee and
+    no funding enters it, so a hedged pair's mark-to-market residual is the SUM of its two
+    legs' values (a pair of equal notional has residual ``notional * (r_long - r_short)``).
+    An unknown price is refused, never defaulted.
+    """
+    if entry_price is None or exit_price is None:
+        raise MissingUnitInput("entry_price and exit_price required to evaluate a price P&L")
+    if float(entry_price) <= 0:
+        raise ValueError(f"entry_price must be positive: {entry_price}")
+    if notional_usd is None:
+        raise MissingUnitInput("notional_usd required to evaluate a perp leg")
+    if position == "short":
+        sign = -1.0
+    elif position == "long":
+        sign = 1.0
+    else:
+        raise ValueError(f"position must be 'long' or 'short', got {position!r}")
+    return sign * float(notional_usd) * (float(exit_price) / float(entry_price) - 1.0)
+
+
 # ---------------------------------------------------------------------------
 # Preregistered classification.
 # ---------------------------------------------------------------------------

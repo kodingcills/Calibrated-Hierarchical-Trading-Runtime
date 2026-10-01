@@ -1,0 +1,43 @@
+{
+  "artifact": "CANONICAL_UPDATE_PROPOSAL",
+  "proposed_at_utc": "2026-09-30",
+  "applied": false,
+  "note": "this is a proposal only; no canonical artefact was edited by this module.",
+  "branch": "TUP-HYPERLIQUID-BTCPERP-H4-FUNDBASIS-MIX",
+  "experiment_id": "M2-BRIDGE-HL-BINANCE-BASIS",
+  "result": "KILL_MATERIALITY",
+  "evidence": {
+    "gross_bps_per_hold": 0.034405071291733334,
+    "c0_bps_per_hold": 4.8,
+    "c_star_bps_per_hold": -4.765594928708267,
+    "decision_interval_bps": [
+      -0.02698346242246038,
+      0.09623539865022562
+    ],
+    "holds": 4979,
+    "window": "2026-03-05T11:00:00Z..2026-09-28T23:00:00Z"
+  },
+  "proposed_changes": [
+    {
+      "target": "M1/work/reselection_specs/TUP-HYPERLIQUID-BTC-FUNDING-BASIS.json",
+      "change": "AMENDED by C5 (this epoch): causal last-trade reference prices, declared staleness tolerance, the frozen gross, the C0/C1 rule, the coverage floor and the inference rule.  The pre-amendment copy is retained beside it with its sha256.",
+      "applied_by": "C5 (own branch spec file only)"
+    },
+    {
+      "target": "M1/data/candidate_tuples.csv (row TUP-HYPERLIQUID-BTCPERP-H4-FUNDBASIS-MIX)",
+      "change": "status KILL_MATERIALITY with a scoped note: the verdict covers the frozen one-hour formulation on the 2026-03-05..2026-09-28 panel only; a longer horizon, another pair or a state-conditioned entry is a NEW candidate, not a reinterpretation.",
+      "applied_by": "NOT APPLIED \u2014 requires the controller to run M1/src/materialize.py"
+    },
+    {
+      "target": "DECISIONS.md",
+      "change": "record AMEND-C5-001 (price term -> causal last-trade reference prices; mark series excluded) and the branch-C outcome with its coverage floor and unresolved components.",
+      "applied_by": "NOT APPLIED \u2014 append-only canonical file"
+    },
+    {
+      "target": "EXPERIMENTS.csv",
+      "change": "register the M2-BRIDGE-HL-BINANCE-BASIS row (run_state, preregistered=yes, dataset_version=BASIS-2026-03-05..2026-09-28, decision=result, artifact_hash=freeze/results sha256).",
+      "applied_by": "NOT APPLIED \u2014 canonical experiment register"
+    }
+  ],
+  "kill_scope": "a kill is scoped to this frozen one-hour formulation on this panel; a longer or shorter horizon, another pair or another state is a NEW candidate, not a reinterpretation of this result."
+}

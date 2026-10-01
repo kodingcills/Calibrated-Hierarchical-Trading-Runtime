@@ -1,0 +1,208 @@
+{
+ "admission_verdict": {
+  "contract_id": "ADMISSION-AUCTION-v2",
+  "note": "The v2 engine verdict is DATA_VALID with no findings; the v1 contract key is unchanged and is not what this branch runs. The operator's suggested '--branch AUCTION' would select the retained v1 contract, so the v2 key AUCTION_V2 is used and the deviation is recorded here.",
+  "state": "DATA_VALID"
+ },
+ "as_run_deviations_from_freeze": "recorded in results.json:as_run_deviations_from_freeze (none expected; any deviation is reported there rather than by editing this sealed file)",
+ "candidate_id": "TUP-NASDAQ-CLOSE-H4-LATENOII-AGG",
+ "contract": {
+  "clause_order": [
+   "coverage floor (input availability) -> INDETERMINATE_COVERAGE",
+   "reconstruction validation -> INDETERMINATE (ENTRY_BOOK_RECONSTRUCTION_UNVALIDATED)",
+   "significance_vs_c0 rule from envelope.classify_materiality"
+  ],
+  "cost_treatment": {
+   "c0_items": [
+    {
+     "effective": "2026-04-04 (before the 2026-06-12 sample)",
+     "id": "sec_section_31_fee",
+     "leg": "sell only",
+     "source": "SEC Release 34-104909 via the Federal Register",
+     "unit": "USD_PER_MILLION_OF_SALES",
+     "value": 20.6
+    },
+    {
+     "effective": "2026-01-01 (before the 2026-06-12 sample)",
+     "id": "finra_trading_activity_fee",
+     "leg": "sell only",
+     "source": "SEC Release 34-101696 / SR-FINRA-2024-019 via the Federal Register",
+     "unit": "USD_PER_SHARE",
+     "value": 0.000195
+    }
+   ],
+   "excluded_from_c0": {
+    "id": "nasdaq_remove_liquidity_fee",
+    "reason": "no evidence it applies to a Closing Cross exit (ledger applicability is 'Nasdaq continuous book, displayed orders >= $1.00'); it is therefore not a verified mandatory charge on the frozen exit path. It stays in C1 as a scenario, because the entry leg of BOTH directions is an aggressive continuous-book order and may plausibly pay it.",
+    "value": 0.003
+   },
+   "not_embedded_check": "the entry spread is embedded in the gross; no embedded charge is added again",
+   "sell_leg": "exactly one per round trip: the Closing Cross exit for a POSITIVE signal, the continuous-book entry for a NEGATIVE one",
+   "unknown_is_never_zero": "databento_xnas_mbo_data_cost and nasdaq_historical_itch_license_cost stay unresolved operating economics; they are named in the C1 table with a null value rather than dropped"
+  },
+  "coverage_floor": {
+   "denominator": "corrected-universe point-in-time Stock Directory symbols carrying a valid Closing Cross print",
+   "failure": "INDETERMINATE_COVERAGE (named), never a silent re-scope",
+   "numerator": "denominator symbols that also carry both frozen Closing-Cross NOII reads with Closing-Cross NOII cadence inside the signal interval",
+   "rationale": "this is the input-availability coverage the branch's own 0.95 floor and the repo's established coverage machinery measure; direction ineligibility is a market state (no imbalance), not a hole in the data, and is reported separately as the signal scope",
+   "value": 0.95
+  },
+  "entry": "book state immediately after the first book-affecting message strictly after 15:55:00 ET that leaves a valid, non-crossed, two-sided quote, at or before 15:59:00 ET; POSITIVE signal enters at the best ask, NEGATIVE at the best bid. No message after the entry instant is used for the entry print.",
+  "exit": "the symbol's Closing Cross print; the cross price is used for nothing else",
+  "inference": {
+   "cluster": "symbol (one observation per symbol, so clusters are the bootstrap unit)",
+   "interval": "symbol-clustered percentile bootstrap of the pooled mean",
+   "per_state_seed_rule": "seed + state index (Q1=20260612, Q2=20260613, ...)",
+   "percentiles": [
+    2.5,
+    97.5
+   ],
+   "resamples": 10000,
+   "rng": "numpy.random.default_rng(PCG64)",
+   "seed": 20260612,
+   "significance": "reported separately with significance_against_zero; REPORTED_ONLY, never an input to the decision"
+  },
+  "kill_rule": "KILL_MATERIALITY if g <= 0 OR the uncertainty upper bound hi <= C0; SURVIVE_PROVISIONAL if lo > C0; otherwise INDETERMINATE (named clause). Coverage-floor failure is INDETERMINATE_COVERAGE (named).",
+  "primary_metric": {
+   "definition": "side-signed executable capture per share: POSITIVE = Closing Cross price - entry best ask; NEGATIVE = entry best bid - Closing Cross price. The entry spread is embedded by construction, not assumed free.",
+   "id": "EXECUTABLE_CAPTURE_GEXEC",
+   "pooling": "equal weight over analysed symbols, one share per symbol: the pooled USD figure is mean(gross_usd_per_share); the pooled bps figure is mean(gross_bps), each symbol's bps being relative to its own CurrentReferencePrice_15:55",
+   "units": [
+    "USD per share of the equal-share bundle",
+    "bps of the symbol's frozen reference price"
+   ]
+  },
+  "prohibited": [
+   "post-close reversal measurement",
+   "indicative-price strategy",
+   "any tuning of contract, horizon, universe, states, cost treatment, metric, kill rule, thresholds or seeds after a result was seen",
+   "re-scoping the universe to meet the coverage floor",
+   "using the Closing Cross print for anything except the exit"
+  ],
+  "reported_clause": "SIGNAL_SCOPE_SUBFLOOR is attached when the signal-defined population is below the coverage floor. It never rescues a verdict and never hides one: symbols the frozen rule removes have no signed imbalance to act on, so they cannot raise the measured capture, and a positive verdict carries an explicit population caveat.",
+  "secondary_metric": {
+   "definition": "side-signed (ClosingCrossPrice - CurrentReferencePrice_15:55) / CurrentReferencePrice_15:55, in bps; the raw (unsigned) displacement is reported beside it",
+   "id": "MECHANISM_SIDE_SIGNED_DISPLACEMENT",
+   "role": "REPORTED_ONLY"
+  },
+  "signal": {
+   "definition": "signed_imbalance(15:55) - signed_imbalance(15:50)",
+   "reads": "15:50: last Closing-Cross NOII read at or before 15:50:00 ET, else the first read after; 15:55: last read at or before 15:55:00 ET",
+   "scale_for_states_only": "delta_imbalance / max(PairedShares_15:55, 1)",
+   "sign": "B = +ImbalanceShares, S = -ImbalanceShares; direction N/O/P is missing and ineligible (frozen, unchanged)"
+  },
+  "states": {
+   "cut_points": "the 0.25/0.50/0.75 quantiles (linear interpolation) of the scaled signal over the analysed set",
+   "derived_from": "signal-side data ONLY; no outcome, cost or price level enters",
+   "labels": [
+    "Q1_LOWEST",
+    "Q2",
+    "Q3",
+    "Q4_HIGHEST"
+   ],
+   "partition": "one preregistered 4-quantile partition of delta_imbalance / max(PairedShares_15:55, 1)",
+   "role": "diagnostic; a state row can never rescue a pooled failure"
+  }
+ },
+ "declared_limitations": {
+  "book_reconstruction_warm_up": "The book is rebuilt from the retained window alone, so orders added before 15:49:50 and still resting are invisible; the extraction counts those orphan book messages explicitly. Direction of bias is one-way and conservative: a missing resting order can only widen the reconstructed quote and worsen the entry price, so every gross capture reported here is a LOWER bound on the true one. It cannot manufacture a positive result.",
+  "development_grade_sample": "One session, one venue, one time zone, low-priced and high-priced names pooled. A positive result on this material can be at most SURVIVE_PROVISIONAL.",
+  "producer_declared_fields": "received_bytes == Content-Range total is a producer assertion, not recomputable from the retained artefact; the certificate labels it as such.",
+  "signal_scope": "The frozen sign rule removes symbols whose reads carry direction N/O/P. Every such read in this session carries ImbalanceShares == 0, and a symbol whose reads are both N has delta_imbalance == 0 under any reading. The decision population is stated, with its liquidity comparison, in results.json."
+ },
+ "epoch": 5,
+ "experiment_id": "M2-BRIDGE-AUCTION-LATENOII-MATERIALITY",
+ "freeze_status": "FROZEN_BEFORE_ANY_OUTCOME_QUANTITY_WAS_COMPUTED. The contract, horizon, universe, states, cost treatment, metric, kill rule, thresholds and seeds below were fixed before the measurement stage ran. No Closing Cross price was read, no return, cost-adjusted figure or P&L was computed for any symbol before this seal; the data-admission artefacts it hashes (certificate, signal extract, entry prints) carry no outcome quantity.",
+ "frozen_at_utc": "2026-09-30T19:39:08+00:00",
+ "frozen_module_and_input_sha256": {
+  "M1/src/materialize.py": "bdec4cc1ef1821a83210a646e041113b6fb6cdab75cb48d4de17d95fb971a08c",
+  "M1/src/validate.py": "d72f8b5f785dd95c91e3ec49401e6d24470e37696c77d8e912d37d5fa73e051a",
+  "M1/work/reselection_specs/TUP-NASDAQ-CLOSING-AUCTION-LATE-NOII.json": "af8f0b3fafad2c350f6cbe2a160e8b65c45e68f02a708a43599f423b494e541f",
+  "M2/config/cost_ledger_v1.json": "52ce785fc7210138af4059e327fc7101dff7f78dff3f5156c045973c1ed4cb17",
+  "M2/data/derived_auction/2026-06-12/admission.json": "9ddbe642e8e80830259ec495170811ae34e1db2a1b29a9f4f3405d4931e7ba6a",
+  "M2/data/derived_auction/2026-06-12/admission_manifest.json": "c8e7c303b11b9e7641e0bf4010d1951e393149ad3aabe12bef22cd87133f2a27",
+  "M2/data/derived_auction/2026-06-12/window.bin.gz": "28ed7b973807fdbfd3558dfbd2fdc5e1580a0227860d0f129ff6c67091d59597",
+  "M2/experiments/M2-BRIDGE-AUCTION-LATENOII-MATERIALITY/admission_manifest_v2.json": "a52ba2c2100d225a13503e3ab2753dac2b3c10e1b2f0d386de991f01dda618d3",
+  "M2/experiments/M2-BRIDGE-AUCTION-LATENOII-MATERIALITY/admission_v2_result.json": "5bb8d79cd84ea61a3fb707e6b537f56218e798508ffa0fef7937ebf3e25a4c9a",
+  "M2/experiments/M2-BRIDGE-AUCTION-LATENOII-MATERIALITY/build_manifest.py": "b28c8060cd7846ddc8f238ea8a803d7728e930572d6ea3753adc62354db91616",
+  "M2/experiments/M2-BRIDGE-AUCTION-LATENOII-MATERIALITY/certificate.json": "6e4b257e75f45505f5bb11f89450c3fd76ea2c67efcfd44cdd4b28874bd10b32",
+  "M2/experiments/M2-BRIDGE-AUCTION-LATENOII-MATERIALITY/entry_prints.json": "9f52149cf16e7e035e561f632175209658b068fc27f6abdda7ab44737d6474f2",
+  "M2/experiments/M2-BRIDGE-AUCTION-LATENOII-MATERIALITY/seal_freeze.py": "813a1612c7528384c8ac776d136f04dc54202928786a1377ae53c565ffa4a10d",
+  "M2/experiments/M2-BRIDGE-AUCTION-LATENOII-MATERIALITY/signal_extract.json": "463663463ab3ab4eb34cae2a2927584bfd099515445af36d28f89fd9ce5d5889",
+  "M2/experiments/M2-BRIDGE-AUCTION-LATENOII-MATERIALITY/spec_prev_retained.json": "5ef1dcac96e80847069006d24477dc12226f4d907b8798a522c63c14ff6e8694",
+  "M2/src/admission.py": "00363c3ac7e76366196581a254cb2b4baae73fcdeb69335da493d0b26f764c60",
+  "M2/src/auction_certificate.py": "c0e404ba4429928d9626295ba944f8aabe978dc6a685a5cdd58bc4f0531107c3",
+  "M2/src/auction_materiality.py": "dd2e86c4cb4b0a81b12545ac4e9cc27e7dd16c73dcf1db4d0680b8ad6f8317e2",
+  "M2/src/envelope.py": "a2777d0568a450e1ce48bc4becdcb3c49c7c3740a82da748ece31f223c7670c0",
+  "M2/src/ingest.py": "84b94a1a26f9771d1c498e1906666b0deaefd5f37c99a215a6fe0fc7c2f37fad",
+  "M2/src/itch_stream_window.py": "77cbbf602c8bb561a54ba10dcfd6412787c0d40ce268bd5d013bae5fbf098248",
+  "M2/tests/test_auction_materiality.py": "940c5b611a85f17ab2f11418e78d7efa26ec9e31191a01e93eba3bf235c261ec"
+ },
+ "measurement_window_et": {
+  "entry": "first eligible book-affecting instant strictly after 15:55:00, deadline 15:59:00",
+  "exit": "the Closing Cross print (Cross Trade Q, Cross Type C)",
+  "retained": "15:49:50-16:00:10 (the only window the retained artefact carries)",
+  "signal": "15:50:00 (or first read after) and 15:55:00 (last read at or before)"
+ },
+ "operator_authorized_contract_changes": {
+  "authorization": "GOAL-M2-BRIDGE-001 epoch 5 assignment, OPERATOR-AUTHORIZED CONTRACT CHANGES, versioned with the old text retained. No other clause of the frozen formulation was changed.",
+  "change_1_universe_transcription_repair": {
+   "after": "Authenticity=P, ETP Flag=N, Issue Classification=C, Market Category in {Q,G,S}",
+   "before": "Authenticity=P, ETP Flag=N, Issue Classification=C, Issue Sub-Type=C, Market Category in {Q,G,S,N,A,P,Z,V}",
+   "evidence": "ITCH Appendix E defines Issue Sub-Type C='Common Shares', Z='Not Applicable'; this session's dominant Nasdaq-listed pair is C/Z (4183 locates) against C/C (31). v1 admitted 31 of 12809 locates; v2 admits 2483 locates, of which 2465 carry a valid Closing Cross. Zero-share Closing Cross prints: 8528 of 12809 overall, 18 inside v2.",
+   "old_text_retained_at": [
+    "M2/experiments/M2-BRIDGE-AUCTION-LATENOII-MATERIALITY/spec_prev_retained.json",
+    "M1/work/reselection_specs/TUP-NASDAQ-CLOSING-AUCTION-LATE-NOII.json:universe.clause_v1_retained",
+    "certificate.json:universe_repair.clause_v1_retained"
+   ],
+   "previous_spec_byte_identical_to_pre_edit": true,
+   "previous_spec_sha256": "5ef1dcac96e80847069006d24477dc12226f4d907b8798a522c63c14ff6e8694",
+   "rule_id_after": "NASDAQ-CLOSING-CROSS-PIT-STOCK-DIRECTORY-v2",
+   "rule_id_before": "NASDAQ-CLOSING-CROSS-PIT-STOCK-DIRECTORY-v1"
+  },
+  "change_2_completeness_contract": {
+   "after": "Transport markers (gzip CRC32+ISIZE, received == Content-Range total, 0 framing errors, 0 trailing bytes, terminal 'C' End of Messages) PLUS a MEASUREMENT-WINDOW CONTINUITY + COVERAGE CERTIFICATE over 15:49:50-16:00:10 ET: monotonic non-decreasing exchange timestamps; every inter-message gap whose both endpoints lie inside the window <= 1 s; at least 1,000,000 in-window messages and at least one in-window pair; per-symbol Closing-Cross NOII cadence inside 15:50:00-15:55:00 ET with no missed dissemination cycle; input-availability coverage >= 0.95 with the missingness audit by identity and reason.",
+   "before": "A zero-length terminating message is expected as the end-of-session marker.",
+   "negative_control": "certificate.json:splice_negative_control re-runs the V2 attack construction (.research/m2_bridge_001/verification/V2/v2_auction_contract_attack.py) and must be flagged. Measured: transport markers PASS, continuity FAIL, artefact identity FAIL.",
+   "old_text_retained_at": [
+    "M1/work/reselection_specs/TUP-NASDAQ-CLOSING-AUCTION-LATE-NOII.json:timestamp_contract.v1_retained"
+   ],
+   "statement": "Transport markers do NOT prove original-session completeness: the known splice attack passes every marker while holding 0.92% of the decoded session. Out-of-window holes are declared non-material to this branch's inputs, because no frozen signal instant, entry instant or exit print lies outside the window and a book reconstructed from the window alone cannot observe pre-window state in any case."
+  }
+ },
+ "parent_goal": "GOAL-M2-BRIDGE-001",
+ "run_commands": [
+  "python3 -m M2.src.auction_certificate --window M2/data/derived_auction/2026-06-12/window.bin.gz --out M2/experiments/M2-BRIDGE-AUCTION-LATENOII-MATERIALITY/certificate.json --extract M2/experiments/M2-BRIDGE-AUCTION-LATENOII-MATERIALITY/signal_extract.json --expected-sha256 28ed7b973807fdbfd3558dfbd2fdc5e1580a0227860d0f129ff6c67091d59597 --expected-decoded-bytes 1824239389 --declared-in-window-messages 55698714 --declared-received-bytes 17894268560 --declared-content-range-total 17894268560 --negative-control",
+  "python3 M2/experiments/M2-BRIDGE-AUCTION-LATENOII-MATERIALITY/build_manifest.py",
+  "python3 -m M2.src.admission --manifest M2/experiments/M2-BRIDGE-AUCTION-LATENOII-MATERIALITY/admission_manifest_v2.json --branch AUCTION_V2 --root . --json-out M2/experiments/M2-BRIDGE-AUCTION-LATENOII-MATERIALITY/admission_v2_result.json",
+  "python3 -m M2.src.auction_materiality extract --window M2/data/derived_auction/2026-06-12/window.bin.gz --extract M2/experiments/M2-BRIDGE-AUCTION-LATENOII-MATERIALITY/signal_extract.json --out M2/experiments/M2-BRIDGE-AUCTION-LATENOII-MATERIALITY/entry_prints.json",
+  "python3 M2/experiments/M2-BRIDGE-AUCTION-LATENOII-MATERIALITY/seal_freeze.py",
+  "python3 -m M2.src.auction_materiality measure --extract M2/experiments/M2-BRIDGE-AUCTION-LATENOII-MATERIALITY/signal_extract.json --entries M2/experiments/M2-BRIDGE-AUCTION-LATENOII-MATERIALITY/entry_prints.json --out M2/experiments/M2-BRIDGE-AUCTION-LATENOII-MATERIALITY/results.json"
+ ],
+ "session_date": "2026-06-12",
+ "thresholds": {
+  "bootstrap_resamples": 10000,
+  "bootstrap_seed": 20260612,
+  "c1_scenario_usd_per_share": [
+   0.0,
+   0.003,
+   0.005,
+   0.01,
+   0.013
+  ],
+  "coverage_floor": 0.95,
+  "declared_message_tolerance": 0.99,
+  "entry_deadline_ns": 57420000000000,
+  "max_in_window_gap_ns": 1000000000,
+  "min_in_window_messages": 1000000,
+  "noii_cadence_bound_ns": 15000000000,
+  "observed_noii_dissemination_period_ns": 10000000000,
+  "quantile_edges": [
+   0.25,
+   0.5,
+   0.75
+  ],
+  "reconstruction_min_within_far_band_ratio": 0.9
+ },
+ "worker": "B5"
+}

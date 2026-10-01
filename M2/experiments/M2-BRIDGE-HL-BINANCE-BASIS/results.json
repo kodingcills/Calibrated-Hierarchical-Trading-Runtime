@@ -1,0 +1,634 @@
+{
+  "experiment_id": "M2-BRIDGE-HL-BINANCE-BASIS",
+  "candidate_id": "TUP-HYPERLIQUID-BTCPERP-H4-FUNDBASIS-MIX",
+  "amendment_id": "AMEND-C5-001",
+  "freeze_status": "FROZEN_BEFORE_ANY_BRANCH_C_ECONOMICS_WERE_INSPECTED",
+  "verdict": "KILL_MATERIALITY",
+  "classification": {
+    "verdict": "KILL_MATERIALITY",
+    "gross_usd": 3.4405071291733337e-06,
+    "uncertainty_lo_usd": -2.698346242246038e-06,
+    "uncertainty_hi_usd": 9.623539865022562e-06,
+    "c0_usd": 0.00048,
+    "c_star_usd": -0.00047655949287082666,
+    "rule": "KILL if g<=0 or hi<=C0; SURVIVE_PROVISIONAL if lo>C0; else INDETERMINATE",
+    "significance_is_decision_criterion": false
+  },
+  "gross": {
+    "units": "bps of notional per one-hour hold",
+    "signed": true,
+    "point_bps": 0.034405071291733334,
+    "measured_component_bps": 0.03248516769663392,
+    "mean_bps": 0.03248516769663392,
+    "median_bps": 0.06150996630492248,
+    "stdev_bps": 1.5380944413805075,
+    "min_bps": -10.934471872162494,
+    "max_bps": 13.66884812563114,
+    "decomposition": {
+      "hl_funding_carry_mean_bps": 0.05969975979112272,
+      "binance_funding_carry_mean_bps": -0.02675300261096606,
+      "hedge_mark_to_market_residual_mean_bps": -0.0004615894835227425,
+      "hedge_mark_to_market_residual_stdev_bps": 1.5184611957212788,
+      "carry_mean_bps_per_hour": 0.03294675718015666
+    },
+    "t_star_hours": 145.68960379781984,
+    "t_star_basis": "T* = C0_bps / mean funding carry bps per hour; interpretive only."
+  },
+  "coverage": {
+    "frozen_basis": "the frozen one-hour formulation on the admitted panel",
+    "panel_pass": true,
+    "manifest_files_match": true,
+    "reference_rederivation_match": true,
+    "holds_expected": 4979,
+    "holds_evaluated": 4979,
+    "holds_with_every_required_row": 4895,
+    "unresolved_hold_count": 84,
+    "unresolved_component_bracketable": true,
+    "coverage_clause": null
+  },
+  "uncertainty": {
+    "primary": {
+      "point_bps": 0.034405071291733334,
+      "ci_lo_bps": -0.010112604820532282,
+      "ci_hi_bps": 0.07552473385809869,
+      "bootstrap_standard_error_bps": 0.02195369174794671,
+      "resamples": 10000,
+      "significance": {
+        "estimate": 0.034405071291733334,
+        "standard_error": 0.02195369174794671,
+        "t_stat": 1.5671656360462098,
+        "role": "REPORTED_ONLY",
+        "note": "statistical significance against zero is not the materiality decision criterion"
+      }
+    },
+    "decision_interval_lo_bps": -0.02698346242246038,
+    "decision_interval_hi_bps": 0.09623539865022562,
+    "decision_interval_basis": "percentile bootstrap union with the unresolved-rate bracket (lo = bootstrap lo + most-negative branch, hi = bootstrap hi + most-positive branch)",
+    "moving_block_24h": {
+      "point_bps": 0.034405071291733334,
+      "ci_lo_bps": 0.01575607654784582,
+      "ci_hi_bps": 0.04763959410664197,
+      "bootstrap_standard_error_bps": 0.00810105878888425,
+      "resamples": 10000,
+      "significance": {
+        "estimate": 0.034405071291733334,
+        "standard_error": 0.00810105878888425,
+        "t_stat": 4.246984522435728,
+        "role": "REPORTED_ONLY",
+        "note": "statistical significance against zero is not the materiality decision criterion"
+      }
+    },
+    "bootstrap_seed": 20260930,
+    "resamples": 10000
+  },
+  "unresolved_binance_settlement_bracket": {
+    "holds": 84,
+    "weight": 0.016870857601928097,
+    "observed_rate_min": -0.00012276,
+    "observed_rate_max": 0.0001,
+    "contribution_bps_at_min_rate": 0.02071066479212693,
+    "contribution_bps_at_max_rate": -0.016870857601928097,
+    "contribution_bps_midpoint": 0.0019199035950994165,
+    "bracket_width_bps": 0.03758152239405503,
+    "bracketable": true,
+    "status": "BRACKETED_BY_OBSERVED_RANGE",
+    "note": "no distribution is assumed; the unknown rate is never taken as zero"
+  },
+  "staleness": {
+    "tolerance_seconds": 1.0,
+    "entry": {
+      "definition": "decision instant minus the nominal completion instant of the entry reference candle (row J-1, covering [J-1h, J))",
+      "hyperliquid_reference": {
+        "n": 4979,
+        "min_s": 0.0,
+        "max_s": 0.261,
+        "mean_s": 0.03752781683068889,
+        "median_s": 0.036,
+        "p95_s": 0.081,
+        "p99_s": 0.118,
+        "nonzero_count": 4913,
+        "exceeding_tolerance_count": 0,
+        "exceeding_tolerance_fraction": 0.0
+      },
+      "binance_reference": {
+        "n": 4979,
+        "min_s": 0.0,
+        "max_s": 0.261,
+        "mean_s": 0.03752781683068889,
+        "median_s": 0.036,
+        "p95_s": 0.081,
+        "p99_s": 0.118,
+        "nonzero_count": 4913,
+        "exceeding_tolerance_count": 0,
+        "exceeding_tolerance_fraction": 0.0
+      },
+      "last_millisecond_variant_s": {
+        "n": 4979,
+        "min_s": 0.001,
+        "max_s": 0.262,
+        "mean_s": 0.0385278168306889,
+        "median_s": 0.037,
+        "p95_s": 0.082,
+        "p99_s": 0.119,
+        "nonzero_count": 4979,
+        "exceeding_tolerance_count": 0,
+        "exceeding_tolerance_fraction": 0.0
+      }
+    },
+    "exit": {
+      "definition": "exit instant minus the nominal completion instant of the exit reference candle (row J, covering [J, J+1h))",
+      "hyperliquid_reference": {
+        "n": 4979,
+        "min_s": 0.0,
+        "max_s": 0.261,
+        "mean_s": 0.03752821851777466,
+        "median_s": 0.036,
+        "p95_s": 0.081,
+        "p99_s": 0.118,
+        "nonzero_count": 4913,
+        "exceeding_tolerance_count": 0,
+        "exceeding_tolerance_fraction": 0.0
+      },
+      "binance_reference": {
+        "n": 4979,
+        "min_s": 0.0,
+        "max_s": 0.261,
+        "mean_s": 0.03752821851777466,
+        "median_s": 0.036,
+        "p95_s": 0.081,
+        "p99_s": 0.118,
+        "nonzero_count": 4913,
+        "exceeding_tolerance_count": 0,
+        "exceeding_tolerance_fraction": 0.0
+      },
+      "last_millisecond_variant_s": {
+        "n": 4979,
+        "min_s": 0.001,
+        "max_s": 0.262,
+        "mean_s": 0.03852821851777465,
+        "median_s": 0.037,
+        "p95_s": 0.082,
+        "p99_s": 0.119,
+        "nonzero_count": 4979,
+        "exceeding_tolerance_count": 0,
+        "exceeding_tolerance_fraction": 0.0
+      }
+    },
+    "both_legs_share_one_grid": true,
+    "exit_print_precedes_nominal_hour_mark_count": 2460,
+    "exit_print_follows_nominal_hour_mark_count": 2450,
+    "max_abs_hold_duration_deviation_s": 0.21200000000000002,
+    "fraction_stale_beyond_tolerance": 0.0,
+    "sub_second_note": "the collected carry print lands within +-0.261 s of the nominal one-hour mark, so whether the boundary settlement precedes or follows the exit is a sub-second property of the venue's settlement jitter; the frozen convention collects it, and the alternative (exit exactly at the nominal mark) is reported as a sensitivity."
+  },
+  "costs": {
+    "c0_usd": 0.00048,
+    "c0_bps": 4.8,
+    "c0_items": [
+      {
+        "id": "hl_perp_taker_lowest_published_rung",
+        "class": "STRUCTURAL_C0",
+        "value": 0.048,
+        "unit": "PCT_OF_TRADE_VALUE",
+        "usd": 0.00048,
+        "provenance": {
+          "source_id": "SRC-0213",
+          "url": "https://hyperliquid.gitbook.io/hyperliquid-docs/trading/fees.md",
+          "publisher": "Hyperliquid documentation (official fee schedule)",
+          "access_date": "2026-09-20",
+          "effective_period": "current schedule at access (2026-09-20); contemporaneous with the 2026-03-05..2026-09-28 sample window",
+          "quote": "base tier (< $5m 14-day volume) taker/maker 0.045%/0.015%, with tier rungs to 0.024%/0% above $7b; staking and referral modifiers documented",
+          "status": "VERIFIED"
+        },
+        "notes": "LOWEST RUNG, not the base tier: the base tier is reported separately as a reference execution path scenario and may not decide the kill on its own."
+      }
+    ],
+    "c0_provenance": [
+      {
+        "id": "hl_perp_taker_lowest_published_rung",
+        "source_id": "SRC-0213",
+        "url": "https://hyperliquid.gitbook.io/hyperliquid-docs/trading/fees.md",
+        "publisher": "Hyperliquid documentation (official fee schedule)",
+        "access_date": "2026-09-20",
+        "effective_period": "current schedule at access (2026-09-20); contemporaneous with the 2026-03-05..2026-09-28 sample window",
+        "quote": "base tier (< $5m 14-day volume) taker/maker 0.045%/0.015%, with tier rungs to 0.024%/0% above $7b; staking and referral modifiers documented",
+        "status": "VERIFIED"
+      }
+    ],
+    "c1_items": [
+      {
+        "id": "hl_perp_taker_state_dependent_uplift",
+        "name": "Hyperliquid perp taker fee above the lowest rung up to the base tier, open+close (2 x (0.045% - 0.024%))",
+        "unit": "PCT_OF_TRADE_VALUE",
+        "value": 0.042,
+        "status": "KNOWN",
+        "varies_with": {
+          "volume": true,
+          "staking": false,
+          "account_state": false
+        },
+        "provenance": {
+          "source_id": "SRC-0213",
+          "url": "https://hyperliquid.gitbook.io/hyperliquid-docs/trading/fees.md",
+          "publisher": "Hyperliquid documentation (official fee schedule)",
+          "access_date": "2026-09-20",
+          "effective_period": "current schedule at access (2026-09-20); contemporaneous with the 2026-03-05..2026-09-28 sample window",
+          "quote": "base tier (< $5m 14-day volume) taker/maker 0.045%/0.015%, with tier rungs to 0.024%/0% above $7b; staking and referral modifiers documented",
+          "status": "VERIFIED"
+        }
+      },
+      {
+        "id": "binance_usdm_taker_fee",
+        "name": "Binance USD(S)-M BTCUSDT perp taker fee, open+close",
+        "unit": "PCT_OF_TRADE_VALUE",
+        "value": null,
+        "status": "UNKNOWN",
+        "varies_with": {
+          "volume": true,
+          "staking": false,
+          "account_state": false
+        },
+        "provenance": {
+          "source_id": "UNRESOLVED",
+          "url": "https://www.binance.com/en/fee/futureFee",
+          "publisher": "Binance",
+          "access_date": "2026-09-29",
+          "effective_period": "UNKNOWN",
+          "quote": "no authoritative schedule was retrieved; the public host returns HTTP 451 in this environment and the M1 evidence ledger carries no Binance fee fact",
+          "status": "UNKNOWN"
+        }
+      },
+      {
+        "id": "hedge_spread_impact_slippage",
+        "name": "Spread, market impact and slippage of opening and closing both legs at reference prices",
+        "unit": "PCT_OF_TRADE_VALUE",
+        "value": null,
+        "status": "UNKNOWN",
+        "varies_with": {
+          "volume": false,
+          "staking": false,
+          "account_state": false
+        },
+        "provenance": {
+          "source_id": "",
+          "url": "",
+          "publisher": "",
+          "access_date": "",
+          "effective_period": "",
+          "quote": "",
+          "status": "UNKNOWN"
+        }
+      },
+      {
+        "id": "capital_margin_borrow_transfer_liquidation",
+        "name": "Capital, margin, borrow, transfer and liquidation terms of the pair",
+        "unit": "PCT_OF_TRADE_VALUE",
+        "value": null,
+        "status": "UNKNOWN",
+        "varies_with": {
+          "volume": false,
+          "staking": false,
+          "account_state": false
+        },
+        "provenance": {
+          "source_id": "",
+          "url": "",
+          "publisher": "",
+          "access_date": "",
+          "effective_period": "",
+          "quote": "",
+          "status": "UNKNOWN"
+        }
+      }
+    ],
+    "c1_known_usd": 0.00042,
+    "c1_known_bps": 4.2,
+    "c1_unknown_item_ids": [
+      "binance_usdm_taker_fee",
+      "hedge_spread_impact_slippage",
+      "capital_margin_borrow_transfer_liquidation"
+    ],
+    "c1_bounded": false,
+    "c1_total_usd": null,
+    "base_tier_scenario": {
+      "hyperliquid": {
+        "id": "hl_perp_taker_base_tier",
+        "name": "Hyperliquid perp taker fee at the published base tier, open+close (2 x 0.045% of notional per one-hour hold)",
+        "unit": "PCT_OF_TRADE_VALUE",
+        "value": 0.09,
+        "class": "UNRESOLVED_C1",
+        "scenario_role": "REFERENCE_EXECUTION_PATH",
+        "varies_with_volume": true,
+        "varies_with_staking": false,
+        "varies_with_account_state": false,
+        "provenance": {
+          "source_id": "SRC-0213",
+          "url": "https://hyperliquid.gitbook.io/hyperliquid-docs/trading/fees.md",
+          "publisher": "Hyperliquid documentation (official fee schedule)",
+          "access_date": "2026-09-20",
+          "effective_period": "current schedule at access (2026-09-20); contemporaneous with the 2026-03-05..2026-09-28 sample window",
+          "quote": "base tier (< $5m 14-day volume) taker/maker 0.045%/0.015%, with tier rungs to 0.024%/0% above $7b; staking and referral modifiers documented",
+          "status": "VERIFIED"
+        },
+        "usd": 0.0009,
+        "usd_status": "EVALUATED"
+      },
+      "binance": {
+        "id": "binance_usdm_taker_base_tier",
+        "name": "Binance USD(S)-M BTCUSDT perp taker fee at the published base tier, open+close",
+        "unit": "PCT_OF_TRADE_VALUE",
+        "value": null,
+        "class": "UNRESOLVED_C1",
+        "scenario_role": "REFERENCE_EXECUTION_PATH",
+        "varies_with_volume": true,
+        "varies_with_staking": false,
+        "varies_with_account_state": false,
+        "provenance": {
+          "source_id": "",
+          "url": "",
+          "publisher": "",
+          "access_date": "",
+          "effective_period": "",
+          "quote": "",
+          "status": "UNKNOWN"
+        },
+        "usd": null,
+        "usd_status": "NOT_EVALUATED"
+      },
+      "may_decide_the_kill": false,
+      "note": "reported separately exactly as the operator's rule requires; the unresolved component of these state-dependent tiers stays in C1."
+    },
+    "c_star_bps": -4.765594928708267,
+    "c_star_usd": -0.00047655949287082666,
+    "c1_sensitivity": {
+      "gross_usd": 3.4405071291733337e-06,
+      "c0_usd": 0.00048,
+      "c1_breakeven_usd": -0.00047655949287082666,
+      "rows": [
+        {
+          "c1_usd": 0.0,
+          "c_star_usd": -0.00047655949287082666,
+          "survives_floor": false,
+          "c1_bps": 0.0,
+          "c_star_bps": -4.765594928708266
+        },
+        {
+          "c1_usd": 0.0002,
+          "c_star_usd": -0.0006765594928708267,
+          "survives_floor": false,
+          "c1_bps": 2.0,
+          "c_star_bps": -6.765594928708267
+        },
+        {
+          "c1_usd": 0.00042,
+          "c_star_usd": -0.0008965594928708267,
+          "survives_floor": false,
+          "c1_bps": 4.2,
+          "c_star_bps": -8.965594928708267
+        },
+        {
+          "c1_usd": 0.00048,
+          "c_star_usd": -0.0009565594928708267,
+          "survives_floor": false,
+          "c1_bps": 4.8,
+          "c_star_bps": -9.565594928708267
+        },
+        {
+          "c1_usd": 0.0009000000000000001,
+          "c_star_usd": -0.0013765594928708267,
+          "survives_floor": false,
+          "c1_bps": 9.0,
+          "c_star_bps": -13.765594928708266
+        },
+        {
+          "c1_usd": 0.0012000000000000001,
+          "c_star_usd": -0.0016765594928708268,
+          "survives_floor": false,
+          "c1_bps": 12.0,
+          "c_star_bps": -16.765594928708268
+        },
+        {
+          "c1_usd": 0.0019,
+          "c_star_usd": -0.0023765594928708265,
+          "survives_floor": false,
+          "c1_bps": 19.0,
+          "c_star_bps": -23.765594928708264
+        },
+        {
+          "c1_usd": 0.0038,
+          "c_star_usd": -0.004276559492870827,
+          "survives_floor": false,
+          "c1_bps": 38.0,
+          "c_star_bps": -42.76559492870827
+        }
+      ],
+      "distribution_assumption": "NONE",
+      "note": "C1 has no assigned probability distribution; levels are caller-supplied scenarios."
+    }
+  },
+  "sensitivities_reported_not_deciding": {
+    "exit_at_nominal_hour_mark_variant": {
+      "holds": 4979,
+      "gross_bps_mean_without_any_collected_carry": -0.00046158948352274164,
+      "note": "if the exit were taken exactly at the nominal candle completion though the next funding observation, no settlement instant would lie inside the hold at all and the carry of both legs would be structurally uncollectible; the reported mean is the same frozen formula with the carry term dropped and is a strict lower read, not the frozen convention."
+    },
+    "boundary_sub_second": {
+      "holds_where_the_boundary_print_lands_after_the_nominal_one_hour_mark": 2450,
+      "note": "under the frozen convention the exit is taken at the boundary print, so the carry is collected in every hold; this count is the size of the sub-second ambiguity the convention resolves."
+    },
+    "base_tier_fee_scenario": {
+      "hyperliquid": {
+        "id": "hl_perp_taker_base_tier",
+        "name": "Hyperliquid perp taker fee at the published base tier, open+close (2 x 0.045% of notional per one-hour hold)",
+        "unit": "PCT_OF_TRADE_VALUE",
+        "value": 0.09,
+        "class": "UNRESOLVED_C1",
+        "scenario_role": "REFERENCE_EXECUTION_PATH",
+        "varies_with_volume": true,
+        "varies_with_staking": false,
+        "varies_with_account_state": false,
+        "provenance": {
+          "source_id": "SRC-0213",
+          "url": "https://hyperliquid.gitbook.io/hyperliquid-docs/trading/fees.md",
+          "publisher": "Hyperliquid documentation (official fee schedule)",
+          "access_date": "2026-09-20",
+          "effective_period": "current schedule at access (2026-09-20); contemporaneous with the 2026-03-05..2026-09-28 sample window",
+          "quote": "base tier (< $5m 14-day volume) taker/maker 0.045%/0.015%, with tier rungs to 0.024%/0% above $7b; staking and referral modifiers documented",
+          "status": "VERIFIED"
+        },
+        "usd": 0.0009,
+        "usd_status": "EVALUATED"
+      },
+      "binance": {
+        "id": "binance_usdm_taker_base_tier",
+        "name": "Binance USD(S)-M BTCUSDT perp taker fee at the published base tier, open+close",
+        "unit": "PCT_OF_TRADE_VALUE",
+        "value": null,
+        "class": "UNRESOLVED_C1",
+        "scenario_role": "REFERENCE_EXECUTION_PATH",
+        "varies_with_volume": true,
+        "varies_with_staking": false,
+        "varies_with_account_state": false,
+        "provenance": {
+          "source_id": "",
+          "url": "",
+          "publisher": "",
+          "access_date": "",
+          "effective_period": "",
+          "quote": "",
+          "status": "UNKNOWN"
+        },
+        "usd": null,
+        "usd_status": "NOT_EVALUATED"
+      },
+      "may_decide_the_kill": false,
+      "note": "reported separately exactly as the operator's rule requires; the unresolved component of these state-dependent tiers stays in C1."
+    }
+  },
+  "integrity": {
+    "panel": {
+      "rows": 4981,
+      "window_start_unix": 1772708400,
+      "window_start_utc": "2026-03-05T11:00:00Z",
+      "window_end_unix": 1790636400,
+      "window_end_utc": "2026-09-28T23:00:00Z",
+      "expected_buckets": 4981,
+      "grid_identity": true,
+      "sorted": true,
+      "duplicate_buckets": 0,
+      "missing_buckets": 0,
+      "unexpected_buckets": 0,
+      "manifest_window_matches": true,
+      "manifest_coverage": {
+        "admitted": 4981,
+        "duplicate_buckets": 0,
+        "missing_buckets": 0,
+        "pairing_rule": "bucket_ms = timestamp_ms // 3600000 (integer division, i.e. floor to the exact UTC hour); each source contributes at most one value per bucket; a bucket is MATCHED only if every required field is present in it; duplicate bucket = a source yields two rows in one bucket; missing bucket = a bucket inside the window lacks at least one required field. No imputation, no post-hoc window shrinking.",
+        "qualified": 4981,
+        "ratio": 1.0,
+        "window_hours": 4981
+      },
+      "pass": true
+    },
+    "manifest_files": {
+      "files": [
+        {
+          "role": "hl_funding",
+          "path": "M2/data/derived_basis/manifest_inputs/hl_funding_hourly.csv",
+          "declared_sha256": "d4decfb9d7332e9be3312efcb5b71772dcc5766526717109f389fd6e5f4ef65c",
+          "actual_sha256": "d4decfb9d7332e9be3312efcb5b71772dcc5766526717109f389fd6e5f4ef65c",
+          "match": true,
+          "rows_declared": 4981
+        },
+        {
+          "role": "hl_mid",
+          "path": "M2/data/derived_basis/manifest_inputs/hl_mid_1h_close.csv",
+          "declared_sha256": "14133b49eb4922d481b128d24892297b31bc90678548f86d1cbad33cd5742d9c",
+          "actual_sha256": "14133b49eb4922d481b128d24892297b31bc90678548f86d1cbad33cd5742d9c",
+          "match": true,
+          "rows_declared": 4981
+        },
+        {
+          "role": "binance_mark",
+          "path": "M2/data/derived_basis/manifest_inputs/binance_mark_1h_close.csv",
+          "declared_sha256": "431b4fd94aa5f817839e1f2724d091fa0b2186d6c95d9898c021bc4e03ebad30",
+          "actual_sha256": "431b4fd94aa5f817839e1f2724d091fa0b2186d6c95d9898c021bc4e03ebad30",
+          "match": true,
+          "rows_declared": 4981
+        }
+      ],
+      "all_match": true
+    },
+    "reference_rederivation": {
+      "hyperliquid": {
+        "raw": "M2/data/raw/basis/hl_candles_1h_0.json",
+        "raw_objects": 1,
+        "checked": 4981,
+        "missing": [],
+        "missing_count": 0,
+        "value_mismatches": [],
+        "mismatch_count": 0,
+        "match": true
+      },
+      "binance_kline": {
+        "raw": "M2/data/raw/basis/klines-1h-*.zip",
+        "raw_objects": 34,
+        "raw_object_names": [
+          "klines-1h-2026-03.zip",
+          "klines-1h-2026-04.zip",
+          "klines-1h-2026-05.zip",
+          "klines-1h-2026-06.zip",
+          "klines-1h-2026-07.zip",
+          "klines-1h-2026-08.zip",
+          "klines-1h-2026-09-01.zip",
+          "klines-1h-2026-09-02.zip",
+          "klines-1h-2026-09-03.zip",
+          "klines-1h-2026-09-04.zip",
+          "klines-1h-2026-09-05.zip",
+          "klines-1h-2026-09-06.zip",
+          "klines-1h-2026-09-07.zip",
+          "klines-1h-2026-09-08.zip",
+          "klines-1h-2026-09-09.zip",
+          "klines-1h-2026-09-10.zip",
+          "klines-1h-2026-09-11.zip",
+          "klines-1h-2026-09-12.zip",
+          "klines-1h-2026-09-13.zip",
+          "klines-1h-2026-09-14.zip",
+          "klines-1h-2026-09-15.zip",
+          "klines-1h-2026-09-16.zip",
+          "klines-1h-2026-09-17.zip",
+          "klines-1h-2026-09-18.zip",
+          "klines-1h-2026-09-19.zip",
+          "klines-1h-2026-09-20.zip",
+          "klines-1h-2026-09-21.zip",
+          "klines-1h-2026-09-22.zip",
+          "klines-1h-2026-09-23.zip",
+          "klines-1h-2026-09-24.zip",
+          "klines-1h-2026-09-25.zip",
+          "klines-1h-2026-09-26.zip",
+          "klines-1h-2026-09-27.zip",
+          "klines-1h-2026-09-28.zip"
+        ],
+        "checked": 4981,
+        "missing": [],
+        "missing_count": 0,
+        "value_mismatches": [],
+        "mismatch_count": 0,
+        "match": true
+      },
+      "mark_series_used_in_price_term": false
+    },
+    "binance_settlement_archive": {
+      "files": [
+        {
+          "name": "fundingRate-2026-03.zip",
+          "sha256": "5c069d5e9597a44fd0e213395082e59ff223fb99c9eab3a2a5a2a5622ba7867c"
+        },
+        {
+          "name": "fundingRate-2026-04.zip",
+          "sha256": "51cdeb4de7d5ef1d4eece80b6115e391bdf7a2d0803bf9ad8371ab23340b22d3"
+        },
+        {
+          "name": "fundingRate-2026-05.zip",
+          "sha256": "445b65fd6b17bfcfb5e4d035db29fad34f729fa078f0449024db42621be84e6e"
+        },
+        {
+          "name": "fundingRate-2026-06.zip",
+          "sha256": "cff97ce688329592bccbbf5873b5c7021649e093f5f5806e332c5b4fb7fd6a00"
+        },
+        {
+          "name": "fundingRate-2026-07.zip",
+          "sha256": "e36fcc66f493d7d9ec348c852fc22e9f318c79cf7adae17398a3994ae0adc41e"
+        },
+        {
+          "name": "fundingRate-2026-08.zip",
+          "sha256": "7c108b3a02bd6dc7345ca7323e3a49664edcea0afdcf780ffb3b44762c45a964"
+        }
+      ],
+      "count": 552,
+      "first_utc": "2026-03-01T00:00:00Z",
+      "last_utc": "2026-08-31T16:00:00Z",
+      "cadence_hours": 8
+    }
+  }
+}
