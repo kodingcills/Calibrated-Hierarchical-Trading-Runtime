@@ -29,7 +29,7 @@
   "known_source_ids": [
     "SRC-0201"
   ],
-  "last_updated": "2026-09-29T22:20:27Z",
+  "last_updated": "2026-10-01T05:59:57Z",
   "parent_issue_id": "UNK-0018",
   "priority_reason": "Scoped child: Nasdaq's timestamp question is settled by one product specification and a sample, independently of CME or Eurex.",
   "priority_score": null,

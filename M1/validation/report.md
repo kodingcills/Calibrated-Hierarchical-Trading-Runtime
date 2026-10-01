@@ -1,51 +1,11 @@
 # M1 validation report
 
-Generated (UTC): 2026-09-30T18:41:54Z by `M1/src/validate.py`.
+Generated (UTC): 2026-10-01T06:00:37Z by `M1/src/validate.py`.
 
-**Overall: PASS** - 0 failure(s) across 59 rule groups.
+**Overall: PASS** - 0 failure(s) across 19 rule groups.
 
 | rule | check | rows checked | result |
 |---|---|---|---|
-| V1 | provenance references resolve | 1324 | PASS |
-| V2 | numeric facts carry sources or are declared UNKNOWN | 558 | PASS |
-| V3 | gate ceiling and dead/ALIVE integrity | 40 | PASS |
-| V4 | referential integrity | 968 | PASS |
-| V5 | no scoring or ranking artifacts | 539 | PASS |
-| V6 | stable ids unique | 452 | PASS |
-| V7 | time-sensitive sources dated | 108 | PASS |
-| V9 | no unperformed experiment claims a result | 9 | PASS |
-| V10 | decision-critical values remain UNKNOWN | 300 | PASS |
-| V11 | cross-file consistency | 14 | PASS |
-| V12 | raw provenance chain intact | 42 | PASS |
-| V13 | paper cost arithmetic reproduces | 2 | PASS |
-| V14 | two-dimension issue model complete | 56 | PASS |
-| V15 | frontier restricted to dispatchable M1 blockers | 63 | PASS |
-| V15 | frontier restricted to open M1 blockers | 63 | PASS |
-| V16 | eligibility independent of non-M1 issues; every verdict rule-traced | 150 | PASS |
-| V17 | patch integrity | 9 | PASS |
-| V18 | work artefacts valid and complete | 98 | PASS |
-| V19 | PROJECT_STATE prose carries no stale state values | 0 | PASS |
-| V2 | numeric facts carry sources or are declared UNKNOWN | 2 | PASS |
-| V2 | numeric facts carry sources or are declared UNKNOWN | 2 | PASS |
-| V1 | provenance references resolve | 1324 | PASS |
-| V2 | numeric facts carry sources or are declared UNKNOWN | 558 | PASS |
-| V3 | gate ceiling and dead/ALIVE integrity | 40 | PASS |
-| V4 | referential integrity | 968 | PASS |
-| V5 | no scoring or ranking artifacts | 539 | PASS |
-| V6 | stable ids unique | 452 | PASS |
-| V7 | time-sensitive sources dated | 108 | PASS |
-| V9 | no unperformed experiment claims a result | 9 | PASS |
-| V10 | decision-critical values remain UNKNOWN | 300 | PASS |
-| V11 | cross-file consistency | 14 | PASS |
-| V12 | raw provenance chain intact | 42 | PASS |
-| V13 | paper cost arithmetic reproduces | 2 | PASS |
-| V14 | two-dimension issue model complete | 56 | PASS |
-| V15 | frontier restricted to dispatchable M1 blockers | 63 | PASS |
-| V15 | frontier restricted to open M1 blockers | 63 | PASS |
-| V16 | eligibility independent of non-M1 issues; every verdict rule-traced | 150 | PASS |
-| V17 | patch integrity | 9 | PASS |
-| V18 | work artefacts valid and complete | 98 | PASS |
-| V19 | PROJECT_STATE prose carries no stale state values | 0 | PASS |
 | V1 | provenance references resolve | 1324 | PASS |
 | V2 | numeric facts carry sources or are declared UNKNOWN | 558 | PASS |
 | V3 | gate ceiling and dead/ALIVE integrity | 40 | PASS |

@@ -3,7 +3,7 @@
 Canonical machine-readable source: `M1/data/discrepancies.csv` (generated from `M1/src/corpus/unknowns.py`).
 This file is a rendering of that registry; edit the corpus module, not this file.
 
-Materialised (UTC): 2026-09-29T22:20:27Z
+Materialised (UTC): 2026-10-01T05:59:57Z
 
 Registered issues: 56 | open: 35 | blocking: 34
 

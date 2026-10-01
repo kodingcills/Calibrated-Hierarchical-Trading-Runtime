@@ -1,10 +1,10 @@
 {
   "artifact_hashes": {
     "M1/data/assumptions.csv": "889130b825b131953423600ea3db823d4b43e669de4a50e7592e5b3b6f6574df",
-    "M1/data/candidate_tuples.csv": "72f49ccbb8da31071eba1382a67f489c3381444ad8129f44fcf6209fee40ab1a",
+    "M1/data/candidate_tuples.csv": "075e6cf30e67c3e1c83c769cafb409f4e407e7b0c2555677e06c55fa67483fde",
     "M1/data/data_feasibility.csv": "d254d47b36c6b5163ed45751c524296c0a99d398432358407bee17142f910617",
     "M1/data/dead_candidates.csv": "d59023eff479b174ffb0fc735e7865579084859ca52a7fb246e6bbd642f60eb1",
-    "M1/data/discrepancies.csv": "a6b4cff1a2c92a3d987c2bbe69a1f1f874c05d290b62fc978d8576eff8df14b9",
+    "M1/data/discrepancies.csv": "88e3786e247995d909419304c33dd0e0e00dbd34c92d56bf47d1df392a6f8529",
     "M1/data/evidence_ledger.csv": "a2d6ac1d50ae933a295413d5c3fd2150b4b76aac25d10623ee948fb21860e87c",
     "M1/data/execution_envelopes.csv": "8946607791f68c4ea05ac167dbab6ab1ee2cdf8b40c354fa32acfe9aae33d024",
     "M1/data/experiments.csv": "b206409600430ff3b8019904cef12c6ae5a90aa5d976098c5946e2a64006dc15",
@@ -242,7 +242,7 @@
       "PASS": 11
     }
   },
-  "generated_at": "2026-09-29T22:20:27Z",
+  "generated_at": "2026-10-01T05:59:57Z",
   "generated_by": "M1/src/materialize.py",
   "m2_specs": [
     {
