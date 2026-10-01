@@ -259,10 +259,22 @@ def readiness_md(state) -> str:
         "authorized (see `M1/output/M1_D1_BLOCKED.md`).",
         "- No value was imputed for any unknown. Where a number is not evidenced, the cell is "
         "empty and named in the row's `unknown_fields`.",
-        "- No experiment has been run: `M1/data/experiments.csv` contains only PROPOSED rows.",
+        "- No model-bearing experiment has been run from the M1 register: it holds "
+        f"{_proposed_count(state)} PROPOSED design(s) and {_run_count(state)} RUN row(s). Every RUN "
+        "row is the M2 bridge campaign's own single-branch falsification measurement, run once "
+        "under a frozen contract: each can kill a branch or report indeterminate, and none can "
+        "establish net edge or a gate pass.",
         "",
     ]
     return "\n".join(lines)
+
+
+def _run_count(state) -> int:
+    return len([row for row in state.get("experiments", []) if row.get("run_state") == "RUN"])
+
+
+def _proposed_count(state) -> int:
+    return len([row for row in state.get("experiments", []) if row.get("run_state") != "RUN"])
 
 
 def d1_blocked_md(state) -> str:

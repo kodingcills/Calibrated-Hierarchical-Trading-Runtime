@@ -12,7 +12,8 @@
   "branch_impact": "MEDIUM",
   "contradictory_evidence_ids": [
     "EVD-0003",
-    "EVD-0042"
+    "EVD-0042",
+    "EVD-0071"
   ],
   "decision_prevented": "KG1/KG2 evidence quality for the CME rows, and auditability of the MDP feasibility claim.",
   "disallowed_evidence": "Assumed values, secondary summaries, social posts",
@@ -24,7 +25,7 @@
   "known_source_ids": [
     "SRC-0107"
   ],
-  "last_updated": "2026-10-01T05:59:57Z",
+  "last_updated": "2026-10-01T06:29:25Z",
   "parent_issue_id": "UNK-0023",
   "priority_reason": "Child scoped to CME technical documentation; the fee question is an external action and is not part of this child.",
   "priority_score": null,

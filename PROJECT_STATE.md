@@ -2,7 +2,7 @@
 
 Status: CURRENT
 Version: 1.0.0
-Last Updated: 2026-10-01T05:59:57Z
+Last Updated: 2026-10-01T06:29:25Z
 
 This is the canonical fast-orientation artifact. Read it before any other file. Its counts are
 generated from `M1/output/M1_STATE_SUMMARY.json` and enforced against the machine-readable
@@ -156,6 +156,54 @@ canonical economics were inspected); as-run inputs and artifact hashes:
   by the Reg NMS tick and the exchange/statutory fee floor, and the signal would have to be 5–17×
   larger.
 
+## GOAL-M2-BRIDGE-001 — three branch measurements, one verification wave
+
+Canonical detail: `DECISIONS.md` D-0043..D-0047; machine-readable registries
+`M1/data/experiments.csv` (EXP-0010..EXP-0012), `M1/data/evidence_ledger.csv`
+(EVD-0071..EVD-0073) and `M1/data/dead_candidates.csv`; frozen contracts and results under
+`M2/experiments/`; independent verification `.research/m2_bridge_001/verification/V3/REPORT.md`.
+
+- **Branch A — `TUP-CME-ES-H3-OFI-AGG`: KILL_MATERIALITY, sample-scoped.** One frozen run on the
+  only admitted window (CME Globex MDP 3.0 ESU3, 2023-07-17 13:30:00Z-13:40:00Z; frozen H3 =
+  1/5/15 s with 1 s primary — the project's H3 band, not sub-100 ms) gives a pooled side-signed 1 s
+  markout of **−0.0047336 bps** (instrument x 60 s block interval [−0.04685, +0.04034], 2000
+  resamples, seed 20260717, n = 583 of 599 slots, quoted coverage 0.99833) against a measured
+  observed-spread round trip of **0.5770 bps** ($13.1004 per contract), so **C\* = −0.5817 bps**.
+  The term structure is −0.0047336 / −0.0014608 / +0.0502825 bps and the unconditional side-ignoring
+  markout is **+0.0157 / +0.0631 / +0.1341 bps**, so the conditional state sits BELOW its own
+  unconditional baseline: this is absence of detectable conditional displacement, not merely a small
+  signal. The fired clause is `PRIMARY_HORIZON_GROSS_NOT_POSITIVE`, and the `hi <= C0` arm holds
+  independently. C1 (CME exchange/clearing/FCM) is UNKNOWN and never zero, so the 0.5770 bps C0 is a
+  floor rather than an all-in cost. Registered DEAD (KG3_EXECUTION, EVD-0071, patch P-0010) with its
+  scope and resurrection condition recorded verbatim on the row and in `DEAD_ENDS.md`.
+- **Branch C — `TUP-HYPERLIQUID-BTCPERP-H4-FUNDBASIS-MIX`: KILL_MATERIALITY.** One frozen run on
+  the availability-derived panel (2026-03-05T11:00:00Z-2026-09-28T23:00:00Z; 4,981/4,981 hourly
+  buckets with exact grid identity, 4,979/4,979 holds) gives **+0.0344051 bps per one-hour hold**
+  (HL carry +0.0596998, Binance carry −0.0267530, hedge mark-to-market residual −0.0004616;
+  hour-clustered interval [−0.0101126, +0.0755247], 10000 resamples, seed 20260930; 24 h block
+  variant [0.0157561, 0.0476396]) against **C0 = 4.8 bps** = 2 executions x the lowest published
+  Hyperliquid perp taker rung 0.024%/side, so **C\* = −4.7656 bps** (T\* = 145.69 h, interpretive
+  only). The 0.045% base tier is a labelled reference execution path that may not decide the kill;
+  the kill is sign-robust (reversed structure −0.0330 bps). Registered DEAD (KG3_EXECUTION,
+  EVD-0072, patch P-0011), scoped to this frozen one-hour formulation.
+- **Branch B — `TUP-NASDAQ-CLOSE-H4-LATENOII-AGG`: INDETERMINATE, freeze INVALIDATED, no
+  verdict.** The one development-grade session (2026-06-12, retained window 15:49:50-16:00:10 ET)
+  returned INDETERMINATE on `ENTRY_BOOK_RECONSTRUCTION_UNVALIDATED` (7,176,224 orphan messages =
+  35.75% of in-scope book traffic) and `SIGNAL_SCOPE_SUBFLOOR` (1,286 of 2,465 = 0.5217). Its
+  sealed input `signal_extract.json` was written nine minutes BEFORE the seal and already carried
+  the Closing Cross exit price for 4,281 of 12,809 records, so the freeze is not a valid
+  preregistration; the preregistered near/far band diagnostic is degenerate (0 in all 12,809
+  records). The −108.8946 bps capture is a reconstruction artifact (mean capture = mean mechanism
+  +6.5168 − mean side-signed(entry − reference) +115.4115 exactly; the worst 50 of 1,261 symbols
+  carry 93.9% of the loss; −0.60 bps on the 348 symbols whose reconstructed spread is <= 10 bps of
+  price), and the positive reconstruction-free mechanism metric (+6.5168 bps, CI [2.0026, 10.9985])
+  assumes a non-executable reference-price entry, so it is NOT recorded as edge, a survivor or a
+  kill. The row keeps an OPEN QUESTION (OQ-0017) naming the exact next action; the parent auction
+  row is untouched.
+- **What the campaign does not show:** no candidate is ALIVE, no gate passes on any branch, no
+  branch is authorized for capital, and none of these measurements is evidence of edge,
+  profitability or production readiness.
+
 ## Milestone Status
 
 <!-- GENERATED:milestones -->
@@ -188,8 +236,13 @@ economics measured and failed in the candidate's own population) and its passive
 `TUP-NASDAQ-LARGETICK-H2-QIMB-PAS` followed on 2026-09-24 (M2-1: starvation inside the signal's own
 horizon plus adverse-selection dominance). `TUP-NASDAQ-LARGETICK-H2H3-MICRO-AGG` left it on
 2026-09-24 as well (M2-2: its registered estimator's realized magnitude measured against the same
-friction, 5× short in the strongest declared state and 17× pooled). The three remaining WEAK rows
-(constraining evidence exists, nothing supports an upgrade):
+friction, 5× short in the strongest declared state and 17× pooled). Two more rows left it on
+2026-09-30, both on the project's own single frozen measurement per branch: `TUP-CME-ES-H3-OFI-AGG`
+(GOAL-M2-BRIDGE-001 branch A: its registered displacement measured against the friction of
+participating on the one window its data prerequisite admitted, sample-scoped kill) and
+`TUP-HYPERLIQUID-BTCPERP-H4-FUNDBASIS-MIX` (branch C: the frozen one-hour carry measured against the
+cheapest published execution floor it must clear). The three remaining WEAK rows (constraining
+evidence exists, nothing supports an upgrade):
 
 | candidate | instrument | venue | horizon | mechanism | execution | blocking issue |
 |---|---|---|---|---|---|---|
@@ -206,38 +259,50 @@ so a top-of-book signal at H2 must show a magnitude of the same order as the rou
 of the Nasdaq large-tick ledger and both failed it on measurement, which is why the sequence is
 closed rather than continued (`DECISIONS.md` D-0037, D-0038).
 
-Fifteen rows are UNKNOWN (no venue-specific evidence at all): ES H3 OFI, NQ H3 OFI, Treasury
+Thirteen rows are UNKNOWN with no venue-specific evidence at all: NQ H3 OFI, Treasury
 queue/replenishment, WTI flow/volatility, Nasdaq closing-auction imbalance (the broad-formulation
 provenance row `TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG` and its narrowed closing-cross reformulation
-`TUP-NASDAQ-CLOSE-H4-LATENOII-AGG`, `DECISIONS.md` D-0041), Hyperliquid H3 OFI/liquidation,
-Hyperliquid H4 funding/basis, Eurex OFI/queue, Cboe options surface RV, Deribit options surface RV,
+`TUP-NASDAQ-CLOSE-H4-LATENOII-AGG`, whose one development-grade measurement is INDETERMINATE with an
+invalidated freeze and an open question rather than a verdict; `DECISIONS.md` D-0041, D-0045),
+Hyperliquid H3 OFI/liquidation, Eurex OFI/queue, Cboe options surface RV, Deribit options surface RV,
 Kalshi event inference, Polymarket event inference, institutional FX lead-lag, retail FX feed lag.
+The two deprioritized crypto-spot rows (`TUP-COINBASE-BTCUSD-H3-MICROOFI-AGG`,
+`TUP-KRAKEN-BTCUSD-H3-MICROOFI-AGG`) are also UNKNOWN and are treated in the GOAL-001 section below.
 
 ## Killed Candidates
 
-Ten registered rows are DEAD: 5 tradable tuples and 5 non-tuple registrations. The ledger with
+Twelve registered rows are DEAD: 7 tradable tuples and 5 non-tuple registrations. The ledger with
 cause, evidence and resurrection condition is `DEAD_ENDS.md` (machine-readable:
-`M1/data/dead_candidates.csv`). Three of the ten are M2 kills rather than M1 kills:
+`M1/data/dead_candidates.csv`). Five of the twelve are M2 kills rather than M1 kills:
 `TUP-NASDAQ-LARGETICK-H2-QIMB-AGG` (measured aggressive execution economics, EVD-0067, patch
 P-0006), its passive pivot `TUP-NASDAQ-LARGETICK-H2-QIMB-PAS` (measured passive fill and
-adverse-selection economics, EVD-0069, patch P-0008), and `TUP-NASDAQ-LARGETICK-H2H3-MICRO-AGG`
-(measured microprice magnitude, EVD-0070, patch P-0009). Re-entry requires NEW_EVIDENCE **and** an
-explicit resurrection decision recorded in `DECISIONS.md`; silent re-entry is prohibited.
+adverse-selection economics, EVD-0069, patch P-0008), `TUP-NASDAQ-LARGETICK-H2H3-MICRO-AGG`
+(measured microprice magnitude, EVD-0070, patch P-0009), `TUP-CME-ES-H3-OFI-AGG` (measured
+mechanism materiality on one admitted ES window — a sample-scoped development kill, EVD-0071, patch
+P-0010) and `TUP-HYPERLIQUID-BTCPERP-H4-FUNDBASIS-MIX` (measured funding-basis materiality on the
+frozen one-hour formulation, EVD-0072, patch P-0011). Each M2 kill records its scope, its stated
+limitations and its resurrection condition on its own row; none of them is a breadth, regime or
+product-level claim. Re-entry requires NEW_EVIDENCE **and** an explicit resurrection decision
+recorded in `DECISIONS.md`; silent re-entry is prohibited.
 
 ## GOAL-001 canonical reselection state
 
-Terminal state: **EXTERNAL_BLOCK**. Primary `TEST_NOW`: **NONE**. Conditional economic frontier:
-`TUP-CME-ES-H3-OFI-AGG`. Its conditional experiment is `EXTERNAL_BLOCKED_NOT_AUTHORIZED`; it is
-not registered for M2, and no data purchase or trading action is authorized. The next required
-external action is to identify the operator/account path and obtain an exact ES historical sample
-with validated timestamp semantics, a verified structural cost C0 schedule for the named contract,
-and a declared parameterization of the unresolved cost C1 (unknown never zero), so the precursor can
-report the break-even residual cost C* (`DECISIONS.md` D-0042). Exact account-level CME/FCM costs are
-still required, but at the gate before shadow/micro-live rather than before the gross precursor.
-Coinbase and
-Kraken are `DEPRIORITIZE`, not the strategic frontier. The generic closure orchestrator's
-`next_autonomous_branch` is a mechanical blocker-dispatch field and must not override this
-reselection decision. Nasdaq large-tick QIMB/microprice remains CLOSED; no candidate is ALIVE.
+Terminal state: **EXTERNAL_BLOCK**. Primary `TEST_NOW`: **NONE**. The 2026-09-28 reselection's
+conditional economic frontier was `TUP-CME-ES-H3-OFI-AGG`, scheduled as
+`EXTERNAL_BLOCKED_NOT_AUTHORIZED` with the account-cost prerequisite corrected to verified C0 plus a
+parameterized C1 and a reported C\* (`DECISIONS.md` D-0042). That frontier has since been measured
+inside GOAL-M2-BRIDGE-001 using free admitted data and is now **DEAD, sample-scoped**
+(`DECISIONS.md` D-0043): one 10-minute ESU3 window cannot support more than a development kill, and
+its resurrection condition requires at least two non-overlapping admitted ES sessions (or a
+materially different regime under the same frozen construction) plus verified account-independent
+CME exchange/clearing/FCM charges. Exact account-level CME/FCM costs remain mandatory, but at the
+gate before shadow/micro-live rather than before a gross precursor. The narrowed closing-auction row
+is the only branch with an unfinished measurement path, and its decidable next action is registered
+as `OQ-0017` (a warm-up re-extract under a freeze whose inputs carry no outcome quantity and whose
+sealing is externally anchored) — not as a verdict. Coinbase and Kraken are `DEPRIORITIZE`, not the
+strategic frontier. The generic closure orchestrator's `next_autonomous_branch` is a mechanical
+blocker-dispatch field and must not override this reselection decision. Nasdaq large-tick
+QIMB/microprice remains CLOSED; no candidate is ALIVE and no branch is authorized for capital.
 
 ## Current Strongest Findings
 
@@ -338,7 +403,45 @@ Durable, evidence-backed, and still less than tradable alpha:
 
 12. **Resolution sprint 001 did not clear any branch, but produced three exact external-only contracts.** Independent verification on 2026-09-29 confirms: ES contract/API scope is verified while historical replay schema/sample/entitlement and exact account costs remain unresolved; Nasdaq live NOII/ITCH fields, exchange timestamps and closing schedule are verified while historical replay/retention is unverified; Hyperliquid hourly funding semantics, BTC metadata, archive warnings and base fees are verified while the paired historical panel and all-leg costs are unresolved. The saved claim matrix is `.research/resolution/VERIFICATION/REPORT.md`.
 13. **Freeze-ready definitions exist without promotion.** The Nasdaq auction precursor is signed late NOII imbalance change from 15:50 to 15:55 ET against closing-cross displacement, using the same-day point-in-time Stock Directory universe (`M1/work/reselection_specs/TUP-NASDAQ-CLOSING-AUCTION-LATE-NOII.json`). The Hyperliquid definition is Hyperliquid Core BTC perpetual versus Binance USDⓈ-M BTCUSDT perpetual with a strict completeness gate (`M1/work/reselection_specs/TUP-HYPERLIQUID-BTC-FUNDING-BASIS.json`); no pilot ran because the no-purchase check failed completeness and Binance access returned HTTP 451 in this environment.
-14. **Canonical branch state remains unchanged:** `ALIVE=0`, `TEST_NOW=NONE`, ES H3 OFI=`EXTERNAL_BLOCKED_NOT_AUTHORIZED`, Nasdaq continuous-book family=`CLOSED`, Nasdaq closing-auction=`EXTERNAL_ONLY`, Hyperliquid funding/basis=`EXTERNAL_ONLY`. No quantitative economic result was inspected for any branch.
+14. **The three narrowed branches were measured once each on free admitted data, and none of them
+    advanced.** `ALIVE=0`, `TEST_NOW=NONE`, Nasdaq continuous-book family=`CLOSED`, Nasdaq
+    closing-auction=`EXTERNAL_ONLY`, Hyperliquid funding/basis=`DEAD` (scoped), ES H3 OFI=`DEAD`
+    (sample-scoped). Every quantitative result was inspected under a per-branch preregistered rule
+    and independently verified in wave V3 before it touched canonical state. What the campaign
+    produced is two bounded kills, one invalidated preregistration, and six procedural lessons
+    (`DECISIONS.md` D-0043..D-0047) - not a survivor.
+15. **A single admitted ES window kills the OFI tuple on materiality, within its own window only.**
+    On CME Globex ESU3 2023-07-17 13:30:00Z-13:40:00Z (frozen H3 = 1/5/15 s, primary 1 s) the causal
+    signed order-flow-imbalance state earns **−0.0047336 bps** of side-signed 1 s markout (interval
+    [−0.04685, +0.04034], n = 583 of 599 slots) against a measured observed-spread round trip of
+    **0.5770 bps**; the term structure is −0.0047336 / −0.0014608 / +0.0502825 bps, and the
+    unconditional side-ignoring markout is **+0.0157 / +0.0631 / +0.1341 bps**, so the conditional
+    state is BELOW its own baseline — an absence of detectable conditional displacement rather than
+    a small signal. C1 (CME exchange/clearing/FCM) is UNKNOWN and never zero, so C0 is a floor; the
+    producer suggested charging the failure to KG1 with KG3 as the alternative, and the record
+    charges **KG3_EXECUTION** because the fired clause is the friction/materiality comparison while
+    KG1 would assert the mechanism is absent, which one window cannot establish. Frozen artifacts:
+    `M2/experiments/M2-BRIDGE-ES-H3-OFI/{freeze,results}.json`.
+16. **A one-hour cross-venue carry is ~140× smaller than the cheapest published execution floor it
+    must clear.** Over an availability-derived 2026-03-05..2026-09-28 BTC panel (4,981/4,981 hourly
+    buckets, 4,979/4,979 holds) the frozen short-Hyperliquid / long-Binance formulation earns
+    **+0.0344051 bps per hold** (CI [−0.0101126, +0.0755247]) against **C0 = 4.8 bps** (2 × the
+    lowest published Hyperliquid taker rung 0.024%), so **C\* = −4.7656 bps** and T\* = 145.69 h
+    (interpretive only). The kill is sign-robust (reversed structure −0.0330 bps, flipped HL carry
+    −0.0874 bps both still kill), Binance's all-leg cost is UNKNOWN and unbounded so the true C\* is
+    more negative than reported, and a zero-cost maker path would make the verdict INDETERMINATE.
+17. **The auction branch produced no verdict, and its own freeze failed as a preregistration.**
+    The single 2026-06-12 session returned INDETERMINATE because the entry book cannot be validated
+    (7,176,224 orphan messages = 35.75% of in-scope book traffic) and the signal-defined population
+    is 52.17% of the universe; its sealed input already contained the Closing Cross exit price for
+    4,281 of 12,809 records despite the freeze claiming its inputs carry no outcome quantity, and
+    its preregistered near/far band clause is structurally degenerate (0 in all 12,809 records).
+    The headline −108.8946 bps is exactly the reconstruction gap (+6.5168 mechanism − 115.4115
+    entry-vs-reference), the worst 50 of 1,261 symbols carry 93.9% of it, and restricting to the
+    348 symbols whose reconstructed spread is <= 10 bps of price gives only −0.60 bps. The
+    reconstruction-free mechanism displacement is positive (+6.5168 bps, CI [2.0026, 10.9985],
+    above the 1.02 bps floor) but assumes a non-executable entry, so it is recorded as neither a
+    survivor, a kill, nor edge. The decidable next action is an open question (`OQ-0017`).
 
 ## Critical Unknowns / Blockers
 
@@ -420,7 +523,7 @@ Machine-readable M1 state (canonical; regenerate with `python3 M1/src/materializ
   cost_envelopes, venue_cost_reference, latency_feasibility, hard_constraint_survivors,
   hard_constraint_eliminations, dominated_candidates, blocker_priority, status_derivation_review,
   M1_D0_READINESS.md, M1_D1_BLOCKED.md, M1_STATE_SUMMARY.json.
-- `M1/validation/report.{json,md}` - validator output (rules V1-V13).
+- `M1/validation/report.{json,md}` - validator output (rules V1-V19).
 - `M1/raw/source_manifest.json` - SHA-256 of every raw input; copies under `M1/raw/`.
 - `M1/derived/jev_paper_pages/` - rasterised paper pages used to read an image-only PDF.
 - Closure orchestrator: `M1/orchestrator/{schemas,blocker_card,priority,frontier,transitions,
@@ -445,10 +548,10 @@ Machine-readable M1 state (canonical; regenerate with `python3 M1/src/materializ
 |---|---|
 | ALIVE | 0 |
 | WEAK | 3 |
-| UNKNOWN | 17 |
-| DEAD | 10 |
+| UNKNOWN | 15 |
+| DEAD | 12 |
 
-Registered candidate rows: 30 (25 tradable tuples + 5 non-tuple registrations). Verified sources: 96 (25 report-mediated, 0 with a recoverable URL). Evidence records: 69. M1 frontier items: 27 (7 measurement specs and 14 external requests now outside the frontier). Gate-eligible candidates: 0.
+Registered candidate rows: 30 (25 tradable tuples + 5 non-tuple registrations). Verified sources: 99 (25 report-mediated, 0 with a recoverable URL). Evidence records: 72. M1 frontier items: 27 (7 measurement specs and 14 external requests now outside the frontier). Gate-eligible candidates: 0.
 <!-- /GENERATED:counts -->
 
 
@@ -456,13 +559,13 @@ Registered candidate rows: 30 (25 tradable tuples + 5 non-tuple registrations). 
 - `python3 M1/src/build_manifest.py` - hashes raw inputs (only needed if raw inputs change).
 - `python3 M1/src/materialize.py` - regenerates every artifact listed above and this file's
   `Last Updated` line.
-- `python3 M1/src/validate.py --strict` - rules V1-V18: provenance, numeric provenance, gate
-  ceiling and dead/ALIVE integrity, referential integrity, no candidate scoring, id uniqueness,
-  source dates, experiment integrity, no imputation, cross-file consistency, raw-manifest hash
-  integrity, paper-arithmetic reproducibility, two-dimension issue model, frontier integrity,
-  eligibility independence, patch integrity, work-artefact validity. Last run: **PASS**, 0
-  failures across 18 rule groups.
-- `python3 -m unittest discover -s M1/tests -t .` - 76 tests, OK.
+- `python3 M1/src/validate.py --strict` - rules V1-V19: provenance, numeric provenance, gate
+  ceiling and dead/ALIVE integrity, referential integrity, no candidate scoring (V8 included here),
+  id uniqueness, source dates, experiment integrity, no imputation, cross-file consistency,
+  raw-manifest hash integrity, paper-arithmetic reproducibility, two-dimension issue model,
+  frontier integrity, eligibility independence, patch integrity, work-artefact validity,
+  PROJECT_STATE prose freshness. Last run: **PASS**, 0 failures across 19 rule groups.
+- `python3 -m unittest discover -s M1/tests -t .` - 99 tests, OK.
 - `python3 M1/orchestrator/controller.py status|frontier|next` - closure orchestration.
 - Validator report: `M1/validation/report.md`.
 

@@ -89,6 +89,12 @@ REPORT_KILL_GATE = {
     "TUP-NASDAQ-LARGETICK-H2-QIMB-AGG": "M2 measured execution economics (no M1-A cemetery row)",
     "TUP-NASDAQ-LARGETICK-H2-QIMB-PAS": "M2 measured passive-execution economics (no M1-A "
                                         "cemetery row)",
+    "TUP-NASDAQ-LARGETICK-H2H3-MICRO-AGG": "M2 measured signal magnitude versus friction (no M1-A "
+                                           "cemetery row)",
+    "TUP-CME-ES-H3-OFI-AGG": "M2 measured mechanism/materiality precursor on one admitted window "
+                             "(no M1-A cemetery row)",
+    "TUP-HYPERLIQUID-BTCPERP-H4-FUNDBASIS-MIX": "M2 measured funding-basis materiality (no M1-A "
+                                                 "cemetery row)",
 }
 
 ROWS = []
@@ -167,13 +173,58 @@ add("TUP-CME-ES-H3-OFI-AGG", "TUPLE", "ES (E-mini S&P 500 future)", "VEN-CME-ES"
     "for an aggressive signal); own fill data with timestamps",
     "Cost- and latency-sensitive: the signal must exceed spread + fees + slippage; no queue "
     "advantage is claimed",
-    "PASS", "UNKNOWN", "LATENCY_UNMEASURED", (_B, _B, _B, _B, _P), "UNKNOWN",
-    "The OFI mechanism is evidenced in U.S. equities (EVD-0013) but that link is NEUTRAL for ES: "
-    "transfer across venue and participant structure is an EXTRAPOLATION and no current ES "
-    "replication exists. No evidence yet constrains ES specifically, so the tuple is UNKNOWN "
-    "rather than WEAK.",
+    "PASS", "UNKNOWN", "LATENCY_UNMEASURED", (_B, _B, _F, _B, _P), "DEAD",
+    "KG3_EXECUTION fails on the project's own measured evidence (EVD-0071, patch P-0010): on the "
+    "only admitted CME ESU3 window the causal signed order-flow-imbalance state earns "
+    "-0.0047336 bps of side-signed 1 s markout (95% instrument x 60 s block interval "
+    "[-0.0468503, +0.0403358], n = 583 of 599 decision slots) against a measured observed-spread "
+    "round trip of 0.5770016 bps, and every reported term-structure point is at most 8.7% of that "
+    "floor. The kill is recorded as SAMPLE-SCOPED: one venue, one instrument, one contract month, "
+    "one 10-minute window, one session. The unconditional side-ignoring markout at the same "
+    "instants (+0.0156746 bps, or +0.0208001 bps on the 583 conditional instants) is positive, so "
+    "this is the absence of a detectable conditional displacement rather than merely a small one. "
+    "The U.S.-equity OFI evidence (EVD-0013) is unchanged and is not contradicted: no sign error "
+    "exists, the mechanism is not shown to be absent, and the failure is scoped to this sample.",
     "UNK-0001|UNK-0002|UNK-0006|UNK-0009|UNK-0016|UNK-0018",
-    "SRC-0011 tuple ledger row 2")
+    "SRC-0023 patch P-0010",
+    kill_gate="KG3_EXECUTION",
+    kill_reason="The registered mechanism produced no positive displacement on the only window its "
+                "data prerequisite admitted: -0.0047336 bps pooled at the primary 1 s horizon, "
+                "-0.0014608 bps at 5 s and +0.0502825 bps at 15 s, against a measured "
+                "observed-spread round trip of 0.5770016 bps (13.1004 USD per contract) and "
+                "C* = -0.5817352 bps. The fired clause is PRIMARY_HORIZON_GROSS_NOT_POSITIVE and "
+                "the independent arm hi <= C0 (0.0403358 <= 0.5770016) also holds. Measured on the "
+                "admitted CME ESU3 slice 2023-07-17T13:30:00Z-13:40:00Z (M2-BRIDGE-ES-H3-OFI, "
+                "freeze sha256 42a158c5..., results sha256 09c85629...), scoped to that single "
+                "window.",
+    resurrection_condition="Two or more non-overlapping admitted ES sessions, or a materially "
+                           "different regime measured under the same frozen construction, PLUS "
+                           "verified account-independent CME exchange/clearing/FCM charges. A "
+                           "different window alone is not a resurrection basis unless the "
+                           "registered contract is unchanged and the sealing is externally "
+                           "anchored.",
+    notes="Killed by M2 evidence, not by an M1 inference: the branch's own frozen materiality "
+          "precursor was run once, after D-0042 corrected the account-cost prerequisite to "
+          "verified C0 + parameterized C1 + reported C*, and the registered mechanism produced no "
+          "positive displacement at any reported horizon. Four limits are stated rather than "
+          "hidden. (1) Scope: one 10-minute RTH-open window, so the recorded verdict is a "
+          "sample-scoped development kill and cannot support session-, regime-, product- or "
+          "breadth-level inference. (2) C0 contains no verified exchange/clearing/FCM charge (the "
+          "CME fee schedule is unreachable from this environment and the one surfaced figure was "
+          "rejected in P-0003), so 0.5770016 bps is a FLOOR and not an all-in cost - an omission "
+          "that can only favour the candidate, and it still fails; C1 stays in the C1 lattice with "
+          "an UNKNOWN value, never zero. (3) Pre-outcome sealing is asserted by artifact ordering "
+          "only (freeze 15:15:44 precedes results 15:15:59) with no external anchor, so the seal "
+          "order is UNVERIFIED. (4) The published unconditional figure is the mean over 598 "
+          "quote-available slots while the conditional is over 583 (0.0051 bps apart; V3 reports "
+          "it as not decision-relevant but not identical instants). The producer proposed charging "
+          "this to KG1_MECHANISM or, alternatively, KG3_EXECUTION on the M2-2 microprice "
+          "precedent. The charge recorded here is KG3_EXECUTION: the fired clause is a "
+          "materiality/friction clause against C0 (and the independent arm hi <= C0 holds), which "
+          "is what KG3 asks, whereas KG1 would assert that the mechanism does not operate on ES - "
+          "a stronger claim than one 10-minute window can support, since the mechanism is not "
+          "shown to be absent, only to produce no positive conditional displacement at the "
+          "reported horizons. The unused alternative is recorded rather than dropped.")
 
 add("TUP-CME-NQ-H3-OFI-AGG", "TUPLE", "NQ (E-mini Nasdaq-100 future)", "VEN-CME-NQ", "H3",
     "MECH-OFI", "AGGRESSIVE",
@@ -371,7 +422,13 @@ add("TUP-NASDAQ-CLOSE-H4-LATENOII-AGG", "TUPLE",
     "is specifiable, but the historical ITCH/NOII sample, its timestamp semantics, the fee tier "
     "and the universe rule's approved spec artifact are all unresolved. No net-edge evidence "
     "exists and no gate is passed on admission grounds; the row inherits none of the broad "
-    "formulation's verdict and must clear its own admission.",
+    "formulation's verdict and must clear its own admission. A development-grade single-session "
+    "measurement of the frozen formulation (EVD-0073, patch P-0012) returned INDETERMINATE with an "
+    "INVALIDATED FREEZE and no verdict: its sealed input already carried the Closing Cross exit "
+    "price, the executable-capture figure is a reconstruction artifact, and the reconstruction-free "
+    "mechanism metric is positive but non-executable. The measured entry-book reconstruction could "
+    "not be validated, so no KILL and no survival is recorded; the deciding next action is an open "
+    "question (OQ-0017).",
     "UNK-0004|UNK-0005|UNK-0006|UNK-0018|UNK-0020|UNK-0027",
     "M1/work/reselection_specs/TUP-NASDAQ-CLOSING-AUCTION-LATE-NOII.json (RESOL-001)",
     status_source_id=UNKNOWN,
@@ -395,7 +452,29 @@ add("TUP-NASDAQ-CLOSE-H4-LATENOII-AGG", "TUPLE",
           "authored for this row, so KG2 reports a missing assessment rather than a verdict; the "
           "data path itself is the parent's, whose authored assessment stands at "
           "M1/data/data_feasibility.csv (Nasdaq auction row) and likewise records the historical "
-          "product as unverified.")
+          "product as unverified. Measured once, development-grade, on the 2026-06-12 session "
+          "(M2-BRIDGE-AUCTION-LATENOII-MATERIALITY, freeze sha256 9baff3dd..., results sha256 "
+          "15b7a3d5...): the frozen executable capture reads -108.8946 bps pooled, but V3 verified "
+          "that figure is a reconstruction artifact - mean capture = mean mechanism (+6.5168 bps) "
+          "- mean side-signed(entry - reference) (+115.4115 bps) exactly, the worst 50 of 1,261 "
+          "symbols carry 93.9% of the loss, the largest reconstructed entry spread is $11.64 on a "
+          "$2.10 stock, and on the 348 symbols whose reconstructed spread is <= 10 bps of price "
+          "the figure is -0.60 bps. The recorded verdict INDETERMINATE stands on "
+          "ENTRY_BOOK_RECONSTRUCTION_UNVALIDATED (7,176,224 orphan messages = 35.75% of in-scope "
+          "book traffic, because the retained window opens at 15:49:50) and SIGNAL_SCOPE_SUBFLOOR "
+          "(1,286 of 2,465 = 0.5217). The experiment's freeze is INVALID as a preregistration: its "
+          "sealed input signal_extract.json was written before the seal and already contained "
+          "closing_cross_price_raw, valid for 4,281 of 12,809 records, contradicting the freeze's "
+          "own statement that its inputs carry no outcome quantity; the preregistered near/far "
+          "band diagnostic is additionally DEGENERATE (near and far prices are 0 in all 12,809 "
+          "records), so that clause could never pass for any reconstruction. The "
+          "reconstruction-free mechanism metric is POSITIVE (+6.5168 bps, CI [2.0026, 10.9985]) "
+          "and above the 1.02 bps fee floor, but it assumes a non-executable reference-price "
+          "entry, so it is NOT evidence of tradability and is recorded neither as a survivor, a "
+          "kill, nor edge. The exact next action that would make this branch decidable is a "
+          "re-extract with pre-15:49:50 book warm-up (the 17.9 GB source was streamed and not "
+          "retained) under a freeze whose inputs contain no outcome quantity and whose sealing is "
+          "externally anchored (OPEN_QUESTIONS OQ-0017).")
 
 # ---------------------------------------------------------------- Cboe equity
 add("TUP-CBOEBZX-LARGETICK-H2H3-SPREADCAP-PAS", "TUPLE",
@@ -474,10 +553,50 @@ add("TUP-HYPERLIQUID-BTCPERP-H4-FUNDBASIS-MIX", "TUPLE", "BTC perpetual / spot h
     "constraints",
     "Carry trades are widely known; the question is whether the wedge survives funding, borrow and "
     "venue risk",
-    "PASS", "UNKNOWN", "PHYSICALLY_PLAUSIBLE_ONLY", (_B, _B, _B, _B, _P), "UNKNOWN",
-    "API infrastructure is usable but the economic evidence, fee schedule and cross-venue hedge "
-    "mechanics are incomplete.",
-    "UNK-0006|UNK-0010|UNK-0018", "SRC-0011 tuple ledger row 14")
+    "PASS", "UNKNOWN", "PHYSICALLY_PLAUSIBLE_ONLY", (_B, _B, _F, _B, _P), "DEAD",
+    "KG3_EXECUTION fails on the project's own measured evidence (EVD-0072, patch P-0011): over "
+    "the admitted availability-derived panel (2026-03-05T11:00:00Z-2026-09-28T23:00:00Z, "
+    "4,981/4,981 hourly buckets with exact grid identity; 4,979/4,979 one-hour holds) the frozen "
+    "unconditional short-Hyperliquid Core BTC perpetual / long equal-notional Binance USD(S)-M "
+    "BTCUSDT perpetual formulation earns +0.0344051 bps per hold (hour-clustered bootstrap CI "
+    "[-0.0101126, +0.0755247], 10,000 resamples, seed 20260930; 24 h moving-block variant "
+    "[+0.0157561, +0.0476396]) against a structural floor C0 of 4.8 bps and a break-even residual "
+    "C* = -4.7656 bps. The fired clause is hi (0.09624) <= C0 (4.8). The kill is scoped to this "
+    "frozen one-hour formulation on this panel: a longer horizon, another pair or a "
+    "state-conditioned entry is a NEW candidate, never a reinterpretation of this row.",
+    "UNK-0006|UNK-0010|UNK-0018",
+    "SRC-0023 patch P-0011",
+    kill_gate="KG3_EXECUTION",
+    kill_reason="The frozen one-hour carry is roughly 140x smaller than the cheapest published "
+                "execution floor it must clear: gross +0.0344051 bps per hold against C0 = 4.8 bps "
+                "(2 executions x the LOWEST published Hyperliquid perp taker rung 0.024%/side), "
+                "giving C* = -4.7655949 bps; the base-tier 0.045% path is a labelled REFERENCE "
+                "EXECUTION PATH scenario that may not decide the kill, and the 0.024% choice makes "
+                "the kill HARDER, not easier. Binance fee, spread, impact and capital stay "
+                "UNKNOWN and unbounded in C1, so the true C* is MORE negative than reported. "
+                "Measured on the 2026-03-05..2026-09-28 panel (M2-BRIDGE-HL-BINANCE-BASIS, freeze "
+                "sha256 389b8f4d..., results sha256 97a4d7ac...).",
+    resurrection_condition="A longer-horizon carry reformulation registered as its OWN candidate "
+                           "(never a reinterpretation of this row), plus a verified Binance "
+                           "all-leg cost schedule and the missing monthly funding file.",
+    notes="Killed by M2 evidence, not by an M1 inference. Five limits are stated rather than "
+          "hidden. (1) The 84 unresolved in-panel Binance settlements contribute exactly zero to "
+          "the MEASURED series and are bracketed only in the DECISION quantity: 'never treated as "
+          "zero' holds for the decision input, not for the measured series. (2) Pre-outcome "
+          "sealing is asserted by artifact ordering only (freeze 15:21:16 precedes results "
+          "15:22:17) with no external anchor, so pre-outcome sealing is UNVERIFIED. (3) The "
+          "freeze's recorded hash for M2/src/admission.py (9f5862f7) no longer matches the tree "
+          "(00363c3a, drifted by an unrelated branch's additive contract), so the freeze no longer "
+          "verifies in place; the drift is inert for the result because the gross reproduces "
+          "independently from the panel and the raw archives, but it is recorded. (4) V3 "
+          "established the kill is SIGN-ROBUST: reversing the structure gives -0.0330 bps gross "
+          "and flipping only the Hyperliquid carry -0.0874 bps, and both still satisfy the kill "
+          "rule, so the verdict does not depend on the sign convention - recorded as strengthening "
+          "the kill. (5) A zero-cost maker path would make the verdict INDETERMINATE, as the "
+          "producer stated. The published price term uses causal LAST-TRADE prices from COMPLETED "
+          "hourly candles labelled REFERENCE prices (versioned amendment AMEND-C5-001; no free "
+          "historical book mid exists), so the reference legs are trade-derived and not "
+          "replicable at a quoted mid.")
 
 add("TUP-EUREX-FESX-H2H3-OFIQ-MIX", "TUPLE", "FESX/DAX equity-index future (contract UNSPECIFIED)",
     "VEN-EUREX-FESX", "H2-H3", "MECH-OFI|MECH-QIMB", "MIXED",

@@ -12,7 +12,8 @@
   "branch_impact": "MEDIUM",
   "contradictory_evidence_ids": [
     "EVD-0003",
-    "EVD-0042"
+    "EVD-0042",
+    "EVD-0071"
   ],
   "decision_prevented": "KG1 for every CME candidate (mechanism plausibility, not profitability).",
   "disallowed_evidence": "Assumed values, secondary summaries, social posts",
@@ -25,7 +26,7 @@
     "SRC-0102",
     "SRC-0235"
   ],
-  "last_updated": "2026-10-01T05:59:57Z",
+  "last_updated": "2026-10-01T06:29:25Z",
   "parent_issue_id": "UNK-0009",
   "priority_reason": "Split from the conflated UNK-0009: this asks only whether the mechanism exists on CME, not whether it is profitable there.",
   "priority_score": null,

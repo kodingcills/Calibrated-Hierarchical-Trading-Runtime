@@ -646,4 +646,31 @@ q("OQ-0016", "Is the candidate architecture's target market actually inside the 
   "Decide explicitly whether to add such a tuple (with its own fee/data/access lock) or to keep the "
   "architecture as an unhosted specimen.", "UNK-0023|UNK-0026", legacy_question_id=UNKNOWN)
 
+q("OQ-0017", "Does a re-extract of the Nasdaq 2026-06-12 closing session with book warm-up from "
+             "before 15:49:50 make the late-NOII executable capture measurable, under a freeze "
+             "whose inputs contain no outcome quantity and whose sealing is externally anchored?",
+  "The only measurement of the narrowed closing-auction candidate returned INDETERMINATE because "
+  "its entry book could not be validated: a single-session economic result would decide whether "
+  "the branch is killed on materiality or stays open, and it cannot be produced from the retained "
+  "artifacts.",
+  "Closing auction", "HIGH", "M2_ENTRY", "not_started",
+  "Measured once (M2-BRIDGE-AUCTION-LATENOII-MATERIALITY, EVD-0073) and not decidable: the frozen "
+  "executable capture reads -108.8946 bps but is a reconstruction artifact (mean capture = mean "
+  "mechanism +6.5168 bps - mean side-signed(entry - reference) +115.4115 bps exactly; the worst 50 "
+  "of 1,261 symbols carry 93.9% of the loss; -0.60 bps on the 348 symbols whose reconstructed "
+  "spread is <= 10 bps of price). The reconstruction-free mechanism metric is positive "
+  "(+6.5168 bps, CI [2.0026, 10.9985], above the 1.02 bps fee floor) but assumes a non-executable "
+  "reference-price entry, so it is neither a kill nor a survival.",
+  "The measurement window opens at 15:49:50, so 7,176,224 orphan book messages (35.75% of in-scope "
+  "book traffic) reference orders the reconstruction cannot see; the bias is one-way and the true "
+  "inside spread at 15:55 is unmeasured. The experiment's freeze is also INVALID as a "
+  "preregistration (its sealed input already carried the Closing Cross exit price, valid for 4,281 "
+  "of 12,809 records) and the preregistered near/far band diagnostic is degenerate (near and far "
+  "prices are 0 in all 12,809 records).",
+  "Re-extract the same session with book warm-up from before 15:49:50 (the 17.9 GB source was "
+  "streamed and not retained) under a freeze whose inputs contain no outcome quantity and whose "
+  "sealing is externally anchored (committed or RFC3161-timestamped before the measurement), then "
+  "re-run the frozen clause order. Retain the source this time.",
+  "UNK-0018-NASDAQ|UNK-0027-AUCTION")
+
 QUESTION_BY_ID = {row["question_id"]: row for row in OPEN_QUESTIONS}

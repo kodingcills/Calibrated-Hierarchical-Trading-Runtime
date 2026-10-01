@@ -12,7 +12,8 @@
     "EVD-0043",
     "EVD-0045",
     "EVD-0046",
-    "EVD-0047"
+    "EVD-0047",
+    "EVD-0072"
   ],
   "decision_prevented": "Replay validity for the Hyperliquid seconds-scale tuples (KG2).",
   "disallowed_evidence": "Assumed values, secondary summaries, social posts",
@@ -25,7 +26,7 @@
     "SRC-0214",
     "SRC-0216"
   ],
-  "last_updated": "2026-10-01T05:59:57Z",
+  "last_updated": "2026-10-01T06:29:25Z",
   "parent_issue_id": "UNK-0018",
   "priority_reason": "Scoped child: the archive is the venue's own and the remaining question is its field semantics, which public documentation or one sample answers.",
   "priority_score": null,

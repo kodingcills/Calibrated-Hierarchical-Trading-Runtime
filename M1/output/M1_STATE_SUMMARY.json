@@ -1,35 +1,35 @@
 {
   "artifact_hashes": {
     "M1/data/assumptions.csv": "889130b825b131953423600ea3db823d4b43e669de4a50e7592e5b3b6f6574df",
-    "M1/data/candidate_tuples.csv": "075e6cf30e67c3e1c83c769cafb409f4e407e7b0c2555677e06c55fa67483fde",
+    "M1/data/candidate_tuples.csv": "d85b41b998bc490e678d9d9d7474a2c1670e5a2a3e7597506930382360741ab4",
     "M1/data/data_feasibility.csv": "d254d47b36c6b5163ed45751c524296c0a99d398432358407bee17142f910617",
-    "M1/data/dead_candidates.csv": "d59023eff479b174ffb0fc735e7865579084859ca52a7fb246e6bbd642f60eb1",
-    "M1/data/discrepancies.csv": "88e3786e247995d909419304c33dd0e0e00dbd34c92d56bf47d1df392a6f8529",
-    "M1/data/evidence_ledger.csv": "a2d6ac1d50ae933a295413d5c3fd2150b4b76aac25d10623ee948fb21860e87c",
+    "M1/data/dead_candidates.csv": "8a3ab65c8879ef3155a826d460c6b956d0936077f76aa2be9b6a36f1e0fb5da7",
+    "M1/data/discrepancies.csv": "16c88b8b6b6a6b0be21bc60dc9c0724aa23d32565a617fd1e9fbacbae27fa5b7",
+    "M1/data/evidence_ledger.csv": "cda3165060b837f3c2711a36509ede830320a27228d9d0065e563bd86a32b7a5",
     "M1/data/execution_envelopes.csv": "8946607791f68c4ea05ac167dbab6ab1ee2cdf8b40c354fa32acfe9aae33d024",
-    "M1/data/experiments.csv": "b206409600430ff3b8019904cef12c6ae5a90aa5d976098c5946e2a64006dc15",
+    "M1/data/experiments.csv": "d5e0e316013e9030a2b037acffd759b6c6ee526166670c8c4f47657c6aa52d5f",
     "M1/data/hypotheses.csv": "ee92222d16873a55560827435d7c24748dd9c0445b0d9492a5625259be88c9e6",
-    "M1/data/kill_gates.csv": "f589c5916f707ebd06274b48e27b658d1280072a9bd8957d92f628f3e0d0fefe",
+    "M1/data/kill_gates.csv": "8e6a253747aa0d831667e6b925c7803c509bbf9efe82558e8bb0c58ce86325e0",
     "M1/data/mechanisms.csv": "cdcc25bb7ef3ca612ffec5ba8e8e4bc32d5c16b1bc2c604a605cb2c289f85bbd",
-    "M1/data/open_questions.csv": "3ee99f02f2f99cad62447e997458624f8c8e7a61f1a28e99e9687bee4a9ed614",
-    "M1/data/source_registry.csv": "9f1446325a04e6366ac5c4717553607c43a90e51c0be1ad39cd4c6a3e5f7f396",
+    "M1/data/open_questions.csv": "2b5bb237bf9a2b70f053ddfd1290f007e9331d4fa000a85baa558a4185d7cd18",
+    "M1/data/source_registry.csv": "0e22fb219fbc3bb3c80457d0c4cbbbe40897b1c70509f7d8024a3d217291e1f4",
     "M1/data/technology_fit.csv": "8997ee6e17d2944643c0516e73739f30df9e705f27af4fc8690beedd9dec0c84",
     "M1/data/venue_facts.csv": "03b633734b007adb3afdb01b9612a965e0986a4d493d5b174be8146e5ea06917",
-    "M1/output/blocker_priority.csv": "1564fa54a0aea62df177c63a22b46d18bfac02d714875f70ca18186a3c4a9d79",
-    "M1/output/candidate_closure_metrics.csv": "2f86f437e69e3b944d65b25cebe60f7f9b427290279ae7c2a8c724a8f0c0f766",
-    "M1/output/candidate_gate_status.csv": "a1ff67a834ac9aabb5597968d7e82f403846d837ea8a75af64a678d8ffc6ed37",
+    "M1/output/blocker_priority.csv": "39dc8804ef32d02e211758cf39dd6dea66e018db68f583c57bb34b5a52c8f1d0",
+    "M1/output/candidate_closure_metrics.csv": "76f1211aa45fff301b1fd3f39a4cc2b9510c22db3eb25691db5ab6ae2f426750",
+    "M1/output/candidate_gate_status.csv": "a1736b9e1ee864db0e73e482a9457dc1c182ccfe73be6d23367637e8bdbc84ac",
     "M1/output/cost_envelopes.csv": "8946607791f68c4ea05ac167dbab6ab1ee2cdf8b40c354fa32acfe9aae33d024",
     "M1/output/data_feasibility_verdicts.csv": "625fd9fcb2dd1f980daa743b040d8ebbba3c7519fe861c888b5f50bb72138b01",
     "M1/output/dominated_candidates.csv": "188715a5f0d675ea20d74bcdd755e57a03204a52861102fb8ac1b89a26838add",
-    "M1/output/evidence_coverage.csv": "c860c0255d2073d4bdaeb604186770e31f90738cf4fc31d3dff2c11932c64a0b",
-    "M1/output/gate_rule_trace.csv": "bb822a2f64854c0ca951596d1b70975cc579873e0619beb1fa46de111288f41e",
+    "M1/output/evidence_coverage.csv": "ffd875f8f4d2e8b908e1fdeba6ed0d1cf9aabe3feaf4cd95082e125143bbbbae",
+    "M1/output/gate_rule_trace.csv": "3764b590c6db55e8d378e992bbbbd4364d7d976a0fcbfb608a9f55e626d11e77",
     "M1/output/hard_constraint_eliminations.csv": "1c2af219234e03ed4bab39bf868354bc3494c65d9fe77d70d532d0aca8ed8a9a",
-    "M1/output/hard_constraint_survivors.csv": "366fec35cb0262027bc41dcb390d49d0ed24a07cf6fa5ace9f2cb63d338efb76",
+    "M1/output/hard_constraint_survivors.csv": "0a669b1f0b77ea3625273f459184a048c71150412306d07e60710040ee22ab88",
     "M1/output/issue_migration.csv": "8924b3ae13cbd6163097f4f823cca4e3cf5c473489e3303613dd386d6c906ce5",
     "M1/output/kill_supersessions.csv": "de912baa9e0707a2286271d8a062f4f355978cf233e15128cd73be8b79619096",
     "M1/output/latency_feasibility.csv": "3cc448309a72f4b352034c134b9536d5dd2781499f32440aecdd557a01e46df1",
     "M1/output/non_frontier_issues.csv": "d52fb1bbb4b5471de61e1b7d4fd5bfdf8a48b9469229b4718928ffffe254ae02",
-    "M1/output/status_derivation_review.csv": "106dd700a6e6fae53fe6f6b5c2b27cb21aeadf036edf0e3ec32d244ea3040d69",
+    "M1/output/status_derivation_review.csv": "14d33545e61976cab1fa86602fe7ab9260973f57930dcb3a2c824f4c2c6662c2",
     "M1/output/venue_cost_reference.csv": "f74ae22b5ea53e936114f0f3413d7307df7a5e8adb51bb023ffa402aac4d14f0"
   },
   "closure_bundles": [
@@ -56,8 +56,9 @@
     },
     "computed_gate_kills": 7,
     "discrepancies": 56,
-    "evidence_records": 69,
+    "evidence_records": 72,
     "experiments_proposed_not_run": 9,
+    "experiments_run": 3,
     "external_requests": 14,
     "external_token_sources": 25,
     "frontier_items": 27,
@@ -72,21 +73,21 @@
     "non_frontier_issues": 15,
     "non_tuple_rows": 5,
     "open_issues": 50,
-    "open_questions": 16,
-    "recorded_kill_decisions": 3,
-    "source_registry": 96,
+    "open_questions": 17,
+    "recorded_kill_decisions": 5,
+    "source_registry": 99,
     "status": {
       "ALIVE": 0,
-      "DEAD": 10,
-      "UNKNOWN": 17,
+      "DEAD": 12,
+      "UNKNOWN": 15,
       "WEAK": 3,
       "total": 30
     },
     "status_by_class": {
       "ALL": {
         "ALIVE": 0,
-        "DEAD": 10,
-        "UNKNOWN": 17,
+        "DEAD": 12,
+        "UNKNOWN": 15,
         "WEAK": 3,
         "total": 30
       },
@@ -113,8 +114,8 @@
       },
       "TUPLE": {
         "ALIVE": 0,
-        "DEAD": 5,
-        "UNKNOWN": 17,
+        "DEAD": 7,
+        "UNKNOWN": 15,
         "WEAK": 3,
         "total": 25
       },
@@ -232,9 +233,9 @@
       "PASS": 0
     },
     "KG4_HALF_LIFE": {
-      "BLOCKED": 28,
+      "BLOCKED": 26,
       "FAIL": 1,
-      "PASS": 1
+      "PASS": 3
     },
     "KG5_FALSIFIABILITY": {
       "BLOCKED": 14,
@@ -242,7 +243,7 @@
       "PASS": 11
     }
   },
-  "generated_at": "2026-10-01T05:59:57Z",
+  "generated_at": "2026-10-01T06:29:25Z",
   "generated_by": "M1/src/materialize.py",
   "m2_specs": [
     {
@@ -386,7 +387,7 @@
     "reason": "Dominated/dominated-set analysis was NOT performed. At this evidence state every decision-critical dimension (net-edge headroom, signal longevity, fill quality, capacity, capital efficiency) is UNKNOWN for every candidate, so any frontier would order missing values. The only eliminations applied are hard constraints backed by verified facts (HC1..HC8). Re-run this analysis in M1-D1 once M1-B has emitted a CURRENT synthesis artifact and the blocking issues are resolved."
   },
   "patches": {
-    "applied": 9,
+    "applied": 12,
     "audit": [
       {
         "applied": true,
@@ -874,16 +875,57 @@
         "sources_added": [
           "SRC-0245"
         ]
+      },
+      {
+        "applied": true,
+        "decision": "KILLS",
+        "evidence_added": [
+          "EVD-0071"
+        ],
+        "issue_updates": [],
+        "kind": "PATCH",
+        "patch_id": "P-0010",
+        "sources_added": [
+          "SRC-0246"
+        ]
+      },
+      {
+        "applied": true,
+        "decision": "KILLS",
+        "evidence_added": [
+          "EVD-0072"
+        ],
+        "issue_updates": [],
+        "kind": "PATCH",
+        "patch_id": "P-0011",
+        "sources_added": [
+          "SRC-0247"
+        ]
+      },
+      {
+        "applied": true,
+        "decision": "WEAKENS",
+        "evidence_added": [
+          "EVD-0073"
+        ],
+        "issue_updates": [],
+        "kind": "PATCH",
+        "patch_id": "P-0012",
+        "sources_added": [
+          "SRC-0248"
+        ]
       }
     ],
-    "proposed": 9,
+    "proposed": 12,
     "rejected": 0,
     "rejections": []
   },
   "recorded_kills": [
+    "TUP-CME-ES-H3-OFI-AGG",
     "TUP-GENERIC-CME-QUEUE",
     "TUP-GENERIC-CRYPTO-MICRO",
     "TUP-HYPERLIQUID-BTCPERP-H1-QDEP-AGGPAS",
+    "TUP-HYPERLIQUID-BTCPERP-H4-FUNDBASIS-MIX",
     "TUP-JEV-HOSTED-LATENCY-UNMEASURED",
     "TUP-METHOD-PASSIVE-TOUCHFILL",
     "TUP-NASDAQ-LARGETICK-H1H2-QUEUEPOS-L1ONLY-AGG",

@@ -13,7 +13,8 @@
     "EVD-0033",
     "EVD-0034",
     "EVD-0041",
-    "EVD-0042"
+    "EVD-0042",
+    "EVD-0073"
   ],
   "decision_prevented": "Auction tuple feasibility (KG2): without it the auction candidate has no historical basis for testing.",
   "disallowed_evidence": "Live NOII existence treated as historical availability",
@@ -26,7 +27,7 @@
     "SRC-0108",
     "SRC-0120"
   ],
-  "last_updated": "2026-10-01T05:59:57Z",
+  "last_updated": "2026-10-01T06:29:25Z",
   "parent_issue_id": null,
   "priority_reason": "M1-BLOCKING retained: data existence is Tier 1/3.",
   "priority_score": null,

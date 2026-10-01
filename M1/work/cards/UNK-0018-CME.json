@@ -12,7 +12,8 @@
   "branch_impact": "SMALL",
   "contradictory_evidence_ids": [
     "EVD-0003",
-    "EVD-0042"
+    "EVD-0042",
+    "EVD-0071"
   ],
   "decision_prevented": "Causal replay for every CME candidate (KG2).",
   "disallowed_evidence": "Assumed values, secondary summaries, social posts",
@@ -25,7 +26,7 @@
     "SRC-0235",
     "SRC-0115"
   ],
-  "last_updated": "2026-10-01T05:59:57Z",
+  "last_updated": "2026-10-01T06:29:25Z",
   "parent_issue_id": "UNK-0018",
   "priority_reason": "Scoped child of the cross-venue timestamp blocker: the CME question is answerable by the exchange and does not depend on any other venue's feed.",
   "priority_score": null,

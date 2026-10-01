@@ -12,7 +12,8 @@
   "branch_impact": "MEDIUM",
   "contradictory_evidence_ids": [
     "EVD-0003",
-    "EVD-0042"
+    "EVD-0042",
+    "EVD-0071"
   ],
   "decision_prevented": "Whether the CME branch is profitable, and whether shadow/micro-live may start at all.",
   "disallowed_evidence": "Assumed values, secondary summaries, social posts",
@@ -22,7 +23,7 @@
   "kill_potential": "LOW",
   "known_evidence_ids": [],
   "known_source_ids": [],
-  "last_updated": "2026-10-01T05:59:57Z",
+  "last_updated": "2026-10-01T06:29:25Z",
   "parent_issue_id": "UNK-0009",
   "priority_reason": "Corrected by DECISIONS D-0042: exact broker/FCM/account costs are demanded here rather than before the gross-materiality precursor. The precursor runs on the verified structural cost C0 plus a parameterized unresolved cost C1 (UNK-0001) and reports the break-even residual C*; shadow/micro-live still requires the exact schedule, because realized execution economics cannot be measured against a parameter.",
   "priority_score": null,

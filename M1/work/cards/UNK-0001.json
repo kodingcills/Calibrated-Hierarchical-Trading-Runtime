@@ -12,7 +12,8 @@
   "branch_impact": "SMALL",
   "contradictory_evidence_ids": [
     "EVD-0003",
-    "EVD-0042"
+    "EVD-0042",
+    "EVD-0071"
   ],
   "decision_prevented": "Aggressive CME execution viability (KG3) for every CME tuple.",
   "disallowed_evidence": "An assumed or industry-typical per-contract cost presented as verified; a member rate applied to a non-member path; a zero, midpoint or industry default substituted for C1",
@@ -28,7 +29,7 @@
   "known_source_ids": [
     "SRC-0107"
   ],
-  "last_updated": "2026-10-01T05:59:57Z",
+  "last_updated": "2026-10-01T06:29:25Z",
   "parent_issue_id": null,
   "priority_reason": "Corrected by DECISIONS D-0042: the M1 obligation is verified structural cost C0 plus a parameterized unresolved cost C1 (unknown never zero), which is what the gross-materiality precursor needs. Exact account-level broker/FCM cost moved to the gate before shadow/micro-live and is tracked on UNK-0009-ECON-CME-MEASURED; mandatory fees, timestamps and execution realism are unchanged. Still M1-BLOCKING: a known mandatory cost is a cheap killer and cannot be deferred.",
   "priority_score": null,

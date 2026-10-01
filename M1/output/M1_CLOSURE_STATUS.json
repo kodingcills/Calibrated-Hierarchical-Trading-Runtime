@@ -4,8 +4,8 @@
   ],
   "candidate_counts": {
     "ALIVE": 0,
-    "DEAD": 10,
-    "UNKNOWN": 17,
+    "DEAD": 12,
+    "UNKNOWN": 15,
     "WEAK": 3,
     "total": 30
   },
@@ -147,9 +147,9 @@
         "value": "BLOCKED"
       },
       "KG4_HALF_LIFE": {
-        "reason": "No positive horizon-plausibility evidence: the candidate has no sourced empirical effect, documented mechanism cadence or structural timing fact at a comparable horizon. Absence of a contradiction is not positive evidence, so the horizon claim is unsupported rather than established.",
-        "rule": "KG4-R5",
-        "value": "BLOCKED"
+        "reason": "Positive horizon evidence exists (EVD-0071) with no known physical timing contradiction and a preregistered delay experiment. The empirical half-life remains an M2 output by design (UNK-0008).",
+        "rule": "KG4-R4",
+        "value": "PASS"
       },
       "KG5_FALSIFIABILITY": {
         "reason": "Exact nulls, dataset requirements, metric and kill criteria are specifiable before results are observed.",
@@ -498,9 +498,9 @@
         "value": "BLOCKED"
       },
       "KG4_HALF_LIFE": {
-        "reason": "No positive horizon-plausibility evidence: the candidate has no sourced empirical effect, documented mechanism cadence or structural timing fact at a comparable horizon. Absence of a contradiction is not positive evidence, so the horizon claim is unsupported rather than established.",
-        "rule": "KG4-R5",
-        "value": "BLOCKED"
+        "reason": "Positive horizon evidence exists (EVD-0072) with no known physical timing contradiction and a preregistered delay experiment. The empirical half-life remains an M2 output by design (UNK-0008).",
+        "rule": "KG4-R4",
+        "value": "PASS"
       },
       "KG5_FALSIFIABILITY": {
         "reason": "Exact nulls, dataset requirements, metric and kill criteria are specifiable before results are observed.",
@@ -860,8 +860,8 @@
       }
     }
   },
-  "generated_at": "2026-10-01T05:59:57Z",
-  "iterations_recorded": 9,
+  "generated_at": "2026-10-01T06:29:25Z",
+  "iterations_recorded": 12,
   "m2_specs_generated": [
     "CAPACITY",
     "COST_SENSITIVITY",

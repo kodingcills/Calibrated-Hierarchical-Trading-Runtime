@@ -751,6 +751,7 @@ def main():
         "non_frontier": non_frontier,
         "spec_docs": spec_docs,
         "requests": requests,
+        "experiments": experiments.EXPERIMENTS,
     }
     (OUT / "M1_D0_READINESS.md").write_text(readiness.readiness_md(state), encoding="utf-8")
     (OUT / "M1_D1_BLOCKED.md").write_text(readiness.d1_blocked_md(state), encoding="utf-8")
@@ -782,7 +783,10 @@ def main():
                    "blocking_issues": len(blockers),
                    "non_frontier_issues": len(non_frontier),
                    "open_questions": len(unknowns.OPEN_QUESTIONS),
-                   "experiments_proposed_not_run": len(experiments.EXPERIMENTS),
+                   "experiments_proposed_not_run": len([e for e in experiments.EXPERIMENTS
+                                                        if e["run_state"] != "RUN"]),
+                   "experiments_run": len([e for e in experiments.EXPERIMENTS
+                                           if e["run_state"] == "RUN"]),
                    "hypotheses_registered": len(experiments.HYPOTHESES),
                    "hard_constraint_eliminations": len({r["candidate_id"]
                                                          for r in elimination_rows}),

@@ -10,7 +10,8 @@
   "branch_impact": "MEDIUM",
   "contradictory_evidence_ids": [
     "EVD-0003",
-    "EVD-0042"
+    "EVD-0042",
+    "EVD-0071"
   ],
   "decision_prevented": "KG5 for the ES H1, ES H3 and NQ H3 rows; also determines which historical data and fee line items apply.",
   "disallowed_evidence": "Assumed values, secondary summaries, social posts",
@@ -20,7 +21,7 @@
   "kill_potential": "MEDIUM",
   "known_evidence_ids": [],
   "known_source_ids": [],
-  "last_updated": "2026-10-01T05:59:57Z",
+  "last_updated": "2026-10-01T06:29:25Z",
   "parent_issue_id": "UNK-0027",
   "priority_reason": "Scoped child: the CME index branches need a roll rule, which is a public market-structure question, not a per-venue research project.",
   "priority_score": null,
