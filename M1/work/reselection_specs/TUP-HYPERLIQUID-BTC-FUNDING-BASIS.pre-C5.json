@@ -1,0 +1,23 @@
+{
+  "spec_id": "RESOL-001-HYPERLIQUID-BTC-FUNDING-BASIS",
+  "status": "FUNDING_EXTERNAL_ONLY",
+  "candidate_id": "TUP-HYPERLIQUID-BTCPERP-H4-FUNDBASIS-MIX",
+  "instrument_pair": {
+    "leg_a": "Short 1 unit Hyperliquid Core BTC linear perpetual (BTC, first perp dex, USDC collateral).",
+    "leg_b": "Long equal-BTC-notional Binance USDⓈ-M BTCUSDT perpetual.",
+    "reverse_direction": "Sign flip only; not a second tested strategy."
+  },
+  "sample_rule": "Complete hourly Hyperliquid funding observations paired with same-UTC-hour Binance public data; entry immediately after observed funding event, exact one-hour hold, exit at next complete hourly observation.",
+  "state": "Signed Hyperliquid fundingRate plus HL BTC mid / Binance BTCUSDT mark - 1, requiring timestamps within 5 seconds and passing source completeness predicates.",
+  "cost_floor": "Optimistic structural Hyperliquid base-tier taker fee floor: 0.045% per side; Binance fee, funding, spread, impact, borrow, capital, margin, transfer, liquidation and account terms remain UNKNOWN and are not imputed.",
+  "primary_metric": "Paired one-hour gross carry plus mark-to-market hedge residual before unknown Binance costs; descriptive only, not net return.",
+  "kill_rule": "No pilot if any source is unavailable, any expected funding hour is absent or duplicated, timestamps fail pairing, any mid falls back to last trade, archive completeness is unverified, or any required leg cost is unknown.",
+  "continuation_rule": "Only run after complete paired historical observations and all-leg authoritative cost schedules are verified.",
+  "result": "No pilot run; strict no-purchase check observed one of two expected Hyperliquid hourly buckets and Binance public endpoints returned HTTP 451 in this environment.",
+  "sources": [
+    "https://hyperliquid.gitbook.io/hyperliquid-docs/trading/funding.md",
+    "https://hyperliquid.gitbook.io/hyperliquid-docs/for-developers/api/info-endpoint/perpetuals.md",
+    "https://hyperliquid.gitbook.io/hyperliquid-docs/historical-data.md",
+    "https://hyperliquid.gitbook.io/hyperliquid-docs/trading/fees.md"
+  ]
+}

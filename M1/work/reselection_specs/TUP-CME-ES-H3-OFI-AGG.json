@@ -1,6 +1,10 @@
 {
   "spec_id": "RESEL-001-CME-ES-H3-OFI-GROSS-FRICTION",
-  "status": "EXTERNAL_BLOCKED_NOT_AUTHORIZED",
+  "status": "MEASURED_KILL_SAMPLE_SCOPED",
+  "status_history": [
+    {"status": "EXTERNAL_BLOCKED_NOT_AUTHORIZED", "as_of": "2026-09-29", "basis": "no ES event/trade sample, no verified C0 schedule; the precursor was not runnable from the repository"},
+    {"status": "MEASURED_KILL_SAMPLE_SCOPED", "as_of": "2026-09-30", "basis": "the frozen H3 OFI gross-markout measurement ran on the single admitted ESU3 window and returned KILL_MATERIALITY at the primary horizon (PRIMARY_HORIZON_GROSS_NOT_POSITIVE), scoped to that one window; the canonical corpus status change is only PROPOSED (M2/experiments/M2-BRIDGE-ES-H3-OFI/proposal.json)"}
+  ],
   "candidate_id": "TUP-CME-ES-H3-OFI-AGG",
   "mechanism": "Signed order-flow imbalance: causal aggressive signed flow relative to contemporaneous executable ES liquidity, defined before outcome inspection.",
   "decision_question": "Does the causal H3 signal have gross displacement that exceeds the verified structural cost C0, and what unresolved cost C* would erase it, before any execution model or strategy evaluation?",
@@ -28,5 +32,45 @@
   "prohibited_post_result_tuning": ["contract", "horizon", "OFI bins", "universe", "roll rule", "cost tier", "side convention", "threshold", "state selection", "oracle", "ML feature"],
   "stopping_condition": "Stop after the fixed sample, state space and horizons are evaluated, or immediately if timestamp/identity validation fails. Do not run full M2 strategy evaluation as part of reselection.",
   "external_prerequisites": ["operator jurisdiction/entity and intended account class", "CME data/sample access path", "verified structural cost C0 schedule for the named contract (published exchange, clearing and mandatory venue fees)", "declared parameterization of the unresolved cost C1 with its stated range (unknown never zero)"],
-  "traceability": ["PROJECT_STATE.md", "M1/output/M1_D0_READINESS.md", "M1/output/blocker_priority.csv", "M1/data/evidence_ledger.csv", "M1/data/data_feasibility.csv"]
+  "traceability": ["PROJECT_STATE.md", "M1/output/M1_D0_READINESS.md", "M1/output/blocker_priority.csv", "M1/data/evidence_ledger.csv", "M1/data/data_feasibility.csv"],
+  "frozen_measurement": {
+    "experiment_id": "M2-BRIDGE-ES-H3-OFI",
+    "sealed_before_outcome": true,
+    "freeze_path": "M2/experiments/M2-BRIDGE-ES-H3-OFI/freeze.json",
+    "freeze_sha256": "42a158c584552392e6c21535f35b3887228ea209c47257dee97672f6bfd75568",
+    "results_path": "M2/experiments/M2-BRIDGE-ES-H3-OFI/results.json",
+    "run_inputs_path": "M2/experiments/M2-BRIDGE-ES-H3-OFI/run_inputs.json",
+    "proposal_path": "M2/experiments/M2-BRIDGE-ES-H3-OFI/proposal.json",
+    "analysis_module": "M2/src/es_materiality.py",
+    "analysis_module_sha256": "2a07bbd45dc42dd6bd18d66d83563bbbf18dffd96b52dc6b1bd6824c27b3101c",
+    "sample": {"instrument": "ESU3 (CME SecurityID 3445)", "venue": "CME Globex", "window": "2023-07-17T13:30:00Z-2023-07-17T13:40:00Z", "admitted_grid_coverage": 0.9999833333, "admission_verdict": "DATA_VALID (contract ADMISSION-ES-H3-v1)"},
+    "horizons_s": [1, 5, 15],
+    "primary_horizon_s": 1,
+    "primary_rule": "the verdict is computed at the primary horizon only; 5 s and 15 s are the reported term structure",
+    "out_of_contract": "sub-100 ms delays",
+    "state": "x(t) = (aggressor-buy volume - aggressor-sell volume) in (t-1s, t] divided by the displayed top-of-book depth bid_sz+ask_sz at t; sign is the direction, no thresholds, a balanced or unquotable state is no position",
+    "outcome": "side-signed midpoint markout in bps on the reconstructed top of book; no executable-price substitution",
+    "friction": {
+      "c0": "the measured observed-spread 1/2 S_entry + 1/2 S_exit term only; no verified account-independent mandatory CME charge exists in this environment",
+      "c1": "CME exchange, clearing and FCM amounts declared with UNKNOWN value (never zero) and reported as a scenario lattice, not as a fee",
+      "forbidden": ["a hard-coded one-tick-per-side spread", "an arbitrary multiple of C0", "executable-price substitution"]
+    },
+    "inference": {"method": "instrument x contiguous 60 s block cluster bootstrap of the mean (M2/src/calculate.py::block_bootstrap_ci)", "resamples": 2000, "seed": 20260717, "significance": "reported separately, never an input to the classification"},
+    "coverage_floor": {"quote_coverage_min": 0.95, "observation_coverage_min": 0.75, "min_observations": 250},
+    "scope_rule": "one admitted 10-minute window can support at most a SAMPLE-SCOPED DEVELOPMENT KILL; a nominal SURVIVE_PROVISIONAL is downgraded to INDETERMINATE_COVERAGE and is never reported as survival",
+    "outcome_summary": {
+      "gross_markout_bps_by_horizon": {"1": -0.0047336124, "5": -0.0014608308, "15": 0.0502825067},
+      "gross_markout_bps_primary": -0.0047336124,
+      "gross_ci_bps_primary": [-0.0468502515, 0.0403357932],
+      "observations_primary": 583,
+      "c0_bps": 0.5770016233,
+      "c_star_bps": -0.5817352358,
+      "c_star_usd_per_contract": -13.207857,
+      "verdict": "KILL_MATERIALITY",
+      "clause": "PRIMARY_HORIZON_GROSS_NOT_POSITIVE",
+      "scope": "SAMPLE_SCOPED_DEVELOPMENT_KILL",
+      "significance": "t = -0.212 against zero; reported only, not a decision input"
+    },
+    "canonical_effect": "none yet: this block records the measurement; the corpus status transition (candidate row UNKNOWN -> DEAD with a kill gate) is PROPOSED and awaits the operator"
+  }
 }

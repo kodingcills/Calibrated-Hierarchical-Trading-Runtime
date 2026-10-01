@@ -1,5 +1,7 @@
 {
   "spec_id": "RESOL-001-NASDAQ-CLOSING-AUCTION-LATE-NOII",
+  "spec_version": 2,
+  "version_note": "v2 (2026-09-30, GOAL-M2-BRIDGE-001 epoch 5, worker B5) applies the two operator-authorized contract changes to v1 and nothing else. (1) Universe transcription repair: the v1 clause 'Issue Sub-Type=C' is a transcription artefact - ITCH Appendix E defines Sub-Type C='Common Shares' and Z='Not Applicable', and Nasdaq marks ordinary common stock with Issue Classification=C, Issue Sub-Type=Z, so v1 admits 31 of 12,809 locates in the 2026-06-12 session while the zero-share/zero-price cross prints concentrate in the non-Nasdaq-listed market categories. The corrected clause is Authenticity=P, ETP Flag=N, Issue Classification=C, Market Category in {Q,G,S} (Nasdaq-listed common stock), rule identity NASDAQ-CLOSING-CROSS-PIT-STOCK-DIRECTORY-v2; it admits 2,483 locates. This is a defect fix, not universe shopping: the v1 clause text is retained below at universe.clause_v1_retained, and both admitted counts are reported. (2) Completeness contract: the zero-length-terminator expectation is replaced by transport markers plus a measurement-window continuity and coverage certificate, with the v1 clause text retained at timestamp_contract.v1_retained. The frozen measurement itself (mechanism, signal, timing, outcome, metric, kill rule) is UNCHANGED from v1; only these two contract defects are repaired.",
   "status": "AUCTION_EXTERNAL_ONLY",
   "candidate_id": "TUP-NASDAQ-CLOSE-H4-LATENOII-AGG",
   "ancestry": {
@@ -7,7 +9,7 @@
     "relation": "NARROW_REFORMULATION",
     "decision": "DECISIONS D-0041"
   },
-  "provenance_note": "Retargeted 2026-09-29 from TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG, where this frozen formulation was first attached, to the narrowed candidate row TUP-NASDAQ-CLOSE-H4-LATENOII-AGG (DECISIONS D-0041). The parent row stays registered as the historical provenance of the broad ANYCAP/unspecified-order-type formulation, with its own recorded verdict; this spec no longer describes it. Nothing in the frozen formulation below changed in the retarget - the freeze, universe rule, timestamp contract, execution boundary, prerequisite, metric and kill rule are the text frozen before the retarget.",
+  "provenance_note": "Retargeted 2026-09-29 from TUP-NASDAQ-ANYCAP-H4-AUCTION-AGG, where this frozen formulation was first attached, to the narrowed candidate row TUP-NASDAQ-CLOSE-H4-LATENOII-AGG (DECISIONS D-0041). The parent row stays registered as the historical provenance of the broad ANYCAP/unspecified-order-type formulation, with its own recorded verdict; this spec no longer describes it. Nothing in the frozen formulation below changed in the retarget - the freeze, universe rule, timestamp contract, execution boundary, prerequisite, metric and kill rule are the text frozen before the retarget. v2 (2026-09-30) repairs the universe transcription and the completeness contract only; see version_note. The v1 bytes are retained verbatim at M2/experiments/M2-BRIDGE-AUCTION-LATENOII-MATERIALITY/spec_prev_retained.json, sha256 5ef1dcac96e80847069006d24477dc12226f4d907b8798a522c63c14ff6e8694.",
   "mechanism": "Signed late NOII imbalance change as causal pressure on Nasdaq Closing Cross clearing displacement.",
   "mechanism_boundary": "This is not an indicative-price, post-close reversal, or benchmark-flow strategy; those mechanisms are out of scope.",
   "freeze": {
@@ -23,17 +25,50 @@
     "no_outcome_tuning": true
   },
   "universe": {
-    "rule_id": "NASDAQ-CLOSING-CROSS-PIT-STOCK-DIRECTORY-v1",
+    "rule_id": "NASDAQ-CLOSING-CROSS-PIT-STOCK-DIRECTORY-v2",
+    "rule_id_v1_retained": "NASDAQ-CLOSING-CROSS-PIT-STOCK-DIRECTORY-v1",
     "membership": "The same date's TotalView-ITCH Stock Directory spin.",
-    "include": ["Authenticity=P", "ETP Flag=N", "Issue Classification=C", "Issue Sub-Type=C", "Market Category in Q,G,S,N,A,P,Z,V"],
+    "include": [
+      "Authenticity=P",
+      "ETP Flag=N",
+      "Issue Classification=C",
+      "Market Category in Q,G,S"
+    ],
+    "issue_sub_type_v2": "unrestricted (the v1 constraint 'Issue Sub-Type=C' is retained below and marked as the repaired defect; the 2026-06-12 session marks ordinary common stock as Issue Classification=C with Issue Sub-Type=Z)",
+    "clause_v1_retained": {
+      "include": [
+        "Authenticity=P",
+        "ETP Flag=N",
+        "Issue Classification=C",
+        "Issue Sub-Type=C",
+        "Market Category in Q,G,S,N,A,P,Z,V"
+      ],
+      "admitted_locates_2026_06_12": 31,
+      "superseded_by": "spec_version 2",
+      "supersession_reason": "Transcription defect, not universe shopping: ITCH Appendix E defines Sub-Type C='Common Shares' and Z='Not Applicable', and the dominant classification/sub-type pair among Nasdaq-listed common stock in this session is C/Z (4,183 locates) against C/C (31). Zero-share and zero-price Closing Cross prints concentrate in the non-Nasdaq-listed market categories, so the uncorrected clause also admits the bulk of the unprintable crosses."
+    },
     "identity": "Date-specific symbol and Stock Locate; no cross-date survivor list or current constituent list.",
-    "required_events": ["NOII I Cross Type C", "Cross Trade Q Cross Type C"],
+    "required_events": [
+      "NOII I Cross Type C",
+      "Cross Trade Q Cross Type C"
+    ],
     "survivorship_control": "Delisted, renamed, halted, and acquired securities remain eligible only for the dates on which the date-specific directory qualifies them."
   },
   "timestamp_contract": {
     "event_clock": "Nasdaq exchange nanoseconds since midnight; retain raw timestamp and convert session display to ET only for schedule checks.",
     "ordering": "Retain feed sequence/tracking metadata and packet-gap status.",
-    "invalid_day": "Missing required NOII/cross messages, unresolved duplicate ordering, or unrepaired feed gap invalidates the day."
+    "v1_retained": {
+      "invalid_day": "Missing required NOII/cross messages, unresolved duplicate ordering, or unrepaired feed gap invalidates the day."
+    },
+    "completeness_contract_v2": {
+      "transport_markers": "gzip CRC32 and ISIZE verified; received bytes equal the server's Content-Range total; zero framing errors; zero trailing bytes after the last frame; final frame is the ITCH 5.0 'C' End of Messages system event. The BinaryFILE v1.00 zero-length terminator is NOT expected: it is absent from Nasdaq's published captures, and its absence is a recorded provider-format finding, never the completeness test.",
+      "transport_markers_are_not_completeness": "The transport markers prove the retained object is intact; they do NOT prove the original session was captured whole. That is exactly why the certificate below exists.",
+      "measurement_window_continuity_certificate": "Over 15:49:50-16:00:10 ET, on the retained object: exchange timestamps non-decreasing in stream order; every inter-message gap whose BOTH endpoints lie inside the window is bounded (<= 1 s); the window carries at least 1,000,000 messages and at least one certified in-window pair.",
+      "coverage_certificate": "Per-symbol Closing-Cross NOII cadence inside the signal interval 15:50:00-15:55:00 ET (no missed dissemination cycle: gap <= 1.5 x the observed 10 s period) and an input-availability coverage ratio of universe-qualified symbols with a valid Closing Cross at or above 0.95, with the missingness audit reported by identity and reason.",
+      "out_of_window_holes": "Declared non-material to this branch's inputs: no frozen signal instant, entry instant or exit print lies outside the window, and a book reconstructed from the window alone cannot observe pre-window state in any case.",
+      "negative_control": "The certificate is proven load-bearing against the known splice attack (.research/m2_bridge_001/verification/V2/v2_auction_contract_attack.py): the spliced, re-compressed tape passes every transport marker and is refused by the certificate."
+    },
+    "invalid_day": "Missing required NOII/cross messages, unresolved duplicate ordering, a failed measurement-window continuity certificate, or an unmet coverage floor invalidates the measurement (named clause, never a silent re-scope)."
   },
   "execution": {
     "precursor": "Observation-only gross materiality measurement; no order, account, route, or paper trade.",

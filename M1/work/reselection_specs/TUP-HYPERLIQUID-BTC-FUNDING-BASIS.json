@@ -1,23 +1,61 @@
 {
   "spec_id": "RESOL-001-HYPERLIQUID-BTC-FUNDING-BASIS",
-  "status": "FUNDING_EXTERNAL_ONLY",
+  "status": "MEASURED_IN_M2_BRIDGE_001_EPOCH5_PENDING_CANONICAL_UPDATE",
   "candidate_id": "TUP-HYPERLIQUID-BTCPERP-H4-FUNDBASIS-MIX",
+  "scope": "M2 bridge epoch 5, worker C5. This file is the branch-C contract; the sealed preregistered contract is M2/experiments/M2-BRIDGE-HL-BINANCE-BASIS/freeze.json and the outcome is M2/experiments/M2-BRIDGE-HL-BINANCE-BASIS/results.json. No canonical artifact was edited by C5 beyond this own-branch spec file.",
+  "amendment": {
+    "id": "AMEND-C5-001",
+    "authority": "operator",
+    "relation": "VERSIONED_AMENDMENT_OF_THE_FROZEN_FORMULATION",
+    "previous_spec_sha256": "c48abbdc551a5aa7b1aa0842c531cdcbf2189e758660e3ef35c34a3fb3c76814",
+    "previous_spec_copy": "M1/work/reselection_specs/TUP-HYPERLIQUID-BTC-FUNDING-BASIS.pre-C5.json",
+    "previous_text_retained": {
+      "status": "FUNDING_EXTERNAL_ONLY",
+      "sample_rule": "Complete hourly Hyperliquid funding observations paired with same-UTC-hour Binance public data; entry immediately after observed funding event, exact one-hour hold, exit at next complete hourly observation.",
+      "state": "Signed Hyperliquid fundingRate plus HL BTC mid / Binance BTCUSDT mark - 1, requiring timestamps within 5 seconds and passing source completeness predicates.",
+      "cost_floor": "Optimistic structural Hyperliquid base-tier taker fee floor: 0.045% per side; Binance fee, funding, spread, impact, borrow, capital, margin, transfer, liquidation and account terms remain UNKNOWN and are not imputed.",
+      "primary_metric": "Paired one-hour gross carry plus mark-to-market hedge residual before unknown Binance costs; descriptive only, not net return.",
+      "result": "No pilot run; strict no-purchase check observed one of two expected Hyperliquid hourly buckets and Binance public endpoints returned HTTP 451 in this environment."
+    },
+    "what_changed": [
+      "Price term: causal LAST-TRADE closes of COMPLETED hourly candles on both legs, labelled REFERENCE prices. The Binance mark series is excluded from the price term; at most a candle that closed at or before the decision instant may be used.",
+      "Boundary staleness is measured and reported for both legs against a tolerance declared before the run (1.0 s).",
+      "The gross is SIGNED (funding carry of both legs plus the hedge mark-to-market residual), in bps of notional, sign-corrected for the short-HL/long-Binance structure.",
+      "Cost treatment: only the LOWEST VERIFIED UNAVOIDABLE floor justified by the frozen implementation may enter C0; the published volume/staking/account-state dependent tiers are a REFERENCE EXECUTION PATH scenario and their unresolved component stays in C1. Unknown is never zero.",
+      "Inference: hour-clustered percentile bootstrap with a fixed declared seed; significance reported separately and never an input to the classification."
+    ],
+    "what_is_unchanged": [
+      "the pair (SHORT Hyperliquid Core BTC perp, LONG equal-notional Binance USD(S)-M BTCUSDT perp)",
+      "the direction and the exact one-hour hold",
+      "the pairing rule (floor timestamps to the exact UTC hour, exact 1:1 matching, 100% coverage of the availability-derived window, zero missing, zero duplicates, no post-outcome window shrinking)",
+      "no pair substitution, no oracle substitution, no model fitting, no horizon change, no fee imputation"
+    ]
+  },
   "instrument_pair": {
     "leg_a": "Short 1 unit Hyperliquid Core BTC linear perpetual (BTC, first perp dex, USDC collateral).",
-    "leg_b": "Long equal-BTC-notional Binance USDⓈ-M BTCUSDT perpetual.",
-    "reverse_direction": "Sign flip only; not a second tested strategy."
+    "leg_b": "Long equal-BTC-notional Binance USD(S)-M BTCUSDT perpetual.",
+    "reverse_direction": "Sign flip only; not a second tested strategy.",
+    "direction": "UNCONDITIONAL short-A / long-B, entered every admitted hour; no sign conditioning and no state filter."
   },
-  "sample_rule": "Complete hourly Hyperliquid funding observations paired with same-UTC-hour Binance public data; entry immediately after observed funding event, exact one-hour hold, exit at next complete hourly observation.",
-  "state": "Signed Hyperliquid fundingRate plus HL BTC mid / Binance BTCUSDT mark - 1, requiring timestamps within 5 seconds and passing source completeness predicates.",
-  "cost_floor": "Optimistic structural Hyperliquid base-tier taker fee floor: 0.045% per side; Binance fee, funding, spread, impact, borrow, capital, margin, transfer, liquidation and account terms remain UNKNOWN and are not imputed.",
-  "primary_metric": "Paired one-hour gross carry plus mark-to-market hedge residual before unknown Binance costs; descriptive only, not net return.",
-  "kill_rule": "No pilot if any source is unavailable, any expected funding hour is absent or duplicated, timestamps fail pairing, any mid falls back to last trade, archive completeness is unverified, or any required leg cost is unknown.",
-  "continuation_rule": "Only run after complete paired historical observations and all-leg authoritative cost schedules are verified.",
-  "result": "No pilot run; strict no-purchase check observed one of two expected Hyperliquid hourly buckets and Binance public endpoints returned HTTP 451 in this environment.",
+  "sample_rule": "The admitted 4,981-hour panel (2026-03-05T11:00:00Z to 2026-09-28T23:00:00Z, 100% paired hourly buckets). Decision at hour J immediately after the observed Hyperliquid funding settlement of bucket J, entered on the last completed reference candle (row J-1, covering [J-1h, J)), held exactly one hour, exited at the next complete hourly observation (row J, covering [J, J+1h)). The carry collected over the hold is the settlement labelled J+1 on each venue (Hyperliquid pays the hour that has elapsed; Binance settles 8-hourly). 4,979 holds, contiguous, zero missing, zero duplicates.",
+  "state": "Signed Hyperliquid fundingRate at the decision instant plus the reference-price basis HL close / Binance kline close - 1 measured on completed candles. Reported descriptively; it does not gate the unconditional decision rule.",
+  "reference_prices": {
+    "hyperliquid": "hl_mid_1h_close - Hyperliquid candleSnapshot 1h close, trade-derived, REFERENCE price (not a mid, not executable)",
+    "binance": "binance_kline_close - Binance USD(S)-M klines 1h close (last trade), REFERENCE price (not executable)",
+    "excluded": "binance_mark_close - marks are not last trades and are not executable; excluded from the price term, retained in the manifest for provenance"
+  },
+  "cost_floor": "C0 = the LOWEST rung of the published Hyperliquid perp taker schedule, 0.024% per side, applied to open+close on the Hyperliquid leg = 4.8 bps of notional per one-hour hold (SRC-0213, accessed 2026-09-20). C1 = the state-dependent uplift to the 0.045% base tier (4.2 bps/hold), the Binance taker fee (UNKNOWN), spread/impact/slippage (UNKNOWN), and capital/margin/borrow/transfer/liquidation terms (UNKNOWN). No unknown is imputed as zero.",
+  "primary_metric": "Signed strategy gross P&L per one-hour hold in bps of notional: funding carry of both legs plus the hedge mark-to-market residual, sign-corrected for the short-HL/long-Binance structure. T* = C0 / (carry per hour) is reported as an interpretive quantity only.",
+  "inference": "Hour-clustered percentile bootstrap, 10000 resamples, seed 20260930, 2.5/97.5 percentiles; moving-block (24 h) variant reported as a serial-dependence check. Significance is reported separately and is never the decision criterion.",
+  "kill_rule": "Shared contract, imported from M2/src/envelope.py::classify_materiality: KILL_MATERIALITY if g <= 0 or the uncertainty upper bound hi <= C0; SURVIVE_PROVISIONAL if the lower bound lo > C0; otherwise INDETERMINATE with the clause named. A coverage-floor failure is INDETERMINATE_COVERAGE, named, never a silent re-scope. A kill is scoped to this frozen one-hour formulation; a longer-horizon reformulation would be a NEW candidate, not a reinterpretation.",
+  "continuation_rule": "Only a SURVIVE_PROVISIONAL outcome on verified all-leg cost schedules would justify an execution-model pass; the base-tier reference path may not decide a kill on its own.",
+  "result": "Recorded in M2/experiments/M2-BRIDGE-HL-BINANCE-BASIS/results.json (this specification is the contract and is not rewritten by the outcome).",
+  "previous_result": "No pilot run in the pre-C5 state; strict no-purchase check observed one of two expected Hyperliquid hourly buckets and Binance public endpoints returned HTTP 451 in that environment.",
   "sources": [
     "https://hyperliquid.gitbook.io/hyperliquid-docs/trading/funding.md",
     "https://hyperliquid.gitbook.io/hyperliquid-docs/for-developers/api/info-endpoint/perpetuals.md",
     "https://hyperliquid.gitbook.io/hyperliquid-docs/historical-data.md",
-    "https://hyperliquid.gitbook.io/hyperliquid-docs/trading/fees.md"
+    "https://hyperliquid.gitbook.io/hyperliquid-docs/trading/fees.md",
+    "data.binance.vision/data/futures/um (klines, markPriceKlines, fundingRate archives; retrieved 2026-09-29)"
   ]
 }
