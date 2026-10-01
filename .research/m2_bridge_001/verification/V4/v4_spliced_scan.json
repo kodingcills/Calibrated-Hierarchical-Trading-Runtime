@@ -1,0 +1,11 @@
+{
+ "frames": 598810,
+ "in_window_messages": 585996,
+ "in_window_pairs": 585995,
+ "max_in_window_gap_ns": 609647167374,
+ "max_in_window_gap_at_ns": 57604661493422,
+ "backwards_timestamps": 0,
+ "framing_error": null,
+ "seam_gap_ns": 609647167374,
+ "gaps_over_bound": 1
+}

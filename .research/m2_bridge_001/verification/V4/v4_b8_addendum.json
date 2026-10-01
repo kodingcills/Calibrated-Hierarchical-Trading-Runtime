@@ -1,0 +1,15 @@
+{
+ "total": 9,
+ "ok": 9,
+ "failures": [],
+ "item": "B8",
+ "sealed_hashes": {
+  "freeze.json": "42a158c584552392e6c21535f35b3887228ea209c47257dee97672f6bfd75568",
+  "freeze.sha256": "d2a6fa7f7a4ee02fdd96efd5c598a0a37720268d585214b5534af899cdeaae12",
+  "run_inputs.json": "581a219c7602f8b1300428c6c2581a6d2f993bbdc9345ac1a2abb4ad30a2408d",
+  "results.json": "09c8562999304072a5f5b5184bece3ba0588d1d57754ae776b3c6934f1487ac2",
+  "proposal.json": "c57c7d18d68e8c0725d471998cfda0ce67b51f6dcf6380cbfb7f6ac61f7b2d5b",
+  "addendum.json": "ba3717274896f04100a2674e2735265e8ee76e179f11611b73c7078fba764cf1",
+  "addendum.py": "e7d8405b745063c0f004abbaba9ac0055f897d135aeb5ac7f609f5ad01979dd0"
+ }
+}

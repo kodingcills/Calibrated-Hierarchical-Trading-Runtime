@@ -1,0 +1,83 @@
+{
+ "total": 19,
+ "ok": 19,
+ "failures": [],
+ "per_experiment": {
+  "ES": {
+   "entries": 13,
+   "drift": [],
+   "untracked": [],
+   "differs_from_head": {}
+  },
+  "BASIS": {
+   "entries": 155,
+   "drift": [],
+   "untracked": [],
+   "differs_from_head": {}
+  },
+  "AUCTION": {
+   "entries": 22,
+   "drift": [
+    {
+     "path": "M1/src/materialize.py",
+     "why": "hash",
+     "recorded": "bdec4cc1ef1821a83210a646e041113b6fb6cdab75cb48d4de17d95fb971a08c",
+     "observed": "ad1d18d2bf8c597cff951ca976fab1d9c7bee9e17b07ef21439650ddd2e722a0"
+    },
+    {
+     "path": "M2/experiments/M2-BRIDGE-AUCTION-LATENOII-MATERIALITY/seal_freeze.py",
+     "why": "hash",
+     "recorded": "813a1612c7528384c8ac776d136f04dc54202928786a1377ae53c565ffa4a10d",
+     "observed": "e4e6e024f689a5c79fc16c9a44ab81c176141f2d191acfde0621adfe35dd9eb8"
+    },
+    {
+     "path": "M2/src/admission.py",
+     "why": "hash",
+     "recorded": "00363c3ac7e76366196581a254cb2b4baae73fcdeb69335da493d0b26f764c60",
+     "observed": "9f5862f71efd7fec97766f069344c9a60a3751108aec76df23de9e096b2cf477"
+    },
+    {
+     "path": "M2/tests/test_auction_materiality.py",
+     "why": "hash",
+     "recorded": "940c5b611a85f17ab2f11418e78d7efa26ec9e31191a01e93eba3bf235c261ec",
+     "observed": "b08e79459cb780b412620364757049ffa615dd47567914ebed73b6e67f567675"
+    }
+   ],
+   "untracked": [],
+   "differs_from_head": {}
+  }
+ },
+ "hashes": {
+  "ES": {
+   "freeze.json": "42a158c584552392e6c21535f35b3887228ea209c47257dee97672f6bfd75568",
+   "freeze.sha256": "d2a6fa7f7a4ee02fdd96efd5c598a0a37720268d585214b5534af899cdeaae12",
+   "run_inputs.json": "581a219c7602f8b1300428c6c2581a6d2f993bbdc9345ac1a2abb4ad30a2408d",
+   "results.json": "09c8562999304072a5f5b5184bece3ba0588d1d57754ae776b3c6934f1487ac2",
+   "proposal.json": "c57c7d18d68e8c0725d471998cfda0ce67b51f6dcf6380cbfb7f6ac61f7b2d5b"
+  },
+  "BASIS": {
+   "freeze.json": "389b8f4d65b1b2f54bf5eb29266c74c078ca7187e8c1b4455052fa52d780e3a7",
+   "freeze.sha256": "7d166927648ef8f7f5a92a75a1135e2abbf2811d11166f49f15123dddbaeff33",
+   "run_inputs.json": "d6f1ca96b395a7402e23712c44424a518142c566986bc4fd98c8be6040b7500a",
+   "results.json": "97a4d7acf71db4837ad2e8cf090350b5615c2716684df531e74a6ef7f550d722"
+  },
+  "AUCTION": {
+   "freeze.json": "9baff3dd69a08dfc2883e972cddda763666819b4e83234960ec0b72b19e91393",
+   "freeze.sha256": "3accc71a63080c0ee355e18a1481505da41a98f9903d2614dfc13226f6f43c78",
+   "run_inputs.json": "aef74d1676f6dc826cc28190cf8a4607996b27523d2ed00df923aaf91d744ff1",
+   "results.json": "15b7a3d51c1e6d0ce897ec31d63357657df47a9d59d8af6316b2a513c50d2f63",
+   "certificate.json": "6e4b257e75f45505f5bb11f89450c3fd76ea2c67efcfd44cdd4b28874bd10b32",
+   "entry_prints.json": "9f52149cf16e7e035e561f632175209658b068fc27f6abdda7ab44737d6474f2",
+   "signal_extract.json": "463663463ab3ab4eb34cae2a2927584bfd099515445af36d28f89fd9ce5d5889",
+   "admission_manifest_v2.json": "a52ba2c2100d225a13503e3ab2753dac2b3c10e1b2f0d386de991f01dda618d3",
+   "admission_v2_result.json": "5bb8d79cd84ea61a3fb707e6b537f56218e798508ffa0fef7937ebf3e25a4c9a",
+   "spec_prev_retained.json": "5ef1dcac96e80847069006d24477dc12226f4d907b8798a522c63c14ff6e8694",
+   "as_run_deviations.json": "6cd2be4100f37dfcd2362d8b2ed91925c4077f09f4700f7dc489863b4d9ffc40",
+   "proposal.json": "62b0dd7060360fe84095b0d332df175d7f2861cf0dbf768281472b91f39694db"
+  }
+ },
+ "untracked_files": [
+  "?? M2/experiments/M2-BRIDGE-ES-H3-OFI/addendum_unconditional_matched_instants.json",
+  "?? M2/experiments/M2-BRIDGE-ES-H3-OFI/addendum_unconditional_matched_instants.py"
+ ]
+}

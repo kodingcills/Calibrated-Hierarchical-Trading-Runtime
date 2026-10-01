@@ -1,0 +1,84 @@
+{
+  "addendum_reason": "The frozen results report the unconditional side-ignoring markout over the quote-available slots (quote_mask) and the conditional side-signed gross over the evaluated observations (observation_mask). Those are different instant sets, so the two columns are not directly comparable as published. This addendum states the unconditional figure on the conditional instants as well, and carries both denominators next to every number.",
+  "candidate_id": "TUP-CME-ES-H3-OFI-AGG",
+  "defect_closed": "V3 claim B6': the published unconditional at the 1 s primary horizon is the mean over 598 quote-available slots while the conditional gross is over 583 non-zero-state observations; the matched-instant unconditional is +0.0208001 bps, 0.0051 bps above the published +0.0156746.",
+  "experiment_id": "M2-BRIDGE-ES-H3-OFI",
+  "freeze_sha256": "42a158c584552392e6c21535f35b3887228ea209c47257dee97672f6bfd75568",
+  "horizons": [
+    {
+      "conditional_gross_bps": -0.004733612439280016,
+      "conditional_minus_unconditional_matched_bps": -0.02553371803848451,
+      "delta_matched_minus_published_bps": 0.00512549878762401,
+      "horizon_s": 1,
+      "observations_conditional": 583,
+      "published_results_json": {
+        "gross_markout_bps": -0.004733612439280016,
+        "observation_coverage": 0.9732888146911519,
+        "observations": 583,
+        "quote_coverage": 0.998330550918197,
+        "unconditional_markout_bps": 0.015674606811580484
+      },
+      "reproduces_published_conditional": true,
+      "reproduces_published_observation_count": true,
+      "reproduces_published_unconditional": true,
+      "slots_quote_available": 598,
+      "unconditional_bps_over_conditional_instants": 0.020800105599204494,
+      "unconditional_bps_over_quote_available_slots": 0.015674606811580484
+    },
+    {
+      "conditional_gross_bps": -0.0014608308473328167,
+      "conditional_minus_unconditional_matched_bps": -0.05621639503438728,
+      "delta_matched_minus_published_bps": -0.008353496584902947,
+      "horizon_s": 5,
+      "observations_conditional": 579,
+      "published_results_json": {
+        "gross_markout_bps": -0.0014608308473328167,
+        "observation_coverage": 0.973109243697479,
+        "observations": 579,
+        "quote_coverage": 0.9983193277310924,
+        "unconditional_markout_bps": 0.06310906077195741
+      },
+      "reproduces_published_conditional": true,
+      "reproduces_published_observation_count": true,
+      "reproduces_published_unconditional": true,
+      "slots_quote_available": 594,
+      "unconditional_bps_over_conditional_instants": 0.05475556418705446,
+      "unconditional_bps_over_quote_available_slots": 0.06310906077195741
+    },
+    {
+      "conditional_gross_bps": 0.0502825067187364,
+      "conditional_minus_unconditional_matched_bps": -0.0737802585862197,
+      "delta_matched_minus_published_bps": -0.010018901324099175,
+      "horizon_s": 15,
+      "observations_conditional": 569,
+      "published_results_json": {
+        "gross_markout_bps": 0.0502825067187364,
+        "observation_coverage": 0.9726495726495726,
+        "observations": 569,
+        "quote_coverage": 0.9982905982905983,
+        "unconditional_markout_bps": 0.13408166662905527
+      },
+      "reproduces_published_conditional": true,
+      "reproduces_published_observation_count": true,
+      "reproduces_published_unconditional": true,
+      "slots_quote_available": 584,
+      "unconditional_bps_over_conditional_instants": 0.1240627653049561,
+      "unconditional_bps_over_quote_available_slots": 0.13408166662905527
+    }
+  ],
+  "inputs_sha256": {
+    "M2/src/es_materiality.py": "2a07bbd45dc42dd6bd18d66d83563bbbf18dffd96b52dc6b1bd6824c27b3101c"
+  },
+  "recomputation": "Reuses M2/src/es_materiality.py unchanged (its frozen loaders, build_panel, state_direction, quote_mask, observation_mask and gross_markout_bps) on the same sealed contract and the same admitted inputs; only the averaging set of the unconditional side-ignoring markout is changed, to observation_mask instead of quote_mask.",
+  "record": "ADDENDUM_UNCONDITIONAL_ON_MATCHED_INSTANTS",
+  "results_json_sha256": "09c8562999304072a5f5b5184bece3ba0588d1d57754ae776b3c6934f1487ac2",
+  "script": {
+    "path": "M2/experiments/M2-BRIDGE-ES-H3-OFI/addendum_unconditional_matched_instants.py",
+    "sha256": "e7d8405b745063c0f004abbaba9ac0055f897d135aeb5ac7f609f5ad01979dd0"
+  },
+  "verdict_unchanged": {
+    "fired_clause": "PRIMARY_HORIZON_GROSS_NOT_POSITIVE",
+    "statement": "Neither the matched-instant nor the quote-available-slot unconditional figure changes the verdict. The kill fires on the conditional primary-horizon gross being non-positive (g <= 0) and, independently, on hi <= C0. The unconditional markout is not an input to the classification at all: it is the side-ignoring null baseline, reported so the conditional figure can be read against it, and recording it on the conditional instants only sharpens that reading - the conditional state remains BELOW its own matched-instant baseline.",
+    "verdict": "KILL_MATERIALITY"
+  }
+}

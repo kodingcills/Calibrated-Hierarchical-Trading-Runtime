@@ -65,3 +65,17 @@ B5 auction (worker failed at the reporting step; artifacts complete; INDETERMINA
 ENTRY_BOOK_RECONSTRUCTION_UNVALIDATED + SIGNAL_SCOPE_SUBFLOOR), A5 ES (KILL_MATERIALITY,
 sample-scoped), C5 basis (KILL_MATERIALITY, one-hour formulation). V3 verification launched
 before any canonical mutation.
+
+## Epoch 6 — canonical application, audit and closeout repairs
+State observed: three runs complete and verified (V3), no canonical verdict recorded, two
+integrity defects open.
+Actions selected: W8 canonical application (12 patches; ALIVE 0 / WEAK 3 / UNKNOWN 15 /
+DEAD 12; EVD-0071/0072/0073, SRC-0246/0247/0248, EXP-0010/0011/0012, P-0010/0011/0012, OQ-0017);
+W9 repair of the basis freeze-verifiability drift by restoring the sealed module and
+quarantining the auction contract into its own module; W10 matched-instant addendum for the ES
+record plus the single final regeneration; V4 independent verification of the canonical
+application and both repairs.
+Why these had the highest decision value: a verdict recorded in canonical state is the campaign's
+product, so an unverifiable freeze record or an instant-set inconsistency inside that record is a
+defect in the deliverable, not cosmetic.
+Result: see FINAL_REPORT.md in this directory.
