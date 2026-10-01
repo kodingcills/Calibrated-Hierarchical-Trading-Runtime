@@ -59,6 +59,13 @@ NEW_EVIDENCE_FIELDS = ("evidence_id", "claim", "source_id", "candidate_ids", "ep
                        "temporal_scope", "gross_or_net", "limitations", "decision_implication",
                        "verification_status")
 
+# Append-only evidence amendments. An evidence row is never rewritten: the record of what was
+# claimed when it was written is the point of the row, so the only operation the contract can
+# express is an APPEND. Deletion or replacement is not representable, and the amended row ends up
+# carrying both the superseded text and the correction that names it.
+EVIDENCE_UPDATE_FIELDS = ("evidence_id", "field", "append", "reason")
+EVIDENCE_APPEND_FIELDS = ("claim", "limitations", "decision_implication", "methodology")
+
 
 class SchemaError(ValueError):
     pass
@@ -113,6 +120,18 @@ def validate_patch(patch) -> None:
         if ev["supports_or_weakens"] == "SUPPORTS" and ev["gross_or_net"] in (None, "", "UNKNOWN"):
             raise SchemaError(f"patch {patch['patch_id']}: supporting evidence must declare "
                               f"gross_or_net")
+    for update in patch.get("proposed_evidence_updates", []):
+        _require(update, EVIDENCE_UPDATE_FIELDS, "evidence_update", f"in {patch['patch_id']}")
+        if update["field"] not in EVIDENCE_APPEND_FIELDS:
+            raise SchemaError(f"patch {patch['patch_id']}: amendment of {update['evidence_id']} "
+                              f"targets {update['field']!r}, which is not an appendable text "
+                              f"field {EVIDENCE_APPEND_FIELDS}")
+        if not str(update["append"]).strip():
+            raise SchemaError(f"patch {patch['patch_id']}: empty amendment on "
+                              f"{update['evidence_id']}")
+        if not str(update["reason"]).strip():
+            raise SchemaError(f"patch {patch['patch_id']}: amendment on {update['evidence_id']} "
+                              f"carries no reason")
 
 
 def load_patch_files(directory: Path) -> list:

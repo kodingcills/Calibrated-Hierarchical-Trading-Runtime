@@ -23,7 +23,7 @@
   "kill_potential": "LOW",
   "known_evidence_ids": [],
   "known_source_ids": [],
-  "last_updated": "2026-10-01T06:29:25Z",
+  "last_updated": "2026-10-01T08:31:06Z",
   "parent_issue_id": "UNK-0009",
   "priority_reason": "Corrected by DECISIONS D-0042: exact broker/FCM/account costs are demanded here rather than before the gross-materiality precursor. The precursor runs on the verified structural cost C0 plus a parameterized unresolved cost C1 (UNK-0001) and reports the break-even residual C*; shadow/micro-live still requires the exact schedule, because realized execution economics cannot be measured against a parameter.",
   "priority_score": null,

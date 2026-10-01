@@ -3,9 +3,9 @@
 Canonical machine-readable source: `M1/data/discrepancies.csv` (generated from `M1/src/corpus/unknowns.py`).
 This file is a rendering of that registry; edit the corpus module, not this file.
 
-Materialised (UTC): 2026-10-01T06:29:25Z
+Materialised (UTC): 2026-10-01T08:31:06Z
 
-Registered issues: 56 | open: 35 | blocking: 34
+Registered issues: 57 | open: 35 | blocking: 34
 
 Conflicts are never resolved by averaging. Where two sources genuinely disagree the row
 carries `conflict_type=CONTRADICTION` and both statements are preserved; where the
@@ -795,3 +795,17 @@ and the judgment used is stated together with its basis.
 - resolution class: None
 - affected: TUP-HYPERLIQUID-BTCPERP-H1-QDEP-AGGPAS|TUP-HYPERLIQUID-BTCPERP-H3-OFILIQ-AGG|TUP-HYPERLIQUID-BTCPERP-H4-FUNDBASIS-MIX|TUP-POLYMARKET-EVENT-H5-EVENTINF-AGG
 - evidence: None
+
+## UNK-0036 - NON_BLOCKING - OPEN
+
+- claim needed: What M1/output/status_derivation_review.csv's ceiling_permits_status column is meant to assert, and whether the column or the ceiling rule it is read against is the record that is wrong.
+- known evidence: M1/output/status_derivation_review.csv reports ceiling_permits_status = NO for five rows - TUP-CME-ES-H3-OFI-AGG and TUP-HYPERLIQUID-BTCPERP-H4-FUNDBASIS-MIX (both DEAD under a NOT_ALIVE ceiling on this campaign's recorded kills) and the three pre-existing M2 RECORDED_DECISION kills TUP-NASDAQ-LARGETICK-H2-QIMB-AGG, TUP-NASDAQ-LARGETICK-H2-QIMB-PAS and TUP-NASDAQ-LARGETICK-H2H3-MICRO-AGG - while the same artifact family reports ceiling_violations = 0 in M1/output/M1_STATE_SUMMARY.json and M1/src/validate.py --strict passes (19 checks, 0 failures). V4 established from the code that the pattern is systemic to RECORDED_DECISION kills and predates this campaign: materialize._ceiling_ok requires ceiling == DEAD for any DEAD row, while candidate_gates.ceiling_violations deliberately exempts a death recorded as a decision with cause and resurrection condition. Nothing consumes the column: no gate, count, verdict or frontier item reads it, and the validator does not enforce it.
+- specific evidence required: A decision about what the column asserts - if a NOT_ALIVE ceiling means 'the ceiling forbids ALIVE', the column is right and only its label invites a false reading; if it means 'the ceiling permits the recorded status', the column is wrong for a recorded kill - or a generator change to M1/src/materialize.py:_ceiling_ok that exempts recorded kills the way candidate_gates.ceiling_violations already does. Neither is taken by P-0016.
+- decision prevented: Nothing. The contradiction blocks no gate, kills no candidate and prevents no decision; it is recorded because the column's letter disagrees with the rule the validator enforces and invites the reading that these kills were not permitted.
+- conflict type: CONTRADICTION (M1/output/status_derivation_review.csv reports ceiling_permits_status = NO for TUP-CME-ES-H3-OFI-AGG and TUP-HYPERLIQUID-BTCPERP-H4-FUNDBASIS-MIX, while M1/output/M1_STATE_SUMMARY.json reports ceiling_violations = 0 for the same corpus and validate.py --strict passes.)
+- sources: A=SRC-0251, B=None
+- searches attempted: Read directly from the generated tables and from both code paths in verification wave V4 and again in this pass; no further search is needed to state the contradiction, only a decision to settle it.
+- resolvable by web research: NO; vendor quote: NO; M2 measurement: NO
+- resolution class: D
+- affected: TUP-CME-ES-H3-OFI-AGG|TUP-HYPERLIQUID-BTCPERP-H4-FUNDBASIS-MIX|TUP-NASDAQ-LARGETICK-H2-QIMB-AGG|TUP-NASDAQ-LARGETICK-H2-QIMB-PAS|TUP-NASDAQ-LARGETICK-H2H3-MICRO-AGG
+- evidence: EVD-0076

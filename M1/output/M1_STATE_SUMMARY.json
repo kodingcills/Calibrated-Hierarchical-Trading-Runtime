@@ -1,18 +1,18 @@
 {
   "artifact_hashes": {
     "M1/data/assumptions.csv": "889130b825b131953423600ea3db823d4b43e669de4a50e7592e5b3b6f6574df",
-    "M1/data/candidate_tuples.csv": "d85b41b998bc490e678d9d9d7474a2c1670e5a2a3e7597506930382360741ab4",
+    "M1/data/candidate_tuples.csv": "47e20672b45a64b5347b5075c9c25af88c9a9ab79ece4b63c679bcf0dca9d171",
     "M1/data/data_feasibility.csv": "d254d47b36c6b5163ed45751c524296c0a99d398432358407bee17142f910617",
-    "M1/data/dead_candidates.csv": "8a3ab65c8879ef3155a826d460c6b956d0936077f76aa2be9b6a36f1e0fb5da7",
-    "M1/data/discrepancies.csv": "16c88b8b6b6a6b0be21bc60dc9c0724aa23d32565a617fd1e9fbacbae27fa5b7",
-    "M1/data/evidence_ledger.csv": "cda3165060b837f3c2711a36509ede830320a27228d9d0065e563bd86a32b7a5",
+    "M1/data/dead_candidates.csv": "263ce2b945b6c269ec027992a88b9b8ee9cf15aaf316a05704396966a82ed3fa",
+    "M1/data/discrepancies.csv": "81e53348b540ec17c2b9129acb22f733928e8dc52e64060ca7d46d6188e71d79",
+    "M1/data/evidence_ledger.csv": "762524297da7708527a45c5e6c3c3edf1142403d92147a0eb8add759766b2a4d",
     "M1/data/execution_envelopes.csv": "8946607791f68c4ea05ac167dbab6ab1ee2cdf8b40c354fa32acfe9aae33d024",
     "M1/data/experiments.csv": "d5e0e316013e9030a2b037acffd759b6c6ee526166670c8c4f47657c6aa52d5f",
     "M1/data/hypotheses.csv": "ee92222d16873a55560827435d7c24748dd9c0445b0d9492a5625259be88c9e6",
     "M1/data/kill_gates.csv": "8e6a253747aa0d831667e6b925c7803c509bbf9efe82558e8bb0c58ce86325e0",
     "M1/data/mechanisms.csv": "cdcc25bb7ef3ca612ffec5ba8e8e4bc32d5c16b1bc2c604a605cb2c289f85bbd",
     "M1/data/open_questions.csv": "2b5bb237bf9a2b70f053ddfd1290f007e9331d4fa000a85baa558a4185d7cd18",
-    "M1/data/source_registry.csv": "0e22fb219fbc3bb3c80457d0c4cbbbe40897b1c70509f7d8024a3d217291e1f4",
+    "M1/data/source_registry.csv": "28911c132e380d8f5cfd0aa9fbda4fcf9541f2b8424caaf6609ffc3c4b0bddc8",
     "M1/data/technology_fit.csv": "8997ee6e17d2944643c0516e73739f30df9e705f27af4fc8690beedd9dec0c84",
     "M1/data/venue_facts.csv": "03b633734b007adb3afdb01b9612a965e0986a4d493d5b174be8146e5ea06917",
     "M1/output/blocker_priority.csv": "39dc8804ef32d02e211758cf39dd6dea66e018db68f583c57bb34b5a52c8f1d0",
@@ -21,14 +21,14 @@
     "M1/output/cost_envelopes.csv": "8946607791f68c4ea05ac167dbab6ab1ee2cdf8b40c354fa32acfe9aae33d024",
     "M1/output/data_feasibility_verdicts.csv": "625fd9fcb2dd1f980daa743b040d8ebbba3c7519fe861c888b5f50bb72138b01",
     "M1/output/dominated_candidates.csv": "188715a5f0d675ea20d74bcdd755e57a03204a52861102fb8ac1b89a26838add",
-    "M1/output/evidence_coverage.csv": "ffd875f8f4d2e8b908e1fdeba6ed0d1cf9aabe3feaf4cd95082e125143bbbbae",
-    "M1/output/gate_rule_trace.csv": "3764b590c6db55e8d378e992bbbbd4364d7d976a0fcbfb608a9f55e626d11e77",
+    "M1/output/evidence_coverage.csv": "0ce133248771b19237d99d2f2a8ecd9f039a3fe54d53b799c8040c8a6f22ba45",
+    "M1/output/gate_rule_trace.csv": "6cb45ffebee2940035281f801763f3f6d8985c16ba6c8e6aaa689ac03d58d313",
     "M1/output/hard_constraint_eliminations.csv": "1c2af219234e03ed4bab39bf868354bc3494c65d9fe77d70d532d0aca8ed8a9a",
     "M1/output/hard_constraint_survivors.csv": "0a669b1f0b77ea3625273f459184a048c71150412306d07e60710040ee22ab88",
-    "M1/output/issue_migration.csv": "8924b3ae13cbd6163097f4f823cca4e3cf5c473489e3303613dd386d6c906ce5",
+    "M1/output/issue_migration.csv": "6ea6539e19af1bad452a5969a08c63b5fb990cc9a67b2fc2941bc92141a3c0d9",
     "M1/output/kill_supersessions.csv": "de912baa9e0707a2286271d8a062f4f355978cf233e15128cd73be8b79619096",
     "M1/output/latency_feasibility.csv": "3cc448309a72f4b352034c134b9536d5dd2781499f32440aecdd557a01e46df1",
-    "M1/output/non_frontier_issues.csv": "d52fb1bbb4b5471de61e1b7d4fd5bfdf8a48b9469229b4718928ffffe254ae02",
+    "M1/output/non_frontier_issues.csv": "3b8550aba08e0f7249e00922d1bc3edaf894e651d23ea1c8fc3453e86aae0396",
     "M1/output/status_derivation_review.csv": "14d33545e61976cab1fa86602fe7ab9260973f57930dcb3a2c824f4c2c6662c2",
     "M1/output/venue_cost_reference.csv": "f74ae22b5ea53e936114f0f3413d7307df7a5e8adb51bb023ffa402aac4d14f0"
   },
@@ -55,8 +55,8 @@
       "DISPATCHABLE": 20
     },
     "computed_gate_kills": 7,
-    "discrepancies": 56,
-    "evidence_records": 72,
+    "discrepancies": 57,
+    "evidence_records": 75,
     "experiments_proposed_not_run": 9,
     "experiments_run": 3,
     "external_requests": 14,
@@ -70,12 +70,12 @@
     "m2_specs": 7,
     "mechanisms": 25,
     "next_autonomous_branch": "TUP-COINBASE-BTCUSD-H3-MICROOFI-AGG",
-    "non_frontier_issues": 15,
+    "non_frontier_issues": 16,
     "non_tuple_rows": 5,
-    "open_issues": 50,
+    "open_issues": 51,
     "open_questions": 17,
     "recorded_kill_decisions": 5,
-    "source_registry": 99,
+    "source_registry": 102,
     "status": {
       "ALIVE": 0,
       "DEAD": 12,
@@ -243,7 +243,7 @@
       "PASS": 11
     }
   },
-  "generated_at": "2026-10-01T06:29:25Z",
+  "generated_at": "2026-10-01T08:31:06Z",
   "generated_by": "M1/src/materialize.py",
   "m2_specs": [
     {
@@ -306,7 +306,7 @@
     "by_stage": {
       "M1_BLOCKING": 39,
       "M2_MEASUREMENT": 11,
-      "NON_BLOCKING": 5,
+      "NON_BLOCKING": 6,
       "POST_M2": 1
     },
     "migrated_count": 14,
@@ -350,7 +350,8 @@
       "UNK-0027-OPTIONS-EVENT-FX",
       "UNK-0033",
       "UNK-0034",
-      "UNK-0035"
+      "UNK-0035",
+      "UNK-0036"
     ]
   },
   "milestones": {
@@ -387,7 +388,7 @@
     "reason": "Dominated/dominated-set analysis was NOT performed. At this evidence state every decision-critical dimension (net-edge headroom, signal longevity, fill quality, capacity, capital efficiency) is UNKNOWN for every candidate, so any frontier would order missing values. The only eliminations applied are hard constraints backed by verified facts (HC1..HC8). Re-run this analysis in M1-D1 once M1-B has emitted a CURRENT synthesis artifact and the blocking issues are resolved."
   },
   "patches": {
-    "applied": 12,
+    "applied": 16,
     "audit": [
       {
         "applied": true,
@@ -914,9 +915,143 @@
         "sources_added": [
           "SRC-0248"
         ]
+      },
+      {
+        "applied": true,
+        "fields": [
+          "limitations"
+        ],
+        "kind": "EFFECT",
+        "patch_id": "P-0013",
+        "reason": "EVD-0074 / SRC-0249: the ES source's limitations must state that its published unconditional and conditional figures use different instant sets, name the addendum that recomputes the unconditional on the conditional instants, and record that neither figure changes the verdict. Replaces the clause that only flagged the gap without the matched-instant numbers.",
+        "source_update": "SRC-0246"
+      },
+      {
+        "applied": true,
+        "decision": "NO_CHANGE",
+        "evidence_added": [
+          "EVD-0074"
+        ],
+        "issue_updates": [],
+        "kind": "PATCH",
+        "patch_id": "P-0013",
+        "sources_added": [
+          "SRC-0249"
+        ]
+      },
+      {
+        "applied": true,
+        "fields": [
+          "limitations"
+        ],
+        "kind": "EFFECT",
+        "patch_id": "P-0014",
+        "reason": "EVD-0075: the source's limitations must stop asserting drift that the closeout repair removed. The replacement records that the freeze verifies in place again, names the quarantined module, and points at the opposite-direction consequence recorded on SRC-0248; every other limitation is carried through unchanged.",
+        "source_update": "SRC-0247"
+      },
+      {
+        "applied": true,
+        "decision": "NO_CHANGE",
+        "evidence_added": [
+          "EVD-0075"
+        ],
+        "issue_updates": [],
+        "kind": "PATCH",
+        "patch_id": "P-0014",
+        "sources_added": [
+          "SRC-0250"
+        ]
+      },
+      {
+        "applied": true,
+        "fields": [
+          "limitations"
+        ],
+        "kind": "EFFECT",
+        "patch_id": "P-0015",
+        "reason": "V3's artefact defect and the closeout seal sweep must be visible on the source that holds this branch's record: the freeze's deviation pointer names a results.json key that does not exist, and four paths of the AUCTION run_inputs.json now drift, three of them as the intended consequence of the basis restore. Every pre-existing limitation is carried through unchanged.",
+        "source_update": "SRC-0248"
+      },
+      {
+        "applied": true,
+        "decision": "NO_CHANGE",
+        "evidence_added": [],
+        "issue_updates": [],
+        "kind": "PATCH",
+        "patch_id": "P-0015",
+        "sources_added": []
+      },
+      {
+        "applied": true,
+        "evidence_amendment": "EVD-0072",
+        "fields": [
+          "limitations"
+        ],
+        "kind": "EFFECT",
+        "patch_id": "P-0016",
+        "reason": "V4 section 5.1: a reader who opens only EVD-0072 (iii) concludes the basis seal is broken, which stopped being true when W9 restored the sealed module. The cross-reference must sit on the row that carries the stale present tense, so it is appended to it rather than recorded only beside it; the original limitation stays in place, unedited."
+      },
+      {
+        "applied": true,
+        "evidence_amendment": "EVD-0075",
+        "fields": [
+          "limitations"
+        ],
+        "kind": "EFFECT",
+        "patch_id": "P-0016",
+        "reason": "V4 section 5.2: limitation (c) attributes the M1/src/materialize.py drift to an earlier unrelated pass when git shows this campaign's own canonical-application commit e64acb6 changed the file. Appended so the misattributed sentence is corrected where it stands and the count and both hashes stay exactly as recorded."
+      },
+      {
+        "applied": true,
+        "fields": [
+          "limitations"
+        ],
+        "kind": "EFFECT",
+        "patch_id": "P-0016",
+        "reason": "P-0016: the basis source must point at the in-row correction of its own superseded limitation, so a reader who follows EVD-0072 (iii) to its source is not sent back to text that only records the supersession elsewhere. Every prior clause is carried through unchanged.",
+        "source_update": "SRC-0247"
+      },
+      {
+        "applied": true,
+        "fields": [
+          "limitations"
+        ],
+        "kind": "EFFECT",
+        "patch_id": "P-0016",
+        "reason": "P-0016: this source repeats the misattribution ('M1/src/materialize.py (pre-existing drift, unrelated to the repair)'). The clause is kept and the corrected attribution is appended after it, naming the campaign's own commit e64acb6 and leaving the count and both hash values as recorded. Every prior clause is carried through unchanged.",
+        "source_update": "SRC-0248"
+      },
+      {
+        "applied": true,
+        "fields": [
+          "limitations"
+        ],
+        "kind": "EFFECT",
+        "patch_id": "P-0016",
+        "reason": "P-0016: the restoration source calls the same path 'pre-existing drift unrelated to this repair', which understates the campaign's own footprint on a path the AUCTION freeze sealed. The corrected attribution is appended after the original clause, which is kept; the count of four drifted paths and both hashes are unchanged.",
+        "source_update": "SRC-0250"
+      },
+      {
+        "applied": true,
+        "kind": "EFFECT",
+        "new_unknown": "UNK-0036",
+        "patch_id": "P-0016"
+      },
+      {
+        "applied": true,
+        "decision": "NO_CHANGE",
+        "evidence_added": [
+          "EVD-0076"
+        ],
+        "issue_updates": [],
+        "kind": "PATCH",
+        "patch_id": "P-0016",
+        "sources_added": [
+          "SRC-0251"
+        ]
       }
     ],
-    "proposed": 12,
+    "proposed": 16,
     "rejected": 0,
     "rejections": []
   },
@@ -946,7 +1081,7 @@
     }
   ],
   "work_artifacts": {
-    "cards": 56,
+    "cards": 57,
     "requests": 14,
     "specs": 7
   }

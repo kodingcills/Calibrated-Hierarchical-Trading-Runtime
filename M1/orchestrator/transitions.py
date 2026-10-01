@@ -8,8 +8,8 @@ Two jobs:
 2. `verify_patch` — adversarial review of an evidence patch before it can touch canonical
    state. It rejects patches that answer a different question than the card asked, that cite
    non-authoritative or undated sources, that transfer evidence across venue/instrument/horizon,
-   that assert a gate change the cited evidence cannot support, or that treat an inference as a
-   fact.
+   that assert a gate change the cited evidence cannot support, that treat an inference as a
+   fact, or that append a correction to an evidence row no patch declares.
 """
 
 from __future__ import annotations
@@ -149,6 +149,11 @@ def verify_patch(patch, card, canonical) -> dict:
         if all(str(src[f]).strip() in ("", "UNKNOWN", "None")
                for f in ("publication_date", "access_date", "date_basis")):
             rejected.append(f"{src['source_id']}: no date and no date basis")
+
+    for update in patch.get("proposed_evidence_updates", []):
+        if update["evidence_id"] not in canonical["evidence_ids"]:
+            rejected.append(f"evidence amendment names {update['evidence_id']}, which no authored "
+                            f"or patch-declared evidence row provides")
 
     for update in patch["proposed_issue_updates"]:
         if update["issue_id"] not in known_issues:

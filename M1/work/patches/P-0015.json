@@ -1,0 +1,45 @@
+{
+  "blocker_ids": [
+    "UNK-0018-NASDAQ",
+    "UNK-0027-AUCTION"
+  ],
+  "candidate_ids": [
+    "TUP-NASDAQ-CLOSE-H4-LATENOII-AGG"
+  ],
+  "created_at": "2026-10-01T08:31:06Z",
+  "decision": "NO_CHANGE",
+  "modified_claims": [
+    {
+      "claim": "The AUCTION freeze's pointer to its as-run deviation record resolves.",
+      "reason": "V3, re-confirmed in the closeout pass: freeze.json says the deviations are 'recorded in results.json:as_run_deviations_from_freeze', but results.json has no such key. The actual record is the standalone as_run_deviations.json beside the freeze (B5-A1..A5, complete and unmodified), which states why it was written there rather than inside results.json. Recorded on SRC-0248 as an artefact defect; the sealed freeze is read-only and is not corrected in place, and no verdict, gate or figure depends on the pointer.",
+      "status": "CORRECTED"
+    },
+    {
+      "claim": "The AUCTION run_inputs.json verifies as a live seal of the tree.",
+      "reason": "Four of its recorded paths drift. Three are the intended consequence of the basis freeze-verifiability restoration (M2/src/admission.py restored to the value the BASIS seal recorded; seal_freeze.py and test_auction_materiality.py re-pointed at the quarantined M2/src/admission_auction.py); one, M1/src/materialize.py, was already drifted before the repair because the pipeline file changed after the auction seal. The freeze was already invalidated as a preregistration by V3, so no live verdict depends on it; the record is corrected to read as historical rather than to imply a verifying seal.",
+      "status": "CORRECTED"
+    }
+  ],
+  "new_evidence": [],
+  "new_sources": [],
+  "new_unknowns": [],
+  "patch_id": "P-0015",
+  "proposed_assumption_updates": [],
+  "proposed_candidate_updates": [],
+  "proposed_dead_end_updates": [],
+  "proposed_gate_changes": [],
+  "proposed_issue_updates": [],
+  "proposed_source_updates": [
+    {
+      "fields": {
+        "limitations": "One session, one venue; the entry book is reconstructed from the retained window alone and cannot see orders added before 15:49:50, so the measured capture is a lower bound and the entry spread an upper bound; the freeze is INVALID as a preregistration because its sealed input already carried the Closing Cross exit price; the preregistered near/far band diagnostic is degenerate; 47.8% of the universe-qualified population is removed by the frozen N/O/P direction rule. Two record defects are additionally recorded. (1) The sealed freeze's 'as_run_deviations_from_freeze' key points at 'results.json:as_run_deviations_from_freeze', a key that does not exist in results.json; the deviations are recorded in the standalone as_run_deviations.json beside the freeze, and the freeze was not edited to correct the pointer. (2) After the basis freeze-verifiability restoration the AUCTION run_inputs.json shows four drifted paths - M2/src/admission.py (sealed 00363c3a..., restored to the basis-sealed 9f5862f7...), seal_freeze.py and test_auction_materiality.py (re-pointed at the quarantined M2/src/admission_auction.py), and M1/src/materialize.py (pre-existing drift, unrelated to the repair) - so the seal must be read as historical, not as a live verification."
+      },
+      "reason": "V3's artefact defect and the closeout seal sweep must be visible on the source that holds this branch's record: the freeze's deviation pointer names a results.json key that does not exist, and four paths of the AUCTION run_inputs.json now drift, three of them as the intended consequence of the basis restore. Every pre-existing limitation is carried through unchanged.",
+      "source_id": "SRC-0248"
+    }
+  ],
+  "provenance": "code:p0015_auction_artifact_defect",
+  "reason": "A record-correction entry, not a verdict: the AUCTION freeze's pointer to its as-run deviations names a results.json key that has never existed, the real record being the standalone as_run_deviations.json, and the closeout seal sweep shows four drifted paths in the AUCTION run_inputs.json. The auction branch was already invalidated as a preregistration and recorded as INDETERMINATE, so nothing is killed, nothing survives, no gate moves and the parent auction row is untouched. The sealed freeze is read-only to this pass and is not edited; the defect and the drifts are recorded on SRC-0248 so a later reader following the pointer finds the reason it is empty.",
+  "status": "PROPOSED",
+  "verification_notes": "Contrary readings were searched for. The pointer defect was checked against the artefact rather than reported second-hand: results.json has no 'as_run_deviations_from_freeze' key while freeze.json contains the string naming it, and the standalone as_run_deviations.json is present, complete (B5-A1..A5) and unmodified. The tempting over-reading - that a stale pointer invalidates the deviation record itself, and with it the branch's already-shaky preregistration - was rejected: the deviations are recorded in full one file away, and the freeze's invalidated-preregistration status was established independently by V3 from the sealed input's contents, not from this pointer. The four drifted paths are enumerated with their causes rather than summarised, including the one (M1/src/materialize.py) that this pass did not cause; the pipeline rule is left unchanged. No sealed artefact was written and no verdict was altered."
+}

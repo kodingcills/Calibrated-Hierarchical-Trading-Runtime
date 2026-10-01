@@ -29,7 +29,7 @@
   "known_source_ids": [
     "SRC-0107"
   ],
-  "last_updated": "2026-10-01T06:29:25Z",
+  "last_updated": "2026-10-01T08:31:06Z",
   "parent_issue_id": null,
   "priority_reason": "Corrected by DECISIONS D-0042: the M1 obligation is verified structural cost C0 plus a parameterized unresolved cost C1 (unknown never zero), which is what the gross-materiality precursor needs. Exact account-level broker/FCM cost moved to the gate before shadow/micro-live and is tracked on UNK-0009-ECON-CME-MEASURED; mandatory fees, timestamps and execution realism are unchanged. Still M1-BLOCKING: a known mandatory cost is a cheap killer and cannot be deferred.",
   "priority_score": null,

@@ -181,6 +181,40 @@ class PatchIntegrity(unittest.TestCase):
         result = transitions.verify_patch(builder, self._card(), self._context())
         self.assertEqual(result["status"], "REJECTED")
 
+    def test_evidence_amendment_appends_and_keeps_the_superseded_text(self):
+        """A correction is added to the row it corrects; the original wording stays."""
+        original = _evidence()
+        row = next(r for r in original if r["evidence_id"] == "EVD-0072")
+        before = row["limitations"]
+        amendment = {"evidence_id": "EVD-0072", "field": "limitations",
+                     "append": "[CORRECTED: appended by the test.]", "reason": "test"}
+        builder = patch_mod.build_patch("P-AMD", ["UNK-0004"], "NO_CHANGE", "test", "notes",
+                                        "2026-09-20", proposed_evidence_updates=[amendment])
+        verdict = transitions.verify_patch(builder, self._card(), self._context())
+        self.assertEqual(verdict["status"], "VERIFIED", verdict["rejected_claims"])
+        _, merged, _, _, audit = patch_mod.apply_verified(
+            [dict(builder, status="VERIFIED")], _sources(), original, [], {}, {})
+        amended = next(r for r in merged if r["evidence_id"] == "EVD-0072")["limitations"]
+        self.assertTrue(amended.startswith(before), "the superseded text was rewritten")
+        self.assertTrue(amended.endswith("[CORRECTED: appended by the test.]"))
+        self.assertTrue(any(a.get("evidence_amendment") == "EVD-0072" and a["applied"]
+                            for a in audit))
+
+    def test_evidence_amendment_for_a_row_nothing_declares_is_rejected(self):
+        for amendment, expected in (
+                ({"evidence_id": "EVD-9999", "field": "limitations", "append": "x",
+                  "reason": "test"}, "no authored or patch-declared evidence row"),
+                ({"evidence_id": "EVD-0072", "field": "status", "append": "x",
+                  "reason": "test"}, "SCHEMA"),
+                ({"evidence_id": "EVD-0072", "field": "limitations", "append": "   ",
+                  "reason": "test"}, "SCHEMA")):
+            builder = patch_mod.build_patch("P-AMD-BAD", ["UNK-0004"], "NO_CHANGE", "test", "notes",
+                                            "2026-09-20", proposed_evidence_updates=[amendment])
+            result = transitions.verify_patch(builder, self._card(), self._context())
+            self.assertEqual(result["status"], "REJECTED")
+            self.assertTrue(any(expected in r for r in result["rejected_claims"]),
+                            result["rejected_claims"])
+
     def test_shipped_patches_are_applied_and_their_sources_reached_canonical_state(self):
         """Every code-authored patch is applied, and its sources are in canonical state."""
         from corpus import patches as code_patches

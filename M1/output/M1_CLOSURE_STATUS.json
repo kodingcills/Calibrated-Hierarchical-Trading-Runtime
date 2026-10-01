@@ -147,7 +147,7 @@
         "value": "BLOCKED"
       },
       "KG4_HALF_LIFE": {
-        "reason": "Positive horizon evidence exists (EVD-0071) with no known physical timing contradiction and a preregistered delay experiment. The empirical half-life remains an M2 output by design (UNK-0008).",
+        "reason": "Positive horizon evidence exists (EVD-0071, EVD-0074) with no known physical timing contradiction and a preregistered delay experiment. The empirical half-life remains an M2 output by design (UNK-0008).",
         "rule": "KG4-R4",
         "value": "PASS"
       },
@@ -498,7 +498,7 @@
         "value": "BLOCKED"
       },
       "KG4_HALF_LIFE": {
-        "reason": "Positive horizon evidence exists (EVD-0072) with no known physical timing contradiction and a preregistered delay experiment. The empirical half-life remains an M2 output by design (UNK-0008).",
+        "reason": "Positive horizon evidence exists (EVD-0072, EVD-0075) with no known physical timing contradiction and a preregistered delay experiment. The empirical half-life remains an M2 output by design (UNK-0008).",
         "rule": "KG4-R4",
         "value": "PASS"
       },
@@ -860,8 +860,8 @@
       }
     }
   },
-  "generated_at": "2026-10-01T06:29:25Z",
-  "iterations_recorded": 12,
+  "generated_at": "2026-10-01T08:31:06Z",
+  "iterations_recorded": 16,
   "m2_specs_generated": [
     "CAPACITY",
     "COST_SENSITIVITY",
@@ -881,7 +881,7 @@
     "by_stage": {
       "M1_BLOCKING": 39,
       "M2_MEASUREMENT": 11,
-      "NON_BLOCKING": 5,
+      "NON_BLOCKING": 6,
       "POST_M2": 1
     },
     "migrated_count": 14,
@@ -925,7 +925,8 @@
       "UNK-0027-OPTIONS-EVENT-FX",
       "UNK-0033",
       "UNK-0034",
-      "UNK-0035"
+      "UNK-0035",
+      "UNK-0036"
     ]
   },
   "milestones": {

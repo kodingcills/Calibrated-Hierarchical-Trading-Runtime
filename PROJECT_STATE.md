@@ -2,7 +2,7 @@
 
 Status: CURRENT
 Version: 1.0.0
-Last Updated: 2026-10-01T06:29:25Z
+Last Updated: 2026-10-01T08:31:06Z
 
 This is the canonical fast-orientation artifact. Read it before any other file. Its counts are
 generated from `M1/output/M1_STATE_SUMMARY.json` and enforced against the machine-readable
@@ -478,7 +478,7 @@ Actionable frontier items: 27. Items awaiting an external answer or a frozen spe
 | M1_BLOCKING | 39 | must be answered before M1 can close |
 | M2_MEASUREMENT | 11 | preregistered M2 experiment; does not block M1 |
 | POST_M2 | 1 | matters only after M2 shows positive net EV |
-| NON_BLOCKING | 5 | tracked; no gate depends on it |
+| NON_BLOCKING | 6 | tracked; no gate depends on it |
 
 | resolution method | count |
 |---|---|
@@ -551,7 +551,7 @@ Machine-readable M1 state (canonical; regenerate with `python3 M1/src/materializ
 | UNKNOWN | 15 |
 | DEAD | 12 |
 
-Registered candidate rows: 30 (25 tradable tuples + 5 non-tuple registrations). Verified sources: 99 (25 report-mediated, 0 with a recoverable URL). Evidence records: 72. M1 frontier items: 27 (7 measurement specs and 14 external requests now outside the frontier). Gate-eligible candidates: 0.
+Registered candidate rows: 30 (25 tradable tuples + 5 non-tuple registrations). Verified sources: 102 (25 report-mediated, 0 with a recoverable URL). Evidence records: 75. M1 frontier items: 27 (7 measurement specs and 14 external requests now outside the frontier). Gate-eligible candidates: 0.
 <!-- /GENERATED:counts -->
 
 

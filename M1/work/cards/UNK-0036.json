@@ -1,0 +1,53 @@
+{
+  "acceptable_evidence": "Any primary source that answers the claim needed",
+  "affected_candidates": [
+    "TUP-CME-ES-H3-OFI-AGG",
+    "TUP-HYPERLIQUID-BTCPERP-H4-FUNDBASIS-MIX",
+    "TUP-NASDAQ-LARGETICK-H2-QIMB-AGG",
+    "TUP-NASDAQ-LARGETICK-H2-QIMB-PAS",
+    "TUP-NASDAQ-LARGETICK-H2H3-MICRO-AGG"
+  ],
+  "affected_gates": "NONE",
+  "blocker_id": "UNK-0036",
+  "branch_impact": "GLOBAL",
+  "contradictory_evidence_ids": [
+    "EVD-0005",
+    "EVD-0009",
+    "EVD-0033",
+    "EVD-0034",
+    "EVD-0041",
+    "EVD-0042",
+    "EVD-0043",
+    "EVD-0045",
+    "EVD-0047",
+    "EVD-0067",
+    "EVD-0069",
+    "EVD-0070",
+    "EVD-0071",
+    "EVD-0072"
+  ],
+  "decision_prevented": "Nothing. The contradiction blocks no gate, kills no candidate and prevents no decision; it is recorded because the column's letter disagrees with the rule the validator enforces and invites the reading that these kills were not permitted.",
+  "disallowed_evidence": "Assumed values, secondary summaries, social posts",
+  "estimated_effort": "SMALL",
+  "is_aggregate_parent": null,
+  "kill_condition": "Nothing. The contradiction blocks no gate, kills no candidate and prevents no decision; it is recorded because the column's letter disagrees with the rule the validator enforces and invites the reading that these kills were not permitted.",
+  "kill_potential": "LOW",
+  "known_evidence_ids": [
+    "EVD-0076"
+  ],
+  "known_source_ids": [
+    "SRC-0251"
+  ],
+  "last_updated": "2026-10-01T08:31:06Z",
+  "parent_issue_id": null,
+  "priority_reason": "Registered by patch P-0016 as a record discrepancy between two of the campaign's own artifacts, not as work that gates a candidate: nothing consumes the field and the generator's semantics are deliberately left unchanged.",
+  "priority_score": null,
+  "required_answer": "A decision about what the column asserts - if a NOT_ALIVE ceiling means 'the ceiling forbids ALIVE', the column is right and only its label invites a false reading; if it means 'the ceiling permits the recorded status', the column is wrong for a recorded kill - or a generator change to M1/src/materialize.py:_ceiling_ok that exempts recorded kills the way candidate_gates.ceiling_violations already does. Neither is taken by P-0016.",
+  "resolution_method": "HUMAN_INPUT",
+  "resolution_stage": "NON_BLOCKING",
+  "resurrection_condition": null,
+  "status": "OPEN",
+  "success_condition": "A decision about what the column asserts - if a NOT_ALIVE ceiling means 'the ceiling forbids ALIVE', the column is right and only its label invites a false reading; if it means 'the ceiling permits the recorded status', the column is wrong for a recorded kill - or a generator change to M1/src/materialize.py:_ceiling_ok that exempts recorded kills the way candidate_gates.ceiling_violations already does. Neither is taken by P-0016.",
+  "tier": 1,
+  "title": "What M1/output/status_derivation_review.csv's ceiling_permits_status column is meant to as"
+}

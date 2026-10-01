@@ -16,7 +16,7 @@ is recorded per row so the decision can be made against a stated bar rather than
 - class: TUPLE
 - report kill gate (verbatim): M2 measured mechanism/materiality precursor on one admitted window (no M1-A cemetery row)
 - cause: The registered mechanism produced no positive displacement on the only window its data prerequisite admitted: -0.0047336 bps pooled at the primary 1 s horizon, -0.0014608 bps at 5 s and +0.0502825 bps at 15 s, against a measured observed-spread round trip of 0.5770016 bps (13.1004 USD per contract) and C* = -0.5817352 bps. The fired clause is PRIMARY_HORIZON_GROSS_NOT_POSITIVE and the independent arm hi <= C0 (0.0403358 <= 0.5770016) also holds. Measured on the admitted CME ESU3 slice 2023-07-17T13:30:00Z-13:40:00Z (M2-BRIDGE-ES-H3-OFI, freeze sha256 42a158c5..., results sha256 09c85629...), scoped to that single window.
-- evidence: EVD-0001|EVD-0002|EVD-0013|EVD-0018|EVD-0020|EVD-0060|EVD-0061|EVD-0062|EVD-0063|EVD-0071
+- evidence: EVD-0001|EVD-0002|EVD-0013|EVD-0018|EVD-0020|EVD-0060|EVD-0061|EVD-0062|EVD-0063|EVD-0071|EVD-0074
 - death date: 2026-09-20 (date of the M1-A artifact (SRC-0011) for the original kills; M1-D0 computed-gate kills are dated by gate_recompute_date; a kill recorded from M2 evidence carries its experiment date in the cause text and in its evidence rows rather than in this column)
 - resurrection condition: Two or more non-overlapping admitted ES sessions, or a materially different regime measured under the same frozen construction, PLUS verified account-independent CME exchange/clearing/FCM charges. A different window alone is not a resurrection basis unless the registered contract is unchanged and the sealing is externally anchored.
 
@@ -61,7 +61,7 @@ is recorded per row so the decision can be made against a stated bar rather than
 - class: TUPLE
 - report kill gate (verbatim): M2 measured funding-basis materiality (no M1-A cemetery row)
 - cause: The frozen one-hour carry is roughly 140x smaller than the cheapest published execution floor it must clear: gross +0.0344051 bps per hold against C0 = 4.8 bps (2 executions x the LOWEST published Hyperliquid perp taker rung 0.024%/side), giving C* = -4.7655949 bps; the base-tier 0.045% path is a labelled REFERENCE EXECUTION PATH scenario that may not decide the kill, and the 0.024% choice makes the kill HARDER, not easier. Binance fee, spread, impact and capital stay UNKNOWN and unbounded in C1, so the true C* is MORE negative than reported. Measured on the 2026-03-05..2026-09-28 panel (M2-BRIDGE-HL-BINANCE-BASIS, freeze sha256 389b8f4d..., results sha256 97a4d7ac...).
-- evidence: EVD-0009|EVD-0010|EVD-0043|EVD-0044|EVD-0045|EVD-0047|EVD-0059|EVD-0072
+- evidence: EVD-0009|EVD-0010|EVD-0043|EVD-0044|EVD-0045|EVD-0047|EVD-0059|EVD-0072|EVD-0075|EVD-0076
 - death date: 2026-09-20 (date of the M1-A artifact (SRC-0011) for the original kills; M1-D0 computed-gate kills are dated by gate_recompute_date; a kill recorded from M2 evidence carries its experiment date in the cause text and in its evidence rows rather than in this column)
 - resurrection condition: A longer-horizon carry reformulation registered as its OWN candidate (never a reinterpretation of this row), plus a verified Binance all-leg cost schedule and the missing monthly funding file.
 

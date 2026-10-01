@@ -21,6 +21,7 @@ PATCH_DEFAULTS = {
     "modified_claims": [],
     "proposed_venue_updates": [],
     "proposed_source_updates": [],
+    "proposed_evidence_updates": [],
     "proposed_issue_updates": [],
     "proposed_candidate_updates": [],
     "proposed_gate_changes": [],
@@ -35,7 +36,7 @@ def build_patch(patch_id, blocker_ids, decision, reason, verification_notes, cre
                 modified_claims=None, proposed_issue_updates=None,
                 proposed_candidate_updates=None, proposed_gate_changes=None,
                 proposed_assumption_updates=None, proposed_dead_end_updates=None,
-                new_unknowns=None):
+                new_unknowns=None, proposed_evidence_updates=None):
     patch = {
         "patch_id": patch_id,
         "blocker_ids": blocker_ids,
@@ -49,6 +50,7 @@ def build_patch(patch_id, blocker_ids, decision, reason, verification_notes, cre
         "proposed_assumption_updates": proposed_assumption_updates or [],
         "proposed_dead_end_updates": proposed_dead_end_updates or [],
         "new_unknowns": new_unknowns or [],
+        "proposed_evidence_updates": proposed_evidence_updates or [],
         "decision": decision,
         "reason": reason,
         "verification_notes": verification_notes,
@@ -73,6 +75,16 @@ def canonical_context(source_rows, evidence_rows, candidate_rows, issue_rows):
 
 
 def verify_all(patches, cards_by_id, canonical) -> list:
+    """Verify every inbox patch. Evidence declarations are visible to the whole batch.
+
+    An append-only amendment may name any evidence row this corpus declares - one authored in
+    `corpus/evidence.py` or one a patch in this same inbox creates - so the declared ids are
+    folded into the canonical set before the adversarial gate runs. An amendment that names a row
+    nothing declares is refused by `verify_patch` rather than silently dropped at apply time.
+    """
+    canonical = dict(canonical)
+    canonical["evidence_ids"] = set(canonical["evidence_ids"]) | {
+        ev["evidence_id"] for p in patches for ev in p.get("new_evidence", [])}
     out = []
     for patch in patches:
         card = None
@@ -142,6 +154,25 @@ def apply_verified(patches, source_rows, evidence_rows, issue_rows, cards_by_id,
             ev.setdefault("evidence_state", "PATCH_SUPPLIED")
             evidence.append(ev)
             added_evidence.append(ev["evidence_id"])
+
+        for update in patch.get("proposed_evidence_updates", []):
+            target = next((e for e in evidence if e["evidence_id"] == update["evidence_id"]), None)
+            if target is None:
+                audit.append({"kind": "EFFECT", "patch_id": patch["patch_id"], "applied": False,
+                              "reason": f"unknown evidence {update['evidence_id']}"})
+                continue
+            current = str(target.get(update["field"]) or "")
+            if update["append"].strip() in current:
+                audit.append({"kind": "EFFECT", "patch_id": patch["patch_id"], "applied": False,
+                              "reason": f"amendment already recorded on {update['evidence_id']}"})
+                continue
+            # Append only: the superseded text stays where it was written and the correction is
+            # carried after it, so the amended row states both what was claimed and what is true.
+            target[update["field"]] = f"{current} {update['append']}".strip()
+            audit.append({"kind": "EFFECT", "patch_id": patch["patch_id"], "applied": True,
+                          "evidence_amendment": update["evidence_id"],
+                          "fields": [update["field"]],
+                          "reason": update["reason"]})
 
         for update in patch["proposed_issue_updates"]:
             row = issue_index.get(update["issue_id"])
